@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="SWP_apex_autos" default="default" basedir=".">
-    <description>Builds, tests, and runs the project SWP_apex_autos.</description>
+<project name="apex_autos_servlet" default="default" basedir=".">
+    <description>Builds, tests, and runs the project apex_autos_servlet.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

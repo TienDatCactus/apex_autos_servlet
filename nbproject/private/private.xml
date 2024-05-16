@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Unknown/Documents/NetBeansProjects/SWP_apex_autos/src/java/DAO/DBConnect.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Models/UserDetails.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/WEB-INF/front-end/sign-up.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/LoginDAO.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Models/UserAccount.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/RegisterControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/RegisterDAO.java</file>
         </group>
     </open-files>
 </project-private>
