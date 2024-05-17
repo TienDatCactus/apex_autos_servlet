@@ -17,6 +17,9 @@ public class UserAccount {
         this.password = password;
     }
 
+    public UserAccount() {
+    }
+
     public String getEmail() {
         return email;
     }

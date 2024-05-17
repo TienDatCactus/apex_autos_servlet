@@ -36,15 +36,24 @@ public class RegisterControl extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserDetails ud = new UserDetails(fname, lname, dob, phone);
-        UserAccount ua = new UserAccount(email, password);
+        UserDetails ud = new UserDetails();
+        ud.setFname(fname);
+        ud.setLname(lname);
+        ud.setDob(dob);
+        ud.setPhone(phone);
+
+        UserAccount ua = new UserAccount();
+        ua.setEmail(email);
+        ua.setPassword(password);
+
         RegisterDAO reg = new RegisterDAO();
         boolean status = reg.checkRegister(ua, ud);
-        if(status){
-            request.getRequestDispatcher("/front-end/otp.jsp").forward(request, response);
-        }else{
-            PrintWriter out = response.getWriter();
-            out.print("loi db");
+        PrintWriter out = response.getWriter();
+
+        if (status) {
+            out.println("vcl dc roi");
+        } else {
+            out.println("loi db");
         }
     }
 

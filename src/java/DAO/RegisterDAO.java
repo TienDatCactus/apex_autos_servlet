@@ -1,83 +1,68 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package DAO;
 
 import Models.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
- * RegisterDAO class to handle user registration.
+ *
+ * @author Tiến_Đạt
  */
 public class RegisterDAO {
 
+    PreparedStatement ps = null;
+    ResultSet rs = null;
     DBConnect db = new DBConnect();
     Connection con = db.connection;
 
-    /**
-     * Checks if a user can be registered.
-     *
-     * @param ua UserAccount object containing email and password
-     * @param ud UserDetails object containing personal details
-     * @return true if registration is successful, false otherwise
-     */
     public boolean checkRegister(UserAccount ua, UserDetails ud) {
+        boolean status;
         if (userExisted(ua.getEmail())) {
-            return false;
+            status = false;
+            return status;
         }
-
-        String userAccountQuery = "INSERT INTO [dbo].[user_account] ([email], [password]) VALUES (?, ?)";
-        String userDetailsQuery = "INSERT INTO [dbo].[user_details] ([first_name], [last_name], [dob], [phone]) VALUES (?, ?, ?, ?)";
-
+        String query = "INSERT INTO [dbo].[user_account] ([email], [password]) VALUES (?, ?)";
         try {
-            con.setAutoCommit(false);
-
-            try (PreparedStatement psUserAccount = con.prepareStatement(userAccountQuery);
-                 PreparedStatement psUserDetails = con.prepareStatement(userDetailsQuery)) {
-
-                psUserAccount.setString(1, ua.getEmail());
-                psUserAccount.setString(2, ua.getPassword());
-                psUserAccount.executeUpdate();
-
-                psUserDetails.setString(1, ud.getFname());
-                psUserDetails.setString(2, ud.getLname());
-                psUserDetails.setString(3, ud.getDob());
-                psUserDetails.setString(4, ud.getPhone());
-                psUserDetails.executeUpdate();
-
-                con.commit();
-                return true;
-            } catch (SQLException e) {
-                con.rollback();
-                e.printStackTrace();
-                return false;
-            }
-        } catch (SQLException e) {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, ua.getEmail());
+            ps.setString(2, ua.getPassword());
+            ps.executeUpdate();
+            status = true;
+        } catch (Exception e) {
             e.printStackTrace();
-            return false;
-        } finally {
-            try {
-                con.setAutoCommit(true);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            status = false;
         }
+        query = "INSERT INTO [dbo].[user_details] ([first_name] ,[last_name] ,[dob] ,[phone]) VALUES (?, ,?, ,?, ,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, ud.getFname());
+            ps.setString(2, ud.getLname());
+            ps.setString(3, ud.getDob());
+            ps.setString(4, ud.getPhone());
+            ps.executeUpdate();
+            status = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            status = false;
+        }
+        return status;
     }
 
-    /**
-     * Checks if a user with the given email already exists.
-     *
-     * @param email Email address to check
-     * @return true if user exists, false otherwise
-     */
     public boolean userExisted(String email) {
-        String query = "SELECT * FROM UsersAccount WHERE Email = ?";
-        try (PreparedStatement ps = con.prepareStatement(query)) {
+        String query = "select * from user_account where Email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, email);
-            try (ResultSet rs = ps.executeQuery()) {
-                return rs.next();
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -87,6 +72,7 @@ public class RegisterDAO {
         UserAccount ua = new UserAccount("dadas@gmail.com", "dat123");
         UserDetails ud = new UserDetails("tien", "dat", "11-12-2131", "03387226123");
         RegisterDAO reg = new RegisterDAO();
-        System.out.println(reg.checkRegister(ua, ud));
+        System.out.println(reg.checkRegister(ua, ud)
+        );
     }
 }

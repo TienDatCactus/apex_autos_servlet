@@ -23,6 +23,9 @@ public class UserDetails {
         this.phone = phone;
     }
 
+    public UserDetails() {
+    }
+
     public String getFname() {
         return fname;
     }
