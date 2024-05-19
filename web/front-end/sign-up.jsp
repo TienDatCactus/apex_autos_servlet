@@ -1084,35 +1084,8 @@
             </div>
 
             <div class="input-box">
-                <form class="row g-3" id="form-1" method="post" action="RegisterControl">
-                <div class="col-12">
-                  <div class="row g-2">
-                    <div class="form-floating theme-form-floating col-6 input fname-input">
-                      <input type="text" class="form-control input" name ="fname" id="fname" placeholder="Full Name" />
-                      <label for="fname">First Name</label>
-                      <span class="form-msg"></span>
-                    </div>
-                    <div class="form-floating theme-form-floating col-6 input lname-input">
-                      <input type="text" class="form-control input " name ="lname" id="lname" placeholder="Full Name" />
-                      <label for="lname">Last Name</label>
-                      <span class="form-msg"></span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-floating theme-form-floating input phone-input">
-                    <input type="date" class="form-control input" id="dob" name="dob"/>
-                    <label for="phone">Date of birth</label>
-                    <span class="form-msg"></span>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-floating theme-form-floating input phone-input">
-                    <input type="text" class="form-control input"  name ="phone" id="phone" placeholder="Phone" />
-                    <label for="phone">Phone</label>
-                    <span class="form-msg"></span>
-                  </div>
-                </div>
+              <form class="row g-2" id="form-1">
+
 
                 <div class="col-12">
                   <div class="form-floating theme-form-floating input email-input">
@@ -1133,7 +1106,7 @@
                 </div>
                 <div class="col-12">
                   <div class="form-floating theme-form-floating input password-input">
-                    <input type="password" name="re-password" class="form-control input" id="re-password"
+                    <input type="password" name="password" class="form-control input" id="re-password"
                       placeholder="Password" />
                     <label for="re-password">Re-enter Password</label>
                     <span class="form-msg"></span>
@@ -1143,7 +1116,8 @@
                 <div class="col-12">
                   <div class="forgot-box">
                     <div class="form-check ps-0 m-0 remember-box">
-                      <input class="checkbox_animated check-box" type="checkbox" id="flexCheckDefault" />
+
+                      <input class="checkbox_animated check-box terms" type="checkbox" id="flexCheckDefault" />
                       <label class="form-check-label" for="flexCheckDefault">I agree with <span>Terms</span> and
                         <span>Privacy</span></label>
                     </div>
@@ -1151,13 +1125,15 @@
                 </div>
 
                 <div class="col-12">
-                    <input class="button-38 w-100 justify-content-center" type="submit" value="Sign Up">
-                  </input>
+                  <button class="button-38 w-100 justify-content-center" type="submit">
+                    <!-- this must be change to a button -->
+                    Sign Up
+                  </button>
                 </div>
               </form>
             </div>
 
-            <div class="other-log-in">
+            <div class=" other-log-in">
               <h6>or</h6>
             </div>
 
@@ -1267,7 +1243,7 @@
                 <ul class="address">
                   <li>
                     <i data-feather="home"></i>
-                    <a href="javascript:void(0)">Khu Công Nghệ Cao Hòa Lạc, Hà Nội
+                    <a href="javascript:void(0)">FPT University
                     </a>
                   </li>
                   <li>
@@ -1397,7 +1373,7 @@
 
       <div class="sub-footer section-small-space">
         <div class="reserve">
-          <h6 class="text-content">©2022 ApexAutos All rights reserved</h6>
+          <h6 class="text-content">�2022 ApexAutos All rights reserved</h6>
         </div>
 
         <div class="payment">
@@ -1478,21 +1454,18 @@
       inputSelector: ".input",
       errorSelector: ".form-msg",
       rules: [
-        validator.isRequired("#fname"),
-        validator.isRequired("#lname"),
         // validator.isRequired("input[type=radio]"),
         // validator.isRequired("input[type=file]"),
         // validator.isRequired("select"),
         validator.isRequired("#email"),
-        validator.isRequired("#dob"),
         validator.isEmail("#email"),
         validator.minLength("#password", 6),
         validator.isRequired("#password"),
-        validator.phone('#phone'),
         validator.checkPass("#re-password", function () {
           return document.querySelector("#form-1 #password").value;
         }),
       ],
+
     });
   </script>
 </body>
