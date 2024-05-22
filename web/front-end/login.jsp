@@ -1128,8 +1128,11 @@
 
             <div class="log-in-button">
               <ul>
+                  
                 <li>
-                  <a href="https://www.google.com/" class="button-38 google-button w-100">
+                  <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/apex_autos_servlet/LoginGoogleHandler&response_type=code
+		   &client_id=230536205740-9e80cs0d1mp22glhj7vv2utv20iubva6.apps.googleusercontent.com&approval_prompt=force"
+                   class="button-38 google-button w-100">
                     <img src="./assets/images/inner-page/google.png" class="blur-up lazyload" alt="" />
                     Log In with Google
                   </a>

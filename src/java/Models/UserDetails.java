@@ -57,5 +57,10 @@ public class UserDetails {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "UserDetails{" + "fname=" + fname + ", lname=" + lname + ", dob=" + dob + ", phone=" + phone + '}';
+    }
     
 }
