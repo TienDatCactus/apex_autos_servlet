@@ -9,9 +9,9 @@ package Constant;
  * @author Admin
  */
 public class Constants {
-    public static String GOOGLE_CLIENT_ID = "";
+    public static String GOOGLE_CLIENT_ID = "230536205740-9e80cs0d1mp22glhj7vv2utv20iubva6.apps.googleusercontent.com";
 
-	public static String GOOGLE_CLIENT_SECRET = "";
+	public static String GOOGLE_CLIENT_SECRET = "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";
 
 	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/apex_autos_servlet/LoginGoogleHandler";
 
