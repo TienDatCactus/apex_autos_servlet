@@ -30519,3 +30519,6 @@ header .offcanvas-backdrop {
 }
 
 /*# sourceMappingURL=style.css.map */
+.admin-col {
+  display: none;
+}
