@@ -60,7 +60,7 @@
           <div class="col-xxl-3 d-xxl-block d-none">
             <div class="top-left-header">
               <i class="iconly-Location icli text-white"></i>
-              <span class="text-white">Khu Công Nghệ Cao Hòa Lạc, Hà Nội</span>
+              <span class="text-white">FPT University</span>
             </div>
           </div>
 
@@ -1079,7 +1079,7 @@
         <div class="col-xxl-4 col-xl-4 col-lg-6 col-sm-8 mx-auto w-60">
           <div class="log-in-box">
             <div class="log-in-title">
-              <h3>Welcome To <b>ApexAutos</b>
+              <h3>Welcome To <b">ApexAutos</b>
               </h3>
               <h4>Log In Your Account</h4>
             </div>
@@ -1115,7 +1115,8 @@
                 </div>
 
                 <div class="col-12">
-                  <button class="button-38  w-100 justify-content-center" type="submit">
+                  <button class="button-38  w-100 justify-content-center" type="submit"
+                    onclick="location.href='index.html'">
                     Log In
                   </button>
                 </div>
@@ -1128,11 +1129,10 @@
 
             <div class="log-in-button">
               <ul>
-                  
                 <li>
                   <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/apex_autos_servlet/LoginGoogleHandler&response_type=code
 		   &client_id=230536205740-9e80cs0d1mp22glhj7vv2utv20iubva6.apps.googleusercontent.com&approval_prompt=force"
-                   class="button-38 google-button w-100">
+                    class="button-38 google-button w-100">
                     <img src="./assets/images/inner-page/google.png" class="blur-up lazyload" alt="" />
                     Log In with Google
                   </a>
@@ -1162,244 +1162,242 @@
   <!-- log in section end -->
 
   <!-- Footer Section Start -->
-  <footer class="section-t-space">
+  <footer class="section-t-space py-3">
     <div class="container-fluid-lg">
-        <div class="service-section">
-            <div class="row g-3">
-                <div class="col-12">
-                    <div class="service-contain">
-                        <div class="service-box">
-                            <div class="service-image">
-                                <img src="./assets/svg/sedan.png" class="blur-up lazyload" alt="" />
-                            </div>
-
-                            <div class="service-detail">
-                                <h5>Newest Cars</h5>
-                            </div>
-                        </div>
-
-                        <div class="service-box">
-                            <div class="service-image">
-                                <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
-                            </div>
-
-                            <div class="service-detail">
-                                <h5>Free Delivery For Order Over $50k</h5>
-                            </div>
-                        </div>
-
-                        <div class="service-box">
-                            <div class="service-image">
-                                <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="" />
-                            </div>
-
-                            <div class="service-detail">
-                                <h5>Monthly Mega Discounts</h5>
-                            </div>
-                        </div>
-
-                        <div class="service-box">
-                            <div class="service-image">
-                                <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="" />
-                            </div>
-
-                            <div class="service-detail">
-                                <h5>Best Price On The Market</h5>
-                            </div>
-                        </div>
-                    </div>
+      <div class="service-section pb-3">
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="service-contain py-2">
+              <div class="service-box">
+                <div class="service-image">
+                  <img src="./assets/svg/sedan.png" class="blur-up lazyload" alt="" />
                 </div>
+
+                <div class="service-detail">
+                  <h5>Newest Cars</h5>
+                </div>
+              </div>
+
+              <div class="service-box">
+                <div class="service-image">
+                  <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
+                </div>
+
+                <div class="service-detail">
+                  <h5>Free Delivery For Order Over $50k</h5>
+                </div>
+              </div>
+
+              <div class="service-box">
+                <div class="service-image">
+                  <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="" />
+                </div>
+
+                <div class="service-detail">
+                  <h5>Monthly Mega Discounts</h5>
+                </div>
+              </div>
+
+              <div class="service-box">
+                <div class="service-image">
+                  <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="" />
+                </div>
+
+                <div class="service-detail">
+                  <h5>Best Price On The Market</h5>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="main-footer section-b-space section-t-space">
-            <div class="row g-md-4 g-3">
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="footer-logo">
-                        <div class="theme-logo">
-                            <a href="index.html">
-                                <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="" />
-                            </a>
-                        </div>
+      <div class="main-footer section-b-space section-t-space py-3">
+        <div class="row g-md-4 g-3">
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="footer-logo">
+              <div class="theme-logo">
+                <a href="index.html">
+                  <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="" />
+                </a>
+              </div>
 
-                        <div class="footer-logo-contain">
-                            <p>
-                                Discover a <b>seamless online car buying experience</b> with unbeatable prices,
-                                extensive selections,
-                                and
-                                convenient delivery.
-                            </p>
+              <div class="footer-logo-contain">
+                <p>
+                  Discover a <b>seamless online car buying experience</b> with unbeatable prices,
+                  extensive selections,
+                  and
+                  convenient delivery.
+                </p>
 
-                            <ul class="address">
-                                <li>
-                                    <i data-feather="home"></i>
-                                    <a href="javascript:void(0)">Khu Công Nghệ Cao Hòa Lạc, Hà Nội
-                                    </a>
-                                </li>
-                                <li>
-                                    <i data-feather="mail"></i>
-                                    <a href="javascript:void(0)">niggawhat@fpt.edu.vn</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                    <label class="switch">
-                        <input type="checkbox" checked="checked">
-                        <div class="button">
-                            <div class="light"></div>
-                            <div class="dots"></div>
-                            <div class="characters"></div>
-                            <div class="shine"></div>
-                            <div class="shadow"></div>
-                        </div>
-                    </label>
-                </div>
-
-                <div class="col-xl col-lg-2 col-sm-3">
-                    <div class="footer-title">
-                        <h4>Useful Links</h4>
-                    </div>
-
-                    <div class="footer-contain">
-                        <ul>
-                            <li>
-                                <a href="index.html" class="text-content">Home</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Shop</a>
-                            </li>
-                            <li>
-                                <a href="about-us.html" class="text-content">About Us</a>
-                            </li>
-                            <li>
-                                <a href="blog-list.html" class="text-content">Blog</a>
-                            </li>
-                            <li>
-                                <a href="contact-us.html" class="text-content">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-xl-2 col-sm-3">
-                    <div class="footer-title">
-                        <h4>Help Center</h4>
-                    </div>
-
-                    <div class="footer-contain">
-                        <ul>
-                            <li>
-                                <a href="order-success.html" class="text-content">Your Order</a>
-                            </li>
-                            <li>
-                                <a href="user-dashboard.html" class="text-content">Your Account</a>
-                            </li>
-                            <li>
-                                <a href="order-tracking.html" class="text-content">Track Order</a>
-                            </li>
-                            <li>
-                                <a href="wishlist.html" class="text-content">Your Wishlist</a>
-                            </li>
-                            <li>
-                                <a href="search.html" class="text-content">Search</a>
-                            </li>
-                            <li>
-                                <a href="faq.html" class="text-content">FAQ</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="footer-title">
-                        <h4>Contact Us</h4>
-                    </div>
-
-                    <div class="footer-contact">
-                        <ul>
-                            <li>
-                                <div class="footer-number">
-                                    <i data-feather="phone"></i>
-                                    <div class="contact-number">
-                                        <h6 class="text-content">Hotline 24/7 :</h6>
-                                        <h5>+91 888 104 2340</h5>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="footer-number">
-                                    <i data-feather="mail"></i>
-                                    <div class="contact-number">
-                                        <h6 class="text-content">Email Address :</h6>
-                                        <h5>apexautos@hotmail.com</h5>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="social-app">
-                                <h5 class="mb-2 text-content">Download App :</h5>
-                                <ul>
-                                    <li class="mb-0">
-                                        <a href="https://play.google.com/store/apps" target="_blank">
-                                            <img src="./assets/images/playstore.svg" class="blur-up lazyload"
-                                                alt="" />
-                                        </a>
-                                    </li>
-                                    <li class="mb-0">
-                                        <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                            <img src="./assets/images/appstore.svg" class="blur-up lazyload"
-                                                alt="" />
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="sub-footer section-small-space">
-            <div class="reserve">
-                <h6 class="text-content">©2022 ApexAutos All rights reserved</h6>
-            </div>
-
-            <div class="payment">
-                <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="" />
-            </div>
-
-            <div class="social-link">
-                <h6 class="text-content">Stay connected :</h6>
-                <ul>
-                    <li>
-                        <a href="https://www.facebook.com/" target="_blank">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/" target="_blank">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/" target="_blank">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://in.pinterest.com/" target="_blank">
-                            <i class="fa-brands fa-pinterest-p"></i>
-                        </a>
-                    </li>
+                <ul class="address">
+                  <li>
+                    <i data-feather="home"></i>
+                    <a href="javascript:void(0)">FPT University
+                    </a>
+                  </li>
+                  <li>
+                    <i data-feather="mail"></i>
+                    <a href="javascript:void(0)">niggawhat@fpt.edu.vn</a>
+                  </li>
                 </ul>
+              </div>
             </div>
+          </div>
+
+          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+            <label class="switch">
+              <input type="checkbox" checked="checked">
+              <div class="button">
+                <div class="light"></div>
+                <div class="dots"></div>
+                <div class="characters"></div>
+                <div class="shine"></div>
+                <div class="shadow"></div>
+              </div>
+            </label>
+          </div>
+
+          <div class="col-xl col-lg-2 col-sm-3">
+            <div class="footer-title">
+              <h4>Useful Links</h4>
+            </div>
+
+            <div class="footer-contain">
+              <ul>
+                <li>
+                  <a href="index.html" class="text-content">Home</a>
+                </li>
+                <li>
+                  <a href="shop-left-sidebar.html" class="text-content">Shop</a>
+                </li>
+                <li>
+                  <a href="about-us.html" class="text-content">About Us</a>
+                </li>
+                <li>
+                  <a href="blog-list.html" class="text-content">Blog</a>
+                </li>
+                <li>
+                  <a href="contact-us.html" class="text-content">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-xl-2 col-sm-3">
+            <div class="footer-title">
+              <h4>Help Center</h4>
+            </div>
+
+            <div class="footer-contain">
+              <ul>
+                <li>
+                  <a href="order-success.html" class="text-content">Your Order</a>
+                </li>
+                <li>
+                  <a href="user-dashboard.html" class="text-content">Your Account</a>
+                </li>
+                <li>
+                  <a href="order-tracking.html" class="text-content">Track Order</a>
+                </li>
+                <li>
+                  <a href="wishlist.html" class="text-content">Your Wishlist</a>
+                </li>
+                <li>
+                  <a href="search.html" class="text-content">Search</a>
+                </li>
+                <li>
+                  <a href="faq.html" class="text-content">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="footer-title">
+              <h4>Contact Us</h4>
+            </div>
+
+            <div class="footer-contact">
+              <ul>
+                <li>
+                  <div class="footer-number">
+                    <i data-feather="phone"></i>
+                    <div class="contact-number">
+                      <h6 class="text-content">Hotline 24/7 :</h6>
+                      <h5>+91 888 104 2340</h5>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="footer-number">
+                    <i data-feather="mail"></i>
+                    <div class="contact-number">
+                      <h6 class="text-content">Email Address :</h6>
+                      <h5>apexautos@hotmail.com</h5>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="social-app">
+                  <h5 class="mb-2 text-content">Download App :</h5>
+                  <ul>
+                    <li class="mb-0">
+                      <a href="https://play.google.com/store/apps" target="_blank">
+                        <img src="./assets/images/playstore.svg" class="blur-up lazyload" alt="" />
+                      </a>
+                    </li>
+                    <li class="mb-0">
+                      <a href="https://www.apple.com/in/app-store/" target="_blank">
+                        <img src="./assets/images/appstore.svg" class="blur-up lazyload" alt="" />
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="sub-footer section-small-space py-3">
+        <div class="reserve">
+          <h6 class="text-content">�2022 ApexAutos All rights reserved</h6>
+        </div>
+
+        <div class="payment">
+          <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="" />
+        </div>
+
+        <div class="social-link">
+          <h6 class="text-content">Stay connected :</h6>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/" target="_blank">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://in.pinterest.com/" target="_blank">
+                <i class="fa-brands fa-pinterest-p"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-</footer>
+  </footer>
   <!-- Footer Section End -->
 
   <!-- Tap to top start -->
@@ -1446,7 +1444,6 @@
       inputSelector: ".input",
       errorSelector: ".form-msg",
       rules: [
-        validator.isRequired(".name"),
         // validator.isRequired("input[type=radio]"),
         // validator.isRequired("input[type=file]"),
         // validator.isRequired("select"),
@@ -1454,13 +1451,8 @@
         validator.isEmail("#email"),
         validator.minLength("#password", 6),
         validator.isRequired("#password"),
-        validator.checkPass(".re-password", function () {
-          return document.querySelector("#form-1 .password").value;
-        }),
       ],
-      onSubmit: function (data) {
-        console.log(data);
-      },
+
     });
   </script>
 </body>
