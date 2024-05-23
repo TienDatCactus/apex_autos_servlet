@@ -10,57 +10,94 @@ package Models;
  */
 public class UserDetails {
 
-    String fname;
-    String lname;
+    private String id;
 
-    String dob;
-    String phone;
+	private String email;
 
-    public UserDetails(String fname, String lname, String dob, String phone) {
-        this.fname = fname;
-        this.lname = lname;
-        this.dob = dob;
-        this.phone = phone;
-    }
+	private boolean verified_email;
+
+	private String name;
+
+	private String given_name;
+
+	private String family_name;
+
+	private String picture;
 
     public UserDetails() {
     }
 
-    public String getFname() {
-        return fname;
+    public UserDetails(String id, String email, boolean verified_email, String name, String given_name, String family_name, String picture) {
+        this.id = id;
+        this.email = email;
+        this.verified_email = verified_email;
+        this.name = name;
+        this.given_name = given_name;
+        this.family_name = family_name;
+        this.picture = picture;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public String getId() {
+        return id;
     }
 
-    public String getLname() {
-        return lname;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public String getEmail() {
+        return email;
     }
 
-    public String getDob() {
-        return dob;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setDob(String dob) {
-        this.dob = dob;
+    public boolean isVerified_email() {
+        return verified_email;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setVerified_email(boolean verified_email) {
+        this.verified_email = verified_email;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGiven_name() {
+        return given_name;
+    }
+
+    public void setGiven_name(String given_name) {
+        this.given_name = given_name;
+    }
+
+    public String getFamily_name() {
+        return family_name;
+    }
+
+    public void setFamily_name(String family_name) {
+        this.family_name = family_name;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override
     public String toString() {
-        return "UserDetails{" + "fname=" + fname + ", lname=" + lname + ", dob=" + dob + ", phone=" + phone + '}';
+        return "UserDetails{" + "id=" + id + ", email=" + email + ", verified_email=" + verified_email + ", name=" + name + ", given_name=" + given_name + ", family_name=" + family_name + ", picture=" + picture + '}';
     }
+
+  
     
 }

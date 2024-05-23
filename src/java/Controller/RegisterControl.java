@@ -29,18 +29,12 @@ public class RegisterControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fname = request.getParameter("fname");
-        String lname = request.getParameter("lname");
-        String dob = request.getParameter("dob");
-        String phone = request.getParameter("phone");
+        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         UserDetails ud = new UserDetails();
-        ud.setFname(fname);
-        ud.setLname(lname);
-        ud.setDob(dob);
-        ud.setPhone(phone);
+        
 
         UserAccount ua = new UserAccount();
         ua.setEmail(email);

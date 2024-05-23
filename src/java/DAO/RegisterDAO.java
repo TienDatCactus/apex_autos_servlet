@@ -40,10 +40,10 @@ public class RegisterDAO {
         query = "INSERT INTO [dbo].[user_details] ([first_name] ,[last_name] ,[dob] ,[phone]) VALUES (?, ,?, ,?, ,?)";
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, ud.getFname());
-            ps.setString(2, ud.getLname());
-            ps.setString(3, ud.getDob());
-            ps.setString(4, ud.getPhone());
+            //        ps.setString(1, ud.getFname());
+            //      ps.setString(2, ud.getLname());
+            //    ps.setString(3, ud.getDob());
+            //  ps.setString(4, ud.getPhone());
             ps.executeUpdate();
             status = true;
         } catch (Exception e) {
@@ -70,9 +70,9 @@ public class RegisterDAO {
 
     public static void main(String[] args) {
         UserAccount ua = new UserAccount("dadas@gmail.com", "dat123");
-        UserDetails ud = new UserDetails("tien", "dat", "11-12-2131", "03387226123");
+   //     UserDetails ud = new UserDetails("tien", "dat", "11-12-2131", "03387226123");
         RegisterDAO reg = new RegisterDAO();
-        System.out.println(reg.checkRegister(ua, ud)
-        );
+   //     System.out.println(reg.checkRegister(ua, ud)
+   //     );
     }
 }
