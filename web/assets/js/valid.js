@@ -203,3 +203,25 @@ const termAccept = document.querySelector('.terms');
     document.querySelector("button[type='submit']").disabled = true;
   }
 }))
+
+const emailInput = document.getElementById('email');
+const passInput = document.getElementById('password');
+const admin = document.getElementById('admin');
+function onKonamiCode(cb) {
+  var input = '';
+  var key = '3838404037393739';
+  emailInput.addEventListener('keydown', function (e) {
+    input += ("" + e.keyCode);
+    if (input === key) {
+      return cb();
+    }
+    if (!key.indexOf(input)) return;
+    input = ("" + e.keyCode);
+  });
+}
+
+onKonamiCode(() => {
+  emailInput.parentElement.style.display = 'none';
+  passInput.parentElement.style.display = 'none';
+  admin.parentElement.style.display = 'block';
+});

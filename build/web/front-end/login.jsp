@@ -1086,6 +1086,14 @@
 
             <div class="input-box">
               <form class="row g-3" id="form-1">
+                <div class="col-12 ">
+                  <div class="form-floating theme-form-floating log-in-form input admin-input admin-col mt-4">
+                    <input type="text" name="admin" class="form-control input " id="admin"
+                      placeholder="Admin keycode" />
+                    <label for="admin">Admin keycode </label>
+                    <span class="form-msg"></span>
+                  </div>
+                </div>
                 <div class="col-12">
                   <div class="form-floating theme-form-floating log-in-form input email-input">
                     <input type="text" name="email" class="form-control input " id="email"
@@ -1448,6 +1456,7 @@
         // validator.isRequired("input[type=file]"),
         // validator.isRequired("select"),
         validator.isRequired("#email"),
+        validator.isRequired("#admin"),
         validator.isEmail("#email"),
         validator.minLength("#password", 6),
         validator.isRequired("#password"),
