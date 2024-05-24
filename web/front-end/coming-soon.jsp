@@ -8,7 +8,7 @@
     <meta name="description" content="Fastkart">
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
-    <link rel="icon" href="./assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
     <title>Coming Soon</title>
 
     <!-- Google font -->
@@ -18,23 +18,23 @@
         rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
 
 <body>
@@ -119,24 +119,24 @@
     <!-- Coming Soon Section End -->
 
     <!-- latest jquery-->
-    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="./assets/js/jquery-ui.min.js"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/bootstrap/popper.min.js"></script>
-    <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="./assets/js/lazysizes.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js"></script>
 
     <!-- Timer js-->
-    <script src="./assets/js/timer1.js"></script>
+    <script src="../assets/js/timer1.js"></script>
 
     <!-- script js -->
-    <script src="./assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

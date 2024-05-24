@@ -8,7 +8,7 @@
     <meta name="description" content="Fastkart">
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
-    <link rel="icon" href="./assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
     <title>FAQ</title>
 
     <!-- Google font -->
@@ -21,23 +21,23 @@
         rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
 </head>
 
 <body>
@@ -96,28 +96,28 @@
                                 <div class="dropdown theme-form-select">
                                     <button class="btn dropdown-toggle" type="button" id="select-language"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="./assets/images/country/united-states.png"
+                                        <img src="../assets/images/country/united-states.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <span>English</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                                <img src="./assets/images/country/united-kingdom.png"
+                                                <img src="../assets/images/country/united-kingdom.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>English</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                                <img src="./assets/images/country/germany.png"
+                                                <img src="../assets/images/country/germany.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>Germany</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                                <img src="./assets/images/country/turkish.png"
+                                                <img src="../assets/images/country/turkish.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>Turki</span>
                                             </a>
@@ -163,7 +163,7 @@
                                 </span>
                             </button>
                             <a href="index.html" class="web-logo nav-logo">
-                                <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                                <img src="../assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
                             </a>
 
                             <div class="middle-box">
@@ -241,7 +241,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="./assets/images/vegetable/product/1.png"
+                                                                <img src="../assets/images/vegetable/product/1.png"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
@@ -260,7 +260,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="./assets/images/vegetable/product/2.png"
+                                                                <img src="../assets/images/vegetable/product/2.png"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
@@ -348,7 +348,7 @@
                                 <ul class="category-list">
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="./assets/svg/1/vegetable.svg" alt="">
+                                            <img src="../assets/svg/1/vegetable.svg" alt="">
                                             <h6>Vegetables & Fruit</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -416,7 +416,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="./assets/svg/1/cup.svg" alt="">
+                                            <img src="../assets/svg/1/cup.svg" alt="">
                                             <h6>Beverages</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -455,7 +455,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="./assets/svg/1/meats.svg" alt="">
+                                            <img src="../assets/svg/1/meats.svg" alt="">
                                             <h6>Meats & Seafood</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -514,7 +514,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="./assets/svg/1/breakfast.svg" alt="">
+                                            <img src="../assets/svg/1/breakfast.svg" alt="">
                                             <h6>Breakfast & Dairy</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -588,7 +588,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="./assets/svg/1/frozen.svg" alt="">
+                                            <img src="../assets/svg/1/frozen.svg" alt="">
                                             <h6>Frozen Foods</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -621,7 +621,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="./assets/svg/1/biscuit.svg" alt="">
+                                            <img src="../assets/svg/1/biscuit.svg" alt="">
                                             <h6>Biscuits & Snacks</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -674,7 +674,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="./assets/svg/1/grocery.svg" alt="">
+                                            <img src="../assets/svg/1/grocery.svg" alt="">
                                             <h6>Grocery & Staples</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -964,22 +964,22 @@
                                                         <ul class="sub-menu">
                                                             <li>
                                                                 <a
-                                                                    href="./email-templete/abandonment-email.html">Abandonment</a>
+                                                                    href="../email-templete/abandonment-email.html">Abandonment</a>
                                                             </li>
                                                             <li>
-                                                                <a href="./email-templete/offer-template.html">Offer
+                                                                <a href="../email-templete/offer-template.html">Offer
                                                                     Template</a>
                                                             </li>
                                                             <li>
-                                                                <a href="./email-templete/order-success.html">Order
+                                                                <a href="../email-templete/order-success.html">Order
                                                                     Success</a>
                                                             </li>
                                                             <li>
-                                                                <a href="./email-templete/reset-password.html">Reset
+                                                                <a href="../email-templete/reset-password.html">Reset
                                                                     Password</a>
                                                             </li>
                                                             <li>
-                                                                <a href="./email-templete/welcome.html">Welcome
+                                                                <a href="../email-templete/welcome.html">Welcome
                                                                     template</a>
                                                             </li>
                                                         </ul>
@@ -990,15 +990,15 @@
                                                                     class="fa-solid fa-bolt-lightning"></i></span></a>
                                                         <ul class="sub-menu">
                                                             <li>
-                                                                <a href="./invoice/invoice-1.html">Invoice 1</a>
+                                                                <a href="../invoice/invoice-1.html">Invoice 1</a>
                                                             </li>
 
                                                             <li>
-                                                                <a href="./invoice/invoice-2.html">Invoice 2</a>
+                                                                <a href="../invoice/invoice-2.html">Invoice 2</a>
                                                             </li>
 
                                                             <li>
-                                                                <a href="./invoice/invoice-3.html">Invoice 3</a>
+                                                                <a href="../invoice/invoice-3.html">Invoice 3</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -1182,7 +1182,7 @@
                         <div>
                             <div class="faq-top-box">
                                 <div class="faq-box-icon">
-                                    <img src="./assets/images/inner-page/faq/start.png" class="blur-up lazyload"
+                                    <img src="../assets/images/inner-page/faq/start.png" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -1197,7 +1197,7 @@
                         <div>
                             <div class="faq-top-box">
                                 <div class="faq-box-icon">
-                                    <img src="./assets/images/inner-page/faq/help.png" class="blur-up lazyload" alt="">
+                                    <img src="../assets/images/inner-page/faq/help.png" class="blur-up lazyload" alt="">
                                 </div>
 
                                 <div class="faq-box-contain">
@@ -1209,7 +1209,7 @@
                         <div>
                             <div class="faq-top-box">
                                 <div class="faq-box-icon">
-                                    <img src="./assets/images/inner-page/faq/price.png" class="blur-up lazyload"
+                                    <img src="../assets/images/inner-page/faq/price.png" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -1222,7 +1222,7 @@
                         <div>
                             <div class="faq-top-box">
                                 <div class="faq-box-icon">
-                                    <img src="./assets/images/inner-page/faq/contact.png" class="blur-up lazyload"
+                                    <img src="../assets/images/inner-page/faq/contact.png" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -1457,45 +1457,45 @@
     <!-- Faq Section End -->
 
     <!-- Footer Section Start -->
-    <footer class="section-t-space">
+    <footer class="section-t-space py-3">
         <div class="container-fluid-lg">
-            <div class="service-section">
+            <div class="service-section pb-3">
                 <div class="row g-3">
                     <div class="col-12">
-                        <div class="service-contain">
+                        <div class="service-contain py-2">
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="./assets/svg/product.svg" class="blur-up lazyload" alt="">
+                                    <img src="../assets/svg/sedan.png" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
-                                    <h5>Every Fresh Products</h5>
+                                    <h5>Newest Cars</h5>
                                 </div>
                             </div>
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="">
+                                    <img src="../assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
-                                    <h5>Free Delivery For Order Over $50</h5>
+                                    <h5>Free Delivery For Order Over $50k</h5>
                                 </div>
                             </div>
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="">
+                                    <img src="../assets/svg/discount.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
-                                    <h5>Daily Mega Discounts</h5>
+                                    <h5>Monthly Mega Discounts</h5>
                                 </div>
                             </div>
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="">
+                                    <img src="../assets/svg/market.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -1507,28 +1507,33 @@
                 </div>
             </div>
 
-            <div class="main-footer section-b-space section-t-space">
+            <div class="main-footer section-b-space section-t-space py-3">
                 <div class="row g-md-4 g-3">
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="footer-logo">
                             <div class="theme-logo">
                                 <a href="index.html">
-                                    <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="" />
                                 </a>
                             </div>
 
                             <div class="footer-logo-contain">
-                                <p>We are a friendly bar serving a variety of cocktails, wines and beers. Our bar is a
-                                    perfect place for a couple.</p>
+                                <p>
+                                    Discover a <b>seamless online car buying experience</b> with unbeatable prices,
+                                    extensive selections,
+                                    and
+                                    convenient delivery.
+                                </p>
 
                                 <ul class="address">
                                     <li>
                                         <i data-feather="home"></i>
-                                        <a href="javascript:void(0)">1418 Riverwood Drive, CA 96052, US</a>
+                                        <a href="javascript:void(0)">FPT University
+                                        </a>
                                     </li>
                                     <li>
                                         <i data-feather="mail"></i>
-                                        <a href="javascript:void(0)">support@fastkart.com</a>
+                                        <a href="javascript:void(0)">niggawhat@fpt.edu.vn</a>
                                     </li>
                                 </ul>
                             </div>
@@ -1536,32 +1541,16 @@
                     </div>
 
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="footer-title">
-                            <h4>Categories</h4>
-                        </div>
-
-                        <div class="footer-contain">
-                            <ul>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Vegetables & Fruit</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Beverages</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Meats & Seafood</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Frozen Foods</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Biscuits & Snacks</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Grocery & Staples</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked="checked">
+                            <div class="button">
+                                <div class="light"></div>
+                                <div class="dots"></div>
+                                <div class="characters"></div>
+                                <div class="shine"></div>
+                                <div class="shadow"></div>
+                            </div>
+                        </label>
                     </div>
 
                     <div class="col-xl col-lg-2 col-sm-3">
@@ -1641,7 +1630,7 @@
                                         <i data-feather="mail"></i>
                                         <div class="contact-number">
                                             <h6 class="text-content">Email Address :</h6>
-                                            <h5>fastkart@hotmail.com</h5>
+                                            <h5>apexautos@hotmail.com</h5>
                                         </div>
                                     </div>
                                 </li>
@@ -1651,14 +1640,14 @@
                                     <ul>
                                         <li class="mb-0">
                                             <a href="https://play.google.com/store/apps" target="_blank">
-                                                <img src="./assets/images/playstore.svg" class="blur-up lazyload"
-                                                    alt="">
+                                                <img src="../assets/images/playstore.svg" class="blur-up lazyload"
+                                                    alt="" />
                                             </a>
                                         </li>
                                         <li class="mb-0">
                                             <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                <img src="./assets/images/appstore.svg" class="blur-up lazyload"
-                                                    alt="">
+                                                <img src="../assets/images/appstore.svg" class="blur-up lazyload"
+                                                    alt="" />
                                             </a>
                                         </li>
                                     </ul>
@@ -1669,13 +1658,13 @@
                 </div>
             </div>
 
-            <div class="sub-footer section-small-space">
+            <div class="sub-footer section-small-space py-3">
                 <div class="reserve">
-                    <h6 class="text-content">©2022 Fastkart All rights reserved</h6>
+                    <h6 class="text-content">©2022 ApexAutos All rights reserved</h6>
                 </div>
 
                 <div class="payment">
-                    <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="">
+                    <img src="../assets/images/payment/1.png" class="blur-up lazyload" alt="" />
                 </div>
 
                 <div class="social-link">
@@ -1829,7 +1818,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="./assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -1843,7 +1832,7 @@
                             <li class="list-2">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="./assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -1857,7 +1846,7 @@
                             <li class="list-3">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="./assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -1871,7 +1860,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="./assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -1904,29 +1893,29 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
-    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="./assets/js/jquery-ui.min.js"></script>
+    <script src="../assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/bootstrap/popper.min.js"></script>
-    <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="./assets/js/feather/feather.min.js"></script>
-    <script src="./assets/js/feather/feather-icon.js"></script>
+    <script src="../assets/js/feather/feather.min.js"></script>
+    <script src="../assets/js/feather/feather-icon.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="./assets/js/lazysizes.min.js"></script>
+    <script src="../assets/js/lazysizes.min.js"></script>
 
     <!-- Slick js-->
-    <script src="./assets/js/slick/slick.js"></script>
-    <script src="./assets/js/slick/custom_slick.js"></script>
+    <script src="../assets/js/slick/slick.js"></script>
+    <script src="../assets/js/slick/custom_slick.js"></script>
 
     <!-- script js -->
-    <script src="./assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

@@ -12,10 +12,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
-    <title>Forgot OTP</title>
+    <title>Forgot Password</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -1060,7 +1063,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>OTP</h2>
+                        <h2>Forgot Password</h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -1068,7 +1071,7 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item active">OTP</li>
+                                <li class="breadcrumb-item active">Forgot Password</li>
                             </ol>
                         </nav>
                     </div>
@@ -1079,12 +1082,12 @@
     <!-- Breadcrumb Section End -->
 
     <!-- log in section start -->
-    <section class="log-in-section otp-section section-b-space">
-        <div class="container-fluid-lg">
+    <section class="log-in-section section-b-space forgot-section">
+        <div class="container-fluid-lg w-100">
             <div class="row">
                 <div class="col-xxl-6 col-xl-5 col-lg-6 d-lg-block d-none ms-auto">
                     <div class="image-contain">
-                        <img src="./assets/images/inner-page/otp.png" class="img-fluid" alt="">
+                        <img src="./assets/images/inner-page/reset.png" class="img-fluid" alt="">
                     </div>
                 </div>
 
@@ -1092,32 +1095,36 @@
                     <div class="d-flex align-items-center justify-content-center h-100">
                         <div class="log-in-box">
                             <div class="log-in-title">
-                                <h3 class="text-title">Enter the passcode we sent to your email</h3>
-                                <h5 class="text-content">A code has been sent to <span>****@gmail.com</span></h5>
+                                <h3>Welcome To ApexAutos</h3>
+                                <h4>Forgot your password</h4>
                             </div>
 
-                            <div id="otp" class="inputs d-flex flex-row justify-content-center">
-                                <input class="text-center form-control rounded" type="text" id="first" maxlength="1"
-                                    placeholder="0">
-                                <input class="text-center form-control rounded" type="text" id="second" maxlength="1"
-                                    placeholder="0">
-                                <input class="text-center form-control rounded" type="text" id="third" maxlength="1"
-                                    placeholder="0">
-                                <input class="text-center form-control rounded" type="text" id="fourth" maxlength="1"
-                                    placeholder="0">
-                                <input class="text-center form-control rounded" type="text" id="fifth" maxlength="1"
-                                    placeholder="0">
-                                <input class="text-center form-control rounded" type="text" id="sixth" maxlength="1"
-                                    placeholder="0">
-                            </div>
+                            <div class="input-box">
+                                <form class="row g-2" id="form-1">
+                                    <div class="col-12">
+                                        <div class="form-floating theme-form-floating input password-input">
+                                            <input type="password" name="password" class="form-control input"
+                                                id="password" placeholder="Password" />
+                                            <label for="password">Password</label>
+                                            <span class="form-msg"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating theme-form-floating input password-input">
+                                            <input type="password" name="password" class="form-control input"
+                                                id="re-password" placeholder="Password" />
+                                            <label for="re-password">Re-enter Password</label>
+                                            <span class="form-msg"></span>
+                                        </div>
+                                    </div>
 
-                            <div class="send-box pt-4">
-                                <h5>Didn't get the code? <a href="javascript:void(0)" class="theme-color fw-bold">Resend
-                                        It</a></h5>
+                                    <div class="col-12">
+                                        <button class="button-38 w-100 justify-content-center"
+                                            onclick="location.href='login.html'">Reset
+                                            Password</button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <button onclick="location.href = 'login.html';" class="button-38 w-100 mt-3"
-                                type="submit">Reset Password</button>
                         </div>
                     </div>
                 </div>
@@ -1388,23 +1395,42 @@
     <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/bootstrap/popper.min.js"></script>
 
-    <!-- otp js-->
-    <script src="./assets/js/otp.js"></script>
+    <!-- feather icon js-->
+    <script src="./assets/js/feather/feather.min.js"></script>
+    <script src="./assets/js/feather/feather-icon.js"></script>
 
     <!-- Slick js-->
     <script src="./assets/js/slick/slick.js"></script>
     <script src="./assets/js/slick/slick-animation.min.js"></script>
     <script src="./assets/js/slick/custom_slick.js"></script>
 
-    <!-- feather icon js-->
-    <script src="./assets/js/feather/feather.min.js"></script>
-    <script src="./assets/js/feather/feather-icon.js"></script>
-
     <!-- Lazyload Js -->
     <script src="./assets/js/lazysizes.min.js"></script>
 
     <!-- script js -->
     <script src="./assets/js/script.js"></script>
+    <!-- validation.js -->
+    <script src="./assets/js/valid.js"></script>
+    <script>
+        validator({
+            form: "#form-1",
+            inputSelector: ".input",
+            errorSelector: ".form-msg",
+            rules: [
+                // validator.isRequired("input[type=radio]"),
+                // validator.isRequired("input[type=file]"),
+                // validator.isRequired("select"),
+                validator.isRequired("#email"),
+                validator.isEmail("#email"),
+                validator.minLength("#password", 6),
+                validator.isRequired("#password"),
+                validator.checkPass("#re-password", function () {
+                    return document.querySelector("#form-1 #password").value;
+                }),
+            ],
+
+        });
+    </script>
 </body>
 
 </html>

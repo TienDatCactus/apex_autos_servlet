@@ -1079,14 +1079,14 @@
         <div class="col-xxl-4 col-xl-4 col-lg-6 col-sm-8 mx-auto w-60">
           <div class="log-in-box">
             <div class="log-in-title">
-              <h3>Welcome To <b">ApexAutos</b>
+              <h3>Welcome To <b>ApexAutos</b>
               </h3>
               <h4>Log In Your Account</h4>
             </div>
 
             <div class="input-box">
               <form class="row g-3" id="form-1">
-                <div class="col-12 ">
+                <div class="col-12">
                   <div class="form-floating theme-form-floating log-in-form input admin-input admin-col mt-4">
                     <input type="text" name="admin" class="form-control input " id="admin"
                       placeholder="Admin keycode" />
@@ -1371,7 +1371,7 @@
 
       <div class="sub-footer section-small-space py-3">
         <div class="reserve">
-          <h6 class="text-content">©2022 ApexAutos All rights reserved</h6>
+          <h6 class="text-content">Â©2022 ApexAutos All rights reserved</h6>
         </div>
 
         <div class="payment">

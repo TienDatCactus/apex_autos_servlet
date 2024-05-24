@@ -192,21 +192,10 @@ validator.phone = (selector) => {
 }
 
 
-const termAccept = document.querySelector('.terms');
-
-["change", "DOMContentLoaded"].forEach((e) => document.addEventListener(e, function () {
-  if (termAccept.checked) {
-    document.querySelector("button[type='submit']").style = "opacity: 1; cursor: pointer;";
-    document.querySelector("button[type='submit']").disabled = false;
-  } else {
-    document.querySelector("button[type='submit']").style = "opacity: 0.6; cursor: not-allowed;";
-    document.querySelector("button[type='submit']").disabled = true;
-  }
-}))
 
 const emailInput = document.getElementById('email');
 const passInput = document.getElementById('password');
-const admin = document.getElementById('admin');
+const admin = document.querySelector('.admin-col');
 function onKonamiCode(cb) {
   var input = '';
   var key = '3838404037393739';
@@ -223,5 +212,5 @@ function onKonamiCode(cb) {
 onKonamiCode(() => {
   emailInput.parentElement.style.display = 'none';
   passInput.parentElement.style.display = 'none';
-  admin.parentElement.style.display = 'block';
+  admin.style.display = 'block';
 });
