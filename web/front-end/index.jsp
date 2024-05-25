@@ -8,10 +8,10 @@
     <meta name="description" content="ApexAutos" />
     <meta name="keywords" content="ApexAutos" />
     <meta name="author" content="ApexAutos" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
     <title>On-demand last-mile delivery</title>
 
     <!-- Google font -->
@@ -26,27 +26,27 @@
         rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
 
     <!-- wow css -->
-    <link rel="stylesheet" href="../assets/css/animate.min.css" />
+    <link rel="stylesheet" href="./assets/css/animate.min.css" />
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/animate.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/animate.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body class="bg-effect">
@@ -106,21 +106,21 @@
                                 <div class="dropdown theme-form-select">
                                     <button class="btn dropdown-toggle" type="button" id="select-language"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="../assets/images/country/united-states.png"
+                                        <img src="./assets/images/country/united-states.png"
                                             class="img-fluid blur-up lazyload" alt="" />
                                         <span>English</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                                <img src="../assets/images/country/united-kingdom.png"
+                                                <img src="./assets/images/country/united-kingdom.png"
                                                     class="img-fluid blur-up lazyload" alt="" />
                                                 <span>English</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                                <img src="../assets/images/country/vn.png"
+                                                <img src="./assets/images/country/vn.png"
                                                     class="img-fluid blur-up lazyload" alt="" />
                                                 <span>Viet Nam</span>
                                             </a>
@@ -163,7 +163,7 @@
                                 </span>
                             </button>
                             <a href="index.html" class="web-logo nav-logo">
-                                <img src="../assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="" />
+                                <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="" />
                             </a>
 
                             <div class="middle-box">
@@ -237,7 +237,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                <img src="./assets/images/vegetable/product/1.png"
                                                                     class="blur-up lazyload" alt="" />
                                                             </a>
 
@@ -256,7 +256,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/2.png"
+                                                                <img src="./assets/images/vegetable/product/2.png"
                                                                     class="blur-up lazyload" alt="" />
                                                             </a>
 
@@ -345,7 +345,7 @@
                                 <ul class="category-list">
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/vegetable.svg" alt="" />
+                                            <img src="./assets/svg/1/vegetable.svg" alt="" />
                                             <h6>Vegetables & Fruit</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -413,7 +413,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/cup.svg" alt="" />
+                                            <img src="./assets/svg/1/cup.svg" alt="" />
                                             <h6>Beverages</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -452,7 +452,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/meats.svg" alt="" />
+                                            <img src="./assets/svg/1/meats.svg" alt="" />
                                             <h6>Meats & Seafood</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -511,7 +511,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/breakfast.svg" alt="" />
+                                            <img src="./assets/svg/1/breakfast.svg" alt="" />
                                             <h6>Breakfast & Dairy</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -585,7 +585,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/frozen.svg" alt="" />
+                                            <img src="./assets/svg/1/frozen.svg" alt="" />
                                             <h6>Frozen Foods</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -618,7 +618,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/biscuit.svg" alt="" />
+                                            <img src="./assets/svg/1/biscuit.svg" alt="" />
                                             <h6>Biscuits & Snacks</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -671,7 +671,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/grocery.svg" alt="" />
+                                            <img src="./assets/svg/1/grocery.svg" alt="" />
                                             <h6>Grocery & Staples</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -830,29 +830,29 @@
                                   <ul class="sub-menu">
                                     <li>
                                       <a
-                                        href="../email-templete/abandonment-email.html"
+                                        href="./email-templete/abandonment-email.html"
                                         >Abandonment</a
                                       >
                                     </li>
                                     <li>
                                       <a
-                                        href="../email-templete/offer-template.html"
+                                        href="./email-templete/offer-template.html"
                                         >Offer Template</a
                                       >
                                     </li>
                                     <li>
-                                      <a href="../email-templete/order-success.html"
+                                      <a href="./email-templete/order-success.html"
                                         >Order Success</a
                                       >
                                     </li>
                                     <li>
                                       <a
-                                        href="../email-templete/reset-password.html"
+                                        href="./email-templete/reset-password.html"
                                         >Reset Password</a
                                       >
                                     </li>
                                     <li>
-                                      <a href="../email-templete/welcome.html"
+                                      <a href="./email-templete/welcome.html"
                                         >Welcome template</a
                                       >
                                     </li>
@@ -868,19 +868,19 @@
                                   ></a>
                                   <ul class="sub-menu">
                                     <li>
-                                      <a href="../invoice/invoice-1.html"
+                                      <a href="./invoice/invoice-1.html"
                                         >Invoice 1</a
                                       >
                                     </li>
     
                                     <li>
-                                      <a href="../invoice/invoice-2.html"
+                                      <a href="./invoice/invoice-2.html"
                                         >Invoice 2</a
                                       >
                                     </li>
     
                                     <li>
-                                      <a href="../invoice/invoice-3.html"
+                                      <a href="./invoice/invoice-3.html"
                                         >Invoice 3</a
                                       >
                                     </li>
@@ -1067,7 +1067,7 @@
                 <div class="col-xl-8 ratio_65">
                     <div class="home-contain h-100">
                         <div class="h-100">
-                            <img src="../assets/images/vegetable/banner/1.jpg" class="bg-img blur-up lazyload" alt="">
+                            <img src="./assets/images/vegetable/banner/1.jpg" class="bg-img blur-up lazyload" alt="">
                         </div>
                         <div class="home-detail p-center-left w-75">
                             <div>
@@ -1088,7 +1088,7 @@
                     <div class="row g-4">
                         <div class="col-xl-12 col-md-6">
                             <div class="home-contain">
-                                <img src="../assets/images/vegetable/banner/2.jpg" class="bg-img blur-up lazyload"
+                                <img src="./assets/images/vegetable/banner/2.jpg" class="bg-img blur-up lazyload"
                                     alt="">
                                 <div class="home-detail p-center-left home-p-sm w-75">
                                     <div>
@@ -1107,7 +1107,7 @@
 
                         <div class="col-xl-12 col-md-6">
                             <div class="home-contain">
-                                <img src="../assets/images/vegetable/banner/3.jpg" class="bg-img blur-up lazyload"
+                                <img src="./assets/images/vegetable/banner/3.jpg" class="bg-img blur-up lazyload"
                                     alt="">
                                 <div class="home-detail p-center-left home-p-sm w-75">
                                     <div>
@@ -1133,7 +1133,7 @@
             <div class="banner-slider">
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/4.jpg" class="bg-img blur-up lazyload" alt="">
+                        <img src="./assets/images/vegetable/banner/4.jpg" class="bg-img blur-up lazyload" alt="">
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -1148,7 +1148,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/5.jpg" class="bg-img blur-up lazyload" alt="">
+                        <img src="./assets/images/vegetable/banner/5.jpg" class="bg-img blur-up lazyload" alt="">
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -1163,7 +1163,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/6.jpg" class="bg-img blur-up lazyload" alt="">
+                        <img src="./assets/images/vegetable/banner/6.jpg" class="bg-img blur-up lazyload" alt="">
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -1178,7 +1178,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/7.jpg" class="bg-img blur-up lazyload" alt="">
+                        <img src="./assets/images/vegetable/banner/7.jpg" class="bg-img blur-up lazyload" alt="">
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -1206,7 +1206,7 @@
                             <ul>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Vegetables & Fruit</a>
                                         </h5>
@@ -1214,7 +1214,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/cup.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/cup.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Beverages</a>
                                         </h5>
@@ -1222,7 +1222,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/meats.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/meats.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Meats & Seafood</a>
                                         </h5>
@@ -1230,7 +1230,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/breakfast.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/breakfast.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Breakfast & Dairy</a>
                                         </h5>
@@ -1238,7 +1238,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/frozen.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/frozen.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Frozen Foods</a>
                                         </h5>
@@ -1246,7 +1246,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/biscuit.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/biscuit.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Biscuits & Snacks</a>
                                         </h5>
@@ -1254,7 +1254,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/grocery.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/grocery.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Grocery & Staples</a>
                                         </h5>
@@ -1262,7 +1262,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/drink.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/drink.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Wines & Alcohol Drinks</a>
                                         </h5>
@@ -1270,7 +1270,7 @@
                                 </li>
                                 <li>
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/milk.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/milk.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Milk & Dairies</a>
                                         </h5>
@@ -1278,7 +1278,7 @@
                                 </li>
                                 <li class="pb-30">
                                     <div class="category-list">
-                                        <img src="../assets/svg/1/pet.svg" class="blur-up lazyload" alt="">
+                                        <img src="./assets/svg/1/pet.svg" class="blur-up lazyload" alt="">
                                         <h5>
                                             <a href="shop-left-sidebar.html">Pet Foods</a>
                                         </h5>
@@ -1313,7 +1313,7 @@
 
                         <div class="ratio_156 section-t-space">
                             <div class="home-contain hover-effect">
-                                <img src="../assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
+                                <img src="./assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
                                     alt="">
                                 <div class="home-detail p-top-left home-p-medium">
                                     <div>
@@ -1331,7 +1331,7 @@
 
                         <div class="ratio_medium section-t-space">
                             <div class="home-contain hover-effect">
-                                <img src="../assets/images/vegetable/banner/11.jpg" class="img-fluid blur-up lazyload"
+                                <img src="./assets/images/vegetable/banner/11.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                                 <div class="home-detail p-top-left home-p-medium">
                                     <div>
@@ -1355,7 +1355,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/23.png"
+                                                <img src="./assets/images/vegetable/product/23.png"
                                                     class="blur-up lazyload" alt="">
                                             </a>
 
@@ -1374,7 +1374,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/24.png"
+                                                <img src="./assets/images/vegetable/product/24.png"
                                                     class="blur-up lazyload" alt="">
                                             </a>
 
@@ -1393,7 +1393,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/25.png"
+                                                <img src="./assets/images/vegetable/product/25.png"
                                                     class="blur-up lazyload" alt="">
                                             </a>
 
@@ -1412,7 +1412,7 @@
                                     <li class="mb-0">
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/26.png"
+                                                <img src="./assets/images/vegetable/product/26.png"
                                                     class="blur-up lazyload" alt="">
                                             </a>
 
@@ -1445,7 +1445,7 @@
 
                                     <div class="review-profile">
                                         <div class="review-image">
-                                            <img src="../assets/images/vegetable/review/1.jpg"
+                                            <img src="./assets/images/vegetable/review/1.jpg"
                                                 class="img-fluid blur-up lazyload" alt="">
                                         </div>
                                         <div class="review-detail">
@@ -1465,7 +1465,7 @@
                             <h2>Top Save Today</h2>
                             <span class="title-leaf">
                                 <svg class="icon-width">
-                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                    <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                                 </svg>
                             </span>
                             <p>Don't miss this opportunity at a special discount just for this week.</p>
@@ -1519,7 +1519,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/1.png"
+                                                        <img src="./assets/images/vegetable/product/1.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -1607,7 +1607,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/2.png"
+                                                        <img src="./assets/images/vegetable/product/2.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -1699,7 +1699,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/3.png"
+                                                        <img src="./assets/images/vegetable/product/3.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -1791,7 +1791,7 @@
                                                 </div>
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/4.png"
+                                                        <img src="./assets/images/vegetable/product/4.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -1884,7 +1884,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/5.png"
+                                                        <img src="./assets/images/vegetable/product/5.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -1973,7 +1973,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/6.png"
+                                                        <img src="./assets/images/vegetable/product/6.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -2068,7 +2068,7 @@
                                                 </div>
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/7.png"
+                                                        <img src="./assets/images/vegetable/product/7.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -2156,7 +2156,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/8.png"
+                                                        <img src="./assets/images/vegetable/product/8.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -2249,7 +2249,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/9.png"
+                                                        <img src="./assets/images/vegetable/product/9.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -2337,7 +2337,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/10.png"
+                                                        <img src="./assets/images/vegetable/product/10.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -2430,7 +2430,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/3.png"
+                                                        <img src="./assets/images/vegetable/product/3.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -2519,7 +2519,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.html">
-                                                        <img src="../assets/images/vegetable/product/5.png"
+                                                        <img src="./assets/images/vegetable/product/5.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                     <ul class="product-option">
@@ -2613,7 +2613,7 @@
                         <h2>Bowse by Categories</h2>
                         <span class="title-leaf">
                             <svg class="icon-width">
-                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                             </svg>
                         </span>
                         <p>Top Categories Of The Week</p>
@@ -2623,7 +2623,7 @@
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark">
                                 <div>
-                                    <img src="../assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
                                     <h5>Vegetables & Fruit</h5>
                                 </div>
                             </a>
@@ -2632,7 +2632,7 @@
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark">
                                 <div>
-                                    <img src="../assets/svg/1/cup.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/1/cup.svg" class="blur-up lazyload" alt="">
                                     <h5>Beverages</h5>
                                 </div>
                             </a>
@@ -2641,7 +2641,7 @@
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark">
                                 <div>
-                                    <img src="../assets/svg/1/meats.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/1/meats.svg" class="blur-up lazyload" alt="">
                                     <h5>Meats & Seafood</h5>
                                 </div>
                             </a>
@@ -2650,7 +2650,7 @@
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark">
                                 <div>
-                                    <img src="../assets/svg/1/breakfast.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/1/breakfast.svg" class="blur-up lazyload" alt="">
                                     <h5>Breakfast</h5>
                                 </div>
                             </a>
@@ -2659,7 +2659,7 @@
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark">
                                 <div>
-                                    <img src="../assets/svg/1/frozen.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/1/frozen.svg" class="blur-up lazyload" alt="">
                                     <h5>Frozen Foods</h5>
                                 </div>
                             </a>
@@ -2668,7 +2668,7 @@
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark">
                                 <div>
-                                    <img src="../assets/svg/1/milk.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/1/milk.svg" class="blur-up lazyload" alt="">
                                     <h5>Milk & Dairies</h5>
                                 </div>
                             </a>
@@ -2677,7 +2677,7 @@
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark">
                                 <div>
-                                    <img src="../assets/svg/1/pet.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/1/pet.svg" class="blur-up lazyload" alt="">
                                     <h5>Pet Food</h5>
                                 </div>
                             </a>
@@ -2688,7 +2688,7 @@
                         <div class="row g-md-4 g-3">
                             <div class="col-md-6">
                                 <div class="banner-contain hover-effect">
-                                    <img src="../assets/images/vegetable/banner/9.jpg" class="bg-img blur-up lazyload"
+                                    <img src="./assets/images/vegetable/banner/9.jpg" class="bg-img blur-up lazyload"
                                         alt="">
                                     <div class="banner-details p-center-left p-4">
                                         <div>
@@ -2703,7 +2703,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="banner-contain hover-effect">
-                                    <img src="../assets/images/vegetable/banner/10.jpg" class="bg-img blur-up lazyload"
+                                    <img src="./assets/images/vegetable/banner/10.jpg" class="bg-img blur-up lazyload"
                                         alt="">
                                     <div class="banner-details p-center-left p-4">
                                         <div>
@@ -2723,7 +2723,7 @@
                         <h2>Food Cupboard</h2>
                         <span class="title-leaf">
                             <svg class="icon-width">
-                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                             </svg>
                         </span>
                         <p>A virtual assistant collects the products from your list</p>
@@ -2737,7 +2737,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.html">
-                                                    <img src="../assets/images/vegetable/product/1.png"
+                                                    <img src="./assets/images/vegetable/product/1.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <ul class="product-option">
@@ -2828,7 +2828,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.html">
-                                                    <img src="../assets/images/vegetable/product/2.png"
+                                                    <img src="./assets/images/vegetable/product/2.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <ul class="product-option">
@@ -2919,7 +2919,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.html">
-                                                    <img src="../assets/images/vegetable/product/3.png"
+                                                    <img src="./assets/images/vegetable/product/3.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <ul class="product-option">
@@ -3010,7 +3010,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.html">
-                                                    <img src="../assets/images/vegetable/product/4.png"
+                                                    <img src="./assets/images/vegetable/product/4.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <ul class="product-option">
@@ -3101,7 +3101,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.html">
-                                                    <img src="../assets/images/vegetable/product/5.png"
+                                                    <img src="./assets/images/vegetable/product/5.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <ul class="product-option">
@@ -3192,7 +3192,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.html">
-                                                    <img src="../assets/images/vegetable/product/4.png"
+                                                    <img src="./assets/images/vegetable/product/4.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <ul class="product-option">
@@ -3281,7 +3281,7 @@
 
                     <div class="section-t-space">
                         <div class="banner-contain">
-                            <img src="../assets/images/vegetable/banner/15.jpg" class="bg-img blur-up lazyload" alt="">
+                            <img src="./assets/images/vegetable/banner/15.jpg" class="bg-img blur-up lazyload" alt="">
                             <div class="banner-details p-center p-4 text-white text-center">
                                 <div>
                                     <h3 class="lh-base fw-bold offer-text">Get $3 Cashback! Min Order of $30</h3>
@@ -3295,7 +3295,7 @@
                         <div class="row g-md-4 g-3">
                             <div class="col-xxl-8 col-xl-12 col-md-7">
                                 <div class="banner-contain hover-effect">
-                                    <img src="../assets/images/vegetable/banner/12.jpg"
+                                    <img src="./assets/images/vegetable/banner/12.jpg"
                                         class="bg-img blur-up lazyload img-fluid" alt="">
                                     <div class="banner-details p-center-left p-4">
                                         <div>
@@ -3313,7 +3313,7 @@
 
                             <div class="col-xxl-4 col-xl-12 col-md-5">
                                 <a href="shop-left-sidebar.html" class="banner-contain hover-effect h-100">
-                                    <img src="../assets/images/vegetable/banner/13.jpg" class="bg-img blur-up lazyload"
+                                    <img src="./assets/images/vegetable/banner/13.jpg" class="bg-img blur-up lazyload"
                                         alt="">
                                     <div class="banner-details p-center-left p-4 h-100">
                                         <div>
@@ -3332,7 +3332,7 @@
                             <h2>Our best Seller</h2>
                             <span class="title-leaf">
                                 <svg class="icon-width">
-                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                    <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                                 </svg>
                             </span>
                             <p>A virtual assistant collects the products from your list</p>
@@ -3345,7 +3345,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/11.png"
+                                            <img src="./assets/images/vegetable/product/11.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3364,7 +3364,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/12.png"
+                                            <img src="./assets/images/vegetable/product/12.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3383,7 +3383,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/13.png"
+                                            <img src="./assets/images/vegetable/product/13.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3402,7 +3402,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/14.png"
+                                            <img src="./assets/images/vegetable/product/14.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3425,7 +3425,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/15.png"
+                                            <img src="./assets/images/vegetable/product/15.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3444,7 +3444,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/16.png"
+                                            <img src="./assets/images/vegetable/product/16.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3463,7 +3463,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/17.png"
+                                            <img src="./assets/images/vegetable/product/17.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3482,7 +3482,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/18.png"
+                                            <img src="./assets/images/vegetable/product/18.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3505,7 +3505,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/19.png"
+                                            <img src="./assets/images/vegetable/product/19.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3524,7 +3524,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/20.png"
+                                            <img src="./assets/images/vegetable/product/20.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3543,7 +3543,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/21.png"
+                                            <img src="./assets/images/vegetable/product/21.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3562,7 +3562,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/22.png"
+                                            <img src="./assets/images/vegetable/product/22.png"
                                                 class="blur-up lazyload" alt="">
                                         </a>
 
@@ -3583,7 +3583,7 @@
 
                     <div class="section-t-space">
                         <div class="banner-contain hover-effect">
-                            <img src="../assets/images/vegetable/banner/14.jpg" class="bg-img blur-up lazyload" alt="">
+                            <img src="./assets/images/vegetable/banner/14.jpg" class="bg-img blur-up lazyload" alt="">
                             <div class="banner-details p-center banner-b-space w-100 text-center">
                                 <div>
                                     <h6 class="ls-expanded theme-color mb-sm-3 mb-1">SUMMER</h6>
@@ -3601,7 +3601,7 @@
                         <h2>Featured Blog</h2>
                         <span class="title-leaf">
                             <svg class="icon-width">
-                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                             </svg>
                         </span>
                         <p>A virtual assistant collects the products from your list</p>
@@ -3612,7 +3612,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.html" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
+                                        <img src="./assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
@@ -3628,7 +3628,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.html" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/2.jpg" class="bg-img blur-up lazyload"
+                                        <img src="./assets/images/vegetable/blog/2.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
@@ -3644,7 +3644,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.html" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/3.jpg" class="bg-img blur-up lazyload"
+                                        <img src="./assets/images/vegetable/blog/3.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
@@ -3660,7 +3660,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.html" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
+                                        <img src="./assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
@@ -3681,7 +3681,7 @@
     <!-- Newsletter Section Start -->
     <section class="newsletter-section section-b-space">
         <div class="container-fluid-lg">
-            <img class="img-fluid" style="border-radius: 8px;" src="../assets/images/vegetable/newsletter/1.png">
+            <img class="img-fluid" style="border-radius: 8px;" src="./assets/images/vegetable/newsletter/1.png">
         </div>
     </section>
     <!-- Newsletter Section End -->
@@ -3695,7 +3695,7 @@
                         <div class="service-contain py-2">
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/sedan.png" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/sedan.png" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -3705,7 +3705,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -3715,7 +3715,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/discount.svg" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -3725,7 +3725,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/market.svg" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -3743,7 +3743,7 @@
                         <div class="footer-logo">
                             <div class="theme-logo">
                                 <a href="index.html">
-                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="" />
                                 </a>
                             </div>
 
@@ -3870,13 +3870,13 @@
                                     <ul>
                                         <li class="mb-0">
                                             <a href="https://play.google.com/store/apps" target="_blank">
-                                                <img src="../assets/images/playstore.svg" class="blur-up lazyload"
+                                                <img src="./assets/images/playstore.svg" class="blur-up lazyload"
                                                     alt="" />
                                             </a>
                                         </li>
                                         <li class="mb-0">
                                             <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                <img src="../assets/images/appstore.svg" class="blur-up lazyload"
+                                                <img src="./assets/images/appstore.svg" class="blur-up lazyload"
                                                     alt="" />
                                             </a>
                                         </li>
@@ -3894,7 +3894,7 @@
                 </div>
 
                 <div class="payment">
-                    <img src="../assets/images/payment/1.png" class="blur-up lazyload" alt="" />
+                    <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="" />
                 </div>
 
                 <div class="social-link">
@@ -3941,7 +3941,7 @@
                     <div class="row g-sm-4 g-2">
                         <div class="col-lg-6">
                             <div class="slider-image">
-                                <img src="../assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
+                                <img src="./assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </div>
                         </div>
@@ -4137,7 +4137,7 @@
     <div class="cookie-bar-box">
         <div class="cookie-box">
             <div class="cookie-image">
-                <img src="../assets/images/cookie-bar.png" class="blur-up lazyload" alt="">
+                <img src="./assets/images/cookie-bar.png" class="blur-up lazyload" alt="">
                 <h2>Cookies!</h2>
             </div>
 
@@ -4173,7 +4173,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/10.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -4187,7 +4187,7 @@
                             <li class="list-2">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/11.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -4201,7 +4201,7 @@
                             <li class="list-3">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/12.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -4215,7 +4215,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/13.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -4248,46 +4248,46 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="./assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="./assets/js/bootstrap/popper.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="../assets/js/feather/feather.min.js"></script>
-    <script src="../assets/js/feather/feather-icon.js"></script>
+    <script src="./assets/js/feather/feather.min.js"></script>
+    <script src="./assets/js/feather/feather-icon.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="../assets/js/lazysizes.min.js"></script>
+    <script src="./assets/js/lazysizes.min.js"></script>
 
     <!-- Slick js-->
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/slick/slick-animation.min.js"></script>
-    <script src="../assets/js/slick/custom_slick.js"></script>
+    <script src="./assets/js/slick/slick.js"></script>
+    <script src="./assets/js/slick/slick-animation.min.js"></script>
+    <script src="./assets/js/slick/custom_slick.js"></script>
 
     <!-- Auto Height Js -->
-    <script src="../assets/js/auto-height.js"></script>
+    <script src="./assets/js/auto-height.js"></script>
 
     <!-- Timer Js -->
-    <script src="../assets/js/timer1.js"></script>
+    <script src="./assets/js/timer1.js"></script>
 
     <!-- Fly Cart Js -->
-    <script src="../assets/js/fly-cart.js"></script>
+    <script src="./assets/js/fly-cart.js"></script>
 
     <!-- Quantity js -->
-    <script src="../assets/js/quantity-2.js"></script>
+    <script src="./assets/js/quantity-2.js"></script>
 
     <!-- WOW js -->
-    <script src="../assets/js/wow.min.js"></script>
-    <script src="../assets/js/custom-wow.js"></script>
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/custom-wow.js"></script>
 
     <!-- script js -->
-    <script src="../assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

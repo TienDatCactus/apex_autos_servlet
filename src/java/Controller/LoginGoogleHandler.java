@@ -6,13 +6,14 @@
 package Controller;
 
 import Constant.Constants;
-import Models.UserDetails;
-import Models.UserGoogleDto;
+import Models.*;
+import Models.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,6 +26,7 @@ import org.apache.http.client.fluent.Request;
  *
  * @author Admin
  */
+@WebServlet(name="LoginGoogleHandler", urlPatterns={"/LoginGoogleHandler"})
 public class LoginGoogleHandler extends HttpServlet {
    
     /** 

@@ -1,65 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-package Controller;
 
 import Models.*;
 import DAO.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Tiến_Đạt
- */
+@WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
 public class RegisterControl extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    private UserDAO userDao; // Assuming UserDao is a DAO class for User model
+
+    public void init() {
+        userDao = new UserDAO();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
+        request.getRequestDispatcher("/frontend/sign-up.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fname = request.getParameter("fname");
-        String lname = request.getParameter("lname");
-        String dob = request.getParameter("dob");
-        String phone = request.getParameter("phone");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String password = request.getParameter("re-password");
 
-        UserDetails ud = new UserDetails();
-        ud.setFname(fname);
-        ud.setLname(lname);
-        ud.setDob(dob);
-        ud.setPhone(phone);
+        UserAccount user = new UserAccount();
+        user.setEmail(email);
+        user.setPassword(password);
 
-        UserAccount ua = new UserAccount();
-        ua.setEmail(email);
-        ua.setPassword(password);
-
-        RegisterDAO reg = new RegisterDAO();
-        boolean status = reg.checkRegister(ua, ud);
-        PrintWriter out = response.getWriter();
-
-        if (status) {
-            out.println("vcl dc roi");
-        } else {
-            out.println("loi db");
+        try {
+            userDao.checkRegister(user);
+             request.getRequestDispatcher("/frontend/login.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
+            request.getRequestDispatcher("/frontend/sign-up.jsp").forward(request, response);
         }
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
