@@ -34,7 +34,7 @@ public class LoginControl extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
+      
         UserAccount userAccount = new UserAccount(email, password);
         UserDAO userDAO = new UserDAO();
 
@@ -42,7 +42,7 @@ public class LoginControl extends HttpServlet {
 
         if (loginResult) {
             // Login successful, redirect to another page
-          request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
         } else {
             // Login failed, redirect back to login page
             request.setAttribute("errorMessage", "Invalid email or password.");

@@ -1,3 +1,8 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package Controller;
 
 import Models.*;
 import DAO.*;
@@ -21,7 +26,7 @@ public class RegisterControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/frontend/sign-up.jsp").forward(request, response);
+        request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
     }
 
     @Override
@@ -33,13 +38,13 @@ public class RegisterControl extends HttpServlet {
         UserAccount user = new UserAccount();
         user.setEmail(email);
         user.setPassword(password);
-
         try {
+
             userDao.checkRegister(user);
-             request.getRequestDispatcher("/frontend/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
         } catch (Exception e) {
             request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
-            request.getRequestDispatcher("/frontend/sign-up.jsp").forward(request, response);
+            request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
         }
     }
 }
