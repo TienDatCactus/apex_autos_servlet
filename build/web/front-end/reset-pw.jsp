@@ -41,6 +41,8 @@
 
     <!-- Template css -->
     <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/apex_autos_servlet/css/style.css">
+
 </head>
 
 <body>
@@ -64,7 +66,7 @@
                     <div class="col-xxl-3 d-xxl-block d-none">
                         <div class="top-left-header">
                             <i class="iconly-Location icli text-white"></i>
-                            <span class="text-white">Khu Công Nghệ Cao Hòa Lạc, Hà Nội</span>
+                            <span class="text-white">FPT University</span>
                         </div>
                     </div>
 

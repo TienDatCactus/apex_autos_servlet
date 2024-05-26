@@ -247,7 +247,7 @@
                                 <td>
                                     <p
                                         style="font-size: 17px;font-weight: 600;width: 74%;margin: 8px auto 0;line-height: 1.5;color: #939393;">
-                                        We’re Sending you this email because You requested a password reset. click on
+                                        We sending you this email because you requested a password reset. Click on
                                         this link to create a new password:</p>
                                 </td>
                             </tr>
@@ -259,8 +259,8 @@
                         <thead>
                             <tr style="display: block;">
                                 <td style="display: flex; justify-content: center;">
-                                    <button class=" button-86"
-                                        onclick="location.href= './front-end/reset-pw.html'">Reset Password</button>
+                                    <a class=" button-86"
+                                        href="{resetlink}">Reset Password</a>
                                 </td>
                             </tr>
                         </thead>
