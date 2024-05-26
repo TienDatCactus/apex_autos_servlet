@@ -40,6 +40,7 @@ public class UserDAO {
             throw new RuntimeException(e);
         }
     }
+
     public boolean checkRegister(UserAccount userAccount) {
         String email = userAccount.getEmail();
         String password = userAccount.getPassword();
@@ -100,16 +101,20 @@ public class UserDAO {
         }
     }
 
-    public static void main(String[] args) {
-        UserAccount ua = new UserAccount("dada1@gmail.com", "dat123");
-        UserDAO udao = new UserDAO();
+    public boolean resetPassword(String email, String newPassword) {
+        String hashedPassword = hashPassword(newPassword);
+        String query = "UPDATE [dbo].[user_account] SET [passwordHash] = ? WHERE email = ?";
 
-        // Test checkRegister
-        boolean registerResult = udao.checkRegister(ua);
-        System.out.println("Register result: " + registerResult);
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, hashedPassword);
+            ps.setString(2, email);
 
-        // Test checkLogin
-        boolean loginResult = udao.checkLogin(ua);
-        System.out.println("Login result: " + loginResult);
+            int affectedRows = ps.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
 }

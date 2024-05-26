@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.math.BigInteger;
 
-@WebServlet(name = "MailControl", urlPatterns = {"/mail"})
+@WebServlet(name = "MailControl", urlPatterns = { "/mail" })
 public class MailControl extends HttpServlet {
 
     private static SecureRandom random = new SecureRandom();
@@ -22,25 +22,25 @@ public class MailControl extends HttpServlet {
         req.getRequestDispatcher("/front-end/forgot.jsp").forward(req, resp);
     }
 
-   @Override
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
 
-    String to = request.getParameter("email");
-    String token = nextSessionId();
+        String to = request.getParameter("email");
+        String token = nextSessionId();
 
-    // Store the token and the email in the session
-    HttpSession session = request.getSession();
-    session.setAttribute("token", token);
-    session.setAttribute("email", to);
+        // Store the token and the email in the session
+        HttpSession session = request.getSession();
+        session.setAttribute("token", token);
+        session.setAttribute("mail", to);
 
-    // Send the email and store the verification code in the session
-    int verificationCode = Mail.sendForgotPasswordEmail(to);
-    session.setAttribute("verificationCode", verificationCode);
-    
-    response.sendRedirect("verify");
-}
+        // Send the email and store the verification code in the session
+        int verificationCode = Mail.sendForgotPasswordEmail(to);
+        session.setAttribute("verificationCode", verificationCode);
+
+        response.sendRedirect("verify");
+    }
 
     public static String nextSessionId() {
         return new BigInteger(130, random).toString(32);

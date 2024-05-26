@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
 public class RegisterControl extends HttpServlet {
 
-    private UserDAO userDao; // Assuming UserDao is a DAO class for User model
+    private UserDAO userDao; 
 
     public void init() {
         userDao = new UserDAO();

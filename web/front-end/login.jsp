@@ -294,15 +294,15 @@
                           <ul class="user-box-name">
                             <li class="product-box-contain">
                               <i></i>
-                              <a href="login.html">Log In</a>
+                              <a href="login">Log In</a>
                             </li>
 
                             <li class="product-box-contain">
-                              <a href="sign-up.html">Register</a>
+                              <a href="register">Register</a>
                             </li>
 
                             <li class="product-box-contain">
-                              <a href="forgot.html">Forgot Password</a>
+                              <a href="mail">Forgot Password</a>
                             </li>
                           </ul>
                         </div>
@@ -1124,7 +1124,7 @@
                           <input class="checkbox_animated check-box" type="checkbox" id="flexCheckDefault" />
                           <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                         </div>
-                        <a href="forgot.html" class="forgot-password">Forgot Password?</a>
+                        <a href="mail" class="forgot-password">Forgot Password?</a>
                       </div>
                     </div>
 
@@ -1151,12 +1151,6 @@
                         Log In with Google
                       </a>
                     </li>
-                    <li>
-                      <a href="https://www.facebook.com/" class="btn google-button w-100 button-38 ">
-                        <img src="./assets/images/inner-page/facebook.png" class="blur-up lazyload" alt="" />
-                        Log In with Facebook
-                      </a>
-                    </li>
                   </ul>
                 </div>
 
@@ -1166,7 +1160,7 @@
 
                 <div class="sign-up-box">
                   <h4>Don't have an account?</h4>
-                  <a href="sign-up.html">Sign Up</a>
+                  <a href="register">Sign Up</a>
                 </div>
               </div>
             </div>

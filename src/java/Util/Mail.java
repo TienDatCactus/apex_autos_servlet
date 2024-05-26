@@ -31,11 +31,15 @@ public class Mail {
         try {
             Random random = new Random();
             verificationCode = 100000 + random.nextInt(900000);
-            String htmlContent = "<p>Dear user,</p>"
-                    + "<p style='font-size:20px'>You have requested to reset your password. Here's the f*kin code:</p>"
-                    + "<p style='font-size:30px'>Your verification code is: <b>" + verificationCode
-                    + "</b></p>"
-                    + "<p style='font-size:20px; color:#ccc'>If you did not request a password reset, please ignore this email.</p>";
+            String htmlContent = "<div style='padding: 20px; background-color: #f9f9f9; border-radius: 10px; font-family: Arial, sans-serif;'>"
+                    + "<h1 style='color: #4a4a4a;'>Password Reset Request</h1>"
+                    + "<p style='font-size:18px;color:#333;'>Dear user,</p>"
+                    + "<p style='font-size:18px;color:#333;'>You have requested to reset your password. Here's your verification code:</p>"
+                    + "<p style='font-size:24px; color: #ff6347;'><b>" + verificationCode + "</b></p>"
+                    + "<p style='font-size:18px; color:#333;'>If you did not request a password reset, please ignore this email.</p>"
+                    + "<hr style='border: none; border-top: 1px solid #eee;'>"
+                    + "<p style='font-size:14px; color:#aaa;'>This is an automated message, please do not reply.</p>"
+                    + "</div>";
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("Password Reset Request");

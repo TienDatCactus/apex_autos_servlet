@@ -1098,7 +1098,9 @@
                                 <h3>Welcome To ApexAutos</h3>
                                 <h4>Forgot your password</h4>
                             </div>
-
+                            <c:if test="${not empty resetMess}">
+                                <div class="alert alert-danger my-2">${resetMess}</div>
+                            </c:if>
                             <div class="input-box">
                                 <form class="row g-4" id="form-1" action="mail" method="post">
                                     <div class="col-12">

@@ -1102,29 +1102,29 @@
                             </div>
 
                             <div class="input-box">
-                                <form class="row g-2" id="form-1">
+                                <form class="row g-2" id="form-1" action="reset" method="post">
                                     <div class="col-12">
                                         <div class="form-floating theme-form-floating input password-input">
-                                            <input type="password" name="password" class="form-control input"
-                                                id="password" placeholder="Password" />
+                                            <input type="password" class="form-control input" id="password"
+                                                name="password" placeholder="Password" />
                                             <label for="password">Password</label>
                                             <span class="form-msg"></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating theme-form-floating input password-input">
-                                            <input type="password" name="password" class="form-control input"
-                                                id="re-password" placeholder="Password" />
+                                            <input type="password" name="re-password" class="form-control input"
+                                                id="re-password" placeholder="Re-enter Password" />
                                             <label for="re-password">Re-enter Password</label>
                                             <span class="form-msg"></span>
                                         </div>
                                     </div>
-
+                                    <div>${mail}</div>
                                     <div class="col-12">
-                                        <button class="button-38 w-100 justify-content-center"
-                                            onclick="location.href='login.html'">Reset
-                                            Password</button>
+                                        <input class="button-38 w-100 justify-content-center" value="Reset Password"
+                                            type="submit">
                                     </div>
+
                                 </form>
                             </div>
                         </div>
@@ -1422,8 +1422,6 @@
                 // validator.isRequired("input[type=radio]"),
                 // validator.isRequired("input[type=file]"),
                 // validator.isRequired("select"),
-                validator.isRequired("#email"),
-                validator.isEmail("#email"),
                 validator.minLength("#password", 6),
                 validator.isRequired("#password"),
                 validator.checkPass("#re-password", function () {

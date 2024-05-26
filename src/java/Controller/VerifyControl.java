@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author Tiến_Đạt
  */
-@WebServlet(name = "VerifyControl", urlPatterns = { "/verify" })
+@WebServlet(name = "VerifyControl", urlPatterns = {"/verify"})
 public class VerifyControl extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
@@ -43,23 +43,21 @@ public class VerifyControl extends HttpServlet {
         String fourth = request.getParameter("fourth");
         String fifth = request.getParameter("fifth");
         String sixth = request.getParameter("sixth");
-
         // Concatenate the values to form the OTP
         String otp = first + second + third + fourth + fifth + sixth;
         try {
             if (storedCode == Integer.parseInt(otp)) {
                 // The code is correct, allow the user to reset their password
-                request.setAttribute("message", "Verification successful. You may now reset your password.");
                 response.sendRedirect("reset"); // Redirect to reset password page
             } else {
                 // The code is incorrect, show an error message
-                request.setAttribute("message", "Verification failed. The code you entered is incorrect.");
-                response.sendRedirect("verify"); // Redirect to error page
+                session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
+                response.sendRedirect("verify");
             }
         } catch (NumberFormatException e) {
             // Handle the case where submittedCode is not a valid integer
-            request.setAttribute("message", "Verification failed. The code you entered is not a valid number.");
-            response.sendRedirect("verify"); // Redirect to error page
+            session.setAttribute("errorMessage", "Verification failed. The code you entered is not a valid number.");
+            response.sendRedirect("verify");
         }
     }
 
