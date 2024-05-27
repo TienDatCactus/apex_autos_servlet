@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <!DOCTYPE html>
         <html lang="en">
 
@@ -1110,6 +1110,7 @@
                         <div class="col-xxl-4 col-xl-5 col-lg-6 col-sm-8 mx-auto">
                             <div class="d-flex align-items-center justify-content-center h-100">
                                 <form class="log-in-box" id="form-1" action="verify" method="post">
+                                    <input type="hidden" name="action" value="${action}"/>
                                     <div class="log-in-title">
                                         <h3 class="text-title">Please enter the one time passcode to verify your account
                                         </h3>
@@ -1135,9 +1136,9 @@
                                         <h5>Didn't get the code? <a href="mail" class="theme-color fw-bold">Resend
                                                 It</a></h5>
                                     </div>
-                                    <c:if test="${not empty errorMessage}">
+<c:if test="${not empty errorMessage}">
                                         <div class="alert alert-danger my-2">${errorMessage}</div>
-                                    </c:if>
+</c:if>
                                     <input class="button-38 w-100 mt-3"
                                         onmouseover="this.style.backgroundColor='var(--theme-color)';this.style.color='#fff'"
                                         onmouseout="this.style.backgroundColor='#fff';this.style.color='#000'"

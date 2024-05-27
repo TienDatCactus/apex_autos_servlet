@@ -1086,7 +1086,8 @@
             </div>
 
             <div class="input-box">
-                <form class="row g-2" id="form-1" method="post" action="register">
+                <form class="row g-2" id="form-1" method="post" action="mail">
+                    <input type="hidden" name="action" id="actionId" value="verifyEmail" />
                 <div class="col-12">
                   <div class="form-floating theme-form-floating input email-input">
                     <input type="text" name="email" class="form-control input " id="email"

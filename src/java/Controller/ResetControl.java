@@ -51,7 +51,6 @@ public class ResetControl extends HttpServlet {
         if (success) {
             response.sendRedirect("login");
         } else {
-            session.setAttribute("resetMess", "Reset password Failed ! Process expired");
             response.sendRedirect("mail");
         }
     }

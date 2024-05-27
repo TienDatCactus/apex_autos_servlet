@@ -26,20 +26,40 @@ public class MailControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String action = request.getParameter("action");
+        if ("verifyEmail".equals(action)) {
+            String to = request.getParameter("email");
+            String newPassword = request.getParameter("re-password");
+            String token = nextSessionId();
 
-        String to = request.getParameter("email");
-        String token = nextSessionId();
+            // Store the token and the email in the session
+            HttpSession session = request.getSession();
+            session.setAttribute("token", token);
+            session.setAttribute("mail", to);
+            session.setAttribute("pass", newPassword);
 
-        // Store the token and the email in the session
-        HttpSession session = request.getSession();
-        session.setAttribute("token", token);
-        session.setAttribute("mail", to);
+            // Send the email and store the verification code in the session
+            int verificationCode = Mail.sendForgotPasswordEmail(to);
+            session.setAttribute("verificationCode", verificationCode);
+            session.setAttribute("action", "signUp");
+            response.sendRedirect("verify");
 
-        // Send the email and store the verification code in the session
-        int verificationCode = Mail.sendForgotPasswordEmail(to);
-        session.setAttribute("verificationCode", verificationCode);
+        } else if ("forgotPassword".equals(action)) {
+            String to = request.getParameter("email");
+            String token = nextSessionId();
 
-        response.sendRedirect("verify");
+            // Store the token and the email in the session
+            HttpSession session = request.getSession();
+            session.setAttribute("token", token);
+            session.setAttribute("mail", to);
+
+            // Send the email and store the verification code in the session
+            int verificationCode = Mail.sendForgotPasswordEmail(to);
+            session.setAttribute("verificationCode", verificationCode);
+            session.setAttribute("action", "forgotPassword");
+            response.sendRedirect("verify");
+        }
+
     }
 
     public static String nextSessionId() {
