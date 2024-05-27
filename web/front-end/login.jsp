@@ -1447,6 +1447,11 @@
       <!-- validation.js -->
       <script src="./assets/js/valid.js"></script>
       <script>
+        <c:if test="${not empty alert}">
+          alert('${alert}');
+        </c:if>
+      </script>
+      <script>
         validator({
           form: "#form-1",
           inputSelector: ".input",
