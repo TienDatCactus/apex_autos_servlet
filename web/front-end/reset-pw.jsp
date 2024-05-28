@@ -1119,7 +1119,6 @@
                                             <span class="form-msg"></span>
                                         </div>
                                     </div>
-                                    <div>${mail}</div>
                                     <div class="col-12">
                                         <input class="button-38 w-100 justify-content-center" value="Reset Password"
                                             type="submit">

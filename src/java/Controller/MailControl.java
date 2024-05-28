@@ -55,7 +55,7 @@ public class MailControl extends HttpServlet {
         } else if ("forgotPassword".equals(action)) {
             if (!dao.userExisted(to)) {
                 session.setAttribute("alert", "No email address found inside the system !");
-                response.sendRedirect("login");
+                response.sendRedirect("mail");
                 return;
             }
             String token = nextSessionId();

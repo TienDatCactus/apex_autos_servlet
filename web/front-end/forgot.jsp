@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1101,7 +1103,7 @@
                           
                             <div class="input-box">
                                 <form class="row g-4" id="form-1" action="mail" method="post">
-                                    <input type="hidden" name="action" value="${action}">
+                                    <input type="hidden" name="action" value="forgotPassword">
                                     <div class="col-12">
                                         <div class="form-floating theme-form-floating log-in-form input email-input">
                                             <input type="text" name="email" class="form-control input " id="email"
@@ -1328,7 +1330,7 @@
 
             <div class="sub-footer section-small-space py-3">
                 <div class="reserve">
-                    <h6 class="text-content">©2022 ApexAutos All rights reserved</h6>
+                    <h6 class="text-content">Â©2022 ApexAutos All rights reserved</h6>
                 </div>
 
                 <div class="payment">
@@ -1378,7 +1380,11 @@
     <!-- Bg overlay Start -->
     <div class="bg-overlay"></div>
     <!-- Bg overlay End -->
-
+   <script>
+<c:if test="${not empty alert}">
+          alert('${alert}');
+</c:if>
+      </script>
     <!-- latest jquery-->
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
 

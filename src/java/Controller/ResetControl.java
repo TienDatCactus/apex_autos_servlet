@@ -23,8 +23,6 @@ public class ResetControl extends HttpServlet {
 
     UserDAO dao;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
     public void init() {
         dao = new UserDAO();
     }
@@ -51,7 +49,7 @@ public class ResetControl extends HttpServlet {
         if (success) {
             response.sendRedirect("login");
         } else {
-            response.sendRedirect("mail");
+              response.sendRedirect("mail");
         }
     }
 
