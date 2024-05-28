@@ -11,7 +11,7 @@ public class Mail {
     private static final String from = "apexautos1110@gmail.com";
     private static final String pass = "kakwgvyrygrsujzk";
 
-    public static int sendForgotPasswordEmail(String to) {
+    public static int sendPasscode(String to) {
         Properties props = System.getProperties();
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -32,7 +32,7 @@ public class Mail {
             Random random = new Random();
             verificationCode = 100000 + random.nextInt(900000);
             String htmlContent = "<div style='padding: 20px; background-color: #f9f9f9; border-radius: 10px; font-family: Arial, sans-serif;'>"
-                    + "<h1 style='color: #4a4a4a;'>Password Reset Request</h1>"
+                    + "<h1 style='color: #4a4a4a;'>Passcode Request</h1>"
                     + "<p style='font-size:18px;color:#333;'>Dear user,</p>"
                     + "<p style='font-size:18px;color:#333;'>You have requested your system pass code. Here's your verification code:</p>"
                     + "<p style='font-size:24px; color: #ff6347;'><b>" + verificationCode + "</b></p>"

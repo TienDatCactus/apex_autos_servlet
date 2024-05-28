@@ -1096,12 +1096,12 @@
                         <div class="log-in-box">
                             <div class="log-in-title">
                                 <h3>Welcome To ApexAutos</h3>
-                                <h4>Forgot your password</h4>
+                                <h4>Enter your Email for passcode request</h4>
                             </div>
                           
                             <div class="input-box">
                                 <form class="row g-4" id="form-1" action="mail" method="post">
-                                    <input type="hidden" name="action" id="actionId" value="forgotPassword" />
+                                    <input type="hidden" name="action" id="actionId" value="${action}" />
                                     <div class="col-12">
                                         <div class="form-floating theme-form-floating log-in-form input email-input">
                                             <input type="text" name="email" class="form-control input " id="email"
@@ -1110,10 +1110,8 @@
                                             <span class="form-msg"></span>
                                         </div>
                                     </div>
-                                    <div class="col-12" style="
-                                    margin-top: 2px;
-                                ">
-                                        <input class="button-38 w-100 justify-content-center" value="Reset Password"
+                                    <div class="col-12" style="margin-top: 2px;">
+                                        <input class="button-38 w-100 justify-content-center" value="Request Passcode"
                                             type="submit">
                                     </div>
                                 </form>
