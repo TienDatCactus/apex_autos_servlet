@@ -66,6 +66,7 @@ public class UserDAO {
 
     public boolean userExisted(String email) {
         String query = "SELECT [email] FROM [dbo].[user_account] WHERE email = ?";
+
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();

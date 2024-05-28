@@ -1114,7 +1114,7 @@
                                     <div class="log-in-title">
                                         <h3 class="text-title">Please enter the one time passcode to verify your account
                                         </h3>
-                                        <h5 class="text-content">A code has been sent to <span>******@gmail.com</span>
+                                        <h5 class="text-content">A code has been sent to <span>****@gmail.com</span>
                                         </h5>
                                     </div>
                                     <div id="otp" class="inputs d-flex flex-row justify-content-center">
