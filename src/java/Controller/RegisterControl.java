@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
 public class RegisterControl extends HttpServlet {
@@ -26,25 +27,29 @@ public class RegisterControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("re-password");
-
-        UserAccount user = new UserAccount();
-        user.setEmail(email);
-        user.setPassword(password);
-        try {
-
-            userDao.checkRegister(user);
-            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
-        } catch (Exception e) {
-            request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
-            request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
-        }
+        String action = request.getParameter("action");
+        HttpSession sess=  request.getSession();
+        sess.setAttribute("action", sess);
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("re-password");
+//
+//        UserAccount user = new UserAccount();
+//        user.setEmail(email);
+//        user.setPassword(password);
+//        try {
+//
+//            userDao.checkRegister(user);
+//            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
+//        } catch (Exception e) {
+//            request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
+//            request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
+//        }
     }
 }

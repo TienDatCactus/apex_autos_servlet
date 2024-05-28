@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author Tiến_Đạt
  */
-@WebServlet(name = "ResetControl", urlPatterns = { "/reset" })
+@WebServlet(name = "ResetControl", urlPatterns = {"/reset"})
 public class ResetControl extends HttpServlet {
 
     UserDAO dao;
@@ -54,10 +54,5 @@ public class ResetControl extends HttpServlet {
             response.sendRedirect("mail");
         }
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

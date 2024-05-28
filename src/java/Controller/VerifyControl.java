@@ -73,8 +73,7 @@ public class VerifyControl extends HttpServlet {
                         "Verification failed. The code you entered is not a valid number.");
                 response.sendRedirect("verify");
             }
-        } else if ("forgotPassword".equals(action)) {
-            String mail = (String) session.getAttribute("mail");
+        } else if ("resetPassword".equals(action)) {
             try {
                 if (storedCode == Integer.parseInt(otp)) {
                     response.sendRedirect("reset");

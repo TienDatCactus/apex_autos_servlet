@@ -1101,7 +1101,7 @@
                           
                             <div class="input-box">
                                 <form class="row g-4" id="form-1" action="mail" method="post">
-                                    <input type="hidden" name="action" id="actionId" value="${action}" />
+                                    <input type="hidden" name="action" value="${action}">
                                     <div class="col-12">
                                         <div class="form-floating theme-form-floating log-in-form input email-input">
                                             <input type="text" name="email" class="form-control input " id="email"

@@ -211,12 +211,25 @@
                           </div>
                         </a>
                       </li>
-                      <!-- <li class="right-side">
+
+                      <li class="right-side onhover-dropdown">
+                        <div class="delivery-login-box">
+                          <div class="delivery-icon">
+                            <i data-feather="user"></i>
+                          </div>
+                          <div class="delivery-detail">
+                            <h6>Hello,</h6>
+                            <h5>Anonymous user</h5>
+                          </div>
+                        </div>
+
+                        <div class="onhover-div onhover-div-login">
+                          <ul class="user-box-name"> <!-- <li class="right-side">
                     <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
                       <i data-feather="heart"></i>
                     </a>
                   </li> -->
-                      <!-- <li class="right-side">
+                            <!-- <li class="right-side">
                     <div class="onhover-dropdown header-badge">
                       <button type="button" class="btn p-0 position-relative header-wishlist">
                         <i data-feather="shopping-cart"></i>
@@ -279,19 +292,6 @@
                       </div>
                     </div>
                   </li> -->
-                      <li class="right-side onhover-dropdown">
-                        <div class="delivery-login-box">
-                          <div class="delivery-icon">
-                            <i data-feather="user"></i>
-                          </div>
-                          <div class="delivery-detail">
-                            <h6>Hello,</h6>
-                            <h5>Anonymous user</h5>
-                          </div>
-                        </div>
-
-                        <div class="onhover-div onhover-div-login">
-                          <ul class="user-box-name">
                             <li class="product-box-contain">
                               <i></i>
                               <a href="login">Log In</a>
@@ -1100,13 +1100,12 @@
                         <span class="form-msg"></span>
                       </div>
                     </div>
-                    <div class="col-12">
-                      <div class="form-floating theme-form-floating log-in-form input email-input">
-                        <input type="text" name="email" class="form-control input " id="email"
-                          placeholder="Email Address" />
-                        <label for="email">Email Address</label>
-                        <span class="form-msg"></span>
-                      </div>
+
+                    <div class="form-floating theme-form-floating log-in-form input email-input">
+                      <input type="text" name="email" class="form-control input " id="email"
+                        placeholder="Email Address" />
+                      <label for="email">Email Address</label>
+                      <span class="form-msg"></span>
                     </div>
 
                     <div class="col-12">

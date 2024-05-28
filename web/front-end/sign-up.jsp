@@ -1149,12 +1149,7 @@
                     Log In with Google
                   </a>
                 </li>
-                <li>
-                  <a href="https://www.facebook.com/" class="btn google-button w-100 button-38 ">
-                    <img src="./assets/images/inner-page/facebook.png" class="blur-up lazyload" alt="" />
-                    Log In with Facebook
-                  </a>
-                </li>
+                
               </ul>
             </div>
 
