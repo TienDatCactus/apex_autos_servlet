@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -1100,14 +1100,14 @@
                         <span class="form-msg"></span>
                       </div>
                     </div>
-  <div class="col-12">
-                    <div class="form-floating theme-form-floating log-in-form input email-input">
-                      <input type="text" name="email" class="form-control input " id="email"
-                        placeholder="Email Address" />
-                      <label for="email">Email Address</label>
-                      <span class="form-msg"></span>
+                    <div class="col-12">
+                      <div class="form-floating theme-form-floating log-in-form input email-input">
+                        <input type="text" name="email" class="form-control input " id="email"
+                          placeholder="Email Address" />
+                        <label for="email">Email Address</label>
+                        <span class="form-msg"></span>
+                      </div>
                     </div>
-  </div>
                     <div class="col-12">
                       <div class="form-floating theme-form-floating log-in-form  input password-input ">
                         <input type="password" name="password" class="form-control input" id="password"
@@ -1130,9 +1130,9 @@
                     <div class="col-12">
                       <input class="button-38  w-100 justify-content-center" value="Log In" type="submit">
                     </div>
-<c:if test="${not empty errorMessage}">
+                    <c:if test="${not empty errorMessage}">
                       <div class="alert alert-danger">${errorMessage}</div>
-</c:if>
+                    </c:if>
                   </form>
                 </div>
 
@@ -1420,7 +1420,11 @@
       <!-- Bg overlay Start -->
       <div class="bg-overlay"></div>
       <!-- Bg overlay End -->
-
+      <script>
+        <c:if test="${not empty successMessage}">
+          alert('${successMessage}');
+        </c:if>
+      </script>
       <!-- latest jquery-->
       <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
@@ -1445,7 +1449,7 @@
 
       <!-- validation.js -->
       <script src="./assets/js/valid.js"></script>
-   
+
       <script>
         validator({
           form: "#form-1",
