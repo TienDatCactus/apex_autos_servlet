@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.Enumeration;
 import java.math.BigInteger;
 
 @WebServlet(name = "MailControl", urlPatterns = { "/mail" })
@@ -35,9 +36,7 @@ public class MailControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String to = request.getParameter("email");
         HttpSession session = request.getSession();
-
         String action = request.getParameter("action");
-
         if ("verifyEmail".equals(action)) {
             String newPassword = request.getParameter("re-password");
             String token = nextSessionId();
