@@ -37,19 +37,19 @@ public class RegisterControl extends HttpServlet {
         String action = request.getParameter("action");
         HttpSession sess=  request.getSession();
         sess.setAttribute("action", sess);
-//        String email = request.getParameter("email");
-//        String password = request.getParameter("re-password");
-//
-//        UserAccount user = new UserAccount();
-//        user.setEmail(email);
-//        user.setPassword(password);
-//        try {
-//
-//            userDao.checkRegister(user);
-//            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
-//        } catch (Exception e) {
-//            request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
-//            request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
-//        }
+        String email = request.getParameter("email");
+        String password = request.getParameter("re-password");
+
+        UserAccount user = new UserAccount();
+        user.setEmail(email);
+        user.setPassword(password);
+        try {
+
+            userDao.checkRegister(user);
+            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
+        } catch (Exception e) {
+            request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
+            request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
+        }
     }
 }

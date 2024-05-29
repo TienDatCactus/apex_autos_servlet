@@ -59,6 +59,7 @@ public class VerifyControl extends HttpServlet {
                     user.setPassword(pass);
                     try {
                         dao.checkRegister(user);
+                        session.setAttribute("successMessage", "Registration successful. Please login.");
                         response.sendRedirect("login");
                     } catch (Exception e) {
                         session.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
@@ -86,6 +87,14 @@ public class VerifyControl extends HttpServlet {
                         "Verification failed. The code you entered is not a valid number.");
                 response.sendRedirect("verify");
             }
+        } else {
+            // Remove the session attributes after they are used
+            session.removeAttribute("verificationCode");
+            session.removeAttribute("action");
+            session.removeAttribute("token");
+            session.removeAttribute("mail");
+            session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
+            response.sendRedirect("verify");
         }
     }
 }

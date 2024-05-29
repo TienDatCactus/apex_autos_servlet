@@ -6,6 +6,8 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
+
 import Models.*;
 import DAO.*;
 import jakarta.servlet.ServletException;
@@ -20,14 +22,15 @@ import jakarta.servlet.http.HttpSession;
  * @author Tiến_Đạt
  *
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
+@WebServlet(name = "LoginControl", urlPatterns = { "/login" })
 public class LoginControl extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
     }
 
@@ -39,7 +42,20 @@ public class LoginControl extends HttpServlet {
 
         UserAccount userAccount = new UserAccount(email, password);
         UserDAO userDAO = new UserDAO();
-
+        HttpSession session = request.getSession();
+        // delete un used session attributes
+        Enumeration<String> attributeNames = session.getAttributeNames();
+        while (attributeNames.hasMoreElements()) {
+            String attributeName = attributeNames.nextElement();
+            session.removeAttribute(attributeName);
+        }
+        // check session attributes
+        attributeNames = session.getAttributeNames();
+        if (!attributeNames.hasMoreElements()) {
+            System.out.println("All session attributes have been removed.");
+        } else {
+            System.out.println("Not all session attributes have been removed.");
+        }
         boolean loginResult = userDAO.checkLogin(userAccount);
 
         if (loginResult) {

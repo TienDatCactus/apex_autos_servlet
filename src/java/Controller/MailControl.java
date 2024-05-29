@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.math.BigInteger;
 
-@WebServlet(name = "MailControl", urlPatterns = {"/mail"})
+@WebServlet(name = "MailControl", urlPatterns = { "/mail" })
 public class MailControl extends HttpServlet {
 
     UserDAO dao;
