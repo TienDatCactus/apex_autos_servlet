@@ -13,6 +13,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.nio.charset.StandardCharsets;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/loc_doan
 /**
  *
  * @author Tiến_Đạt
@@ -117,4 +121,8 @@ public class UserDAO {
         }
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/loc_doan
 }

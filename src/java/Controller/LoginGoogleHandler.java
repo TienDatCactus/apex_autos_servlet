@@ -6,9 +6,14 @@
 package Controller;
 
 import Constant.Constants;
+<<<<<<< HEAD
 import DAO.UserDAO;
 import Models.*;
 import Models.*;
+=======
+import Models.UserDetails;
+
+>>>>>>> origin/loc_doan
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
@@ -89,11 +94,100 @@ public class LoginGoogleHandler extends HttpServlet {
     }
 
    
+<<<<<<< HEAD
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("front-end/index.jsp").forward(request, response);
     }
+=======
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+<<<<<<< Updated upstream
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String code = request.getParameter("code");
+		String accessToken = getToken(code);
+		UserDetails user = getUserInfo(accessToken);
+                System.out.println(user);
+                HttpSession session = request.getSession();
+                session.setAttribute("userd", user);
+                
+	}
+=======
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String code = request.getParameter("code");
+        String accessToken = getToken(code);
+        UserGoogleDto user = getUserInfo(accessToken);
+        
+        System.out.println(user);
+        UserAccount userAcc = new UserAccount(user.getEmail(), "123456");
+        UserDAO dao = new UserDAO();
+        dao.checkRegister(userAcc);
+        HttpSession session = request.getSession();
+        session.setAttribute("userd", user);
+>>>>>>> Stashed changes
+
+	public static String getToken(String code) throws ClientProtocolException, IOException {
+		// call api to get token
+		String response = Request.Post(Constants.GOOGLE_LINK_GET_TOKEN)
+				.bodyForm(Form.form().add("client_id", Constants.GOOGLE_CLIENT_ID)
+						.add("client_secret", Constants.GOOGLE_CLIENT_SECRET)
+						.add("redirect_uri", Constants.GOOGLE_REDIRECT_URI).add("code", code)
+						.add("grant_type", Constants.GOOGLE_GRANT_TYPE).build())
+				.execute().returnContent().asString();
+
+		JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
+		String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
+		return accessToken;
+	}
+
+<<<<<<< Updated upstream
+	public static UserDetails getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+		String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
+		String response = Request.Get(link).execute().returnContent().asString();
+
+		UserDetails googlePojo = new Gson().fromJson(response, UserDetails.class);
+
+		return googlePojo;
+	}
+=======
+        JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
+        String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
+        
+        
+        return accessToken;
+    }
+>>>>>>> Stashed changes
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /** 
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+<<<<<<< Updated upstream
+    throws ServletException, IOException {
+        processRequest(request, response);
+        request.getRequestDispatcher("front-end/index.jsp").forward(request, response);
+    } 
+=======
+            throws ServletException, IOException {
+        processRequest(request, response);
+        request.getRequestDispatcher("home").forward(request, response);
+    }
+>>>>>>> Stashed changes
+>>>>>>> origin/loc_doan
 
     /**
      * Handles the HTTP <code>POST</code> method.

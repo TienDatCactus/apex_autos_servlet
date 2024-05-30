@@ -15,7 +15,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 @WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
+=======
+/**
+ *
+ * @author Tiến_Đạt
+ */ /// aaa
+>>>>>>> origin/loc_doan
 public class RegisterControl extends HttpServlet {
 
     private UserDAO userDao; 
@@ -34,16 +41,25 @@ public class RegisterControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+<<<<<<< HEAD
         String action = request.getParameter("action");
         HttpSession sess=  request.getSession();
         sess.setAttribute("action", sess);
+=======
+        
+>>>>>>> origin/loc_doan
         String email = request.getParameter("email");
         String password = request.getParameter("re-password");
 
+<<<<<<< HEAD
         UserAccount user = new UserAccount();
         user.setEmail(email);
         user.setPassword(password);
         try {
+=======
+        UserDetails ud = new UserDetails();
+        
+>>>>>>> origin/loc_doan
 
             userDao.checkRegister(user);
             request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);

@@ -31,11 +31,20 @@ public class LoginControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+<<<<<<< HEAD
         request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+=======
+   
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+<<<<<<< Updated upstream
+    throws ServletException, IOException {
+=======
+>>>>>>> origin/loc_doan
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -60,12 +69,20 @@ public class LoginControl extends HttpServlet {
 
         if (loginResult) {
             // Login successful, redirect to another page
+<<<<<<< HEAD
             request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
+=======
+            response.sendRedirect("home");
+>>>>>>> origin/loc_doan
         } else {
             // Login failed, redirect back to login page
             request.setAttribute("errorMessage", "Invalid email or password.");
             request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
         }
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> origin/loc_doan
     }
 
     @Override
