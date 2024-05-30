@@ -2201,7 +2201,7 @@
 
             <div class="sub-footer section-small-space py-3">
                 <div class="reserve">
-                    <h6 class="text-content">©2022 ApexAutos All rights reserved</h6>
+                    <h6 class="text-content">ï¿½2022 ApexAutos All rights reserved</h6>
                 </div>
 
                 <div class="payment">
@@ -2286,7 +2286,7 @@
                                 <div class="product-detail">
                                     <h4>Product Details :</h4>
                                     <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
-                                        Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
+                                        Caramels marshmallow icing dessert candy canes I love soufflï¿½ I love toffee.
                                         Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
                                         muffin I love carrot cake sugar plum dessert bonbon.</p>
                                 </div>
