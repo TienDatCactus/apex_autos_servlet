@@ -43,7 +43,7 @@ public class LoginGoogleHandler extends HttpServlet {
             throws ServletException, IOException {
         String code = request.getParameter("code");
         String accessToken = getToken(code);
-        UserGoogleDto user = getUserInfo(accessToken);
+        UserDetails user = getUserInfo(accessToken);
         System.out.println(user);
         HttpSession session = request.getSession();
         session.setAttribute("userd", user);
@@ -65,11 +65,11 @@ public class LoginGoogleHandler extends HttpServlet {
         return accessToken;
     }
 
-    public static UserGoogleDto getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+    public static UserDetails getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
         String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
 
-        UserGoogleDto googlePojo = new Gson().fromJson(response, UserGoogleDto.class);
+        UserDetails googlePojo = new Gson().fromJson(response, UserDetails.class);
         // call api to get user info
         String userInfoResponse = Request.Get(Constants.GOOGLE_LINK_GET_USER_INFO + accessToken)
                 .execute().returnContent().asString();
