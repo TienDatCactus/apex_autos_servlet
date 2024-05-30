@@ -29,7 +29,40 @@ public class LoginControl extends HttpServlet {
    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+<<<<<<< Updated upstream
     throws ServletException, IOException {
+=======
+            throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        UserAccount userAccount = new UserAccount(email, password);
+        UserDAO userDAO = new UserDAO();
+        HttpSession session = request.getSession();
+        // delete un used session attributes
+        Enumeration<String> attributeNames = session.getAttributeNames();
+        while (attributeNames.hasMoreElements()) {
+            String attributeName = attributeNames.nextElement();
+            session.removeAttribute(attributeName);
+        }
+        // check session attributes
+        attributeNames = session.getAttributeNames();
+        if (!attributeNames.hasMoreElements()) {
+            System.out.println("All session attributes have been removed.");
+        } else {
+            System.out.println("Not all session attributes have been removed.");
+        }
+        boolean loginResult = userDAO.checkLogin(userAccount);
+
+        if (loginResult) {
+            // Login successful, redirect to another page
+            response.sendRedirect("home");
+        } else {
+            // Login failed, redirect back to login page
+            request.setAttribute("errorMessage", "Invalid email or password.");
+            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
+        }
+>>>>>>> Stashed changes
     }
 
  

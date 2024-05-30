@@ -34,6 +34,7 @@ public class LoginGoogleHandler extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+<<<<<<< Updated upstream
    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
@@ -44,6 +45,20 @@ public class LoginGoogleHandler extends HttpServlet {
                 session.setAttribute("userd", user);
                 
 	}
+=======
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String code = request.getParameter("code");
+        String accessToken = getToken(code);
+        UserGoogleDto user = getUserInfo(accessToken);
+        
+        System.out.println(user);
+        UserAccount userAcc = new UserAccount(user.getEmail(), "123456");
+        UserDAO dao = new UserDAO();
+        dao.checkRegister(userAcc);
+        HttpSession session = request.getSession();
+        session.setAttribute("userd", user);
+>>>>>>> Stashed changes
 
 	public static String getToken(String code) throws ClientProtocolException, IOException {
 		// call api to get token
@@ -59,6 +74,7 @@ public class LoginGoogleHandler extends HttpServlet {
 		return accessToken;
 	}
 
+<<<<<<< Updated upstream
 	public static UserDetails getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
 		String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
 		String response = Request.Get(link).execute().returnContent().asString();
@@ -67,6 +83,14 @@ public class LoginGoogleHandler extends HttpServlet {
 
 		return googlePojo;
 	}
+=======
+        JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
+        String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
+        
+        
+        return accessToken;
+    }
+>>>>>>> Stashed changes
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -78,10 +102,17 @@ public class LoginGoogleHandler extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+<<<<<<< Updated upstream
     throws ServletException, IOException {
         processRequest(request, response);
         request.getRequestDispatcher("front-end/index.jsp").forward(request, response);
     } 
+=======
+            throws ServletException, IOException {
+        processRequest(request, response);
+        request.getRequestDispatcher("home").forward(request, response);
+    }
+>>>>>>> Stashed changes
 
     /** 
      * Handles the HTTP <code>POST</code> method.
