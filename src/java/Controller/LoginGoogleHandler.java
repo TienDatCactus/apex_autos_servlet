@@ -61,6 +61,15 @@ public class LoginGoogleHandler extends HttpServlet {
 
         JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
         String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
+       
+        return accessToken;
+    }
+
+    public static UserGoogleDto getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+        String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
+        String response = Request.Get(link).execute().returnContent().asString();
+
+        UserGoogleDto googlePojo = new Gson().fromJson(response, UserGoogleDto.class);
         // call api to get user info
         String userInfoResponse = Request.Get(Constants.GOOGLE_LINK_GET_USER_INFO + accessToken)
                 .execute().returnContent().asString();
@@ -76,28 +85,10 @@ public class LoginGoogleHandler extends HttpServlet {
         String tokenSubstring = accessToken.length() >= 6 ? accessToken.substring(0, 6) : accessToken;
         user.setPassword("google" + tokenSubstring);
         dao.checkLogin(user);
-        return accessToken;
-    }
-
-    public static UserGoogleDto getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
-        String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
-        String response = Request.Get(link).execute().returnContent().asString();
-
-        UserGoogleDto googlePojo = new Gson().fromJson(response, UserGoogleDto.class);
-
         return googlePojo;
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     * 
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
