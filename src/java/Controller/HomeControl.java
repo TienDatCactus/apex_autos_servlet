@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.*;
+import Models.Car;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -44,8 +46,8 @@ public class HomeControl extends HttpServlet {
     throws ServletException, IOException {
         CarDAO dao = new CarDAO();
          List<Car> listAllCars = dao.viewAllCar();
-         request.setAttribute("listAllCars", listAllCars);
-         request.getRequestDispatcher("front-end/index.jsp").forward(request, response);
+         request.setAttribute("carList", listAllCars);
+         request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
     } 
 
    

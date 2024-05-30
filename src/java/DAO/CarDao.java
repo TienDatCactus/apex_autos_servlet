@@ -14,68 +14,49 @@ import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author Tiến_Đạt
  */
-public class CarDao {
+public class CarDAO {
 
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    DBConnect db = new DBConnect();
-    Connection con = db.connection;
 
-//        public boolean checkRegister(UserAccount userAccount) {
-//        String email = userAccount.getEmail();
-//        String password = userAccount.getPassword();
-//
-//       
-//        String query = "INSERT INTO [dbo].[car] ([name], [cylinders], [horsepower], [weight], [acceleration]"
-//                + ", [model_year], [origin], [description], [brand_id]"
-//                + ", [category_id]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//
-//        try (PreparedStatement ps = con.prepareStatement(query)) {
-//            ps.setString(1, email);
-//            
-//            ps.setString(2, password);
-//
-//            int rowsAffected = ps.executeUpdate();
-//            return rowsAffected > 0;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
-    public List<Car> viewAllCar() {
-        List<Car> cars = new ArrayList<>();
-        String query = "SELECT [car_id], [name], [cylinders], [horsepower], "
-                + "[weight], [acceleration], [model_year], [origin],[price], [description], "
-                + "[brand_id], [category_id] FROM [dbo].[car]";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        DBConnect db = new DBConnect();
+        Connection con = db.connection;
 
-        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Car car = new Car();
+        public List<Car> viewAllCar() {
+            List<Car> cars = new ArrayList<>();
+            String query = "SELECT [car_id], [name], [cylinders], [horsepower], "
+                    + "[weight], [acceleration], [model_year], [origin],[price], [description], "
+                    + "[brand_id], [category_id] FROM [dbo].[car]";
 
-                car.setName(rs.getString("name"));
-                car.setCylinders(rs.getInt("cylinders"));
-                car.setHorsepower(rs.getFloat("horsepower"));
-                car.setWeight(rs.getFloat("weight"));
-                car.setAcceleration(rs.getFloat("acceleration"));
-                car.setModel_year(rs.getInt("model_year"));
-                car.setOrigin(rs.getString("origin"));
-                car.setPrice(rs.getFloat("price"));
-                car.setDescription(rs.getString("description"));
-                car.setBrand_id(rs.getInt("brand_id"));
-                car.setCategory_id(rs.getInt("category_id"));
-                cars.add(car);
+            try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Car car = new Car();
+
+                    car.setName(rs.getString("name"));
+                    car.setCylinders(rs.getInt("cylinders"));
+                    car.setHorsepower(rs.getFloat("horsepower"));
+                    car.setWeight(rs.getFloat("weight"));
+                    car.setAcceleration(rs.getFloat("acceleration"));
+                    car.setModel_year(rs.getInt("model_year"));
+                    car.setOrigin(rs.getString("origin"));
+                    car.setPrice(rs.getFloat("price"));
+                    car.setDescription(rs.getString("description"));
+                    car.setBrand_id(rs.getInt("brand_id"));
+                    car.setCategory_id(rs.getInt("category_id"));
+                    cars.add(car);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return cars;
         }
-        return cars;
+
+        public static void main(String[] args) {
+            CarDAO dao = new CarDAO();
+            System.out.println("" + dao.viewAllCar());
+        }
+
     }
 
-    public static void main(String[] args) {
-        CarDao dao = new CarDao();
-        System.out.println("" + dao.viewAllCar());
-    }
-
-}
