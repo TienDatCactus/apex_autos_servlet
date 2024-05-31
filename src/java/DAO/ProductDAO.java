@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import Models.*;
+import Models.Car;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,15 +16,13 @@ import java.util.List;
  *
  * @author Tiến_Đạt
  */
-public class CarDAO {
-
-
-        PreparedStatement ps = null;
+public class ProductDAO {
+     PreparedStatement ps = null;
         ResultSet rs = null;
         DBConnect db = new DBConnect();
         Connection con = db.connection;
 
-        public List<Car> viewAllCar() {
+        public List<Car> viewProducts() {
             List<Car> cars = new ArrayList<>();
             String query = "SELECT [car_id], [name], [cylinders], [horsepower], "
                     + "[weight], [acceleration], [model_year], [origin],[price], [description], "
@@ -54,9 +52,8 @@ public class CarDAO {
         }
 
         public static void main(String[] args) {
-            CarDAO dao = new CarDAO();
-            System.out.println("" + dao.viewAllCar());
+           ProductDAO dao = new ProductDAO();
+            System.out.println("" + dao.viewProducts());
         }
 
-    }
-
+}

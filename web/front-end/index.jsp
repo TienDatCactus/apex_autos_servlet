@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -702,7 +702,7 @@
                                 <div class="category-list">
                                     <img src="./assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
                                     <h5>
-                                        <a href="shop-left-sidebar.html">Vegetables & Fruit</a>
+                                        <a href="shop-left-sidebar.html">Category </a>
                                     </h5>
                                 </div>
                             </li>
@@ -713,12 +713,12 @@
 
                 <div class="col-xxl-9 col-lg-8">
                     <div class="title d-block">
-                        <h2 class="text-theme font-sm">Food Cupboard</h2>
-                        <p>A virtual assistant collects the products from your list</p>
+                        <h2 class="text-theme font-sm">Collections</h2>
+                        <p>Car collections section</p>
                     </div>
                     <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
                         section-b-space">
-                        <c:forEach var="cl" items="${carList}">
+<c:forEach var="cl" items="${carList}">
                         <div>
                             <div class="product-box product-white-bg wow fadeIn">
                                 <div class="product-image">
@@ -749,7 +749,7 @@
                                 <div class="product-detail position-relative">
                                     <a href="product-left-thumbnail.html">
                                         <h6 class="name">
-                                            ${cl.name}
+    ${cl.name}
                                         </h6>
                                     </a>
 
@@ -760,20 +760,6 @@
                                     <div class="add-to-cart-btn-2 addtocart_btn">
                                         <button class="btn addcart-button btn buy-button"><i
                                                 class="fa-solid fa-plus"></i></button>
-                                        <div class="cart_qty qty-box-2">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                    data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="1">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                    data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

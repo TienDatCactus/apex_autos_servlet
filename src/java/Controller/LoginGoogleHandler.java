@@ -61,7 +61,7 @@ public class LoginGoogleHandler extends HttpServlet {
 
         JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
         String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
-       
+
         return accessToken;
     }
 
@@ -100,7 +100,7 @@ public class LoginGoogleHandler extends HttpServlet {
      * 
      * @param request  servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
+     * @throws  ServletException if a servlet-specific error occurs
      * @throws IOException      if an I/O error occurs
      */
     @Override

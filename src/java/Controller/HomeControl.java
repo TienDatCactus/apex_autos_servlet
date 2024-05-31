@@ -44,9 +44,9 @@ public class HomeControl extends HttpServlet {
    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        CarDAO dao = new CarDAO();
-         List<Car> listAllCars = dao.viewAllCar();
-         request.setAttribute("carList", listAllCars);
+        ProductDAO dao = new ProductDAO();
+         List<Car> listAllProducts = dao.viewProducts();
+         request.setAttribute("carList", listAllProducts);
          request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
     } 
 
