@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 
 <head>
@@ -304,18 +305,25 @@
 
                                         <div class="onhover-div onhover-div-login">
                                             <ul class="user-box-name">
-                                                <li class="product-box-contain">
-                                                    <i></i>
-                                                    <a href="login.html">Log In</a>
-                                                </li>
-
-                                                <li class="product-box-contain">
-                                                    <a href="sign-up.html">Register</a>
-                                                </li>
-
-                                                <li class="product-box-contain">
-                                                    <a href="forgot.html">Forgot Password</a>
-                                                </li>
+                                               <c:choose>
+                                                <c:when test="${not empty sessionScope.userd}">
+                                                    <li class="product-box-contain">
+                                                        <a href="userdashboard">User Profile</a>
+                                                    </li>
+                                                    <li class="product-box-contain">
+                                                        <a href="logout">Log out</a>
+                                                    </li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li class="product-box-contain">
+                                                        <i></i>
+                                                        <a href="login">Log In</a>
+                                                    </li>
+                                                    <li class="product-box-contain">
+                                                        <a href="register">Register</a>
+                                                    </li>
+                                                </c:otherwise>
+                                            </c:choose>
                                             </ul>
                                         </div>
                                     </li>

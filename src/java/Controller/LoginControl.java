@@ -59,6 +59,7 @@ public class LoginControl extends HttpServlet {
         boolean loginResult = userDAO.checkLogin(userAccount);
 
         if (loginResult) {
+            session.setAttribute("userd", userAccount);
             // Login successful, redirect to another page
             response.sendRedirect("home");
         } else {
