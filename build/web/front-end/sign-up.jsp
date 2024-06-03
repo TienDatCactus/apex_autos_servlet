@@ -1460,8 +1460,9 @@
             document.querySelector("input[type='submit']").style = "opacity: 1; cursor: pointer;";
             document.querySelector("input[type='submit']").disabled = false;
           } else {
-            document.querySelector("input[type='submit']").style = "opacity: 0.6; cursor: not-allowed;";
+            document.querySelector("input[type='submit']").style = "opacity: 0.6; cursor: not-allowed;pointer-events: none;";
             document.querySelector("input[type='submit']").disabled = true;
+
           }
         }))
       </script>

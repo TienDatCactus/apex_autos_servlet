@@ -44,7 +44,6 @@ public class UserDAO {
     public boolean checkRegister(UserAccount userAccount) {
         String email = userAccount.getEmail();
         String password = userAccount.getPassword();
-
         if (userExisted(email)) {
             return false;
         }

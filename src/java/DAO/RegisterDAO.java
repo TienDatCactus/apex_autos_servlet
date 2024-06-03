@@ -37,6 +37,19 @@ public class RegisterDAO {
             e.printStackTrace();
             status = false;
         }
+        query = "INSERT INTO [dbo].[user_details] ([first_name] ,[last_name] ,[dob] ,[phone]) VALUES (?, ,?, ,?, ,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            //        ps.setString(1, ud.getFname());
+            //      ps.setString(2, ud.getLname());
+            //    ps.setString(3, ud.getDob());
+            //  ps.setString(4, ud.getPhone());
+            ps.executeUpdate();
+            status = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            status = false;
+        }
         return status;
     }
 

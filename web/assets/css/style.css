@@ -297,7 +297,7 @@
 }
 
 .theme-color-2 {
-  --theme-color: #0baf9a;
+  --theme-color: var(--theme-color);
   --theme-color-rgb: 11, 175, 154;
 }
 
@@ -16232,7 +16232,7 @@ header .offcanvas-backdrop {
   height: 100%;
   top: 0;
   left: 0;
-  background-image: url("../images/vegetable/newsletter/1.jpg");
+
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -27544,7 +27544,7 @@ header .offcanvas-backdrop {
 
 .seller-grid-box .grid-contain .contain-name .product-label {
   padding: 5px 10px;
-  background-color: rgba(var(--theme-color-rgb), 0.102);
+  background-color: rgba(232, 232, 232, 0.8);
   font-size: 13px;
   letter-spacing: 0.5px;
   border-radius: 4px;

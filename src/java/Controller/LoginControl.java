@@ -60,7 +60,6 @@ public class LoginControl extends HttpServlet {
 
         if (loginResult) {
             // Login successful, redirect to another page
-            request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
             response.sendRedirect("home");
         } else {
             // Login failed, redirect back to login page

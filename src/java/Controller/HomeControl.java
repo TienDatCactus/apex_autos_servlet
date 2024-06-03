@@ -7,6 +7,7 @@ package Controller;
 
 import DAO.*;
 import Models.Car;
+import Models.Paging;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,44 +21,53 @@ import java.util.List;
  *
  * @author Tiến_Đạt
  */
-@WebServlet(name="HomeControl", urlPatterns={"/home"})
+@WebServlet(name = "HomeControl", urlPatterns = { "/home" })
 public class HomeControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeControl</title>");  
+            out.println("<title>Servlet HomeControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomeControl at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet HomeControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-  
-   @Override
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        ProductDAO dao = new ProductDAO();
-         List<Car> listAllProducts = dao.viewProducts();
-         request.setAttribute("carList", listAllProducts);
-         request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
-    } 
+            throws ServletException, IOException {
+        CarDao dao = new CarDao();
+        List<Car> carList = dao.viewAllCar();
+        int index = 0;
+        try {
+            index = Integer.parseInt(request.getParameter("index"));
+        } catch (Exception e) {
+            index = 0;
+        }
+        int nrpp = 4;
+        Paging p = new Paging(carList.size(), nrpp, index);
+        p.calc();
+        request.setAttribute("page", p);
+        request.setAttribute("carList", carList);
+        request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
+    }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
- 
     @Override
     public String getServletInfo() {
         return "Short description";
