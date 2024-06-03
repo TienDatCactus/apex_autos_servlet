@@ -729,7 +729,7 @@
                                     <div>
                                         <div class="product-box product-white-bg wow fadeIn">
                                             <div class="product-image">
-                                                <a href="product-left-thumbnail.html">
+                                                <a href="detail?id=${cl.car_id}">
                                                     <img src="./assets/images/cake/product/3.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
@@ -757,7 +757,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-detail position-relative">
-                                                <a href="product-left-thumbnail.html">
+                                                <a href="detail?id=${cl.car_id}">
                                                     <h6 class="name">
                                                         ${cl.name}
                                                     </h6>

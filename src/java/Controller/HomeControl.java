@@ -47,7 +47,7 @@ public class HomeControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CarDao dao = new CarDao();
-        List<Car> carList = dao.viewAllCar();
+        List<Car> carList = dao.viewProducts();
         int index = 0;
         try {
             index = Integer.parseInt(request.getParameter("index"));

@@ -4,11 +4,8 @@
  */
 package Models;
 
-/**
- *
- * @author Admin
- */
 public class Car {
+    private int car_id;
     private String name;
     private int cylinders;
     private float horsepower;
@@ -24,7 +21,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(String name, int cylinders, float horsepower, float weight, float acceleration, int model_year, String origin, float price, String description, int brand_id, int category_id) {
+    public Car(int car_id, String name, int cylinders, float horsepower, float weight, float acceleration, int model_year, String origin, float price, String description, int brand_id, int category_id) {
+        this.car_id = car_id;
         this.name = name;
         this.cylinders = cylinders;
         this.horsepower = horsepower;
@@ -36,6 +34,14 @@ public class Car {
         this.description = description;
         this.brand_id = brand_id;
         this.category_id = category_id;
+    }
+
+    public int getCar_id() {
+        return car_id;
+    }
+
+    public void setCar_id(int car_id) {
+        this.car_id = car_id;
     }
 
     public String getName() {
@@ -128,7 +134,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" + "name=" + name + ", cylinders=" + cylinders + ", horsepower=" + horsepower + ", weight=" + weight + ", acceleration=" + acceleration + ", model_year=" + model_year + ", origin=" + origin + ", price=" + price + ", description=" + description + ", brand_id=" + brand_id + ", category_id=" + category_id + '}';
+        return "Car{" + "car_id=" + car_id + ", name=" + name + ", cylinders=" + cylinders + ", horsepower=" + horsepower + ", weight=" + weight + ", acceleration=" + acceleration + ", model_year=" + model_year + ", origin=" + origin + ", price=" + price + ", description=" + description + ", brand_id=" + brand_id + ", category_id=" + category_id + '}';
     }
 
    
