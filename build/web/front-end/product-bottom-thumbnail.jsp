@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1062,7 +1063,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Creamy Chocolate Cake</h2>
+                        
+                        <h2>${carDT.name}</h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -1071,7 +1073,7 @@
                                     </a>
                                 </li>
 
-                                <li class="breadcrumb-item active">Creamy Chocolate Cake</li>
+                                <li class="breadcrumb-item active">${carDT.name}</li>
                             </ol>
                         </nav>
                     </div>
@@ -1193,11 +1195,11 @@
 
                         <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="right-box-contain">
-                                <h6 class="offer-top">30% Off</h6>
-                                <h2 class="name">Creamy Chocolate Cake</h2>
+                                
+                                <h2 class="name">${carDT.name}</h2>
                                 <div class="price-rating">
-                                    <h3 class="theme-color price">$49.50 <del class="text-content">$58.46</del> <span
-                                            class="offer theme-color">(8% off)</span></h3>
+                                    <h3 class="theme-color price">${carDT.price} <del class="text-content">$90.00</del> <span
+                                            class="offer theme-color">(20% off)</span></h3>
                                     <div class="product-rating custom-rate">
                                         <ul class="rating">
                                             <li>
@@ -1216,40 +1218,13 @@
                                                 <i data-feather="star"></i>
                                             </li>
                                         </ul>
-                                        <span class="review">23 Customer Review</span>
+                                        
                                     </div>
                                 </div>
 
-                                <div class="procuct-contain">
-                                    <p>Lollipop cake chocolate chocolate cake dessert jujubes. Shortbread sugar plum
-                                        dessert
-                                        powder cookie sweet brownie. Cake cookie apple pie dessert sugar plum muffin
-                                        cheesecake.
-                                    </p>
-                                </div>
+                                
 
-                                <div class="product-packege">
-                                    <div class="product-title">
-                                        <h4>Weight</h4>
-                                    </div>
-                                    <ul class="select-packege">
-                                        <li>
-                                            <a href="javascript:void(0)" class="active">1/2 KG</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">1 KG</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">1.5 KG</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">Red Roses</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)">With Pink Roses</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                               
 
                                 <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                     data-hours="1" data-minutes="2" data-seconds="3">
@@ -1327,22 +1302,19 @@
 
                                 <div class="pickup-box">
                                     <div class="product-title">
-                                        <h4>Store Information</h4>
+                                        <h4>Car Information</h4>
                                     </div>
 
-                                    <div class="pickup-detail">
-                                        <h4 class="text-content">Lollipop cake chocolate chocolate cake dessert jujubes.
-                                            Shortbread sugar plum dessert powder cookie sweet brownie.</h4>
-                                    </div>
+                                   
 
                                     <div class="product-info">
                                         <ul class="product-info-list product-info-list-2">
-                                            <li>Type : <a href="javascript:void(0)">Black Forest</a></li>
-                                            <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
-                                            <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>
-                                            <li>Stock : <a href="javascript:void(0)">2 Items Left</a></li>
-                                            <li>Tags : <a href="javascript:void(0)">Cake,</a> <a
-                                                    href="javascript:void(0)">Backery</a></li>
+                                            <li>Cylinders : <a href="javascript:void(0)">${carDT.cylinders}</a></li>
+                                            <li>Horsepower : <a href="javascript:void(0)">${carDT.horsepower}</a></li>
+                                            <li>Weight : <a href="javascript:void(0)">${carDT.weight}</a></li>
+                                            <li>Acceleration : <a href="javascript:void(0)">${carDT.acceleration}</a></li>
+                                            <li>Model_year : <a href="javascript:void(0)">${carDT.model_year}</a></li>
+                                                <li>Origin : <a href="javascript:void(0)">${carDT.origin}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1396,11 +1368,7 @@
                                             aria-controls="description" aria-selected="true">Description</button>
                                     </li>
 
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="info-tab" data-bs-toggle="tab"
-                                            data-bs-target="#info" type="button" role="tab" aria-controls="info"
-                                            aria-selected="false">Additional info</button>
-                                    </li>
+                                  
 
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="care-tab" data-bs-toggle="tab"
@@ -1408,11 +1376,7 @@
                                             aria-selected="false">Care Instuctions</button>
                                     </li>
 
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="review-tab" data-bs-toggle="tab"
-                                            data-bs-target="#review" type="button" role="tab" aria-controls="review"
-                                            aria-selected="false">Review</button>
-                                    </li>
+                                    
                                 </ul>
 
                                 <div class="tab-content custom-tab" id="myTabContent">
@@ -1420,33 +1384,10 @@
                                         aria-labelledby="description-tab">
                                         <div class="product-description">
                                             <div class="nav-desh">
-                                                <p>Jelly beans carrot cake icing biscuit oat cake gummi bears tart.
-                                                    Lemon drops carrot cake pudding sweet gummi bears. Chocolate cake
-                                                    tart cupcake donut topping liquorice sugar plum chocolate bar. Jelly
-                                                    beans tiramisu caramels jujubes biscuit liquorice chocolate. Pudding
-                                                    toffee jujubes oat cake sweet roll. Lemon drops dessert croissant
-                                                    danish cake cupcake. Sweet roll candy chocolate toffee jelly sweet
-                                                    roll halvah brownie topping. Marshmallow powder candy sesame snaps
-                                                    jelly beans candy canes marshmallow gingerbread pie.</p>
+                                                <p>${carDT.description}</p>
                                             </div>
 
-                                            <div class="nav-desh">
-                                                <div class="desh-title">
-                                                    <h5>Organic:</h5>
-                                                </div>
-                                                <p>vitae et leo duis ut diam quam nulla porttitor massa id neque aliquam
-                                                    vestibulum morbi blandit cursus risus at ultrices mi tempus
-                                                    imperdiet nulla malesuada pellentesque elit eget gravida cum sociis
-                                                    natoque penatibus et magnis dis parturient montes nascetur ridiculus
-                                                    mus mauris vitae ultricies leo integer malesuada nunc vel risus
-                                                    commodo viverra maecenas accumsan lacus vel facilisis volutpat est
-                                                    velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit
-                                                    amet nisl suscipit adipiscing bibendum est ultricies integer quis
-                                                    auctor elit sed vulputate mi sit amet mauris commodo quis imperdiet
-                                                    massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada
-                                                    proin libero nunc consequat interdum varius sit amet mattis
-                                                    vulputate enim nulla aliquet porttitor lacus luctus accumsan.</p>
-                                            </div>
+                                         
 
                                             <div class="banner-contain nav-desh">
                                                 <img src="./assets/images/vegetable/banner/14.jpg"
@@ -1455,431 +1396,44 @@
                                                     <div>
                                                         <h6 class="ls-expanded theme-color mb-sm-3 mb-1">SUMMER</h6>
                                                         <h2>VEGETABLE</h2>
-                                                        <p class="mx-auto mt-1">Save up to 5% OFF</p>
+                                                        <p class="mx-auto mt-1">Save up to 20% OFF</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="nav-desh">
-                                                <div class="desh-title">
-                                                    <h5>From The Manufacturer:</h5>
-                                                </div>
-                                                <p>Jelly beans shortbread chupa chups carrot cake jelly-o halvah apple
-                                                    pie pudding gingerbread. Apple pie halvah cake tiramisu shortbread
-                                                    cotton candy croissant chocolate cake. Tart cupcake caramels gummi
-                                                    bears macaroon gingerbread fruitcake marzipan wafer. Marzipan
-                                                    dessert cupcake ice cream tootsie roll. Brownie chocolate cake
-                                                    pudding cake powder candy ice cream ice cream cake. Jujubes soufflé
-                                                    chupa chups cake candy halvah donut. Tart tart icing lemon drops
-                                                    fruitcake apple pie.</p>
-
-                                                <p>Dessert liquorice tart soufflé chocolate bar apple pie pastry danish
-                                                    soufflé. Gummi bears halvah gingerbread jelly icing. Chocolate cake
-                                                    chocolate bar pudding chupa chups bear claw pie dragée donut halvah.
-                                                    Gummi bears cookie ice cream jelly-o jujubes sweet croissant.
-                                                    Marzipan cotton candy gummi bears lemon drops lollipop lollipop
-                                                    chocolate. Ice cream cookie dragée cake sweet roll sweet roll.Lemon
-                                                    drops cookie muffin carrot cake chocolate marzipan gingerbread
-                                                    topping chocolate bar. Soufflé tiramisu pastry sweet dessert.</p>
-                                            </div>
+                                            
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
-                                        <div class="table-responsive">
-                                            <table class="table info-table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Specialty</td>
-                                                        <td>Vegetarian</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ingredient Type</td>
-                                                        <td>Vegetarian</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Brand</td>
-                                                        <td>Lavian Exotique</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Form</td>
-                                                        <td>Bar Brownie</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Package Information</td>
-                                                        <td>Box</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Manufacturer</td>
-                                                        <td>Prayagh Nutri Product Pvt Ltd</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Item part number</td>
-                                                        <td>LE 014 - 20pcs Crème Bakes (Pack of 2)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Net Quantity</td>
-                                                        <td>40.00 count</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="tab-pane fade" id="care" role="tabpanel" aria-labelledby="care-tab">
                                         <div class="information-box">
                                             <ul>
-                                                <li>Store cream cakes in a refrigerator. Fondant cakes should be
-                                                    stored in an air conditioned environment.</li>
+                                                <li>Regularly Check and Change Engine Oil: Engine oil is the 
+                                                    lifeblood of your car's engine, helping to lubricate moving parts 
+                                                    and reduce friction. Check the oil level regularly and change it according 
+                                                    to the manufacturer's recommendations, usually every 5,000 to 10,000 km.</li>
 
-                                                <li>Slice and serve the cake at room temperature and make sure
-                                                    it is not exposed to heat.</li>
+                                                <li>Inspect the Cooling System: Your car's engine needs proper cooling to prevent 
+                                                    overheating. Check the coolant
+                                                    level and top it up if necessary. Also, ensure 
+                                                    the cooling system is free from leaks.</li>
+                                                
+                                                <li>Check Tires: Tires should be inflated to the correct pressure and
+                                                    inspected for even wear. Rotate the tires regularly to ensure they wear
+                                                    evenly and last longer.</li>
+                                                
+                                                <li>Check Brakes: The braking system is crucial for safe driving. Inspect the brake pads and discs for wear and replace them when necessary.
 
-                                                <li>Use a serrated knife to cut a fondant cake.</li>
+</li>
 
-                                                <li>Sculptural elements and figurines may contain wire supports
-                                                    or toothpicks or wooden skewers for support.</li>
-
-                                                <li>Please check the placement of these items before serving to
-                                                    small children.</li>
-
-                                                <li>The cake should be consumed within 24 hours.</li>
-
-                                                <li>Enjoy your cake!</li>
+                                                <li>Enjoy your car!</li>
                                             </ul>
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-                                        <div class="review-box">
-                                            <div class="row g-4">
-                                                <div class="col-xl-6">
-                                                    <div class="review-title">
-                                                        <h4 class="fw-500">Customer reviews</h4>
-                                                    </div>
-
-                                                    <div class="d-flex">
-                                                        <div class="product-rating">
-                                                            <ul class="rating">
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star"></i>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <h6 class="ms-3">4.2 Out Of 5</h6>
-                                                    </div>
-
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>5 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: 68%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            68%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>4 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: 67%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            67%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>3 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: 42%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            42%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>2 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: 30%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            30%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>1 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                            style="width: 24%" aria-valuenow="100"
-                                                                            aria-valuemin="0" aria-valuemax="100">
-                                                                            24%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-6">
-                                                    <div class="review-title">
-                                                        <h4 class="fw-500">Add a review</h4>
-                                                    </div>
-
-                                                    <div class="row g-4">
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="text" class="form-control" id="name"
-                                                                    placeholder="Name">
-                                                                <label for="name">Your Name</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="email" class="form-control" id="email"
-                                                                    placeholder="Email Address">
-                                                                <label for="email">Email Address</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="url" class="form-control" id="website"
-                                                                    placeholder="Website">
-                                                                <label for="website">Website</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="url" class="form-control" id="review1"
-                                                                    placeholder="Give your review a title">
-                                                                <label for="review1">Review Title</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-12">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <textarea class="form-control"
-                                                                    placeholder="Leave a comment here"
-                                                                    id="floatingTextarea2"
-                                                                    style="height: 150px"></textarea>
-                                                                <label for="floatingTextarea2">Write Your
-                                                                    Comment</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12">
-                                                    <div class="review-title">
-                                                        <h4 class="fw-500">Customer questions & answers</h4>
-                                                    </div>
-
-                                                    <div class="review-people">
-                                                        <ul class="review-list">
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="./assets/images/review/1.jpg"
-                                                                                class="img-fluid blur-up lazyload"
-                                                                                alt="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                            href="javascript:void(0)">Tracey</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">14 Jan, 2022 at
-                                                                                12.58 AM</h6>
-
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="reply">
-                                                                            <p>Icing cookie carrot cake chocolate cake
-                                                                                sugar plum jelly-o danish. Dragée dragée
-                                                                                shortbread tootsie roll croissant muffin
-                                                                                cake I love gummi bears. Candy canes ice
-                                                                                cream caramels tiramisu marshmallow cake
-                                                                                shortbread candy canes cookie.<a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="./assets/images/review/2.jpg"
-                                                                                class="img-fluid blur-up lazyload"
-                                                                                alt="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                            href="javascript:void(0)">Olivia</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">01 May, 2022 at
-                                                                                08.31 AM</h6>
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="reply">
-                                                                            <p>Tootsie roll cake danish halvah powder
-                                                                                Tootsie roll candy marshmallow cookie
-                                                                                brownie apple pie pudding brownie
-                                                                                chocolate bar. Jujubes gummi bears I
-                                                                                love powder danish oat cake tart
-                                                                                croissant.<a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="./assets/images/review/3.jpg"
-                                                                                class="img-fluid blur-up lazyload"
-                                                                                alt="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                            href="javascript:void(0)">Gabrielle</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">21 May, 2022 at
-                                                                                05.52 PM</h6>
-
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                            class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="reply">
-                                                                            <p>Biscuit chupa chups gummies powder I love
-                                                                                sweet pudding jelly beans. Lemon drops
-                                                                                marzipan apple pie gingerbread macaroon
-                                                                                croissant cotton candy pastry wafer.
-                                                                                Carrot cake halvah I love tart caramels
-                                                                                pudding icing chocolate gummi bears.
-                                                                                Gummi bears danish cotton candy muffin
-                                                                                marzipan caramels awesome feel. <a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -2888,7 +2442,7 @@
 
             <div class="sub-footer section-small-space py-3">
                 <div class="reserve">
-                    <h6 class="text-content">©2022 ApexAutos All rights reserved</h6>
+                    <h6 class="text-content">?2022 ApexAutos All rights reserved</h6>
                 </div>
 
                 <div class="payment">
@@ -2973,7 +2527,7 @@
                                 <div class="product-detail">
                                     <h4>Product Details :</h4>
                                     <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
-                                        Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
+                                        Caramels marshmallow icing dessert candy canes I love souffl? I love toffee.
                                         Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
                                         muffin I love carrot cake sugar plum dessert bonbon.</p>
                                 </div>
@@ -3243,32 +2797,11 @@
                             <img src="./assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
                                 alt="">
                             <div class="content">
-                                <h5>Creamy Chocolate Cake</h5>
-                                <h6>$32.96<del class="text-danger">$96.00</del><span>55% off</span></h6>
+                                <h5>${carDT.name}</h5>
+                                <h6>${carDT.price}<del class="text-danger">$90.00</del><span>20% off</span></h6>
                             </div>
                         </div>
-                        <div class="selection-section">
-                            <div class="form-group mb-0">
-                                <select id="input-state" class="form-control form-select">
-                                    <option selected disabled>Choose Weight...</option>
-                                    <option>1/2 KG</option>
-                                    <option>1 KG</option>
-                                    <option>1.5 KG</option>
-                                </select>
-                            </div>
-                            <div class="cart_qty qty-box product-qty m-0">
-                                <div class="input-group h-100">
-                                    <button type="button" class="qty-left-minus" data-type="minus" data-field="">
-                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                    </button>
-                                    <input class="form-control input-number qty-input" type="text" name="quantity"
-                                        value="1">
-                                    <button type="button" class="qty-right-plus" data-type="plus" data-field="">
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                       
                         <div class="add-btn">
                             <a class="btn theme-bg-color text-white wishlist-btn" href="wishlist.html"><i
                                     class="fa fa-bookmark"></i> Wishlist</a>

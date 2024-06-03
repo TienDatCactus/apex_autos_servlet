@@ -84,6 +84,8 @@ public class CarDao {
     }
 
     public static void main(String[] args) {
+        CarDao dao = new CarDao();
+        System.out.println(dao.viewDetail(3));
     }
 
 }

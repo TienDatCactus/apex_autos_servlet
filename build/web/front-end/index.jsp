@@ -729,14 +729,14 @@
                                     <div>
                                         <div class="product-box product-white-bg wow fadeIn">
                                             <div class="product-image">
-                                                <a href="detail?id=${cl.car_id}">
+                                                <a href="product-left-thumbnail.html">
                                                     <img src="./assets/images/cake/product/3.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
                                                 <ul class="product-option">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                            data-bs-target="#view">
+                                                        <a href="detail?id=${cl.car_id}" 
+                                                            >
                                                             <i data-feather="eye"></i>
                                                         </a>
                                                     </li>
@@ -757,7 +757,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-detail position-relative">
-                                                <a href="detail?id=${cl.car_id}">
+                                                <a href="product-left-thumbnail.html">
                                                     <h6 class="name">
                                                         ${cl.name}
                                                     </h6>
