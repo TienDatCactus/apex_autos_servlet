@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -80,20 +82,45 @@ public class UserDAO {
         return false;
     }
 
+    public boolean checkRegisterByGG(UserAccount UserAccount) {
+        String email = UserAccount.getEmail();
+        String password = "123456";
+        if (userExisted(email)) {
+            return false;
+        }
+
+        String query = "INSERT INTO [dbo].[user_account] ([email],[passwordHash], [given_name], [family_name]) VALUES (?, ?,?,?)";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, email);
+            String hashedPassword = hashPassword(password);
+            ps.setString(2, hashedPassword);
+            ps.setString(3, UserAccount.getGiven_name());
+            ps.setString(4, UserAccount.getFamily_name());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean checkLogin(UserAccount userAccount) {
         String email = userAccount.getEmail();
         String password = userAccount.getPassword();
 
-        String query = "SELECT [user_id] ,[email] ,[passwordHash] FROM [dbo].[user_account] WHERE email = ? AND passwordHash = ?";
+        String query = "SELECT * FROM [dbo].[user_account] WHERE email = ? AND passwordHash = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
             String hashedPassword = hashPassword(password);
             ps.setString(2, hashedPassword);
 
-            try (ResultSet rs = ps.executeQuery()) {
-                return rs.next();
-            }
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -114,6 +141,132 @@ public class UserDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public UserAccount viewDetail(UserAccount userAccount) {
+
+        String query = " select * from user_account where email = ? and passwordHash = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setString(1, userAccount.getEmail());
+            ps.setString(2, userAccount.getPassword());
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    userAccount.setUser_id(rs.getInt("user_id"));
+                    userAccount.setEmail(rs.getString("email"));
+                    userAccount.setPassword(rs.getString("passwordHash"));
+
+                    userAccount.setGiven_name(rs.getString("given_name"));
+                    userAccount.setFamily_name(rs.getString("family_name"));
+
+                    userAccount.setPhone(rs.getString("phone"));
+                } else {
+                    // If no result is found, return null or handle as per your requirements
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userAccount;
+    }
+
+    public boolean registerByGG(UserAccount userAccount) {
+        String query = "INSERT INTO user_account (email, passwordHash, given_name, family_name, phone) VALUES (?, ?, ?, ?, ?)";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setString(1, userAccount.getEmail());
+            ps.setString(2, userAccount.getPassword());
+            ps.setString(3, userAccount.getGiven_name());
+            ps.setString(4, userAccount.getFamily_name());
+            ps.setString(5, userAccount.getPhone());
+
+            // Execute the update
+            int affectedRows = ps.executeUpdate();
+
+            if (affectedRows > 0) {
+
+                return true;
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        UserAccount a = new UserAccount("locdphe170093@fpt.edu.vn", "123456",
+                "", "", "");
+        UserDAO r = new UserDAO();
+        System.out.println(r.viewAllAddressFor1User(8));
+    }
+
+    public UserAccount getUserByEmail(String email) {
+        UserAccount userAccount = new UserAccount();
+        String query = " select * from user_account where email = ? ";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setString(1, email);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+
+                    userAccount.setUser_id(rs.getInt("user_id"));
+                    userAccount.setEmail(rs.getString("email"));
+                    userAccount.setPassword(rs.getString("passwordHash"));
+
+                    userAccount.setGiven_name(rs.getString("given_name"));
+                    userAccount.setFamily_name(rs.getString("family_name"));
+
+                    userAccount.setPhone(rs.getString("phone"));
+                } else {
+                    // If no result is found, return null or handle as per your requirements
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userAccount;
+    }
+
+    public void addNewAddress(Address address) {
+        String query = "INSERT INTO address (address, pin_code, user_id) VALUES (?, ?, ?)";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setString(1, address.getAddress());
+            ps.setInt(2, address.getPin_code());
+            ps.setInt(3, address.getUser_id());
+
+            // Thực hiện truy vấn để thêm dữ liệu vào cơ sở dữ liệu
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Address> viewAllAddressFor1User(int userId) {
+        List<Address> addresses = new ArrayList<>();
+        String query = "SELECT * FROM [dbo].[address] WHERE user_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Address address = new Address(rs.getString("address"), rs.getInt("pin_code"), rs.getInt("user_id"));
+                    addresses.add(address);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return addresses;
     }
 
 }

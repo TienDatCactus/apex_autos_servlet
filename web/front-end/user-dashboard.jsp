@@ -8,10 +8,10 @@
     <meta name="description" content="ApexAutos" />
     <meta name="keywords" content="ApexAutos" />
     <meta name="author" content="ApexAutos" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
     <title>User Dashboard</title>
 
     <!-- Google font -->
@@ -24,27 +24,31 @@
         rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body>
+   
+    
+    
 
+   
     <!-- Loader Start -->
     <div class="fullpage-loader">
         <span></span>
@@ -100,21 +104,21 @@
                                 <div class="dropdown theme-form-select">
                                     <button class="btn dropdown-toggle" type="button" id="select-language"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="../assets/images/country/united-states.png"
+                                        <img src="./assets/images/country/united-states.png"
                                             class="img-fluid blur-up lazyload" alt="" />
                                         <span>English</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                                <img src="../assets/images/country/united-kingdom.png"
+                                                <img src="./assets/images/country/united-kingdom.png"
                                                     class="img-fluid blur-up lazyload" alt="" />
                                                 <span>English</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                                <img src="../assets/images/country/vn.png"
+                                                <img src="./assets/images/country/vn.png"
                                                     class="img-fluid blur-up lazyload" alt="" />
                                                 <span>Viet Nam</span>
                                             </a>
@@ -157,7 +161,7 @@
                                 </span>
                             </button>
                             <a href="index.html" class="web-logo nav-logo">
-                                <img src="../assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="" />
+                                <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="" />
                             </a>
 
                             <div class="middle-box">
@@ -231,7 +235,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                <img src="./assets/images/vegetable/product/1.png"
                                                                     class="blur-up lazyload" alt="" />
                                                             </a>
 
@@ -250,7 +254,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/2.png"
+                                                                <img src="./assets/images/vegetable/product/2.png"
                                                                     class="blur-up lazyload" alt="" />
                                                             </a>
 
@@ -346,7 +350,7 @@
                                 <ul class="category-list">
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/vegetable.svg" alt="" />
+                                            <img src="./assets/svg/1/vegetable.svg" alt="" />
                                             <h6>Vegetables & Fruit</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -414,7 +418,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/cup.svg" alt="" />
+                                            <img src="./assets/svg/1/cup.svg" alt="" />
                                             <h6>Beverages</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -453,7 +457,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/meats.svg" alt="" />
+                                            <img src="./assets/svg/1/meats.svg" alt="" />
                                             <h6>Meats & Seafood</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -512,7 +516,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/breakfast.svg" alt="" />
+                                            <img src="./assets/svg/1/breakfast.svg" alt="" />
                                             <h6>Breakfast & Dairy</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -586,7 +590,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/frozen.svg" alt="" />
+                                            <img src="./assets/svg/1/frozen.svg" alt="" />
                                             <h6>Frozen Foods</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -619,7 +623,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/biscuit.svg" alt="" />
+                                            <img src="./assets/svg/1/biscuit.svg" alt="" />
                                             <h6>Biscuits & Snacks</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -672,7 +676,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/grocery.svg" alt="" />
+                                            <img src="./assets/svg/1/grocery.svg" alt="" />
                                             <h6>Grocery & Staples</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -831,29 +835,29 @@
                                   <ul class="sub-menu">
                                     <li>
                                       <a
-                                        href="../email-templete/abandonment-email.html"
+                                        href="./email-templete/abandonment-email.html"
                                         >Abandonment</a
                                       >
                                     </li>
                                     <li>
                                       <a
-                                        href="../email-templete/offer-template.html"
+                                        href="./email-templete/offer-template.html"
                                         >Offer Template</a
                                       >
                                     </li>
                                     <li>
-                                      <a href="../email-templete/order-success.html"
+                                      <a href="./email-templete/order-success.html"
                                         >Order Success</a
                                       >
                                     </li>
                                     <li>
                                       <a
-                                        href="../email-templete/reset-password.html"
+                                        href="./email-templete/reset-password.html"
                                         >Reset Password</a
                                       >
                                     </li>
                                     <li>
-                                      <a href="../email-templete/welcome.html"
+                                      <a href="./email-templete/welcome.html"
                                         >Welcome template</a
                                       >
                                     </li>
@@ -869,19 +873,19 @@
                                   ></a>
                                   <ul class="sub-menu">
                                     <li>
-                                      <a href="../invoice/invoice-1.html"
+                                      <a href="./invoice/invoice-1.html"
                                         >Invoice 1</a
                                       >
                                     </li>
     
                                     <li>
-                                      <a href="../invoice/invoice-2.html"
+                                      <a href="./invoice/invoice-2.html"
                                         >Invoice 2</a
                                       >
                                     </li>
     
                                     <li>
-                                      <a href="../invoice/invoice-3.html"
+                                      <a href="./invoice/invoice-3.html"
                                         >Invoice 3</a
                                       >
                                     </li>
@@ -1097,14 +1101,14 @@
                         </div>
                         <div class="profile-box">
                             <div class="cover-image">
-                                <img src="../assets/images/inner-page/cover-img.jpg" class="img-fluid blur-up lazyload"
+                                <img src="./assets/images/inner-page/cover-img.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </div>
 
                             <div class="profile-contain">
                                 <div class="profile-image">
                                     <div class="position-relative">
-                                        <img src="../assets/images/inner-page/user/1.jpg"
+                                        <img src="./assets/images/inner-page/user/1.jpg"
                                             class="blur-up lazyload update_img" alt="">
                                         <div class="cover-icon">
                                             <i class="fa-solid fa-pen">
@@ -1115,8 +1119,8 @@
                                 </div>
 
                                 <div class="profile-name">
-                                    <h3>Vicki E. Pope</h3>
-                                    <h6 class="text-content">vicki.pope@gmail.com</h6>
+                                    <h3>${userd.given_name} ${userd.family_name}</h3>
+                                    <h6 class="text-content">${userd.email}</h6>
                                 </div>
                             </div>
                         </div>
@@ -1142,11 +1146,7 @@
                                     Wishlist</button>
                             </li>
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-card-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-card" type="button" role="tab" aria-controls="pills-card"
-                                    aria-selected="false"><i data-feather="credit-card"></i> Saved Card</button>
-                            </li>
+                            
 
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-address-tab" data-bs-toggle="pill"
@@ -1162,12 +1162,7 @@
                                     Profile</button>
                             </li>
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-security-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-security" type="button" role="tab"
-                                    aria-controls="pills-security" aria-selected="false"><i data-feather="shield"></i>
-                                    Privacy</button>
-                            </li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -1184,25 +1179,25 @@
                                         <h2>My Dashboard</h2>
                                         <span class="title-leaf">
                                             <svg class="icon-width bg-gray">
-                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                                             </svg>
                                         </span>
                                     </div>
 
                                     <div class="dashboard-user-name">
-                                        <h6 class="text-content">Hello, <b class="text-title">Vicki E. Pope</b></h6>
+                                        <h6 class="text-content">Hello, <b class="text-title">${userd.given_name} ${userd.family_name}</b></h6>
                                         <p class="text-content">From your My Account Dashboard you have the ability to
                                             view a snapshot of your recent account activity and update your account
-                                            information. Select a link below to view or edit information.</p>
+                                            information.</p>
                                     </div>
 
                                     <div class="total-box">
                                         <div class="row g-sm-4 g-3">
                                             <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                                 <div class="totle-contain">
-                                                    <img src="../assets/images/svg/order.svg"
+                                                    <img src="./assets/images/svg/order.svg"
                                                         class="img-1 blur-up lazyload" alt="">
-                                                    <img src="../assets/images/svg/order.svg" class="blur-up lazyload"
+                                                    <img src="./assets/images/svg/order.svg" class="blur-up lazyload"
                                                         alt="">
                                                     <div class="totle-detail">
                                                         <h5>Total Order</h5>
@@ -1211,24 +1206,13 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
-                                                <div class="totle-contain">
-                                                    <img src="../assets/images/svg/pending.svg"
-                                                        class="img-1 blur-up lazyload" alt="">
-                                                    <img src="../assets/images/svg/pending.svg" class="blur-up lazyload"
-                                                        alt="">
-                                                    <div class="totle-detail">
-                                                        <h5>Total Pending Order</h5>
-                                                        <h3>254</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
 
                                             <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                                 <div class="totle-contain">
-                                                    <img src="../assets/images/svg/wishlist.svg"
+                                                    <img src="./assets/images/svg/wishlist.svg"
                                                         class="img-1 blur-up lazyload" alt="">
-                                                    <img src="../assets/images/svg/wishlist.svg"
+                                                    <img src="./assets/images/svg/wishlist.svg"
                                                         class="blur-up lazyload" alt="">
                                                     <div class="totle-detail">
                                                         <h5>Total Wishlist</h5>
@@ -1239,64 +1223,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="dashboard-title">
-                                        <h3>Account Information</h3>
-                                    </div>
-
-                                    <div class="row g-4">
-                                        <div class="col-xxl-6">
-                                            <div class="dashboard-contant-title">
-                                                <h4>Contact Information <a href="javascript:void(0)"
-                                                        data-bs-toggle="modal" data-bs-target="#editProfile">Edit</a>
-                                                </h4>
-                                            </div>
-                                            <div class="dashboard-detail">
-                                                <h6 class="text-content">MARK JECNO</h6>
-                                                <h6 class="text-content">vicki.pope@gmail.com</h6>
-                                                <a href="javascript:void(0)">Change Password</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-6">
-                                            <div class="dashboard-contant-title">
-                                                <h4>Newsletters <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile">Edit</a></h4>
-                                            </div>
-                                            <div class="dashboard-detail">
-                                                <h6 class="text-content">You are currently not subscribed to any
-                                                    newsletter</h6>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="dashboard-contant-title">
-                                                <h4>Address Book <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile">Edit</a></h4>
-                                            </div>
-
-                                            <div class="row g-4">
-                                                <div class="col-xxl-6">
-                                                    <div class="dashboard-detail">
-                                                        <h6 class="text-content">Default Billing Address</h6>
-                                                        <h6 class="text-content">You have not set a default billing
-                                                            address.</h6>
-                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                            data-bs-target="#editProfile">Edit Address</a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xxl-6">
-                                                    <div class="dashboard-detail">
-                                                        <h6 class="text-content">Default Shipping Address</h6>
-                                                        <h6 class="text-content">You have not set a default shipping
-                                                            address.</h6>
-                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                            data-bs-target="#editProfile">Edit Address</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
 
@@ -1307,7 +1234,7 @@
                                         <h2>My Wishlist History</h2>
                                         <span class="title-leaf title-leaf-gray">
                                             <svg class="icon-width bg-gray">
-                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                                             </svg>
                                         </span>
                                     </div>
@@ -1317,7 +1244,7 @@
                                                 <div class="product-header">
                                                     <div class="product-image">
                                                         <a href="product-left-thumbnail.html">
-                                                            <img src="../assets/images/cake/product/2.png"
+                                                            <img src="./assets/images/cake/product/2.png"
                                                                 class="img-fluid blur-up lazyload" alt="">
                                                         </a>
 
@@ -1376,7 +1303,7 @@
                                                 <div class="product-header">
                                                     <div class="product-image">
                                                         <a href="product-left-thumbnail.html">
-                                                            <img src="../assets/images/cake/product/3.png"
+                                                            <img src="./assets/images/cake/product/3.png"
                                                                 class="img-fluid blur-up lazyload" alt="">
                                                         </a>
 
@@ -1436,7 +1363,7 @@
                                                 <div class="product-header">
                                                     <div class="product-image">
                                                         <a href="product-left-thumbnail.html">
-                                                            <img src="../assets/images/cake/product/4.png"
+                                                            <img src="./assets/images/cake/product/4.png"
                                                                 class="img-fluid blur-up lazyload" alt="">
                                                         </a>
 
@@ -1498,7 +1425,7 @@
                                                 <div class="product-header">
                                                     <div class="product-image">
                                                         <a href="product-left-thumbnail.html">
-                                                            <img src="../assets/images/cake/product/5.png"
+                                                            <img src="./assets/images/cake/product/5.png"
                                                                 class="img-fluid blur-up lazyload" alt="">
                                                         </a>
 
@@ -1558,7 +1485,7 @@
                                                 <div class="product-header">
                                                     <div class="product-image">
                                                         <a href="product-left-thumbnail.html">
-                                                            <img src="../assets/images/cake/product/6.png"
+                                                            <img src="./assets/images/cake/product/6.png"
                                                                 class="img-fluid blur-up lazyload" alt="">
                                                         </a>
 
@@ -1618,7 +1545,7 @@
                                                 <div class="product-header">
                                                     <div class="product-image">
                                                         <a href="product-left-thumbnail.html">
-                                                            <img src="../assets/images/cake/product/7.png"
+                                                            <img src="./assets/images/cake/product/7.png"
                                                                 class="img-fluid blur-up lazyload" alt="">
                                                         </a>
 
@@ -1677,7 +1604,7 @@
                                                 <div class="product-header">
                                                     <div class="product-image">
                                                         <a href="product-left-thumbnail.html">
-                                                            <img src="../assets/images/cake/product/2.png"
+                                                            <img src="./assets/images/cake/product/2.png"
                                                                 class="img-fluid blur-up lazyload" alt="">
                                                         </a>
 
@@ -1741,7 +1668,7 @@
                                         <h2>My Orders History</h2>
                                         <span class="title-leaf title-leaf-gray">
                                             <svg class="icon-width bg-gray">
-                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                                             </svg>
                                         </span>
                                     </div>
@@ -1762,7 +1689,7 @@
 
                                             <div class="product-order-detail">
                                                 <a href="product-left-thumbnail.html" class="order-image">
-                                                    <img src="../assets/images/vegetable/product/1.png"
+                                                    <img src="./assets/images/vegetable/product/1.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -1840,7 +1767,7 @@
 
                                             <div class="product-order-detail">
                                                 <a href="product-left-thumbnail.html" class="order-image">
-                                                    <img src="../assets/images/vegetable/product/2.png" alt=""
+                                                    <img src="./assets/images/vegetable/product/2.png" alt=""
                                                         class="blur-up lazyload">
                                                 </a>
 
@@ -1917,7 +1844,7 @@
 
                                             <div class="product-order-detail">
                                                 <a href="product-left-thumbnail.html" class="order-image">
-                                                    <img src="../assets/images/vegetable/product/3.png" alt=""
+                                                    <img src="./assets/images/vegetable/product/3.png" alt=""
                                                         class="blur-up lazyload">
                                                 </a>
 
@@ -1994,7 +1921,7 @@
 
                                             <div class="product-order-detail">
                                                 <a href="product-left-thumbnail.html" class="order-image">
-                                                    <img src="../assets/images/vegetable/product/4.png"
+                                                    <img src="./assets/images/vegetable/product/4.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -2067,7 +1994,7 @@
                                             <h2>My Address Book</h2>
                                             <span class="title-leaf">
                                                 <svg class="icon-width bg-gray">
-                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                    <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                                                 </svg>
                                             </span>
                                         </div>
@@ -2076,47 +2003,36 @@
                                             data-bs-toggle="modal" data-bs-target="#add-address"><i data-feather="plus"
                                                 class="me-2"></i> Add New Address</button>
                                     </div>
-
+                                      
+                                     <c:forEach items="${listAddr}" var="a">
                                     <div class="row g-sm-4 g-3">
                                         <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
                                             <div class="address-box">
                                                 <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="jack"
-                                                            id="flexRadioDefault2" checked>
-                                                    </div>
-
-                                                    <div class="label">
-                                                        <label>Home</label>
-                                                    </div>
-
+                                                
                                                     <div class="table-responsive address-table">
                                                         <table class="table">
                                                             <tbody>
-                                                                <tr>
-                                                                    <td colspan="2">Jack Jennas</td>
-                                                                </tr>
+                                                               
 
                                                                 <tr>
                                                                     <td>Address :</td>
                                                                     <td>
-                                                                        <p>8424 James Lane South San Francisco, CA 94080
+                                                                        <p>${a.address}
                                                                         </p>
                                                                     </td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td>Pin Code :</td>
-                                                                    <td>+380</td>
+                                                                    <td>${a.pin_code}</td>
                                                                 </tr>
 
-                                                                <tr>
-                                                                    <td>Phone :</td>
-                                                                    <td>+ 812-710-3798</td>
-                                                                </tr>
+                                                                
                                                             </tbody>
                                                         </table>
                                                     </div>
+                                                   
                                                 </div>
 
                                                 <div class="button-group">
@@ -2130,380 +2046,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                            <div class="address-box">
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="jack"
-                                                            id="flexRadioDefault3">
-                                                    </div>
-
-                                                    <div class="label">
-                                                        <label>Office</label>
-                                                    </div>
-
-                                                    <div class="table-responsive address-table">
-                                                        <table class="table">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td colspan="2">Terry S. Sutton</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Address :</td>
-                                                                    <td>
-                                                                        <p>2280 Rose Avenue Kenner, LA 70062</p>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Pin Code :</td>
-                                                                    <td>+25</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Phone :</td>
-                                                                    <td>+ 504-228-0969</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                                <div class="button-group">
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                        Edit</button>
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                        Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                            <div class="address-box">
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="jack"
-                                                            id="flexRadioDefault4">
-                                                    </div>
-
-                                                    <div class="label">
-                                                        <label>Neighbour</label>
-                                                    </div>
-
-                                                    <div class="table-responsive address-table">
-                                                        <table class="table">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td colspan="2">Juan M. McKeon</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Address :</td>
-                                                                    <td>
-                                                                        <p>1703 Carson Street Lexington, KY 40593</p>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Pin Code :</td>
-                                                                    <td>+78</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Phone :</td>
-                                                                    <td>+ 859-257-0509</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                                <div class="button-group">
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                        Edit</button>
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                        Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                            <div class="address-box">
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="jack"
-                                                            id="flexRadioDefault5">
-                                                    </div>
-
-                                                    <div class="label">
-                                                        <label>Home 2</label>
-                                                    </div>
-
-                                                    <div class="table-responsive address-table">
-                                                        <table class="table">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td colspan="2">Gary M. Bailey</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Address :</td>
-                                                                    <td>
-                                                                        <p>2135 Burning Memory Lane Philadelphia, PA
-                                                                            19135</p>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Pin Code :</td>
-                                                                    <td>+26</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Phone :</td>
-                                                                    <td>+ 215-335-9916</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                                <div class="button-group">
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                        Edit</button>
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                        Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                            <div class="address-box">
-                                                <div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="jack"
-                                                            id="flexRadioDefault1">
-                                                    </div>
-
-                                                    <div class="label">
-                                                        <label>Home 2</label>
-                                                    </div>
-
-                                                    <div class="table-responsive address-table">
-                                                        <table class="table">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td colspan="2">Gary M. Bailey</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Address :</td>
-                                                                    <td>
-                                                                        <p>2135 Burning Memory Lane Philadelphia, PA
-                                                                            19135</p>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Pin Code :</td>
-                                                                    <td>+26</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>Phone :</td>
-                                                                    <td>+ 215-335-9916</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                                <div class="button-group">
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                        Edit</button>
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                        Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    
                                     </div>
+                                     </c:forEach>
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade show" id="pills-card" role="tabpanel"
-                                aria-labelledby="pills-card-tab">
-                                <div class="dashboard-card">
-                                    <div class="title title-flex">
-                                        <div>
-                                            <h2>My Card Details</h2>
-                                            <span class="title-leaf">
-                                                <svg class="icon-width bg-gray">
-                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
-                                                </svg>
-                                            </span>
-                                        </div>
-
-                                        <button class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3"
-                                            data-bs-toggle="modal" data-bs-target="#editCard"><i data-feather="plus"
-                                                class="me-2"></i> Add New Card</button>
-                                    </div>
-
-                                    <div class="row g-4">
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                            <div class="payment-card-detail">
-                                                <div class="card-details">
-                                                    <div class="card-number">
-                                                        <h4>XXXX - XXXX - XXXX - 2548</h4>
-                                                    </div>
-
-                                                    <div class="valid-detail">
-                                                        <div class="title">
-                                                            <span>valid</span>
-                                                            <span>thru</span>
-                                                        </div>
-                                                        <div class="date">
-                                                            <h3>08/05</h3>
-                                                        </div>
-                                                        <div class="primary">
-                                                            <span class="badge bg-pill badge-light">primary</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="name-detail">
-                                                        <div class="name">
-                                                            <h5>Audrey Carol</h5>
-                                                        </div>
-                                                        <div class="card-img">
-                                                            <img src="../assets/images/payment-icon/1.jpg"
-                                                                class="img-fluid blur-up lazyloaded" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="edit-card">
-                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i
-                                                            class="far fa-minus-square"></i> delete</a>
-                                                </div>
-                                            </div>
-
-                                            <div class="edit-card-mobile">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                    delete</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                            <div class="payment-card-detail">
-                                                <div class="card-details card-visa">
-                                                    <div class="card-number">
-                                                        <h4>XXXX - XXXX - XXXX - 1536</h4>
-                                                    </div>
-
-                                                    <div class="valid-detail">
-                                                        <div class="title">
-                                                            <span>valid</span>
-                                                            <span>thru</span>
-                                                        </div>
-                                                        <div class="date">
-                                                            <h3>12/23</h3>
-                                                        </div>
-                                                        <div class="primary">
-                                                            <span class="badge bg-pill badge-light">primary</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="name-detail">
-                                                        <div class="name">
-                                                            <h5>Leah Heather</h5>
-                                                        </div>
-                                                        <div class="card-img">
-                                                            <img src="../assets/images/payment-icon/2.jpg"
-                                                                class="img-fluid blur-up lazyloaded" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="edit-card">
-                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i
-                                                            class="far fa-minus-square"></i> delete</a>
-                                                </div>
-                                            </div>
-
-                                            <div class="edit-card-mobile">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                    delete</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                            <div class="payment-card-detail">
-                                                <div class="card-details dabit-card">
-                                                    <div class="card-number">
-                                                        <h4>XXXX - XXXX - XXXX - 1366</h4>
-                                                    </div>
-
-                                                    <div class="valid-detail">
-                                                        <div class="title">
-                                                            <span>valid</span>
-                                                            <span>thru</span>
-                                                        </div>
-                                                        <div class="date">
-                                                            <h3>05/21</h3>
-                                                        </div>
-                                                        <div class="primary">
-                                                            <span class="badge bg-pill badge-light">primary</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="name-detail">
-                                                        <div class="name">
-                                                            <h5>mark jecno</h5>
-                                                        </div>
-                                                        <div class="card-img">
-                                                            <img src="../assets/images/payment-icon/3.jpg"
-                                                                class="img-fluid blur-up lazyloaded" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="edit-card">
-                                                    <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                        href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#removeProfile"><i
-                                                            class="far fa-minus-square"></i> delete</a>
-                                                </div>
-                                            </div>
-
-                                            <div class="edit-card-mobile">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                    delete</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <div class="tab-pane fade show" id="pills-profile" role="tabpanel"
                                 aria-labelledby="pills-profile-tab">
@@ -2512,7 +2061,7 @@
                                         <h2>My Profile</h2>
                                         <span class="title-leaf">
                                             <svg class="icon-width bg-gray">
-                                                <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                <use xlink:href="./assets/svg/leaf.svg#leaf"></use>
                                             </svg>
                                         </span>
                                     </div>
@@ -2523,7 +2072,7 @@
                                         </div>
                                         <div class="profile-name-detail">
                                             <div class="d-sm-flex align-items-center d-block">
-                                                <h3>Vicki E. Pope</h3>
+                                                <h3>${userd.given_name} ${userd.family_name}</h3>
                                                 <div class="product-rating profile-rating">
                                                     <ul class="rating">
                                                         <li>
@@ -2644,7 +2193,7 @@
 
                                             <div class="col-xxl-5">
                                                 <div class="profile-image">
-                                                    <img src="../assets/images/inner-page/dashboard-profile.png"
+                                                    <img src="./assets/images/inner-page/dashboard-profile.png"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </div>
                                             </div>
@@ -2654,81 +2203,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade show" id="pills-security" role="tabpanel"
-                                aria-labelledby="pills-security-tab">
-                                <div class="dashboard-privacy">
-                                    <div class="dashboard-bg-box">
-                                        <div class="dashboard-title mb-4">
-                                            <h3>Privacy</h3>
-                                        </div>
-
-                                        <div class="privacy-box">
-                                            <div class="d-flex align-items-start">
-                                                <h6>Allows others to see my profile</h6>
-                                                <div class="form-check form-switch switch-radio ms-auto">
-                                                    <input class="form-check-input" type="checkbox" role="switch"
-                                                        id="redio" aria-checked="false">
-                                                    <label class="form-check-label" for="redio"></label>
-                                                </div>
-                                            </div>
-
-                                            <p class="text-content">all peoples will be able to see my profile</p>
-                                        </div>
-
-                                        <div class="privacy-box">
-                                            <div class="d-flex align-items-start">
-                                                <h6>who has save this profile only that people see my profile</h6>
-                                                <div class="form-check form-switch switch-radio ms-auto">
-                                                    <input class="form-check-input" type="checkbox" role="switch"
-                                                        id="redio2" aria-checked="false">
-                                                    <label class="form-check-label" for="redio2"></label>
-                                                </div>
-                                            </div>
-
-                                            <p class="text-content">all peoples will not be able to see my profile</p>
-                                        </div>
-
-                                        <button class="btn theme-bg-color btn-md fw-bold mt-4 text-white">Save
-                                            Changes</button>
-                                    </div>
-
-                                    <div class="dashboard-bg-box mt-4">
-                                        <div class="dashboard-title mb-4">
-                                            <h3>Account settings</h3>
-                                        </div>
-
-                                        <div class="privacy-box">
-                                            <div class="d-flex align-items-start">
-                                                <h6>Deleting Your Account Will Permanently</h6>
-                                                <div class="form-check form-switch switch-radio ms-auto">
-                                                    <input class="form-check-input" type="checkbox" role="switch"
-                                                        id="redio3" aria-checked="false">
-                                                    <label class="form-check-label" for="redio3"></label>
-                                                </div>
-                                            </div>
-                                            <p class="text-content">Once your account is deleted, you will be logged out
-                                                and will be unable to log in back.</p>
-                                        </div>
-
-                                        <div class="privacy-box">
-                                            <div class="d-flex align-items-start">
-                                                <h6>Deleting Your Account Will Temporary</h6>
-                                                <div class="form-check form-switch switch-radio ms-auto">
-                                                    <input class="form-check-input" type="checkbox" role="switch"
-                                                        id="redio4" aria-checked="false">
-                                                    <label class="form-check-label" for="redio4"></label>
-                                                </div>
-                                            </div>
-
-                                            <p class="text-content">Once your account is deleted, you will be logged out
-                                                and you will be create new account</p>
-                                        </div>
-
-                                        <button class="btn theme-bg-color btn-md fw-bold mt-4 text-white">Delete My
-                                            Account</button>
-                                    </div>
-                                </div>
-                            </div>
+                         
                         </div>
                     </div>
                 </div>
@@ -2746,7 +2221,7 @@
                         <div class="service-contain py-2">
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/sedan.png" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/sedan.png" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -2756,7 +2231,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -2766,7 +2241,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/discount.svg" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -2776,7 +2251,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/market.svg" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -2794,7 +2269,7 @@
                         <div class="footer-logo">
                             <div class="theme-logo">
                                 <a href="index.html">
-                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="" />
+                                    <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="" />
                                 </a>
                             </div>
 
@@ -2921,13 +2396,13 @@
                                     <ul>
                                         <li class="mb-0">
                                             <a href="https://play.google.com/store/apps" target="_blank">
-                                                <img src="../assets/images/playstore.svg" class="blur-up lazyload"
+                                                <img src="./assets/images/playstore.svg" class="blur-up lazyload"
                                                     alt="" />
                                             </a>
                                         </li>
                                         <li class="mb-0">
                                             <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                <img src="../assets/images/appstore.svg" class="blur-up lazyload"
+                                                <img src="./assets/images/appstore.svg" class="blur-up lazyload"
                                                     alt="" />
                                             </a>
                                         </li>
@@ -2945,7 +2420,7 @@
                 </div>
 
                 <div class="payment">
-                    <img src="../assets/images/payment/1.png" class="blur-up lazyload" alt="" />
+                    <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="" />
                 </div>
 
                 <div class="social-link">
@@ -2998,7 +2473,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/10.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -3012,7 +2487,7 @@
                             <li class="list-2">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/11.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -3026,7 +2501,7 @@
                             <li class="list-3">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/12.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -3040,7 +2515,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/13.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -3078,53 +2553,31 @@
         <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
             <div class="modal-content">
                 <div class="modal-header">
+                    
+                    
                     <h5 class="modal-title" id="exampleModalLabel">Add a new address</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
+             <form action="userdashboard?id=${userd.user_id}" method="POST">
+                    <div class="modal-body">
                         <div class="form-floating mb-4 theme-form-floating">
-                            <input type="text" class="form-control" id="fname" placeholder="Enter First Name">
-                            <label for="fname">First Name</label>
-                        </div>
-                    </form>
-
-                    <form>
-                        <div class="form-floating mb-4 theme-form-floating">
-                            <input type="text" class="form-control" id="lname" placeholder="Enter Last Name">
-                            <label for="lname">Last Name</label>
-                        </div>
-                    </form>
-
-                    <form>
-                        <div class="form-floating mb-4 theme-form-floating">
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
-                            <label for="email">Email Address</label>
-                        </div>
-                    </form>
-
-                    <form>
-                        <div class="form-floating mb-4 theme-form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="address"
-                                style="height: 100px"></textarea>
+                            <textarea class="form-control" name="address" placeholder="Leave a comment here" id="address" style="height: 100px" required></textarea>
                             <label for="address">Enter Address</label>
                         </div>
-                    </form>
-
-                    <form>
                         <div class="form-floating mb-4 theme-form-floating">
-                            <input type="email" class="form-control" id="pin" placeholder="Enter Pin Code">
+                            <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin Code" required>
                             <label for="pin">Pin Code</label>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn theme-bg-color btn-md text-white" data-bs-dismiss="modal">Save
-                        changes</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn theme-bg-color btn-md text-white">Save changes</button>
+                    </div>
+                </form>
+
+
             </div>
         </div>
     </div>
@@ -3468,38 +2921,38 @@
     <!-- Remove Profile Modal End -->
 
     <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="./assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="./assets/js/bootstrap/popper.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="../assets/js/feather/feather.min.js"></script>
-    <script src="../assets/js/feather/feather-icon.js"></script>
+    <script src="./assets/js/feather/feather.min.js"></script>
+    <script src="./assets/js/feather/feather-icon.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="../assets/js/lazysizes.min.js"></script>
+    <script src="./assets/js/lazysizes.min.js"></script>
 
     <!-- Wizard js -->
-    <script src="../assets/js/wizard.js"></script>
+    <script src="./assets/js/wizard.js"></script>
 
     <!-- Slick js-->
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/slick/custom_slick.js"></script>
+    <script src="./assets/js/slick/slick.js"></script>
+    <script src="./assets/js/slick/custom_slick.js"></script>
 
     <!-- Quantity js -->
-    <script src="../assets/js/quantity-2.js"></script>
+    <script src="./assets/js/quantity-2.js"></script>
 
     <!-- Nav & tab upside js -->
-    <script src="../assets/js/nav-tab.js"></script>
+    <script src="./assets/js/nav-tab.js"></script>
 
     <!-- script js -->
-    <script src="../assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
