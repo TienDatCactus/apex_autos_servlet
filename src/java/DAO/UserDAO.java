@@ -87,30 +87,6 @@ public class UserDAO {
         return false;
     }
 
-    public boolean checkRegisterByGG(UserAccount UserAccount) {
-        String email = UserAccount.getEmail();
-        String password = "123456";
-        if (userExisted(email)) {
-            return false;
-        }
-
-        String query = "INSERT INTO [dbo].[user_account] ([email],[passwordHash], [given_name], [family_name]) VALUES (?, ?,?,?)";
-
-        try (PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setString(1, email);
-            String hashedPassword = hashPassword(password);
-            ps.setString(2, hashedPassword);
-            ps.setString(3, UserAccount.getGiven_name());
-            ps.setString(4, UserAccount.getFamily_name());
-
-            int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public boolean checkLogin(UserAccount userAccount) {
         String email = userAccount.getEmail();
         String password = userAccount.getPassword();
@@ -202,6 +178,60 @@ public class UserDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public int getUserId(String email) {
+        int userId = -1;
+        String query = "select user_id from user_account WHERE email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                userId = rs.getInt("user_id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userId;
+    }
+
+    public boolean addRoles(UserAccount ua) {
+        boolean status;
+        int id = getUserId(ua.getEmail());
+        if (id == -1) {
+            return status = false;
+        }
+        int role = ua.getEmail().contains("admin") ? 1 : 0;
+        String query = "INSERT INTO [dbo].[user_permissions] ([user_id] ,[permission_id]) VALUES (?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            //  ps.setString(4, ud.getPhone());
+            ps.setInt(1, id);
+            ps.setInt(2, role);
+            ps.executeUpdate();
+            status = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            status = false;
+        }
+        return status;
+    }
+
+    public int getRoles(UserAccount ua) {
+        int roles = 0;
+        String query = "select up.permission_id from user_account ua join user_permissions up on ua.user_id = up.user_id where ua.email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, ua.getEmail());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                roles = rs.getInt("permission_id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return roles;
     }
 
     public UserAccount getUserByEmail(String email) {
@@ -320,8 +350,7 @@ public class UserDAO {
 
         UserDAO r = new UserDAO();
 
-        
-        UserAccount acc = new UserAccount(1,"", "", "aaa", "bbb", "1/1/1", "123");
+        UserAccount acc = new UserAccount(1, "", "", "aaa", "bbb", "1/1/1", "123");
         r.editProfile(acc);
         // Edit the address
         System.out.println(acc);

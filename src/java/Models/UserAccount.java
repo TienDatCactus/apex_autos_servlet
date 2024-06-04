@@ -4,8 +4,6 @@
  */
 package Models;
 
-
-
 /**
  *
  * @author Tiến_Đạt
@@ -16,17 +14,19 @@ public class UserAccount {
     String email;
     String password;
 
-  
-
     String given_name;
 
     String family_name;
-    
+
     String phone;
     String dob;
-    
 
     public UserAccount() {
+    }
+
+    public UserAccount(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public UserAccount(int user_id, String email, String password, String given_name, String family_name, String dob, String phone) {
@@ -39,8 +39,6 @@ public class UserAccount {
         this.phone = phone;
     }
 
-    
-
     public String getDob() {
         return dob;
     }
@@ -49,10 +47,6 @@ public class UserAccount {
         this.dob = dob;
     }
 
-    
-    
-
-   
     public String getGiven_name() {
         return given_name;
     }
@@ -93,8 +87,6 @@ public class UserAccount {
         this.password = password;
     }
 
-    
-
     public String getPhone() {
         return phone;
     }
@@ -107,15 +99,5 @@ public class UserAccount {
     public String toString() {
         return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + ", dob=" + dob + '}';
     }
-
-    
-
-    
-
-  
-
-   
-
-    
 
 }
