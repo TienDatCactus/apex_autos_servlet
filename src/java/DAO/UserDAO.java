@@ -49,18 +49,17 @@ public class UserDAO {
         if (userExisted(email)) {
             return false;
         }
-
         String query = "INSERT INTO [dbo].[user_account] ([email], [passwordHash],[given_name],"
-                + "[family_name],[dob],[phone]) VALUES (?, ?,?,?,?,?)";
+                + "[family_name],[dob],[phone]) VALUES (?,?,?,?,?,?)";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
             String hashedPassword = hashPassword(password);
             ps.setString(2, hashedPassword);
-            ps.setString(3, "You need to edit for the first time");
-            ps.setString(4, "You need to edit for the first time");
-            ps.setString(5, "You need to edit for the first time");
-            ps.setString(6, "You need to edit for the first time");
+            ps.setString(3, " ");
+            ps.setString(4, " ");
+            ps.setString(5, " ");
+            ps.setString(6, " ");
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
@@ -203,7 +202,7 @@ public class UserDAO {
             return status = false;
         }
         int role = ua.getEmail().contains("admin") ? 1 : 0;
-        String query = "INSERT INTO [dbo].[user_permissions] ([user_id] ,[permission_id]) VALUES (?,?)";
+        String query = "INSERT INTO [dbo].[user_permission] ([user_id] ,[permission_id]) VALUES (?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             //  ps.setString(4, ud.getPhone());

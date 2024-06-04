@@ -108,7 +108,7 @@ public class UserDashBoardController extends HttpServlet {
                 List<Address> listAddrrr = dao.viewAllAddressFor1User(idv);
                 session.setAttribute("listAddr", listAddrrr);
                 break;
-            case "editpro":
+            case "editPro":
                 int id_pro = Integer.parseInt(request.getParameter("idz"));
                 String given_name = request.getParameter("fname");
                 String family_name = request.getParameter("lname");

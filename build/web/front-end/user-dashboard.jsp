@@ -300,16 +300,16 @@
 
                                         <div class="onhover-div onhover-div-login">
                                             <ul class="user-box-name">
-                                                <c:choose>
-                                                <c:when test="${not empty sessionScope.userd}">
+<c:choose>
+    <c:when test="${not empty sessionScope.user}">
                                                     <li class="product-box-contain">
                                                         <a href="userdashboard">User Profile</a>
                                                     </li>
                                                     <li class="product-box-contain">
                                                         <a href="logout">Log out</a>
                                                     </li>
-                                                </c:when>
-                                                <c:otherwise>
+    </c:when>
+    <c:otherwise>
                                                     <li class="product-box-contain">
                                                         <i></i>
                                                         <a href="login">Log In</a>
@@ -317,8 +317,8 @@
                                                     <li class="product-box-contain">
                                                         <a href="register">Register</a>
                                                     </li>
-                                                </c:otherwise>
-                                            </c:choose>
+    </c:otherwise>
+</c:choose>
                                             </ul>
                                         </div>
                                     </li>
@@ -1119,8 +1119,8 @@
                                 </div>
 
                                 <div class="profile-name">
-                                    <h3>${userd.given_name}</h3>
-                                    <h6 class="text-content">${userd.email}</h6>
+                                    <h3>${user.given_name}</h3>
+                                    <h6 class="text-content">${user.email}</h6>
                                 </div>
                             </div>
                         </div>
@@ -2004,7 +2004,7 @@
                                                 class="me-2"></i> Add New Address</button>
                                     </div>
                                       
-                                     <c:forEach items="${listAddr}" var="a">
+<c:forEach items="${listAddr}" var="a">
                                     <div class="row g-sm-4 g-3">
                                         <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
                                             <div class="address-box">
@@ -2054,7 +2054,7 @@
                                                    
                                     
                                     </div>
-                                     </c:forEach>
+</c:forEach>
                                 </div>
                             </div>
 
@@ -2087,7 +2087,7 @@
                                                 <li>
                                                     <div class="location-box" style="margin-top: -110px">
                                                         <i data-feather="mail"></i>
-                                                        <h6 style="margin-top: 20px">${userd.email}</h6>
+                                                        <h6 style="margin-top: 20px">${user.email}</h6>
                                                     </div>
                                                 </li>
                                             
@@ -2104,7 +2104,7 @@
 
                                     <div class="profile-about dashboard-bg-box">
                                         <div class="row">
-                                            <div class="col-xxl-7">
+                                            <div class="col-xxl-9">
                                                 <div class="dashboard-title mb-3">
                                                     <h3>Profile About</h3>
                                                 </div>
@@ -2114,20 +2114,20 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>First Name :</td>
-                                                                <td>${userd.given_name}</td>
+                                                                <td>${user.given_name == null ? user.given_name : "You need to update your first name !" }</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Last Name :</td>
-                                                                <td>${userd.family_name}</td>
+                                                                <td>${user.family_name== null ? user.family_name : "You need to update your family name !"}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Birthday :</td>
-                                                                <td>${userd.dob}</td>
+                                                                <td>${user.dob== null ? user.dob: "You need to update your date of birth !"}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Phone Number :</td>
                                                                 <td>
-                                                                    <a>${userd.phone}</a>
+                                                                    <a>${user.phone == null ? user.phone : "You need to update your phone number !"}</a>
                                                                 </td>
                                                             </tr>
                                                             
@@ -2138,7 +2138,7 @@
                                                 
                                             </div>
 
-                                            <div class="col-xxl-5">
+                                            <div class="col-xxl-3">
                                                 <div class="profile-image">
                                                     <img src="./assets/images/inner-page/dashboard-profile.png"
                                                         class="img-fluid blur-up lazyload" alt="">
@@ -2507,7 +2507,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-             <form action="userdashboard?action=add&idz=${userd.user_id}" method="POST">
+             <form action="userashboard?action=add&idz=${user.user_id}" method="POST">
                     <div class="modal-body">
                         <div class="form-floating mb-4 theme-form-floating">
                             <textarea class="form-control" name="address" placeholder="Leave a comment here" id="address" style="height: 100px" required></textarea>
@@ -2637,17 +2637,13 @@
             <div class="modal-content">
                 
                 
-                <form action="userdashboard?action=editpro&idz=${userd.user_id}" method="POST">
-                    
-                    
+                <form action="userdashboard?action=editPro&idz=${user.user_id}" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel2">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-                
-                
                 <div class="modal-body">
                     <div class="row g-4">
                         
@@ -2693,7 +2689,7 @@
                     <div class="modal-footer">
                     <button type="button" class="btn btn-animation btn-md fw-bold"
                         data-bs-dismiss="modal">Close</button>
-                     <button type="submit" class="btn theme-bg-color btn-md fw-bold text-light">Save changes</button>
+                     <input type="submit" class="btn theme-bg-color btn-md fw-bold text-light" value="Save changes"></button>
                 </div>
                 </form>
             
@@ -2718,7 +2714,7 @@
                     </button>
                 </div>
                 
-                <form action="userdashboard?action=edit&idz=${userd.user_id}" method="POST" >
+                <form action="userdashboard?action=edit&idz=${user.user_id}" method="POST" >
                 <div class="modal-body">
                     <div class="row g-4">
                         <input type="hidden" id="address_id_input" name="address_id">

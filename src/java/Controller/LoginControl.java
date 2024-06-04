@@ -60,15 +60,15 @@ public class LoginControl extends HttpServlet {
         boolean loginResult = userDAO.checkLogin(userAccount);
 
         if (loginResult) {
-            UserDAO dao = new UserDAO();
-            userAccount = userDAO.getUserByEmail(userAccount.getEmail());           
-            List<Address> listAddr = dao.viewAllAddressFor1User(userAccount.getUser_id());
-            session.setAttribute("listAddr", listAddr);
-            session.setAttribute("userd", userAccount);
+//            UserDAO dao = new UserDAO();
+//            userAccount = userDAO.getUserByEmail(userAccount.getEmail());           
+//            List<Address> listAddr = dao.viewAllAddressFor1User(userAccount.getUser_id());
+//            session.setAttribute("listAddr", listAddr);
+            session.setAttribute("user", userAccount);
             // Login successful, redirect to another page
             response.sendRedirect("home");
         } else if (email.contains("admin") && userDAO.getRoles(userAccount) == 1) {
-            session.setAttribute("role", "admin");
+            session.setAttribute("admin", userAccount);
             response.sendRedirect("register");
         } else {
             // Login failed, redirect back to login page

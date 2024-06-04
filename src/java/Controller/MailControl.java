@@ -37,7 +37,7 @@ public class MailControl extends HttpServlet {
         String to = request.getParameter("email");
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        if ("verifyEmail".equals(action)) {
+        if ("register".equals(action)) {
             String newPassword = request.getParameter("re-password");
             String token = nextSessionId();
 
@@ -48,10 +48,9 @@ public class MailControl extends HttpServlet {
             // Send the email and store the verification code in the session
             int verificationCode = Mail.sendPasscode(to);
             session.setAttribute("verificationCode", verificationCode);
-            session.setAttribute("action", "signUp");
             response.sendRedirect("verify");
 
-        } else if ("forgotPassword".equals(action)) {
+        } else if ("forgot".equals(action)) {
             if (!dao.userExisted(to)) {
                 session.setAttribute("alert", "No email address found inside the system !");
                 response.sendRedirect("mail");

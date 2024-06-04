@@ -54,38 +54,28 @@ public class VerifyControl extends HttpServlet {
             String pass = (String) session.getAttribute("pass");
             try {
                 if (storedCode == Integer.parseInt(otp)) {
-                    UserAccount user = new UserAccount(mail, pass);
+                    UserAccount user = new UserAccount();
+                    user.setEmail(mail);
+                    user.setPassword(pass);
+                    if (dao.userExisted(user.getEmail())) {
 
+                    }
                     try {
                         if (dao.checkRegister(user)) {
-                            if (dao.addRoles(user)) {
+                            int id = dao.getUserId(user.getEmail());
+                            if (id != -1 && dao.addRoles(user)) {
                                 session.setAttribute("successMessage", "Registration successful. Please login.");
                                 response.sendRedirect("login");
                             } else {
-                                return;
+                                request.setAttribute("errorMessage", "Add role failed...");
+                                request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request,
+                                        response);
                             }
-
                         }
                     } catch (Exception e) {
                         session.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
                         response.sendRedirect("register");
                     }
-                } else {
-                    session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
-                    response.sendRedirect("verify");
-                }
-            } catch (NumberFormatException e) {
-                session.setAttribute("errorMessage",
-                        "Verification failed. The code you entered is not a valid number.");
-                response.sendRedirect("verify");
-            }
-        } else if ("resetPassword".equals(action)) {
-            try {
-                if (storedCode == Integer.parseInt(otp)) {
-                    response.sendRedirect("reset");
-                } else {
-                    session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
-                    response.sendRedirect("verify");
                 }
             } catch (NumberFormatException e) {
                 session.setAttribute("errorMessage",
@@ -93,13 +83,22 @@ public class VerifyControl extends HttpServlet {
                 response.sendRedirect("verify");
             }
         } else {
-            // Remove the session attributes after they are used
-            session.removeAttribute("verificationCode");
-            session.removeAttribute("action");
-            session.removeAttribute("token");
-            session.removeAttribute("mail");
             session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
             response.sendRedirect("verify");
         }
+
+//        try {
+//            if (storedCode == Integer.parseInt(otp)) {
+//                response.sendRedirect("reset");
+//            } else {
+//                session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
+//                response.sendRedirect("verify");
+//            }
+//        } catch (NumberFormatException e) {
+//            session.setAttribute("errorMessage",
+//                    "Verification failed. The code you entered is not a valid number.");
+//            response.sendRedirect("verify");
+//        }
     }
+
 }
