@@ -1119,7 +1119,7 @@
                                 </div>
 
                                 <div class="profile-name">
-                                    <h3>${userd.given_name} ${userd.family_name}</h3>
+                                    <h3>${userd.given_name}</h3>
                                     <h6 class="text-content">${userd.email}</h6>
                                 </div>
                             </div>
@@ -1185,7 +1185,7 @@
                                     </div>
 
                                     <div class="dashboard-user-name">
-                                        <h6 class="text-content">Hello, <b class="text-title">${userd.given_name} ${userd.family_name}</b></h6>
+                                        
                                         <p class="text-content">From your My Account Dashboard you have the ability to
                                             view a snapshot of your recent account activity and update your account
                                             information.</p>
@@ -2073,59 +2073,25 @@
                                     </div>
 
                                     <div class="profile-detail dashboard-bg-box">
-                                        <div class="dashboard-title">
-                                            <h3>Profile Name</h3>
-                                        </div>
+                                        
                                         <div class="profile-name-detail">
-                                            <div class="d-sm-flex align-items-center d-block">
-                                                <h3>${userd.given_name} ${userd.family_name}</h3>
-                                                <div class="product-rating profile-rating">
-                                                    <ul class="rating">
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star"></i>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                           
 
                                             <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                data-bs-target="#editProfile">Edit</a>
+                                                data-bs-target="#editProfilee">Edit</a>
                                         </div>
 
                                         <div class="location-profile">
-                                            <ul>
+                                           
+                                            
                                                 <li>
-                                                    <div class="location-box">
-                                                        <i data-feather="map-pin"></i>
-                                                        <h6>Downers Grove, IL</h6>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="location-box">
+                                                    <div class="location-box" style="margin-top: -110px">
                                                         <i data-feather="mail"></i>
-                                                        <h6>vicki.pope@gmail.com</h6>
+                                                        <h6 style="margin-top: 20px">${userd.email}</h6>
                                                     </div>
                                                 </li>
-
-                                                <li>
-                                                    <div class="location-box">
-                                                        <i data-feather="check-square"></i>
-                                                        <h6>Licensed for 2 years</h6>
-                                                    </div>
-                                                </li>
+                                            
+                                                
                                             </ul>
                                         </div>
 
@@ -2147,54 +2113,29 @@
                                                     <table class="table">
                                                         <tbody>
                                                             <tr>
-                                                                <td>Gender :</td>
-                                                                <td>Female</td>
+                                                                <td>First Name :</td>
+                                                                <td>${userd.given_name}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Last Name :</td>
+                                                                <td>${userd.family_name}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Birthday :</td>
-                                                                <td>21/05/1997</td>
+                                                                <td>${userd.dob}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Phone Number :</td>
                                                                 <td>
-                                                                    <a href="javascript:void(0)"> +91 846 - 547 -
-                                                                        210</a>
+                                                                    <a>${userd.phone}</a>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>549 Sulphur Springs Road, Downers, IL</td>
-                                                            </tr>
+                                                            
                                                         </tbody>
                                                     </table>
                                                 </div>
 
-                                                <div class="dashboard-title mb-3">
-                                                    <h3>Login Details</h3>
-                                                </div>
-
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Email :</td>
-                                                                <td>
-                                                                    <a href="javascript:void(0)">vicki.pope@gmail.com
-                                                                        <span data-bs-toggle="modal"
-                                                                            data-bs-target="#editProfile">Edit</span></a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Password :</td>
-                                                                <td>
-                                                                    <a href="javascript:void(0)">??????
-                                                                        <span data-bs-toggle="modal"
-                                                                            data-bs-target="#editProfile">Edit</span></a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                
                                             </div>
 
                                             <div class="col-xxl-5">
@@ -2690,6 +2631,81 @@
     </div>
     <!-- Location Modal End -->
 
+      <div class="modal fade theme-modal" id="editProfilee" tabindex="-1" aria-labelledby="exampleModalLabel2"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                
+                
+                <form action="userdashboard?action=editpro&idz=${userd.user_id}" method="POST">
+                    
+                    
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                
+                
+                <div class="modal-body">
+                    <div class="row g-4">
+                        
+                        <div class="col-xxl-6">
+                            
+                                <div class="form-floating theme-form-floating">
+                                    
+                                    <input type="text" class="form-control" id="fname" name="fname">
+                                    <label for="pname">First Name</label>
+                                </div>
+                            
+                        </div>
+
+                        <div class="col-xxl-6">
+                            
+                                <div class="form-floating theme-form-floating">
+                                    <input type="text" class="form-control" id="lname" name="lname">
+                                    <label for="number">Last Name</label>
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="col-xxl-6">
+                            
+                                <div class="form-floating theme-form-floating">
+                                    <input type="date" class="form-control" id="dob" name="dob">
+                                    <label for="number">DOB</label>
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="col-xxl-6">
+                            
+                                <div class="form-floating theme-form-floating">
+                                    <input type="number" class="form-control" id="phone" name="phone">
+                                    <label for="number">Phone</label>
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold"
+                        data-bs-dismiss="modal">Close</button>
+                     <button type="submit" class="btn theme-bg-color btn-md fw-bold text-light">Save changes</button>
+                </div>
+                </form>
+            
+                
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
     <!-- Edit Profile Start -->
     <div class="modal fade theme-modal" id="editProfile" tabindex="-1" aria-labelledby="exampleModalLabel2"
         aria-hidden="true">

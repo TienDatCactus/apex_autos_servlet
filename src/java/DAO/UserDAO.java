@@ -50,12 +50,17 @@ public class UserDAO {
             return false;
         }
 
-        String query = "INSERT INTO [dbo].[user_account] ([email], [passwordHash]) VALUES (?, ?)";
+        String query = "INSERT INTO [dbo].[user_account] ([email], [passwordHash],[given_name],"
+                + "[family_name],[dob],[phone]) VALUES (?, ?,?,?,?,?)";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
             String hashedPassword = hashPassword(password);
             ps.setString(2, hashedPassword);
+            ps.setString(3, "You need to edit for the first time");
+            ps.setString(4, "You need to edit for the first time");
+            ps.setString(5, "You need to edit for the first time");
+            ps.setString(6, "You need to edit for the first time");
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
@@ -174,7 +179,7 @@ public class UserDAO {
     }
 
     public boolean registerByGG(UserAccount userAccount) {
-        String query = "INSERT INTO user_account (email, passwordHash, given_name, family_name, phone) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO user_account (email, passwordHash, given_name, family_name,dob, phone) VALUES (?,?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             // Setting the parameters for the query
@@ -182,7 +187,8 @@ public class UserDAO {
             ps.setString(2, userAccount.getPassword());
             ps.setString(3, userAccount.getGiven_name());
             ps.setString(4, userAccount.getFamily_name());
-            ps.setString(5, userAccount.getPhone());
+            ps.setString(5, "You need to edit for the first time");
+            ps.setString(6, "You need to edit for the first time");
 
             // Execute the update
             int affectedRows = ps.executeUpdate();
@@ -196,17 +202,6 @@ public class UserDAO {
             e.printStackTrace();
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        UserAccount a = new UserAccount("locdphe170093@fpt.edu.vn", "123456",
-                "", "", "");
-        UserDAO r = new UserDAO();
-        
-        Address updatedAddress = new Address(3, "aaaaaa", 6, 0);
-
-        // Edit the address
-        r.editAddress(updatedAddress);
     }
 
     public UserAccount getUserByEmail(String email) {
@@ -225,7 +220,7 @@ public class UserDAO {
 
                     userAccount.setGiven_name(rs.getString("given_name"));
                     userAccount.setFamily_name(rs.getString("family_name"));
-
+                    userAccount.setDob(rs.getString("dob"));
                     userAccount.setPhone(rs.getString("phone"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
@@ -303,4 +298,32 @@ public class UserDAO {
         }
     }
 
+    public void editProfile(UserAccount acc) {
+        String query = "UPDATE user_account SET given_name = ?, family_name = ?,dob = ?,phone = ? WHERE user_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setString(1, acc.getGiven_name());
+            ps.setString(2, acc.getFamily_name());
+            ps.setString(3, acc.getDob());
+            ps.setString(4, acc.getPhone());
+            ps.setInt(5, acc.getUser_id());
+            // Execute the query to update the data in the database
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        UserDAO r = new UserDAO();
+
+        
+        UserAccount acc = new UserAccount(1,"", "", "aaa", "bbb", "1/1/1", "123");
+        r.editProfile(acc);
+        // Edit the address
+        System.out.println(acc);
+    }
 }

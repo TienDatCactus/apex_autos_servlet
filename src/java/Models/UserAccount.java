@@ -23,19 +23,30 @@ public class UserAccount {
     String family_name;
     
     String phone;
-   
+    String dob;
+    
 
     public UserAccount() {
     }
 
-    public UserAccount( String email, String password, String given_name, String family_name, String phone) {
-     
+    public UserAccount(int user_id, String email, String password, String given_name, String family_name, String dob, String phone) {
+        this.user_id = user_id;
         this.email = email;
         this.password = password;
         this.given_name = given_name;
         this.family_name = family_name;
-        
+        this.dob = dob;
         this.phone = phone;
+    }
+
+    
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     
@@ -94,8 +105,10 @@ public class UserAccount {
 
     @Override
     public String toString() {
-        return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + '}';
+        return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + ", dob=" + dob + '}';
     }
+
+    
 
     
 

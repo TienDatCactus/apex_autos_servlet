@@ -41,7 +41,7 @@ public class LoginControl extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserAccount userAccount = new UserAccount(email, password, "", "", "");
+        UserAccount userAccount = new UserAccount(0,email, password, "", "", "","");
         UserDAO userDAO = new UserDAO();
         HttpSession session = request.getSession();
         // delete un used session attributes

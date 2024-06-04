@@ -108,6 +108,18 @@ public class UserDashBoardController extends HttpServlet {
                 List<Address> listAddrrr = dao.viewAllAddressFor1User(idv);
                 session.setAttribute("listAddr", listAddrrr);
                 break;
+            case "editpro":
+                int id_pro = Integer.parseInt(request.getParameter("idz"));
+                String given_name = request.getParameter("fname");
+                String family_name = request.getParameter("lname");
+                String dob = request.getParameter("dob");
+                String phone = request.getParameter("phone");
+                UserAccount acc = new UserAccount(id_pro,"", "", given_name, family_name, dob, phone);
+                dao.editProfile(acc);
+                List<Address> listAddrrz = dao.viewAllAddressFor1User(id_pro);
+                session.setAttribute("listAddr", listAddrrz);
+                session.setAttribute("userd", acc);
+                break;
             default:
                 throw new AssertionError();
         }
