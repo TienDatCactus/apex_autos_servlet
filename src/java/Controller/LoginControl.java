@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  *
@@ -39,7 +40,7 @@ public class LoginControl extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserAccount userAccount = new UserAccount(email, password);
+        UserAccount userAccount = new UserAccount(0,email, password, "", "", "","");
         UserDAO userDAO = new UserDAO();
         HttpSession session = request.getSession();
         // delete un used session attributes
@@ -59,7 +60,12 @@ public class LoginControl extends HttpServlet {
         boolean loginResult = userDAO.checkLogin(userAccount);
 
         if (loginResult) {
-            session.setAttribute("role", "user");
+            UserDAO dao = new UserDAO();
+            userAccount = userDAO.getUserByEmail(userAccount.getEmail());           
+            List<Address> listAddr = dao.viewAllAddressFor1User(userAccount.getUser_id());
+            session.setAttribute("listAddr", listAddr);
+            session.setAttribute("userd", userAccount);
+            // Login successful, redirect to another page
             response.sendRedirect("home");
         } else if (email.contains("admin") && userDAO.getRoles(userAccount) == 1) {
             session.setAttribute("role", "admin");

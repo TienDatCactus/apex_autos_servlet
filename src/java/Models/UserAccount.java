@@ -4,20 +4,77 @@
  */
 package Models;
 
+
+
 /**
  *
  * @author Tiến_Đạt
  */
 public class UserAccount {
+
+    int user_id;
     String email;
     String password;
 
-    public UserAccount(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+  
+
+    String given_name;
+
+    String family_name;
+    
+    String phone;
+    String dob;
+    
 
     public UserAccount() {
+    }
+
+    public UserAccount(int user_id, String email, String password, String given_name, String family_name, String dob, String phone) {
+        this.user_id = user_id;
+        this.email = email;
+        this.password = password;
+        this.given_name = given_name;
+        this.family_name = family_name;
+        this.dob = dob;
+        this.phone = phone;
+    }
+
+    
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    
+    
+
+   
+    public String getGiven_name() {
+        return given_name;
+    }
+
+    public void setGiven_name(String given_name) {
+        this.given_name = given_name;
+    }
+
+    public String getFamily_name() {
+        return family_name;
+    }
+
+    public void setFamily_name(String family_name) {
+        this.family_name = family_name;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getEmail() {
@@ -36,9 +93,29 @@ public class UserAccount {
         this.password = password;
     }
 
+    
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
-        return "UserAccount{" + "email=" + email + ", password=" + password + '}';
+        return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + ", dob=" + dob + '}';
     }
+
     
+
+    
+
+  
+
+   
+
+    
+
 }
