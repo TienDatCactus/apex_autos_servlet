@@ -202,7 +202,11 @@ public class UserDAO {
         UserAccount a = new UserAccount("locdphe170093@fpt.edu.vn", "123456",
                 "", "", "");
         UserDAO r = new UserDAO();
-        System.out.println(r.viewAllAddressFor1User(8));
+        
+        Address updatedAddress = new Address(3, "aaaaaa", 6, 0);
+
+        // Edit the address
+        r.editAddress(updatedAddress);
     }
 
     public UserAccount getUserByEmail(String email) {
@@ -259,7 +263,7 @@ public class UserDAO {
             ps.setInt(1, userId);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    Address address = new Address(rs.getString("address"), rs.getInt("pin_code"), rs.getInt("user_id"));
+                    Address address = new Address(rs.getInt("address_id"), rs.getString("address"), rs.getInt("pin_code"), rs.getInt("user_id"));
                     addresses.add(address);
                 }
             }
@@ -267,6 +271,36 @@ public class UserDAO {
             e.printStackTrace();
         }
         return addresses;
+    }
+
+    public void editAddress(Address updatedAddress) {
+        String query = "UPDATE address SET address = ?, pin_code = ? WHERE address_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setString(1, updatedAddress.getAddress());
+            ps.setInt(2, updatedAddress.getPin_code());
+            ps.setInt(3, updatedAddress.getAddress_id());
+
+            // Execute the query to update the data in the database
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAddress(int id_delete) {
+        String query = "Delete from address where address_id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setInt(1, id_delete);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

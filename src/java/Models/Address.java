@@ -9,22 +9,30 @@ package Models;
  * @author Admin
  */
 public class Address {
-   
+    private int address_id;
     private String address;
     private int pin_code;
     private int user_id;
 
     // Constructor
-    public Address( String address, int pin_code, int user_id) {
-       
+    public Address(int address_id, String address, int pin_code, int user_id) {
+        this.address_id = address_id;
         this.address = address;
         this.pin_code = pin_code;
         this.user_id = user_id;
     }
 
     // Getters and setters (if needed)
-   
 
+    public int getAddress_id() {
+        return address_id;
+    }
+
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
+    }
+   
+    
     public String getAddress() {
         return address;
     }
@@ -48,11 +56,13 @@ public class Address {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
-     
+
     @Override
     public String toString() {
-        return "Address{" + "address=" + address + ", pin_code=" + pin_code + ", user_id=" + user_id + '}';
+        return "Address{" + "address_id=" + address_id + ", address=" + address + ", pin_code=" + pin_code + ", user_id=" + user_id + '}';
     }
+     
+    
 
     
     

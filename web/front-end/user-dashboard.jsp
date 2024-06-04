@@ -2036,16 +2036,22 @@
                                                 </div>
 
                                                 <div class="button-group">
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                        Edit</button>
-                                                    <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
+                                                    <button class="btn btn-sm add-button w-100"
+                                                            data-bs-toggle="modal" 
+                                                            onclick="updateModal('${a.address_id}')" 
+                                                            data-bs-target="#editProfile" 
+                                                            value="${a.address_id}"><i data-feather="edit"></i> Edit</button>
+                                                            
+                                                            <form action="userdashboard?action=delete&id_address=${a.address_id}&idz=${a.user_id}" method="POST">
+                                                    <button class="btn btn-sm add-button w-100" 
                                                         data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                        Remove</button>
+                                                        Remove
+                                                    </button>
+                                               </form>
                                                 </div>
                                             </div>
                                         </div>
-
+                                                   
                                     
                                     </div>
                                      </c:forEach>
@@ -2560,7 +2566,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-             <form action="userdashboard?id=${userd.user_id}" method="POST">
+             <form action="userdashboard?action=add&idz=${userd.user_id}" method="POST">
                     <div class="modal-body">
                         <div class="form-floating mb-4 theme-form-floating">
                             <textarea class="form-control" name="address" placeholder="Leave a comment here" id="address" style="height: 100px" required></textarea>
@@ -2695,118 +2701,42 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
+                
+                <form action="userdashboard?action=edit&idz=${userd.user_id}" method="POST" >
                 <div class="modal-body">
                     <div class="row g-4">
+                        <input type="hidden" id="address_id_input" name="address_id">
                         <div class="col-xxl-12">
-                            <form>
+                            
                                 <div class="form-floating theme-form-floating">
-                                    <input type="text" class="form-control" id="pname" value="Jack Jennas">
-                                    <label for="pname">Full Name</label>
+                                    
+                                    <input type="text" class="form-control" id="address" name="address">
+                                    <label for="pname">Address</label>
                                 </div>
-                            </form>
+                            
                         </div>
 
                         <div class="col-xxl-6">
-                            <form>
+                            
                                 <div class="form-floating theme-form-floating">
-                                    <input type="email" class="form-control" id="email1" value="vicki.pope@gmail.com">
-                                    <label for="email1">Email address</label>
+                                    <input type="number" class="form-control" id="number" name="pin_code">
+                                    <label for="number">Pin Code</label>
                                 </div>
-                            </form>
+                            
                         </div>
 
-                        <div class="col-xxl-6">
-                            <form>
-                                <div class="form-floating theme-form-floating">
-                                    <input class="form-control" type="tel" value="4567891234" name="mobile" id="mobile"
-                                        maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value =
-                                            this.value.slice(0, this.maxLength);">
-                                    <label for="mobile">Email address</label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-12">
-                            <form>
-                                <div class="form-floating theme-form-floating">
-                                    <input type="text" class="form-control" id="address1"
-                                        value="8424 James Lane South San Francisco">
-                                    <label for="address1">Add Address</label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-12">
-                            <form>
-                                <div class="form-floating theme-form-floating">
-                                    <input type="text" class="form-control" id="address2" value="CA 94080">
-                                    <label for="address2">Add Address 2</label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-xxl-4">
-                            <form>
-                                <div class="form-floating theme-form-floating">
-                                    <select class="form-select" id="floatingSelect1"
-                                        aria-label="Floating label select example">
-                                        <option selected>Choose Your Country</option>
-                                        <option value="kindom">United Kingdom</option>
-                                        <option value="states">United States</option>
-                                        <option value="fra">France</option>
-                                        <option value="china">China</option>
-                                        <option value="spain">Spain</option>
-                                        <option value="italy">Italy</option>
-                                        <option value="turkey">Turkey</option>
-                                        <option value="germany">Germany</option>
-                                        <option value="russian">Russian Federation</option>
-                                        <option value="malay">Malaysia</option>
-                                        <option value="mexico">Mexico</option>
-                                        <option value="austria">Austria</option>
-                                        <option value="hong">Hong Kong SAR, China</option>
-                                        <option value="ukraine">Ukraine</option>
-                                        <option value="thailand">Thailand</option>
-                                        <option value="saudi">Saudi Arabia</option>
-                                        <option value="canada">Canada</option>
-                                        <option value="singa">Singapore</option>
-                                    </select>
-                                    <label for="floatingSelect">Country</label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-xxl-4">
-                            <form>
-                                <div class="form-floating theme-form-floating">
-                                    <select class="form-select" id="floatingSelect">
-                                        <option selected>Choose Your City</option>
-                                        <option value="kindom">India</option>
-                                        <option value="states">Canada</option>
-                                        <option value="fra">Dubai</option>
-                                        <option value="china">Los Angeles</option>
-                                        <option value="spain">Thailand</option>
-                                    </select>
-                                    <label for="floatingSelect">City</label>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-xxl-4">
-                            <form>
-                                <div class="form-floating theme-form-floating">
-                                    <input type="text" class="form-control" id="address3" value="94080">
-                                    <label for="address3">Pin Code</label>
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="modal-footer">
+                    <div class="modal-footer">
                     <button type="button" class="btn btn-animation btn-md fw-bold"
                         data-bs-dismiss="modal">Close</button>
-                    <button type="button" data-bs-dismiss="modal"
-                        class="btn theme-bg-color btn-md fw-bold text-light">Save changes</button>
+                     <button type="submit" class="btn theme-bg-color btn-md fw-bold text-light">Save changes</button>
                 </div>
+                    
+             </form>
+                
+                
             </div>
         </div>
     </div>
@@ -2954,5 +2884,11 @@
     <!-- script js -->
     <script src="./assets/js/script.js"></script>
 </body>
+<script>
+    function updateModal(addressId) {
+    document.getElementById('address_id_input').value = addressId;
+}
 
+   
+</script>
 </html>
