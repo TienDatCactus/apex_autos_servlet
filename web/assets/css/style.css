@@ -29635,11 +29635,6 @@ header .offcanvas-backdrop {
   transition: all 0.3s ease-in-out;
 }
 
-.product-section .right-box-contain .product-packege .select-packege li a.active {
-  border: 1px solid var(--theme-color);
-  background: var(--theme-color2);
-  color: #fff;
-}
 
 .product-section .right-box-contain .note-box {
   display: -webkit-box;

@@ -1093,14 +1093,6 @@
                 <div class="input-box">
                   <form class="row g-3" id="form-1" action="login" method="post">
                     <div class="col-12">
-                      <div class="form-floating theme-form-floating log-in-form input admin-input admin-col mt-4">
-                        <input type="text" name="admin" class="form-control input " id="admin"
-                          placeholder="Admin keycode" />
-                        <label for="admin">Admin keycode </label>
-                        <span class="form-msg"></span>
-                      </div>
-                    </div>
-                    <div class="col-12">
                       <div class="form-floating theme-form-floating log-in-form input email-input">
                         <input type="text" name="email" class="form-control input " id="email"
                           placeholder="Email Address" />
@@ -1128,7 +1120,7 @@
                     </div>
 
                     <div class="col-12">
-                      <input class="button-38  w-100 justify-content-center" value="Log In" type="submit">
+                      <input class="button-38  w-100 justify-content-center" value="Login" type="submit">
                     </div>
                     <c:if test="${not empty errorMessage}">
                       <div class="alert alert-danger">${errorMessage}</div>

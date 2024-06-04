@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
@@ -17,39 +17,40 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
 public class RegisterControl extends HttpServlet {
-
-    private UserDAO userDao; 
-
-    public void init() {
-        userDao = new UserDAO();
-    }
-
+    
+    private UserDAO userDao = new UserDAO();
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        HttpSession sess=  request.getSession();
-        sess.setAttribute("action", sess);
-        String email = request.getParameter("email");
-        String password = request.getParameter("re-password");
-
-        UserAccount user = new UserAccount();
-        user.setEmail(email);
-        user.setPassword(password);
-        try {
-
-            userDao.checkRegister(user);
-            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
-        } catch (Exception e) {
-            request.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
-            request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
-        }
+        response.setContentType("text/html");
+        //all handled in verify control
+//        String action = request.getParameter("action");
+//        HttpSession sess = request.getSession();
+//        sess.setAttribute("action", action);
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("re-password");
+//        UserAccount user = new UserAccount(email, password);
+//        if (userDao.checkRegister(user)) {
+//            int id = userDao.getUserId(user.getEmail());
+//            if (id != -1 && userDao.addRoles(user.getEmail(), id)) {
+//                request.getRequestDispatcher("/front-end/login.jsp").forward(request,
+//                        response);
+//            } else {
+//                request.setAttribute("errorMessage", "Add role failed...");
+//                request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request,
+//                        response);
+//            }
+//        } else {
+//            request.setAttribute("errorMessage", "Registration failed ! Please sign up again ...");
+//            request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request, response);
+//        }
+        doGet(request, response);
     }
 }

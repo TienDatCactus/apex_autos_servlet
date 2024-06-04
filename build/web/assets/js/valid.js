@@ -186,31 +186,36 @@ validator.phone = (selector) => {
   return {
     selector: selector,
     test: function (value) {
-      return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(value) ? undefined : "Please enter a real phone number ! ( if you are a vietnamese... )";
-    }
-  }
-}
+      return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(value)
+        ? undefined
+        : "Please enter a real phone number ! ( if you are a vietnamese... )";
+    },
+  };
+};
 
+// const emailInput = document.getElementById("email");
+// const passInput = document.getElementById("password");
+// const admin = document.querySelector(".admin-col");
+// function onKonamiCode(cb) {
+//   var input = "";
+//   var key = "3838404037393739";
+//   emailInput.addEventListener("keydown", function (e) {
+//     input += "" + e.keyCode;
+//     if (input === key) {
+//       return cb();
+//     }
+//     if (!key.indexOf(input)) return;
+//     input = "" + e.keyCode;
+//   });
+// }
 
-
-const emailInput = document.getElementById('email');
-const passInput = document.getElementById('password');
-const admin = document.querySelector('.admin-col');
-function onKonamiCode(cb) {
-  var input = '';
-  var key = '3838404037393739';
-  emailInput.addEventListener('keydown', function (e) {
-    input += ("" + e.keyCode);
-    if (input === key) {
-      return cb();
-    }
-    if (!key.indexOf(input)) return;
-    input = ("" + e.keyCode);
-  });
-}
-
-onKonamiCode(() => {
-  emailInput.parentElement.style.display = 'none';
-  passInput.parentElement.style.display = 'none';
-  admin.style.display = 'block';
-});
+// onKonamiCode(() => {
+//   emailInput.parentElement.style.display = "none";
+//   emailInput.type = "hidden";
+//   emailInput.removeAttribute("name");
+//   passInput.parentElement.style.display = "none";
+//   passInput.type = "hidden";
+//   passInput.removeAttribute("name");
+//   admin.style.display = "block";
+//   admin.querySelector("input").setAttribute("name", "admin");
+// });

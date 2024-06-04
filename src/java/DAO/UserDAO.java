@@ -116,4 +116,48 @@ public class UserDAO {
         }
     }
 
+    public boolean addRoles(UserAccount ua) {
+        boolean status;
+        int id = getUserId(ua.getEmail());
+        if (id == -1) {
+            return status = false;
+        }
+        int role = ua.getEmail().contains("admin") ? 1 : 0;
+        String query = "INSERT INTO [dbo].[user_permissions] ([user_id] ,[permission_id]) VALUES (?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            //  ps.setString(4, ud.getPhone());
+            ps.setInt(1, id);
+            ps.setInt(2, role);
+            ps.executeUpdate();
+            status = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            status = false;
+        }
+        return status;
+    }
+
+    public int getUserId(String email) {
+        int userId = -1;
+        String query = "select user_id from user_account WHERE email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                userId = rs.getInt("user_id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userId;
+    }
+
+    public static void main(String[] args) {
+        UserDAO dao = new UserDAO();
+        int id = dao.getUserId("multivncraft@gmail.com");
+        System.out.println(id);
+
+    }
 }

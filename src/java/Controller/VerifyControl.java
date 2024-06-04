@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author Tiến_Đạt
  */
-@WebServlet(name = "VerifyControl", urlPatterns = { "/verify" })
+@WebServlet(name = "VerifyControl", urlPatterns = {"/verify"})
 public class VerifyControl extends HttpServlet {
 
     UserDAO dao;
@@ -54,13 +54,18 @@ public class VerifyControl extends HttpServlet {
             String pass = (String) session.getAttribute("pass");
             try {
                 if (storedCode == Integer.parseInt(otp)) {
-                    UserAccount user = new UserAccount();
-                    user.setEmail(mail);
-                    user.setPassword(pass);
+                    UserAccount user = new UserAccount(mail, pass);
+
                     try {
-                        dao.checkRegister(user);
-                        session.setAttribute("successMessage", "Registration successful. Please login.");
-                        response.sendRedirect("login");
+                        if (dao.checkRegister(user)) {
+                            if (dao.addRoles(user)) {
+                                session.setAttribute("successMessage", "Registration successful. Please login.");
+                                response.sendRedirect("login");
+                            } else {
+                                return;
+                            }
+
+                        }
                     } catch (Exception e) {
                         session.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
                         response.sendRedirect("register");

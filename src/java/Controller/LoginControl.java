@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
  * @author Tiến_Đạt
  *
  */
-@WebServlet(name = "LoginControl", urlPatterns = { "/login" })
+@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
 public class LoginControl extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
@@ -30,8 +30,7 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
     }
 
     @Override
@@ -56,11 +55,14 @@ public class LoginControl extends HttpServlet {
         } else {
             System.out.println("Not all session attributes have been removed.");
         }
+
         boolean loginResult = userDAO.checkLogin(userAccount);
 
         if (loginResult) {
-            // Login successful, redirect to another page
+            session.setAttribute("user", userAccount);
             response.sendRedirect("home");
+        } else if (email.contains("admin11102004")) {
+            response.sendRedirect("register");
         } else {
             // Login failed, redirect back to login page
             request.setAttribute("errorMessage", "Invalid email or password.");
