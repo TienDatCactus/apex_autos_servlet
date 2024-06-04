@@ -59,9 +59,10 @@ public class LoginControl extends HttpServlet {
         boolean loginResult = userDAO.checkLogin(userAccount);
 
         if (loginResult) {
-            session.setAttribute("user", userAccount);
+            session.setAttribute("role", "user");
             response.sendRedirect("home");
-        } else if (email.contains("admin11102004")) {
+        } else if (email.contains("admin") && userDAO.getRoles(userAccount) == 1) {
+            session.setAttribute("role", "admin");
             response.sendRedirect("register");
         } else {
             // Login failed, redirect back to login page

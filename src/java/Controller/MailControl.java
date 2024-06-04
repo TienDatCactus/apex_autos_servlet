@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.Enumeration;
+import java.util.Enumeration;   
 import java.math.BigInteger;
 
 @WebServlet(name = "MailControl", urlPatterns = { "/mail" })

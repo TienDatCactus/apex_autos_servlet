@@ -154,10 +154,27 @@ public class UserDAO {
         return userId;
     }
 
+    public int getRoles(UserAccount ua) {
+        int roles = 0;
+        String query = "select up.permission_id from user_account ua join user_permissions up on ua.user_id = up.user_id where ua.email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, ua.getEmail());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                roles = rs.getInt("permission_id");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return roles    ;
+    }
+
     public static void main(String[] args) {
         UserDAO dao = new UserDAO();
-        int id = dao.getUserId("multivncraft@gmail.com");
-        System.out.println(id);
+        UserAccount ua = new UserAccount("multivncraft@gmail.com","dat123");
+        System.out.println( dao.addRoles(ua));
+        System.out.println(dao.checkRegister(ua));
 
     }
 }

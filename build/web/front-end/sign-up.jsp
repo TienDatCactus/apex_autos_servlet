@@ -1117,7 +1117,7 @@
                     </div>
 
                     <div class="col-12">
-                      <div class="forgot-box">
+                      <div class="forgot-box mb-2">
                         <div class="form-check ps-0 m-0 remember-box">
 
                           <input class="checkbox_animated check-box terms" type="checkbox" id="flexCheckDefault" />
