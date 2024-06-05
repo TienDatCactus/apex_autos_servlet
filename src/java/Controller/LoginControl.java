@@ -31,7 +31,7 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class LoginControl extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserAccount userAccount = new UserAccount(0,email, password, "", "", "","");
+        UserAccount userAccount = new UserAccount(email, password);
         UserDAO userDAO = new UserDAO();
         HttpSession session = request.getSession();
         // delete un used session attributes

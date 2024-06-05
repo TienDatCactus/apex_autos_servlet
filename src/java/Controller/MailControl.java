@@ -2,6 +2,7 @@ package Controller;
 
 import Util.Mail;
 import DAO.UserDAO;
+import Models.UserAccount;
 import Util.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,10 +13,12 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.Enumeration;   
+import java.util.Enumeration;
 import java.math.BigInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@WebServlet(name = "MailControl", urlPatterns = { "/mail" })
+@WebServlet(name = "MailControl", urlPatterns = {"/mail"})
 public class MailControl extends HttpServlet {
 
     UserDAO dao;
@@ -34,22 +37,29 @@ public class MailControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Logger logger = Logger.getLogger(getClass().getName());
         String to = request.getParameter("email");
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
         if ("register".equals(action)) {
             String newPassword = request.getParameter("re-password");
             String token = nextSessionId();
+            logger.log(Level.INFO, "Token: {0}", token);
+            UserAccount ua = new UserAccount(to, newPassword);
+            if (dao.userExisted(ua.getEmail())) {
+                request.setAttribute("errorMessage", "Existed account found on the system !");
+                request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
+            } else {
+                session.setAttribute("token", token);
+                session.setAttribute("mail", to);
+                session.setAttribute("pass", newPassword);
 
-            session.setAttribute("token", token);
-            session.setAttribute("mail", to);
-            session.setAttribute("pass", newPassword);
-
-            // Send the email and store the verification code in the session
-            int verificationCode = Mail.sendPasscode(to);
-            session.setAttribute("verificationCode", verificationCode);
-            response.sendRedirect("verify");
-
+                // Send the email and store the verification code in the session
+                int verificationCode = Mail.sendPasscode(to);
+                session.setAttribute("verificationCode", verificationCode);
+                session.setAttribute("action", "register");
+                request.getRequestDispatcher("verify").forward(request, response);
+            }
         } else if ("forgot".equals(action)) {
             if (!dao.userExisted(to)) {
                 session.setAttribute("alert", "No email address found inside the system !");
@@ -65,8 +75,8 @@ public class MailControl extends HttpServlet {
             // Send the email and store the verification code in the session
             int verificationCode = Mail.sendPasscode(to);
             session.setAttribute("verificationCode", verificationCode);
-            session.setAttribute("action", "resetPassword");
-            response.sendRedirect("verify");
+            session.setAttribute("action", "forgot");
+            request.getRequestDispatcher("verify").forward(request, response);
         }
 
     }

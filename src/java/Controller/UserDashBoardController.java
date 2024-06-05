@@ -23,41 +23,7 @@ import java.util.List;
 @WebServlet(name = "UserDashBoardController", urlPatterns = {"/userdashboard"})
 public class UserDashBoardController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UserDashBoardController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UserDashBoardController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -65,21 +31,13 @@ public class UserDashBoardController extends HttpServlet {
         request.getRequestDispatcher("/front-end/user-dashboard.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         UserDAO dao = new UserDAO();
         String action = request.getParameter("action");
-        
+
         switch (action) {
             case "add":
                 int id = Integer.parseInt(request.getParameter("idz"));
@@ -101,7 +59,7 @@ public class UserDashBoardController extends HttpServlet {
                 List<Address> listAddrr = dao.viewAllAddressFor1User(idz);
                 session.setAttribute("listAddr", listAddrr);
                 break;
-            case "delete": 
+            case "delete":
                 int idv = Integer.parseInt(request.getParameter("idz"));
                 int id_delete = Integer.parseInt(request.getParameter("id_address"));
                 dao.deleteAddress(id_delete);
@@ -114,7 +72,7 @@ public class UserDashBoardController extends HttpServlet {
                 String family_name = request.getParameter("lname");
                 String dob = request.getParameter("dob");
                 String phone = request.getParameter("phone");
-                UserAccount acc = new UserAccount(id_pro,"", "", given_name, family_name, dob, phone);
+                UserAccount acc = new UserAccount(id_pro, given_name, family_name, dob, phone);
                 dao.editProfile(acc);
                 List<Address> listAddrrz = dao.viewAllAddressFor1User(id_pro);
                 session.setAttribute("listAddr", listAddrrz);

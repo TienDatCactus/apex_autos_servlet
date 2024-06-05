@@ -2114,20 +2114,20 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>First Name :</td>
-                                                                <td>${user.given_name == null ? user.given_name : "You need to update your first name !" }</td>
+                                                                <td>${user.given_name == "" ? user.given_name : "You need to update your first name !" }</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Last Name :</td>
-                                                                <td>${user.family_name== null ? user.family_name : "You need to update your family name !"}</td>
+                                                                <td>${user.family_name== "" ? user.family_name : "You need to update your family name !"}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Birthday :</td>
-                                                                <td>${user.dob== null ? user.dob: "You need to update your date of birth !"}</td>
+                                                                <td>${user.dob== "" ? user.dob: "You need to update your date of birth !"}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Phone Number :</td>
                                                                 <td>
-                                                                    <a>${user.phone == null ? user.phone : "You need to update your phone number !"}</a>
+                                                                    <a>${user.phone == "" ? user.phone : "You need to update your phone number !"}</a>
                                                                 </td>
                                                             </tr>
                                                             

@@ -1461,7 +1461,6 @@
           } else {
             document.querySelector("input[type='submit']").style = "opacity: 0.6; cursor: not-allowed;pointer-events: none;";
             document.querySelector("input[type='submit']").disabled = true;
-
           }
         }))
       </script>
