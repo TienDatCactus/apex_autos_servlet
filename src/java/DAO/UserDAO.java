@@ -67,6 +67,30 @@ public class UserDAO {
             return false;
         }
     }
+    
+     public boolean checkRegisterByGG(UserAccount UserAccount) {
+        String email = UserAccount.getEmail();
+        String password = "123456";
+        if (userExisted(email)) {
+            return false;
+        }
+
+        String query = "INSERT INTO [dbo].[user_account] ([email],[passwordHash], [given_name], [family_name]) VALUES (?, ?,?,?)";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, email);
+            String hashedPassword = hashPassword(password);
+            ps.setString(2, hashedPassword);
+            ps.setString(3, UserAccount.getGiven_name());
+            ps.setString(4, UserAccount.getFamily_name());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public boolean userExisted(String email) {
         String query = "SELECT [email] FROM [dbo].[user_account] WHERE email = ?";

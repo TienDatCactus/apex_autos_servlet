@@ -43,7 +43,6 @@ public class UserDashboard extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("idz"));
                 String address = request.getParameter("address");
                 int pin = Integer.parseInt(request.getParameter("pin"));
-
                 Address add = new Address(0, address, pin, id);
                 dao.addNewAddress(add);
                 List<Address> listAddr = dao.viewAllAddressFor1User(id);
@@ -76,7 +75,7 @@ public class UserDashboard extends HttpServlet {
                 dao.editProfile(acc);
                 List<Address> listAddrrz = dao.viewAllAddressFor1User(id_pro);
                 session.setAttribute("listAddr", listAddrrz);
-                session.setAttribute("userd", acc);
+                session.setAttribute("user", acc);
                 break;
             default:
                 throw new AssertionError();

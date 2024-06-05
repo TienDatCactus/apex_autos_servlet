@@ -6,6 +6,7 @@
 package Controller;
 
 import Constant.Constants;
+import DAO.CarDao;
 import DAO.UserDAO;
 import Models.*;
 import Models.*;
@@ -19,6 +20,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
@@ -45,8 +47,21 @@ public class GoogleLogin extends HttpServlet {
         String accessToken = getToken(code);
         UserAccount user = getUserInfo(accessToken);
         System.out.println(user);
+        UserDAO dao = new UserDAO();
+        CarDao daoc = new CarDao();
+        boolean check = dao.checkRegisterByGG(user);
+        if (check) {
+            dao.registerByGG(user);
+
+            // session.setAttribute("userd", user);
+        }
         HttpSession session = request.getSession();
-        session.setAttribute("userd", user);
+        user = dao.getUserByEmail(user.getEmail());
+        List<Address> listAddr = dao.viewAllAddressFor1User(user.getUser_id());
+        List<WishList> listWish = daoc.viewAllWishList();
+        session.setAttribute("listAddr", listAddr);
+        session.setAttribute("listWish", listWish);
+        session.setAttribute("user", user);
 
     }
 
@@ -92,7 +107,8 @@ public class GoogleLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("front-end/index.jsp").forward(request, response);
+        processRequest(request, response);
+        response.sendRedirect("home");
     }
 
     /**
