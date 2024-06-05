@@ -160,7 +160,7 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                             </button>
-                            <a href="index.html" class="web-logo nav-logo">
+                            <a href="home" class="web-logo nav-logo">
                                 <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="" />
                             </a>
 
@@ -1139,12 +1139,7 @@
                                     aria-selected="false"><i data-feather="shopping-bag"></i>Order</button>
                             </li>
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-wishlist-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-wishlist" type="button" role="tab"
-                                    aria-controls="pills-wishlist" aria-selected="false"><i data-feather="heart"></i>
-                                    Wishlist</button>
-                            </li>
+                            
 
                             
 

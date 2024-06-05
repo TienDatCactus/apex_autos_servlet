@@ -788,25 +788,29 @@
                                                     </a>
                                                     <ul class="product-option">
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="View">
-                                                            <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                            title="View" style="font-size:8px">
+                                                            <a href="detail?id=${cl.car_id}" data-bs-toggle="modal"
                                                                 data-bs-target="#view">
                                                                 <i data-feather="eye"></i>
                                                             </a>
                                                         </li>
 
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Compare">
+                                                            title="Compare" style="font-size:8px">
                                                             <a href="compare.html">
                                                                 <i data-feather="refresh-cw"></i>
                                                             </a>
                                                         </li>
-
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Wishlist">
-                                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                                <i data-feather="heart"></i>
-                                                            </a>
+                                                            <form action="wishlist" method="post" id="wishForm">
+                                                                <a href="wishlist" class="notifi-wishlist"
+                                                                    onclick="document.getElementById('wishForm').submit()">
+                                                                    <i data-feather="heart" style="font-size:8px"></i>
+                                                                </a>
+                                                            </form>
+                                                            </form>
+
                                                         </li>
                                                     </ul>
                                                 </div>

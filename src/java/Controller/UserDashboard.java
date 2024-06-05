@@ -20,8 +20,8 @@ import java.util.List;
  *
  * @author Admin
  */
-@WebServlet(name = "UserDashBoardController", urlPatterns = {"/userdashboard"})
-public class UserDashBoardController extends HttpServlet {
+@WebServlet(name = "UserDashBoard", urlPatterns = {"/user/dashboard"})
+public class UserDashboard extends HttpServlet {
 
    
     @Override

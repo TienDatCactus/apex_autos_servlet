@@ -27,8 +27,8 @@ import org.apache.http.client.fluent.Request;
  *
  * @author Admin
  */
-@WebServlet(name = "LoginGoogleHandler", urlPatterns = { "/LoginGoogleHandler" })
-public class LoginGoogleHandler extends HttpServlet {
+@WebServlet(name = "GoogleLogin", urlPatterns = { "/LoginGoogleHandler" })
+public class GoogleLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

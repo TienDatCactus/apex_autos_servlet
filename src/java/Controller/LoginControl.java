@@ -41,7 +41,8 @@ public class LoginControl extends HttpServlet {
         String password = request.getParameter("password");
 
         UserAccount userAccount = new UserAccount(email, password);
-        UserDAO userDAO = new UserDAO();
+        CarDao daoc = new CarDao();
+        UserDAO daou = new UserDAO();
         HttpSession session = request.getSession();
         // delete un used session attributes
         Enumeration<String> attributeNames = session.getAttributeNames();
@@ -57,17 +58,19 @@ public class LoginControl extends HttpServlet {
             System.out.println("Not all session attributes have been removed.");
         }
 
-        boolean loginResult = userDAO.checkLogin(userAccount);
+        boolean loginResult = daou.checkLogin(userAccount);
 
         if (loginResult) {
-//            UserDAO dao = new UserDAO();
-//            userAccount = userDAO.getUserByEmail(userAccount.getEmail());           
-//            List<Address> listAddr = dao.viewAllAddressFor1User(userAccount.getUser_id());
-//            session.setAttribute("listAddr", listAddr);
+            List<WishList> listWish = daoc.viewAllWishList();
+            List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
+            userAccount = daou.getUserByEmail(userAccount.getEmail());
             session.setAttribute("user", userAccount);
+            session.setAttribute("listAddr", listAddr);
+            session.setAttribute("listWish", listWish);
+
             // Login successful, redirect to another page
             response.sendRedirect("home");
-        } else if (email.contains("admin") && userDAO.getRoles(userAccount) == 1) {
+        } else if (email.contains("admin") && daou.getRoles(userAccount) == 1) {
             session.setAttribute("admin", userAccount);
             response.sendRedirect("register");
         } else {
