@@ -223,7 +223,7 @@
                                         </a>
                                     </li>
                                     <li class="right-side">
-                                        <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
+                                        <a href="wishlist" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -1052,7 +1052,7 @@
                                                             Dashboard</a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="wishlist.html">Wishlist</a>
+                                                        <a class="dropdown-item" href="wishlist">Wishlist</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -1130,7 +1130,7 @@
             </li>
 
             <li>
-                <a href="wishlist.html" class="notifi-wishlist">
+                <a href="wishlist" class="notifi-wishlist">
                     <i class="iconly-Heart icli"></i>
                     <span>My Wish</span>
                 </a>
@@ -1390,7 +1390,7 @@
                                     <a href="order-tracking.html" class="text-content">Track Order</a>
                                 </li>
                                 <li>
-                                    <a href="wishlist.html" class="text-content">Your Wishlist</a>
+                                    <a href="wishlist" class="text-content">Your Wishlist</a>
                                 </li>
                                 <li>
                                     <a href="search.html" class="text-content">Search</a>

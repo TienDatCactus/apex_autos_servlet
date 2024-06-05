@@ -2502,7 +2502,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
-             <form action="userashboard?action=add&idz=${user.user_id}" method="POST">
+             <form action="userdashboard?action=add&idz=${user.user_id}" method="POST">
                     <div class="modal-body">
                         <div class="form-floating mb-4 theme-form-floating">
                             <textarea class="form-control" name="address" placeholder="Leave a comment here" id="address" style="height: 100px" required></textarea>

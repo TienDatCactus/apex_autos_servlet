@@ -455,7 +455,7 @@
                                                                         </li>
                                                                         <li>
                                                                             <a class="dropdown-item"
-                                                                                href="wishlist.html">Wishlist</a>
+                                                                                href="wishlist">Wishlist</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
@@ -529,7 +529,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="right-side">
-                                                    <a href="wishlist.html"
+                                                    <a href="wishlist"
                                                         class="btn p-0 position-relative header-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
@@ -698,7 +698,7 @@
                         </li>
 
                         <li>
-                            <a href="wishlist.html" class="notifi-wishlist">
+                            <a href="wishlist" class="notifi-wishlist">
                                 <i class="iconly-Heart icli"></i>
                                 <span>My Wish</span>
                             </a>
@@ -803,13 +803,13 @@
                                                         </li>
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Wishlist">
-                                                            <form action="wishlist" method="post" id="wishForm">
-                                                                <a href="wishlist" class="notifi-wishlist"
-                                                                    onclick="document.getElementById('wishForm').submit()">
-                                                                    <i data-feather="heart" style="font-size:8px"></i>
-                                                                </a>
-                                                            </form>
-                                                            </form>
+                                                           <form action="wishlist?action=addtowish&idcar=${cl.car_id}&iduser=${user.user_id}" method="post">
+                                                                     <button type="submit" class="notifi-wishlist" style="background: none; border: none; cursor: pointer;">
+                                                                     <i data-feather="heart" style="font-size: 8px"></i>
+                                                                      </button>
+                                                                 </form>
+
+                                                           
 
                                                         </li>
                                                     </ul>
@@ -1015,7 +1015,7 @@
                                                 <a href="order-tracking.html" class="text-content">Track Order</a>
                                             </li>
                                             <li>
-                                                <a href="wishlist.html" class="text-content">Your Wishlist</a>
+                                                <a href="wishlist" class="text-content">Your Wishlist</a>
                                             </li>
                                             <li>
                                                 <a href="search.html" class="text-content">Search</a>

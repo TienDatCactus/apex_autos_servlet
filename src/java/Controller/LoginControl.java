@@ -61,9 +61,10 @@ public class LoginControl extends HttpServlet {
         boolean loginResult = daou.checkLogin(userAccount);
 
         if (loginResult) {
+            userAccount = daou.getUserByEmail(userAccount.getEmail());
             List<WishList> listWish = daoc.viewAllWishList();
             List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
-            userAccount = daou.getUserByEmail(userAccount.getEmail());
+            
             session.setAttribute("user", userAccount);
             session.setAttribute("listAddr", listAddr);
             session.setAttribute("listWish", listWish);

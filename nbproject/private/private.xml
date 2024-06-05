@@ -5,18 +5,21 @@
         <group name="Lab211">
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/WishList.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/index.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/DAO/CarDao.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/DAO/UserDAO.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/UserDashBoardController.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/seller-become.jsp</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/ResetControl.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/WishListController.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/wishlist.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/blog-detail.jsp</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/VerifyControl.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/login.jsp</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/Car.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/LoginGoogleHandler.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/user-dashboard.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/RegisterControl.java</file>
         </group>
     </open-files>
 </project-private>

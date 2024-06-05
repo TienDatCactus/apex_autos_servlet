@@ -82,7 +82,7 @@ public class WishlistControl extends HttpServlet {
         case "addtowish":
             int id_car = Integer.parseInt(request.getParameter("idcar"));
             int id_user = Integer.parseInt(request.getParameter("iduser"));
-
+              
             Car car = dao.viewDetail(id_car);
             WishList wish = new WishList(0, id_user, id_car, car);
             dao.addToWishList(wish);

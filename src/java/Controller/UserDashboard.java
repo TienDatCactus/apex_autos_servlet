@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @author Admin
  */
-@WebServlet(name = "UserDashBoard", urlPatterns = {"/user/dashboard"})
+@WebServlet(name = "UserDashBoard", urlPatterns = {"/userdashboard"})
 public class UserDashboard extends HttpServlet {
 
    
