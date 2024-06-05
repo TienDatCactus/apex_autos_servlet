@@ -1126,8 +1126,7 @@
                                     </div>
 
                                     <div class="input-box">
-                                        <form class="row g-4" id="form-1" action="mail" method="post">
-                                            <input type="hidden" name="action" value="forgotPassword">
+                                        <form class="row g-4" id="form-1" action="mail?action=forgot" method="post">
                                             <div class="col-12">
                                                 <div
                                                     class="form-floating theme-form-floating log-in-form input email-input">

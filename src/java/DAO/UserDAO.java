@@ -43,25 +43,23 @@ public class UserDAO {
         }
     }
 
-    public boolean checkRegister(UserAccount userAccount) {
-        String email = userAccount.getEmail();
-        String password = userAccount.getPassword();
+    public boolean checkRegister(UserAccount ua) {
+        String email = ua.getEmail();
+        String password = ua.getPassword();
+        int role = ua.getEmail().contains("admin") ? 1 : 3;
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println(role);
+        String hashedPassword = hashPassword(password);
         if (userExisted(email)) {
             return false;
         }
-
-        String query = "INSERT INTO [dbo].[user_account] ([email], [passwordHash],[given_name],"
-                + "[family_name],[dob],[phone]) VALUES (?, ?,?,?,?,?)";
+        String query = "INSERT INTO [dbo].[user_account] ([email] ,[passwordHash] ,[permission_id]) VALUES (?,?,?)";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
-            String hashedPassword = hashPassword(password);
             ps.setString(2, hashedPassword);
-            ps.setString(3, "You need to edit for the first time");
-            ps.setString(4, "You need to edit for the first time");
-            ps.setString(5, "You need to edit for the first time");
-            ps.setString(6, "You need to edit for the first time");
-
+            ps.setInt(3, role);
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
@@ -180,44 +178,6 @@ public class UserDAO {
         return false;
     }
 
-    public int getUserId(String email) {
-        int userId = -1;
-        String query = "select user_id from user_account WHERE email = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, email);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                userId = rs.getInt("user_id");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return userId;
-    }
-
-    public boolean addRoles(UserAccount ua) {
-        boolean status;
-        int id = getUserId(ua.getEmail());
-        if (id == -1) {
-            return status = false;
-        }
-        int role = ua.getEmail().contains("admin") ? 1 : 0;
-        String query = "INSERT INTO [dbo].[user_permissions] ([user_id] ,[permission_id]) VALUES (?,?)";
-        try {
-            PreparedStatement ps = con.prepareStatement(query);
-            //  ps.setString(4, ud.getPhone());
-            ps.setInt(1, id);
-            ps.setInt(2, role);
-            ps.executeUpdate();
-            status = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            status = false;
-        }
-        return status;
-    }
-
     public int getRoles(UserAccount ua) {
         int roles = 0;
         String query = "select up.permission_id from user_account ua join user_permissions up on ua.user_id = up.user_id where ua.email = ?";
@@ -272,7 +232,6 @@ public class UserDAO {
             ps.setInt(2, address.getPin_code());
             ps.setInt(3, address.getUser_id());
 
-            // Thực hiện truy vấn để thêm dữ liệu vào cơ sở dữ liệu
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -302,12 +261,10 @@ public class UserDAO {
         String query = "UPDATE address SET address = ?, pin_code = ? WHERE address_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
-            // Setting the parameters for the query
             ps.setString(1, updatedAddress.getAddress());
             ps.setInt(2, updatedAddress.getPin_code());
             ps.setInt(3, updatedAddress.getAddress_id());
 
-            // Execute the query to update the data in the database
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -318,7 +275,6 @@ public class UserDAO {
     public void deleteAddress(int id_delete) {
         String query = "Delete from address where address_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
-            // Setting the parameters for the query
             ps.setInt(1, id_delete);
 
             ps.executeUpdate();
@@ -332,13 +288,11 @@ public class UserDAO {
         String query = "UPDATE user_account SET given_name = ?, family_name = ?,dob = ?,phone = ? WHERE user_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
-            // Setting the parameters for the query
             ps.setString(1, acc.getGiven_name());
             ps.setString(2, acc.getFamily_name());
             ps.setString(3, acc.getDob());
             ps.setString(4, acc.getPhone());
             ps.setInt(5, acc.getUser_id());
-            // Execute the query to update the data in the database
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -349,10 +303,8 @@ public class UserDAO {
     public static void main(String[] args) {
 
         UserDAO r = new UserDAO();
-
-        UserAccount acc = new UserAccount(1, "", "", "aaa", "bbb", "1/1/1", "123");
-        r.editProfile(acc);
+        UserAccount ua = new UserAccount("multivncraft@gmail.com", "dat123");
+        System.out.println(r.checkRegister(ua));
         // Edit the address
-        System.out.println(acc);
     }
 }

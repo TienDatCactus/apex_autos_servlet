@@ -20,6 +20,7 @@ public class UserAccount {
 
     String phone;
     String dob;
+    int permission_id;
 
     public UserAccount() {
     }
@@ -29,10 +30,14 @@ public class UserAccount {
         this.password = password;
     }
 
-    public UserAccount(int user_id, String email, String password, String given_name, String family_name, String dob, String phone) {
-        this.user_id = user_id;
+    public UserAccount(String email, String password, int permission_id) {
         this.email = email;
         this.password = password;
+        this.permission_id = permission_id;
+    }
+
+    public UserAccount(int user_id, String given_name, String family_name, String dob, String phone) {
+        this.user_id = user_id;
         this.given_name = given_name;
         this.family_name = family_name;
         this.dob = dob;

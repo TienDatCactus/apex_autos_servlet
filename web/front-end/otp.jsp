@@ -1117,7 +1117,6 @@
                         <div class="col-xxl-4 col-xl-5 col-lg-6 col-sm-8 mx-auto">
                             <div class="d-flex align-items-center justify-content-center h-100">
                                 <form class="log-in-box" id="form-1" action="verify" method="post">
-                                    <input type="hidden" name="action" value="${action}"/>
                                     <div class="log-in-title">
                                         <h3 class="text-title">Please enter the one time passcode to verify your account
                                         </h3>

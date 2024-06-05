@@ -4,8 +4,9 @@
  */
 package Controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.IOException;
-import java.io.PrintWriter;
 import DAO.*;
 import Models.UserAccount;
 import jakarta.servlet.ServletException;
@@ -38,10 +39,10 @@ public class VerifyControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Logger logger = Logger.getLogger(getClass().getName());
         HttpSession session = request.getSession();
-        String action = request.getParameter("action");
+        String action = (String) session.getAttribute("action");
         int storedCode = (int) session.getAttribute("verificationCode");
-
         String first = request.getParameter("first");
         String second = request.getParameter("second");
         String third = request.getParameter("third");
@@ -49,57 +50,44 @@ public class VerifyControl extends HttpServlet {
         String fifth = request.getParameter("fifth");
         String sixth = request.getParameter("sixth");
         String otp = first + second + third + fourth + fifth + sixth;
-        if ("signUp".equals(action)) {
+        if ("register".equals(action)) {
             String mail = (String) session.getAttribute("mail");
             String pass = (String) session.getAttribute("pass");
+            logger.log(Level.INFO, "mail:{0}", mail);
+            logger.log(Level.INFO, "pass:{0}", pass);
             try {
                 if (storedCode == Integer.parseInt(otp)) {
                     UserAccount user = new UserAccount(mail, pass);
-
-                    try {
-                        if (dao.checkRegister(user)) {
-                            if (dao.addRoles(user)) {
-                                session.setAttribute("successMessage", "Registration successful. Please login.");
-                                response.sendRedirect("login");
-                            } else {
-                                return;
-                            }
-
-                        }
-                    } catch (Exception e) {
-                        session.setAttribute("errorMessage", "Registration failed: " + e.getMessage());
-                        response.sendRedirect("register");
+                    if (dao.checkRegister(user)) {
+                        request.setAttribute("successMessage", "Registration successful. Please login.");
+                        request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
+                    } else {
+                        request.setAttribute("errorMessage", "Register failed...");
+                        request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request,
+                                response);
                     }
-                } else {
-                    session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
-                    response.sendRedirect("verify");
                 }
-            } catch (NumberFormatException e) {
-                session.setAttribute("errorMessage",
-                        "Verification failed. The code you entered is not a valid number.");
-                response.sendRedirect("verify");
+            } catch (Exception e) {
+                e.printStackTrace();
+                request.getRequestDispatcher("/front-end/otp.jsp").forward(request,
+                        response);
             }
-        } else if ("resetPassword".equals(action)) {
+        } else if ("forgot".equals(action)) {
             try {
                 if (storedCode == Integer.parseInt(otp)) {
-                    response.sendRedirect("reset");
+                    request.getRequestDispatcher("/front-end/reset-pw.jsp").forward(request, response);
                 } else {
                     session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
                     response.sendRedirect("verify");
                 }
-            } catch (NumberFormatException e) {
-                session.setAttribute("errorMessage",
-                        "Verification failed. The code you entered is not a valid number.");
+            } catch (Exception e) {
+                e.printStackTrace();
                 response.sendRedirect("verify");
             }
         } else {
-            // Remove the session attributes after they are used
-            session.removeAttribute("verificationCode");
-            session.removeAttribute("action");
-            session.removeAttribute("token");
-            session.removeAttribute("mail");
-            session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
+            session.setAttribute("errorMessage", "Verification failed. The code you entered is deprecated.");
             response.sendRedirect("verify");
         }
+
     }
 }
