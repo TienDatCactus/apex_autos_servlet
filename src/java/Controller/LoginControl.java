@@ -17,6 +17,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -37,6 +39,7 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Logger logger = Logger.getLogger(getClass().getName());
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
@@ -53,9 +56,9 @@ public class LoginControl extends HttpServlet {
         // check session attributes
         attributeNames = session.getAttributeNames();
         if (!attributeNames.hasMoreElements()) {
-            System.out.println("All session attributes have been removed.");
+            logger.log(Level.INFO, "All session attributes have been removed.");
         } else {
-            System.out.println("Not all session attributes have been removed.");
+            logger.log(Level.INFO, "Not all session attributes have been removed.");
         }
 
         boolean loginResult = daou.checkLogin(userAccount);
@@ -64,16 +67,16 @@ public class LoginControl extends HttpServlet {
             userAccount = daou.getUserByEmail(userAccount.getEmail());
             List<WishList> listWish = daoc.viewAllWishList();
             List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
-            
+
             session.setAttribute("user", userAccount);
             session.setAttribute("listAddr", listAddr);
             session.setAttribute("listWish", listWish);
 
             // Login successful, redirect to another page
             response.sendRedirect("home");
-        } else if (email.contains("admin") && daou.getRoles(userAccount) == 1) {
+        } else if (daou.getRoles(userAccount) == 1) {
             session.setAttribute("admin", userAccount);
-            response.sendRedirect("register");
+            response.sendRedirect("/admin/dashboard");
         } else {
             // Login failed, redirect back to login page
             request.setAttribute("errorMessage", "Invalid email or password.");

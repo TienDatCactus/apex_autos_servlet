@@ -21,5 +21,23 @@
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/user-dashboard.jsp</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/RegisterControl.java</file>
         </group>
+        <group>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/back-end/support-ticket.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/SellerControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/seller-become.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/RegisterControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/UserDashboard.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/back-end/create-role.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/MailControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/user-dashboard.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/back-end/index.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/AdminDashboard.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Util/Mail.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/back-end/add-new-user.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/back-end/role.jsp</file>
+        </group>
     </open-files>
 </project-private>

@@ -9,7 +9,7 @@ package Models;
  * @author Admin
  */
 public class WishList {
-    private int whis_list_id;
+    private int wish_list_id;
     private int user_id;
     private int car_id;
     private Car car;
@@ -18,7 +18,7 @@ public class WishList {
     }
 
     public WishList(int whis_list_id, int user_id, int car_id, Car car) {
-        this.whis_list_id = whis_list_id;
+        this.wish_list_id = whis_list_id;
         this.user_id = user_id;
         this.car_id = car_id;
         this.car = car;
@@ -34,12 +34,12 @@ public class WishList {
 
     
 
-    public int getWhis_list_id() {
-        return whis_list_id;
+    public int getWish_list_id() {
+        return wish_list_id;
     }
 
     public void setWhis_list_id(int whis_list_id) {
-        this.whis_list_id = whis_list_id;
+        this.wish_list_id = whis_list_id;
     }
 
     public int getUser_id() {
@@ -60,7 +60,7 @@ public class WishList {
 
     @Override
     public String toString() {
-        return "WishList{" + "whis_list_id=" + whis_list_id + ", user_id=" + user_id + ", car_id=" + car_id + ", car=" + car + '}';
+        return "WishList{" + "whis_list_id=" + wish_list_id + ", user_id=" + user_id + ", car_id=" + car_id + ", car=" + car + '}';
     }
 
     

@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
-    <title>Forgot Password</title>
+    <title>Reset Password</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -1072,7 +1072,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Forgot Password</h2>
+                        <h2>Reset Password</h2>
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
@@ -1080,7 +1080,7 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-                                <li class="breadcrumb-item active">Forgot Password</li>
+                                <li class="breadcrumb-item active">Reset Password</li>
                             </ol>
                         </nav>
                     </div>
@@ -1105,7 +1105,7 @@
                         <div class="log-in-box">
                             <div class="log-in-title">
                                 <h3>Welcome To ApexAutos</h3>
-                                <h4>Forgot your password</h4>
+                                <h4>Reset your password</h4>
                             </div>
 
                             <div class="input-box">

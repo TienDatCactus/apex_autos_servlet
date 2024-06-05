@@ -53,7 +53,6 @@ public class GoogleLogin extends HttpServlet {
         if (check) {
             dao.registerByGG(user);
 
-            // session.setAttribute("userd", user);
         }
         HttpSession session = request.getSession();
         user = dao.getUserByEmail(user.getEmail());

@@ -1,14 +1,19 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fastkart">
-    <meta name="keywords" content="Fastkart">
-    <meta name="author" content="Fastkart">
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ApexAutos" />
+    <meta name="keywords" content="ApexAutos" />
+    <meta name="author" content="ApexAutos" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
     <title>Seller Become</title>
 
     <!-- Google font -->
@@ -21,23 +26,23 @@
         rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -61,7 +66,7 @@
                     <div class="col-xxl-3 d-xxl-block d-none">
                         <div class="top-left-header">
                             <i class="iconly-Location icli text-white"></i>
-                            <span class="text-white">1418 Riverwood Drive, CA 96052, US</span>
+                            <span class="text-white">FPT University</span>
                         </div>
                     </div>
 
@@ -69,20 +74,22 @@
                         <div class="header-offer">
                             <div class="notification-slider">
                                 <div>
-                                    <div class="timer-notification">
-                                        <h6><strong class="me-1">Welcome to Fastkart!</strong>Wrap new offers/gift
-                                            every signle day on Weekends.<strong class="ms-1">New Coupon Code: Fast024
+                                    <div class="timer-notification" style="overflow-x: hidden;">
+                                        <h6>
+                                            <strong class="me-1">Welcome to myNiggaCar!</strong>Wrap
+                                            new offers/gift every day on Weekends.<strong class="ms-1">New Coupon
+                                                Code:
+                                                niggaWhat!
                                             </strong>
-
                                         </h6>
                                     </div>
                                 </div>
 
                                 <div>
                                     <div class="timer-notification">
-                                        <h6>Something you love is now on sale!
-                                            <a href="shop-left-sidebar.html" class="text-white">Buy Now
-                                                !</a>
+                                        <h6>
+                                            Something you love is now on sale!
+                                            <a href="shop-left-sidebar.html" class="text-white">Buy Now !</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -96,30 +103,23 @@
                                 <div class="dropdown theme-form-select">
                                     <button class="btn dropdown-toggle" type="button" id="select-language"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="../assets/images/country/united-states.png"
-                                            class="img-fluid blur-up lazyload" alt="">
+                                        <img src="./assets/images/country/united-states.png"
+                                            class="img-fluid blur-up lazyload" alt="" />
                                         <span>English</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                                <img src="../assets/images/country/united-kingdom.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src="./assets/images/country/united-kingdom.png"
+                                                    class="img-fluid blur-up lazyload" alt="" />
                                                 <span>English</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                                <img src="../assets/images/country/germany.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                                <span>Germany</span>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                                <img src="../assets/images/country/turkish.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                                <span>Turki</span>
+                                                <img src="./assets/images/country/vn.png"
+                                                    class="img-fluid blur-up lazyload" alt="" />
+                                                <span>Viet Nam</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -134,13 +134,10 @@
                                     <ul class="dropdown-menu dropdown-menu-end sm-dropdown-menu"
                                         aria-labelledby="select-dollar">
                                         <li>
-                                            <a class="dropdown-item" id="aud" href="javascript:void(0)">AUD</a>
+                                            <a class="dropdown-item" id="aud" href="javascript:void(0)">VND</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" id="eur" href="javascript:void(0)">EUR</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" id="cny" href="javascript:void(0)">CNY</a>
+                                            <a class="dropdown-item" id="cny" href="javascript:void(0)">USD</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -162,8 +159,8 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                             </button>
-                            <a href="index.html" class="web-logo nav-logo">
-                                <img src="../assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                            <a href="home" class="web-logo nav-logo">
+                                <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="" />
                             </a>
 
                             <div class="middle-box">
@@ -181,8 +178,8 @@
                                 <div class="search-box">
                                     <div class="input-group">
                                         <input type="search" class="form-control" placeholder="I'm searching for..."
-                                            aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <button class="btn" type="button" id="button-addon2">
+                                            aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                        <button class="button-38" type="button" id="button-addon2">
                                             <i data-feather="search"></i>
                                         </button>
                                     </div>
@@ -195,7 +192,8 @@
                                         <span class="input-group-text">
                                             <i data-feather="search" class="font-light"></i>
                                         </span>
-                                        <input type="text" class="form-control search-type" placeholder="Search here..">
+                                        <input type="text" class="form-control search-type"
+                                            placeholder="Search here.." />
                                         <span class="input-group-text close-search">
                                             <i data-feather="x" class="font-light"></i>
                                         </span>
@@ -218,20 +216,15 @@
                                             </div>
                                             <div class="delivery-detail">
                                                 <h6>24/7 Delivery</h6>
-                                                <h5>+91 888 104 2340</h5>
+                                                <h5>+84 33 1234 567</h5>
                                             </div>
-                                        </a>
-                                    </li>
-                                    <li class="right-side">
-                                        <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
-                                            <i data-feather="heart"></i>
                                         </a>
                                     </li>
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge">
                                             <button type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                                <span class="position-absolute top-0 start-100 translate-middle badge">0
                                                     <span class="visually-hidden">unread messages</span>
                                                 </span>
                                             </button>
@@ -241,8 +234,8 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/1.png"
-                                                                    class="blur-up lazyload" alt="">
+                                                                <img src="./assets/images/vegetable/product/1.png"
+                                                                    class="blur-up lazyload" alt="" />
                                                             </a>
 
                                                             <div class="drop-contain">
@@ -260,13 +253,15 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/2.png"
-                                                                    class="blur-up lazyload" alt="">
+                                                                <img src="./assets/images/vegetable/product/2.png"
+                                                                    class="blur-up lazyload" alt="" />
                                                             </a>
 
                                                             <div class="drop-contain">
                                                                 <a href="product-left-thumbnail.html">
-                                                                    <h5>Peanut Butter Bite Premium Butter Cookies 600 g
+                                                                    <h5>
+                                                                        Peanut Butter Bite Premium Butter Cookies
+                                                                        600 g
                                                                     </h5>
                                                                 </a>
                                                                 <h6><span>1 x</span> $25.68</h6>
@@ -285,8 +280,8 @@
 
                                                 <div class="button-group">
                                                     <a href="cart.html" class="btn btn-sm cart-button">View Cart</a>
-                                                    <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
-                                                    text-white">Checkout</a>
+                                                    <a href="checkout.html"
+                                                        class="btn btn-sm cart-button theme-bg-color text-white">Checkout</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -296,35 +291,56 @@
                                             <div class="delivery-icon">
                                                 <i data-feather="user"></i>
                                             </div>
-                                            <div class="delivery-detail">
-                                                <h6>Hello,</h6>
-                                                <h5>My Account</h5>
-                                            </div>
+<c:if test="${sessionScope.user == null}">
+                                                <div class="delivery-detail">
+                                                    <h6>Sorry,</h6>
+                                                    <h5>Not logged-In</h5>
+                                                </div>
+</c:if>
+<c:if test="${sessionScope.user != null}">
+    <c:set var="username" value="${fn:substringBefore(user.email, '@')}" />
+                                                <div class="delivery-detail">
+                                                    <h6>Hello,</h6>
+                                                    <h5>${username}</h5>
+                                                </div>
+</c:if>
                                         </div>
-
-                                        <div class="onhover-div onhover-div-login">
-                                            <ul class="user-box-name">
-                                               <c:choose>
-                                                <c:when test="${not empty sessionScope.userd}">
-                                                    <li class="product-box-contain">
-                                                        <a href="userdashboard">User Profile</a>
-                                                    </li>
-                                                    <li class="product-box-contain">
-                                                        <a href="logout">Log out</a>
-                                                    </li>
-                                                </c:when>
-                                                <c:otherwise>
+<c:if test="${sessionScope.user == null}">
+                                            <div class="onhover-div onhover-div-login">
+                                                <ul class="user-box-name">
                                                     <li class="product-box-contain">
                                                         <i></i>
                                                         <a href="login">Log In</a>
                                                     </li>
+
                                                     <li class="product-box-contain">
                                                         <a href="register">Register</a>
                                                     </li>
-                                                </c:otherwise>
-                                            </c:choose>
-                                            </ul>
-                                        </div>
+
+                                                    <li class="product-box-contain">
+                                                        <a href="mail">Forgot Password</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+</c:if>
+<c:if test="${sessionScope.user != null}">
+                                            <div class="onhover-div onhover-div-login">
+                                                <ul class="user-box-name">
+                                                    <li class="product-box-contain">
+                                                        <i></i>
+                                                        <a href="userdashboard">Dashboard</a>
+                                                    </li>
+
+                                                    <li class="product-box-contain">
+                                                        <a href="register">Cart</a>
+                                                    </li>
+
+                                                    <li class="product-box-contain">
+                                                        <a href="logout">Logout</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+</c:if>
                                     </li>
                                 </ul>
                             </div>
@@ -339,12 +355,11 @@
                 <div class="col-12">
                     <div class="header-nav">
                         <div class="header-nav-left">
-                            <button class="dropdown-category">
-                                <i data-feather="align-left"></i>
+                            <button class="dropdown-category button-86">
                                 <span>All Categories</span>
                             </button>
 
-                            <div class="category-dropdown">
+                            <div class="category-dropdown mt-2">
                                 <div class="category-title">
                                     <h5>Categories</h5>
                                     <button type="button" class="btn p-0 close-button text-content">
@@ -355,7 +370,7 @@
                                 <ul class="category-list">
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/vegetable.svg" alt="">
+                                            <img src="./assets/svg/1/vegetable.svg" alt="" />
                                             <h6>Vegetables & Fruit</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -423,7 +438,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/cup.svg" alt="">
+                                            <img src="./assets/svg/1/cup.svg" alt="" />
                                             <h6>Beverages</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -462,7 +477,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/meats.svg" alt="">
+                                            <img src="./assets/svg/1/meats.svg" alt="" />
                                             <h6>Meats & Seafood</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -521,7 +536,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/breakfast.svg" alt="">
+                                            <img src="./assets/svg/1/breakfast.svg" alt="" />
                                             <h6>Breakfast & Dairy</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -595,7 +610,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/frozen.svg" alt="">
+                                            <img src="./assets/svg/1/frozen.svg" alt="" />
                                             <h6>Frozen Foods</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -628,7 +643,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/biscuit.svg" alt="">
+                                            <img src="./assets/svg/1/biscuit.svg" alt="" />
                                             <h6>Biscuits & Snacks</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -681,7 +696,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/grocery.svg" alt="">
+                                            <img src="./assets/svg/1/grocery.svg" alt="" />
                                             <h6>Grocery & Staples</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -754,146 +769,37 @@
                                     </div>
                                     <div class="offcanvas-body">
                                         <ul class="navbar-nav">
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Home</a>
-
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="index.html">Kartshop</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-2.html">Sweetshop</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-3.html">Organic</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-4.html">Supershop</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-5.html">Classic shop</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-6.html">Furniture</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-7.html">Search Oriented</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-8.html">Category Focus</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-9.html">Fashion</a>
-                                                    </li>
-                                                </ul>
+                                            <li class="nav-item button-13">
+                                                <a class="nav-link">Home</a>
                                             </li>
 
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Shop</a>
+                                            <li class="nav-item dropdown button-13 ">
+                                                <a class="nav-link dropdown-toggle " href="javascript:void(0)"
+                                                    data-bs-toggle="dropdown">Brand</a>
 
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu my-2 show" data-bs-popper="none">
                                                     <li>
-                                                        <a class="dropdown-item" href="shop-category-slider.html">Shop
+                                                        <a class="dropdown-item " href="shop-category-slider.html">Shop
                                                             Category Slider</a>
                                                     </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-category.html">Shop
-                                                            Category Sidebar</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-banner.html">Shop Banner</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-left-sidebar.html">Shop Left
-                                                            Sidebar</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-list.html">Shop List</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-right-sidebar.html">Shop
-                                                            Right Sidebar</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-top-filter.html">Shop Top
-                                                            Filter</a>
-                                                    </li>
+
                                                 </ul>
                                             </li>
 
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Product</a>
 
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="product-4-image.html">Product
-                                                            4 Image</a>
-                                                    </li>
-                                                    <li class="sub-dropdown-hover">
-                                                        <a href="javascript:void(0)" class="dropdown-item">Product
-                                                            Thumbnail</a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a href="product-left-thumbnail.html">Left Thumbnail</a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="product-right-thumbnail.html">Right
-                                                                    Thumbnail</a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="product-bottom-thumbnail.html">Bottom
-                                                                    Thumbnail</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-bundle.html" class="dropdown-item">Product
-                                                            Bundle</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-slider.html" class="dropdown-item">Product
-                                                            Slider</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-sticky.html" class="dropdown-item">Product
-                                                            Sticky</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="nav-item dropdown dropdown-mega">
+                                            <li class="nav-item dropdown dropdown-mega button-13">
                                                 <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
-                                                    href="javascript:void(0)" data-bs-toggle="dropdown">Mega Menu</a>
+                                                    href="javascript:void(0)" data-bs-toggle="dropdown">Cars</a>
 
-                                                <div class="dropdown-menu dropdown-menu-2">
+                                                <div class="dropdown-menu dropdown-menu-2 my-2">
                                                     <div class="row">
                                                         <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">Daily Vegetables</h5>
+                                                            <h5 class="dropdown-header">
+                                                                Daily Vegetables
+                                                            </h5>
                                                             <a class="dropdown-item" href="shop-left-sidebar.html">Beans
                                                                 & Brinjals</a>
 
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Broccoli & Cauliflower</a>
-
-                                                            <a href="shop-left-sidebar.html"
-                                                                class="dropdown-item">Chilies, Garlic</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Vegetables & Salads</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Gourd, Cucumber</a>
-
-                                                            <a class="dropdown-item" href="shop-left-sidebar.html">Herbs
-                                                                & Sprouts</a>
-
-                                                            <a href="demo-personal-portfolio.html"
-                                                                class="dropdown-item">Lettuce & Leafy</a>
                                                         </div>
 
                                                         <div class="dropdown-column col-xl-3">
@@ -901,191 +807,226 @@
                                                             <a class="dropdown-item" href="shop-left-sidebar.html">Beans
                                                                 & Brinjals</a>
 
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Broccoli & Cauliflower</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Chilies, Garlic</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Vegetables & Salads</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Gourd, Cucumber</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Potatoes & Tomatoes</a>
-
-                                                            <a href="shop-left-sidebar.html" class="dropdown-item">Peas
-                                                                & Corn</a>
                                                         </div>
 
                                                         <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">Exotic Vegetables</h5>
+                                                            <h5 class="dropdown-header">
+                                                                Exotic Vegetables
+                                                            </h5>
                                                             <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Asparagus & Artichokes</a>
+                                                                href="shop-left-sidebar.html">Asparagus &
+                                                                Artichokes</a>
 
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Avocados & Peppers</a>
 
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Broccoli & Zucchini</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Celery, Fennel & Leeks</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">Chilies & Lime</a>
                                                         </div>
 
-                                                        <div class="dropdown-column dropdown-column-img col-3"></div>
+                                                        <div class="dropdown-column dropdown-column-img col-3">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
 
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Blog</a>
-                                                <ul class="dropdown-menu">
+                                            <li class="nav-item dropdown button-13">
+                                                <a class="nav-link dropdown-toggle " href="javascript:void(0)"
+                                                    data-bs-toggle="dropdown">News</a>
+                                                <ul class="dropdown-menu my-2 show" data-bs-popper="none">
                                                     <li>
-                                                        <a class="dropdown-item" href="blog-detail.html">Blog Detail</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="blog-grid.html">Blog Grid</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="blog-list.html">Blog List</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="nav-item dropdown new-nav-item">
-                                                <label class="new-dropdown">New</label>
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Pages</a>
-                                                <ul class="dropdown-menu">
-                                                    <li class="sub-dropdown-hover">
-                                                        <a class="dropdown-item" href="javascript:void(0)">Email
-                                                            Template <span class="new-text"><i
-                                                                    class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a
-                                                                    href="../email-templete/abandonment-email.html">Abandonment</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="../email-templete/offer-template.html">Offer
-                                                                    Template</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="../email-templete/order-success.html">Order
-                                                                    Success</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="../email-templete/reset-password.html">Reset
-                                                                    Password</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="../email-templete/welcome.html">Welcome
-                                                                    template</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-hover">
-                                                        <a class="dropdown-item" href="javascript:void(0)">Invoice
-                                                            Template <span class="new-text"><i
-                                                                    class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a href="../invoice/invoice-1.html">Invoice 1</a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="../invoice/invoice-2.html">Invoice 2</a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="../invoice/invoice-3.html">Invoice 3</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="404.html">404</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="about-us.html">About Us</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="cart.html">Cart</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="contact-us.html">Contact</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="checkout.html">Checkout</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="compare.html">Compare</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="faq.html">Faq</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="order-success.html">Order
-                                                            Success</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="order-tracking.html">Order
-                                                            Tracking</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="otp.html">OTP</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="search.html">Search</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="user-dashboard.html">User
-                                                            Dashboard</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Seller</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-become.html">Become a
-                                                            Seller</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-dashboard.html">Seller
-                                                            Dashboard</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-detail.html">Seller
+                                                        <a class="dropdown-item" href="blog-detail.html">Blog
                                                             Detail</a>
                                                     </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-detail-2.html">Seller
-                                                            Detail 2</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-grid.html">Seller Grid</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-grid-2.html">Seller Grid
-                                                            2</a>
-                                                    </li>
+
                                                 </ul>
                                             </li>
+
+                                            <!-- <li class="nav-item dropdown new-nav-item">
+                          <label class="new-dropdown">New</label>
+                          <a
+                            class="nav-link dropdown-toggle"
+                            href="javascript:void(0)"
+                            data-bs-toggle="dropdown"
+                            >Pages</a
+                          >
+                          <ul class="dropdown-menu">
+                            <li class="sub-dropdown-hover">
+                              <a class="dropdown-item" href="javascript:void(0)"
+                                >Email Template
+                                <span class="new-text"
+                                  ><i
+                                    class="fa-solid fa-bolt-lightning"
+                                  ></i></span
+                              ></a>
+                              <ul class="sub-menu">
+                                <li>
+                                  <a
+                                    href="./email-templete/abandonment-email.html"
+                                    >Abandonment</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="./email-templete/offer-template.html"
+                                    >Offer Template</a
+                                  >
+                                </li>
+                                <li>
+                                  <a href="./email-templete/order-success.html"
+                                    >Order Success</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="./email-templete/reset-password.html"
+                                    >Reset Password</a
+                                  >
+                                </li>
+                                <li>
+                                  <a href="./email-templete/welcome.html"
+                                    >Welcome template</a
+                                  >
+                                </li>
+                              </ul>
+                            </li>
+                            <li class="sub-dropdown-hover">
+                              <a class="dropdown-item" href="javascript:void(0)"
+                                >Invoice Template
+                                <span class="new-text"
+                                  ><i
+                                    class="fa-solid fa-bolt-lightning"
+                                  ></i></span
+                              ></a>
+                              <ul class="sub-menu">
+                                <li>
+                                  <a href="./invoice/invoice-1.html"
+                                    >Invoice 1</a
+                                  >
+                                </li>
+
+                                <li>
+                                  <a href="./invoice/invoice-2.html"
+                                    >Invoice 2</a
+                                  >
+                                </li>
+
+                                <li>
+                                  <a href="./invoice/invoice-3.html"
+                                    >Invoice 3</a
+                                  >
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="404.html">404</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="about-us.html"
+                                >About Us</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="cart.html">Cart</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="contact-us.html"
+                                >Contact</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="checkout.html"
+                                >Checkout</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="coming-soon.html"
+                                >Coming Soon</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="compare.html"
+                                >Compare</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="faq.html">Faq</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="order-success.html"
+                                >Order Success</a
+                              >
+                            </li>
+                            <li>
+                              <a
+                                class="dropdown-item"
+                                href="order-tracking.html"
+                                >Order Tracking</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="otp.html">OTP</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="search.html"
+                                >Search</a
+                              >
+                            </li>
+                            <li>
+                              <a
+                                class="dropdown-item"
+                                href="user-dashboard.html"
+                                >User Dashboard</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="wishlist.html"
+                                >Wishlist</a
+                              >
+                            </li>
+                          </ul>
+                        </li> -->
+
+                                            <!-- <li class="nav-item dropdown">
+                          <a
+                            class="nav-link dropdown-toggle"
+                            href="javascript:void(0)"
+                            data-bs-toggle="dropdown"
+                            >Seller</a
+                          >
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item" href="seller-become.html"
+                                >Become a Seller</a
+                              >
+                            </li>
+                            <li>
+                              <a
+                                class="dropdown-item"
+                                href="seller-dashboard.html"
+                                >Seller Dashboard</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="seller-detail.html"
+                                >Seller Detail</a
+                              >
+                            </li>
+                            <li>
+                              <a
+                                class="dropdown-item"
+                                href="seller-detail-2.html"
+                                >Seller Detail 2</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="seller-grid.html"
+                                >Seller Grid</a
+                              >
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="seller-grid-2.html"
+                                >Seller Grid 2</a
+                              >
+                            </li>
+                          </ul>
+                        </li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -1177,7 +1118,7 @@
                 <div class="col-xxl-4 order-lg-2">
                     <div class="poster-box">
                         <div class="poster-image">
-                            <img src="../assets/images/vendor-page/become-saller.svg" class="img-fluid" alt="">
+                            <img src="./assets/images/vendor-page/become-saller.svg" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -1185,20 +1126,18 @@
                 <div class="col-xxl-7">
                     <div class="seller-title h-100 d-flex align-items-center">
                         <div>
-                            <h2>Become a seller on fastkart...</h2>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium,On the other hand, we denounce with righteous indignation and dislike men who
-                                are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by
-                                desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal
-                                blame belongs to those who fail in their duty through weakness of will, which is the
-                                same as saying through shrinking from toil and pain. These cases are perfectly simple
-                                and easy to distinguish. In a free hour, when our power of choice is untrammelled and
-                                when nothing prevents our being able to do what we like best, every pleasure is to be
-                                welcomed and every pain avoided. But in certain circumstances and owing to the claims of
-                                duty or the obligations of business it will frequently occur that pleasures have to be
-                                repudiated and annoyances accepted. The wise man therefore always holds in these matters
-                                to this principle of selection: he rejects pleasures to secure other greater pleasures,
-                                or else he endures pains to avoid worse pains.</p>
+                            <h2>Become a seller for ApexAutos...</h2>
+                            <p>Are you passionate about cars and looking to expand your business? Join our car ecommerce
+                                platform as a selling collaborator and reach a wider audience of car enthusiasts. With
+                                our platform, you can showcase your inventory, connect with potential buyers, and grow
+                                your sales.</p>
+
+                            <p>As a selling collaborator, you'll benefit from our extensive marketing efforts,
+                                user-friendly interface, and secure payment system. We provide a seamless selling
+                                experience, allowing you to focus on what you do best - selling cars.</p>
+
+                            <b>Join us today and become a part of our thriving community of car sellers. Together, we
+                                can drive success and revolutionize the car buying experience.</b>
                         </div>
                     </div>
                 </div>
@@ -1211,7 +1150,7 @@
     <section class="become-service section-b-space">
         <div class="container-fluid-lg">
             <div class="seller-title mb-5">
-                <h2>Why sell on fastkart ?</h2>
+                <h2>Why sell on apex... ?</h2>
             </div>
 
             <div class="row">
@@ -1393,7 +1332,7 @@
     <section class="business-section section-b-space">
         <div class="container-fluid-lg">
             <div class="vendor-title mb-5">
-                <h5>Doing Business On Fastkart Is Really Easy</h5>
+                <h5>Doing Business On Apex Automobile Is Really Easy</h5>
             </div>
 
             <div class="business-contain">
@@ -1454,20 +1393,20 @@
         <div class="container-fluid-lg">
             <div class="vendor-title">
                 <h5>Start Selling</h5>
-                <p>Fastkart marketplace is India's leading platform for selling online. Be it a manufacturer,
-                    vendor or supplier, simply sell your products online on Fastkart and become a top ecommerce
+                <p>Apex Automobile marketplace is India's leading platform for selling online. Be it a manufacturer,
+                    vendor or supplier, simply sell your products online on Apex Automobile and become a top ecommerce
                     player with minimum investment. Through a team of experts offering exclusive seller
-                    workshops, training, seller support and convenient seller portal, Fastkart focuses on
-                    educating and empowering sellers across India. Selling on Fastkart.com is easy and
+                    workshops, training, seller support and convenient seller portal, Apex Automobile focuses on
+                    educating and empowering sellers across India. Selling on Apex Automobile.com is easy and
                     absolutely free. All you need is to register, list your catalogue and start selling your
                     products.</p>
             </div>
-            <form>
+            <form action="seller?state=become" method="post">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="mt-3">
                             <div class="form-floating theme-form-floating-2 search-box">
-                                <input type="email" class="form-control" id="mail" placeholder="Email Id">
+                                <input type="email" class="form-control" id="mail" placeholder="Email Id" name="seller-mail">
                                 <label for="mail">Email Id</label>
                             </div>
                         </div>
@@ -1476,14 +1415,14 @@
                     <div class="col-lg-6">
                         <div class="mt-3">
                             <div class="form-floating theme-form-floating-2 search-box">
-                                <input type="password" class="form-control" id="pwd" placeholder="Password">
+                                <input type="password" class="form-control" id="pwd" placeholder="Password" name="seller-pass">
                                 <label for="pwd">Password</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12">
-                        <button class="btn btn-md mt-3 theme-bg-color text-white">Start Selling</button>
+                        <input type="submit" class="button-83 mt-3" value="Start Selling"></button>
                     </div>
                 </div>
             </form>
@@ -1492,45 +1431,45 @@
     <!-- Selling Section End -->
 
     <!-- Footer Section Start -->
-    <footer class="section-t-space">
+    <footer class="section-t-space py-3">
         <div class="container-fluid-lg">
-            <div class="service-section">
+            <div class="service-section pb-3">
                 <div class="row g-3">
                     <div class="col-12">
-                        <div class="service-contain">
+                        <div class="service-contain py-2">
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/product.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/sedan.png" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
-                                    <h5>Every Fresh Products</h5>
+                                    <h5>Newest Cars</h5>
                                 </div>
                             </div>
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/delivery.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
-                                    <h5>Free Delivery For Order Over $50</h5>
+                                    <h5>Free Delivery For Order Over $50k</h5>
                                 </div>
                             </div>
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/discount.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
-                                    <h5>Daily Mega Discounts</h5>
+                                    <h5>Monthly Mega Discounts</h5>
                                 </div>
                             </div>
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/market.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="" />
                                 </div>
 
                                 <div class="service-detail">
@@ -1542,28 +1481,33 @@
                 </div>
             </div>
 
-            <div class="main-footer section-b-space section-t-space">
+            <div class="main-footer section-b-space section-t-space py-3">
                 <div class="row g-md-4 g-3">
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="footer-logo">
                             <div class="theme-logo">
                                 <a href="index.html">
-                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                    <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="" />
                                 </a>
                             </div>
 
                             <div class="footer-logo-contain">
-                                <p>We are a friendly bar serving a variety of cocktails, wines and beers. Our bar is a
-                                    perfect place for a couple.</p>
+                                <p>
+                                    Discover a <b>seamless online car buying experience</b> with unbeatable prices,
+                                    extensive selections,
+                                    and
+                                    convenient delivery.
+                                </p>
 
                                 <ul class="address">
                                     <li>
                                         <i data-feather="home"></i>
-                                        <a href="javascript:void(0)">1418 Riverwood Drive, CA 96052, US</a>
+                                        <a href="javascript:void(0)">FPT University
+                                        </a>
                                     </li>
                                     <li>
                                         <i data-feather="mail"></i>
-                                        <a href="javascript:void(0)">support@fastkart.com</a>
+                                        <a href="javascript:void(0)">niggawhat@fpt.edu.vn</a>
                                     </li>
                                 </ul>
                             </div>
@@ -1571,32 +1515,16 @@
                     </div>
 
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="footer-title">
-                            <h4>Categories</h4>
-                        </div>
-
-                        <div class="footer-contain">
-                            <ul>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Vegetables & Fruit</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Beverages</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Meats & Seafood</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Frozen Foods</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Biscuits & Snacks</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.html" class="text-content">Grocery & Staples</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked="checked">
+                            <div class="button">
+                                <div class="light"></div>
+                                <div class="dots"></div>
+                                <div class="characters"></div>
+                                <div class="shine"></div>
+                                <div class="shadow"></div>
+                            </div>
+                        </label>
                     </div>
 
                     <div class="col-xl col-lg-2 col-sm-3">
@@ -1676,7 +1604,7 @@
                                         <i data-feather="mail"></i>
                                         <div class="contact-number">
                                             <h6 class="text-content">Email Address :</h6>
-                                            <h5>fastkart@hotmail.com</h5>
+                                            <h5>apexautos@hotmail.com</h5>
                                         </div>
                                     </div>
                                 </li>
@@ -1686,14 +1614,14 @@
                                     <ul>
                                         <li class="mb-0">
                                             <a href="https://play.google.com/store/apps" target="_blank">
-                                                <img src="../assets/images/playstore.svg" class="blur-up lazyload"
-                                                    alt="">
+                                                <img src="./assets/images/playstore.svg" class="blur-up lazyload"
+                                                    alt="" />
                                             </a>
                                         </li>
                                         <li class="mb-0">
                                             <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                <img src="../assets/images/appstore.svg" class="blur-up lazyload"
-                                                    alt="">
+                                                <img src="./assets/images/appstore.svg" class="blur-up lazyload"
+                                                    alt="" />
                                             </a>
                                         </li>
                                     </ul>
@@ -1704,13 +1632,13 @@
                 </div>
             </div>
 
-            <div class="sub-footer section-small-space">
+            <div class="sub-footer section-small-space py-3">
                 <div class="reserve">
-                    <h6 class="text-content">©2022 Fastkart All rights reserved</h6>
+                    <h6 class="text-content">�2022 ApexAutos All rights reserved</h6>
                 </div>
 
                 <div class="payment">
-                    <img src="../assets/images/payment/1.png" class="blur-up lazyload" alt="">
+                    <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="" />
                 </div>
 
                 <div class="social-link">
@@ -1757,7 +1685,7 @@
                     <div class="row g-sm-4 g-2">
                         <div class="col-lg-6">
                             <div class="slider-image">
-                                <img src="../assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
+                                <img src="./assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </div>
                         </div>
@@ -1969,7 +1897,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/10.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -1983,7 +1911,7 @@
                             <li class="list-2">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/11.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -1997,7 +1925,7 @@
                             <li class="list-3">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/12.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -2011,7 +1939,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/13.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -2032,7 +1960,7 @@
     <!-- Add to cart Modal Start -->
     <div class="add-cart-box">
         <div class="add-iamge">
-            <img src="../assets/images/cake/pro/1.jpg" class="img-fluid" alt="">
+            <img src="./assets/images/cake/pro/1.jpg" class="img-fluid" alt="">
         </div>
 
         <div class="add-contain">
@@ -2056,39 +1984,39 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="./assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="./assets/js/bootstrap/popper.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="../assets/js/feather/feather.min.js"></script>
-    <script src="../assets/js/feather/feather-icon.js"></script>
+    <script src="./assets/js/feather/feather.min.js"></script>
+    <script src="./assets/js/feather/feather-icon.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="../assets/js/lazysizes.min.js"></script>
+    <script src="./assets/js/lazysizes.min.js"></script>
 
     <!-- Slick js-->
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/slick/slick-animation.min.js"></script>
-    <script src="../assets/js/slick/custom_slick.js"></script>
+    <script src="./assets/js/slick/slick.js"></script>
+    <script src="./assets/js/slick/slick-animation.min.js"></script>
+    <script src="./assets/js/slick/custom_slick.js"></script>
 
     <!-- Price Range Js -->
-    <script src="../assets/js/ion.rangeSlider.min.js"></script>
+    <script src="./assets/js/ion.rangeSlider.min.js"></script>
 
     <!-- Quantity js -->
-    <script src="../assets/js/quantity-2.js"></script>
+    <script src="./assets/js/quantity-2.js"></script>
 
     <!-- sidebar open js -->
-    <script src="../assets/js/filter-sidebar.js"></script>
+    <script src="./assets/js/filter-sidebar.js"></script>
 
     <!-- script js -->
-    <script src="../assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 
 
 

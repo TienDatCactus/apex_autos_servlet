@@ -59,10 +59,10 @@ public class VerifyControl extends HttpServlet {
                 if (storedCode == Integer.parseInt(otp)) {
                     UserAccount user = new UserAccount(mail, pass);
                     if (dao.checkRegister(user)) {
-                        request.setAttribute("successMessage", "Registration successful. Please login.");
+                        request.setAttribute("successMessageVerify", "Registration successful. Please login.");
                         request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
                     } else {
-                        request.setAttribute("errorMessage", "Register failed...");
+                        request.setAttribute("errorMessageVerify", "Register failed...");
                         request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request,
                                 response);
                     }
@@ -77,16 +77,18 @@ public class VerifyControl extends HttpServlet {
                 if (storedCode == Integer.parseInt(otp)) {
                     request.getRequestDispatcher("/front-end/reset-pw.jsp").forward(request, response);
                 } else {
-                    session.setAttribute("errorMessage", "Verification failed. The code you entered is incorrect.");
-                    response.sendRedirect("verify");
+                    request.setAttribute("errorMessageVerify", "Verification failed. The code you entered is incorrect.");
+                    request.getRequestDispatcher("/front-end/otp.jsp").forward(request,
+                            response);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 response.sendRedirect("verify");
             }
         } else {
-            session.setAttribute("errorMessage", "Verification failed. The code you entered is deprecated.");
-            response.sendRedirect("verify");
+            request.setAttribute("errorMessageVerify", "Verification failed. The code you entered is incorrect.");
+            request.getRequestDispatcher("/front-end/otp.jsp").forward(request,
+                    response);
         }
 
     }

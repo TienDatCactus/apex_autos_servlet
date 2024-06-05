@@ -46,10 +46,7 @@ public class UserDAO {
     public boolean checkRegister(UserAccount ua) {
         String email = ua.getEmail();
         String password = ua.getPassword();
-        int role = ua.getEmail().contains("admin") ? 1 : 3;
-        System.out.println(email);
-        System.out.println(password);
-        System.out.println(role);
+        int role = ua.getEmail().contains("apex") ? 2 : 3;
         String hashedPassword = hashPassword(password);
         if (userExisted(email)) {
             return false;

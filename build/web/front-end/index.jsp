@@ -1,11 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
             <!DOCTYPE html>
             <html lang="en">
 
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="description" content="ApexAutos" />
@@ -78,7 +79,7 @@
                                                 <i class="fa-solid fa-bars"></i>
                                             </span>
                                         </button>
-                                        <a href="index.html" class="web-logo nav-logo">
+                                        <a href="home" class="web-logo nav-logo">
                                             <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload"
                                                 alt="">
                                         </a>
@@ -98,58 +99,12 @@
                                                             <ul class="navbar-nav">
                                                                 <li class="nav-item dropdown">
                                                                     <a class="nav-link dropdown-toggle"
-                                                                        href="javascript:void(0)"
-                                                                        data-bs-toggle="dropdown">Home </a>
-
-                                                                    <ul class="dropdown-menu">
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index.html">Kartshop</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-2.html">Sweetshop</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-3.html">Organic</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-4.html">Supershop</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-5.html">Classic
-                                                                                shop</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-6.html">Furniture</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-7.html">Search
-                                                                                Oriented</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-8.html">Category
-                                                                                Focus</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="index-9.html">Fashion</a>
-                                                                        </li>
-                                                                    </ul>
+                                                                        href="home">Home</a>
                                                                 </li>
-
-
-
                                                                 <li class="nav-item dropdown">
                                                                     <a class="nav-link dropdown-toggle"
                                                                         href="javascript:void(0)"
-                                                                        data-bs-toggle="dropdown">Product</a>
+                                                                        data-bs-toggle="dropdown">Cateogries</a>
 
                                                                     <ul class="dropdown-menu">
                                                                         <li>
@@ -199,271 +154,14 @@
                                                                     </ul>
                                                                 </li>
 
-                                                                <li class="nav-item dropdown dropdown-mega">
-                                                                    <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
-                                                                        href="javascript:void(0)"
-                                                                        data-bs-toggle="dropdown">Mega
-                                                                        Menu</a>
 
-                                                                    <div class="dropdown-menu dropdown-menu-2">
-                                                                        <div class="row">
-                                                                            <div class="dropdown-column col-xl-3">
-                                                                                <h5 class="dropdown-header">Daily
-                                                                                    Vegetables
-                                                                                </h5>
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Beans
-                                                                                    & Brinjals</a>
 
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Broccoli
-                                                                                    &
-                                                                                    Cauliflower</a>
 
-                                                                                <a href="shop-left-sidebar.html"
-                                                                                    class="dropdown-item">Chilies,
-                                                                                    Garlic</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Vegetables
-                                                                                    &
-                                                                                    Salads</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Gourd,
-                                                                                    Cucumber</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Herbs
-                                                                                    & Sprouts</a>
-
-                                                                                <a href="demo-personal-portfolio.html"
-                                                                                    class="dropdown-item">Lettuce &
-                                                                                    Leafy</a>
-                                                                            </div>
-
-                                                                            <div class="dropdown-column col-xl-3">
-                                                                                <h5 class="dropdown-header">Baby Tender
-                                                                                </h5>
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Beans
-                                                                                    & Brinjals</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Broccoli
-                                                                                    &
-                                                                                    Cauliflower</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Chilies,
-                                                                                    Garlic</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Vegetables
-                                                                                    &
-                                                                                    Salads</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Gourd,
-                                                                                    Cucumber</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Potatoes
-                                                                                    &
-                                                                                    Tomatoes</a>
-
-                                                                                <a href="shop-left-sidebar.html"
-                                                                                    class="dropdown-item">Peas
-                                                                                    & Corn</a>
-                                                                            </div>
-
-                                                                            <div class="dropdown-column col-xl-3">
-                                                                                <h5 class="dropdown-header">Exotic
-                                                                                    Vegetables</h5>
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Asparagus
-                                                                                    &
-                                                                                    Artichokes</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Avocados
-                                                                                    &
-                                                                                    Peppers</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Broccoli
-                                                                                    &
-                                                                                    Zucchini</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Celery,
-                                                                                    Fennel &
-                                                                                    Leeks</a>
-
-                                                                                <a class="dropdown-item"
-                                                                                    href="shop-left-sidebar.html">Chilies
-                                                                                    &
-                                                                                    Lime</a>
-                                                                            </div>
-
-                                                                            <div
-                                                                                class="dropdown-column dropdown-column-img col-3">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
 
                                                                 <li class="nav-item dropdown">
                                                                     <a class="nav-link dropdown-toggle"
                                                                         href="javascript:void(0)"
-                                                                        data-bs-toggle="dropdown">Blog</a>
-                                                                    <ul class="dropdown-menu">
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="blog-detail.html">Blog
-                                                                                Detail</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="blog-grid.html">Blog
-                                                                                Grid</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="blog-list.html">Blog
-                                                                                List</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-
-                                                                <li class="nav-item dropdown new-nav-item">
-                                                                    <label class="new-dropdown">New</label>
-                                                                    <a class="nav-link dropdown-toggle"
-                                                                        href="javascript:void(0)"
-                                                                        data-bs-toggle="dropdown">Pages</a>
-                                                                    <ul class="dropdown-menu">
-                                                                        <li class="sub-dropdown-hover">
-                                                                            <a class="dropdown-item"
-                                                                                href="javascript:void(0)">Email
-                                                                                Template <span class="new-text"><i
-                                                                                        class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                                            <ul class="sub-menu">
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="./email-templete/abandonment-email.html">Abandonment</a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="./email-templete/offer-template.html">Offer
-                                                                                        Template</a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="./email-templete/order-success.html">Order
-                                                                                        Success</a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="./email-templete/reset-password.html">Reset
-                                                                                        Password</a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="./email-templete/welcome.html">Welcome
-                                                                                        template</a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </li>
-                                                                        <li class="sub-dropdown-hover">
-                                                                            <a class="dropdown-item"
-                                                                                href="javascript:void(0)">Invoice
-                                                                                Template <span class="new-text"><i
-                                                                                        class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                                            <ul class="sub-menu">
-                                                                                <li>
-                                                                                    <a href="./invoice/invoice-1.html">Invoice
-                                                                                        1</a>
-                                                                                </li>
-
-                                                                                <li>
-                                                                                    <a href="./invoice/invoice-2.html">Invoice
-                                                                                        2</a>
-                                                                                </li>
-
-                                                                                <li>
-                                                                                    <a href="./invoice/invoice-3.html">Invoice
-                                                                                        3</a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="404.html">404</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="about-us.html">About
-                                                                                Us</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="cart.html">Cart</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="contact-us.html">Contact</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="checkout.html">Checkout</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="coming-soon.html">Coming
-                                                                                Soon</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="compare.html">Compare</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="faq.html">Faq</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="order-success.html">Order
-                                                                                Success</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="order-tracking.html">Order
-                                                                                Tracking</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="otp.html">OTP</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="search.html">Search</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="user-dashboard.html">User
-                                                                                Dashboard</a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="dropdown-item"
-                                                                                href="wishlist">Wishlist</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-
-                                                                <li class="nav-item dropdown">
-                                                                    <a class="nav-link dropdown-toggle"
-                                                                        href="javascript:void(0)"
-                                                                        data-bs-toggle="dropdown">Seller</a>
+                                                                        data-bs-toggle="dropdown">Categories</a>
                                                                     <ul class="dropdown-menu">
                                                                         <li>
                                                                             <a class="dropdown-item"
@@ -494,6 +192,27 @@
                                                                             <a class="dropdown-item"
                                                                                 href="seller-grid-2.html">Seller Grid
                                                                                 2</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="nav-item dropdown new-nav-item">
+                                                                    <label class="new-dropdown">New</label>
+                                                                    <a class="nav-link dropdown-toggle"
+                                                                        href="javascript:void(0)"
+                                                                        data-bs-toggle="dropdown">Become our Seller</a>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li class="sub-dropdown-hover">
+                                                                            <a class="dropdown-item"
+                                                                                href="javascript:void(0)">Our Program
+                                                                                <span class="new-text"><i
+                                                                                        class="fa-solid fa-bolt-lightning"></i></span></a>
+                                                                            <ul class="sub-menu">
+                                                                                <li>
+                                                                                    <a
+                                                                                        href="seller">Sign
+                                                                                        up for the program</a>
+                                                                                </li>
+                                                                            </ul>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
@@ -610,22 +329,22 @@
                                                         <div class="delivery-icon">
                                                             <i data-feather="user"></i>
                                                         </div>
-                                                        <c:if test="${sessionScope.user == null}">
+<c:if test="${sessionScope.user == null}">
                                                             <div class="delivery-detail">
                                                                 <h6>Sorry,</h6>
                                                                 <h5>Not logged-In</h5>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${sessionScope.user != null}">
-                                                            <c:set var="username"
-                                                                value="${fn:substringBefore(user.email, '@')}" />
+</c:if>
+<c:if test="${sessionScope.user != null}">
+    <c:set var="username"
+           value="${fn:substringBefore(user.email, '@')}" />
                                                             <div class="delivery-detail">
                                                                 <h6>Hello,</h6>
                                                                 <h5>${username}</h5>
                                                             </div>
-                                                        </c:if>
+</c:if>
                                                     </div>
-                                                    <c:if test="${sessionScope.user == null}">
+<c:if test="${sessionScope.user == null}">
                                                         <div class="onhover-div onhover-div-login">
                                                             <ul class="user-box-name">
                                                                 <li class="product-box-contain">
@@ -642,8 +361,8 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                    </c:if>
-                                                    <c:if test="${sessionScope.user != null}">
+</c:if>
+<c:if test="${sessionScope.user != null}">
                                                         <div class="onhover-div onhover-div-login">
                                                             <ul class="user-box-name">
                                                                 <li class="product-box-contain">
@@ -660,7 +379,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                    </c:if>
+</c:if>
                                                 </li>
                                             </ul>
                                         </div>
@@ -754,7 +473,7 @@
                 <!-- product section start -->
                 <section class="section-b-space pb-0">
                     <div class="container-fluid-lg">
-                        er-flu <div class="row">
+                        <div class="row">
                             <div class="col-xxl-3 col-lg-4 d-none d-lg-block">
                                 <div class="category-menu menu-xl">
                                     <ul>
@@ -778,7 +497,7 @@
                                 </div>
                                 <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
                         section-b-space">
-                                    <c:forEach var="cl" items="${carList}">
+<c:forEach var="cl" items="${carList}">
                                         <div>
                                             <div class="product-box product-white-bg wow fadeIn">
                                                 <div class="product-image">
@@ -803,13 +522,16 @@
                                                         </li>
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Wishlist">
-                                                           <form action="wishlist?action=addtowish&idcar=${cl.car_id}&iduser=${user.user_id}" method="post">
-                                                                     <button type="submit" class="notifi-wishlist" style="background: none; border: none; cursor: pointer;">
-                                                                     <i data-feather="heart" style="font-size: 8px"></i>
-                                                                      </button>
-                                                                 </form>
+                                                            <form id="form-wish"
+                                                                action="wishlist?action=addtowish&carId=${cl.car_id}&userId=${user.user_id}"
+                                                                method="post">
+                                                                <a class="notifi-wishlist" style="cursor: pointer"
+                                                                    onclick="document.getElementById('form-wish').submit()">
+                                                                    <i data-feather="heart" style="font-size: 8px"></i>
+                                                                </a>
+                                                            </form>
 
-                                                           
+
 
                                                         </li>
                                                     </ul>
@@ -817,7 +539,7 @@
                                                 <div class="product-detail position-relative">
                                                     <a href="detail?id=${cl.car_id}">
                                                         <h6 class="name" style="font-size:16px">
-                                                            ${cl.name}
+    ${cl.name}
                                                         </h6>
                                                     </a>
 
@@ -832,7 +554,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </c:forEach>
+</c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -841,7 +563,7 @@
                 <!-- product section end -->
                 <section class=" section-b-space pt-0">
                     <ul class="d-flex justify-content-center pagination-lg">
-                        <c:if test="${page.index != 0}">
+<c:if test="${page.index != 0}">
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=0' class="page-link"
                                     style="color: var(--theme-color);"> Home </a>
@@ -851,15 +573,15 @@
                                     class="page-link" style="color: var(--theme-color);">
                                     Previous </a>
                             </li>
-                        </c:if>
-                        <c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
+</c:if>
+<c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=${p}' class="page-link"
                                     style="color: var(--theme-color);"> Page ${p
-                                    +1}</a>
+                                               +1}</a>
                             </li>
-                        </c:forEach>
-                        <c:if test="${page.index  != page.totalPage - 1}">
+</c:forEach>
+<c:if test="${page.index  != page.totalPage - 1}">
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=${page.index+1}'
                                     class="page-link" style="color: var(--theme-color);">
@@ -869,7 +591,7 @@
                                 <a href='${pageContext.request.contextPath}/home?index=${page.totalPage-1}'
                                     class="page-link" style="color: var(--theme-color);"> End </a>
                             </li>
-                        </c:if>
+</c:if>
                     </ul>
                 </section>
 

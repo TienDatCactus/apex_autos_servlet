@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
         <!DOCTYPE html>
         <html lang="en">
 
@@ -1142,8 +1143,8 @@
                                         <h5>Didn't get the code? <a href="mail" class="theme-color fw-bold">Resend
                                                 It</a></h5>
                                     </div>
-<c:if test="${not empty errorMessage}">
-                                        <div class="alert alert-danger my-2">${errorMessage}</div>
+<c:if test="${not empty errorMessageVerify}">
+                                        <div class="alert alert-danger my-2">${errorMessageVerify}</div>
 </c:if>
                                     <input class="button-38 w-100 mt-3"
                                         onmouseover="this.style.backgroundColor='var(--theme-color)';this.style.color='#fff'"

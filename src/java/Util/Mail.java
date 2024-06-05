@@ -60,4 +60,20 @@ public class Mail {
         }
         return verificationCode;
     }
+
+    private static void responseRequest(String to) {
+        Properties props = System.getProperties();
+        props.put("mail.smtp.starttls.enable", "true"
+        );
+        props.put("mail.smtp.host", "smtp.gmail.com"
+        );
+        props.put("mail.smtp.user", from
+        );
+        props.put("mail.smtp.password", pass
+        );
+        props.put("mail.smtp.port",
+                "587");
+        props.put("mail.smtp.auth", "true"
+        );
+    }
 }

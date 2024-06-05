@@ -174,7 +174,7 @@ validator.checkPass = function (selector, getPass) {
     selector: selector,
     test: function (value) {
       return value.length != 0
-        ? value.includes(getPass())
+        ? value === getPass()
           ? undefined
           : `Passwords do not match !`
         : "Please enter your password first!";
