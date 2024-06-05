@@ -60,9 +60,12 @@ public class LoginControl extends HttpServlet {
         boolean loginResult = userDAO.checkLogin(userAccount);
 
         if (loginResult) {
-            UserDAO dao = new UserDAO();
+            UserDAO daou = new UserDAO();
+            CarDao daoc = new CarDao();
             userAccount = userDAO.getUserByEmail(userAccount.getEmail());           
-            List<Address> listAddr = dao.viewAllAddressFor1User(userAccount.getUser_id());
+            List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
+             List<WishList> listWish = daoc.viewAllWishList();
+            session.setAttribute("listWish", listWish);
             session.setAttribute("listAddr", listAddr);
             session.setAttribute("userd", userAccount);
             // Login successful, redirect to another page

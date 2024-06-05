@@ -8,7 +8,7 @@
     <meta name="description" content="ApexAutos">
     <meta name="keywords" content="ApexAutos">
     <meta name="author" content="ApexAutos">
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="./assets/images/favicon/1.png" type="image/x-icon">
     <title>Wishlist</title>
 
     <!-- Google font -->
@@ -21,23 +21,23 @@
         rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -96,28 +96,28 @@
                                 <div class="dropdown theme-form-select">
                                     <button class="btn dropdown-toggle" type="button" id="select-language"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="../assets/images/country/united-states.png"
+                                        <img src="./assets/images/country/united-states.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <span>English</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                                <img src="../assets/images/country/united-kingdom.png"
+                                                <img src="./assets/images/country/united-kingdom.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>English</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                                <img src="../assets/images/country/germany.png"
+                                                <img src="./assets/images/country/germany.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>Germany</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                                <img src="../assets/images/country/turkish.png"
+                                                <img src="./assets/images/country/turkish.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>Turki</span>
                                             </a>
@@ -162,8 +162,8 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                             </button>
-                            <a href="index.html" class="web-logo nav-logo">
-                                <img src="../assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                            <a href="home" class="web-logo nav-logo">
+                                <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
                             </a>
 
                             <div class="middle-box">
@@ -241,7 +241,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                <img src="./assets/images/vegetable/product/1.png"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
@@ -260,7 +260,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/2.png"
+                                                                <img src="./assets/images/vegetable/product/2.png"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
@@ -355,7 +355,7 @@
                                 <ul class="category-list">
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/vegetable.svg" alt="">
+                                            <img src="./assets/svg/1/vegetable.svg" alt="">
                                             <h6>Vegetables & Fruit</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -423,7 +423,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/cup.svg" alt="">
+                                            <img src="./assets/svg/1/cup.svg" alt="">
                                             <h6>Beverages</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -462,7 +462,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/meats.svg" alt="">
+                                            <img src="./assets/svg/1/meats.svg" alt="">
                                             <h6>Meats & Seafood</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -521,7 +521,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/breakfast.svg" alt="">
+                                            <img src="./assets/svg/1/breakfast.svg" alt="">
                                             <h6>Breakfast & Dairy</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -595,7 +595,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/frozen.svg" alt="">
+                                            <img src="./assets/svg/1/frozen.svg" alt="">
                                             <h6>Frozen Foods</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -628,7 +628,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/biscuit.svg" alt="">
+                                            <img src="./assets/svg/1/biscuit.svg" alt="">
                                             <h6>Biscuits & Snacks</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -681,7 +681,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/grocery.svg" alt="">
+                                            <img src="./assets/svg/1/grocery.svg" alt="">
                                             <h6>Grocery & Staples</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -760,7 +760,7 @@
 
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a class="dropdown-item" href="index.html">Kartshop</a>
+                                                        <a class="dropdown-item" href="home">Kartshop</a>
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item" href="index-2.html">Sweetshop</a>
@@ -971,22 +971,22 @@
                                                         <ul class="sub-menu">
                                                             <li>
                                                                 <a
-                                                                    href="../email-templete/abandonment-email.html">Abandonment</a>
+                                                                    href="./email-templete/abandonment-email.html">Abandonment</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/offer-template.html">Offer
+                                                                <a href="./email-templete/offer-template.html">Offer
                                                                     Template</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/order-success.html">Order
+                                                                <a href="./email-templete/order-success.html">Order
                                                                     Success</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/reset-password.html">Reset
+                                                                <a href="./email-templete/reset-password.html">Reset
                                                                     Password</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/welcome.html">Welcome
+                                                                <a href="./email-templete/welcome.html">Welcome
                                                                     template</a>
                                                             </li>
                                                         </ul>
@@ -997,15 +997,15 @@
                                                                     class="fa-solid fa-bolt-lightning"></i></span></a>
                                                         <ul class="sub-menu">
                                                             <li>
-                                                                <a href="../invoice/invoice-1.html">Invoice 1</a>
+                                                                <a href="./invoice/invoice-1.html">Invoice 1</a>
                                                             </li>
 
                                                             <li>
-                                                                <a href="../invoice/invoice-2.html">Invoice 2</a>
+                                                                <a href="./invoice/invoice-2.html">Invoice 2</a>
                                                             </li>
 
                                                             <li>
-                                                                <a href="../invoice/invoice-3.html">Invoice 3</a>
+                                                                <a href="./invoice/invoice-3.html">Invoice 3</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -1109,7 +1109,7 @@
     <div class="mobile-menu d-md-none d-block mobile-cart">
         <ul>
             <li class="active">
-                <a href="index.html">
+                <a href="home">
                     <i class="iconly-Home icli"></i>
                     <span>Home</span>
                 </a>
@@ -1156,7 +1156,7 @@
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
-                                    <a href="index.html">
+                                    <a href="home">
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
@@ -1174,32 +1174,35 @@
     <section class="wishlist-section section-b-space">
         <div class="container-fluid-lg">
             <div class="row g-sm-3 g-2">
+                
+                <c:forEach items="${listWish}" var="wish">
                 <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
                     <div class="product-box-3 h-100">
                         <div class="product-header">
                             <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/2.png" class="img-fluid blur-up lazyload"
+                                <a href="detail?id=${wish.car_id}">
+                                    <img src="./assets/images/cake/product/2.png" class="img-fluid blur-up lazyload"
                                         alt="">
                                 </a>
-
+                                <form action="wishlist?action=delete&idwish=${wish.whis_list_id}" method="POST">
                                 <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
+                                    <button type="submit" class="btn wishlist-button close_button">
                                         <i data-feather="x"></i>
                                     </button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                         <div class="product-footer">
                             <div class="product-detail">
-                                <span class="span-name">Vegetable</span>
+                               
                                 <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
+                                    <h5 class="name">${wish.car.name}</h5>
                                 </a>
-                                <h6 class="unit mt-1">250 ml</h6>
+                                
                                 <h5 class="price">
-                                    <span class="theme-color">$08.02</span>
-                                    <del>$15.15</del>
+                                    <span class="theme-color">${wish.car.price}</span>
+                                    <del>$90.00</del>
                                 </h5>
 
                                 <div class="add-to-cart-box bg-white mt-2">
@@ -1227,555 +1230,10 @@
                         </div>
                     </div>
                 </div>
+</c:forEach>
+     
 
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/3.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Vegetable</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                </a>
-                                <h6 class="unit mt-1">350 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$04.33</span>
-                                    <del>$10.36</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/4.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Snacks</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h5>
-                                </a>
-                                <h6 class="unit mt-1">570 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$12.52</span>
-                                    <del>$13.62</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/5.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Snacks</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Yumitos Chilli Sprinkled Potato Chips 100 g</h5>
-                                </a>
-                                <h6 class="unit mt-1">100 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$10.25</span>
-                                    <del>$12.36</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/6.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Vegetable</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Fantasy Crunchy Choco Chip Cookies</h5>
-                                </a>
-                                <h6 class="unit mt-1">550 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$14.25</span>
-                                    <del>$16.57</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/7.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Vegetable</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                </a>
-                                <h6 class="unit mt-1">1 Kg</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$12.68</span>
-                                    <del>$14.69</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/2.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Vegetable</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                </a>
-                                <h6 class="unit mt-1">250 ml</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$08.02</span>
-                                    <del>$15.15</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/3.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Vegetable</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                </a>
-                                <h6 class="unit mt-1">350 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$04.33</span>
-                                    <del>$10.36</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/4.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Snacks</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h5>
-                                </a>
-                                <h6 class="unit mt-1">570 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$12.52</span>
-                                    <del>$13.62</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/5.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Snacks</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Yumitos Chilli Sprinkled Potato Chips 100 g</h5>
-                                </a>
-                                <h6 class="unit mt-1">100 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$10.25</span>
-                                    <del>$12.36</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-6 product-box-contain">
-                    <div class="product-box-3 h-100">
-                        <div class="product-header">
-                            <div class="product-image">
-                                <a href="product-left-thumbnail.html">
-                                    <img src="../assets/images/cake/product/6.png" class="img-fluid blur-up lazyload"
-                                        alt="">
-                                </a>
-
-                                <div class="product-header-top">
-                                    <button class="btn wishlist-button close_button">
-                                        <i data-feather="x"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-footer">
-                            <div class="product-detail">
-                                <span class="span-name">Vegetable</span>
-                                <a href="product-left-thumbnail.html">
-                                    <h5 class="name">Fantasy Crunchy Choco Chip Cookies</h5>
-                                </a>
-                                <h6 class="unit mt-1">550 G</h6>
-                                <h5 class="price">
-                                    <span class="theme-color">$14.25</span>
-                                    <del>$16.57</del>
-                                </h5>
-
-                                <div class="add-to-cart-box bg-white mt-2">
-                                    <button class="btn btn-add-cart addcart-button">Add
-                                        <span class="add-icon bg-light-gray">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                    </button>
-                                    <div class="cart_qty qty-box">
-                                        <div class="input-group bg-white">
-                                            <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                data-field="">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                            <input class="form-control input-number qty-input" type="text"
-                                                name="quantity" value="0">
-                                            <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                data-field="">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -1790,7 +1248,7 @@
                         <div class="service-contain">
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/product.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/product.svg" class="blur-up lazyload" alt="">
                                 </div>
 
                                 <div class="service-detail">
@@ -1800,7 +1258,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/delivery.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="">
                                 </div>
 
                                 <div class="service-detail">
@@ -1810,7 +1268,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/discount.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="">
                                 </div>
 
                                 <div class="service-detail">
@@ -1820,7 +1278,7 @@
 
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="../assets/svg/market.svg" class="blur-up lazyload" alt="">
+                                    <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="">
                                 </div>
 
                                 <div class="service-detail">
@@ -1837,8 +1295,8 @@
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="footer-logo">
                             <div class="theme-logo">
-                                <a href="index.html">
-                                    <img src="../assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                <a href="home">
+                                    <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="">
                                 </a>
                             </div>
 
@@ -1897,7 +1355,7 @@
                         <div class="footer-contain">
                             <ul>
                                 <li>
-                                    <a href="index.html" class="text-content">Home</a>
+                                    <a href="home" class="text-content">Home</a>
                                 </li>
                                 <li>
                                     <a href="shop-left-sidebar.html" class="text-content">Shop</a>
@@ -1976,13 +1434,13 @@
                                     <ul>
                                         <li class="mb-0">
                                             <a href="https://play.google.com/store/apps" target="_blank">
-                                                <img src="../assets/images/playstore.svg" class="blur-up lazyload"
+                                                <img src="./assets/images/playstore.svg" class="blur-up lazyload"
                                                     alt="">
                                             </a>
                                         </li>
                                         <li class="mb-0">
                                             <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                <img src="../assets/images/appstore.svg" class="blur-up lazyload"
+                                                <img src="./assets/images/appstore.svg" class="blur-up lazyload"
                                                     alt="">
                                             </a>
                                         </li>
@@ -2000,7 +1458,7 @@
                 </div>
 
                 <div class="payment">
-                    <img src="../assets/images/payment/1.png" class="blur-up lazyload" alt="">
+                    <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="">
                 </div>
 
                 <div class="social-link">
@@ -2154,7 +1612,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/10.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/10.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -2168,7 +1626,7 @@
                             <li class="list-2">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/11.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/11.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -2182,7 +1640,7 @@
                             <li class="list-3">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/12.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/12.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -2196,7 +1654,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="../assets/images/vegetable/product/13.png" class="blur-up lazyload"
+                                        <img src="./assets/images/vegetable/product/13.png" class="blur-up lazyload"
                                             alt="">
                                     </a>
 
@@ -2229,32 +1687,32 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="./assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap/popper.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="../assets/js/feather/feather.min.js"></script>
-    <script src="../assets/js/feather/feather-icon.js"></script>
+    <script src="./assets/js/feather/feather.min.js"></script>
+    <script src="./assets/js/feather/feather-icon.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="../assets/js/lazysizes.min.js"></script>
+    <script src="./assets/js/lazysizes.min.js"></script>
 
     <!-- Slick js-->
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/slick/custom_slick.js"></script>
+    <script src="./assets/js/slick/slick.js"></script>
+    <script src="./assets/js/slick/custom_slick.js"></script>
 
     <!-- Quantity js -->
-    <script src="../assets/js/quantity-2.js"></script>
+    <script src="./assets/js/quantity-2.js"></script>
 
     <!-- script js -->
-    <script src="../assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

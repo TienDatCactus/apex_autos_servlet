@@ -5,6 +5,7 @@
 package DAO;
 
 import Models.Car;
+import Models.WishList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,7 +86,91 @@ public class CarDao {
 
     public static void main(String[] args) {
         CarDao dao = new CarDao();
-        System.out.println(dao.viewDetail(3));
+        Car car = dao.viewDetail(1004);
+        WishList wish = new WishList(0, 10, 1004, car);
+
+        System.out.println(dao.viewAllWishList());
+    }
+
+    public void addToWishList(WishList wish) {
+        String query = "INSERT INTO wishlist (user_id,car_id) VALUES (?, ?)";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setInt(1, wish.getUser_id());
+            ps.setInt(2, wish.getCar_id());
+
+            // Thực hiện truy vấn để thêm dữ liệu vào cơ sở dữ liệu
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public List<WishList> viewAllWishList() {
+        List<WishList> listWish = new ArrayList<>();
+        String query = "SELECT \n"
+                + "    c.name, \n"
+                + "    c.cylinders, \n"
+                + "    c.horsepower, \n"
+                + "    c.weight, \n"
+                + "    c.acceleration, \n"
+                + "    c.model_year, \n"
+                + "    c.origin, \n"
+                + "    c.price, \n"
+                + "    c.description, \n"
+                + "    c.brand_id, \n"
+                + "    c.category_id,\n"
+                + "    w.wish_list_id,\n"
+                + "    w.user_id,\n"
+                + "    w.car_id\n"
+                + "FROM \n"
+                + "    wishlist AS w\n"
+                + "JOIN \n"
+                + "    car AS c ON c.car_id = w.car_id";
+
+        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Car car = new Car();
+                car.setName(rs.getString("name"));
+                car.setCylinders(rs.getInt("cylinders"));
+                car.setHorsepower(rs.getFloat("horsepower"));
+                car.setWeight(rs.getFloat("weight"));
+                car.setAcceleration(rs.getFloat("acceleration"));
+                car.setModel_year(rs.getInt("model_year"));  // Đổi thành modelYear cho nhất quán
+                car.setOrigin(rs.getString("origin"));
+                car.setPrice(rs.getFloat("price"));
+                car.setDescription(rs.getString("description"));
+                car.setBrand_id(rs.getInt("brand_id"));  // Đổi thành brandId cho nhất quán
+                car.setCategory_id(rs.getInt("category_id"));  // Đổi thành categoryId cho nhất quán
+
+                WishList wish = new WishList();
+                wish.setWhis_list_id(rs.getInt("wish_list_id"));  // Đổi thành wishListId cho nhất quán
+                wish.setUser_id(rs.getInt("user_id"));
+                wish.setCar_id(rs.getInt("car_id"));
+                wish.setCar(car);  // Gán đối tượng Car vào WishList
+
+                listWish.add(wish);  // Thêm đối tượng WishList vào danh sách
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listWish;
+    }
+
+    public void deleteFromWishList(int idwish) {
+        String query = "Delete from wishlist where wish_list_id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setInt(1, idwish);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

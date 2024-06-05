@@ -77,7 +77,7 @@
                                             <i class="fa-solid fa-bars"></i>
                                         </span>
                                     </button>
-                                    <a href="index.html" class="web-logo nav-logo">
+                                    <a href="home" class="web-logo nav-logo">
                                         <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -436,7 +436,7 @@
                                                                     </li>
                                                                     <li>
                                                                         <a class="dropdown-item"
-                                                                            href="wishlist.html">Wishlist</a>
+                                                                            href="wishlist">Wishlist</a>
                                                                     </li>
                                                                 </ul>
                                                             </li>
@@ -509,7 +509,7 @@
                                                 </a>
                                             </li>
                                             <li class="right-side">
-                                                <a href="wishlist.html"
+                                                <a href="wishlist"
                                                     class="btn p-0 position-relative header-wishlist">
                                                     <i data-feather="heart"></i>
                                                 </a>
@@ -656,7 +656,7 @@
                     </li>
 
                     <li>
-                        <a href="wishlist.html" class="notifi-wishlist">
+                        <a href="wishlist" class="notifi-wishlist">
                             <i class="iconly-Heart icli"></i>
                             <span>My Wish</span>
                         </a>
@@ -756,13 +756,18 @@
                                                             <i data-feather="refresh-cw"></i>
                                                         </a>
                                                     </li>
-
+                                                    
+                                                    
+                                                    <form action="wishlist?action=addtowish&idcar=${cl.car_id}&iduser=${userd.user_id}" method="post">
+                                                           
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="Wishlist">
-                                                        <a href="wishlist.html" class="notifi-wishlist">
+                                                        
+                                                        <button type="submit" class="notifi-wishlist" data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                             <i data-feather="heart"></i>
-                                                        </a>
+                                                        </button>
                                                     </li>
+                                                    </form>
                                                 </ul>
                                             </div>
                                             <div class="product-detail position-relative">
@@ -1011,7 +1016,7 @@
                                             <a href="order-tracking.html" class="text-content">Track Order</a>
                                         </li>
                                         <li>
-                                            <a href="wishlist.html" class="text-content">Your Wishlist</a>
+                                            <a href="wishlist" class="text-content">Your Wishlist</a>
                                         </li>
                                         <li>
                                             <a href="search.html" class="text-content">Search</a>
