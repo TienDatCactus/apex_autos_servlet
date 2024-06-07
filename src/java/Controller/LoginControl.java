@@ -44,7 +44,7 @@ public class LoginControl extends HttpServlet {
         String password = request.getParameter("password");
 
         UserAccount userAccount = new UserAccount(email, password);
-        CarDao daoc = new CarDao();
+        CarDAO daoc = new CarDAO();
         UserDAO daou = new UserDAO();
         HttpSession session = request.getSession();
         // delete un used session attributes
@@ -65,12 +65,10 @@ public class LoginControl extends HttpServlet {
 
         if (loginResult) {
             userAccount = daou.getUserByEmail(userAccount.getEmail());
-            List<WishList> listWish = daoc.viewAllWishList();
             List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
-
+            
             session.setAttribute("user", userAccount);
             session.setAttribute("listAddr", listAddr);
-            session.setAttribute("listWish", listWish);
 
             // Login successful, redirect to another page
             response.sendRedirect("home");

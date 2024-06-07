@@ -33,6 +33,7 @@ public class SellerControl extends HttpServlet {
         if ("become".equals(state)) {
             String mail = request.getParameter("seller-mail");
             String pass = request.getParameter("seller-pass");
+            String desc = request.getParameter("seller-desc");
             // pending
         }
 

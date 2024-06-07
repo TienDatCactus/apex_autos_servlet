@@ -5,7 +5,7 @@
 
 package Controller;
 
-import DAO.CarDao;
+import DAO.CarDAO;
 
 import Models.Car;
 import java.io.IOException;
@@ -25,18 +25,11 @@ import java.util.List;
 public class DetailControl extends HttpServlet {
     
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        CarDao dao = new CarDao();
+        CarDAO dao = new CarDAO();
         List<Car> carList = dao.viewProducts();
         int id = Integer.parseInt(request.getParameter("id"));
         Car carDT = dao.viewDetail(id);
@@ -45,13 +38,7 @@ public class DetailControl extends HttpServlet {
         request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp").forward(request, response);
     } 
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {

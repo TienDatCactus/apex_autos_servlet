@@ -12,10 +12,10 @@
                 <meta name="description" content="ApexAutos" />
                 <meta name="keywords" content="ApexAutos" />
                 <meta name="author" content="ApexAutos" />
-                <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
-                <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
-                <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
-                <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
+                <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/apple-touch-icon.png">
+                <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png">
+                <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png">
+                <link rel="manifest" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest">
                 <title>On-demand last-mile delivery</title>
 
                 <!-- Google font -->
@@ -30,27 +30,27 @@
                     rel="stylesheet">
 
                 <!-- bootstrap css -->
-                <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
+                <link id="rtl-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/bootstrap.css">
 
                 <!-- wow css -->
-                <link rel="stylesheet" href="./assets/css/animate.min.css" />
+                <link rel="stylesheet" href="${pageContext.request.contextPath}/front-end/assets/css/animate.min.css" />
 
                 <!-- font-awesome css -->
-                <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
+                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/font-awesome.css">
 
                 <!-- feather icon css -->
-                <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
+                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/feather-icon.css">
 
                 <!-- slick css -->
-                <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
-                <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
+                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick.css">
+                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick-theme.css">
 
                 <!-- Iconly css -->
-                <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
-                <link rel="stylesheet" type="text/css" href="./assets/css/vendors/animate.css">
+                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/bulk-style.css">
+                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/animate.css">
 
                 <!-- Template css -->
-                <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
+                <link id="color-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
             </head>
 
             <body>
@@ -80,7 +80,7 @@
                                             </span>
                                         </button>
                                         <a href="home" class="web-logo nav-logo">
-                                            <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload"
+                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png" class="img-fluid blur-up lazyload"
                                                 alt="">
                                         </a>
 
@@ -195,6 +195,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </li>
+                                                                <c:if test="${sessionScope.user != null}">
                                                                 <li class="nav-item dropdown new-nav-item">
                                                                     <label class="new-dropdown">New</label>
                                                                     <a class="nav-link dropdown-toggle"
@@ -209,13 +210,13 @@
                                                                             <ul class="sub-menu">
                                                                                 <li>
                                                                                     <a
-                                                                                        href="seller">Sign
-                                                                                        up for the program</a>
+                                                                                        href="seller" style="width: 200px">Sign up for the program</a>
                                                                                 </li>
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
+                                                                </c:if>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -247,12 +248,7 @@
                                                         </div>
                                                     </a>
                                                 </li>
-                                                <li class="right-side">
-                                                    <a href="wishlist"
-                                                        class="btn p-0 position-relative header-wishlist">
-                                                        <i data-feather="heart"></i>
-                                                    </a>
-                                                </li>
+<c:if test="${sessionScope.user != null}">
                                                 <li class="right-side">
                                                     <div class="onhover-dropdown header-badge">
                                                         <button type="button"
@@ -270,7 +266,7 @@
                                                                     <div class="drop-cart">
                                                                         <a href="product-left-thumbnail.html"
                                                                             class="drop-image">
-                                                                            <img src="./assets/images/vegetable/product/1.png"
+                                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/1.png"
                                                                                 class="blur-up lazyload" alt="">
                                                                         </a>
 
@@ -291,7 +287,7 @@
                                                                     <div class="drop-cart">
                                                                         <a href="product-left-thumbnail.html"
                                                                             class="drop-image">
-                                                                            <img src="./assets/images/vegetable/product/2.png"
+                                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/2.png"
                                                                                 class="blur-up lazyload" alt="">
                                                                         </a>
 
@@ -316,14 +312,15 @@
                                                             </div>
 
                                                             <div class="button-group">
-                                                                <a href="cart.html" class="btn btn-sm cart-button">View
+                                                                <a href="cart?user=${user.user_id}"class="btn btn-sm cart-button">View
                                                                     Cart</a>
-                                                                <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
+                                                                <a href="checkout" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">Checkout</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
+</c:if>   
                                                 <li class="right-side onhover-dropdown">
                                                     <div class="delivery-login-box">
                                                         <div class="delivery-icon">
@@ -367,11 +364,11 @@
                                                             <ul class="user-box-name">
                                                                 <li class="product-box-contain">
                                                                     <i></i>
-                                                                    <a href="userdashboard">Dashboard</a>
+                                                                    <a href="user/dashboard">Dashboard</a>
                                                                 </li>
 
                                                                 <li class="product-box-contain">
-                                                                    <a href="register">Cart</a>
+                                                                    <a href="cart">Cart</a>
                                                                 </li>
 
                                                                 <li class="product-box-contain">
@@ -416,15 +413,9 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="wishlist" class="notifi-wishlist">
-                                <i class="iconly-Heart icli"></i>
-                                <span>My Wish</span>
-                            </a>
-                        </li>
 
                         <li>
-                            <a href="cart.html">
+                            <a href="cart">
                                 <i class="iconly-Bag-2 icli fly-cate"></i>
                                 <span>Cart</span>
                             </a>
@@ -441,7 +432,7 @@
                                 <div class="slider-animate">
                                     <div>
                                         <div class="home-contain rounded-0 p-0">
-                                            <img src="./assets/images/vegetable/banner/mercedes-g-wagon-usa-yl.jpg"
+                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/banner/mercedes-g-wagon-usa-yl.jpg"
                                                 class="img-fluid bg-img blur-up lazyload bg-to" alt="banner">
                                             <div
                                                 class="home-detail p-center text-center home-overlay position-relative">
@@ -479,7 +470,7 @@
                                     <ul>
                                         <li>
                                             <div class="category-list">
-                                                <img src="./assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
                                                 <h5>
                                                     <a href="shop-left-sidebar.html">Vegetables & Fruit</a>
                                                 </h5>
@@ -502,10 +493,12 @@
                                             <div class="product-box product-white-bg wow fadeIn">
                                                 <div class="product-image">
                                                     <a href="detail?id=${cl.car_id}">
-                                                        <img src="./assets/images/cake/product/3.png"
+                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/cake/product/3.png"
                                                             class="img-fluid blur-up lazyload" alt="">
                                                     </a>
-                                                    <ul class="product-option">
+                                                    <ul class="product-option" style="
+    width: 100%;
+">
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="View" style="font-size:8px">
                                                             <a href="detail?id=${cl.car_id}" data-bs-toggle="modal"
@@ -521,16 +514,19 @@
                                                             </a>
                                                         </li>
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                            title="Wishlist">
-                                                            <form id="form-wish"
-                                                                action="wishlist?action=addtowish&carId=${cl.car_id}&userId=${user.user_id}"
+                                                            title="Add to Cart">
+    <c:if test="${sessionScope.user != null}">
+                                                            <form id="form-cart"
+                                                                action="cart?action=addtocart&carId=${cl.car_id}&userId=${user.user_id}"
                                                                 method="post">
-                                                                <a class="notifi-wishlist" style="cursor: pointer"
-                                                                    onclick="document.getElementById('form-wish').submit()">
-                                                                    <i data-feather="heart" style="font-size: 8px"></i>
+    </c:if>
+                                                                <a style="cursor: pointer"
+                                                                    onclick="document.getElementById('form-cart').submit()">
+                                                                    <i data-feather="shopping-cart" style="font-size: 8px"></i>
                                                                 </a>
+    <c:if test="${sessionScope.user != null}">
                                                             </form>
-
+    </c:if>
 
 
                                                         </li>
@@ -543,9 +539,9 @@
                                                         </h6>
                                                     </a>
 
-                                                    <h6 class="sold weight text-content fw-normal">${cl.weight}</h6>
+                                                    <h6 class="sold weight text-content fw-normal">${cl.weight} kg</h6>
 
-                                                    <h6 class="price theme-color">$ ${cl.price}</h6>
+                                                    <h6 class="price theme-color">$${cl.price}</h6>
 
                                                     <div class="add-to-cart-btn-2 addtocart_btn">
                                                         <button class="btn addcart-button btn buy-button"><i
@@ -605,7 +601,7 @@
                                     <div class="service-contain py-2">
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="./assets/svg/sedan.png" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/sedan.png" class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -615,7 +611,7 @@
 
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="./assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -625,7 +621,7 @@
 
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="./assets/svg/discount.svg" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/discount.svg" class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -635,7 +631,7 @@
 
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="./assets/svg/market.svg" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/market.svg" class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -653,7 +649,7 @@
                                     <div class="footer-logo">
                                         <div class="theme-logo">
                                             <a href="index.html">
-                                                <img src="./assets/images/logo/1.png" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png" class="blur-up lazyload" alt="" />
                                             </a>
                                         </div>
 
@@ -781,13 +777,13 @@
                                                 <ul>
                                                     <li class="mb-0">
                                                         <a href="https://play.google.com/store/apps" target="_blank">
-                                                            <img src="./assets/images/playstore.svg"
+                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/playstore.svg"
                                                                 class="blur-up lazyload" alt="" />
                                                         </a>
                                                     </li>
                                                     <li class="mb-0">
                                                         <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                            <img src="./assets/images/appstore.svg"
+                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/appstore.svg"
                                                                 class="blur-up lazyload" alt="" />
                                                         </a>
                                                     </li>
@@ -805,7 +801,7 @@
                             </div>
 
                             <div class="payment">
-                                <img src="./assets/images/payment/1.png" class="blur-up lazyload" alt="" />
+                                <img src="${pageContext.request.contextPath}/front-end/assets/images/payment/1.png" class="blur-up lazyload" alt="" />
                             </div>
 
                             <div class="social-link">
@@ -852,7 +848,7 @@
                                 <div class="row g-sm-4 g-2">
                                     <div class="col-lg-6">
                                         <div class="slider-image">
-                                            <img src="./assets/images/product/category/1.jpg"
+                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/product/category/1.jpg"
                                                 class="img-fluid blur-up lazyload" alt="">
                                         </div>
                                     </div>
@@ -932,7 +928,7 @@
                                             </div>
 
                                             <div class="modal-button">
-                                                <button onclick="location.href = 'cart.html';"
+                                                <button onclick="location.href = 'cart';"
                                                     class="btn btn-md add-cart-button icon">Add
                                                     To Cart</button>
                                                 <button onclick="location.href = 'product-left.html';"
@@ -1055,7 +1051,7 @@
                 <div class="cookie-bar-box">
                     <div class="cookie-box">
                         <div class="cookie-image">
-                            <img src="./assets/images/cookie-bar.png" class="blur-up lazyload" alt="">
+                            <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png" class="blur-up lazyload" alt="">
                             <h2>Cookies!</h2>
                         </div>
 
@@ -1091,7 +1087,7 @@
                                         <li class="list-1">
                                             <div class="deal-offer-contain">
                                                 <a href="shop-left-sidebar.html" class="deal-image">
-                                                    <img src="./assets/images/vegetable/product/10.png"
+                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/10.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -1105,7 +1101,7 @@
                                         <li class="list-2">
                                             <div class="deal-offer-contain">
                                                 <a href="shop-left-sidebar.html" class="deal-image">
-                                                    <img src="./assets/images/vegetable/product/11.png"
+                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/11.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -1119,7 +1115,7 @@
                                         <li class="list-3">
                                             <div class="deal-offer-contain">
                                                 <a href="shop-left-sidebar.html" class="deal-image">
-                                                    <img src="./assets/images/vegetable/product/12.png"
+                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/12.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -1133,7 +1129,7 @@
                                         <li class="list-1">
                                             <div class="deal-offer-contain">
                                                 <a href="shop-left-sidebar.html" class="deal-image">
-                                                    <img src="./assets/images/vegetable/product/13.png"
+                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/13.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -1166,43 +1162,43 @@
                 <!-- Bg overlay End -->
 
                 <!-- latest jquery-->
-                <script src="./assets/js/jquery-3.6.0.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
 
                 <!-- jquery ui-->
-                <script src="./assets/js/jquery-ui.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-ui.min.js"></script>
 
                 <!-- Bootstrap js-->
-                <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-                <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
-                <script src="./assets/js/bootstrap/popper.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap-notify.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/popper.min.js"></script>
 
                 <!-- feather icon js-->
-                <script src="./assets/js/feather/feather.min.js"></script>
-                <script src="./assets/js/feather/feather-icon.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/feather/feather.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/feather/feather-icon.js"></script>
 
                 <!-- Lazyload Js -->
-                <script src="./assets/js/lazysizes.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/lazysizes.min.js"></script>
 
                 <!-- Slick js-->
-                <script src="./assets/js/slick/slick.js"></script>
-                <script src="./assets/js/slick/slick-animation.min.js"></script>
-                <script src="./assets/js/slick/custom_slick.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick-animation.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/custom_slick.js"></script>
 
                 <!-- Auto Height Js -->
-                <script src="./assets/js/auto-height.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/auto-height.js"></script>
 
                 <!-- Fly Cart Js -->
-                <script src="./assets/js/fly-cart.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/fly-cart.js"></script>
 
                 <!-- Quantity js -->
-                <script src="./assets/js/quantity-2.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/quantity-2.js"></script>
 
                 <!-- WOW js -->
-                <script src="./assets/js/wow.min.js"></script>
-                <script src="./assets/js/custom-wow.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/wow.min.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/custom-wow.js"></script>
 
                 <!-- script js -->
-                <script src="./assets/js/script.js"></script>
+                <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
             </body>
 
             </html>

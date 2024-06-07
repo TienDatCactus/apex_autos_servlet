@@ -100,6 +100,14 @@ public class UserAccount {
         this.phone = phone;
     }
 
+    public int getPermission_id() {
+        return permission_id;
+    }
+
+    public void setPermission_id(int permission_id) {
+        this.permission_id = permission_id;
+    }
+
     @Override
     public String toString() {
         return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + ", dob=" + dob + '}';

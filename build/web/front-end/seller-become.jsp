@@ -769,11 +769,11 @@
                                     </div>
                                     <div class="offcanvas-body">
                                         <ul class="navbar-nav">
-                                            <li class="nav-item button-13">
+                                            <li class="nav-item button-39">
                                                 <a class="nav-link">Home</a>
                                             </li>
 
-                                            <li class="nav-item dropdown button-13 ">
+                                            <li class="nav-item dropdown button-39 ">
                                                 <a class="nav-link dropdown-toggle " href="javascript:void(0)"
                                                     data-bs-toggle="dropdown">Brand</a>
 
@@ -787,7 +787,7 @@
                                             </li>
 
 
-                                            <li class="nav-item dropdown dropdown-mega button-13">
+                                            <li class="nav-item dropdown dropdown-mega button-39">
                                                 <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
                                                     href="javascript:void(0)" data-bs-toggle="dropdown">Cars</a>
 
@@ -826,7 +826,7 @@
                                                 </div>
                                             </li>
 
-                                            <li class="nav-item dropdown button-13">
+                                            <li class="nav-item dropdown button-39">
                                                 <a class="nav-link dropdown-toggle " href="javascript:void(0)"
                                                     data-bs-toggle="dropdown">News</a>
                                                 <ul class="dropdown-menu my-2 show" data-bs-popper="none">
@@ -838,195 +838,6 @@
                                                 </ul>
                                             </li>
 
-                                            <!-- <li class="nav-item dropdown new-nav-item">
-                          <label class="new-dropdown">New</label>
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="javascript:void(0)"
-                            data-bs-toggle="dropdown"
-                            >Pages</a
-                          >
-                          <ul class="dropdown-menu">
-                            <li class="sub-dropdown-hover">
-                              <a class="dropdown-item" href="javascript:void(0)"
-                                >Email Template
-                                <span class="new-text"
-                                  ><i
-                                    class="fa-solid fa-bolt-lightning"
-                                  ></i></span
-                              ></a>
-                              <ul class="sub-menu">
-                                <li>
-                                  <a
-                                    href="./email-templete/abandonment-email.html"
-                                    >Abandonment</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="./email-templete/offer-template.html"
-                                    >Offer Template</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="./email-templete/order-success.html"
-                                    >Order Success</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="./email-templete/reset-password.html"
-                                    >Reset Password</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="./email-templete/welcome.html"
-                                    >Welcome template</a
-                                  >
-                                </li>
-                              </ul>
-                            </li>
-                            <li class="sub-dropdown-hover">
-                              <a class="dropdown-item" href="javascript:void(0)"
-                                >Invoice Template
-                                <span class="new-text"
-                                  ><i
-                                    class="fa-solid fa-bolt-lightning"
-                                  ></i></span
-                              ></a>
-                              <ul class="sub-menu">
-                                <li>
-                                  <a href="./invoice/invoice-1.html"
-                                    >Invoice 1</a
-                                  >
-                                </li>
-
-                                <li>
-                                  <a href="./invoice/invoice-2.html"
-                                    >Invoice 2</a
-                                  >
-                                </li>
-
-                                <li>
-                                  <a href="./invoice/invoice-3.html"
-                                    >Invoice 3</a
-                                  >
-                                </li>
-                              </ul>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="404.html">404</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="about-us.html"
-                                >About Us</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="cart.html">Cart</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="contact-us.html"
-                                >Contact</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="checkout.html"
-                                >Checkout</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="coming-soon.html"
-                                >Coming Soon</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="compare.html"
-                                >Compare</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="faq.html">Faq</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="order-success.html"
-                                >Order Success</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="order-tracking.html"
-                                >Order Tracking</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="otp.html">OTP</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="search.html"
-                                >Search</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="user-dashboard.html"
-                                >User Dashboard</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="wishlist.html"
-                                >Wishlist</a
-                              >
-                            </li>
-                          </ul>
-                        </li> -->
-
-                                            <!-- <li class="nav-item dropdown">
-                          <a
-                            class="nav-link dropdown-toggle"
-                            href="javascript:void(0)"
-                            data-bs-toggle="dropdown"
-                            >Seller</a
-                          >
-                          <ul class="dropdown-menu">
-                            <li>
-                              <a class="dropdown-item" href="seller-become.html"
-                                >Become a Seller</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="seller-dashboard.html"
-                                >Seller Dashboard</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="seller-detail.html"
-                                >Seller Detail</a
-                              >
-                            </li>
-                            <li>
-                              <a
-                                class="dropdown-item"
-                                href="seller-detail-2.html"
-                                >Seller Detail 2</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="seller-grid.html"
-                                >Seller Grid</a
-                              >
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="seller-grid-2.html"
-                                >Seller Grid 2</a
-                              >
-                            </li>
-                          </ul>
-                        </li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -1421,6 +1232,9 @@
                         </div>
                     </div>
 
+                    <div class="col-12">
+                        <textarea name="seller-desc" class="form-control mt-3"style="font-size: 20px; font-family: inherit" placeholder="Give us some reasonable reasons ..." rows="3"></textarea>
+                    </div>
                     <div class="col-12">
                         <input type="submit" class="button-83 mt-3" value="Start Selling"></button>
                     </div>

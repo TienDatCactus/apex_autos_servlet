@@ -12,10 +12,10 @@
         <meta name="description" content="ApexAutos" />
         <meta name="keywords" content="ApexAutos" />
         <meta name="author" content="ApexAutos" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
+        <link rel="apple-touch-icon" sizes="180x180" href="/${pageContext.request.contextPath}/front-end/assets/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest">
         <title>User Dashboard</title>
 
         <!-- Google font -->
@@ -28,23 +28,23 @@
             rel="stylesheet">
 
         <!-- bootstrap css -->
-        <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+        <link id="rtl-link" rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}/front-end/assets/css/vendors/bootstrap.css">
 
         <!-- font-awesome css -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}/front-end/assets/css/vendors/font-awesome.css">
 
         <!-- feather icon css -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+        <link rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}/front-end/assets/css/vendors/feather-icon.css">
 
         <!-- slick css -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
-        <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+        <link rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick.css">
+        <link rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick-theme.css">
 
         <!-- Iconly css -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+        <link rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}/front-end/assets/css/bulk-style.css">
 
         <!-- Template css -->
-        <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+        <link id="color-link" rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}/front-end/assets/css/style.css">
     </head>
 
     <body>
@@ -165,7 +165,7 @@
                                         <i class="fa-solid fa-bars"></i>
                                     </span>
                                 </button>
-                                <a href="home" class="web-logo nav-logo">
+                                <a href="${pageContext.request.contextPath}/home" class="web-logo nav-logo">
                                     <img src="../assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="" />
                                 </a>
 
@@ -320,15 +320,15 @@
                                                     <ul class="user-box-name">
                                                         <li class="product-box-contain">
                                                             <i></i>
-                                                            <a href="login">Log In</a>
+                                                            <a href="${pageContext.request.contextPath}/login">Log In</a>
                                                         </li>
 
                                                         <li class="product-box-contain">
-                                                            <a href="register">Register</a>
+                                                            <a href="${pageContext.request.contextPath}/register">Register</a>
                                                         </li>
 
                                                         <li class="product-box-contain">
-                                                            <a href="mail">Forgot Password</a>
+                                                            <a href="${pageContext.request.contextPath}/mail">Forgot Password</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -338,15 +338,15 @@
                                                     <ul class="user-box-name">
                                                         <li class="product-box-contain">
                                                             <i></i>
-                                                            <a href="userdashboard">Dashboard</a>
+                                                            <a href="${pageContext.request.contextPath}/user/dashboard">Dashboard</a>
                                                         </li>
 
                                                         <li class="product-box-contain">
-                                                            <a href="register">Cart</a>
+                                                            <a href="${pageContext.request.contextPath}/register">Cart</a>
                                                         </li>
 
                                                         <li class="product-box-contain">
-                                                            <a href="logout">Logout</a>
+                                                            <a href="${pageContext.request.contextPath}/logout">Logout</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -1212,7 +1212,7 @@
                                             <h2>My Dashboard</h2>
                                             <span class="title-leaf">
                                                 <svg class="icon-width bg-gray">
-                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                    <use xlink:href="/${pageContext.request.contextPath}/front-end/assets/svg/leaf.svg#leaf"></use>
                                                 </svg>
                                             </span>
                                         </div>
@@ -1268,7 +1268,7 @@
                                             <h2>My Wishlist History</h2>
                                             <span class="title-leaf title-leaf-gray">
                                                 <svg class="icon-width bg-gray">
-                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                    <use xlink:href="/${pageContext.request.contextPath}/front-end/assets/svg/leaf.svg#leaf"></use>
                                                 </svg>
                                             </span>
                                         </div>
@@ -1739,7 +1739,7 @@
                                             <h2>My Orders History</h2>
                                             <span class="title-leaf title-leaf-gray">
                                                 <svg class="icon-width bg-gray">
-                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                    <use xlink:href="/${pageContext.request.contextPath}/front-end/assets/svg/leaf.svg#leaf"></use>
                                                 </svg>
                                             </span>
                                         </div>
@@ -2071,7 +2071,7 @@
                                                 <h2>My Address Book</h2>
                                                 <span class="title-leaf">
                                                     <svg class="icon-width bg-gray">
-                                                        <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                        <use xlink:href="/${pageContext.request.contextPath}/front-end/assets/svg/leaf.svg#leaf"></use>
                                                     </svg>
                                                 </span>
                                             </div>
@@ -2127,7 +2127,9 @@
 
                                                         <div class="button-group">
                                                             <button class="btn btn-sm add-button w-100"
-                                                                data-bs-toggle="modal" data-bs-target="#editProfile"><i
+                                                                data-bs-toggle="modal" 
+                                                                onclick="updateModal('${a.address_id}')"
+                                                                data-bs-target="#editProfile"><i
                                                                     data-feather="edit"></i>
                                                                 Edit</button>
                                                             <button class="btn btn-sm add-button w-100"
@@ -2154,7 +2156,7 @@
                                             <h2>My Profile</h2>
                                             <span class="title-leaf">
                                                 <svg class="icon-width bg-gray">
-                                                    <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                                                    <use xlink:href="/${pageContext.request.contextPath}/front-end/assets/svg/leaf.svg#leaf"></use>
                                                 </svg>
                                             </span>
                                         </div>
@@ -2623,7 +2625,7 @@
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <form action="userdashboard?action=add&idz=${user.user_id}" method="POST">
+                    <form action="dashboard?action=add&idz=${user.user_id}" method="POST">
                         <div class="modal-body">
                             <div class="form-floating mb-4 theme-form-floating">
                                 <textarea class="form-control" name="address" placeholder="Leave a comment here"
@@ -2756,7 +2758,7 @@
                 <div class="modal-content">
 
 
-                    <form action="userdashboard?action=editPro&idz=${user.user_id}" method="POST">
+                    <form action="dashboard?action=editPro&idz=${user.user_id}" method="POST">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel2">Edit Profile</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -2834,7 +2836,7 @@
                         </button>
                     </div>
 
-                    <form action="userdashboard?action=edit&idz=${user.user_id}" method="POST">
+                    <form action="dashboard?action=edit&idz=${user.user_id}" method="POST">
                         <div class="modal-body">
                             <div class="row g-4">
                                 <input type="hidden" id="address_id_input" name="address_id">

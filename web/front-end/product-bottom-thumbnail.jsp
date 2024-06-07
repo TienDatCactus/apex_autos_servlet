@@ -743,11 +743,11 @@
                                     </div>
                                     <div class="offcanvas-body">
                                         <ul class="navbar-nav">
-                                            <li class="nav-item button-13">
+                                            <li class="nav-item button-39">
                                                 <a class="nav-link">Home</a>
                                             </li>
 
-                                            <li class="nav-item dropdown button-13 ">
+                                            <li class="nav-item dropdown button-39 ">
                                                 <a class="nav-link dropdown-toggle " href="javascript:void(0)"
                                                     data-bs-toggle="dropdown">Brand</a>
 
@@ -761,7 +761,7 @@
                                             </li>
 
 
-                                            <li class="nav-item dropdown dropdown-mega button-13">
+                                            <li class="nav-item dropdown dropdown-mega button-39">
                                                 <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
                                                     href="javascript:void(0)" data-bs-toggle="dropdown">Cars</a>
 
@@ -798,7 +798,7 @@
                                                 </div>
                                             </li>
 
-                                            <li class="nav-item dropdown button-13">
+                                            <li class="nav-item dropdown button-39">
                                                 <a class="nav-link dropdown-toggle " href="javascript:void(0)"
                                                     data-bs-toggle="dropdown">News</a>
                                                 <ul class="dropdown-menu my-2 show" data-bs-popper="none">

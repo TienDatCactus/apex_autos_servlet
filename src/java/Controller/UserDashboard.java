@@ -81,7 +81,7 @@ public class UserDashboard extends HttpServlet {
                 throw new AssertionError();
         }
 
-        response.sendRedirect("userdashboard");
+        response.sendRedirect("dashboard");
     }
 
     /**

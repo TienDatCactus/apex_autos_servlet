@@ -4,13 +4,16 @@
  */
 package Controller;
 
+import Models.*;
+import DAO.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,11 +22,19 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "AdminDashboard", urlPatterns = {"/admin"})
 public class AdminDashboard extends HttpServlet {
 
+    private static AdminDAO daoa;
+
+    public void init() {
+        daoa = new AdminDAO();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if ("show-user".equals(action)) {
+            List<UserAccount> users = daoa.viewUsers();
+            request.setAttribute("userList", users);
             request.getRequestDispatcher("/back-end/all-users.jsp").forward(request, response);
         } else if ("add-user".equals(action)) {
             request.getRequestDispatcher("/back-end/add-new-user.jsp").forward(request, response);

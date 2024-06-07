@@ -5,8 +5,11 @@
 package DAO;
 
 import Models.Car;
-import Models.WishList;
+import Models.Cart;
+import Models.CartItems;
+import java.beans.Statement;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +20,7 @@ import java.util.List;
  *
  * @author Tiến_Đạt
  */
-public class CarDao {
+public class CarDAO {
 
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -84,87 +87,92 @@ public class CarDao {
         return car; // Trả về đối tượng Car hoặc null nếu không tìm thấy
     }
 
-    public static void main(String[] args) {
-        CarDao dao = new CarDao();
-        Car car = dao.viewDetail(1004);
-        WishList wish = new WishList(0, 10, 1004, car);
+    public void addToCart(int user_id, int car_id) {
+        String selectCartQuery = "SELECT * FROM cart WHERE user_id = ?";
+        String insertCartQuery = "INSERT INTO cart (user_id) VALUES (?)";
+        String insertCartItemQuery = "INSERT INTO [dbo].[cart_items] ([cart_id] ,[car_id]) VALUES (?,?)";
 
-        System.out.println(dao.viewAllWishList());
-    }
+        try (
+                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psInsertCart = con.prepareStatement(insertCartQuery); PreparedStatement psInsertCartItem = con.prepareStatement(insertCartItemQuery)) {
 
-    public void addToWishList(WishList wish) {
-        String query = "INSERT INTO wishlist (user_id,car_id) VALUES (?, ?)";
+            // Check if the user already has a cart
+            psSelectCart.setInt(1, user_id);
+            ResultSet rsCart = psSelectCart.executeQuery();
 
-        try (PreparedStatement ps = con.prepareStatement(query)) {
-            // Setting the parameters for the query
-            ps.setInt(1, wish.getUser_id());
-            ps.setInt(2, wish.getCar_id());
+            int cart_id;
+            if (rsCart.next()) {
+                // If the user already has a cart, get its ID
+                cart_id = rsCart.getInt("cart_id");
+            } else {
+                // If the user doesn't have a cart, create one and get its ID
+                psInsertCart.setInt(1, user_id);
+                psInsertCart.executeUpdate();
+                ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys();
+                if (rsGeneratedKeys.next()) {
+                    cart_id = rsGeneratedKeys.getInt(1);
+                } else {
+                    throw new SQLException("Creating cart failed, no ID obtained.");
+                }
+            }
 
-            // Thực hiện truy vấn để thêm dữ liệu vào cơ sở dữ liệu
-            ps.executeUpdate();
-
+            // Add the item to the cart
+            psInsertCartItem.setInt(1, cart_id);
+            psInsertCartItem.setInt(2, car_id);
+            psInsertCartItem.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
-    public List<WishList> viewAllWishList() {
-        List<WishList> listWish = new ArrayList<>();
-        String query = "SELECT \n"
-                + "    c.name, \n"
-                + "    c.cylinders, \n"
-                + "    c.horsepower, \n"
-                + "    c.weight, \n"
-                + "    c.acceleration, \n"
-                + "    c.model_year, \n"
-                + "    c.origin, \n"
-                + "    c.price, \n"
-                + "    c.description, \n"
-                + "    c.brand_id, \n"
-                + "    c.category_id,\n"
-                + "    w.wish_list_id,\n"
-                + "    w.user_id,\n"
-                + "    w.car_id\n"
-                + "FROM \n"
-                + "    wishlist AS w\n"
-                + "JOIN \n"
-                + "    car AS c ON c.car_id = w.car_id";
+    public List<CartItems> cartItems(int user_id) {
+        List<CartItems> cartItemsList = new ArrayList<>();
 
-        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Car car = new Car();
-                car.setName(rs.getString("name"));
-                car.setCylinders(rs.getInt("cylinders"));
-                car.setHorsepower(rs.getFloat("horsepower"));
-                car.setWeight(rs.getFloat("weight"));
-                car.setAcceleration(rs.getFloat("acceleration"));
-                car.setModel_year(rs.getInt("model_year"));  // Đổi thành modelYear cho nhất quán
-                car.setOrigin(rs.getString("origin"));
-                car.setPrice(rs.getFloat("price"));
-                car.setDescription(rs.getString("description"));
-                car.setBrand_id(rs.getInt("brand_id"));  // Đổi thành brandId cho nhất quán
-                car.setCategory_id(rs.getInt("category_id"));  // Đổi thành categoryId cho nhất quán
+        String selectCartQuery = "SELECT * FROM cart WHERE user_id = ?";
+        String selectCartItemsQuery = "SELECT * FROM cart_items INNER JOIN car ON cart_items.car_id = car.car_id WHERE cart_id = ?";
 
-                WishList wish = new WishList();
-                wish.setWhis_list_id(rs.getInt("wish_list_id"));  // Đổi thành wishListId cho nhất quán
-                wish.setUser_id(rs.getInt("user_id"));
-                wish.setCar_id(rs.getInt("car_id"));
-                wish.setCar(car);  // Gán đối tượng Car vào WishList
+        try (
+                PreparedStatement ps1 = con.prepareStatement(selectCartQuery); PreparedStatement ps2 = con.prepareStatement(selectCartItemsQuery)) {
 
-                listWish.add(wish);  // Thêm đối tượng WishList vào danh sách
+            ps1.setInt(1, user_id);
+            ResultSet rsCart = ps1.executeQuery();
+
+            if (rsCart.next()) {
+                int cart_id = rsCart.getInt("cart_id");
+
+                ps2.setInt(1, cart_id);
+                ResultSet rsCartItems = ps2.executeQuery();
+
+                while (rsCartItems.next()) {
+                    Car car = new Car(
+                            rsCartItems.getInt("car_id"),
+                            rsCartItems.getString("name"),
+                            rsCartItems.getInt("cylinders"),
+                            rsCartItems.getFloat("horsepower"),
+                            rsCartItems.getFloat("weight"),
+                            rsCartItems.getFloat("acceleration"),
+                            rsCartItems.getInt("model_year"),
+                            rsCartItems.getString("origin"),
+                            rsCartItems.getFloat("price"),
+                            rsCartItems.getString("description"),
+                            rsCartItems.getInt("brand_id"),
+                            rsCartItems.getInt("category_id")
+                    );
+                    CartItems cartItem = new CartItems(cart_id, car);
+                    cartItemsList.add(cartItem);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return listWish;
+
+        return cartItemsList; // This will be an empty list if there's no cart or no cart items
     }
 
-    public void deleteFromWishList(int idwish) {
+    public void deleteFromCart(int item) {
         String query = "Delete from wishlist where wish_list_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             // Setting the parameters for the query
-            ps.setInt(1, idwish);
+            ps.setInt(1, item);
 
             ps.executeUpdate();
 
@@ -173,4 +181,18 @@ public class CarDao {
         }
     }
 
-}
+
+        public static void main(String[] args) {
+            CarDAO carDAO = new CarDAO();
+
+            // Test addToCart
+            int user_id = 1; // Replace with actual user_id
+            int car_id = 1; // Replace with actual car_id
+            carDAO.addToCart(user_id, car_id);
+            System.out.println("Added to cart successfully.");
+
+            // Test cartItems
+            List<CartItems> cartItemsList = carDAO.cartItems(user_id);
+            System.out.println(cartItemsList);
+        }
+    }

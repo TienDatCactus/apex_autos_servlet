@@ -6,7 +6,7 @@
 package Controller;
 
 import Constant.Constants;
-import DAO.CarDao;
+import DAO.CarDAO;
 import DAO.UserDAO;
 import Models.*;
 import Models.*;
@@ -48,7 +48,7 @@ public class GoogleLogin extends HttpServlet {
         UserAccount user = getUserInfo(accessToken);
         System.out.println(user);
         UserDAO dao = new UserDAO();
-        CarDao daoc = new CarDao();
+        CarDAO daoc = new CarDAO();
         boolean check = dao.checkRegisterByGG(user);
         if (check) {
             dao.registerByGG(user);
@@ -57,9 +57,7 @@ public class GoogleLogin extends HttpServlet {
         HttpSession session = request.getSession();
         user = dao.getUserByEmail(user.getEmail());
         List<Address> listAddr = dao.viewAllAddressFor1User(user.getUser_id());
-        List<WishList> listWish = daoc.viewAllWishList();
         session.setAttribute("listAddr", listAddr);
-        session.setAttribute("listWish", listWish);
         session.setAttribute("user", user);
 
     }
