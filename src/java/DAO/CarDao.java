@@ -5,11 +5,9 @@
 package DAO;
 
 import Models.Car;
-import Models.Cart;
 import Models.CartItems;
-import java.beans.Statement;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -88,12 +86,12 @@ public class CarDAO {
     }
 
     public void addToCart(int user_id, int car_id) {
-        String selectCartQuery = "SELECT * FROM cart WHERE user_id = ?";
+        String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
         String insertCartQuery = "INSERT INTO cart (user_id) VALUES (?)";
-        String insertCartItemQuery = "INSERT INTO [dbo].[cart_items] ([cart_id] ,[car_id]) VALUES (?,?)";
+        String insertCartItemQuery = "INSERT INTO cart_items (cart_id, car_id) VALUES (?, ?)";
 
         try (
-                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psInsertCart = con.prepareStatement(insertCartQuery); PreparedStatement psInsertCartItem = con.prepareStatement(insertCartItemQuery)) {
+                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psInsertCart = con.prepareStatement(insertCartQuery, Statement.RETURN_GENERATED_KEYS); PreparedStatement psInsertCartItem = con.prepareStatement(insertCartItemQuery)) {
 
             // Check if the user already has a cart
             psSelectCart.setInt(1, user_id);
@@ -106,12 +104,17 @@ public class CarDAO {
             } else {
                 // If the user doesn't have a cart, create one and get its ID
                 psInsertCart.setInt(1, user_id);
-                psInsertCart.executeUpdate();
-                ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys();
-                if (rsGeneratedKeys.next()) {
-                    cart_id = rsGeneratedKeys.getInt(1);
-                } else {
-                    throw new SQLException("Creating cart failed, no ID obtained.");
+                int affectedRows = psInsertCart.executeUpdate();
+                if (affectedRows == 0) {
+                    throw new SQLException("Creating cart failed, no rows affected.");
+                }
+
+                try (ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys()) {
+                    if (rsGeneratedKeys.next()) {
+                        cart_id = rsGeneratedKeys.getInt(1);
+                    } else {
+                        throw new SQLException("Creating cart failed, no ID obtained.");
+                    }
                 }
             }
 
@@ -127,20 +130,22 @@ public class CarDAO {
     public List<CartItems> cartItems(int user_id) {
         List<CartItems> cartItemsList = new ArrayList<>();
 
-        String selectCartQuery = "SELECT * FROM cart WHERE user_id = ?";
-        String selectCartItemsQuery = "SELECT * FROM cart_items INNER JOIN car ON cart_items.car_id = car.car_id WHERE cart_id = ?";
+        String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
+        String selectCartItemsQuery = "SELECT ci.cart_id, ci.car_id, c.* FROM cart_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
 
         try (
-                PreparedStatement ps1 = con.prepareStatement(selectCartQuery); PreparedStatement ps2 = con.prepareStatement(selectCartItemsQuery)) {
+                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psSelectCartItems = con.prepareStatement(selectCartItemsQuery)) {
 
-            ps1.setInt(1, user_id);
-            ResultSet rsCart = ps1.executeQuery();
+            // Check if the user has a cart
+            psSelectCart.setInt(1, user_id);
+            ResultSet rsCart = psSelectCart.executeQuery();
 
             if (rsCart.next()) {
                 int cart_id = rsCart.getInt("cart_id");
 
-                ps2.setInt(1, cart_id);
-                ResultSet rsCartItems = ps2.executeQuery();
+                // Retrieve cart items
+                psSelectCartItems.setInt(1, cart_id);
+                ResultSet rsCartItems = psSelectCartItems.executeQuery();
 
                 while (rsCartItems.next()) {
                     Car car = new Car(
@@ -181,18 +186,8 @@ public class CarDAO {
         }
     }
 
-
-        public static void main(String[] args) {
-            CarDAO carDAO = new CarDAO();
-
-            // Test addToCart
-            int user_id = 1; // Replace with actual user_id
-            int car_id = 1; // Replace with actual car_id
-            carDAO.addToCart(user_id, car_id);
-            System.out.println("Added to cart successfully.");
-
-            // Test cartItems
-            List<CartItems> cartItemsList = carDAO.cartItems(user_id);
-            System.out.println(cartItemsList);
-        }
+    public static void main(String[] args) {
+        CarDAO dao = new CarDAO();
+        System.out.println(dao.cartItems(1));
     }
+}

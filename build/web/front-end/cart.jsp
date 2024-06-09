@@ -241,7 +241,7 @@
 
                                                         <div class="onhover-div">
                                                             <ul class="cart-list">
-<c:forEach var="cl"items="${cartItems}">
+<c:forEach var="cl" items="${cartItems}">
                                                                 <li class="product-box-contain">
                                                                     <div class="drop-cart">
                                                                         <a href="product-left-thumbnail.html"
@@ -252,10 +252,10 @@
 
                                                                         <div class="drop-contain">
                                                                             <a href="product-left-thumbnail.html">
-                                                                                <h5>Fantasy Crunchy Choco Chip Cookies
+                                                                                <h5>${cl.car.name}
                                                                                 </h5>
                                                                             </a>
-                                                                            <h6><span>1 x</span> $80.58</h6>
+                                                                            <h6><span>1 x</span> $${cl.car.price}</h6>
                                                                             <button class="close-button close_button">
                                                                                 <i class="fa-solid fa-xmark"></i>
                                                                             </button>

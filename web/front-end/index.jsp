@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
             <!DOCTYPE html>
             <html lang="en">
 
@@ -12,10 +12,14 @@
                 <meta name="description" content="ApexAutos" />
                 <meta name="keywords" content="ApexAutos" />
                 <meta name="author" content="ApexAutos" />
-                <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/apple-touch-icon.png">
-                <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png">
-                <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png">
-                <link rel="manifest" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest">
+                <link rel="apple-touch-icon" sizes="180x180"
+                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/apple-touch-icon.png">
+                <link rel="icon" type="image/png" sizes="32x32"
+                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png">
+                <link rel="icon" type="image/png" sizes="16x16"
+                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png">
+                <link rel="manifest"
+                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest">
                 <title>On-demand last-mile delivery</title>
 
                 <!-- Google font -->
@@ -30,27 +34,35 @@
                     rel="stylesheet">
 
                 <!-- bootstrap css -->
-                <link id="rtl-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/bootstrap.css">
+                <link id="rtl-link" rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/vendors/bootstrap.css">
 
                 <!-- wow css -->
                 <link rel="stylesheet" href="${pageContext.request.contextPath}/front-end/assets/css/animate.min.css" />
 
                 <!-- font-awesome css -->
-                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/font-awesome.css">
+                <link rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/vendors/font-awesome.css">
 
                 <!-- feather icon css -->
-                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/feather-icon.css">
+                <link rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/vendors/feather-icon.css">
 
                 <!-- slick css -->
-                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick.css">
-                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick-theme.css">
+                <link rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick.css">
+                <link rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/vendors/slick/slick-theme.css">
 
                 <!-- Iconly css -->
-                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/bulk-style.css">
-                <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/vendors/animate.css">
+                <link rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/bulk-style.css">
+                <link rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/vendors/animate.css">
 
                 <!-- Template css -->
-                <link id="color-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
+                <link id="color-link" rel="stylesheet" type="text/css"
+                    href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
             </head>
 
             <body>
@@ -80,8 +92,8 @@
                                             </span>
                                         </button>
                                         <a href="home" class="web-logo nav-logo">
-                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png" class="img-fluid blur-up lazyload"
-                                                alt="">
+                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png"
+                                                class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
                                         <div class="middle-box">
@@ -196,26 +208,29 @@
                                                                     </ul>
                                                                 </li>
                                                                 <c:if test="${sessionScope.user != null}">
-                                                                <li class="nav-item dropdown new-nav-item">
-                                                                    <label class="new-dropdown">New</label>
-                                                                    <a class="nav-link dropdown-toggle"
-                                                                        href="javascript:void(0)"
-                                                                        data-bs-toggle="dropdown">Become our Seller</a>
-                                                                    <ul class="dropdown-menu">
-                                                                        <li class="sub-dropdown-hover">
-                                                                            <a class="dropdown-item"
-                                                                                href="javascript:void(0)">Our Program
-                                                                                <span class="new-text"><i
-                                                                                        class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                                            <ul class="sub-menu">
-                                                                                <li>
-                                                                                    <a
-                                                                                        href="seller" style="width: 200px">Sign up for the program</a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
+                                                                    <li class="nav-item dropdown new-nav-item">
+                                                                        <label class="new-dropdown">New</label>
+                                                                        <a class="nav-link dropdown-toggle"
+                                                                            href="javascript:void(0)"
+                                                                            data-bs-toggle="dropdown">Become our
+                                                                            Seller</a>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li class="sub-dropdown-hover">
+                                                                                <a class="dropdown-item"
+                                                                                    href="javascript:void(0)">Our
+                                                                                    Program
+                                                                                    <span class="new-text"><i
+                                                                                            class="fa-solid fa-bolt-lightning"></i></span></a>
+                                                                                <ul class="sub-menu">
+                                                                                    <li>
+                                                                                        <a href="seller"
+                                                                                            style="width: 200px">Sign up
+                                                                                            for the program</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
                                                                 </c:if>
                                                             </ul>
                                                         </div>
@@ -248,100 +263,105 @@
                                                         </div>
                                                     </a>
                                                 </li>
-<c:if test="${sessionScope.user != null}">
-                                                <li class="right-side">
-                                                    <div class="onhover-dropdown header-badge">
-                                                        <button type="button"
-                                                            class="btn p-0 position-relative header-wishlist">
-                                                            <i data-feather="shopping-cart"></i>
-                                                            <span
-                                                                class="position-absolute top-0 start-100 translate-middle badge">2
-                                                                <span class="visually-hidden">unread messages</span>
-                                                            </span>
-                                                        </button>
+                                                <c:if test="${sessionScope.user != null}">
+                                                    <li class="right-side">
+                                                        <div class="onhover-dropdown header-badge">
+                                                            <button type="button"
+                                                                class="btn p-0 position-relative header-wishlist">
+                                                                <i data-feather="shopping-cart"></i>
+                                                                <span
+                                                                    class="position-absolute top-0 start-100 translate-middle badge">2
+                                                                    <span class="visually-hidden">unread messages</span>
+                                                                </span>
+                                                            </button>
 
-                                                        <div class="onhover-div">
-                                                            <ul class="cart-list">
-                                                                <li class="product-box-contain">
-                                                                    <div class="drop-cart">
-                                                                        <a href="product-left-thumbnail.html"
-                                                                            class="drop-image">
-                                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/1.png"
-                                                                                class="blur-up lazyload" alt="">
-                                                                        </a>
-
-                                                                        <div class="drop-contain">
-                                                                            <a href="product-left-thumbnail.html">
-                                                                                <h5>Fantasy Crunchy Choco Chip Cookies
-                                                                                </h5>
+                                                            <div class="onhover-div">
+                                                                <ul class="cart-list">
+                                                                    <li class="product-box-contain">
+                                                                        <div class="drop-cart">
+                                                                            <a href="product-left-thumbnail.html"
+                                                                                class="drop-image">
+                                                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/1.png"
+                                                                                    class="blur-up lazyload" alt="">
                                                                             </a>
-                                                                            <h6><span>1 x</span> $80.58</h6>
-                                                                            <button class="close-button close_button">
-                                                                                <i class="fa-solid fa-xmark"></i>
-                                                                            </button>
+
+                                                                            <div class="drop-contain">
+                                                                                <a href="product-left-thumbnail.html">
+                                                                                    <h5>Fantasy Crunchy Choco Chip
+                                                                                        Cookies
+                                                                                    </h5>
+                                                                                </a>
+                                                                                <h6><span>1 x</span> $80.58</h6>
+                                                                                <button
+                                                                                    class="close-button close_button">
+                                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </li>
+                                                                    </li>
 
-                                                                <li class="product-box-contain">
-                                                                    <div class="drop-cart">
-                                                                        <a href="product-left-thumbnail.html"
-                                                                            class="drop-image">
-                                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/2.png"
-                                                                                class="blur-up lazyload" alt="">
-                                                                        </a>
-
-                                                                        <div class="drop-contain">
-                                                                            <a href="product-left-thumbnail.html">
-                                                                                <h5>Peanut Butter Bite Premium Butter
-                                                                                    Cookies 600 g
-                                                                                </h5>
+                                                                    <li class="product-box-contain">
+                                                                        <div class="drop-cart">
+                                                                            <a href="product-left-thumbnail.html"
+                                                                                class="drop-image">
+                                                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/2.png"
+                                                                                    class="blur-up lazyload" alt="">
                                                                             </a>
-                                                                            <h6><span>1 x</span> $25.68</h6>
-                                                                            <button class="close-button close_button">
-                                                                                <i class="fa-solid fa-xmark"></i>
-                                                                            </button>
+
+                                                                            <div class="drop-contain">
+                                                                                <a href="product-left-thumbnail.html">
+                                                                                    <h5>Peanut Butter Bite Premium
+                                                                                        Butter
+                                                                                        Cookies 600 g
+                                                                                    </h5>
+                                                                                </a>
+                                                                                <h6><span>1 x</span> $25.68</h6>
+                                                                                <button
+                                                                                    class="close-button close_button">
+                                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
+                                                                    </li>
+                                                                </ul>
 
-                                                            <div class="price-box">
-                                                                <h5>Total :</h5>
-                                                                <h4 class="theme-color fw-bold">$106.58</h4>
-                                                            </div>
+                                                                <div class="price-box">
+                                                                    <h5>Total :</h5>
+                                                                    <h4 class="theme-color fw-bold">$106.58</h4>
+                                                                </div>
 
-                                                            <div class="button-group">
-                                                                <a href="cart?user=${user.user_id}"class="btn btn-sm cart-button">View
-                                                                    Cart</a>
-                                                                <a href="checkout" class="btn btn-sm cart-button theme-bg-color
+                                                                <div class="button-group">
+                                                                    <a href="cart?user=${user.user_id}"
+                                                                        class="btn btn-sm cart-button">View
+                                                                        Cart</a>
+                                                                    <a href="checkout" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">Checkout</a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-</c:if>   
+                                                    </li>
+                                                </c:if>
                                                 <li class="right-side onhover-dropdown">
                                                     <div class="delivery-login-box">
                                                         <div class="delivery-icon">
                                                             <i data-feather="user"></i>
                                                         </div>
-<c:if test="${sessionScope.user == null}">
+                                                        <c:if test="${sessionScope.user == null}">
                                                             <div class="delivery-detail">
                                                                 <h6>Sorry,</h6>
                                                                 <h5>Not logged-In</h5>
                                                             </div>
-</c:if>
-<c:if test="${sessionScope.user != null}">
-    <c:set var="username"
-           value="${fn:substringBefore(user.email, '@')}" />
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.user != null}">
+                                                            <c:set var="username"
+                                                                value="${fn:substringBefore(user.email, '@')}" />
                                                             <div class="delivery-detail">
                                                                 <h6>Hello,</h6>
                                                                 <h5>${username}</h5>
                                                             </div>
-</c:if>
+                                                        </c:if>
                                                     </div>
-<c:if test="${sessionScope.user == null}">
+                                                    <c:if test="${sessionScope.user == null}">
                                                         <div class="onhover-div onhover-div-login">
                                                             <ul class="user-box-name">
                                                                 <li class="product-box-contain">
@@ -358,8 +378,8 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-</c:if>
-<c:if test="${sessionScope.user != null}">
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.user != null}">
                                                         <div class="onhover-div onhover-div-login">
                                                             <ul class="user-box-name">
                                                                 <li class="product-box-contain">
@@ -376,7 +396,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-</c:if>
+                                                    </c:if>
                                                 </li>
                                             </ul>
                                         </div>
@@ -470,7 +490,8 @@
                                     <ul>
                                         <li>
                                             <div class="category-list">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/1/vegetable.svg"
+                                                    class="blur-up lazyload" alt="">
                                                 <h5>
                                                     <a href="shop-left-sidebar.html">Vegetables & Fruit</a>
                                                 </h5>
@@ -488,7 +509,7 @@
                                 </div>
                                 <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
                         section-b-space">
-<c:forEach var="cl" items="${carList}">
+                                    <c:forEach var="cl" items="${carList}">
                                         <div>
                                             <div class="product-box product-white-bg wow fadeIn">
                                                 <div class="product-image">
@@ -515,18 +536,19 @@
                                                         </li>
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Add to Cart">
-    <c:if test="${sessionScope.user != null}">
-                                                            <form id="form-cart"
-                                                                action="cart?action=addtocart&carId=${cl.car_id}&userId=${user.user_id}"
-                                                                method="post">
-    </c:if>
-                                                                <a style="cursor: pointer"
-                                                                    onclick="document.getElementById('form-cart').submit()">
-                                                                    <i data-feather="shopping-cart" style="font-size: 8px"></i>
-                                                                </a>
-    <c:if test="${sessionScope.user != null}">
-                                                            </form>
-    </c:if>
+                                                            <c:if test="${sessionScope.user != null}">
+                                                                <form id="form-cart-${cl.car_id}"
+                                                                    action="cart?action=addtocart&id_car=${cl.car_id}"
+                                                                    method="post">
+                                                            </c:if>
+                                                            <a style="cursor: pointer"
+                                                                onclick="document.getElementById('form-cart-${cl.car_id}').submit()">
+                                                                <i data-feather="shopping-cart"
+                                                                    style="font-size: 8px"></i>
+                                                            </a>
+                                                            <c:if test="${sessionScope.user != null}">
+                                                                </form>
+                                                            </c:if>
 
 
                                                         </li>
@@ -535,7 +557,7 @@
                                                 <div class="product-detail position-relative">
                                                     <a href="detail?id=${cl.car_id}">
                                                         <h6 class="name" style="font-size:16px">
-    ${cl.name}
+                                                            ${cl.name}-${cl.car_id}
                                                         </h6>
                                                     </a>
 
@@ -550,7 +572,7 @@
                                                 </div>
                                             </div>
                                         </div>
-</c:forEach>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -559,7 +581,7 @@
                 <!-- product section end -->
                 <section class=" section-b-space pt-0">
                     <ul class="d-flex justify-content-center pagination-lg">
-<c:if test="${page.index != 0}">
+                        <c:if test="${page.index != 0}">
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=0' class="page-link"
                                     style="color: var(--theme-color);"> Home </a>
@@ -569,15 +591,15 @@
                                     class="page-link" style="color: var(--theme-color);">
                                     Previous </a>
                             </li>
-</c:if>
-<c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
+                        </c:if>
+                        <c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=${p}' class="page-link"
                                     style="color: var(--theme-color);"> Page ${p
-                                               +1}</a>
+                                    +1}</a>
                             </li>
-</c:forEach>
-<c:if test="${page.index  != page.totalPage - 1}">
+                        </c:forEach>
+                        <c:if test="${page.index  != page.totalPage - 1}">
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=${page.index+1}'
                                     class="page-link" style="color: var(--theme-color);">
@@ -587,7 +609,7 @@
                                 <a href='${pageContext.request.contextPath}/home?index=${page.totalPage-1}'
                                     class="page-link" style="color: var(--theme-color);"> End </a>
                             </li>
-</c:if>
+                        </c:if>
                     </ul>
                 </section>
 
@@ -601,7 +623,8 @@
                                     <div class="service-contain py-2">
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/sedan.png" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/sedan.png"
+                                                    class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -611,7 +634,8 @@
 
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/delivery.svg" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/delivery.svg"
+                                                    class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -621,7 +645,8 @@
 
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/discount.svg" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/discount.svg"
+                                                    class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -631,7 +656,8 @@
 
                                         <div class="service-box">
                                             <div class="service-image">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/market.svg" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/market.svg"
+                                                    class="blur-up lazyload" alt="" />
                                             </div>
 
                                             <div class="service-detail">
@@ -649,7 +675,8 @@
                                     <div class="footer-logo">
                                         <div class="theme-logo">
                                             <a href="index.html">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png" class="blur-up lazyload" alt="" />
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png"
+                                                    class="blur-up lazyload" alt="" />
                                             </a>
                                         </div>
 
@@ -801,7 +828,8 @@
                             </div>
 
                             <div class="payment">
-                                <img src="${pageContext.request.contextPath}/front-end/assets/images/payment/1.png" class="blur-up lazyload" alt="" />
+                                <img src="${pageContext.request.contextPath}/front-end/assets/images/payment/1.png"
+                                    class="blur-up lazyload" alt="" />
                             </div>
 
                             <div class="social-link">
@@ -1051,7 +1079,8 @@
                 <div class="cookie-bar-box">
                     <div class="cookie-box">
                         <div class="cookie-image">
-                            <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png" class="blur-up lazyload" alt="">
+                            <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png"
+                                class="blur-up lazyload" alt="">
                             <h2>Cookies!</h2>
                         </div>
 
@@ -1168,8 +1197,10 @@
                 <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-ui.min.js"></script>
 
                 <!-- Bootstrap js-->
-                <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-                <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap-notify.min.js"></script>
+                <script
+                    src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+                <script
+                    src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap-notify.min.js"></script>
                 <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/popper.min.js"></script>
 
                 <!-- feather icon js-->
@@ -1181,7 +1212,8 @@
 
                 <!-- Slick js-->
                 <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick.js"></script>
-                <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick-animation.min.js"></script>
+                <script
+                    src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick-animation.min.js"></script>
                 <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/custom_slick.js"></script>
 
                 <!-- Auto Height Js -->
