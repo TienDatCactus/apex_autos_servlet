@@ -29,41 +29,37 @@ public class CartControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        CarDAO dao = new CarDAO();
+        UserAccount ua = (UserAccount) session.getAttribute("user");
+        List<CartItems> carts = dao.cartItems(ua.getUser_id());
+        session.setAttribute("cartItems", carts);
         request.getRequestDispatcher("/front-end/cart.jsp").forward(request, response);
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Logger logger = Logger.getLogger(getClass().getName());
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
-      UserAccount ua = (UserAccount) session.getAttribute("user");
+        UserAccount ua = (UserAccount) session.getAttribute("user");
         CarDAO dao = new CarDAO();
         switch (action) {
             case "addtocart":
                 int id_car = Integer.parseInt(request.getParameter("id_car"));
-                logger.log(Level.INFO, "car: {0}", id_car);
                 dao.addToCart(ua.getUser_id(), id_car);
+                response.sendRedirect("home");
                 break;
             
             case "delete":
-                String item_id = request.getParameter("idwish");
-                if (item_id != null && !item_id.isEmpty()) {
-                    int item = Integer.parseInt(item_id);
-                    dao.deleteFromCart(item);
-                } else {
-                    throw new ServletException("Cart id is null or empty");
-                }
+                int item_id = Integer.parseInt(request.getParameter("item_id"));
+                dao.deleteFromCart(item_id);
+                response.sendRedirect("cart");
                 break;
-            
             default:
-                List<CartItems> carts = dao.cartItems(ua.getUser_id());
-                session.setAttribute("cartItems", carts);
-                request.getRequestDispatcher("/front-end/cart.jsp").forward(request, response);
-                break;
+                response.sendRedirect("cart");
+            
         }
-        response.sendRedirect("home");
     }
 
     /**

@@ -131,7 +131,7 @@ public class CarDAO {
         List<CartItems> cartItemsList = new ArrayList<>();
 
         String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
-        String selectCartItemsQuery = "SELECT ci.cart_id, ci.car_id, c.* FROM cart_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
+        String selectCartItemsQuery = "SELECT ci.item_id, ci.cart_id, c.* FROM cart_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
 
         try (
                 PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psSelectCartItems = con.prepareStatement(selectCartItemsQuery)) {
@@ -148,6 +148,7 @@ public class CarDAO {
                 ResultSet rsCartItems = psSelectCartItems.executeQuery();
 
                 while (rsCartItems.next()) {
+                    int item_id = rsCartItems.getInt("item_id");
                     Car car = new Car(
                             rsCartItems.getInt("car_id"),
                             rsCartItems.getString("name"),
@@ -160,9 +161,8 @@ public class CarDAO {
                             rsCartItems.getFloat("price"),
                             rsCartItems.getString("description"),
                             rsCartItems.getInt("brand_id"),
-                            rsCartItems.getInt("category_id")
-                    );
-                    CartItems cartItem = new CartItems(cart_id, car);
+                            rsCartItems.getInt("category_id"));
+                    CartItems cartItem = new CartItems(item_id, car);
                     cartItemsList.add(cartItem);
                 }
             }
@@ -173,21 +173,21 @@ public class CarDAO {
         return cartItemsList; // This will be an empty list if there's no cart or no cart items
     }
 
-    public void deleteFromCart(int item) {
-        String query = "Delete from wishlist where wish_list_id = ?";
+    public boolean deleteFromCart(int item_id) {
+        String query = "DELETE FROM [dbo].[cart_items] WHERE item_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
-            // Setting the parameters for the query
-            ps.setInt(1, item);
-
-            ps.executeUpdate();
-
+            ps.setInt(1, item_id);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public static void main(String[] args) {
         CarDAO dao = new CarDAO();
         System.out.println(dao.cartItems(1));
+        System.out.println(dao.deleteFromCart(13));
     }
 }

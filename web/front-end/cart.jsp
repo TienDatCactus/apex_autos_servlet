@@ -241,7 +241,7 @@
 
                                                         <div class="onhover-div">
                                                             <ul class="cart-list">
-<c:forEach var="cl" items="${cartItems}">
+<c:forEach var="ci" items="${cartItems}">
                                                                 <li class="product-box-contain">
                                                                     <div class="drop-cart">
                                                                         <a href="product-left-thumbnail.html"
@@ -252,10 +252,10 @@
 
                                                                         <div class="drop-contain">
                                                                             <a href="product-left-thumbnail.html">
-                                                                                <h5>${cl.car.name}
+                                                                                <h5>${ci.car.name}
                                                                                 </h5>
                                                                             </a>
-                                                                            <h6><span>1 x</span> $${cl.car.price}</h6>
+                                                                            <h6><span>1 x</span> $${ci.car.price}</h6>
                                                                             <button class="close-button close_button">
                                                                                 <i class="fa-solid fa-xmark"></i>
                                                                             </button>
@@ -1149,6 +1149,7 @@
                                     <div class="table-responsive-xl">
                                         <table class="table">
                                             <tbody>
+<c:forEach var="ci" items="${cartItems}">
                                                 <tr class="product-box-contain">
                                                     <td class="product-detail">
                                                         <div class="product border-0">
@@ -1159,22 +1160,21 @@
                                                             <div class="product-detail">
                                                                 <ul>
                                                                     <li class="name">
-                                                                        <a href="product-left-thumbnail.html">Bell
-                                                                            pepper</a>
+                                                                        <a href="product-left-thumbnail.html">${ci.car.name}</a>
                                                                     </li>
 
                                                                     <li class="text-content"><span
-                                                                            class="text-title">Brand:</span> Fresho</li>
+                                                                            class="text-title">Brand:</span> ${ci.car.brand_id}</li>
 
                                                                     <li class="text-content"><span
-                                                                            class="text-title">Category</span> - 500 g
+                                                                            class="text-title">Category</span> - ${ci.car.category_id}
                                                                     </li>
 
                                                                     <li>
                                                                         <h5 class="text-content d-inline-block">Price :
                                                                         </h5>
-                                                                        <span>$35.10</span>
-                                                                        <span class="text-content">$45.68</span>
+                                                                        <span>$${ci.car.price}</span>
+                                                                        <span class="text-content">$${ci.car.price  + 10000}</span>
                                                                     </li>
 
                                                                     <li>
@@ -1206,7 +1206,7 @@
                                                                     </li>
 
                                                                     <li>
-                                                                        <h5>Total: $35.10</h5>
+                                                                        <h5>Total: $${ci.car.price}</h5>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -1237,11 +1237,12 @@
 
                                                     <td class="save-remove">
                                                         <h4 class="table-title text-content">Action</h4>
-                                                        <a class="remove close_button"
-                                                            href="javascript:void(0)">Remove</a>
+                                                        <form action="cart?action=delete&item_id=${ci.item_id}" id="form-del-${ci.item_id}" method="post">
+                                                            <input type="submit" value="Remove" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
+                                                            </form>
                                                     </td>
                                                 </tr>
-
+</c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -1748,7 +1749,6 @@
                     </div>
                 </div>
                 <!-- Tap to top end -->
-
                 <!-- Bg overlay Start -->
                 <div class="bg-overlay"></div>
                 <!-- Bg overlay End -->
