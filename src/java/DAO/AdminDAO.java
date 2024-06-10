@@ -103,15 +103,29 @@ public class AdminDAO {
         }
     }
 
+    public boolean userDelete(String id) {
+        String sql = "DELETE FROM [dbo].[user_account] WHERE user_id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(id));
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         AdminDAO dao = new AdminDAO();
         UserAccount ua = new UserAccount(1,
                 "datnthe180012@fpt.edu.vn", // email
-                "Nigga", // given_name
+                "Dat", // given_name
                 "Lords", // family_name
                 "+1234567890", // phone
                 "1990-01-01" // dob
         );
         System.out.println(dao.userUpdate(ua));
-        }
+        System.out.println(dao.userDelete("5"));
+    }
 }

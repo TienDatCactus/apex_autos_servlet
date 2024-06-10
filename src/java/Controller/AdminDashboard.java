@@ -47,7 +47,7 @@ public class AdminDashboard extends HttpServlet {
                     }
                 } else if (type.equals("delete")) {
                     if (id != null) {
-                        
+                        daoa.userDelete(id + "");
                     }
                 }
             }
@@ -71,28 +71,32 @@ public class AdminDashboard extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String state = request.getParameter("state");
-        String action = request.getParameter("action");
-        
+// user management
         if ("user".equals(state)) {
-            String userId= request.getParameter("userId");
-            String given_name = request.getParameter("given_name");
-            String family_name = request.getParameter("family_name");
-            String email = request.getParameter("email");
-            String dob = request.getParameter("dob");
-            String phone = request.getParameter("phone");
             Object updateBtn = request.getParameter("update");
             Object addBtn = request.getParameter("add");
-            UserAccount ua = new UserAccount(userId,email, given_name, family_name, phone, dob);
-
-            if (updateBtn != null && "modify".equals(action)) {
+            String action = request.getParameter("do");
+            if ("update".equals(action)) {
+                int userId = Integer.parseInt(request.getParameter("userId"));
+                String given_name = request.getParameter("given_name");
+                String family_name = request.getParameter("family_name");
+                String email = request.getParameter("email");
+                String dob = request.getParameter("dob");
+                String phone = request.getParameter("phone");
+                UserAccount ua = new UserAccount(userId, email, given_name, family_name, phone, dob);
                 daoa.userUpdate(ua);
-            } else if (addBtn != null &&"modify".equals(action)) {
+            } else if ("add".equals(action)) {
+                String given_name2 = request.getParameter("given_name2");
+                String family_name2 = request.getParameter("family_name2");
+                String email2 = request.getParameter("email2");
+                String dob2 = request.getParameter("dob2");
+                String phone2 = request.getParameter("phone2");
                 String password = request.getParameter("password");
-                UserAccount ua2 = new UserAccount(email, password, given_name, family_name, phone, dob);
+                UserAccount ua2 = new UserAccount(email2, password, given_name2, family_name2, phone2, dob2);
                 daoa.userAdd(ua2);
             }
             doGet(request, response);
+
         }
     }
-
 }

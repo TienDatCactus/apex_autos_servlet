@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
             <!DOCTYPE html>
             <html lang="en">
 
@@ -153,26 +153,30 @@
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
-                                                        <c:forEach var="ul" items="${userList}">
-                                                            <c:if test="${ul.user_id == (update_id)}">
-                                                                <c:set var="nl" value="${ul}"></c:set>
-                                                            </c:if>
+<c:forEach var="ul" items="${userList}">
+    <c:if test="${ul.user_id == (update_id)}">
+        <c:set var="nl" value="${ul}"></c:set>
+    </c:if>
                                                             <tr>
                                                                 <td>${ul.given_name == null ? "Not" : ul.given_name }
-                                                                    ${ul.family_name == null? "updated" :
-                                                                    ul.family_name}</td>
+    ${ul.family_name == null? "updated" :
+      ul.family_name}</td>
                                                                 <td>${ul.dob == null ? "Not updated" : ul.dob}</td>
                                                                 <td>${ul.email}</td>
                                                                 <td>${ul.phone == null ? "Not updated" : ul.phone }</td>
                                                                 <td>${(ul.permission_id == 3 ? "User" :(
-                                                                    (ul.permission_id == 2 )? "Seller" :
-                                                                    (ul.permission_id == 1) ? "Admin" : "No one") )}
+          (ul.permission_id == 2 )? "Seller" :
+          (ul.permission_id == 1) ? "Admin" : "No one") )}
                                                                 <td>
-                                                                    <a  href="dashboard?state=user&type=update&id=${ul.user_id}" class="btn btn-success m-1" onclick="event.preventDefault(); document.getElementById('email').setAttribute('disabled', true); document.getElementById('password').setAttribute('disabled', true); localStorage.setItem('readOnly', true); window.location.href = this.getAttribute('href');">Update</a>
-                                                                        <a href="dashboard?state=user&type=delete&id=${ul.user_id}" class="btn btn-danger m-1">Delete</a>
+                                                                    <a href="dashboard?state=user&type=update&id=${ul.user_id}"
+                                                                        class="btn btn-success m-1"
+                                                                        onclick="event.preventDefault(); document.getElementById('email').setAttribute('disabled', true); document.getElementById('password').setAttribute('disabled', true); localStorage.setItem('readOnly', true)
+                                                                            ; window.location.href = this.getAttribute('href');">Update</a>
+                                                                    <a href="dashboard?state=user&type=delete&id=${ul.user_id}"
+                                                                        class="btn btn-danger m-1">Delete</a>
                                                                 </td>
                                                             </tr>
-                                                        </c:forEach>
+</c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -180,18 +184,18 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="card mb-4">
                                             <div class="card-header">
-                                                <c:set var="prefix" value="${nl.user_id != null ? '#' : ''}" />
-                                                <c:set var="id" value="${prefix}${nl.user_id}" />
+<c:set var="prefix" value="${nl.user_id != null ? '#' : ''}" />
+<c:set var="id" value="${prefix}${nl.user_id}" />
                                                 <h5 class="card-title">Modify user : ${id}</h5>
                                             </div>
                                             <div class="card-body">
-                                                <c:set var="prefix2" value="${nl.user_id != null ? '&userId=' : ''}" />
-                                                  <c:set var="id2" value="${prefix2}${nl.user_id}" />
-                                                <form action="dashboard?state=user&action=modify${nl.user_id != "" ? id2 : ""}" method="post"
-                                                    id="form-update-${nl.user_id != "" ? id2 : ""}">
+                                                <form
+                                                    action="dashboard?state=user&do=update"
+                                                    method="post">
+                                                    <!-- form fields -->
                                                     <div class="row">
                                                         <div class="mb-3 col-6">
                                                             <label for="given_name" class="form-label">Given
@@ -201,7 +205,7 @@
                                                                 value="${nl.given_name}">
                                                         </div>
                                                         <div class="mb-3 col-6">
-                                                            <label for="family_name" class="form-label">Family
+                                                            <label for="family_name2" class="form-label">Family
                                                                 name</label>
                                                             <input type="text" class="form-control" id="family_name"
                                                                 name="family_name" placeholder="Enter family name"
@@ -211,8 +215,9 @@
                                                     <div class="row">
                                                         <div class="mb-3 col-6">
                                                             <label for="phone" class="form-label">Phone</label>
-                                                            <input type="text" class="form-control" id="phone" name="phone"
-                                                                placeholder="Enter phone number" value="${nl.phone}">
+                                                            <input type="text" class="form-control" id="phone"
+                                                                name="phone" placeholder="Enter phone number"
+                                                                value="${nl.phone}">
                                                         </div>
                                                         <div class="mb-3 col-6">
                                                             <label for="dob" class="form-label">Date of birth</label>
@@ -225,32 +230,103 @@
                                                             <label for="email" class="form-label">Email</label>
                                                             <input type="text" class="form-control" required id="email"
                                                                 placeholder="Enter email" name="email"
-                                                                value="${nl.email}" title="You can't change this either ">
-
+                                                                value="${nl.email}"  title="You can't change this...">
                                                         </div>
                                                         <div class="mb-3 col-6 ">
                                                             <label for="password" class="form-label">Password</label>
-                                                            <input type="password" class="form-control" required name="password"
-                                                                   id="password" placeholder="*******" title="You can't change this...">
+                                                            <input type="password" class="form-control" required
+                                                                name="password" id="password" placeholder="*******" title="You can't change this either..."> 
                                                         </div>
                                                     </div>
-
-                                                    <input type="submit" class="btn btn-primary" value="Add" name="add">
-                                                    <input type="button" onclick="document.getElementById('form-update-${nl.user_id != "" ? id2 : ""}').submit()" class="btn btn-primary" value="Update"
-                                                        name="update">
-                                                    <input type="button" onclick="(() => {
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <input type="hidden" name="userId" value="${nl.user_id}">
+                                                            <input type="submit" class="btn btn-warning" value="Update"
+                                                                name="update"
+                                                               >
+                                                        </div>
+                                                        <input type="button" onclick="(() => {
     localStorage.removeItem('readOnly');
     location.href='dashboard?state=user';
 })()" class="btn btn-primary" id="cancel" value="Cancel" name="cancel">
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Add user :</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <form action="dashboard?state=user&do=add" method="post">
+                                                    <!-- form fields -->
+                                                    <div class="row">
+                                                        <div class="mb-3 col-6">
+                                                            <label for="given_name" class="form-label">Given
+                                                                name</label>
+                                                            <input type="text" class="form-control" id="given_name"
+                                                                name="given_name2" placeholder="Enter given name"
+                                                                >
+                                                        </div>
+                                                        <div class="mb-3 col-6">
+                                                            <label for="family_name" class="form-label">Family
+                                                                name</label>
+                                                            <input type="text" class="form-control" id="family_name"
+                                                                name="family_name2" placeholder="Enter family name"
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="mb-3 col-6">
+                                                            <label for="phone" class="form-label">Phone</label>
+                                                            <input type="text" class="form-control" id="phone"
+                                                                name="phone2" placeholder="Enter phone number"
+                                                                >
+                                                        </div>
+                                                        <div class="mb-3 col-6">
+                                                            <label for="dob" class="form-label">Date of birth</label>
+                                                            <input type="date" class="form-control" id="dob" name="dob2"
+                                                                >
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="mb-3 col-6">
+                                                            <label for="email" class="form-label">Email</label>
+                                                            <input type="text" class="form-control" required id="email"
+                                                                placeholder="Enter email" name="email2"
+                                                                title="You can't change this either ">
+                                                        </div>
 
+                                                        <div class="mb-3 col-6">
+                                                            <label for="password" class="form-label">Password</label>
+                                                            <input type="password" class="form-control" required
+                                                                name="password" id="password" placeholder="*******"
+                                                               >
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <input type="submit" class="btn btn-success" value="Add"
+                                                                name="add">
+                                                        </div>
+                                                        <input type="button" onclick="(() => {
+    localStorage.removeItem('readOnly');
+    location.href='dashboard?state=user';
+})()" class="btn btn-primary" id="cancel" value="Cancel" name="cancel">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
+
                             </div>
-                        </main>
                     </div>
+                    </main>
+                </div>
                 </div>
             </body>
 
@@ -269,11 +345,11 @@
 
 
             <script>
-              
+
                 var emailInput = document.getElementById("email");
                 var passwordInput = document.getElementById("password");
 
-               
+
 
                 window.onload = function () {
                     var readOnly = localStorage.getItem('readOnly');
