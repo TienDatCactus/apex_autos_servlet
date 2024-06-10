@@ -17,7 +17,7 @@
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" ><i
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i
                 class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -50,7 +50,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="dashboard">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -64,19 +64,23 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="user.html">Users List</a>
-                                <a class="nav-link" href="role.html">Roles</a>
+                                <a class="nav-link" href="dashboard?state=user">Users List</a>
+                                <a class="nav-link" href="dashboard?state=role">Roles</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="seller.html">
+                        <a class="nav-link" href="dashboard?state=seller">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Sellers
                         </a>
 
                         <div class="sb-sidenav-menu-heading">Others</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="dashboard?state=chart">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Total Profits
+                        </a>
+                        <a class="nav-link" href="dashboard?state=setting">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Page Settings
                         </a>
                         <!-- <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

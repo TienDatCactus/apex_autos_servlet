@@ -56,7 +56,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="dashboard">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -70,19 +70,23 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="user.html">Users List</a>
-                                <a class="nav-link" href="role.html">Roles</a>
+                                <a class="nav-link" href="dashboard?state=user">Users List</a>
+                                <a class="nav-link" href="dashboard?state=role">Roles</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="seller.html">
+                        <a class="nav-link" href="dashboard?state=seller">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Sellers
                         </a>
 
                         <div class="sb-sidenav-menu-heading">Others</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="dashboard?state=chart">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Total Profits
+                        </a>
+                        <a class="nav-link" href="dashboard?state=setting">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Page Settings
                         </a>
                         <!-- <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

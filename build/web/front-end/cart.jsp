@@ -1287,7 +1287,7 @@
                                             </li>
 
                                             <li>
-                                                <button onclick="location.href = 'index.html';"
+                                                <button onclick="location.href = 'home';"
                                                     class="button-39 text-dark d-flex justify-content-evenly align-items-center">
                                                     <i class="fa-solid fa-arrow-left-long"></i>Return To
                                                     Shopping</button>

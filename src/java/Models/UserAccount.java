@@ -30,6 +30,34 @@ public class UserAccount {
         this.password = password;
     }
 
+    public UserAccount(String email, String given_name, String family_name, String phone, String dob) {
+        this.email = email;
+        this.given_name = given_name;
+        this.family_name = family_name;
+        this.phone = phone;
+        this.dob = dob;
+    }
+
+    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob) {
+        this.email = email;
+        this.password = password;
+        this.given_name = given_name;
+        this.family_name = family_name;
+        this.phone = phone;
+        this.dob = dob;
+    }
+
+    public UserAccount(int user_id, String email, String given_name, String family_name, String phone, String dob) {
+        this.user_id = user_id;
+        this.email = email;
+        this.given_name = given_name;
+        this.family_name = family_name;
+        this.phone = phone;
+        this.dob = dob;
+    }
+
+    
+    
     public UserAccount(String email, String password, int permission_id) {
         this.email = email;
         this.password = password;
