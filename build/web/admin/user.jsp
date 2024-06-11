@@ -229,7 +229,7 @@
                                                         <div class="mb-3 col-6">
                                                             <label for="email" class="form-label">Email</label>
                                                             <input type="text" class="form-control" required id="email"
-                                                                placeholder="Enter email" name="email"
+                                                                placeholder="Enter email"
                                                                 value="${nl.email}"  title="You can't change this...">
                                                         </div>
                                                         <div class="mb-3 col-6 ">

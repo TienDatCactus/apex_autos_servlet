@@ -64,8 +64,8 @@ public class UserDAO {
             return false;
         }
     }
-    
-     public boolean checkRegisterByGG(UserAccount UserAccount) {
+
+    public boolean checkRegisterByGG(UserAccount UserAccount) {
         String email = UserAccount.getEmail();
         String password = "123456";
         if (userExisted(email)) {
@@ -215,6 +215,8 @@ public class UserDAO {
         return roles;
     }
 
+    
+
     public UserAccount getUserByEmail(String email) {
         UserAccount userAccount = new UserAccount();
         String query = " select * from user_account where email = ? ";
@@ -325,7 +327,8 @@ public class UserDAO {
 
         UserDAO r = new UserDAO();
         UserAccount ua = new UserAccount("multivncraft@gmail.com", "dat123");
-        System.out.println(r.checkRegister(ua));
+        System.out.println(r.userExisted("datnthe180012@fpt.edu.vn"));
+        System.out.println(r.getUserByEmail("datnthe180012@fpt.edu.vn"));
         // Edit the address
     }
 }
