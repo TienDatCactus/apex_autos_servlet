@@ -53,15 +53,14 @@ public class AdminDAO {
 
   public boolean userUpdate(UserAccount ua) {
     String sql =
-        "UPDATE [dbo].[user_account] SET [email] = ? ,[given_name] =  ? ,[family_name] =  ? ,[dob] =  ? ,[phone] =  ? WHERE user_id = ?";
+        "UPDATE [dbo].[user_account] SET [given_name] =  ? ,[family_name] =  ? ,[dob] =  ? ,[phone] =  ? WHERE user_id = ?";
     try {
       PreparedStatement ps = con.prepareStatement(sql);
-      ps.setString(1, ua.getEmail());
-      ps.setString(2, ua.getGiven_name());
-      ps.setString(3, ua.getFamily_name());
-      ps.setString(4, ua.getDob());
-      ps.setString(5, ua.getPhone());
-      ps.setInt(6, ua.getUser_id());
+      ps.setString(1, ua.getGiven_name());
+      ps.setString(2, ua.getFamily_name());
+      ps.setString(3, ua.getDob());
+      ps.setString(4, ua.getPhone());
+      ps.setInt(5, ua.getUser_id());
       int rowsAffected = ps.executeUpdate();
       return rowsAffected > 0;
     } catch (Exception e) {

@@ -235,7 +235,7 @@
                                                         <div class="mb-3 col-6 ">
                                                             <label for="password" class="form-label">Password</label>
                                                             <input type="password" class="form-control" required
-                                                                name="password" id="password" placeholder="*******" title="You can't change this either..."> 
+                                                                id="password" placeholder="*******" title="You can't change this either..."> 
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-between">

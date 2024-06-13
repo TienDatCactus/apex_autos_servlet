@@ -514,8 +514,19 @@
                                             <div class="product-box product-white-bg wow fadeIn">
                                                 <div class="product-image">
                                                     <a href="detail?id=${cl.car_id}">
-                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/cake/product/3.png"
-                                                            class="img-fluid blur-up lazyload" alt="">
+                                                         <c:set var="firstImagePrinted" value="false" />
+<c:forEach items="${carImage}" var="ci">
+    <c:if test="${ci.car_id == cl.car_id}">
+        <c:forEach items="${ci.image_url}" var="obj">
+            <c:if test="${not firstImagePrinted}">
+                <img src="${obj}" alt="Car Image" class="col-6 px-1" style="max-width: 100px; max-height: 100px;">
+                <c:set var="firstImagePrinted" value="true" />
+            </c:if>
+        </c:forEach>
+    </c:if> 
+</c:forEach>
+
+                                                                
                                                     </a>
                                                     <ul class="product-option" style="
     width: 100%;
@@ -579,9 +590,9 @@
                     </div>
                 </section>
                 <!-- product section end -->
-                <section class=" section-b-space pt-0">
+               <section class=" section-b-space pt-0">
                     <ul class="d-flex justify-content-center pagination-lg">
-                        <c:if test="${page.index != 0}">
+<c:if test="${page.index != 0}">
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=0' class="page-link"
                                     style="color: var(--theme-color);"> Home </a>
@@ -591,15 +602,15 @@
                                     class="page-link" style="color: var(--theme-color);">
                                     Previous </a>
                             </li>
-                        </c:if>
-                        <c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
+</c:if>
+<c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=${p}' class="page-link"
                                     style="color: var(--theme-color);"> Page ${p
-                                    +1}</a>
+                                               +1}</a>
                             </li>
-                        </c:forEach>
-                        <c:if test="${page.index  != page.totalPage - 1}">
+</c:forEach>
+<c:if test="${page.index  != page.totalPage - 1}">
                             <li class="page-item">
                                 <a href='${pageContext.request.contextPath}/home?index=${page.index+1}'
                                     class="page-link" style="color: var(--theme-color);">
@@ -609,7 +620,7 @@
                                 <a href='${pageContext.request.contextPath}/home?index=${page.totalPage-1}'
                                     class="page-link" style="color: var(--theme-color);"> End </a>
                             </li>
-                        </c:if>
+</c:if>
                     </ul>
                 </section>
 
@@ -862,115 +873,7 @@
                 </footer>
                 <!-- Footer Section End -->
 
-                <!-- Quick View Modal Box Start -->
-                <div class="modal fade theme-modal view-modal" id="view" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
-                        <div class="modal-content">
-                            <div class="modal-header p-0">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row g-sm-4 g-2">
-                                    <div class="col-lg-6">
-                                        <div class="slider-image">
-                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/product/category/1.jpg"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6">
-                                        <div class="right-sidebar-modal">
-                                            <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
-                                            <h4 class="price">$36.99</h4>
-                                            <div class="product-rating">
-                                                <ul class="rating">
-                                                    <li>
-                                                        <i data-feather="star" class="fill"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i data-feather="star" class="fill"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i data-feather="star" class="fill"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i data-feather="star" class="fill"></i>
-                                                    </li>
-                                                    <li>
-                                                        <i data-feather="star"></i>
-                                                    </li>
-                                                </ul>
-                                                <span class="ms-2">8 Reviews</span>
-                                                <span class="ms-2 text-danger">6 sold in last 16 hours</span>
-                                            </div>
-
-                                            <div class="product-detail">
-                                                <h4>Product Details :</h4>
-                                                <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum
-                                                    chocolate
-                                                    I love.
-                                                    Caramels marshmallow icing dessert candy canes I love souffl? I love
-                                                    toffee.
-                                                    Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear
-                                                    claw.
-                                                    Bonbon
-                                                    muffin I love carrot cake sugar plum dessert bonbon.</p>
-                                            </div>
-
-                                            <ul class="brand-list">
-                                                <li>
-                                                    <div class="brand-box">
-                                                        <h5>Brand Name:</h5>
-                                                        <h6>Black Forest</h6>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="brand-box">
-                                                        <h5>Product Code:</h5>
-                                                        <h6>W0690034</h6>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="brand-box">
-                                                        <h5>Product Type:</h5>
-                                                        <h6>White Cream Cake</h6>
-                                                    </div>
-                                                </li>
-                                            </ul>
-
-                                            <div class="select-size">
-                                                <h4>Cake Size :</h4>
-                                                <select class="form-select select-form-size">
-                                                    <option selected>Select Size</option>
-                                                    <option value="1.2">1/2 KG</option>
-                                                    <option value="0">1 KG</option>
-                                                    <option value="1.5">1/5 KG</option>
-                                                    <option value="red">Red Roses</option>
-                                                    <option value="pink">With Pink Roses</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="modal-button">
-                                                <button onclick="location.href = 'cart';"
-                                                    class="btn btn-md add-cart-button icon">Add
-                                                    To Cart</button>
-                                                <button onclick="location.href = 'product-left.html';"
-                                                    class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
-                                                    View More Details</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Quick View Modal Box End -->
+               
 
                 <!-- Location Modal Start -->
                 <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"

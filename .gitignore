@@ -33,3 +33,9 @@ replay_pid*
 /web/back-end
 /web/back-end-assets
 /web/assets
+
+build/test/classes/.netbeans_automatic_build
+
+build/test/classes/
+
+test/DAO/CarDaoTest.java

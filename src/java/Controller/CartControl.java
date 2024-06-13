@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import DAO.CarDAO;
+import DAO.CarDao;
 import Models.Car;
 import Models.CartItems;
 import Models.UserAccount;
@@ -30,7 +30,7 @@ public class CartControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        CarDAO dao = new CarDAO();
+        CarDao dao = new CarDao();
         UserAccount ua = (UserAccount) session.getAttribute("user");
         List<CartItems> carts = dao.cartItems(ua.getUser_id());
         session.setAttribute("cartItems", carts);
@@ -43,7 +43,7 @@ public class CartControl extends HttpServlet {
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
         UserAccount ua = (UserAccount) session.getAttribute("user");
-        CarDAO dao = new CarDAO();
+        CarDao dao = new CarDao();
         switch (action) {
             case "addtocart":
                 int id_car = Integer.parseInt(request.getParameter("id_car"));

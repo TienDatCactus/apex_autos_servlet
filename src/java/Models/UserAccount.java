@@ -138,7 +138,9 @@ public class UserAccount {
 
     @Override
     public String toString() {
-        return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + ", dob=" + dob + '}';
+        return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + ", dob=" + dob + ", permission_id=" + permission_id + '}';
     }
+
+    
 
 }

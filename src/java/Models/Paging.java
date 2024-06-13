@@ -17,7 +17,7 @@ public class Paging {
   private int pageStart;
   private int pageEnd;
 
-  public void calc() {
+ public void calc() {
     totalPage = (size + nrpp - 1) / nrpp;
     index = index < 0 ? 0 : index;
     index = index >= totalPage ? totalPage - 1 : index;
@@ -31,7 +31,7 @@ public class Paging {
 
   public Paging() {
   }
-
+  
   public Paging(int size, int nrpp, int index) {
     this.size = size;
     this.nrpp = nrpp;

@@ -56,7 +56,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="dashboard">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -70,11 +70,10 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="brand.html">Brands</a>
-                                <a class="nav-link" href="category.html">Categories</a>
-                                <a class="nav-link" href="carindex.html">Brief descriptions</a>
-                                <a class="nav-link" href="cardetail.html">Details</a>
-                                <a class="nav-link" href="carimages.html">Images</a>
+                                <a class="nav-link" href="dashboard?state=brand&seller=${seller.user_id}">Brands</a>
+                                <a class="nav-link" href="dashboard?state=category&seller=${seller.user_id}">Categories</a>
+                                
+                                <a class="nav-link" href="dashboard?state=detail&seller=${seller.user_id}">Details</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="orders.html">
@@ -83,23 +82,22 @@
                         </a>
 
                         <div class="sb-sidenav-menu-heading">Others</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="chart">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Total Profits
                         </a>
                         <!-- <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a> -->
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tables
+                        </a> -->
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    nigga Admin
+                   ${seller.email}
                 </div>
             </nav>
         </div>
-
 
     </div>
     <div id="layoutSidenav_content">

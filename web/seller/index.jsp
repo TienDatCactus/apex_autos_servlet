@@ -8,20 +8,20 @@
     <meta name="description" content="ApexAutos" />
     <meta name="keywords" content="ApexAutos" />
     <meta name="author" content="ApexAutos" />
-    <link rel="apple-touch-icon" sizes="180x180" href=" assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href=" assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href=" assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href=" assets/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/seller/ assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/seller/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/seller/ assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="${pageContext.request.contextPath}/seller/ assets/favicon/site.webmanifest">
     <title>Admin - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/seller/assets/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-
+<h1></h1>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand ps-3" href="sellerc">Start Bootstrap</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -45,63 +45,58 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="login">Logout</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
     <div id="layoutSidenav">
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Platform Management</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Cars Management
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                                data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="brand.html">Brands</a>
-                                    <a class="nav-link" href="category.html">Categories</a>
-                                    <a class="nav-link" href="carindex.html">Brief descriptions</a>
-                                    <a class="nav-link" href="cardetail.html">Details</a>
-                                    <a class="nav-link" href="carimages.html">Images</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link" href="orders.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Orders
-                            </a>
-
-                            <div class="sb-sidenav-menu-heading">Others</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Total Profits
-                            </a>
-                            <!-- <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a> -->
+          <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="dashboard">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Platform Management</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Cars Management
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="dashboard?state=brand&seller=${seller.user_id}">Brands</a>
+                                <a class="nav-link" href="dashboard?state=category&seller=${seller.user_id}">Categories</a>
+                                
+                                <a class="nav-link" href="dashboard?state=detail&seller=${seller.user_id}">Details</a>
+                            </nav>
                         </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        nigga Admin
-                    </div>
-                </nav>
-            </div>
+                        <a class="nav-link" href="orders.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Orders
+                        </a>
 
-
+                        <div class="sb-sidenav-menu-heading">Others</div>
+                        <a class="nav-link" href="chart">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Total Profits
+                        </a>
+                        <!-- <a class="nav-link" href="tables.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tables
+                        </a> -->
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                   ${seller.email}
+                </div>
+            </nav>
         </div>
 
         <div id="layoutSidenav_content">
@@ -136,9 +131,9 @@
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled">
-                                        <li><a href="manage-products.html" class="text-success">Manage Products</a></li>
-                                        <li><a href="view-sales.html" class="text-success">View Sales</a></li>
-                                        <li><a href="seller-support.html" class="text-success">Support</a></li>
+                                        <li><a href="manage-products.jsp" class="text-success">Manage Products</a></li>
+                                        <li><a href="view-sales.jsp" class="text-success">View Sales</a></li>
+                                        <li><a href="seller-support.jsp" class="text-success">Support</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -171,13 +166,13 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script src="assets/js/scripts.js"></script>
+    <script src="${pageContext.request.contextPath}/seller/assets/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/seller/assets/demo/chart-area-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/seller/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-    <script src="assets/js/datatables-simple-demo.js"></script>
+    <script src="${pageContext.request.contextPath}/seller/assets/js/datatables-simple-demo.js"></script>
 </body>
 
 </html>
