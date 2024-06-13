@@ -6,52 +6,54 @@ package Controller;
 
 import DAO.*;
 import Models.Car;
+import Models.CarImage;
 import Models.Paging;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- *
  * @author Tiến_Đạt
  */
-@WebServlet(name = "HomeControl", urlPatterns = {"/home"})
+@WebServlet(
+    name = "HomeControl",
+    urlPatterns = {"/home"})
 public class HomeControl extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+  private static final int NRPP = 8; // Number of Records Per Page
 
-        CarDAO dao = new CarDAO();
-        List<Car> carList = dao.viewProducts();
-        int index = 0;
-        try {
-            index = Integer.parseInt(request.getParameter("index"));
-        } catch (Exception e) {
-            index = 0;
-        }
-        int nrpp = 10;
-        Paging p = new Paging(carList.size(), nrpp, index);
-        p.calc();
-        List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
-        request.setAttribute("page", p);
-        request.setAttribute("carList", carsOnCurrentPage );
-        request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+    CarDao dao = new CarDao();
+    List<Car> carList = dao.viewProducts();
+    int index = 0;
+    try {
+      index = Integer.parseInt(request.getParameter("index"));
+    } catch (Exception e) {
+      index = 0;
     }
+    int nrpp = 10;
+    Paging p = new Paging(carList.size(), nrpp, index);
+    p.calc();
+    List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
+    List<CarImage> carImage = dao.viewImageForCar();
+    request.setAttribute("carImage", carImage);
+    request.setAttribute("page", p);
+    request.setAttribute("carList", carsOnCurrentPage);
+    request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
+  }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {}
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+  @Override
+  public String getServletInfo() {
+    return "Short description";
+  } // </editor-fold>
 }

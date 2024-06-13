@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+
 package Controller;
 
+import DAO.CarDao;
+import Models.Car;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,28 +17,25 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Tiến_Đạt
+ * @author Admin
  */
-@WebServlet(name = "SellerControl", urlPatterns = {"/seller"})
-public class SellerControl extends HttpServlet {
-
+@WebServlet(name="SellerController", urlPatterns={"/seller"})
+public class SellerController extends HttpServlet {
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
+        
+       
+        request.getRequestDispatcher("seller/index.jsp").forward(request, response);
+    } 
 
-        request.getRequestDispatcher("/front-end/seller-become.jsp").forward(request, response);
-    }
-
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String state = request.getParameter("state");
-        if ("become".equals(state)) {
-            String mail = request.getParameter("seller-mail");
-            String pass = request.getParameter("seller-pass");
-            String desc = request.getParameter("seller-desc");
-            // pending
-        }
-
+    throws ServletException, IOException {
+    doGet(request, response);
     }
+
+
 }

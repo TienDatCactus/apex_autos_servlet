@@ -6,7 +6,7 @@
 package Controller;
 
 import Constant.Constants;
-import DAO.CarDAO;
+import DAO.CarDao;
 import DAO.UserDAO;
 import Models.*;
 import Models.*;
@@ -48,7 +48,7 @@ public class GoogleLogin extends HttpServlet {
         UserAccount user = getUserInfo(accessToken);
         System.out.println(user);
         UserDAO dao = new UserDAO();
-        CarDAO daoc = new CarDAO();
+        CarDao daoc = new CarDao();
         boolean check = dao.checkRegisterByGG(user);
         if (check) {
             dao.registerByGG(user);

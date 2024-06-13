@@ -17,10 +17,30 @@ public class Car {
     private String description;
     private int brand_id;
     private int category_id;
+    private int seller_id;
     
     public Car() {
     }
 
+    public Car(int car_id, String name, int cylinders, float horsepower, float weight, float acceleration, int model_year, String origin, float price, String description, int brand_id, int category_id, int seller_id) {
+        this.car_id = car_id;
+        this.name = name;
+        this.cylinders = cylinders;
+        this.horsepower = horsepower;
+        this.weight = weight;
+        this.acceleration = acceleration;
+        this.model_year = model_year;
+        this.origin = origin;
+        this.price = price;
+        this.description = description;
+        this.brand_id = brand_id;
+        this.category_id = category_id;
+        this.seller_id = seller_id;
+    }
+    
+    
+    
+    
     public Car(int car_id, String name, int cylinders, float horsepower, float weight, float acceleration, int model_year, String origin, float price, String description, int brand_id, int category_id) {
         this.car_id = car_id;
         this.name = name;
@@ -132,10 +152,22 @@ public class Car {
         this.category_id = category_id;
     }
 
+    public int getSeller_id() {
+        return seller_id;
+    }
+
+    public void setSeller_id(int seller_id) {
+        this.seller_id = seller_id;
+    }
+
     @Override
     public String toString() {
-        return "Car{" + "car_id=" + car_id + ", name=" + name + ", cylinders=" + cylinders + ", horsepower=" + horsepower + ", weight=" + weight + ", acceleration=" + acceleration + ", model_year=" + model_year + ", origin=" + origin + ", price=" + price + ", description=" + description + ", brand_id=" + brand_id + ", category_id=" + category_id + '}';
+        return "Car{" + "car_id=" + car_id + ", name=" + name + ", cylinders=" + cylinders + ", horsepower=" + horsepower + ", weight=" + weight + ", acceleration=" + acceleration + ", model_year=" + model_year + ", origin=" + origin + ", price=" + price + ", description=" + description + ", brand_id=" + brand_id + ", category_id=" + category_id + ", seller_id=" + seller_id + '}';
     }
+    
+    
+
+    
 
    
     

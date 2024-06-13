@@ -44,7 +44,7 @@ public class LoginControl extends HttpServlet {
         String password = request.getParameter("password");
 
         UserAccount userAccount = new UserAccount(email, password);
-        CarDAO daoc = new CarDAO();
+        CarDao daoc = new CarDao();
         UserDAO daou = new UserDAO();
         HttpSession session = request.getSession();
         // delete un used session attributes
@@ -65,16 +65,28 @@ public class LoginControl extends HttpServlet {
 
         if (loginResult) {
             userAccount = daou.getUserByEmail(userAccount.getEmail());
-            List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
-            
-            session.setAttribute("user", userAccount);
-            session.setAttribute("listAddr", listAddr);
+            if (userAccount.getPermission_id() == 1) {
+                session.setAttribute("admin", userAccount);
+                response.sendRedirect("admin/dashboard");
+            }
+            if (userAccount.getPermission_id() == 2) {
+                
+                List<Car> carList = daoc.viewProductForSeller(userAccount.getUser_id());
+                session.setAttribute("carList", carList);
+                session.setAttribute("seller", userAccount);
+                response.sendRedirect("sellerc");
+            }
+            if (userAccount.getPermission_id() == 3) {
 
-            // Login successful, redirect to another page
-            response.sendRedirect("home");
-        } else if (daou.getRoles(userAccount) == 1) {
-            session.setAttribute("admin", userAccount);
-            response.sendRedirect("/admin/dashboard");
+                List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
+
+                session.setAttribute("user", userAccount);
+                session.setAttribute("listAddr", listAddr);
+
+                // Login successful, redirect to another page
+                response.sendRedirect("home");
+            }
+
         } else {
             // Login failed, redirect back to login page
             request.setAttribute("errorMessage", "Invalid email or password.");

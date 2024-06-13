@@ -235,6 +235,7 @@ public class UserDAO {
                     userAccount.setFamily_name(rs.getString("family_name"));
                     userAccount.setDob(rs.getString("dob"));
                     userAccount.setPhone(rs.getString("phone"));
+                    userAccount.setPermission_id(rs.getInt("permission_id"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
                     return null;

@@ -5,9 +5,10 @@
 
 package Controller;
 
-import DAO.CarDAO;
+import DAO.CarDao;
 
 import Models.Car;
+import Models.CarImage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -29,10 +30,12 @@ public class DetailControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        CarDAO dao = new CarDAO();
+        CarDao dao = new CarDao();
         List<Car> carList = dao.viewProducts();
         int id = Integer.parseInt(request.getParameter("id"));
         Car carDT = dao.viewDetail(id);
+         List<CarImage> carImage = dao.viewImageForCar();
+        request.setAttribute("carImage", carImage);
          request.setAttribute("carList", carList);
         request.setAttribute("carDT", carDT);
         request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp").forward(request, response);
