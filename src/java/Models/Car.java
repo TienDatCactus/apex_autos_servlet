@@ -22,6 +22,25 @@ public class Car {
     public Car() {
     }
 
+  public Car(int car_id, int cylinders, float horsepower, float weight, float acceleration, String origin) {
+    this.car_id = car_id;
+    this.cylinders = cylinders;
+    this.horsepower = horsepower;
+    this.weight = weight;
+    this.acceleration = acceleration;
+    this.origin = origin;
+  }
+
+  public Car(String name, String model_year, float price, String description, int brand_id, int category_id, int seller_id) {
+    this.name = name;
+    this.model_year = model_year;
+    this.price = price;
+    this.description = description;
+    this.brand_id = brand_id;
+    this.category_id = category_id;
+    this.seller_id = seller_id;
+  }
+
   public Car(int car_id, String name, String model_year, float price, String description, int brand_id, int category_id, int seller_id) {
     this.car_id = car_id;
     this.name = name;

@@ -10,20 +10,14 @@ import Models.Car;
 import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
+import Models.UserAccount;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.Part;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,33 +27,72 @@ import java.util.List;
     name = "SellerController",
     urlPatterns = {"/seller/dashboard"})
 public class SellerDashboard extends HttpServlet {
+  private static CarDao daoc;
+
+  public void init() {
+    daoc = new CarDao();
+  }
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    HttpSession sess = request.getSession();
+    UserAccount seller = (UserAccount) sess.getAttribute("seller");
+    int sellerId = seller.getUser_id();
     String state = request.getParameter("state");
-    String action = request.getParameter("action");
-    if ("brand".equals(state)) {
-      CarDao daoc = new CarDao();
+    if ("attributes".equals(state)) {
+      String role = request.getParameter("role");
+      if ("cate".equals(role)) {
+        Object type = request.getParameter("type");
+        Object id = request.getParameter("id");
+        if (type != null) {
+          type = type + "";
+          if (type.equals("update")) {
+            if (id != null) {
+              request.setAttribute("update_cate_id", id + "");
+            } else {
+              request.removeAttribute("update_cate_id");
+            }
+          }
+        }
+      } else if ("brand".equals(role)) {
+        Object type = request.getParameter("type");
+        Object id = request.getParameter("id");
+        if (type != null) {
+          type = type + "";
+          if (type.equals("update")) {
+            if (id != null) {
+              request.setAttribute("update_brand_id", id + "");
+            } else {
+              request.removeAttribute("update_brand_id");
+            }
+          }
+        }
+      }
       List<CarBrand> carBrand = daoc.viewCarBrand();
       request.setAttribute("carBrand", carBrand);
-      request.getRequestDispatcher("/seller/brand.jsp").forward(request, response);
-    } else if ("category".equals(state)) {
-      CarDao daoc = new CarDao();
       List<CarCategory> carCategory = daoc.viewCarCategory();
       request.setAttribute("carCategory", carCategory);
-      request.getRequestDispatcher("/seller/category.jsp").forward(request, response);
+      request.getRequestDispatcher("/seller/attributes.jsp").forward(request, response);
     } else if ("detail".equals(state)) {
-      CarDao daoc = new CarDao();
-
-      if ("delete".equals(action)) {
-        int car_id = Integer.parseInt(request.getParameter("car"));
-        daoc.deleteCarByCarID(car_id);
-
-        int seller = Integer.parseInt(request.getParameter("seller"));
-        List<Car> carListtt = daoc.viewProductForSeller(seller);
-        request.setAttribute("carList", carListtt);
+      Object type = request.getParameter("type");
+      Object id = request.getParameter("id");
+      if (type != null) {
+        type = type + "";
+        if (type.equals("update")) {
+          if (id != null) {
+            request.setAttribute("update_id", id + "");
+          } else {
+            request.removeAttribute("update_id");
+          }
+        } else if (type.equals("delete")) {
+          if (id != null) {
+            daoc.deleteCarByCarID(Integer.parseInt(id + ""));
+          }
+        }
       }
+      List<Car> carL = daoc.viewProductForSeller(sellerId);
+      request.setAttribute("carList", carL);
       List<CarBrand> carBrand = daoc.viewCarBrand();
       List<CarCategory> carCategory = daoc.viewCarCategory();
       List<CarImage> carImage = daoc.viewImageForCar();
@@ -67,6 +100,24 @@ public class SellerDashboard extends HttpServlet {
       request.setAttribute("carCategory", carCategory);
       request.setAttribute("carImage", carImage);
       request.getRequestDispatcher("/seller/cardetail.jsp").forward(request, response);
+    } else if ("specs".equals(state)) {
+      Object type = request.getParameter("type");
+      Object id = request.getParameter("id");
+      if (type != null) {
+        type = type + "";
+        if (type.equals("update")) {
+          if (id != null) {
+            request.setAttribute("update_specs_id", id + "");
+          } else {
+            request.removeAttribute("update_specs_id");
+          }
+        }
+      }
+      List<Car> carL = daoc.viewProductForSeller(sellerId);
+      request.setAttribute("carList", carL);
+      request.getRequestDispatcher("/seller/carspecs.jsp").forward(request, response);
+    } else if ("images".equals(state)) {
+      request.getRequestDispatcher("/seller/carimages.jsp").forward(request, response);
     } else {
       request.getRequestDispatcher("/seller/index.jsp").forward(request, response);
     }
@@ -76,147 +127,94 @@ public class SellerDashboard extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String state = request.getParameter("state");
-    String action = request.getParameter("action");
-    if ("brand".equals(state)) {
-      CarDao daoc = new CarDao();
-      switch (action) {
-        case "edit":
-          int id = Integer.parseInt(request.getParameter("id"));
-          String name = request.getParameter("name");
-
-          CarBrand carb = new CarBrand(id, name);
-          daoc.updateCBrand(carb);
-          break;
-        case "add":
-          String brandName = request.getParameter("brandName");
-          CarBrand carbb = new CarBrand(0, brandName);
-          daoc.addNewBrand(carbb);
-
-          break;
-        default:
-          throw new AssertionError();
-      }
-      response.sendRedirect("brand");
-    } else if ("category".equals(state)) {
-      CarDao daoc = new CarDao();
-      switch (action) {
-        case "edit":
-          int id = Integer.parseInt(request.getParameter("id"));
-          String name = request.getParameter("name");
-
-          CarCategory catee = new CarCategory(id, name);
-          daoc.updateCategory(catee);
-          break;
-        case "add":
-          String categoryName = request.getParameter("categoryName");
-          CarCategory cate = new CarCategory(0, categoryName);
+    String action = request.getParameter("do");
+    HttpSession sess = request.getSession();
+    UserAccount seller = (UserAccount) sess.getAttribute("seller");
+    int sellerId = seller.getUser_id();
+    if ("attributes".equals(state)) {
+      String role = request.getParameter("role");
+      String success = "";
+      String error = "";
+      if ("cate".equals(role)) {
+        String cate = request.getParameter("cate");
+        String cateValue = request.getParameter("cateId");
+        if ("add".equals(cateValue)) {
           daoc.addNewCategory(cate);
+          success = "new Category added successfully !";
+        } else if (cateValue != null || !cateValue.isEmpty()) {
+          int cateId = Integer.parseInt(cateValue);
+          CarCategory cc = new CarCategory(cateId, cate);
+          if (daoc.updateCCate(cc)) {
+            success = "Category updated successfully !";
+          } else {
+            error = "Category updated failed !!!";
+          }
+        } else {
+          error = "new Brand added unsuccessfully !";
+        }
+        request.setAttribute("errorMsg1", error);
+        request.setAttribute("successMsg1", success);
 
-          break;
-        default:
-          throw new AssertionError();
+      } else if ("brand".equals(role)) {
+        String brand = request.getParameter("brand");
+        String brandValue = request.getParameter("brandId");
+        if ("add".equals(brandValue)) {
+          daoc.addNewBrand(brand);
+          success = "new Brand added successfully !";
+        } else if (brandValue != null || !brandValue.isEmpty()) {
+          int brandId = Integer.parseInt(brandValue);
+          CarBrand cb = new CarBrand(brandId, brand);
+          if (daoc.updateCBrand(cb)) {
+            success = "Brand updated successfully !";
+          } else {
+            error = "Brand updated failed !!!";
+          }
+        } else {
+          error = "new Brand added unsuccessfully !";
+        }
+        request.setAttribute("errorMsg2", error);
+        request.setAttribute("successMsg2", success);
       }
-      response.sendRedirect("category");
+
     } else if ("detail".equals(state)) {
-      CarDao daoc = new CarDao();
-      HttpSession session = request.getSession();
-      switch (action) {
-        case "add":
-          String name = request.getParameter("name1");
-          String modelYear = request.getParameter("model_year1");
-          float price = Float.parseFloat(request.getParameter("price1"));
-          String description = request.getParameter("description1");
-          int brand = Integer.parseInt(request.getParameter("brand1"));
-          int category = Integer.parseInt(request.getParameter("category1"));
-          int idseller = Integer.parseInt(request.getParameter("seller"));
+      if ("update".equals(action)) {
+        int carId = Integer.parseInt(request.getParameter("carId"));
+        String car_name = request.getParameter("car_name");
+        float price = Float.parseFloat(request.getParameter("price"));
+        String model_year = request.getParameter("model_year");
+        String desc = request.getParameter("desc");
+        int brand = Integer.parseInt(request.getParameter("brand"));
+        int category = Integer.parseInt(request.getParameter("category"));
+        Car car = new Car(carId, car_name, model_year, price, desc, brand, category, sellerId);
+        daoc.updateSellerItems(car);
 
-          // Create a Car object
-          Car car = new Car(brand, name, modelYear, price, description, brand, category, idseller);
-
-          daoc.addProductToSell(car);
-
-          Collection<Part> parts = request.getParts();
-          String path = request.getServletContext().getRealPath("/images");
-          File dir = new File(path);
-          if (!dir.exists()) {
-            dir.mkdirs();
-          }
-
-          List<String> imagePaths = new ArrayList<>(); // Danh sách đường dẫn đến các ảnh đã tải lên
-
-          for (Part part : parts) {
-            String fileName = part.getSubmittedFileName();
-            if (fileName != null && !fileName.isEmpty()) {
-              File image = new File(dir, fileName);
-              part.write(image.getAbsolutePath());
-              imagePaths.add(
-                  request.getContextPath()
-                      + "/images/"
-                      + fileName); // Thêm đường dẫn của ảnh vào danh sách
-              // Xử lý các tệp ảnh ở đây (ví dụ: lưu vào cơ sở dữ liệu)
-            }
-          }
-
-          int idcarr = daoc.getIDByCarDetail(car);
-          CarImage carI = new CarImage(0, idcarr, imagePaths);
-          daoc.addToImage(carI);
-
-          List<Car> carList = daoc.viewProductForSeller(idseller);
-          session.setAttribute("carList", carList);
-          break;
-        case "edit":
-          int idseller1 = Integer.parseInt(request.getParameter("seller"));
-          // Get other form parameters
-          int id = Integer.parseInt(request.getParameter("id"));
-          String name1 = request.getParameter("name");
-          String modelYear1 = request.getParameter("model_year");
-          float price1 = Float.parseFloat(request.getParameter("price"));
-          String description1 = request.getParameter("description");
-          int brandId1 = Integer.parseInt(request.getParameter("brand"));
-          int categoryId1 = Integer.parseInt(request.getParameter("category"));
-
-          Car carr =
-              new Car(
-                  id, name1, modelYear1, price1, description1, brandId1, categoryId1, idseller1);
-
-          Collection<Part> partss = request.getParts();
-          String pathh = request.getServletContext().getRealPath("/images");
-          File dirr = new File(pathh);
-          if (!dirr.exists()) {
-            dirr.mkdirs();
-          }
-
-          List<String> imagePathss =
-              new ArrayList<>(); // Danh sách đường dẫn đến các ảnh đã tải lên
-
-          for (Part part : partss) {
-            String fileName = part.getSubmittedFileName();
-            if (fileName != null && !fileName.isEmpty()) {
-              File image = new File(dirr, fileName);
-              part.write(image.getAbsolutePath());
-              imagePathss.add(
-                  request.getContextPath()
-                      + "/images/"
-                      + fileName); // Thêm đường dẫn của ảnh vào danh sách
-              // Xử lý các tệp ảnh ở đây (ví dụ: lưu vào cơ sở dữ liệu)
-            }
-          }
-
-          CarImage carIi = new CarImage(0, id, imagePathss);
-          daoc.updateImages(carIi);
-
-          daoc.updateCar(carr);
-          List<Car> carListttt = daoc.viewProductForSeller(idseller1);
-          session.setAttribute("carList", carListttt);
-
-          break;
-
-        default:
-          throw new AssertionError();
+      } else if ("add".equals(action)) {
+        String car_name = request.getParameter("car_name1");
+        float price = Float.parseFloat(request.getParameter("price1"));
+        String desc = request.getParameter("desc1");
+        String model_year = request.getParameter("model_year1");
+        int brand = Integer.parseInt(request.getParameter("brand1"));
+        int category = Integer.parseInt(request.getParameter("category1"));
+        Car car = new Car(car_name, model_year, price, desc, brand, category, sellerId);
+        daoc.addSellerItem(car);
       }
 
-      response.sendRedirect("sellerdashboard");
+    } else if ("specs".equals(state)) {
+      if ("update".equals(action)) {
+        int cylinders = Integer.parseInt(request.getParameter("cylinders"));
+        float horsepower = Float.parseFloat(request.getParameter("horsepower"));
+        float weight = Float.parseFloat(request.getParameter("horsepower"));
+        float acceleration = Float.parseFloat(request.getParameter("acceleration"));
+        String origin = request.getParameter("origin");
+        int carId = Integer.parseInt(request.getParameter("carId"));
+        Car spec = new Car(carId, cylinders, horsepower, weight, acceleration, origin);
+        daoc.updateSpecs(spec);
+
+      } else if ("images".equals(state)) {
+        // loc doan
+      }
     }
+
     doGet(request, response);
   }
 }

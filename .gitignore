@@ -39,3 +39,7 @@ build/test/classes/.netbeans_automatic_build
 build/test/classes/
 
 test/DAO/CarDaoTest.java
+/Junit
+/test
+lib
+        

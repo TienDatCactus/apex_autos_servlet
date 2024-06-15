@@ -31,7 +31,7 @@ public class LogoutControl extends HttpServlet {
         if (session != null) {
             session.invalidate(); // Invalidate session
         }
-        response.sendRedirect("home");
+    request.getRequestDispatcher("front-end/login.jsp").forward(request, response);
     } 
 
    

@@ -266,31 +266,24 @@ public class CarDao {
     return listCar;
   }
 
-  public void addProductToSell(Car car) {
+  public boolean addSellerItem(Car car) {
     String query =
-        "INSERT INTO car"
-            + "  (name, cylinders, horsepower, weight, acceleration, model_year,"
-            + " origin, price, description, brand_id, category_id,seller_id) VALUES "
-            + " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        "INSERT INTO [dbo].[car] ([name] ,[model_year] ,[price] ,[description] ,[brand_id] ,[category_id] ,[seller_id]) VALUES ( ?,?,?,?,?,?,?)";
 
     try (PreparedStatement ps = con.prepareStatement(query)) {
       // Setting the parameters for the query
       ps.setString(1, car.getName());
-      ps.setInt(2, car.getCylinders());
-      ps.setFloat(3, car.getHorsepower());
-      ps.setFloat(4, car.getWeight());
-      ps.setFloat(5, car.getAcceleration());
-      ps.setString(6, car.getModel_year());
-      ps.setString(7, car.getOrigin());
-      ps.setFloat(8, car.getPrice());
-      ps.setString(9, car.getDescription());
-      ps.setInt(10, car.getBrand_id());
-      ps.setInt(11, car.getCategory_id());
-      ps.setInt(12, car.getSeller_id());
-      ps.executeUpdate();
-
+      ps.setString(2, car.getModel_year());
+      ps.setFloat(3, car.getPrice());
+      ps.setString(4, car.getDescription());
+      ps.setInt(5, car.getBrand_id());
+      ps.setInt(6, car.getCategory_id());
+      ps.setInt(7, car.getSeller_id());
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
     } catch (SQLException e) {
       e.printStackTrace();
+      return false;
     }
   }
 
@@ -354,6 +347,7 @@ public class CarDao {
     return carID; // Trả về carID ở cuối phương thức
   }
 
+  // seller car's management ===============================================================
   public void deleteCarByCarID(int car_id) {
     String query = "Delete from car where car_id = ?";
     try (PreparedStatement ps = con.prepareStatement(query)) {
@@ -367,103 +361,138 @@ public class CarDao {
     }
   }
 
-  public void addNewCategory(CarCategory cate) {
-    try {
-      // Chuẩn bị câu lệnh SQL để chèn dữ liệu vào cơ sở dữ liệu
-      String query = "INSERT INTO car_category ( name) VALUES ( ?)";
-      PreparedStatement ps = con.prepareStatement(query);
-
-      // Thêm mỗi đường dẫn ảnh vào cơ sở dữ liệu, mỗi ảnh một dòng
-      ps.setString(1, cate.getName());
-      ps.executeUpdate();
-
-    } catch (SQLException e) {
+  public boolean checkExistedBrand(String brand) {
+    String sql = "SELECT COUNT(*) FROM [dbo].[car_brand] WHERE LOWER([name]) = LOWER(?);";
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+      ps.setString(1, brand);
+      try (ResultSet rs = ps.executeQuery()) {
+        if (rs.next()) {
+          int count = rs.getInt(1);
+          return count > 0;
+        }
+      }
+    } catch (Exception e) {
       e.printStackTrace();
     }
+    return false;
   }
 
-  public void updateCategory(CarCategory catee) {
-    String query = "UPDATE car_category SET name = ? WHERE id = ?";
-
-    try (PreparedStatement ps = con.prepareStatement(query)) {
-
-      ps.setString(1, catee.getName());
-      ps.setInt(2, catee.getId());
-      ps.executeUpdate();
-
-    } catch (SQLException e) {
+  public boolean checkExistedCate(String cate) {
+    String sql = "SELECT COUNT(*) FROM [dbo].[car_category] WHERE LOWER([name]) = LOWER(?);";
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+      ps.setString(1, cate);
+      try (ResultSet rs = ps.executeQuery()) {
+        if (rs.next()) {
+          int count = rs.getInt(1);
+          return count > 0;
+        }
+      }
+    } catch (Exception e) {
       e.printStackTrace();
     }
+    return false;
   }
 
-  public void updateCBrand(CarBrand carb) {
+  public boolean updateCBrand(CarBrand carb) {
     String query = "UPDATE car_brand SET name = ? WHERE id = ?";
 
     try (PreparedStatement ps = con.prepareStatement(query)) {
 
       ps.setString(1, carb.getName());
       ps.setInt(2, carb.getId());
-      ps.executeUpdate();
-
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
     } catch (SQLException e) {
       e.printStackTrace();
+      return false;
     }
   }
 
-  public void addNewBrand(CarBrand carb) {
+  public boolean updateCCate(CarCategory carc) {
+    String query = "UPDATE [dbo].[car_category] SET [name] = ? WHERE id=?";
+
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+
+      ps.setString(1, carc.getName());
+      ps.setInt(2, carc.getId());
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  public boolean addNewBrand(String brand) {
     try {
-      // Chuẩn bị câu lệnh SQL để chèn dữ liệu vào cơ sở dữ liệu
       String query = "INSERT INTO car_brand ( name) VALUES ( ?)";
       PreparedStatement ps = con.prepareStatement(query);
 
-      // Thêm mỗi đường dẫn ảnh vào cơ sở dữ liệu, mỗi ảnh một dòng
-      ps.setString(1, carb.getName());
-      ps.executeUpdate();
-
+      ps.setString(1, brand);
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
     } catch (SQLException e) {
       e.printStackTrace();
+      return false;
     }
   }
 
-  public void updateCar(Car carr) {
+  public boolean addNewCategory(String cate) {
+    try {
+      String query = "INSERT INTO car_category (name) VALUES ( ?)";
+      PreparedStatement ps = con.prepareStatement(query);
+      ps.setString(1, cate);
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+public boolean updateSpecs(Car car) {
+    String query = "UPDATE [dbo].[car] SET [cylinders] = ?, [horsepower] = ?, [weight] = ?, [acceleration] = ?, [origin] = ? WHERE car_id = ?";
+
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+        ps.setInt(1, car.getCylinders());
+        ps.setFloat(2, car.getHorsepower());
+        ps.setFloat(3, car.getWeight());
+        ps.setFloat(4, car.getAcceleration());
+        ps.setString(5, car.getOrigin());
+        ps.setInt(6, car.getCar_id()); // Assuming car_id is an integer and you have a getter method getCarId()
+
+        int rowAffected = ps.executeUpdate();
+        return rowAffected > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+  public boolean updateSellerItems(Car carr) {
     String query =
-        "UPDATE [dbo].[car]\n"
-            + "   SET [name] = ?\n"
-            + "      ,[cylinders] = ?\n"
-            + "      ,[horsepower] = ?\n"
-            + "      ,[weight] = ?\n"
-            + "      ,[acceleration] = ?\n"
-            + "      ,[model_year] = ?\n"
-            + "      ,[origin] = ?\n"
-            + "      ,[price] = ?\n"
-            + "      ,[description] = ?\n"
-            + "      ,[brand_id] = ?\n"
-            + "      ,[category_id] = ?\n"
-            + "      ,[seller_id] = ?\n"
-            + " WHERE car_id = ?";
+        "UPDATE [dbo].[car] SET [name] = ? ,[model_year] = ? ,[price] = ? ,[description] = ? ,[brand_id] = ? ,[category_id] =? WHERE seller_id = ? AND car_id = ?";
 
     try (PreparedStatement ps = con.prepareStatement(query)) {
 
       ps.setString(1, carr.getName());
-      ps.setInt(2, carr.getCylinders());
-      ps.setFloat(3, carr.getHorsepower());
-      ps.setFloat(4, carr.getWeight());
-      ps.setFloat(5, carr.getAcceleration());
-      ps.setString(6, carr.getModel_year());
-      ps.setString(7, carr.getOrigin());
-      ps.setFloat(8, carr.getPrice());
-      ps.setString(9, carr.getDescription());
-      ps.setInt(10, carr.getBrand_id());
-      ps.setInt(11, carr.getCategory_id());
-      ps.setInt(12, carr.getSeller_id());
-      ps.setInt(13, carr.getCar_id());
-      ps.executeUpdate();
-
+      ps.setString(2, carr.getModel_year());
+      ps.setFloat(3, carr.getPrice());
+      ps.setString(4, carr.getDescription());
+      ps.setInt(5, carr.getBrand_id());
+      ps.setInt(6, carr.getCategory_id());
+      ps.setInt(7, carr.getSeller_id());
+      ps.setInt(8, carr.getCar_id());
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
     } catch (SQLException e) {
       e.printStackTrace();
+      return false;
     }
   }
 
+  // images =======================================================================
   public List<String> getCarImages(int carId) {
     List<String> imageUrls = new ArrayList<>();
     String query = "SELECT image_url FROM car_images WHERE car_id = ?";
@@ -560,8 +589,9 @@ public class CarDao {
 
   public static void main(String[] args) {
     CarDao carDAO = new CarDao();
-    List<String> aaa = new ArrayList<>();
-
-    System.out.println(carDAO.viewProducts());
+      Car car3 = new Car(69, 8, 250.0f, 4000.0f, 7.0f, "Germany");
+    System.out.println(carDAO.checkExistedBrand("sedan"));
+    System.out.println(carDAO.checkExistedCate("sedan"));
+    System.out.println(carDAO.updateSpecs(car3));
   }
 }
