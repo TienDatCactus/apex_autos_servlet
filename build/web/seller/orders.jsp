@@ -70,10 +70,8 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="dashboard?state=brand&seller=${seller.user_id}">Brands</a>
-                                <a class="nav-link" href="dashboard?state=category&seller=${seller.user_id}">Categories</a>
-                                
-                                <a class="nav-link" href="dashboard?state=detail&seller=${seller.user_id}">Details</a>
+                                <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
+                                <a class="nav-link" href="dashboard?state=detail">Details</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="orders.html">

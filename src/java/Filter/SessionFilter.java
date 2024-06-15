@@ -105,7 +105,7 @@ public class SessionFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
 
-        String loginURI = req.getContextPath() + "/LoginControl";
+        String loginURI = req.getContextPath() + "/login";
 
         boolean loggedIn = session != null && session.getAttribute("user") != null;
         boolean loginRequest = req.getRequestURI().equals(loginURI);
@@ -113,7 +113,7 @@ public class SessionFilter implements Filter {
 
         if (loggedIn || loginRequest) {
             if (isAdminPage) {
-                String role = (String) session.getAttribute("role");
+                String role = (String) session.getAttribute("admin");
                 if (role != null && role.equals("admin")) {
                     chain.doFilter(request, response);
                 } else {
