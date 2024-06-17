@@ -88,6 +88,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Total Profits
                         </a>
+                        <a class="nav-link" href="dashboard?state=setting">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Page Settings
+                        </a>
                         <!-- <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables

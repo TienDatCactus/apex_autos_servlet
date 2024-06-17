@@ -589,9 +589,9 @@ public boolean updateSpecs(Car car) {
 
   public static void main(String[] args) {
     CarDao carDAO = new CarDao();
-      Car car3 = new Car(69, 8, 250.0f, 4000.0f, 7.0f, "Germany");
-    System.out.println(carDAO.checkExistedBrand("sedan"));
-    System.out.println(carDAO.checkExistedCate("sedan"));
-    System.out.println(carDAO.updateSpecs(car3));
+      Car car3 = new Car("loc2", "loc3", 0, "loc2", 1, 2, 1012);
+    carDAO.addSellerItem(car3);
+      System.out.println(carDAO.checkExistedBrand("sedan"));
+    
   }
 }
