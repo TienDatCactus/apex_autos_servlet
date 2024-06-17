@@ -7,53 +7,63 @@ package Controller;
 import DAO.*;
 import Models.Car;
 import Models.CarImage;
+import Models.CartItems;
 import Models.Paging;
+import Models.UserAccount;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
  * @author Tiến_Đạt
  */
 @WebServlet(
-    name = "HomeControl",
-    urlPatterns = {"/home"})
+        name = "HomeControl",
+        urlPatterns = {"/home"})
 public class HomeControl extends HttpServlet {
-  private static final int NRPP = 8; // Number of Records Per Page
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+    private static final int NRPP = 8; // Number of Records Per Page
 
-    CarDao dao = new CarDao();
-    List<Car> carList = dao.viewProducts();
-    int index = 0;
-    try {
-      index = Integer.parseInt(request.getParameter("index"));
-    } catch (Exception e) {
-      index = 0;
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        CarDao dao = new CarDao();
+        List<Car> carList = dao.viewProducts();
+        int index = 0;
+        try {
+            index = Integer.parseInt(request.getParameter("index"));
+        } catch (Exception e) {
+            index = 0;
+        }
+        int nrpp = 10;
+        Paging p = new Paging(carList.size(), nrpp, index);
+        p.calc();
+        List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
+        List<CarImage> carImage = dao.viewImageForCar();
+        UserAccount ua = (UserAccount) session.getAttribute("user");
+        if (ua != null) {
+            List<CartItems> carts = dao.cartItems(ua.getUser_id());
+            session.setAttribute("cartItems", carts);
+        }
+        request.setAttribute("carImage", carImage);
+        request.setAttribute("page", p);
+        request.setAttribute("carList", carsOnCurrentPage);
+        request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
     }
-    int nrpp = 10;
-    Paging p = new Paging(carList.size(), nrpp, index);
-    p.calc();
-    List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
-    List<CarImage> carImage = dao.viewImageForCar();
-    request.setAttribute("carImage", carImage);
-    request.setAttribute("page", p);
-    request.setAttribute("carList", carsOnCurrentPage);
-    request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
-  }
 
-  @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {}
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
 
-  @Override
-  public String getServletInfo() {
-    return "Short description";
-  } // </editor-fold>
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    } // </editor-fold>
 }
