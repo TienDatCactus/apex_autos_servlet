@@ -317,7 +317,7 @@
                                                 </div>
                                             </li>
                                         </c:if>
-                                            
+
                                         <li class="right-side onhover-dropdown">
                                             <div class="delivery-login-box">
                                                 <div class="delivery-icon">
@@ -1111,19 +1111,19 @@
 
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
-     <script>
-                                               window.onload = updateSubTotal();
+        <script>
+                                                                  window.onload = updateSubTotal();
 
-                                               function updateSubTotal() {
-                                                   let totalPriceOfEachProduct = document.querySelectorAll('h6#pricee');
-                                                   let totalCart = 0;
-                                                   totalPriceOfEachProduct.forEach(e => {
-                                                       let totalPrice = parseFloat(e.textContent.trim());
-                                                       totalCart += totalPrice;
-                                                   });
-                                                   
-                                                   document.querySelector('#totalprice').innerHTML = totalCart;
-                                               }
+                                                                  function updateSubTotal() {
+                                                                      let totalPriceOfEachProduct = document.querySelectorAll('h6#pricee');
+                                                                      let totalCart = 0;
+                                                                      totalPriceOfEachProduct.forEach(e => {
+                                                                          let totalPrice = parseFloat(e.textContent.trim());
+                                                                          totalCart += totalPrice;
+                                                                      });
+
+                                                                      document.querySelector('#totalprice').innerHTML = totalCart;
+                                                                  }
         </script>
     </body>
 

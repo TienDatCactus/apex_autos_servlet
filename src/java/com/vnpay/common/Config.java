@@ -19,7 +19,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class Config {
 
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:9999/apex_autos_servlet/home";
+    public static String vnp_ReturnUrl = "http://localhost:9999/apex_autos_servlet/front-end/payment-result.jsp";
     public static String vnp_TmnCode = "GY7UZVDI";
     public static String secretKey = "M30L1H4CSR656TC2MC13MUXNEH972UOX";
     

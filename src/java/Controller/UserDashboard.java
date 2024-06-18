@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package Controller;
 
 import java.io.IOException;
@@ -16,10 +13,7 @@ import Models.*;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- *
- * @author Admin
- */
+
 @WebServlet(name = "UserDashBoard", urlPatterns = {"/user/dashboard"})
 public class UserDashboard extends HttpServlet {
 
@@ -84,11 +78,7 @@ public class UserDashboard extends HttpServlet {
         response.sendRedirect("dashboard");
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -51,6 +51,7 @@ public class HomeControl extends HttpServlet {
             List<CartItems> carts = dao.cartItems(ua.getUser_id());
             session.setAttribute("cartItems", carts);
         }
+        
         request.setAttribute("carImage", carImage);
         request.setAttribute("page", p);
         request.setAttribute("carList", carsOnCurrentPage);

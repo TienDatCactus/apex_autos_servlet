@@ -103,12 +103,7 @@ public class ajaxServlet extends HttpServlet {
         job.addProperty("data", paymentUrl);
         Gson gson = new Gson();
         resp.getWriter().write(gson.toJson(job));
-        if ("00".equals(job.get("code").getAsString())) {
-            HttpSession session = req.getSession();
-            UserAccount ua = (UserAccount) session.getAttribute("user");
-            CarDao dao = new CarDao();
-            dao.clearCart(ua.getUser_id());
-        }
+        
     }
 
 }

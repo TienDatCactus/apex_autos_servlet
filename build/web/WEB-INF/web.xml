@@ -5,12 +5,15 @@
         <servlet-name>ChartController</servlet-name>
         <servlet-class>Controller.ChartController</servlet-class>
     </servlet>
-   
+    <servlet>
+        <servlet-name>VNPayReturnServlet</servlet-name>
+        <servlet-class>Controller.VNPayReturnServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChartController</servlet-name>
         <url-pattern>/chart</url-pattern>
     </servlet-mapping>
-     <servlet>
+    <servlet>
         <servlet-name>ajaxServlet</servlet-name>
         <servlet-class>com.vnpay.common.ajaxServlet</servlet-class>
     </servlet>
@@ -33,5 +36,9 @@
     <servlet-mapping>
         <servlet-name>vnpayRefund</servlet-name>
         <url-pattern>/vnpayrefund/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VNPayReturnServlet</servlet-name>
+        <url-pattern>/VNPayReturnServlet</url-pattern>
     </servlet-mapping>
 </web-app>
