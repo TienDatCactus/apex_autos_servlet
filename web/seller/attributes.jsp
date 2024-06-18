@@ -76,6 +76,7 @@
                                 <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
                                 <a class="nav-link" href="dashboard?state=detail">Details</a>
                                 <a class="nav-link" href="dashboard?state=specs">Specifications</a>
+                                <a class="nav-link" href="dashboard?state=imge">Car Images</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="orders.html">
@@ -275,6 +276,9 @@ ${seller.email}
             $('#idEditInput').val(id);
             $('#nameEditInput').val(name);
         }
+         if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

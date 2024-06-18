@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,7 +45,7 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="logout">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -73,6 +73,7 @@
                                     <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
                                     <a class="nav-link" href="dashboard?state=detail">Details</a>
                                     <a class="nav-link" href="dashboard?state=specs">Specifications</a>
+                                    <a class="nav-link" href="dashboard?state=imge">Car Images</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="orders.html">
@@ -110,39 +111,83 @@
                             <li class="breadcrumb-item active">General Settings</li>
                         </ol>
                         <div class="row">
-                            <div class="col-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <h5 class="card-title"> General Settings</h5>
+
+                            <c:choose>
+                                <c:when test="${empty tradeMark}">
+
+                                    <div class="col-6">
+                                        <div class="card mb-4" id="editProductModal">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Add General Settings</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <form id="generalSettingsForm" action="dashboard?state=setting&do=add" method="post" enctype="multipart/form-data">
+                                                    
+                                                    <div class="mb-3">
+                                                        <label for="nameEditInput" class="form-label">Site Name</label>
+                                                        <input type="text" class="form-control"  placeholder="Enter site name" name="nameEditInput">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="siteLogo" class="form-label">Site Logo</label>
+                                                        <input type="file" class="form-control" id="siteLogo" onchange="displayImage(this)" name="image" multiple>
+                                                        <img id="previewImage" style="max-width: 300px; max-height: 300px;">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="privacyEditInput" class="form-label">Privacy Policy</label>
+                                                        <textarea class="form-control"  rows="4" name="privacyEditInput" placeholder="Enter privacy policy"></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="termEditInput" class="form-label">Terms & Conditions</label>
+                                                        <textarea class="form-control"  rows="4" name="termEditInput" placeholder="Enter terms & conditions"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Add</button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <form id="generalSettingsForm" action="dashboard?state=setting&do=add">
-                                            <div class="mb-3">
-                                                <label for="siteName" class="form-label">Site Name</label>
-                                                <input type="text" class="form-control" id="siteName" placeholder="Enter site name"
-                                                       value="Current Site Name">
+                                </c:when>
+                                <c:otherwise>
+
+                                    <div class="col-6">
+                                        <div class="card mb-4" id="editProductModal">
+                                            <div class="card-header">
+                                                <h5 class="card-title">Update General Settings</h5>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="siteLogo" class="form-label">Site Logo</label>
-                                                <input type="file" class="form-control" id="siteLogo">
-                                                <img src="current-logo.png" alt="Current Logo" class="mt-2" style="height: 50px;">
+                                            <div class="card-body">
+                                                <form id="generalSettingsForm" action="dashboard?state=setting&do=update" method="post" enctype="multipart/form-data">
+                                                    <div class="mb-3">
+                                                        <input type="hidden" class="form-control" id="idEditInput" name="idEditInput">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="nameEditInput" class="form-label">Site Name</label>
+                                                        <input type="text" class="form-control" id="nameEditInput" placeholder="Enter site name" name="nameEditInput">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="siteLogo" class="form-label">Site Logo</label>
+                                                        <input type="file" class="form-control" id="siteLogo" onchange="displayImage(this)" name="image" multiple>
+                                                        <img id="previewImage" style="max-width: 300px; max-height: 300px;">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="privacyEditInput" class="form-label">Privacy Policy</label>
+                                                        <textarea class="form-control" id="privacyEditInput" rows="4" name="privacyEditInput" placeholder="Enter privacy policy"></textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="termEditInput" class="form-label">Terms & Conditions</label>
+                                                        <textarea class="form-control" id="termEditInput" rows="4" name="termEditInput" placeholder="Enter terms & conditions"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Update Settings</button>
+                                                </form>
                                             </div>
-                                           
-                                            <div class="mb-3">
-                                                <label for="privacyPolicy" class="form-label">Privacy Policy</label>
-                                                <textarea class="form-control" id="privacyPolicy" rows="4"
-                                                          placeholder="Enter privacy policy">Current privacy policy text...</textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="termsConditions" class="form-label">Terms & Conditions</label>
-                                                <textarea class="form-control" id="termsConditions" rows="4"
-                                                          placeholder="Enter terms & conditions">Current terms and conditions text...</textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Update Settings</button>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+
+                                </c:otherwise>
+                            </c:choose>
+
+
+
+
+
 
                             <div class="col-6">
                                 <div class="card mb-4">
@@ -151,12 +196,10 @@
                                         Car's Trade Mark
                                     </div>
                                     <div class="card-body">
-                                        <table id="brand" >
+                                        <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>Site Name</th>
-                                                    
-                                                    
+                                                    <th>Site Name</th>                                                  
                                                     <th>Site Logo</th> 
                                                     <th>Privacy Policy</th>
                                                     <th>Terms & Conditions</th>
@@ -164,20 +207,29 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach var="cb" items="${carBrand}">
-                                                <c:if test="${cb.id == (update_brand_id)}">
-                                                    <c:set var="nb" value="${cb}"></c:set>
-                                                </c:if>
-                                                <tr>
-                                                    <td>${cb.id}</td>
-                                                    <td>${cb.name}</td>
-                                                    <td><a href="dashboard?state=attributes&role=brand&type=update&id=${cb.id}"
-                                                           class="btn btn-outline-success m-1"
-                                                           >Update</a>
+                                                <c:forEach var="tm" items="${tradeMark}">
+                                                    <tr>
+                                                <input type="hidden" value="${tm.trademard_id}" name="idz">
+                                                <td name="name">${tm.name}</td>
+                                                <td name="logo">
+                                                    <c:forEach items="${tm.url_logo}" var="obj">
+                                                        <img src="${obj}" alt="Logo" style="max-width: 100px; max-height: 100px;">
+                                                    </c:forEach>
+                                                </td>
+                                                <td name="privacy">${tm.privacy}</td>
+                                                <td name="term">${tm.terms}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" 
+                                                            data-toggle="modal" data-target="#editProductModal"
+                                                            onclick="editProductModal('${tm.trademard_id}', '${tm.name}', '${tm.url_logo[0]}', '${tm.privacy}', '${tm.terms}')">
+                                                        Update
+                                                    </button>
+                                                </td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
                                         </table>
+
                                     </div>
                                 </div>
 
@@ -189,7 +241,36 @@
 
         </div>
     </body>
+    <script>
+        function editProductModal(id, name, logo, privacy, terms) {
+            document.getElementById('idEditInput').value = id;
+            document.getElementById('nameEditInput').value = name;
 
+            // Display the first logo image in the modal
+            var previewImage = document.getElementById('previewImage');
+            previewImage.src = logo;
+
+            document.getElementById('privacyEditInput').value = privacy;
+            document.getElementById('termEditInput').value = terms;
+        }
+
+
+        function displayImage(input) {
+            var previewImage = document.getElementById("previewImage");
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                previewImage.src = "#";
+            }
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
     <script src="assets/js/scripts.js"></script>

@@ -9,14 +9,20 @@ import Models.Car;
 import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
+import Models.TradeMark;
 import Models.UserAccount;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -25,7 +31,7 @@ import java.util.List;
 @WebServlet(
         name = "SellerController",
         urlPatterns = {"/seller/dashboard"})
-
+@MultipartConfig
 public class SellerDashboard extends HttpServlet {
 
     private static CarDao daoc;
@@ -37,6 +43,8 @@ public class SellerDashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sess = request.getSession();
+        UserAccount seller = (UserAccount) sess.getAttribute("seller");
         String state = request.getParameter("state");
         if ("attributes".equals(state)) {
             String role = request.getParameter("role");
@@ -67,6 +75,7 @@ public class SellerDashboard extends HttpServlet {
                     }
                 }
             }
+
             List<CarBrand> carBrand = daoc.viewCarBrand();
             request.setAttribute("carBrand", carBrand);
             List<CarCategory> carCategory = daoc.viewCarCategory();
@@ -87,8 +96,11 @@ public class SellerDashboard extends HttpServlet {
                     if (id != null) {
                         daoc.deleteCarByCarID(Integer.parseInt(id + ""));
                     }
+
                 }
             }
+            List<Car> carL = daoc.viewProductForSeller(seller.getUser_id());
+            request.setAttribute("carList", carL);
             List<CarBrand> carBrand = daoc.viewCarBrand();
             List<CarCategory> carCategory = daoc.viewCarCategory();
             List<CarImage> carImage = daoc.viewImageForCar();
@@ -109,10 +121,19 @@ public class SellerDashboard extends HttpServlet {
                     }
                 }
             }
+            List<Car> carL = daoc.viewProductForSeller(seller.getUser_id());
+            request.setAttribute("carList", carL);
             request.getRequestDispatcher("/seller/carspecs.jsp").forward(request, response);
         } else if ("setting".equals(state)) {
+            List<Car> carL = daoc.viewProductForSeller(seller.getUser_id());
+            request.setAttribute("carList", carL);
             request.getRequestDispatcher("/seller/settings.jsp").forward(request, response);
-        } else if ("images".equals(state)) {
+        } else if ("imge".equals(state)) {
+            List<Car> carL = daoc.viewProductForSeller(seller.getUser_id());
+            List<CarImage> imageCar = daoc.getAllImgBySellerID(seller.getUser_id());
+            request.setAttribute("carList", carL);
+
+            request.setAttribute("imageCar", imageCar);
             request.getRequestDispatcher("/seller/carimages.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/seller/index.jsp").forward(request, response);
@@ -148,6 +169,8 @@ public class SellerDashboard extends HttpServlet {
                 } else {
                     error = "new Brand added unsuccessfully !";
                 }
+                List<Car> carL = daoc.viewProductForSeller(sellerId);
+                request.setAttribute("carList", carL);
                 request.setAttribute("errorMsg1", error);
                 request.setAttribute("successMsg1", success);
             } else if ("brand".equals(role)) {
@@ -167,6 +190,8 @@ public class SellerDashboard extends HttpServlet {
                 } else {
                     error = "new Brand added unsuccessfully !";
                 }
+                List<Car> carL = daoc.viewProductForSeller(sellerId);
+                request.setAttribute("carList", carL);
                 request.setAttribute("errorMsg2", error);
                 request.setAttribute("successMsg2", success);
             }
@@ -181,6 +206,8 @@ public class SellerDashboard extends HttpServlet {
                 int category = Integer.parseInt(request.getParameter("category"));
                 Car car = new Car(carId, car_name, model_year, price, desc, brand, category, sellerId);
                 daoc.updateSellerItems(car);
+                List<Car> carL = daoc.viewProductForSeller(sellerId);
+                request.setAttribute("carList", carL);
             } else if ("add".equals(action)) {
                 String car_name = request.getParameter("car_name1");
                 float price = Float.parseFloat(request.getParameter("price1"));
@@ -190,6 +217,8 @@ public class SellerDashboard extends HttpServlet {
                 int category = Integer.parseInt(request.getParameter("category1"));
                 Car car = new Car(car_name, model_year, price, desc, brand, category, sellerId);
                 daoc.addSellerItem(car);
+                List<Car> carL = daoc.viewProductForSeller(sellerId);
+                request.setAttribute("carList", carL);
             }
         } else if ("specs".equals(state)) {
             if ("update".equals(action)) {
@@ -201,12 +230,131 @@ public class SellerDashboard extends HttpServlet {
                 int carId = Integer.parseInt(request.getParameter("carId"));
                 Car spec = new Car(carId, cylinders, horsepower, weight, acceleration, origin);
                 daoc.updateSpecs(spec);
-            } else if ("images".equals(state)) {
-                // loc doan
+                List<Car> carL = daoc.viewProductForSeller(sellerId);
+                request.setAttribute("carList", carL);
+            }
+        } else if ("setting".equals(state)) {
+            if ("update".equals(action)) {
+                int id = Integer.parseInt(request.getParameter("idEditInput"));
+                String name = request.getParameter("nameEditInput");
+
+                String privacy = request.getParameter("privacyEditInput");
+                String terms = request.getParameter("termEditInput");
+
+                Collection<Part> parts = request.getParts();
+                String path = request.getServletContext().getRealPath("/images");
+                File dir = new File(path);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                List<String> imagePaths = new ArrayList<>(); // List of image paths
+
+                for (Part part : parts) {
+                    String fileName = part.getSubmittedFileName();
+                    if (fileName != null && !fileName.isEmpty()) {
+                        File image = new File(dir, fileName);
+                        part.write(image.getAbsolutePath());
+                        imagePaths.add(request.getContextPath() + "/images/" + fileName); // Add image path to list
+                    }
+                }
+                TradeMark mark = new TradeMark(id, name,
+                        imagePaths, privacy, terms, sellerId);
+                daoc.updateTradeMark(mark);
+                List<Car> carL = daoc.viewProductForSeller(sellerId);
+                request.setAttribute("carList", carL);
+            } else if ("add".equals(action)) {
+
+                String name = request.getParameter("nameEditInput");
+
+                String privacy = request.getParameter("privacyEditInput");
+                String terms = request.getParameter("termEditInput");
+
+                Collection<Part> parts = request.getParts();
+                String path = request.getServletContext().getRealPath("/images");
+                File dir = new File(path);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                List<String> imagePaths = new ArrayList<>(); // List of image paths
+
+                for (Part part : parts) {
+                    String fileName = part.getSubmittedFileName();
+                    if (fileName != null && !fileName.isEmpty()) {
+                        File image = new File(dir, fileName);
+                        part.write(image.getAbsolutePath());
+                        imagePaths.add(request.getContextPath() + "/images/" + fileName); // Add image path to list
+                    }
+                }
+                TradeMark mark = new TradeMark(0, name,
+                        imagePaths, privacy, terms, sellerId);
+                daoc.addNewTradeMark(mark);
+                List<Car> carL = daoc.viewProductForSeller(sellerId);
+                request.setAttribute("carList", carL);
+            }
+        } else if ("imge".equals(state)) {
+            if ("add".equals(action)) {
+                int idCar = Integer.parseInt(request.getParameter("idCar"));
+
+                Collection<Part> parts = request.getParts();
+                String path = request.getServletContext().getRealPath("/images");
+                File dir = new File(path);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                List<String> imagePaths = new ArrayList<>(); // List of image paths
+
+                for (Part part : parts) {
+                    String fileName = part.getSubmittedFileName();
+                    if (fileName != null && !fileName.isEmpty()) {
+                        File image = new File(dir, fileName);
+                        part.write(image.getAbsolutePath());
+                        imagePaths.add(request.getContextPath() + "/images/" + fileName); // Add image path to list
+                    }
+                }
+
+                CarImage carImage = new CarImage(0, idCar, imagePaths, sellerId);
+                daoc.addNewImgToCar(carImage);
+                
+            } else if ("delete".equals(action)) {
+
+                int id = Integer.parseInt(request.getParameter("idToDel"));
+                
+                daoc.deleteImagesByCarID(id);
+                
+            } else if ("update".equals(action)) {
+                int id = Integer.parseInt(request.getParameter("idEditInput"));
+                Collection<Part> parts = request.getParts();
+                String path = request.getServletContext().getRealPath("/images");
+                File dir = new File(path);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                List<String> imagePaths = new ArrayList<>(); // List of image paths
+
+                for (Part part : parts) {
+                    String fileName = part.getSubmittedFileName();
+                    if (fileName != null && !fileName.isEmpty()) {
+                        File image = new File(dir, fileName);
+                        part.write(image.getAbsolutePath());
+                        imagePaths.add(request.getContextPath() + "/images/" + fileName); // Add image path to list
+                    }
+                }
+
+                CarImage carImage = new CarImage(0, id, imagePaths, sellerId);
+                daoc.updateImages(carImage);
             }
         }
+
+        List<TradeMark> tradeMark = daoc.getTradeMark(sellerId);
         List<Car> carL = daoc.viewProductForSeller(sellerId);
+        List<CarImage> imageCar = daoc.getAllImgBySellerID(sellerId);
         request.setAttribute("carList", carL);
+        request.setAttribute("tradeMark", tradeMark);
+        request.setAttribute("imageCar", imageCar);
         doGet(request, response);
     }
 }

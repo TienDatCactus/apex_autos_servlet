@@ -69,8 +69,12 @@ public class LoginControl extends HttpServlet {
                 response.sendRedirect("admin/dashboard");
             }
             if (userAccount.getPermission_id() == 2) {
-                
+
                 List<Car> carList = daoc.viewProductForSeller(userAccount.getUser_id());
+                List<TradeMark> tradeMark = daoc.getTradeMark(userAccount.getUser_id());
+                List<CarImage> imageCar = daoc.getAllImgBySellerID(userAccount.getUser_id());
+                session.setAttribute("imageCar", imageCar);
+                session.setAttribute("tradeMark", tradeMark);
                 session.setAttribute("carList", carList);
                 session.setAttribute("seller", userAccount);
                 response.sendRedirect("seller/dashboard");
@@ -78,7 +82,8 @@ public class LoginControl extends HttpServlet {
             if (userAccount.getPermission_id() == 3) {
 
                 List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
-
+                
+                
                 session.setAttribute("user", userAccount);
                 session.setAttribute("listAddr", listAddr);
 

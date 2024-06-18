@@ -48,7 +48,7 @@
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
-                                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                                <li><a class="dropdown-item" href="logout!">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -76,6 +76,7 @@
                                 <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
                                 <a class="nav-link" href="dashboard?state=detail">Details</a>
                                 <a class="nav-link" href="dashboard?state=specs">Specifications</a>
+                                <a class="nav-link" href="dashboard?state=imge">Car Images</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="orders.html">
@@ -375,7 +376,9 @@
                         passwordInput.removeAttribute('disabled');
                     }
                 };
-
+ if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 
             </script>
 
