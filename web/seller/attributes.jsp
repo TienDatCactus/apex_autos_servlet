@@ -143,7 +143,7 @@ ${seller.email}
                                                 Car's Brands
                                             </div>
                                             <div class="card-body">
-                                                <table id="brand">
+                                                <table id="brandTable">
                                                     <thead>
                                                         <tr>
                                                             <th>Id</th>
@@ -175,7 +175,7 @@ ${seller.email}
                                                 Car's Categories
                                             </div>
                                             <div class="card-body">
-                                                <table id="cate">
+                                                <table id="cateTable">
                                                     <thead>
                                                         <tr>
                                                             <th>Id </th>
@@ -212,7 +212,6 @@ ${seller.email}
                                                 <form id="addRoleForm" autocomplete="off" method="post"
                                                     action="dashboard?state=attributes&role=brand">
                                                     <div class="mb-3 position-relative">
-
                                                         <label for="brand" class="form-label">Enter Brand's name</label>
                                                         <input type="text" class="form-control" id="brand" name="brand"
                                                             placeholder="Chevrolet, Honda..." value="${nb.name}">
@@ -233,13 +232,14 @@ ${seller.email}
                                                 <h5 class="card-title">Modify Categories</h5>
                                             </div>
                                             <div class="card-body">
-                                                <form id="addRoleForm" method="post"
+                                                <form id="addRoleForm" autocomplete="off" method="post"
                                                     action="dashboard?state=attributes&role=cate">
-                                                    <div class="mb-3">
+                                                    <div class="mb-3 position-relative">
                                                         <label for="cate" class="form-label">Enter Category's
                                                             name</label>
                                                         <input type="text" class="form-control" id="cate" name="cate"
                                                             placeholder="Sports , Sedans ..." value="${nc.name}">
+                                                          <ul class="dropdown-menu" id="cateDropdown"></ul>
                                                     </div>
                                                     <button type="submit" class="btn btn-success" name="cateId"
                                                         value="${nc == null ? "add" : nc.id}">Save changes</button>
@@ -260,113 +260,8 @@ ${seller.email}
                 </div>
             </body>
            
-             <script>
-                 function autocomplete(inp, arr) {
-  var currentFocus;
+       
 
-  inp.addEventListener("input", function (e) {
-    var dropdown,
-      item,
-      i,
-      val = this.value;
-    closeAllLists();
-    if (!val) {
-      return false;
-    }
-    currentFocus = -1;
-    dropdown = document.getElementById(this.id + "Dropdown");
-    dropdown.innerHTML = "";
-    dropdown.style.display = "block";
-
-    for (i = 0; i < arr.length; i++) {
-      if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
-        item = document.createElement("li");
-        item.classList.add("dropdown-item");
-        item.innerHTML =
-          "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-        item.innerHTML += arr[i].substr(val.length);
-        item.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-        item.addEventListener("click", function (e) {
-          inp.value = this.getElementsByTagName("input")[0].value;
-          closeAllLists();
-        });
-        dropdown.appendChild(item);
-      }
-    }
-  });
-
-  inp.addEventListener("keydown", function (e) {
-    var x = document.getElementById(this.id + "Dropdown");
-    if (x) x = x.getElementsByTagName("li");
-    if (e.keyCode == 40) {
-      currentFocus++;
-      addActive(x);
-    } else if (e.keyCode == 38) {
-      currentFocus--;
-      addActive(x);
-    } else if (e.keyCode == 13) {
-      e.preventDefault();
-      if (currentFocus > -1) {
-        if (x) x[currentFocus].click();
-      }
-    }
-  });
-
-  function addActive(x) {
-    if (!x) return false;
-    removeActive(x);
-    if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = x.length - 1;
-    x[currentFocus].classList.add("autocomplete-active");
-  }
-
-  function removeActive(x) {
-    for (var i = 0; i < x.length; i++) {
-      x[i].classList.remove("autocomplete-active");
-    }
-  }
-
-  function closeAllLists(elmnt) {
-    var x = document.getElementsByClassName("dropdown-menu");
-    for (var i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-  }
-
-  document.addEventListener("click", function (e) {
-    closeAllLists(e.target);
-  });
-}
-             
-            </script>
-
-            <script>   var carBrands = [
-                    "Audi",
-                    "BMW",
-                    "Chevrolet",
-                    "Dodge",
-                    "Ferrari",
-                    "Ford",
-                    "Honda",
-                    "Hyundai",
-                    "Jaguar",
-                    "Jeep",
-                    "Kia",
-                    "Lamborghini",
-                    "Land Rover",
-                    "Lexus",
-                    "Mazda",
-                    "Mercedes-Benz",
-                    "Mitsubishi",
-                    "Nissan",
-                    "Porsche",
-                    "Subaru",
-                    "Tesla",
-                    "Toyota",
-                    "Volkswagen",
-                    "Volvo"
-                ];
-                autocomplete(document.getElementById("brand"), carBrands);</script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous"></script>
             <script src="assets/js/scripts.js"></script>
@@ -380,5 +275,34 @@ ${seller.email}
 
             <!-- Bootstrap JS -->
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-           
+                 <script>
+var carBrands = [
+    "Audi", "BMW", "Chevrolet", "Dodge", "Ferrari", "Ford", "Honda", "Hyundai", "Jaguar",
+    "Jeep", "Kia", "Lamborghini", "Land Rover", "Lexus", "Mazda", "Mercedes-Benz", "Mitsubishi",
+    "Nissan", "Porsche", "Subaru", "Tesla", "Toyota", "Volkswagen", "Volvo"
+];
+
+autocomplete(document.getElementById("brand"), carBrands);
+</script>
+<script>var carCategories = [
+    "Sedan",
+    "SUV",
+    "Hatchback",
+    "Coupe",
+    "Convertible",
+    "Wagon",
+    "Minivan",
+    "Pickup Truck",
+    "Electric Vehicle (EV)",
+    "Hybrid Vehicle",
+    "Luxury",
+    "Sports Car",
+    "Crossover",
+    "Compact Car",
+    "Off-road Vehicle",
+    "Classic Car",
+    "Concept Car"
+];
+autocomplete(document.getElementById("cate"), carCategories);
+</script>
             </html>

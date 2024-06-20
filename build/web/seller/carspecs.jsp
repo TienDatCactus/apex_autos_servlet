@@ -234,7 +234,7 @@
                                                                 placeholder="Enter acceleration"
                                                                 value="${nl.acceleration}">
                                                         </div>
-                                                        <div class="mb-3 col-6 position-relative d-inline-block">
+                                                        <div class="mb-3 col-6 position-relative">
                                                             <label for="origin" class="form-label">Origin</label>
                                                             <input type="text" class="form-control" id="origin"
                                                                 name="origin" placeholder="Enter origin country"

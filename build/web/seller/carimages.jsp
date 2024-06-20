@@ -300,64 +300,33 @@ ${seller.email}
                   
 
                     <!-- Modal for editing image -->
-                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="editModalLabel">Edit Image</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                    <button type="button" class="btn-close fa fa-close
+                                    " data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="dashboard?state=image&do=update" method="post" enctype="multipart/form-data">
-                                           
-                                            <input type="hidden" class="form-control" id="idEditInput" name="idEditInput">
-                                       <div class="mb-3">
-                                            <label class="form-label">Images</label>
+                                        <input type="hidden" class="form-control" id="idEditInput" name="idEditInput">
+                                        <div class="mb-3">
+                                            <label for="image" class="form-label">Images</label>
                                             <input type="file" class="form-control" onchange="displayImage(this)" name="image" multiple>
                                             <img id="previewImage" style="max-width: 300px; max-height: 300px;">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Upload</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
 
-                    <!-- Modal for adding image -->
-                    <div class="modal fade" id="addImageModal" tabindex="-1" aria-labelledby="addImageModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="addImageModalLabel">Add New Image</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="addImageForm" action="dashboard?state=image&do=add" method="post" enctype="multipart/form-data">
-                                        <div class="mb-3">
-                                            
-                                            <select name="idCar" class="form-select" id="idCar" style="padding-right: 175px">
-                                                <option value="">Select Car</option>
-<c:forEach var="cl" items="${carList}">
-                                                    <option value="${cl.car_id}">${cl.name}</option>
-
-</c:forEach>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="siteLogo" class="form-label">Images</label>
-                                            <input type="file" class="form-control" onchange="displayImage(this)" name="image" multiple>
-                                            <img id="previewImage" style="max-width: 300px; max-height: 300px;">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Upload</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </main>
             </div>
         </div>
