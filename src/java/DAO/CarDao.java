@@ -10,6 +10,7 @@ import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
 import Models.CartItems;
+import Models.TradeMark;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -287,32 +288,6 @@ public class CarDao {
     }
   }
 
-  public List<CarImage> viewImageForCar() {
-    List<CarImage> cars_image = new ArrayList<>();
-
-    String query = "SELECT [image_id], [car_id], [image_url] FROM [dbo].[car_images]";
-
-    try (PreparedStatement ps = con.prepareStatement(query);
-        ResultSet rs = ps.executeQuery()) {
-      while (rs.next()) {
-        int image_id = rs.getInt("image_id");
-        int carId = rs.getInt("car_id");
-
-        String imageUrl = rs.getString("image_url");
-
-        List<String> imageUrls = new ArrayList<>();
-        imageUrls.add(imageUrl);
-        CarImage cari = new CarImage(image_id, carId, imageUrls);
-        cars_image.add(cari);
-      }
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
-    return cars_image;
-  }
-
   public int getIDByCarDetail(Car car) {
     int carID = -1; // Khai báo ở đây để đảm bảo có giá trị mặc định nếu không tìm thấy carID
     String query =
@@ -451,24 +426,28 @@ public class CarDao {
     }
   }
 
-public boolean updateSpecs(Car car) {
-    String query = "UPDATE [dbo].[car] SET [cylinders] = ?, [horsepower] = ?, [weight] = ?, [acceleration] = ?, [origin] = ? WHERE car_id = ?";
+  
+  public boolean updateSpecs(Car car) {
+    String query =
+        "UPDATE [dbo].[car] SET [cylinders] = ?, [horsepower] = ?, [weight] = ?, [acceleration] = ?, [origin] = ? WHERE car_id = ?";
 
     try (PreparedStatement ps = con.prepareStatement(query)) {
-        ps.setInt(1, car.getCylinders());
-        ps.setFloat(2, car.getHorsepower());
-        ps.setFloat(3, car.getWeight());
-        ps.setFloat(4, car.getAcceleration());
-        ps.setString(5, car.getOrigin());
-        ps.setInt(6, car.getCar_id()); // Assuming car_id is an integer and you have a getter method getCarId()
+      ps.setInt(1, car.getCylinders());
+      ps.setFloat(2, car.getHorsepower());
+      ps.setFloat(3, car.getWeight());
+      ps.setFloat(4, car.getAcceleration());
+      ps.setString(5, car.getOrigin());
+      ps.setInt(
+          6,
+          car.getCar_id()); // Assuming car_id is an integer and you have a getter method getCarId()
 
-        int rowAffected = ps.executeUpdate();
-        return rowAffected > 0;
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
     } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
+      e.printStackTrace();
+      return false;
     }
-}
+  }
 
   public boolean updateSellerItems(Car carr) {
     String query =
@@ -493,37 +472,43 @@ public boolean updateSpecs(Car car) {
   }
 
   // images =======================================================================
-  public List<String> getCarImages(int carId) {
-    List<String> imageUrls = new ArrayList<>();
-    String query = "SELECT image_url FROM car_images WHERE car_id = ?";
+  public List<CarImage> viewImageForCar() {
+    List<CarImage> cars_image = new ArrayList<>();
 
-    try (PreparedStatement ps = con.prepareStatement(query)) {
-      ps.setInt(1, carId);
+    String query = "SELECT [image_id], [car_id], [image_url] FROM [dbo].[car_images]";
 
-      // Thực thi câu lệnh và lấy kết quả
-      ResultSet rs = ps.executeQuery();
-
-      // Duyệt qua tất cả các kết quả từ ResultSet
+    try (PreparedStatement ps = con.prepareStatement(query);
+        ResultSet rs = ps.executeQuery()) {
       while (rs.next()) {
+        int image_id = rs.getInt("image_id");
+        int carId = rs.getInt("car_id");
+
         String imageUrl = rs.getString("image_url");
+
+        List<String> imageUrls = new ArrayList<>();
         imageUrls.add(imageUrl);
+        CarImage cari = new CarImage(image_id, carId, imageUrls);
+        cars_image.add(cari);
       }
+
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    return imageUrls; // Trả về danh sách URL ảnh
+
+    return cars_image;
   }
 
   public void addToImage(CarImage carI) {
     try {
       // Chuẩn bị câu lệnh SQL để chèn dữ liệu vào cơ sở dữ liệu
-      String query = "INSERT INTO car_images (car_id, image_url) VALUES (?, ?)";
+      String query = "INSERT INTO car_images (car_id,image_url,seller_id) VALUES (?,?,?)";
       PreparedStatement ps = con.prepareStatement(query);
 
       // Thêm mỗi đường dẫn ảnh vào cơ sở dữ liệu, mỗi ảnh một dòng
       for (String imagePath : carI.getImage_url()) {
-        ps.setInt(1, carI.getCar_id());
+        ps.setInt(1, carI.car_id);
         ps.setString(2, imagePath);
+        ps.setInt(3, carI.seller_id);
         ps.executeUpdate();
       }
     } catch (SQLException e) {
@@ -579,7 +564,6 @@ public boolean updateSpecs(Car car) {
   public void updateImages(CarImage carI) {
 
     // Số lượng ảnh mới và số lượng ảnh hiện tại
-
     deleteAllImages(carI.getCar_id());
 
     addToImage(carI);
@@ -587,11 +571,172 @@ public boolean updateSpecs(Car car) {
     // Cập nhật lại các URL ảnh
   }
 
+  public List<TradeMark> getTradeMark(int user_id) {
+    List<TradeMark> listTrade = new ArrayList<>();
+    String query = "SELECT * FROM [dbo].[trade_mark] WHERE seller_id = ?";
+
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+      ps.setInt(1, user_id);
+      try (ResultSet rs = ps.executeQuery()) {
+        while (rs.next()) {
+          String logo_url = rs.getString("logo_url");
+
+          List<String> imageUrls = new ArrayList<>();
+          imageUrls.add(logo_url);
+          TradeMark trade =
+              new TradeMark(
+                  rs.getInt("trademark_id"),
+                  rs.getString("name"),
+                  imageUrls,
+                  rs.getString("privacy"),
+                  rs.getString("terms"),
+                  rs.getInt("seller_id"));
+          listTrade.add(trade);
+        }
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return listTrade;
+  }
+
+  public boolean updateTradeMark(TradeMark mark) {
+    String query =
+        "UPDATE [dbo].[trade_mark] SET [name] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE seller_id = ?";
+
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+
+      String logoUrl = mark.getUrl_logo().isEmpty() ? "" : mark.getUrl_logo().get(0);
+
+      ps.setString(1, mark.getName());
+      ps.setString(2, logoUrl);
+      ps.setString(3, mark.getPrivacy());
+      ps.setString(4, mark.getTerms());
+      ps.setInt(5, mark.getSeller_id());
+
+      int rowsAffected = ps.executeUpdate();
+      return rowsAffected > 0;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  public boolean addNewTradeMark(TradeMark mark) {
+    try {
+      String query =
+          "INSERT INTO trade_mark (name,logo_url,privacy,terms,seller_id) VALUES ( ?,?,?,?,?)";
+      PreparedStatement ps = con.prepareStatement(query);
+      ps.setString(1, mark.getName());
+      String logoUrls = String.join(",", mark.getUrl_logo());
+      ps.setString(2, logoUrls);
+      ps.setString(3, mark.getPrivacy());
+      ps.setString(4, mark.getTerms());
+      ps.setInt(5, mark.getSeller_id());
+      int rowAffected = ps.executeUpdate();
+      return rowAffected > 0;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
   public static void main(String[] args) {
     CarDao carDAO = new CarDao();
-      Car car3 = new Car(69, 8, 250.0f, 4000.0f, 7.0f, "Germany");
-    System.out.println(carDAO.checkExistedBrand("sedan"));
-    System.out.println(carDAO.checkExistedCate("sedan"));
-    System.out.println(carDAO.updateSpecs(car3));
+    Car car3 = new Car("loc2", "loc3", 0, "loc2", 1, 2, 1012);
+    List<String> test = new ArrayList<>();
+    test.add("ccdsadasd");
+    
+    
+    CarImage i = new CarImage(0, 64, test, 22);
+   // TradeMark t = new  TradeMark(0, "a", test, "a", "a", 22);
+    carDAO.addNewImgToCar(i);
+    System.out.println(carDAO.getCarImages(22));
+  }
+
+  public List<String> getCarImages(int carId) {
+    List<String> imageUrls = new ArrayList<>();
+    String query = "SELECT image_url FROM car_images WHERE seller_id = ?";
+
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+      ps.setInt(1, carId);
+
+      // Thực thi câu lệnh và lấy kết quả
+      ResultSet rs = ps.executeQuery();
+
+      // Duyệt qua tất cả các kết quả từ ResultSet
+      while (rs.next()) {
+        String imageUrl = rs.getString("image_url");
+        imageUrls.add(imageUrl);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return imageUrls; // Trả về danh sách URL ảnh
+  }
+
+  public List<CarImage> getAllImgBySellerID(int user_id) {
+    List<CarImage> listImg = new ArrayList<>();
+    String query =
+        "SELECT image_id,car_id, image_url,seller_id  FROM car_images WHERE seller_id = ?";
+
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+      ps.setInt(1, user_id);
+
+      // Thực thi câu lệnh và lấy kết quả
+      ResultSet rs = ps.executeQuery();
+
+      // Duyệt qua tất cả các kết quả từ ResultSet
+      while (rs.next()) {
+        String logo_url = rs.getString("image_url");
+        List<String> imageUrls = new ArrayList<>();
+        imageUrls.add(logo_url);
+        int image_id = rs.getInt("image_id");
+        int car_id = rs.getInt("car_id");
+
+        int seller_id = rs.getInt("seller_id");
+        CarImage img = new CarImage(image_id, car_id, imageUrls, seller_id);
+        listImg.add(img);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return listImg;
+  }
+
+  public boolean addNewImgToCar(CarImage carImage) {
+    try {
+      String query = "INSERT INTO car_images (car_id,image_url,seller_id) VALUES (?,?,?)";
+      PreparedStatement ps = con.prepareStatement(query);
+
+      // Loop through each image_url and insert into database separately
+      for (String imageUrl : carImage.getImage_url()) {
+        ps.setInt(1, carImage.getCar_id());
+        ps.setString(2, imageUrl);
+        ps.setInt(3, carImage.getSeller_id());
+
+        int rowAffected = ps.executeUpdate();
+        if (rowAffected <= 0) {
+          return false; // If any row is not affected, return false
+        }
+      }
+
+      return true; // All rows inserted successfully
+    } catch (SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  public boolean deleteImagesByCarID(int id) {
+    String query = "DELETE FROM [dbo].[car_images] WHERE car_id = ?";
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+      ps.setInt(1, id);
+      int rowsAffected = ps.executeUpdate();
+      return rowsAffected > 0;
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
   }
 }

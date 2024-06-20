@@ -3,39 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Lab211">
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/DAO/AdminDAO.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/GoogleLogin.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/index.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/SellerController.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/category.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/brand.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/wishlist.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/CartItems.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/ResetControl.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/CartControl.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/DetailControl.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/AdminDashboard.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/DetailControl.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/tables.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/orders.jsp</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/CarImage.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/CarBrand.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/reset-pw.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/compare.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/shop-category.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/attributes.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/Car.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/charts.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/user-dashboard.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/LogoutControl.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/UserDashboard.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/BrandController.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/DAO/CarDao.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/carspecs.jsp</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/DAO/UserDAO.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/ChartController.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/product-bottom-thumbnail.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/seller-grid-2.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/CategoryController.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/CarCategory.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/seller-dashboard.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/admin/index.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Filter/SessionFilter.java</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/front-end/login.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Models/Paging.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/index.jsp</file>
-            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/DAO/CarDAO.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/carimages.jsp</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/settings.jsp</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/SellerDashboard.java</file>
+            <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/DAO/DBConnect.java</file>
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/web/seller/cardetail.jsp</file>
         </group>
         <group name="PRJ301">
@@ -54,22 +46,20 @@
             <file>file:/D:/apex_autos_servlet/web/front-end/checkout.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Junit/Calculator.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/cardetail.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carspecs.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/test/Junit/BinaryTest.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carimages.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/MailControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/UserDAO.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Junit/Binary.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/CarDao.java</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/AdminDashboard.java</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/SellerDashboard.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/AdminDAO.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/test/Junit/CalculatorTest.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carspecs.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/assets/js/scripts.js</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carimages.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/SellerDashboard.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/cardetail.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carspecs.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/attributes.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/DetailControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
         </group>
     </open-files>
 </project-private>

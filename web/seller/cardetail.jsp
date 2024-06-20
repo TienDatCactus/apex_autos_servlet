@@ -54,56 +54,72 @@
                     </ul>
                 </nav>
                 <div id="layoutSidenav">
-                   <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="dashboard">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <div class="sb-sidenav-menu-heading">Platform Management</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Cars Management
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
-                                <a class="nav-link" href="dashboard?state=detail">Details</a>
-                                <a class="nav-link" href="dashboard?state=specs">Specifications</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link" href="orders.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Orders
-                        </a>
+                    <div id="layoutSidenav_nav">
+                        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                            <div class="sb-sidenav-menu">
+                                <div class="nav">
+                                    <div class="sb-sidenav-menu-heading">Core</div>
+                                    <a class="nav-link" href="dashboard">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        Dashboard
+                                    </a>
+                                    <div class="sb-sidenav-menu-heading">Platform Management</div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseLayouts" aria-expanded="false"
+                                        aria-controls="collapseLayouts">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                        Cars Management
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                                        data-bs-parent="#sidenavAccordion">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
+                                            <a class="nav-link" href="dashboard?state=detail">Details</a>
+                                            <a class="nav-link" href="dashboard?state=specs">Specifications</a>
+                                            <a class="nav-link" href="dashboard?state=image">Car Images</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link" href="orders.html">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                        Orders
+                                    </a>
 
-                        <div class="sb-sidenav-menu-heading">Others</div>
-                        <a class="nav-link" href="chart">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Total Profits
-                        </a>
-                        <!-- <a class="nav-link" href="tables.html">
+                                    <div class="sb-sidenav-menu-heading">Others</div>
+                                    <a class="nav-link" href="chart">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                        Total Profits
+                                    </a>
+                                    <a class="nav-link" href="dashboard?state=setting">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                        Page Settings
+                                    </a>
+                                    <!-- <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables
                         </a> -->
+                                </div>
+                            </div>
+                            <div class="sb-sidenav-footer">
+                                <div class="small">Logged in as:</div>
+                                ${seller.email}
+                            </div>
+                        </nav>
                     </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                   ${seller.email}
-                </div>
-            </nav>
-        </div>
                     <div id="layoutSidenav_content">
                         <main>
                             <div class="container-fluid px-4">
-                                <h1 class="mt-4">Tables</h1>
+                                <h1 class="mt-4">Tables</h1>    
+                                  <c:if test="${not empty errorMsg}">
+                                                    <div class="form-msg mt-2 alert alert-danger w-75" role="alert">
+    ${errorMsg}</div>
+
+</c:if>
+                                <c:if test="${not empty successMsg}">
+                                                    <div class="form-msg mt-2 alert alert-success w-75" role="alert">
+    ${successMsg}
+                                                    </div>
+</c:if>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Tables</li>
@@ -178,11 +194,11 @@
                                                                     </c:forEach>
                                                                 </td>
                                                                 <td>
-                                                                <a href="dashboard?state=detail&type=update&id=${cl.car_id}"
-                                                                    class="btn btn-success m-1">Update</a>
-                                                                <a href="
+                                                                    <a href="dashboard?state=detail&type=update&id=${cl.car_id}"
+                                                                        class="btn btn-success m-1">Update</a>
+                                                                    <a href="
                                                                     dashboard?state=detail&type=delete&id=${cl.car_id}"
-                                                                    class="btn btn-danger m-1">Delete</a>
+                                                                        class="btn btn-danger m-1">Delete</a>
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>
@@ -204,7 +220,7 @@
                                                 <form action="dashboard?state=detail&do=update" method="post">
                                                     <!-- form fields -->
                                                     <div class="row">
-                                                        <div class="mb-3 col-6">
+                                                        <div class="mb-3 col-6 position-relative">
                                                             <label for="car_name" class="form-label">Car's
                                                                 Name</label>
                                                             <input type="text" class="form-control" id="car_name"
@@ -252,12 +268,11 @@
                                                     </div>
                                                     <div class="d-flex justify-content-between">
                                                         <div>
-                                                            <input type="hidden" name="carId" value="${nl.car_id}">
-                                                            <input type="submit" class="btn btn-warning" value="Update"
-                                                                name="update">
+                                                            <button type="submit" class="btn btn-warning" 
+                                                                    name="carId" value="${nl.car_id}">Update</button>
                                                         </div>
                                                         <input type="button" onclick="(() => {
-    location.href='dashboard?state=user';
+    location.href='dashboard?state=detail';
 })()" class="btn btn-primary" id="cancel" value="Cancel" name="cancel">
                                                     </div>
                                                 </form>
@@ -270,13 +285,15 @@
                                                 <h5 class="card-title">Add new Car :</h5>
                                             </div>
                                             <div class="card-body">
-                                                <form action="dashboard?state=detail&do=add" method="post">
+                                                <form action="dashboard?state=detail&do=add" method="post"
+                                                    autocomplete="off">
                                                     <!-- form fields -->
                                                     <div class="row">
                                                         <div class="mb-3 col-6">
                                                             <label for="name1" class="form-label">Name</label>
                                                             <input type="text" class="form-control" id="name1"
                                                                 placeholder="Enter car name" name="car_name1">
+                                                            <ul class="dropdown-menu" id="originDropdown"></ul>
                                                         </div>
                                                         <div class="mb-3 col-6">
                                                             <label for="model_year1" class="form-label">Model
@@ -353,30 +370,11 @@
             <script src="assets/js/scripts.js"></script>
 
 
+
             <script>
-
-                var emailInput = document.getElementById("email");
-                var passwordInput = document.getElementById("password");
-
-
-
-                window.onload = function () {
-                    var readOnly = localStorage.getItem('readOnly');
-
-                    if (readOnly === 'true') {
-                        emailInput.setAttribute('disabled', true);
-                        passwordInput.setAttribute('disabled', true);
-                    } else {
-                        emailInput.removeAttribute('disabled');
-                        passwordInput.removeAttribute('disabled');
-                    }
-                };
-
-
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.href);
+                }
             </script>
-<script>
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
-    }
-</script>
+
             </html>

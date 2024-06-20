@@ -45,7 +45,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -73,6 +73,7 @@
                                 <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
                                 <a class="nav-link" href="dashboard?state=detail">Details</a>
                                 <a class="nav-link" href="dashboard?state=specs">Specifications</a>
+                                <a class="nav-link" href="dashboard?state=image">Car Images</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="orders.html">
@@ -85,6 +86,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Total Profits
                         </a>
+                        <a class="nav-link" href="dashboard?state=setting">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Page Settings
+                            </a>
                         <!-- <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables

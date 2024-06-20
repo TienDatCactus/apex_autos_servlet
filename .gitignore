@@ -43,3 +43,4 @@ test/DAO/CarDaoTest.java
 /test
 lib
         
+build/web/images/
