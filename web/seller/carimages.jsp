@@ -108,39 +108,39 @@
                 text-align: center;
                 margin-bottom: 10px;
             }
-         .main-image {
-    width: 100%;
-    max-width: 500px; /* Adjust as needed */
-    height: 300px; /* Adjust as needed */
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    object-fit: cover; /* Maintain aspect ratio and avoid stretching */
-    margin: 0 auto; /* Center the image */
-}
-  .thumbnails {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 10px;
-    margin-bottom: 10px;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-.thumbnails img {
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    flex-shrink: 0;
-    object-fit: cover; /* Maintain aspect ratio and avoid stretching */
-}
+            .main-image {
+                width: 100%;
+                max-width: 500px; /* Adjust as needed */
+                height: 300px; /* Adjust as needed */
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                object-fit: cover; /* Maintain aspect ratio and avoid stretching */
+                margin: 0 auto; /* Center the image */
+            }
+            .thumbnails {
+                display: flex;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 2px;
+                margin-bottom: 10px;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            .thumbnails img {
+                width: 100px; /* Adjust as needed */
+                height: 100px; /* Adjust as needed */
+                cursor: pointer;
+                transition: transform 0.2s ease;
+                border: 2px solid transparent;
+                border-radius: 5px;
+                flex-shrink: 0;
+                object-fit: cover; /* Maintain aspect ratio and avoid stretching */
+            }
 
-.thumbnails img:hover {
-    transform: scale(1.1);
-    border: 2px solid #007BFF;
-}
+            .thumbnails img:hover {
+                transform: scale(1);
+                border: 1px solid #007BFF;
+            }
         </style>
     </head>
 
@@ -224,80 +224,80 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-${seller.email}
+                        ${seller.email}
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    
+
                     <div class="album py-5 bg-body-tertiary">
                         <div class="container">
-                           
-  <div class="input-group mb-3">
-        <input type="text" id="searchBox" class="form-control" placeholder="Search for a car by name...">
-        <div class="input-group-append">
-            <span class="input-group-text"><i class="fa fa-search"></i></span>
-        </div>
-    </div>
-<c:if test="${not empty successMsg}">
-                                                    <div class="form-msg mt-2 alert alert-success w-75" role="alert">
-    ${successMsg}
-                                                    </div>
-</c:if>
+
+                            <div class="input-group mb-3">
+                                <input type="text" id="searchBox" class="form-control" placeholder="Search for a car by name...">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+                            <c:if test="${not empty successMsg}">
+                                <div class="form-msg mt-2 alert alert-success w-75" role="alert">
+                                    ${successMsg}
+                                </div>
+                            </c:if>
                             <div id="carList" class="row">
-<c:forEach var="cl" items="${carList}" varStatus="loop">
-            <div class="col-md-4 car-card mb-3" data-name="${cl.name}" >
-                <div class="card" >
-    <c:set var="hasImages" value="false"/>
-    <c:set var="mainImage" value=""/>
+                                <c:forEach var="cl" items="${carList}" varStatus="loop">
+                                    <div class="col-md-4 car-card mb-3" data-name="${cl.name}" >
+                                        <div class="card" >
+                                            <c:set var="hasImages" value="false"/>
+                                            <c:set var="mainImage" value=""/>
 
-    <c:forEach items="${imageCar}" var="ci">
-        <c:if test="${ci.car_id eq cl.car_id}">
-            <c:if test="${not empty ci.image_url}">
-                <c:set var="mainImage" value="${ci.image_url[0]}"/>
-                <c:set var="hasImages" value="true"/>
-            </c:if>
-        </c:if>
-    </c:forEach>
+                                            <c:forEach items="${imageCar}" var="ci">
+                                                <c:if test="${ci.car_id eq cl.car_id}">
+                                                    <c:if test="${not empty ci.image_url}">
+                                                        <c:set var="mainImage" value="${ci.image_url[0]}"/>
+                                                        <c:set var="hasImages" value="true"/>
+                                                    </c:if>
+                                                </c:if>
+                                            </c:forEach>
 
-    <c:if test="${not hasImages}">
-                        <img id="mainImage-${cl.car_id}" src="${pageContext.request.contextPath}/seller/assets/img/images.png" alt="No Image Available" class="main-image card-img-top">
-    </c:if>
-    <c:if test="${hasImages}">
-                        <img id="mainImage-${cl.car_id}" src="${mainImage}" alt="Main Image" class="main-image card-img-top">
-    </c:if>
+                                            <c:if test="${not hasImages}">
+                                                <img id="mainImage-${cl.car_id}" src="${pageContext.request.contextPath}/seller/assets/img/images.png" alt="No Image Available" class="main-image card-img-top">
+                                            </c:if>
+                                            <c:if test="${hasImages}">
+                                                <img id="mainImage-${cl.car_id}" src="${mainImage}" alt="Main Image" class="main-image card-img-top">
+                                            </c:if>
 
-                    <div class="thumbnails">
-    <c:forEach items="${imageCar}" var="ci">
-        <c:if test="${ci.car_id eq cl.car_id}">
-            <c:forEach items="${ci.image_url}" var="obj" varStatus="thumbLoop">
-                                    <img src="${obj}" alt="Thumbnail" class="thumbnail" onclick="changeImage('${obj}', 'mainImage-${cl.car_id}')">
-            </c:forEach>
-        </c:if>
-    </c:forEach>
-                    </div>
+                                            <div class="thumbnails">
+                                                <c:forEach items="${imageCar}" var="ci">
+                                                    <c:if test="${ci.car_id eq cl.car_id}">
+                                                        <c:forEach items="${ci.image_url}" var="obj" varStatus="thumbLoop">
+                                                            <img src="${obj}" alt="Thumbnail" class="thumbnail" onclick="changeImage('${obj}', 'mainImage-${cl.car_id}')">
+                                                        </c:forEach>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </div>
 
-                    <div class="card-body">
-                        <h5 class="card-title mb-1">${cl.name}</h5>
-                        <p class="card-text mb-1">#${cl.car_id}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary edit-btn" name="idToUpdate"
-                                        data-id="${cl.car_id}" onclick="editProductModal('${cl.car_id}')">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger delete-btn" name="idToDel"
-                                            onclick="location.href= 'dashboard?state=image&type=delete&id=${cl.car_id}'">Delete</button>
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-1">${cl.name}</h5>
+                                                <p class="card-text mb-1">#${cl.car_id}</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary edit-btn" name="idToUpdate"
+                                                                data-id="${cl.car_id}" onclick="editProductModal('${cl.car_id}')">Edit</button>
+                                                        <button type="button" class="btn btn-sm btn-outline-danger delete-btn" name="idToDel"
+                                                                onclick="location.href = 'dashboard?state=image&type=delete&id=${cl.car_id}'">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-</c:forEach>
-    </div>
-                        </div>
-                    </div>
                     <!-- Modal for viewing image -->
-                  
+
 
                     <!-- Modal for editing image -->
                     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -306,7 +306,7 @@ ${seller.email}
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="editModalLabel">Edit Image</h5>
                                     <button type="button" class="btn-close fa fa-close
-                                    " data-bs-dismiss="modal" aria-label="Close"></button>
+                                            " data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="dashboard?state=image&do=update" method="post" enctype="multipart/form-data">
@@ -325,7 +325,7 @@ ${seller.email}
                             </div>
                         </div>
                     </div>
-                    
+
 
                 </main>
             </div>
@@ -365,10 +365,10 @@ ${seller.email}
                 button.addEventListener('click', handleEditClick);
             });
         });
-        
+
         function editProductModal(id) {
             document.getElementById('idEditInput').value = id;
-            
+
         }
 
 
@@ -397,21 +397,21 @@ ${seller.email}
         }
 
     </script>
-<script>
-    document.getElementById('searchBox').addEventListener('keyup', function() {
-        let filter = this.value.toLowerCase();
-        let carCards = document.querySelectorAll('.car-card');
+    <script>
+        document.getElementById('searchBox').addEventListener('keyup', function () {
+            let filter = this.value.toLowerCase();
+            let carCards = document.querySelectorAll('.car-card');
 
-        carCards.forEach(function(card) {
-            let carName = card.getAttribute('data-name').toLowerCase();
-            if (carName.includes(filter)) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
+            carCards.forEach(function (card) {
+                let carName = card.getAttribute('data-name').toLowerCase();
+                if (carName.includes(filter)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         });
-    });
-</script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
     <script src="${pageContext.request.contextPath}/seller/assets/js/scripts.js"></script>

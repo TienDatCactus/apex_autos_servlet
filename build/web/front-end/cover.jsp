@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100" data-bs-theme="auto">
   <head>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="description" content="ApexAutos" />
-                <meta name="keywords" content="ApexAutos" />
-                <meta name="author" content="ApexAutos" />
-                <link rel="apple-touch-icon" sizes="180x180"
-                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/apple-touch-icon.png">
-                <link rel="icon" type="image/png" sizes="32x32"
-                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png">
-                <link rel="icon" type="image/png" sizes="16x16"
-                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png">
-                <link rel="manifest"
-                    href="${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest">
-                <title>On-demand last-mile delivery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ApexAutos" />
+    <meta name="keywords" content="ApexAutos" />
+    <meta name="author" content="ApexAutos" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="${pageContext.request.contextPath}/front-end/assets/images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest"
+    />
+    <title>On-demand last-mile delivery</title>
     <link
       rel="canonical"
       href="https://getbootstrap.com/docs/5.3/examples/cover/"
@@ -28,9 +40,39 @@
       href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
     />
 
-    <link href="${pageContext.request.contextPath}/front-end/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="${pageContext.request.contextPath}/front-end/assets/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <style>
+      body {
+        text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+      }
+
+      .cover-container {
+        max-width: 42em;
+      }
+
+      .nav-masthead .nav-link {
+        color: rgba(255, 255, 255, 0.5);
+        border-bottom: 0.25rem solid transparent;
+      }
+
+      .nav-masthead .nav-link:hover,
+      .nav-masthead .nav-link:focus {
+        border-bottom-color: rgba(255, 255, 255, 0.25);
+      }
+
+      .nav-masthead .nav-link + .nav-link {
+        margin-left: 1rem;
+      }
+
+      .nav-masthead .active {
+        color: #fff;
+        border-bottom-color: #fff;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;

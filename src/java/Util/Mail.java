@@ -9,8 +9,7 @@ import javax.mail.internet.InternetAddress;
 public class Mail {
 
     private static final String from = "apexautos1110@gmail.com";
-    private static final String pass
-            = "kakwgvyrygrsujzk";
+    private static final String pass = "kakwgvyrygrsujzk";
 
     public static int sendPasscode(String to) {
         Properties props = System.getProperties();
@@ -75,5 +74,41 @@ public class Mail {
                 "587");
         props.put("mail.smtp.auth", "true"
         );
+    }
+    public static void sendPaymentConfirmation(String to, String orderInfo, long amount) {
+        Properties props = System.getProperties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.user", from);
+        props.put("mail.smtp.password", pass);
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, pass);
+            }
+        });
+
+        MimeMessage message = new MimeMessage(session);
+        try {
+            String htmlContent = "<div style='padding: 20px; background-color: #f1f1f1; border-radius: 10px; font-family: system-ui, sans-serif;'>"
+                    + "<h1 style='color: #353535;'>Payment Confirmation</h1>"
+                    + "<p style='font-size:16px;color:#333;'>Dear user,</p>"
+                    + "<p style='font-size:16px;color:#333;'>Thank you for your payment. Here are the details of your order:</p>"
+                    + "<p style='font-size:16px;color:#333;'><b>Order Info:</b> " + orderInfo + "</p>"
+                    + "<p style='font-size:16px;color:#333;'><b>Amount:</b> " + amount / 100 + " VND</p>"
+                    + "<p style='font-size:16px;color:#333;'>If you have any questions, please contact our support team.</p>"
+                    + "<hr style='border: none; border-top: 1px solid #eee;'>"
+                    + "<p style='font-size:14px; color:#aaa;'>This is an automated message, please do not reply.</p>"
+                    + "</div>";
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.setSubject("Payment Confirmation");
+            message.setContent(htmlContent, "text/html");
+            Transport.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

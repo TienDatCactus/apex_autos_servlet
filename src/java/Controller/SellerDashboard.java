@@ -171,30 +171,40 @@ public class SellerDashboard extends HttpServlet {
         String cate = request.getParameter("cate");
         String cateValue = request.getParameter("cateId");
         if ("add".equals(cateValue)) {
-          if (cate == "") {
-            error = "Please fill in the form before submit...";
-          } else if (daoc.checkExistedCate(cate)) {
-            error = "That car category's already existed ...";
-          } else {
-            if (daoc.addNewCategory(cate)) {
-              success = "new Category added successfully !";
+          error = "";
+          success = "";
+          try {
+            if (cate == "") {
+              error = "Please fill in the form before submit...";
+            } else if (daoc.checkExistedCate(cate)) {
+              error = "That car category's already existed ...";
+            } else {
+              if (daoc.addNewCategory(cate)) {
+                success = "new Category added successfully !";
+              }
             }
+          } catch (Exception e) {
+            error = "An unexpected error occurred. Please try again.";
           }
           request.setAttribute("errorMsg", error);
           request.setAttribute("successMsg", success);
         } else {
           int cateId = Integer.parseInt(cateValue);
           CarCategory cc = new CarCategory(cateId, cate);
-          if (cate == "") {
-            error = "Please fill in the form before submit...";
-          } else if (daoc.checkExistedCate(cate)) {
-            error = "That car category's already existed ...";
-          } else {
-            if (daoc.updateCCate(cc)) {
-              success = "Category updated successfully !";
+          try {
+            if (cate == "") {
+              error = "Please fill in the form before submit...";
+            } else if (daoc.checkExistedCate(cate)) {
+              error = "That car category's already existed ...";
             } else {
-              error = "Category updated failed !!!";
+              if (daoc.updateCCate(cc)) {
+                success = "Category updated successfully !";
+              } else {
+                error = "Category updated failed !!!";
+              }
             }
+          } catch (Exception e) {
+            error = "An unexpected error occurred. Please try again.";
           }
           request.setAttribute("errorMsg", error);
           request.setAttribute("successMsg", success);
@@ -232,8 +242,8 @@ public class SellerDashboard extends HttpServlet {
             error = "Please fill in the form before submit...";
           } else {
             // Clear previous messages
-            error = null;
-            success = null;
+            error = "";
+            success = "";
             try {
               if (daoc.checkExistedBrand(brand)) {
                 error = "That car brand already existed ...";

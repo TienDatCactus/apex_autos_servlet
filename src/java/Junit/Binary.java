@@ -21,8 +21,8 @@ public class Binary {
       int digit = binary.get(i);
 
       if (digit != 0 && digit != 1) {
-        throw new IllegalArgumentException("Invalid binary digit: " + digit);
-      }
+          throw new IllegalArgumentException("Invalid binary digit: " + digit);
+        }
       result += digit * Math.pow(2, power);
       power++;
     }
