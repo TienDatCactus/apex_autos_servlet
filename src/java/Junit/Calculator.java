@@ -18,9 +18,15 @@ public class Calculator {
       case '*':
         return a * b;
       case '/':
-        if (b == 0) {
-          throw new ArithmeticException("Division by zero is not allowed");
+        try {
+
+          if (b == 0) {
+            throw new ArithmeticException("Division by zero is not allowed");
+          }
+        } catch (ArithmeticException e) {
+          e.getMessage();
         }
+
         return a / b;
       default:
         throw new IllegalArgumentException("Invalid operation: " + operation);

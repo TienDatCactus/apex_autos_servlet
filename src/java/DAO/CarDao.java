@@ -32,9 +32,7 @@ public class CarDao {
   public List<Car> viewProducts() {
     List<Car> cars = new ArrayList<>();
     String query =
-        "SELECT [car_id], [name], [cylinders], [horsepower], "
-            + "[weight], [acceleration], [model_year], [origin],[price], [description], "
-            + "[brand_id], [category_id], [seller_id] FROM [dbo].[car]";
+        "SELECT * from car c join car_images ci on c.car_id = ci.car_id where c.cylinders is not null";
 
     try (PreparedStatement ps = con.prepareStatement(query);
         ResultSet rs = ps.executeQuery()) {
@@ -426,7 +424,6 @@ public class CarDao {
     }
   }
 
-  
   public boolean updateSpecs(Car car) {
     String query =
         "UPDATE [dbo].[car] SET [cylinders] = ?, [horsepower] = ?, [weight] = ?, [acceleration] = ?, [origin] = ? WHERE car_id = ?";
@@ -479,6 +476,34 @@ public class CarDao {
 
     try (PreparedStatement ps = con.prepareStatement(query);
         ResultSet rs = ps.executeQuery()) {
+      while (rs.next()) {
+        int image_id = rs.getInt("image_id");
+        int carId = rs.getInt("car_id");
+
+        String imageUrl = rs.getString("image_url");
+
+        List<String> imageUrls = new ArrayList<>();
+        imageUrls.add(imageUrl);
+        CarImage cari = new CarImage(image_id, carId, imageUrls);
+        cars_image.add(cari);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return cars_image;
+  }
+
+  public List<CarImage> CarImageById(int id) {
+    List<CarImage> cars_image = new ArrayList<>();
+
+    String query =
+        "SELECT [image_id], [car_id], [image_url] FROM [dbo].[car_images] where car_id = ?";
+
+    try (PreparedStatement ps = con.prepareStatement(query)) {
+      ps.setInt(1, id);
+      ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         int image_id = rs.getInt("image_id");
         int carId = rs.getInt("car_id");
@@ -643,15 +668,7 @@ public class CarDao {
 
   public static void main(String[] args) {
     CarDao carDAO = new CarDao();
-    Car car3 = new Car("loc2", "loc3", 0, "loc2", 1, 2, 1012);
-    List<String> test = new ArrayList<>();
-    test.add("ccdsadasd");
-    
-    
-    CarImage i = new CarImage(0, 64, test, 22);
-   // TradeMark t = new  TradeMark(0, "a", test, "a", "a", 22);
-    carDAO.addNewImgToCar(i);
-    System.out.println(carDAO.getCarImages(22));
+    System.out.println(carDAO.CarImageById(69));
   }
 
   public List<String> getCarImages(int carId) {

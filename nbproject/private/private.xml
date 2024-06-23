@@ -46,21 +46,14 @@
             <file>file:/D:/apex_autos_servlet/web/front-end/checkout.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/SellerDashboard.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/cardetail.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carspecs.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/attributes.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/product-bottom-thumbnail.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carimages.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/SellerDashboard.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/cardetail.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/index.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/orders.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/DBConnect.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/attributes.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/product-bottom-thumbnail.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/carimages.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
         </group>
     </open-files>
 </project-private>

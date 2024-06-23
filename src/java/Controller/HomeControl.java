@@ -6,6 +6,8 @@ package Controller;
 
 import DAO.*;
 import Models.Car;
+import Models.CarBrand;
+import Models.CarCategory;
 import Models.CarImage;
 import Models.Paging;
 import java.io.IOException;
@@ -23,29 +25,46 @@ import java.util.List;
     name = "HomeControl",
     urlPatterns = {"/home"})
 public class HomeControl extends HttpServlet {
-  private static final int NRPP = 8; // Number of Records Per Page
+  CarDao dao = new CarDao();
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    CarDao dao = new CarDao();
-    List<Car> carList = dao.viewProducts();
-    int index = 0;
-    try {
-      index = Integer.parseInt(request.getParameter("index"));
-    } catch (Exception e) {
-      index = 0;
+    String state = request.getParameter("state");
+    if ("detail".equals(state)) {
+      List<Car> carList = dao.viewProducts();
+      int id = Integer.parseInt(request.getParameter("id"));
+      Car carDT = dao.viewDetail(id);
+      List<CarImage> carImage = dao.viewImageForCar();
+      request.setAttribute("carImage", carImage);
+      request.setAttribute("carList", carList);
+      request.setAttribute("carDT", carDT);
+      request
+          .getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
+          .forward(request, response);
+    } else {
+      CarDao dao = new CarDao();
+      List<Car> carList = dao.viewProducts();
+      int index = 0;
+      try {
+        index = Integer.parseInt(request.getParameter("index"));
+      } catch (Exception e) {
+        index = 0;
+      }
+      int nrpp = 9;
+      Paging p = new Paging(carList.size(), nrpp, index);
+      p.calc();
+      List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
+      List<CarImage> carImage = dao.viewImageForCar();
+      List<CarCategory> carCate = dao.viewCarCategory();
+      List<CarBrand> carBrand = dao.viewCarBrand();
+      request.setAttribute("carImage", carImage);
+      request.setAttribute("page", p);
+      request.setAttribute("carList", carsOnCurrentPage);
+      request.setAttribute("carCate", carCate);
+      request.setAttribute("carBrand", carBrand);
+      request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
     }
-    int nrpp = 10;
-    Paging p = new Paging(carList.size(), nrpp, index);
-    p.calc();
-    List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
-    List<CarImage> carImage = dao.viewImageForCar();
-    request.setAttribute("carImage", carImage);
-    request.setAttribute("page", p);
-    request.setAttribute("carList", carsOnCurrentPage);
-    request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
   }
 
   @Override

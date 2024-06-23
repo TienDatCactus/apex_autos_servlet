@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
             <!DOCTYPE html>
             <html lang="en">
 
@@ -207,7 +207,7 @@
                                                                         </li>
                                                                     </ul>
                                                                 </li>
-                                                                <c:if test="${sessionScope.user != null}">
+<c:if test="${sessionScope.user != null}">
                                                                     <li class="nav-item dropdown new-nav-item">
                                                                         <label class="new-dropdown">New</label>
                                                                         <a class="nav-link dropdown-toggle"
@@ -231,7 +231,7 @@
                                                                             </li>
                                                                         </ul>
                                                                     </li>
-                                                                </c:if>
+</c:if>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -263,7 +263,7 @@
                                                         </div>
                                                     </a>
                                                 </li>
-                                                <c:if test="${sessionScope.user != null}">
+<c:if test="${sessionScope.user != null}">
                                                     <li class="right-side">
                                                         <div class="onhover-dropdown header-badge">
                                                             <button type="button"
@@ -340,28 +340,28 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                </c:if>
+</c:if>
                                                 <li class="right-side onhover-dropdown">
                                                     <div class="delivery-login-box">
                                                         <div class="delivery-icon">
                                                             <i data-feather="user"></i>
                                                         </div>
-                                                        <c:if test="${sessionScope.user == null}">
+<c:if test="${sessionScope.user == null}">
                                                             <div class="delivery-detail">
                                                                 <h6>Sorry,</h6>
                                                                 <h5>Not logged-In</h5>
                                                             </div>
-                                                        </c:if>
-                                                        <c:if test="${sessionScope.user != null}">
-                                                            <c:set var="username"
-                                                                value="${fn:substringBefore(user.email, '@')}" />
+</c:if>
+<c:if test="${sessionScope.user != null}">
+    <c:set var="username"
+           value="${fn:substringBefore(user.email, '@')}" />
                                                             <div class="delivery-detail">
                                                                 <h6>Hello,</h6>
                                                                 <h5>${username}</h5>
                                                             </div>
-                                                        </c:if>
+</c:if>
                                                     </div>
-                                                    <c:if test="${sessionScope.user == null}">
+<c:if test="${sessionScope.user == null}">
                                                         <div class="onhover-div onhover-div-login">
                                                             <ul class="user-box-name">
                                                                 <li class="product-box-contain">
@@ -378,8 +378,8 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                    </c:if>
-                                                    <c:if test="${sessionScope.user != null}">
+</c:if>
+<c:if test="${sessionScope.user != null}">
                                                         <div class="onhover-div onhover-div-login">
                                                             <ul class="user-box-name">
                                                                 <li class="product-box-contain">
@@ -396,7 +396,7 @@
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                    </c:if>
+</c:if>
                                                 </li>
                                             </ul>
                                         </div>
@@ -464,7 +464,7 @@
                                                             make your
                                                             purchase today</h3>
                                                         <div class="search-box">
-                                                            <input type="search" class="form-control"
+                                                            <input type="search" id="searchBox" class="form-control"
                                                                 placeholder="I'm searching for..."
                                                                 aria-label="Recipient's username">
                                                             <i data-feather="search"></i>
@@ -504,36 +504,40 @@
 
                             <div class="col-xxl-9 col-lg-8">
                                 <div class="title d-block">
-                                    <h2 class="text-theme font-sm">Food Cupboard</h2>
-                                    <p>A virtual assistant collects the products from your list</p>
+                                    <h2 class="text-theme font-sm">Cars from our platform</h2>
+                                    <p>An assistant collects the products from your list</p>
                                 </div>
-                                <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
+                                <div class="alert alert-warning text-center fs-2 noCar" role="alert" style="display: none">
+  No cars suited your fucking criteria, mate !?
+</div>
+                                <div class="row row-cols-xxl-5 row-cols-xl-3 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
                         section-b-space">
-                                    <c:forEach var="cl" items="${carList}">
-                                        <div>
-                                            <div class="product-box product-white-bg wow fadeIn">
-                                                <div class="product-image">
-                                                    <a href="detail?id=${cl.car_id}">
-                                                         <c:set var="firstImagePrinted" value="false" />
-<c:forEach items="${carImage}" var="ci">
-    <c:if test="${ci.car_id == cl.car_id}">
-        <c:forEach items="${ci.image_url}" var="obj">
-            <c:if test="${not firstImagePrinted}">
-                <img src="${obj}" alt="Car Image" class="col-6 px-1" style="max-width: 100px; max-height: 100px;">
-                <c:set var="firstImagePrinted" value="true" />
-            </c:if>
-        </c:forEach>
-    </c:if> 
-</c:forEach>
+                                    
+<c:forEach var="cl" items="${carList}">
+                                        <div data-name="${cl.name}" class="car-card">
+                                            <div class="product-box product-white-bg wow fadeIn p-0">
+                                                <div class="product-image p-0">
+                                                    <a href="home?state=detail&id=${cl.car_id}">
+    <c:set var="firstImagePrinted" value="false" />
+    <c:forEach items="${carImage}" var="ci">
+        <c:if test="${ci.car_id == cl.car_id}">
+            <c:forEach items="${ci.image_url}" var="obj">
+                <c:if test="${not firstImagePrinted}">
+                <img src="${obj}" alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                    <c:set var="firstImagePrinted" value="true" />
+                </c:if>
+            </c:forEach>
+        </c:if> 
+    </c:forEach>
 
                                                                 
                                                     </a>
                                                     <ul class="product-option" style="
-    width: 100%;
+    width: 80%;
 ">
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="View" style="font-size:8px">
-                                                            <a href="detail?id=${cl.car_id}" data-bs-toggle="modal"
+                                                            <a href="home?state=detail&id=${cl.car_id}" data-bs-toggle="modal"
                                                                 data-bs-target="#view">
                                                                 <i data-feather="eye"></i>
                                                             </a>
@@ -547,43 +551,47 @@
                                                         </li>
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Add to Cart">
-                                                            <c:if test="${sessionScope.user != null}">
+    <c:if test="${sessionScope.user != null}">
                                                                 <form id="form-cart-${cl.car_id}"
                                                                     action="cart?action=addtocart&id_car=${cl.car_id}"
                                                                     method="post">
-                                                            </c:if>
+    </c:if>
                                                             <a style="cursor: pointer"
                                                                 onclick="document.getElementById('form-cart-${cl.car_id}').submit()">
                                                                 <i data-feather="shopping-cart"
                                                                     style="font-size: 8px"></i>
                                                             </a>
-                                                            <c:if test="${sessionScope.user != null}">
+    <c:if test="${sessionScope.user != null}">
                                                                 </form>
-                                                            </c:if>
+    </c:if>
 
 
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="product-detail position-relative">
-                                                    <a href="detail?id=${cl.car_id}">
-                                                        <h6 class="name" style="font-size:16px">
-                                                            ${cl.name}-${cl.car_id}
+                                                <div class="product-detail position-relative pt-0 p-3">
+                                                    <a href="home?state=detail&id=${cl.car_id}">
+                                                        <h6 class="name align-items-center d-flex pt-2" style="font-size:16px">
+    ${cl.name}
                                                         </h6>
                                                     </a>
 
-                                                    <h6 class="sold weight text-content fw-normal">${cl.weight} kg</h6>
+    <c:forEach var="cb" items="${carBrand}">
+        <c:if test="${cb.id == cl.brand_id}">
+                                                    <h6 class="sold weight text-content fw-normal mt-0">${cb.name}</h6>
+        </c:if>
+    </c:forEach>
+     <h6 class="sold model_year text-content">${cl.model_year}</h6>
+                                                    <h6 class="price theme-color mt-2">$${cl.price}</h6>
 
-                                                    <h6 class="price theme-color">$${cl.price}</h6>
-
-                                                    <div class="add-to-cart-btn-2 addtocart_btn">
+                                                    <div class="add-to-cart-btn-2 addtocart_btn position-relative">
                                                         <button class="btn addcart-button btn buy-button"><i
                                                                 class="fa-solid fa-plus"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </c:forEach>
+</c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -1134,6 +1142,23 @@
 
                 <!-- script js -->
                 <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
+                
+                <script>
+    document.getElementById('searchBox').addEventListener('keyup', function() {
+        let filter = this.value.toLowerCase();
+        let carCards = document.querySelectorAll('.car-card');
+
+        carCards.forEach(function(card) {
+            let carName = card.getAttribute('data-name').toLowerCase();
+            if (carName.includes(filter)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+                document.querySelector('.noCar').style.display = 'block';
+            }
+        });
+    });
+</script>
             </body>
 
             </html>

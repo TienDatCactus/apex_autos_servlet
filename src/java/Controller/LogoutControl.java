@@ -5,6 +5,7 @@
 
 package Controller;
 
+import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,36 +16,34 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- *
  * @author Tiến_Đạt
  */
-@WebServlet(name="LogoutControl", urlPatterns={"/logout"})
+@WebServlet(
+    name = "LogoutControl",
+    urlPatterns = {"/logout"})
 public class LogoutControl extends HttpServlet {
-   
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-  
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-      HttpSession session = request.getSession(false); // Fetch session
-        if (session != null) {
-            session.invalidate(); // Invalidate session
-        }
-    request.getRequestDispatcher("front-end/login.jsp").forward(request, response);
-    } 
+  // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the
+  // left to edit the code.">
 
-   
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        doGet(request, response);
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    HttpSession session = request.getSession(false); // Fetch session
+    if (session != null) {
+      session.invalidate(); // Invalidate session
     }
+    response.sendRedirect(request.getContextPath() + "/login");
+  }
 
- 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    doGet(request, response);
+  }
 
+  @Override
+  public String getServletInfo() {
+    return "Short description";
+  } // </editor-fold>
 }
