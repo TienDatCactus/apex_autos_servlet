@@ -1749,13 +1749,24 @@
                     <div class="col-xxl-3 col-xl-4 col-lg-5 d-none d-lg-block wow fadeInUp">
                         <div class="right-sidebar-box">
                             <div class="vendor-box">
+                                 
                                 <div class="verndor-contain">
+                                   
                                     <div class="vendor-image">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/product/vendor.png" class="blur-up lazyload" alt="">
+                                        <c:forEach items="${tradeMark.url_logo}" var="obj">
+                                            
+                                                <img src="${obj}"  alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width: 100%;border-radius: 50%">
+                                                
+                                        </c:forEach>
                                     </div>
-
+                                    
                                     <div class="vendor-name">
-                                        <h5 class="fw-500">Noodles Co.</h5>
+                                        <h5>
+                                            <a href="#">
+                                                ${tradeMark.name}
+                                            </a>
+
+                                        </h5>
 
                                         <div class="product-rating mt-1">
                                             <ul class="rating">
@@ -1775,28 +1786,27 @@
                                                     <i data-feather="star"></i>
                                                 </li>
                                             </ul>
-                                            <span>(36 Reviews)</span>
+                                           
                                         </div>
 
                                     </div>
                                 </div>
 
-                                <p class="vendor-detail">Noodles & Company is an American fast-casual
-                                    restaurant that offers international and American noodle dishes and pasta.</p>
+                                
 
                                 <div class="vendor-list">
                                     <ul>
                                         <li>
                                             <div class="address-contact">
                                                 <i data-feather="map-pin"></i>
-                                                <h5>Address: <span class="text-content">1288 Franklin Avenue</span></h5>
+                                                <h5>Privacy: <span class="text-content">${tradeMark.privacy}</span></h5>
                                             </div>
                                         </li>
 
                                         <li>
                                             <div class="address-contact">
                                                 <i data-feather="headphones"></i>
-                                                <h5>Contact Seller: <span class="text-content">(+1)-123-456-789</span></h5>
+                                                <h5>Terms: <span class="text-content">${tradeMark.terms}</span></h5>
                                             </div>
                                         </li>
                                     </ul>
@@ -1809,81 +1819,39 @@
                                     <h3>Trending Products</h3>
 
                                     <ul class="product-list product-right-sidebar border-0 p-0">
-                                        <li>
-                                            <div class="offer-product">
-                                                <a href="product-left-thumbnail.html" class="offer-image">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/23.png"
-                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </a>
+                                        <c:forEach items="${carTrending}" var="ct">
+                                            <li>
+                                                <div class="offer-product">
+                                                    <a href="product-left-thumbnail.html" class="offer-image">
 
-                                                <div class="offer-detail">
-                                                    <div>
-                                                        <a href="product-left-thumbnail.html">
-                                                            <h6 class="name">Meatigo Premium Goat Curry</h6>
-                                                        </a>
-                                                        <span>450 G</span>
-                                                        <h6 class="price theme-color">$ 70.00</h6>
+                                                        <c:set var="firstImagePrinted" value="false" />
+                                                        <c:forEach items="${carImage}" var="ci">
+                                                            <c:if test="${ci.car_id == ct.car_id}">
+                                                                <c:forEach items="${ci.image_url}" var="obj">
+                                                                    <c:if test="${not firstImagePrinted}">
+                                                                        <img src="${obj}" alt="Car Image" 
+                                                                             class="card-img-top "  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                        <c:set var="firstImagePrinted" value="true" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:if> 
+                                                        </c:forEach>
+                                                    </a>
+
+                                                    <div class="offer-detail">
+                                                        <div>
+                                                            <a href="product-left-thumbnail.html">
+                                                                <h6 class="name">${ct.name}</h6>
+                                                            </a>
+                                                            <span>${ct.weight} kg</span>
+                                                            <h6 class="price theme-color">${ct.price} $</h6>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        </c:forEach>
 
-                                        <li>
-                                            <div class="offer-product">
-                                                <a href="product-left-thumbnail.html" class="offer-image">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/24.png"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
 
-                                                <div class="offer-detail">
-                                                    <div>
-                                                        <a href="product-left-thumbnail.html">
-                                                            <h6 class="name">Dates Medjoul Premium Imported</h6>
-                                                        </a>
-                                                        <span>450 G</span>
-                                                        <h6 class="price theme-color">$ 40.00</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="offer-product">
-                                                <a href="product-left-thumbnail.html" class="offer-image">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/25.png"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
-
-                                                <div class="offer-detail">
-                                                    <div>
-                                                        <a href="product-left-thumbnail.html">
-                                                            <h6 class="name">Good Life Walnut Kernels</h6>
-                                                        </a>
-                                                        <span>200 G</span>
-                                                        <h6 class="price theme-color">$ 52.00</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="mb-0">
-                                            <div class="offer-product">
-                                                <a href="product-left-thumbnail.html" class="offer-image">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/26.png"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
-
-                                                <div class="offer-detail">
-                                                    <div>
-                                                        <a href="product-left-thumbnail.html">
-                                                            <h6 class="name">Apple Red Premium Imported</h6>
-                                                        </a>
-                                                        <span>1 KG</span>
-                                                        <h6 class="price theme-color">$ 80.00</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -1933,8 +1901,17 @@
                                         <div class="product-header">
                                             <div class="product-image">
                                                 <a href="detail?id=${cl.car_id}">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/cake/product/11.png"
-                                                         class="img-fluid blur-up lazyload" alt="">
+                                                    <c:set var="firstImagePrinted" value="false" />
+                                                    <c:forEach items="${carImage}" var="ci">
+                                                        <c:if test="${ci.car_id == cl.car_id}">
+                                                            <c:forEach items="${ci.image_url}" var="obj">
+                                                                <c:if test="${not firstImagePrinted}">
+                                                                    <img src="${obj}"  alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                    <c:set var="firstImagePrinted" value="true" />
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:if> 
+                                                    </c:forEach>
                                                 </a>
 
                                                 <ul class="product-option">

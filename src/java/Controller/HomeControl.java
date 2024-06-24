@@ -10,6 +10,7 @@ import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
 import Models.Paging;
+import Models.TradeMark;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -33,9 +34,14 @@ public class HomeControl extends HttpServlet {
     String state = request.getParameter("state");
     if ("detail".equals(state)) {
       List<Car> carList = dao.viewProducts();
+      List<Car> carTrending = dao.viewTrending();
       int id = Integer.parseInt(request.getParameter("id"));
+      int idSeller = Integer.parseInt(request.getParameter("idSeller"));
+      TradeMark tradeMark = dao.viewTradeMark(idSeller);
       Car carDT = dao.viewDetail(id);
       List<CarImage> carImage = dao.viewImageForCar();
+      request.setAttribute("tradeMark", tradeMark);
+      request.setAttribute("carTrending", carTrending);
       request.setAttribute("carImage", carImage);
       request.setAttribute("carList", carList);
       request.setAttribute("carDT", carDT);
