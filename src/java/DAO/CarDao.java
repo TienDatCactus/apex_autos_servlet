@@ -661,7 +661,7 @@ public class CarDao {
 
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
-        System.out.println(carDAO.viewTradeMark(1012));
+        System.out.println(carDAO.getSellerIDByCarID(1110));
     }
 
     public List<String> getCarImages(int carId) {
@@ -798,8 +798,7 @@ public class CarDao {
                     tm.setUrl_logo(imageUrls);
                     tm.setPrivacy(rs.getString("privacy"));
                     tm.setTerms(rs.getString("terms"));
-                   
-                    
+
                 }
             }
         } catch (SQLException e) {
@@ -807,4 +806,24 @@ public class CarDao {
         }
         return tm; // Trả về đối tượng Car hoặc null nếu không tìm thấy
     }
+
+  
+
+    public int getSellerIDByCarID(int id) {
+        int carId = 0; // Khởi tạo giá trị mặc định
+        String query = "SELECT seller_id FROM car WHERE car_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id); // Thiết lập giá trị cho tham số seller_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    carId = rs.getInt("seller_id"); // Lấy giá trị car_id từ kết quả truy vấn
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return carId; // Trả về ca
+    }
+
 }

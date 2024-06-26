@@ -36,8 +36,8 @@ public class HomeControl extends HttpServlet {
       List<Car> carList = dao.viewProducts();
       List<Car> carTrending = dao.viewTrending();
       int id = Integer.parseInt(request.getParameter("id"));
-      int idSeller = Integer.parseInt(request.getParameter("idSeller"));
-      TradeMark tradeMark = dao.viewTradeMark(idSeller);
+      int idCar = dao.getSellerIDByCarID(id);
+      TradeMark tradeMark = dao.viewTradeMark(idCar);
       Car carDT = dao.viewDetail(id);
       List<CarImage> carImage = dao.viewImageForCar();
       request.setAttribute("tradeMark", tradeMark);

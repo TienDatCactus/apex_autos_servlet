@@ -517,7 +517,7 @@
                                 <div data-name="${cl.name}" class="car-card">
                                     <div class="product-box product-white-bg wow fadeIn p-0">
                                         <div class="product-image p-0">
-                                            <a href="home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
+                                            <a href="home?state=detail&id=${cl.car_id}">
                                                 <c:set var="firstImagePrinted" value="false" />
                                                 <c:forEach items="${carImage}" var="ci">
                                                     <c:if test="${ci.car_id == cl.car_id}">
