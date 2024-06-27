@@ -31,7 +31,9 @@ public class LogoutControl extends HttpServlet {
         if (session != null) {
             session.invalidate(); // Invalidate session
         }
-        response.sendRedirect("home");
+        request.setAttribute("clearLocalStorage", true);
+        request.getRequestDispatcher("home").forward(request, response);
+//        response.sendRedirect("home");
     } 
 
    

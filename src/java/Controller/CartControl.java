@@ -27,40 +27,41 @@ import java.util.logging.Logger;
 public class CartControl extends HttpServlet {
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        CarDAO dao = new CarDAO();
-        UserAccount ua = (UserAccount) session.getAttribute("user");
-        List<CartItems> carts = dao.cartItems(ua.getUser_id());
-        session.setAttribute("cartItems", carts);
-        request.getRequestDispatcher("/front-end/cart.jsp").forward(request, response);
-    }
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = request.getParameter("action");
-        HttpSession session = request.getSession();
-        UserAccount ua = (UserAccount) session.getAttribute("user");
-        CarDAO dao = new CarDAO();
-        switch (action) {
-            case "addtocart":
-                int id_car = Integer.parseInt(request.getParameter("id_car"));
-                dao.addToCart(ua.getUser_id(), id_car);
-                response.sendRedirect("home");
-                break;
-            
-            case "delete":
-                int item_id = Integer.parseInt(request.getParameter("item_id"));
-                dao.deleteFromCart(item_id);
-                response.sendRedirect("cart");
-                break;
-            default:
-                response.sendRedirect("cart");
-            
+            protected void doGet(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException {
+                HttpSession session = request.getSession();
+                CarDAO dao = new CarDAO();
+
+                UserAccount ua = (UserAccount) session.getAttribute("user");
+                List<CartItems> carts = dao.cartItems(ua.getUser_id());
+                session.setAttribute("cartItems", carts);
+                request.getRequestDispatcher("/front-end/cart.jsp").forward(request, response);
         }
-    }
+
+        @Override
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException {
+            String action = request.getParameter("action");
+            HttpSession session = request.getSession();
+            UserAccount ua = (UserAccount) session.getAttribute("user");
+            CarDAO dao = new CarDAO();
+            switch (action) {
+                case "addtocart":
+                    int id_car = Integer.parseInt(request.getParameter("id_car"));
+                    dao.addToCart(ua.getUser_id(), id_car);
+                    response.sendRedirect("home");
+                    break;
+
+                case "delete":
+                    int item_id = Integer.parseInt(request.getParameter("item_id"));
+                    dao.deleteFromCart(item_id);
+                    response.sendRedirect("cart");
+                    break;
+                default:
+                    response.sendRedirect("cart");
+
+            }
+        }
 
     /**
      * Returns a short description of the servlet.

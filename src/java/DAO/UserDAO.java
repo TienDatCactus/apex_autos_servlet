@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.nio.charset.StandardCharsets;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +89,23 @@ public class UserDAO {
             return false;
         }
     }
+    
+    public void registerSeller(UserAccount seller) throws Exception {
+        
+        String query = "INSERT INTO [dbo].[user_account] ([email],[passwordHash],permission_id, application_date, status) VALUES (?, ?,?,?,'Pending')";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, seller.getEmail());
+            String hashedPassword = hashPassword(seller.getPassword());
+            ps.setString(2, hashedPassword);
+            ps.setInt(3, 2);
+            ps.setDate(4, new java.sql.Date(new java.util.Date().getTime()));
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("error :" +e.getMessage());
+            throw e;
+        }
+    }
 
     public boolean userExisted(String email) {
         String query = "SELECT [email] FROM [dbo].[user_account] WHERE email = ?";
@@ -110,7 +128,7 @@ public class UserDAO {
         String email = userAccount.getEmail();
         String password = userAccount.getPassword();
 
-        String query = "SELECT * FROM [dbo].[user_account] WHERE email = ? AND passwordHash = ?";
+        String query = "SELECT * FROM [dbo].[user_account] WHERE email = ? AND passwordHash = ? and (permission_id != 2 or status = 'Approved')";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
@@ -230,7 +248,7 @@ public class UserDAO {
                     userAccount.setUser_id(rs.getInt("user_id"));
                     userAccount.setEmail(rs.getString("email"));
                     userAccount.setPassword(rs.getString("passwordHash"));
-
+                    userAccount.setPermission_id(rs.getInt(8));
                     userAccount.setGiven_name(rs.getString("given_name"));
                     userAccount.setFamily_name(rs.getString("family_name"));
                     userAccount.setDob(rs.getString("dob"));
@@ -279,6 +297,34 @@ public class UserDAO {
         }
         return addresses;
     }
+    public void updateSeller(UserAccount seller) throws Exception {
+        String query = "UPDATE [dbo].[user_account] SET status = ?, approved_date = ? WHERE user_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, seller.getStatus());
+            ps.setDate(2,  new java.sql.Date(new java.util.Date().getTime()));
+            ps.setInt(3, seller.getUser_id());
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+           throw e;
+        }
+    }
+    public List<UserAccount> getAllSeller() {
+        String query = "SELECT * FROM [dbo].[user_account] WHERE permission_id = 2";
+        List<UserAccount> lst = new ArrayList<>();
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    lst.add(new UserAccount(rs.getInt(1), rs.getString(2), rs.getString(9), rs.getDate(10), rs.getDate(11)));
+                }
+                return lst;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lst;
+    }
 
     public void editAddress(Address updatedAddress) {
         String query = "UPDATE address SET address = ?, pin_code = ? WHERE address_id = ?";
@@ -304,6 +350,19 @@ public class UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+     public void deleteSeller(int id) throws Exception {
+        String query = "Delete from user_account where user_id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
         }
     }
 

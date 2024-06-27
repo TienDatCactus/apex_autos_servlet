@@ -6,6 +6,7 @@ package DAO;
 
 import Models.Car;
 import Models.CartItems;
+import Models.CompareItems;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -85,6 +87,18 @@ public class CarDAO {
         return car; // Trả về đối tượng Car hoặc null nếu không tìm thấy
     }
 
+    public void addCarToCompare(int userId, int carId) {
+        String insertCompareQuery = "INSERT INTO compare_items (compare_id, car_id) VALUES ((SELECT compare_id FROM compare WHERE user_id = ?), ?)";
+
+        try (PreparedStatement psInsertCompare = con.prepareStatement(insertCompareQuery)) {
+            psInsertCompare.setInt(1, userId);
+            psInsertCompare.setInt(2, carId);
+            psInsertCompare.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addToCart(int user_id, int car_id) {
         String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
         String insertCartQuery = "INSERT INTO cart (user_id) VALUES (?)";
@@ -127,23 +141,94 @@ public class CarDAO {
         }
     }
 
+   public List<Car> compareCars(List<Integer> carIds) {
+    List<Car> carsToCompare = new ArrayList<>();
+
+    if (carIds == null || carIds.isEmpty()) {
+        return carsToCompare;
+    }
+
+    String selectCarsQuery = "SELECT * FROM car WHERE car_id IN (" +
+            carIds.stream().map(String::valueOf).collect(Collectors.joining(",")) + ")";
+
+    try (Connection conn = db.connection; PreparedStatement ps = conn.prepareStatement(selectCarsQuery)) {
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Car car = new Car(
+                    rs.getInt("car_id"),
+                    rs.getString("name"),
+                    rs.getInt("cylinders"),
+                    rs.getFloat("horsepower"),
+                    rs.getFloat("weight"),
+                    rs.getFloat("acceleration"),
+                    rs.getInt("model_year"),
+                    rs.getString("origin"),
+                    rs.getFloat("price"),
+                    rs.getString("description"),
+                    rs.getInt("brand_id"),
+                    rs.getInt("category_id")
+            );
+            carsToCompare.add(car);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return carsToCompare;
+}
+
+
+    public Car getCarById(int id) {
+
+        // Tạo chuỗi truy vấn động dựa trên số lượng ID xe
+        String query = "SELECT [car_id], [name], [cylinders], [horsepower], "
+                + "[weight], [acceleration], [model_year], [origin],[price], [description], "
+                + "[brand_id], [category_id] FROM [dbo].[car] where [car_id] = ?";
+
+        try (Connection conn = db.connection; PreparedStatement ps = conn.prepareStatement(query)) {
+
+            // Đặt giá trị cho các tham số truy vấn
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Car car = new Car();
+                    car.setCar_id(rs.getInt("car_id"));
+                    car.setName(rs.getString("name"));
+                    car.setCylinders(rs.getInt("cylinders"));
+                    car.setHorsepower(rs.getFloat("horsepower"));
+                    car.setWeight(rs.getFloat("weight"));
+                    car.setAcceleration(rs.getFloat("acceleration"));
+                    car.setModel_year(rs.getInt("model_year"));
+                    car.setOrigin(rs.getString("origin"));
+                    car.setPrice(rs.getFloat("price"));
+                    car.setDescription(rs.getString("description"));
+                    car.setBrand_id(rs.getInt("brand_id"));
+                    car.setCategory_id(rs.getInt("category_id"));
+                    return car;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public List<CartItems> cartItems(int user_id) {
         List<CartItems> cartItemsList = new ArrayList<>();
 
         String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
         String selectCartItemsQuery = "SELECT ci.item_id, ci.cart_id, c.* FROM cart_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
 
-        try (
-                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psSelectCartItems = con.prepareStatement(selectCartItemsQuery)) {
+        try (PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psSelectCartItems = con.prepareStatement(selectCartItemsQuery)) {
 
-            // Check if the user has a cart
             psSelectCart.setInt(1, user_id);
             ResultSet rsCart = psSelectCart.executeQuery();
 
             if (rsCart.next()) {
                 int cart_id = rsCart.getInt("cart_id");
 
-                // Retrieve cart items
                 psSelectCartItems.setInt(1, cart_id);
                 ResultSet rsCartItems = psSelectCartItems.executeQuery();
 
@@ -170,7 +255,7 @@ public class CarDAO {
             e.printStackTrace();
         }
 
-        return cartItemsList; // This will be an empty list if there's no cart or no cart items
+        return cartItemsList;
     }
 
     public boolean deleteFromCart(int item_id) {
@@ -185,9 +270,46 @@ public class CarDAO {
         return false;
     }
 
-    public static void main(String[] args) {
-        CarDAO dao = new CarDAO();
-        System.out.println(dao.cartItems(1));
-        System.out.println(dao.deleteFromCart(13));
+    public void AddtoCompare(int user_id, int id_car) {
+        String selectCartQuery = "SELECT compare_id FROM compare WHERE user_id = ?";
+        String insertCartQuery = "INSERT INTO compare (user_id) VALUES (?)";
+        String insertCartItemQuery = "INSERT INTO compare_items (compare_id, car_id) VALUES (?, ?)";
+
+        try (
+                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psInsertCart = con.prepareStatement(insertCartQuery, Statement.RETURN_GENERATED_KEYS); PreparedStatement psInsertCartItem = con.prepareStatement(insertCartItemQuery)) {
+
+            // Check if the user already has a cart
+            psSelectCart.setInt(1, user_id);
+            ResultSet rsCart = psSelectCart.executeQuery();
+
+            int compare_id;
+            if (rsCart.next()) {
+                // If the user already has a cart, get its ID
+                compare_id = rsCart.getInt("compare_id");
+            } else {
+                // If the user doesn't have a cart, create one and get its ID
+                psInsertCart.setInt(1, user_id);
+                int affectedRows = psInsertCart.executeUpdate();
+                if (affectedRows == 0) {
+                    throw new SQLException("Creating cart failed, no rows affected.");
+                }
+
+                try (ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys()) {
+                    if (rsGeneratedKeys.next()) {
+                        compare_id = rsGeneratedKeys.getInt(1);
+                    } else {
+                        throw new SQLException("Creating cart failed, no ID obtained.");
+                    }
+                }
+            }
+
+            // Add the item to the cart
+            psInsertCartItem.setInt(1, compare_id);
+            psInsertCartItem.setInt(2, id_car);
+            psInsertCartItem.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
 }

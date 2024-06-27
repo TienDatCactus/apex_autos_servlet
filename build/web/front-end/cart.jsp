@@ -1215,7 +1215,7 @@
 
                                                     <td class="price">
                                                         <h4 class="table-title text-content">Price</h4>
-                                                        <h5>$35.10 <del class="text-content">$45.68</del></h5>
+                                                        <h5>${ci.car.price} <del class="text-content">${ci.car.price}</del></h5>
                                                         <h6 class="theme-color">You Save : $20.68</h6>
                                                     </td>
 
@@ -1232,7 +1232,7 @@
 
                                                     <td class="subtotal">
                                                         <h4 class="table-title text-content">Total</h4>
-                                                        <h5>$35.10</h5>
+                                                        <h5>${ci.car.price}</h5>
                                                     </td>
 
                                                     <td class="save-remove">
@@ -1504,7 +1504,7 @@
                                                             <img src="${pageContext.request.contextPath}/front-end/assets/images/playstore.svg"
                                                                 class="blur-up lazyload" alt="">
                                                         </a>
-                                                    </li>
+                                                   </li>
                                                     <li class="mb-0">
                                                         <a href="https://www.apple.com/in/app-store/" target="_blank">
                                                             <img src="${pageContext.request.contextPath}/front-end/assets/images/appstore.svg"

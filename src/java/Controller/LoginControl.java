@@ -66,15 +66,27 @@ public class LoginControl extends HttpServlet {
         if (loginResult) {
             userAccount = daou.getUserByEmail(userAccount.getEmail());
             List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
-            
-            session.setAttribute("user", userAccount);
+
+            if (userAccount.getPermission_id() == 1) {
+                session.setAttribute("admin", userAccount);
+                response.sendRedirect("admin/dashboard");
+            } else if (userAccount.getPermission_id() == 2) {
+                session.setAttribute("seller", userAccount);
+                response.sendRedirect("seller/index.jsp");
+            } else {
+                session.setAttribute("user", userAccount);
+                response.sendRedirect("home");
+//                request.getRequestDispatcher("home").include(request, response);
+//                return;
+            }
+
+//            session.setAttribute("user", userAccount);
             session.setAttribute("listAddr", listAddr);
 
             // Login successful, redirect to another page
-            response.sendRedirect("home");
-        } else if (daou.getRoles(userAccount) == 1) {
-            session.setAttribute("admin", userAccount);
-            response.sendRedirect("/admin/dashboard");
+//            response.sendRedirect("home");
+//            request.setAttribute("clearLocalStorage", true);
+//       request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
         } else {
             // Login failed, redirect back to login page
             request.setAttribute("errorMessage", "Invalid email or password.");

@@ -62,6 +62,10 @@ public class AdminDashboard extends HttpServlet {
       request.setAttribute("roleList", rl);
       request.getRequestDispatcher("/admin/role.jsp").forward(request, response);
     } else if ("seller".equals(state)) {
+      //get data
+      UserDAO udao = new UserDAO();
+      List<UserAccount> lstSeller = udao.getAllSeller();
+      request.setAttribute("lstSeller", lstSeller);
       request.getRequestDispatcher("/admin/seller.jsp").forward(request, response);
     } else if ("setting".equals(state)) {
       request.getRequestDispatcher("/admin/settings.jsp").forward(request, response);

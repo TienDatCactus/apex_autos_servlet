@@ -4,6 +4,9 @@
  */
 package Controller;
 
+import DAO.UserDAO;
+import Models.UserAccount;
+import Util.Mail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -29,13 +32,25 @@ public class SellerControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String state = request.getParameter("state");
-        if ("become".equals(state)) {
+        try {
+
             String mail = request.getParameter("seller-mail");
             String pass = request.getParameter("seller-pass");
-            String desc = request.getParameter("seller-desc");
-            // pending
+            //
+            UserDAO dao = new UserDAO();
+            //check email exist
+            if (dao.userExisted(mail)) {
+                request.setAttribute("errorMessage", "Existed account found on the system !");
+                request.getRequestDispatcher("/front-end/seller-become.jsp").forward(request, response);
+            } else {
+                //register
+                dao.registerSeller(new UserAccount(mail, pass));
+                request.setAttribute("message", "Register seller success !");
+                request.getRequestDispatcher("/front-end/seller-become.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            request.setAttribute("errorMessage", "Error: " + e);
+            request.getRequestDispatcher("/front-end/seller-become.jsp").forward(request, response);
         }
-
     }
 }

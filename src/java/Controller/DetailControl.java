@@ -33,7 +33,7 @@ public class DetailControl extends HttpServlet {
         List<Car> carList = dao.viewProducts();
         int id = Integer.parseInt(request.getParameter("id"));
         Car carDT = dao.viewDetail(id);
-         request.setAttribute("carList", carList);
+        request.setAttribute("carList", carList);
         request.setAttribute("carDT", carDT);
         request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp").forward(request, response);
     } 

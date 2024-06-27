@@ -22,16 +22,18 @@
             <file>file:/C:/Users/Admin/swp_com/apex_autos_servlet/src/java/Controller/RegisterControl.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/AdminDashboard.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/login.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/RegisterControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/CartControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/cart.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/VerifyControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/CarDAO.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/web/front-end/coming-soon.jsp</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/web/front-end/compare.jsp</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/Controller/GoogleLogin.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/web/front-end/index.jsp</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/Models/Car.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/DAO/DBConnect.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/DAO/UserDAO.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/web/front-end/seller-become.jsp</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/DAO/CompareDAO.java</file>
+            <file>file:/D:/Work/Java/SWP/apex_autos_servlet/src/java/Controller/CompareControl.java</file>
         </group>
     </open-files>
 </project-private>

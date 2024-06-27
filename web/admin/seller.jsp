@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -158,39 +159,54 @@
 
             <div class="card card-custom mb-4 shadow-sm">
                 <div class="card-header card-header-custom">
-                    <h5 class="card-title">Pending Seller Approvals</h5>
+                    <h5 class="card-title">Seller Approvals</h5>
                 </div>
                 <div class="card-body">
                    <table class="table table-striped table-custom">
     <thead>
         <tr>
-            <th>Seller Name</th>
+            <!--<th>Seller Name</th>-->
             <th>Email</th>
             <th>Application Date</th>
+             <th>Approve/Reject Date</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
+        <c:forEach items="${lstSeller}" var="s">
         <tr>
-            <td data-bs-toggle="collapse" data-bs-target="#description1" aria-expanded="false"
-                aria-controls="description1">John Doe</td>
-            <td>johndoe@example.com</td>
-            <td>2024-06-01</td>
-            <td><span class="badge bg-warning">Pending</span></td>
-            <td>
-                <button class="btn btn-success btn-sm">Approve</button>
-                <button class="btn btn-danger btn-sm">Reject</button>
+<!--            <td data-bs-toggle="collapse" data-bs-target="#description1" aria-expanded="false"
+                aria-controls="description1">John Doe</td>-->
+
+            <td>${s.email}</td>
+            <td>${s.application_date}</td>
+            <td>${s.approved_date}</td>
+            <td><span class="badge bg-warning">${s.status}</span></td>
+            <td  <c:if test="${s.status == 'Pending'}">style="display: flex"</c:if>>
+                <c:if test="${s.status == 'Pending'}">
+                <form action="/apex_autos_servlet/admin/seller/confirm" method="post">
+                    <input type="hidden" value="${s.user_id}" name="id"/>
+                    <input type="hidden" value="Approved" name="status"/>
+                    <button class="btn btn-success btn-sm" type="submit">Approve</button>
+                </form>
+                    <form action="/apex_autos_servlet/admin/seller/confirm" method="post">
+                    <input type="hidden" value="${s.user_id}" name="id"/>
+                    <input type="hidden" value="Rejected" name="status"/>
+                    <button class="btn btn-danger btn-sm" type="submit">Reject</button>
+                </form>
+                    </c:if>
             </td>
-        </tr>
-        <tr id="description1" class="collapse">
+           
+        </tr> </c:forEach>
+<!--   <tr id="description1" class="collapse">
             <td colspan="5">
                 <div class="accordion-body">
                     <h6>Description:</h6>
                     <p>I want to sell handcrafted items.</p>
                 </div>
             </td>
-        </tr>
+        </tr>-->
 
         <!-- More rows as needed -->
     </tbody>
@@ -198,7 +214,7 @@
                 </div>
             </div>
 
-            <div class="card card-custom mb-4 shadow-sm">
+<!--            <div class="card card-custom mb-4 shadow-sm">
                 <div class="card-header card-header-custom">
                     <h5 class="card-title mb-0">Approved Sellers</h5>
                 </div>
@@ -225,11 +241,11 @@
                                 <td>2024-05-22</td>
                                 <td>$12,000</td>
                             </tr>
-                            <!-- More rows as needed -->
+                             More rows as needed 
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>-->
 
             
 

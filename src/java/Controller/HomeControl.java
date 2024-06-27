@@ -23,6 +23,7 @@ import java.util.List;
  */
 @WebServlet(name = "HomeControl", urlPatterns = {"/home"})
 public class HomeControl extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,8 +41,14 @@ public class HomeControl extends HttpServlet {
         p.calc();
         List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
         request.setAttribute("page", p);
-        request.setAttribute("carList", carsOnCurrentPage );
+        request.setAttribute("carList", carsOnCurrentPage);
+
+        request.setAttribute("clearLocalStorage", request.getAttribute("clearLocalStorage"));
+        request.setAttribute("message", request.getAttribute("message"));
+        request.setAttribute("error", request.getAttribute("error"));
+
         request.getRequestDispatcher("/front-end/index.jsp").forward(request, response);
+        return;
     }
 
     @Override

@@ -4,6 +4,8 @@
  */
 package Models;
 
+import java.util.Date;
+
 /**
  *
  * @author Tiến_Đạt
@@ -21,8 +23,24 @@ public class UserAccount {
     String phone;
     String dob;
     int permission_id;
+    String status;
+    Date approved_date;
+    Date application_date;
 
     public UserAccount() {
+    }
+
+    public UserAccount(int user_id, String email, String status, Date approved_date, Date application_date) {
+        this.user_id = user_id;
+        this.email = email;
+        this.status = status;
+        this.approved_date = approved_date;
+        this.application_date = application_date;
+    }
+
+    public UserAccount(int user_id, String status) {
+        this.user_id = user_id;
+        this.status = status;
     }
 
     public UserAccount(String email, String password) {
@@ -134,6 +152,32 @@ public class UserAccount {
 
     public void setPermission_id(int permission_id) {
         this.permission_id = permission_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getApplication_date() {
+        return application_date;
+    }
+
+    public void setApplication_date(Date application_date) {
+        this.application_date = application_date;
+    }
+
+  
+
+    public Date getApproved_date() {
+        return approved_date;
+    }
+
+    public void setApproved_date(Date approved_date) {
+        this.approved_date = approved_date;
     }
 
     @Override
