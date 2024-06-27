@@ -1755,14 +1755,14 @@
                                     <div class="vendor-image">
                                         <c:forEach items="${tradeMark.url_logo}" var="obj">
                                             
-                                                <img src="${obj}"  alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width: 100%;border-radius: 50%">
+                                                <img src="${obj}"  alt="Car Image" class=" "  style="object-fit: contain;max-width: 100%;border-radius: 50%">
                                                 
                                         </c:forEach>
                                     </div>
                                     
                                     <div class="vendor-name">
                                         <h5>
-                                            <a href="#">
+                                            <a href="home?state=trademark&id=${tradeMark.trademard_id}">
                                                 ${tradeMark.name}
                                             </a>
 
@@ -1792,10 +1792,21 @@
                                     </div>
                                 </div>
 
-                                
+                                         
 
                                 <div class="vendor-list">
                                     <ul>
+                                        <li>
+                                            <div class="address-contact">
+                                                <i data-feather="map-pin"></i>
+                                                <h5>Describe: <span class="text-content" style="  display: block;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  " maxlength="20">${tradeMark.describe}</span></h5>
+                                            </div>
+                                        </li>
                                         <li>
                                             <div class="address-contact">
                                                 <i data-feather="map-pin"></i>

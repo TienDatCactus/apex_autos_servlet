@@ -402,7 +402,7 @@ public class SellerDashboard extends HttpServlet {
 
         String privacy = request.getParameter("privacyEditInput");
         String terms = request.getParameter("termEditInput");
-
+        String describe = request.getParameter("describeEditInput");
         Collection<Part> parts = request.getParts();
         String path = request.getServletContext().getRealPath("/images");
         File dir = new File(path);
@@ -421,7 +421,7 @@ public class SellerDashboard extends HttpServlet {
                 request.getContextPath() + "/images/" + fileName); // Add image path to list
           }
         }
-        TradeMark mark = new TradeMark(id, name, imagePaths, privacy, terms, sellerId);
+        TradeMark mark = new TradeMark(id, name, imagePaths,describe, privacy, terms, sellerId);
         daoc.updateTradeMark(mark);
 
       } else if ("add".equals(action)) {
@@ -430,7 +430,7 @@ public class SellerDashboard extends HttpServlet {
 
         String privacy = request.getParameter("privacyEditInput");
         String terms = request.getParameter("termEditInput");
-
+        String describe = request.getParameter("describeEditInput");
         Collection<Part> parts = request.getParts();
         String path = request.getServletContext().getRealPath("/images");
         File dir = new File(path);
@@ -449,7 +449,7 @@ public class SellerDashboard extends HttpServlet {
                 request.getContextPath() + "/images/" + fileName); // Add image path to list
           }
         }
-        TradeMark mark = new TradeMark(0, name, imagePaths, privacy, terms, sellerId);
+        TradeMark mark = new TradeMark(0, name, imagePaths,describe, privacy, terms, sellerId);
         daoc.addNewTradeMark(mark);
       }
     } else if ("image".equals(state)) {

@@ -14,6 +14,7 @@ public class TradeMark {
     public int trademard_id;
     public String name;
     public List<String> url_logo;
+    public String describe;
     public String privacy;
     public String terms;
     public int seller_id;
@@ -21,14 +22,26 @@ public class TradeMark {
     public TradeMark() {
     }
 
-    public TradeMark(int trademard_id, String name, List<String> url_logo, String privacy, String terms, int seller_id) {
+    public TradeMark(int trademard_id, String name, List<String> url_logo, String describe, String privacy, String terms, int seller_id) {
         this.trademard_id = trademard_id;
         this.name = name;
         this.url_logo = url_logo;
+        this.describe = describe;
         this.privacy = privacy;
         this.terms = terms;
         this.seller_id = seller_id;
     }
+
+    public TradeMark(int trademard_id, String name, List<String> url_logo, String describe, String privacy, String terms) {
+        this.trademard_id = trademard_id;
+        this.name = name;
+        this.url_logo = url_logo;
+        this.describe = describe;
+        this.privacy = privacy;
+        this.terms = terms;
+    }
+
+    
 
     
 
@@ -80,12 +93,24 @@ public class TradeMark {
 
     public void setSeller_id(int seller_id) {
         this.seller_id = seller_id;
+    }   
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
     }
 
     @Override
     public String toString() {
-        return "TradeMark{" + "trademard_id=" + trademard_id + ", name=" + name + ", url_logo=" + url_logo + ", privacy=" + privacy + ", terms=" + terms + ", seller_id=" + seller_id + '}';
+        return "TradeMark{" + "trademard_id=" + trademard_id + ", name=" + name + ", url_logo=" + url_logo + ", describe=" + describe + ", privacy=" + privacy + ", terms=" + terms + ", seller_id=" + seller_id + '}';
     }
+    
+    
+
+    
     
     
 }

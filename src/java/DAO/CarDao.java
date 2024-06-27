@@ -229,7 +229,10 @@ public class CarDao {
 
     public List<Car> viewProductForSeller(int seller_id) {
         List<Car> listCar = new ArrayList<>();
-        String query = "SELECT * FROM [dbo].[car] WHERE seller_id = ?";
+        String query = "select distinct c.car_id, c.name,c.cylinders,c.horsepower,"
+                + "c.weight,c.acceleration,c.model_year,c.origin,c.price,"
+                + "c.description,c.brand_id,c.category_id,c.seller_id from "
+                + "car c join car_images ci on c.car_id = ci.car_id where c.seller_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, seller_id);
@@ -601,11 +604,13 @@ public class CarDao {
 
                     List<String> imageUrls = new ArrayList<>();
                     imageUrls.add(logo_url);
+
                     TradeMark trade
                             = new TradeMark(
                                     rs.getInt("trademark_id"),
                                     rs.getString("name"),
                                     imageUrls,
+                                    rs.getString("describe"),
                                     rs.getString("privacy"),
                                     rs.getString("terms"),
                                     rs.getInt("seller_id"));
@@ -620,7 +625,7 @@ public class CarDao {
 
     public boolean updateTradeMark(TradeMark mark) {
         String query
-                = "UPDATE [dbo].[trade_mark] SET [name] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE seller_id = ?";
+                = "UPDATE [dbo].[trade_mark] SET [name] = ?, [logo_url] = ?, [describe] = ?,[privacy] = ?, [terms] = ? WHERE seller_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
 
@@ -628,9 +633,10 @@ public class CarDao {
 
             ps.setString(1, mark.getName());
             ps.setString(2, logoUrl);
-            ps.setString(3, mark.getPrivacy());
-            ps.setString(4, mark.getTerms());
-            ps.setInt(5, mark.getSeller_id());
+            ps.setString(3, mark.getDescribe());
+            ps.setString(4, mark.getPrivacy());
+            ps.setString(5, mark.getTerms());
+            ps.setInt(6, mark.getSeller_id());
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
@@ -643,14 +649,15 @@ public class CarDao {
     public boolean addNewTradeMark(TradeMark mark) {
         try {
             String query
-                    = "INSERT INTO trade_mark (name,logo_url,privacy,terms,seller_id) VALUES ( ?,?,?,?,?)";
+                    = "INSERT INTO trade_mark (name,logo_url,describe,privacy,terms,seller_id) VALUES (?, ?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, mark.getName());
             String logoUrls = String.join(",", mark.getUrl_logo());
             ps.setString(2, logoUrls);
-            ps.setString(3, mark.getPrivacy());
-            ps.setString(4, mark.getTerms());
-            ps.setInt(5, mark.getSeller_id());
+            ps.setString(3, mark.getDescribe());
+            ps.setString(4, mark.getPrivacy());
+            ps.setString(5, mark.getTerms());
+            ps.setInt(6, mark.getSeller_id());
             int rowAffected = ps.executeUpdate();
             return rowAffected > 0;
         } catch (SQLException e) {
@@ -661,7 +668,7 @@ public class CarDao {
 
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
-        System.out.println(carDAO.getSellerIDByCarID(1110));
+        System.out.println(carDAO.viewProductForSeller(1012));
     }
 
     public List<String> getCarImages(int carId) {
@@ -779,25 +786,25 @@ public class CarDao {
         return cars;
     }
 
-    public TradeMark viewTradeMark(int id) {
+    public TradeMark viewTradeMarkByID(int id) {
         TradeMark tm = null; // Chỉ cần một đối tượng Car
         String query
-                = "SELECT [trademark_id],[name], [logo_url], [privacy], "
-                + "[terms] FROM [dbo].[trade_mark] WHERE [seller_id] = ?";
+                = "SELECT [name], [logo_url],[describe], [privacy],  "
+                + "[terms] FROM [dbo].[trade_mark] WHERE [trademark_id] = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, id); // Thiết lập giá trị cho tham số car_id
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) { // Chỉ cần một kết quả, không cần dùng while
-                    tm = new TradeMark();
-                    tm.setTrademard_id(rs.getInt("trademark_id"));
                     String logo_url = rs.getString("logo_url");
                     List<String> imageUrls = new ArrayList<>();
                     imageUrls.add(logo_url);
-                    tm.setName(rs.getString("name"));
-                    tm.setUrl_logo(imageUrls);
-                    tm.setPrivacy(rs.getString("privacy"));
-                    tm.setTerms(rs.getString("terms"));
+                    tm = new TradeMark(0,
+                            rs.getString("name"),
+                            imageUrls,
+                            rs.getString("describe"),
+                            rs.getString("privacy"),
+                            rs.getString("terms"));
 
                 }
             }
@@ -807,7 +814,33 @@ public class CarDao {
         return tm; // Trả về đối tượng Car hoặc null nếu không tìm thấy
     }
 
-  
+    public TradeMark viewTradeMark(int id) {
+        TradeMark tm = null; // Chỉ cần một đối tượng Car
+        String query
+                = "SELECT [trademark_id],[name], [logo_url],[describe], [privacy],  "
+                + "[terms] FROM [dbo].[trade_mark] WHERE [seller_id] = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id); // Thiết lập giá trị cho tham số car_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) { // Chỉ cần một kết quả, không cần dùng while
+                    String logo_url = rs.getString("logo_url");
+                    List<String> imageUrls = new ArrayList<>();
+                    imageUrls.add(logo_url);
+                    tm = new TradeMark(rs.getInt("trademark_id"),
+                            rs.getString("name"),
+                            imageUrls,
+                            rs.getString("describe"),
+                            rs.getString("privacy"),
+                            rs.getString("terms"));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tm; // Trả về đối tượng Car hoặc null nếu không tìm thấy
+    }
 
     public int getSellerIDByCarID(int id) {
         int carId = 0; // Khởi tạo giá trị mặc định
@@ -826,4 +859,24 @@ public class CarDao {
         return carId; // Trả về ca
     }
 
+    public int getSellerIDByTmID(int id) {
+        int seller_id = 0; // Khởi tạo giá trị mặc định
+        String query = "SELECT seller_id FROM trade_mark WHERE trademark_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id); // Thiết lập giá trị cho tham số seller_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    seller_id = rs.getInt("seller_id"); // Lấy giá trị car_id từ kết quả truy vấn
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return seller_id; // Trả về ca
+    }
+
+    
+    
+    
 }
