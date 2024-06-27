@@ -79,333 +79,7 @@
         <!-- Loader End -->
 
         <!-- Header Start -->
-        <header class="header-compact header-absolute">
-            <div class="top-nav top-header sticky-header">
-                <div class="container-fluid-lg">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="navbar-top">
-                                <button class="navbar-toggler d-xl-none d-inline navbar-menu-button me-3"
-                                        type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
-                                    <span class="navbar-toggler-icon">
-                                        <i class="fa-solid fa-bars"></i>
-                                    </span>
-                                </button>
-                                <a href="home" class="web-logo nav-logo">
-                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png"
-                                         class="img-fluid blur-up lazyload" alt="">
-                                </a>
-
-                                <div class="middle-box">
-                                    <div class="header-nav-middle">
-                                        <div
-                                            class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
-                                            <div class="offcanvas offcanvas-collapse order-xl-2"
-                                                 id="primaryMenu">
-                                                <div class="offcanvas-header navbar-shadow">
-                                                    <h5>Menu</h5>
-                                                    <button class="btn-close lead" type="button"
-                                                            data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                </div>
-                                                <div class="offcanvas-body">
-                                                    <ul class="navbar-nav">
-                                                        <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle"
-                                                               href="home">Home</a>
-                                                        </li>
-                                                        <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle"
-                                                               href="javascript:void(0)"
-                                                               data-bs-toggle="dropdown">Cateogries</a>
-
-                                                            <ul class="dropdown-menu">
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                       href="product-4-image.html">Product
-                                                                        4 Image</a>
-                                                                </li>
-                                                                <li class="sub-dropdown-hover">
-                                                                    <a href="javascript:void(0)"
-                                                                       class="dropdown-item">Product
-                                                                        Thumbnail</a>
-                                                                    <ul class="sub-menu">
-                                                                        <li>
-                                                                            <a
-                                                                                href="product-left-thumbnail.html">Left
-                                                                                Thumbnail</a>
-                                                                        </li>
-
-                                                                        <li>
-                                                                            <a
-                                                                                href="product-right-thumbnail.html">Right
-                                                                                Thumbnail</a>
-                                                                        </li>
-
-                                                                        <li>
-                                                                            <a
-                                                                                href="product-bottom-thumbnail.html">Bottom
-                                                                                Thumbnail</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-bundle.html"
-                                                                       class="dropdown-item">Product
-                                                                        Bundle</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-slider.html"
-                                                                       class="dropdown-item">Product
-                                                                        Slider</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="product-sticky.html"
-                                                                       class="dropdown-item">Product
-                                                                        Sticky</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-
-
-
-
-
-                                                        <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle"
-                                                               href="javascript:void(0)"
-                                                               data-bs-toggle="dropdown">Categories</a>
-                                                            <ul class="dropdown-menu">
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                       href="seller-become.html">Become a
-                                                                        Seller</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                       href="seller-dashboard.html">Seller
-                                                                        Dashboard</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                       href="seller-detail.html">Seller
-                                                                        Detail</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                       href="seller-detail-2.html">Seller
-                                                                        Detail 2</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                       href="seller-grid.html">Seller
-                                                                        Grid</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="dropdown-item"
-                                                                       href="seller-grid-2.html">Seller Grid
-                                                                        2</a>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <c:if test="${sessionScope.user != null}">
-                                                            <li class="nav-item dropdown new-nav-item">
-                                                                <label class="new-dropdown">New</label>
-                                                                <a class="nav-link dropdown-toggle"
-                                                                   href="javascript:void(0)"
-                                                                   data-bs-toggle="dropdown">Become our
-                                                                    Seller</a>
-                                                                <ul class="dropdown-menu">
-                                                                    <li class="sub-dropdown-hover">
-                                                                        <a class="dropdown-item"
-                                                                           href="javascript:void(0)">Our
-                                                                            Program
-                                                                            <span class="new-text"><i
-                                                                                    class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                                        <ul class="sub-menu">
-                                                                            <li>
-                                                                                <a href="seller"
-                                                                                   style="width: 200px">Sign up
-                                                                                    for the program</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                        </c:if>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="rightside-box">
-                                    <div class="location-box">
-                                        <button class="btn location-button" data-bs-toggle="modal"
-                                                data-bs-target="#locationModal">
-                                            <span class="location-arrow">
-                                                <i data-feather="map-pin"></i>
-                                            </span>
-                                            <span class="locat-name">Your Location</span>
-                                            <i class="fa-solid fa-angle-down"></i>
-                                        </button>
-                                    </div>
-                                    <ul class="right-side-menu">
-                                        <li class="right-side">
-                                            <a href="contact-us.html" class="delivery-login-box">
-                                                <div class="delivery-icon">
-                                                    <i data-feather="phone-call"></i>
-                                                </div>
-                                                <div class="delivery-detail">
-                                                    <h6>24/7 Delivery</h6>
-                                                    <h5>+91 888 104 2340
-                                                    </h5>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <c:if test="${sessionScope.user != null}">
-                                            <li class="right-side">
-                                                <div class="onhover-dropdown header-badge">
-                                                    <button type="button"
-                                                            class="btn p-0 position-relative header-wishlist">
-                                                        <i data-feather="shopping-cart"></i>
-                                                        <span
-                                                            class="position-absolute top-0 start-100 translate-middle badge">2
-                                                            <span class="visually-hidden">unread messages</span>
-                                                        </span>
-                                                    </button>
-
-                                                    <div class="onhover-div">
-                                                        <ul class="cart-list">
-                                                            <li class="product-box-contain">
-                                                                <div class="drop-cart">
-                                                                    <a href="product-left-thumbnail.html"
-                                                                       class="drop-image">
-                                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/1.png"
-                                                                             class="blur-up lazyload" alt="">
-                                                                    </a>
-
-                                                                    <div class="drop-contain">
-                                                                        <a href="product-left-thumbnail.html">
-                                                                            <h5>Fantasy Crunchy Choco Chip
-                                                                                Cookies
-                                                                            </h5>
-                                                                        </a>
-                                                                        <h6><span>1 x</span> $80.58</h6>
-                                                                        <button
-                                                                            class="close-button close_button">
-                                                                            <i class="fa-solid fa-xmark"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li class="product-box-contain">
-                                                                <div class="drop-cart">
-                                                                    <a href="product-left-thumbnail.html"
-                                                                       class="drop-image">
-                                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/2.png"
-                                                                             class="blur-up lazyload" alt="">
-                                                                    </a>
-
-                                                                    <div class="drop-contain">
-                                                                        <a href="product-left-thumbnail.html">
-                                                                            <h5>Peanut Butter Bite Premium
-                                                                                Butter
-                                                                                Cookies 600 g
-                                                                            </h5>
-                                                                        </a>
-                                                                        <h6><span>1 x</span> $25.68</h6>
-                                                                        <button
-                                                                            class="close-button close_button">
-                                                                            <i class="fa-solid fa-xmark"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-
-                                                        <div class="price-box">
-                                                            <h5>Total :</h5>
-                                                            <h4 class="theme-color fw-bold">$106.58</h4>
-                                                        </div>
-
-                                                        <div class="button-group">
-                                                            <a href="cart?user=${user.user_id}"
-                                                               class="btn btn-sm cart-button">View
-                                                                Cart</a>
-                                                            <a href="checkout" class="btn btn-sm cart-button theme-bg-color
-                                                               text-white">Checkout</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </c:if>
-                                        <li class="right-side onhover-dropdown">
-                                            <div class="delivery-login-box">
-                                                <div class="delivery-icon">
-                                                    <i data-feather="user"></i>
-                                                </div>
-                                                <c:if test="${sessionScope.user == null}">
-                                                    <div class="delivery-detail">
-                                                        <h6>Sorry,</h6>
-                                                        <h5>Not logged-In</h5>
-                                                    </div>
-                                                </c:if>
-                                                <c:if test="${sessionScope.user != null}">
-                                                    <c:set var="username"
-                                                           value="${fn:substringBefore(user.email, '@')}" />
-                                                    <div class="delivery-detail">
-                                                        <h6>Hello,</h6>
-                                                        <h5>${username}</h5>
-                                                    </div>
-                                                </c:if>
-                                            </div>
-                                            <c:if test="${sessionScope.user == null}">
-                                                <div class="onhover-div onhover-div-login">
-                                                    <ul class="user-box-name">
-                                                        <li class="product-box-contain">
-                                                            <i></i>
-                                                            <a href="login">Log In</a>
-                                                        </li>
-
-                                                        <li class="product-box-contain">
-                                                            <a href="register">Register</a>
-                                                        </li>
-
-                                                        <li class="product-box-contain">
-                                                            <a href="mail">Forgot Password</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </c:if>
-                                            <c:if test="${sessionScope.user != null}">
-                                                <div class="onhover-div onhover-div-login">
-                                                    <ul class="user-box-name">
-                                                        <li class="product-box-contain">
-                                                            <i></i>
-                                                            <a href="user/dashboard">Dashboard</a>
-                                                        </li>
-
-                                                        <li class="product-box-contain">
-                                                            <a href="cart">Cart</a>
-                                                        </li>
-
-                                                        <li class="product-box-contain">
-                                                            <a href="logout">Logout</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </c:if>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <jsp:include page="header.jsp"></jsp:include>
 
         <!-- Header End -->
 
@@ -482,403 +156,526 @@
         <!-- Home Section End -->
 
         <!-- product section start -->
-        <section class="section-b-space pb-0">
+        <section class="section-b-space shop-section">
             <div class="container-fluid-lg">
                 <div class="row">
-                    <div class="col-xxl-3 col-lg-4 d-none d-lg-block">
-                        <div class="category-menu menu-xl">
-                            <ul>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/svg/sedan.png"
-                                             class="blur-up lazyload" alt="">
-                                        <h5>
-                                            <a href="shop-left-sidebar.html">Cars Categories</a>
-                                        </h5>
+                    <div class="col-custome-3">
+                        <div class="left-box wow fadeInUp">
+                            <div class="shop-left-sidebar">
+                                <div class="back-button">
+                                    <h3><i class="fa-solid fa-arrow-left"></i> Back</h3>
+                                </div>
+
+                                <div class="filter-category">
+                                    <div class="filter-title">
+                                        <h2>Filters</h2>
+                                        <a href="javascript:void(0)">Clear All</a>
                                     </div>
-                                </li>
+                                    <div class="form-floating theme-form-floating-2 search-box">
+                                        <input type="search" class="form-control" id="search"
+                                               placeholder="Search ..">
+                                        <label for="search">Search</label>
+                                    </div>
+                                </div>
 
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-xxl-9 col-lg-8">
-                        <div class="title d-block">
-                            <h2 class="text-theme font-sm">Cars from our platform</h2>
-                            <p>An assistant collects the products from your list</p>
-                        </div>
-                        <div class="alert alert-warning text-center fs-2 noCar" role="alert" style="display: none">
-                            No cars suited your fucking criteria, mate !?
-                        </div>
-                        <div class="row row-cols-xxl-5 row-cols-xl-3 row-cols-md-3 row-cols-2 g-sm-4 g-3 no-arrow
-                             section-b-space">
-
-                            <c:forEach var="cl" items="${carList}">
-                                <div data-name="${cl.name}" class="car-card">
-                                    <div class="product-box product-white-bg wow fadeIn p-0">
-                                        <div class="product-image p-0">
-                                            <a href="home?state=detail&id=${cl.car_id}">
-                                                <c:set var="firstImagePrinted" value="false" />
-                                                <c:forEach items="${carImage}" var="ci">
-                                                    <c:if test="${ci.car_id == cl.car_id}">
-                                                        <c:forEach items="${ci.image_url}" var="obj">
-                                                            <c:if test="${not firstImagePrinted}">
-                                                                <img src="${obj}" alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width:100%; max-height: 100%;">
-                                                                <c:set var="firstImagePrinted" value="true" />
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </c:if> 
-                                                </c:forEach>
+                                <div class="accordion custome-accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne" aria-expanded="true"
+                                                    aria-controls="collapseOne">
+                                                <span>Categories</span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingOne">
+                                            <div class="accordion-body">
 
 
-                                            </a>
-                                            <ul class="product-option" style="
-                                                width: 80%;
-                                                ">
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="View" style="font-size:8px">
-                                                    <a href="home?state=detail&id=${cl.car_id}" data-bs-toggle="modal"
-                                                       data-bs-target="#view">
-                                                        <i data-feather="eye"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Compare" style="font-size:8px">
-                                                    <a href="compare.html">
-                                                        <i data-feather="refresh-cw"></i>
-                                                    </a>
-                                                </li>
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Add to Cart">
-                                                    <c:if test="${sessionScope.user != null}">
-                                                        <form id="form-cart-${cl.car_id}"
-                                                              action="cart?action=addtocart&id_car=${cl.car_id}"
-                                                              method="post">
-                                                        </c:if>
-                                                        <a style="cursor: pointer"
-                                                           onclick="document.getElementById('form-cart-${cl.car_id}').submit()">
-                                                            <i data-feather="shopping-cart"
-                                                               style="font-size: 8px"></i>
-                                                        </a>
-                                                        <c:if test="${sessionScope.user != null}">
-                                                        </form>
-                                                    </c:if>
-
-
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-detail position-relative pt-0 p-3">
-                                            <a href="home?state=detail&id=${cl.car_id}">
-                                                <h6 class="name align-items-center d-flex pt-2" style="font-size:16px">
-                                                    ${cl.name}
-                                                </h6>
-                                            </a>
-
-                                            <c:forEach var="cb" items="${carBrand}">
-                                                <c:if test="${cb.id == cl.brand_id}">
-                                                    <h6 class="sold weight text-content fw-normal mt-0">${cb.name}</h6>
-                                                </c:if>
-                                            </c:forEach>
-                                            <h6 class="sold model_year text-content">${cl.model_year}</h6>
-                                            <h6 class="price theme-color mt-2">$${cl.price}</h6>
-
-                                            <div class="add-to-cart-btn-2 addtocart_btn position-relative">
-                                                <button class="btn addcart-button btn buy-button"><i
-                                                        class="fa-solid fa-plus"></i></button>
+                                                <ul class="category-list custom-padding custom-height">
+                                                    <c:forEach var="cc" items="${carCate}">
+                                                        <li>
+                                                            <div class="form-check ps-0 m-0 category-list-box">
+                                                                <input class="checkbox_animated" type="checkbox" id="cate-${cc.id}">
+                                                                <label class="form-check-label" for="cate-${cc.id}">
+                                                                    <span class="name">${cc.name}</span>
+                                                                    <span class="number">(15)</span>
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    </c:forEach>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- product section end -->
-        <section class=" section-b-space pt-0">
-            <ul class="d-flex justify-content-center pagination-lg">
-                <c:if test="${page.index != 0}">
-                    <li class="page-item">
-                        <a href='${pageContext.request.contextPath}/home?index=0' class="page-link"
-                           style="color: var(--theme-color);"> Home </a>
-                        </>
-                    <li class="page-item">
-                        <a href='${pageContext.request.contextPath}/home?index=${page.index -1}'
-                           class="page-link" style="color: var(--theme-color);">
-                            Previous </a>
-                    </li>
-                </c:if>
-                <c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
-                    <li class="page-item">
-                        <a href='${pageContext.request.contextPath}/home?index=${p}' class="page-link"
-                           style="color: var(--theme-color);"> Page ${p
-                                                                   +1}</a>
-                    </li>
-                </c:forEach>
-                <c:if test="${page.index  != page.totalPage - 1}">
-                    <li class="page-item">
-                        <a href='${pageContext.request.contextPath}/home?index=${page.index+1}'
-                           class="page-link" style="color: var(--theme-color);">
-                            Next</a>
-                    </li>
-                    <li class="page-item">
-                        <a href='${pageContext.request.contextPath}/home?index=${page.totalPage-1}'
-                           class="page-link" style="color: var(--theme-color);"> End </a>
-                    </li>
-                </c:if>
-            </ul>
-        </section>
 
-
-        <!-- Footer Section Start -->
-        <footer class="section-t-space py-3">
-            <div class="container-fluid-lg">
-                <div class="service-section pb-3">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <div class="service-contain py-2">
-                                <div class="service-box">
-                                    <div class="service-image">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/svg/sedan.png"
-                                             class="blur-up lazyload" alt="" />
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                    aria-expanded="false" aria-controls="collapseTwo">
+                                                <span>Brands</span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingTwo">
+                                            <div class="accordion-body">
+                                                <ul class="category-list custom-padding custom-height">
+                                                    <c:forEach var="cb" items="${carBrand}">
+                                                        <li>
+                                                            <div class="form-check ps-0 m-0 category-list-box">
+                                                                <input class="checkbox_animated" type="checkbox" id="brand-${cb.id}">
+                                                                <label class="form-check-label" for="brand-${cb.id}">
+                                                                    <span class="name">${cb.name}</span>
+                                                                    <span class="number">(09)</span>
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    </c:forEach>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="service-detail">
-                                        <h5>Newest Cars</h5>
-                                    </div>
-                                </div>
-
-                                <div class="service-box">
-                                    <div class="service-image">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/svg/delivery.svg"
-                                             class="blur-up lazyload" alt="" />
-                                    </div>
-
-                                    <div class="service-detail">
-                                        <h5>Free Delivery For Order Over $50k</h5>
-                                    </div>
-                                </div>
-
-                                <div class="service-box">
-                                    <div class="service-image">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/svg/discount.svg"
-                                             class="blur-up lazyload" alt="" />
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                <span>Price</span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingThree">
+                                            <div class="accordion-body py-0">
+                                                <div class="range-slider">
+                                                    <input type="text" class="js-range-slider" value="">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="service-detail">
-                                        <h5>Monthly Mega Discounts</h5>
-                                    </div>
-                                </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingSix">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseSix"
+                                                    aria-expanded="false" aria-controls="collapseSix">
+                                                <span>Rating</span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseSix" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingSix">
+                                            <div class="accordion-body">
+                                                <ul class="category-list custom-padding">
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox">
+                                                            <div class="form-check-label">
+                                                                <ul class="rating">
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                </ul>
+                                                                <span class="text-content">(5 Star)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
 
-                                <div class="service-box">
-                                    <div class="service-image">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/svg/market.svg"
-                                             class="blur-up lazyload" alt="" />
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox">
+                                                            <div class="form-check-label">
+                                                                <ul class="rating">
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                </ul>
+                                                                <span class="text-content">(4 Star)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox">
+                                                            <div class="form-check-label">
+                                                                <ul class="rating">
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                </ul>
+                                                                <span class="text-content">(3 Star)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox">
+                                                            <div class="form-check-label">
+                                                                <ul class="rating">
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                </ul>
+                                                                <span class="text-content">(2 Star)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox">
+                                                            <div class="form-check-label">
+                                                                <ul class="rating">
+                                                                    <li>
+                                                                        <i data-feather="star" class="fill"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i data-feather="star"></i>
+                                                                    </li>
+                                                                </ul>
+                                                                <span class="text-content">(1 Star)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="service-detail">
-                                        <h5>Best Price On The Market</h5>
+
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFive">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                                                    aria-expanded="false" aria-controls="collapseFive">
+                                                <span>Cylinders</span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFive" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingFive">
+                                            <div class="accordion-body">
+                                                <ul class="category-list custom-padding custom-height">
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox"
+                                                                   id="flexCheckDefault5">
+                                                            <label class="form-check-label" for="flexCheckDefault5">
+                                                                <span class="name">4</span>
+                                                                <span class="number">(05)</span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox"
+                                                                   id="flexCheckDefault6">
+                                                            <label class="form-check-label" for="flexCheckDefault6">
+                                                                <span class="name">6</span>
+                                                                <span class="number">(02)</span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox"
+                                                                   id="flexCheckDefault7">
+                                                            <label class="form-check-label" for="flexCheckDefault7">
+                                                                <span class="name">8</span>
+                                                                <span class="number">(04)</span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li>
+                                                        <div class="form-check ps-0 m-0 category-list-box">
+                                                            <input class="checkbox_animated" type="checkbox"
+                                                                   id="flexCheckDefault8">
+                                                            <label class="form-check-label" for="flexCheckDefault8">
+                                                                <input type="number" class="js-range-slider" value="" placeholder="Custom">
+                                                            </label>
+                                                        </div>
+                                                    </li>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="main-footer section-b-space section-t-space py-3">
-                    <div class="row g-md-4 g-3">
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="footer-logo">
-                                <div class="theme-logo">
-                                    <a href="index.html">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png"
-                                             class="blur-up lazyload" alt="" />
-                                    </a>
+                    <div class="col-custome-9">
+                        <div class="show-button">
+                            <div class="filter-button-group mt-0">
+                                <div class="filter-button d-inline-block d-lg-none">
+                                    <a><i class="fa-solid fa-filter"></i> Filter Menu</a>
+                                </div>
+                            </div>
+
+                            <div class="top-filter-menu">
+                                <div class="category-dropdown">
+                                    <h5 class="text-content">Sort By :</h5>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                                data-bs-toggle="dropdown">
+                                            <span>Most Popular</span> <i class="fa-solid fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" id="pop" href="javascript:void(0)">Popularity</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="low" href="javascript:void(0)">Low - High
+                                                    Price</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="high" href="javascript:void(0)">High - Low
+                                                    Price</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="rating" href="javascript:void(0)">Average
+                                                    Rating</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="aToz" href="javascript:void(0)">A - Z Order</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="zToa" href="javascript:void(0)">Z - A Order</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="off" href="javascript:void(0)">% Off - Hight To
+                                                    Low</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
 
-                                <div class="footer-logo-contain">
-                                    <p>
-                                        Discover a <b>seamless online car buying experience</b> with unbeatable
-                                        prices,
-                                        extensive selections,
-                                        and
-                                        convenient delivery.
-                                    </p>
-
-                                    <ul class="address">
-                                        <li>
-                                            <i data-feather="home"></i>
-                                            <a href="javascript:void(0)">FPT University
+                                <div class="grid-option d-none d-md-block">
+                                    <ul>
+                                        <li class="three-grid">
+                                            <a href="javascript:void(0)">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-3.svg" class="blur-up lazyload" alt="">
                                             </a>
                                         </li>
-                                        <li>
-                                            <i data-feather="mail"></i>
-                                            <a href="javascript:void(0)">niggawhat@fpt.edu.vn</a>
+                                        <li class="grid-btn d-xxl-inline-block d-none">
+                                            <a href="javascript:void(0)">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-4.svg"
+                                                     class="blur-up lazyload d-lg-inline-block d-none" alt="">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid.svg"
+                                                     class="blur-up lazyload img-fluid d-lg-none d-inline-block" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="list-btn active">
+                                            <a href="javascript:void(0)">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/list.svg" class="blur-up lazyload" alt="">
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <label class="switch">
-                                <input type="checkbox" checked="checked">
-                                <div class="button">
-                                    <div class="light"></div>
-                                    <div class="dots"></div>
-                                    <div class="characters"></div>
-                                    <div class="shine"></div>
-                                    <div class="shadow"></div>
+                        <div
+                            class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section list-style">
+                            <c:forEach var="cl" items="${carList}">
+                                <div data-name="${cl.name}" class="car-card">
+                                    <div class="product-box-3 h-100 wow fadeInUp">
+                                        <div class="product-header">
+                                            <div class="product-image p-1 mb-2 ">
+                                                <a href="home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
+                                                    <c:set var="firstImagePrinted" value="false" />
+                                                    <c:forEach items="${carImage}" var="ci">
+                                                        <c:if test="${ci.car_id == cl.car_id}">
+                                                            <c:forEach items="${ci.image_url}" var="obj">
+                                                                <c:if test="${not firstImagePrinted}">
+                                                                    <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                    <c:set var="firstImagePrinted" value="true" />
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:if> 
+                                                    </c:forEach>
+
+                                                </a>
+
+                                                <ul class="product-option">
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                           data-bs-target="#view">
+                                                            <i data-feather="eye"></i>
+                                                        </a>
+                                                    </li>
+
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                                        <a href="compare.html">
+                                                            <i data-feather="refresh-cw"></i>
+                                                        </a>
+                                                    </li>
+
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                                        <a href="wishlist.html" class="notifi-wishlist">
+                                                            <i data-feather="heart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-footer">
+                                            <div class="product-detail">
+                                                <c:forEach var="cb" items="${carBrand}">
+                                                    <c:if test="${cb.id == cl.brand_id}">
+                                                        <span class="span-name">${cb.name}</span>
+                                                    </c:if>
+                                                </c:forEach>
+                                                <a href="product-left-thumbnail.html">
+                                                    <h5 class="name">${cl.name}</h5>
+                                                </a>
+                                                <p class="text-content mt-1 mb-2 product-content">${cl.description}</p>
+                                                <div class="product-rating mt-2">
+                                                    <ul class="rating">
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star"></i>
+                                                        </li>
+                                                    </ul>
+                                                    <span>(4.0)</span>
+                                                </div>
+                                                <h6 class="unit">${cl.model_year}</h6>
+                                                <h5 class="price"><span class="theme-color">$${cl.price}</span> <del>$${cl.price + 100000}</del>
+                                                </h5>
+                                                <div class="add-to-cart-box bg-white">
+                                                    <c:if test="${not empty sessionScope.user}">
+                                                        <form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=addtocart&item=${cl.car_id}">
+                                                            <button class="btn btn-add-cart addcart-button"  onclick="document.getElementById('form-cart-${cl.car_id}').submit()">Add
+                                                            </button>
+                                                        </form>
+                                                    </c:if>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </label>
+
+                            </c:forEach>
+
                         </div>
 
-                        <div class="col-xl col-lg-2 col-sm-3">
-                            <div class="footer-title">
-                                <h4>Useful Links</h4>
-                            </div>
-
-                            <div class="footer-contain">
-                                <ul>
-                                    <li>
-                                        <a href="index.html" class="text-content">Home</a>
+                        <nav class="custome-pagination">
+                            <ul class="d-flex justify-content-center pagination-md">
+                                <c:if test="${page.index != 0}">
+                                    <li class="page-item">
+                                        <a href='${pageContext.request.contextPath}/home?index=0' class="page-link"
+                                           style="color: var(--theme-color);"> Home </a>
+                                        </>
+                                    <li class="page-item">
+                                        <a href='${pageContext.request.contextPath}/home?index=${page.index -1}'
+                                           class="page-link" style="color: var(--theme-color);">
+                                            Previous </a>
                                     </li>
-                                    <li>
-                                        <a href="shop-left-sidebar.html" class="text-content">Shop</a>
+                                </c:if>
+                                <c:forEach var="p" begin='${page.pageStart}' end='${page.pageEnd}'>
+                                    <li class="page-item">
+                                        <a href='${pageContext.request.contextPath}/home?index=${p}' class="page-link"
+                                           style="color: var(--theme-color);"> Page ${p
+                                                                                   +1}</a>
                                     </li>
-                                    <li>
-                                        <a href="about-us.html" class="text-content">About Us</a>
+                                </c:forEach>
+                                <c:if test="${page.index  != page.totalPage - 1}">
+                                    <li class="page-item">
+                                        <a href='${pageContext.request.contextPath}/home?index=${page.index+1}'
+                                           class="page-link" style="color: var(--theme-color);">
+                                            Next</a>
                                     </li>
-                                    <li>
-                                        <a href="blog-list.html" class="text-content">Blog</a>
+                                    <li class="page-item">
+                                        <a href='${pageContext.request.contextPath}/home?index=${page.totalPage-1}'
+                                           class="page-link" style="color: var(--theme-color);"> End </a>
                                     </li>
-                                    <li>
-                                        <a href="contact-us.html" class="text-content">Contact Us</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-2 col-sm-3">
-                            <div class="footer-title">
-                                <h4>Help Center</h4>
-                            </div>
-
-                            <div class="footer-contain">
-                                <ul>
-                                    <li>
-                                        <a href="order-success.html" class="text-content">Your Order</a>
-                                    </li>
-                                    <li>
-                                        <a href="user-dashboard.html" class="text-content">Your Account</a>
-                                    </li>
-                                    <li>
-                                        <a href="order-tracking.html" class="text-content">Track Order</a>
-                                    </li>
-                                    <li>
-                                        <a href="wishlist" class="text-content">Your Wishlist</a>
-                                    </li>
-                                    <li>
-                                        <a href="search.html" class="text-content">Search</a>
-                                    </li>
-                                    <li>
-                                        <a href="faq.html" class="text-content">FAQ</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="footer-title">
-                                <h4>Contact Us</h4>
-                            </div>
-
-                            <div class="footer-contact">
-                                <ul>
-                                    <li>
-                                        <div class="footer-number">
-                                            <i data-feather="phone"></i>
-                                            <div class="contact-number">
-                                                <h6 class="text-content">Hotline 24/7 :</h6>
-                                                <h5>+91 888 104 2340</h5>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="footer-number">
-                                            <i data-feather="mail"></i>
-                                            <div class="contact-number">
-                                                <h6 class="text-content">Email Address :</h6>
-                                                <h5>apexautos@hotmail.com</h5>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="social-app">
-                                        <h5 class="mb-2 text-content">Download App :</h5>
-                                        <ul>
-                                            <li class="mb-0">
-                                                <a href="https://play.google.com/store/apps" target="_blank">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/playstore.svg"
-                                                         class="blur-up lazyload" alt="" />
-                                                </a>
-                                            </li>
-                                            <li class="mb-0">
-                                                <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/appstore.svg"
-                                                         class="blur-up lazyload" alt="" />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sub-footer section-small-space py-3">
-                    <div class="reserve">
-                        <h6 class="text-content">?2022 ApexAutos All rights reserved</h6>
-                    </div>
-
-                    <div class="payment">
-                        <img src="${pageContext.request.contextPath}/front-end/assets/images/payment/1.png"
-                             class="blur-up lazyload" alt="" />
-                    </div>
-
-                    <div class="social-link">
-                        <h6 class="text-content">Stay connected :</h6>
-                        <ul>
-                            <li>
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="fa-brands fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://in.pinterest.com/" target="_blank">
-                                    <i class="fa-brands fa-pinterest-p"></i>
-                                </a>
-                            </li>
-                        </ul>
+                                </c:if>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-        </footer>
+        </section>
+
+
+
+        <!-- Footer Section Start -->
+         <jsp:include page="footer.jsp"></jsp:include>
         <!-- Footer Section End -->
 
 
@@ -1144,19 +941,19 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
 
         <script>
-                                                            document.getElementById('searchBox').addEventListener('keyup', function () {
-                                                                let filter = this.value.toLowerCase();
-                                                                let carCards = document.querySelectorAll('.car-card');
+                                                                document.getElementById('searchBox').addEventListener('keyup', function () {
+                                                                    let filter = this.value.toLowerCase();
+                                                                    let carCards = document.querySelectorAll('.car-card');
 
-                                                                carCards.forEach(function (card) {
-                                                                    let carName = card.getAttribute('data-name').toLowerCase();
-                                                                    if (carName.includes(filter)) {
-                                                                        card.style.display = 'block';
-                                                                    } else {
-                                                                        card.style.display = 'none';
-                                                                    }
+                                                                    carCards.forEach(function (card) {
+                                                                        let carName = card.getAttribute('data-name').toLowerCase();
+                                                                        if (carName.includes(filter)) {
+                                                                            card.style.display = 'block';
+                                                                        } else {
+                                                                            card.style.display = 'none';
+                                                                        }
+                                                                    });
                                                                 });
-                                                            });
         </script>
     </body>
 

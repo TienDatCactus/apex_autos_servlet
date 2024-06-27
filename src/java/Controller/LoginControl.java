@@ -65,25 +65,16 @@ public class LoginControl extends HttpServlet {
         if (loginResult) {
             userAccount = daou.getUserByEmail(userAccount.getEmail());
             if (userAccount.getPermission_id() == 1) {
-                session.setAttribute("admin", userAccount);
+                session.setAttribute("user", userAccount);
                 response.sendRedirect("admin/dashboard");
-            }
-            if (userAccount.getPermission_id() == 2) {
-
-                List<Car> carList = daoc.viewProductForSeller(userAccount.getUser_id());
-                List<TradeMark> tradeMark = daoc.getTradeMark(userAccount.getUser_id());
-                List<CarImage> imageCar = daoc.getAllImgBySellerID(userAccount.getUser_id());
-                session.setAttribute("imageCar", imageCar);
-                session.setAttribute("tradeMark", tradeMark);
-                session.setAttribute("carList", carList);
-                session.setAttribute("seller", userAccount);
-                response.sendRedirect("seller/dashboard");
-            }
-            if (userAccount.getPermission_id() == 3) {
-
+            } else if (userAccount.getPermission_id() == 2) {
+                session.setAttribute("user", userAccount);
+                response.sendRedirect("home");
+            } else if (userAccount.getPermission_id() == 3) {
+                CarDao dao = new CarDao();
                 List<Address> listAddr = daou.viewAllAddressFor1User(userAccount.getUser_id());
-                
-                
+                List<CartItems> carts = dao.cartItems(userAccount.getUser_id());
+                session.setAttribute("cartItems", carts);
                 session.setAttribute("user", userAccount);
                 session.setAttribute("listAddr", listAddr);
 

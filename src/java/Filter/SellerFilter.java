@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Filter.java to edit this template
@@ -15,31 +16,30 @@ import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
  *
- * @author Tiến_Đạt
+ * @author ADMIN
  */
-public class SessionFilter implements Filter {
-
+public class SellerFilter implements Filter {
+    
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-
-    public SessionFilter() {
-    }
-
+    
+    public SellerFilter() {
+    }    
+    
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("SessionFIlter:DoBeforeProcessing");
+            log("SellerFilter:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -62,12 +62,12 @@ public class SessionFilter implements Filter {
 	    log(buf.toString());
 	}
          */
-    }
-
+    }    
+    
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("SessionFIlter:DoAfterProcessing");
+            log("SellerFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -101,29 +101,52 @@ public class SessionFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        HttpSession session = req.getSession(false);
-
-        String loginURI = req.getContextPath() + "/login";
-
-        boolean loggedIn = session != null && session.getAttribute("user") != null;
-        boolean loginRequest = req.getRequestURI().equals(loginURI);
-        boolean isAdminPage = req.getRequestURI().contains("admin");
-
-        if (loggedIn || loginRequest) {
-            if (isAdminPage) {
-                String role = (String) session.getAttribute("admin");
-                if (role != null && role.equals("admin")) {
-                    chain.doFilter(request, response);
-                } else {
-                    res.sendRedirect(req.getContextPath() + "/home");
-                }
-            } else {
-                chain.doFilter(request, response);
-            }
+        
+        if (debug) {
+            log("SellerFilter:doFilter()");
+        }
+           HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
+        HttpSession session = req.getSession();
+        //kpiem tra xem da dang nhap  ( account da ton tai tren session )
+        UserAccount account = (UserAccount) session.getAttribute("seller");
+        if (account == null) {
+            //chua tung dang nhap
+            resp.sendRedirect(req.getContextPath() + "/login");
+            
         } else {
-            res.sendRedirect(loginURI);
+            //da dang nhap roi
+            //kiem tra xem quyen cua account
+            if (account.getPermission_id()!= 2) {
+                resp.sendRedirect(req.getContextPath() + "/home");
+                
+            }
+        }
+        doBeforeProcessing(request, response);
+        
+        Throwable problem = null;
+        try {
+            chain.doFilter(request, response);
+        } catch (Throwable t) {
+            // If an exception is thrown somewhere down the filter chain,
+            // we still want to execute our after processing, and then
+            // rethrow the problem after that.
+            problem = t;
+            t.printStackTrace();
+        }
+        
+        doAfterProcessing(request, response);
+
+        // If there was a problem, we want to rethrow it if it is
+        // a known type, otherwise log it.
+        if (problem != null) {
+            if (problem instanceof ServletException) {
+                throw (ServletException) problem;
+            }
+            if (problem instanceof IOException) {
+                throw (IOException) problem;
+            }
+            sendProcessingError(problem, response);
         }
     }
 
@@ -146,17 +169,17 @@ public class SessionFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {
+    public void destroy() {        
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {
+    public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {
-                log("SessionFIlter:Initializing filter");
+            if (debug) {                
+                log("SellerFilter:Initializing filter");
             }
         }
     }
@@ -167,27 +190,27 @@ public class SessionFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("SessionFIlter()");
+            return ("SellerFilter()");
         }
-        StringBuffer sb = new StringBuffer("SessionFIlter(");
+        StringBuffer sb = new StringBuffer("SellerFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
     }
-
+    
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);
-
+        String stackTrace = getStackTrace(t);        
+        
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);
+                PrintWriter pw = new PrintWriter(ps);                
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
-                pw.print(stackTrace);
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
+                pw.print(stackTrace);                
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -204,7 +227,7 @@ public class SessionFilter implements Filter {
             }
         }
     }
-
+    
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -218,9 +241,9 @@ public class SessionFilter implements Filter {
         }
         return stackTrace;
     }
-
+    
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);
+        filterConfig.getServletContext().log(msg);        
     }
-
+    
 }

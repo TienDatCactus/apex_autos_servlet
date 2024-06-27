@@ -9159,7 +9159,7 @@ header .onhover-dropdown {
 
 header .onhover-dropdown:hover .onhover-div {
   opacity: 1;
-  top: 50px;
+  top: 38px;
   visibility: visible;
 }
 
@@ -9995,7 +9995,6 @@ header.fixed-header .top-nav {
 
 header .location-box {
   border-radius: 5px;
-  border: 1px solid #ececec;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

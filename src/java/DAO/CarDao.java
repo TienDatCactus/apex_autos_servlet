@@ -4,7 +4,6 @@
  */
 package DAO;
 
-import java.sql.Date;
 import Models.Car;
 import Models.CarBrand;
 import Models.CarCategory;
@@ -17,9 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Tiến_Đạt
@@ -341,6 +338,23 @@ public class CarDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getSellerIDByCarID(int id) {
+        int carId = 0; // Khởi tạo giá trị mặc định
+        String query = "SELECT seller_id FROM car WHERE car_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id); // Thiết lập giá trị cho tham số seller_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    carId = rs.getInt("seller_id"); // Lấy giá trị car_id từ kết quả truy vấn
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return carId; // Trả về ca
     }
 
     public boolean checkExistedBrand(String brand) {
