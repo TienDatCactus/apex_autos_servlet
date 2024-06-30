@@ -102,6 +102,22 @@ public class CarDao {
         }
     }
 
+    public boolean checkExistedItems(int carId) {
+        String sql = "SELECT COUNT(*) FROM [dbo].[cart_items] WHERE car_id = ?;";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, carId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public void addToCart(int user_id, int car_id) {
         String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
         String insertCartQuery = "INSERT INTO cart (user_id) VALUES (?)";
@@ -691,6 +707,7 @@ public class CarDao {
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
         System.out.println(carDAO.CarImageById(69));
+        System.out.println(carDAO.checkExistedItems(69));
     }
 
     public List<String> getCarImages(int carId) {

@@ -81,52 +81,52 @@
         <!-- Header Start -->
         <jsp:include page="header.jsp"></jsp:include>
 
-        <!-- Header End -->
+            <!-- Header End -->
 
-        <!-- mobile fix menu start -->
-        <div class="mobile-menu d-md-none d-block mobile-cart">
-            <ul>
-                <li class="active">
-                    <a href="index.html">
-                        <i class="iconly-Home icli"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
+            <!-- mobile fix menu start -->
+            <div class="mobile-menu d-md-none d-block mobile-cart">
+                <ul>
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="iconly-Home icli"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
 
-                <li class="mobile-category">
-                    <a href="javascript:void(0)">
-                        <i class="iconly-Category icli js-link"></i>
-                        <span>Category</span>
-                    </a>
-                </li>
+                    <li class="mobile-category">
+                        <a href="javascript:void(0)">
+                            <i class="iconly-Category icli js-link"></i>
+                            <span>Category</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="search.html" class="search-box">
-                        <i class="iconly-Search icli"></i>
-                        <span>Search</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="search.html" class="search-box">
+                            <i class="iconly-Search icli"></i>
+                            <span>Search</span>
+                        </a>
+                    </li>
 
 
-                <li>
-                    <a href="cart">
-                        <i class="iconly-Bag-2 icli fly-cate"></i>
-                        <span>Cart</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- mobile fix menu end -->
+                    <li>
+                        <a href="cart">
+                            <i class="iconly-Bag-2 icli fly-cate"></i>
+                            <span>Cart</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- mobile fix menu end -->
 
-        <!-- Home Section Start -->
-        <section class="home-search-full pt-0 overflow-hidden">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slider-animate">
-                            <div>
-                                <div class="home-contain rounded-0 p-0">
-                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/banner/mercedes-g-wagon-usa-yl.jpg"
+            <!-- Home Section Start -->
+            <section class="home-search-full pt-0 overflow-hidden">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="slider-animate">
+                                <div>
+                                    <div class="home-contain rounded-0 p-0">
+                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/banner/mercedes-g-wagon-usa-yl.jpg"
                                          class="img-fluid bg-img blur-up lazyload bg-to" alt="banner">
                                     <div
                                         class="home-detail p-center text-center home-overlay position-relative">
@@ -161,7 +161,7 @@
                 <div class="row">
                     <div class="col-custome-3">
                         <div class="left-box wow fadeInUp">
-                            <div class="shop-left-sidebar">
+                            <div class="shop-left-sidebar custom-height" style="padding-right: 20px;max-height: 550px">
                                 <div class="back-button">
                                     <h3><i class="fa-solid fa-arrow-left"></i> Back</h3>
                                 </div>
@@ -545,8 +545,8 @@
                                 <div data-name="${cl.name}" class="car-card">
                                     <div class="product-box-3 h-100 wow fadeInUp">
                                         <div class="product-header">
-                                            <div class="product-image p-1 mb-2 ">
-                                                <a href="home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
+                                            <div class="product-image p-1 my-2 ">
+                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}" class='copy-ele-${cl.car_id}'>
                                                     <c:set var="firstImagePrinted" value="false" />
                                                     <c:forEach items="${carImage}" var="ci">
                                                         <c:if test="${ci.car_id == cl.car_id}">
@@ -570,20 +570,26 @@
                                                     </li>
 
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                        <a href="compare.html">
+                                                        <a >
                                                             <i data-feather="refresh-cw"></i>
                                                         </a>
                                                     </li>
 
-                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                                        <a href="wishlist.html" class="notifi-wishlist">
-                                                            <i data-feather="heart"></i>
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
+                                                        <a style="cursor: pointer" class="notifi-wishlist" onclick="(() => {
+                                                                    let element = document.querySelector('.copy-ele-${cl.car_id}');
+                                                                    if (element) {
+                                                                        console.log(element.href)
+                                                                        navigator.clipboard.writeText(element.href);
+                                                                    }
+                                                                })()">
+                                                            <i data-feather="clipboard"></i>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="product-footer">
+                                        <div class="product-footer px-3">
                                             <div class="product-detail">
                                                 <c:forEach var="cb" items="${carBrand}">
                                                     <c:if test="${cb.id == cl.brand_id}">
@@ -617,14 +623,15 @@
                                                 <h6 class="unit">${cl.model_year}</h6>
                                                 <h5 class="price"><span class="theme-color">$${cl.price}</span> <del>$${cl.price + 100000}</del>
                                                 </h5>
-                                                <div class="add-to-cart-box bg-white">
-                                                    <c:if test="${not empty sessionScope.user}">
-                                                        <form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=addtocart&item=${cl.car_id}">
-                                                            <button class="btn btn-add-cart addcart-button"  onclick="document.getElementById('form-cart-${cl.car_id}').submit()">Add
+                                                <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
+                                                    <div class="add-to-cart-box">
+                                                        <form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=add&item=${cl.car_id}">
+                                                            <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="document.getElementById('form-cart-${cl.car_id}').submit()">Add
                                                             </button>
                                                         </form>
-                                                    </c:if>
-                                                </div>
+                                                    </div>
+                                                </c:if>
+
                                             </div>
                                         </div>
                                     </div>
@@ -634,7 +641,7 @@
 
                         </div>
 
-                        <nav class="custome-pagination">
+                        <nav class="custom-pagination">
                             <ul class="d-flex justify-content-center pagination-md">
                                 <c:if test="${page.index != 0}">
                                     <li class="page-item">
@@ -675,119 +682,119 @@
 
 
         <!-- Footer Section Start -->
-         <jsp:include page="footer.jsp"></jsp:include>
-        <!-- Footer Section End -->
+        <jsp:include page="footer.jsp"></jsp:include>
+            <!-- Footer Section End -->
 
 
 
-        <!-- Location Modal Start -->
-        <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
-                        <p class="mt-1 text-content">Enter your address and we will specify the offer for your
-                            area.
-                        </p>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="location-list">
-                            <div class="search-input">
-                                <input type="search" class="form-control" placeholder="Search Your Area">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+            <!-- Location Modal Start -->
+            <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                            <p class="mt-1 text-content">Enter your address and we will specify the offer for your
+                                area.
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="location-list">
+                                <div class="search-input">
+                                    <input type="search" class="form-control" placeholder="Search Your Area">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+
+                                <div class="disabled-box">
+                                    <h6>Select a Location</h6>
+                                </div>
+
+                                <ul class="location-select custom-height">
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Alabama</h6>
+                                            <span>Min: $130</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Arizona</h6>
+                                            <span>Min: $150</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>California</h6>
+                                            <span>Min: $110</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Colorado</h6>
+                                            <span>Min: $140</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Florida</h6>
+                                            <span>Min: $160</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Georgia</h6>
+                                            <span>Min: $120</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Kansas</h6>
+                                            <span>Min: $170</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Minnesota</h6>
+                                            <span>Min: $120</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>New York</h6>
+                                            <span>Min: $110</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Washington</h6>
+                                            <span>Min: $130</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-
-                            <div class="disabled-box">
-                                <h6>Select a Location</h6>
-                            </div>
-
-                            <ul class="location-select custom-height">
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Alabama</h6>
-                                        <span>Min: $130</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Arizona</h6>
-                                        <span>Min: $150</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>California</h6>
-                                        <span>Min: $110</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Colorado</h6>
-                                        <span>Min: $140</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Florida</h6>
-                                        <span>Min: $160</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Georgia</h6>
-                                        <span>Min: $120</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Kansas</h6>
-                                        <span>Min: $170</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Minnesota</h6>
-                                        <span>Min: $120</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>New York</h6>
-                                        <span>Min: $110</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Washington</h6>
-                                        <span>Min: $130</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Location Modal End -->
+            <!-- Location Modal End -->
 
-        <!-- Cookie Bar Box Start -->
-        <div class="cookie-bar-box">
-            <div class="cookie-box">
-                <div class="cookie-image">
-                    <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png"
+            <!-- Cookie Bar Box Start -->
+            <div class="cookie-bar-box">
+                <div class="cookie-box">
+                    <div class="cookie-image">
+                        <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png"
                          class="blur-up lazyload" alt="">
                     <h2>Cookies!</h2>
                 </div>
@@ -804,86 +811,20 @@
         </div>
         <!-- Cookie Bar Box End -->
 
-        <!-- Deal Box Modal Start -->
-        <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div>
-                            <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
-                            <p class="mt-1 text-content">Recommended deals for you.</p>
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="deal-offer-box">
-                            <ul class="deal-offer-list">
-                                <li class="list-1">
-                                    <div class="deal-offer-contain">
-                                        <a href="shop-left-sidebar.html" class="deal-image">
-                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/10.png"
-                                                 class="blur-up lazyload" alt="">
-                                        </a>
 
-                                        <a href="shop-left-sidebar.html" class="deal-contain">
-                                            <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                            <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                        </a>
-                                    </div>
-                                </li>
-
-                                <li class="list-2">
-                                    <div class="deal-offer-contain">
-                                        <a href="shop-left-sidebar.html" class="deal-image">
-                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/11.png"
-                                                 class="blur-up lazyload" alt="">
-                                        </a>
-
-                                        <a href="shop-left-sidebar.html" class="deal-contain">
-                                            <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                            <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                        </a>
-                                    </div>
-                                </li>
-
-                                <li class="list-3">
-                                    <div class="deal-offer-contain">
-                                        <a href="shop-left-sidebar.html" class="deal-image">
-                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/12.png"
-                                                 class="blur-up lazyload" alt="">
-                                        </a>
-
-                                        <a href="shop-left-sidebar.html" class="deal-contain">
-                                            <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                            <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                        </a>
-                                    </div>
-                                </li>
-
-                                <li class="list-1">
-                                    <div class="deal-offer-contain">
-                                        <a href="shop-left-sidebar.html" class="deal-image">
-                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/13.png"
-                                                 class="blur-up lazyload" alt="">
-                                        </a>
-
-                                        <a href="shop-left-sidebar.html" class="deal-contain">
-                                            <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                            <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
                 </div>
             </div>
         </div>
-        <!-- Deal Box Modal End -->
-
         <!-- Tap to top start -->
         <div class="theme-option">
             <div class="back-to-top">
@@ -893,6 +834,7 @@
             </div>
         </div>
         <!-- Tap to top end -->
+
 
         <!-- Bg overlay Start -->
         <div class="bg-overlay"></div>
@@ -944,7 +886,6 @@
                                                                 document.getElementById('searchBox').addEventListener('keyup', function () {
                                                                     let filter = this.value.toLowerCase();
                                                                     let carCards = document.querySelectorAll('.car-card');
-
                                                                     carCards.forEach(function (card) {
                                                                         let carName = card.getAttribute('data-name').toLowerCase();
                                                                         if (carName.includes(filter)) {
@@ -955,6 +896,8 @@
                                                                     });
                                                                 });
         </script>
+
+
     </body>
 
 </html>

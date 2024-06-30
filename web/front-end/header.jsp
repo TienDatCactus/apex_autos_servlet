@@ -157,7 +157,7 @@
                                         </div>
                                     </a>
                                 </li>
-                                <c:if test="${sessionScope.user != null}">
+                                <c:if test="${sessionScope.user != null && user.permission_id == 3}">
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge ">
                                             <button type="button button-83"
@@ -170,8 +170,10 @@
                                             </button>
 
                                             <div class="onhover-div">
-                                                <ul class="cart-list">
+                                                <ul class="cart-list custom-height">
                                                     <c:forEach var="ci" items="${cartItems}">
+                                                        <c:set var="total" value="${0}"/>
+                                                        <c:set var="total" value="${total + ci.car.price}" />
                                                         <li class="product-box-contain w-100">
                                                             <div class="drop-cart">
                                                                 <a href="home?state=detail&id=${ci.car.car_id}"
@@ -181,7 +183,7 @@
                                                                         <c:if test="${ci.car.car_id == cm.car_id}">
                                                                             <c:forEach items="${cm.image_url}" var="obj">
                                                                                 <c:if test="${not firstImagePrinted}">
-                                                                                    <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded p-0"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                                    <img src="${obj}" alt="Car Image" class="img-fluid lazyload rounded p-0"  style="object-fit: contain;max-width:100%; max-height: 100%;">
                                                                                     <c:set var="firstImagePrinted" value="true" />
                                                                                 </c:if>
                                                                             </c:forEach>
@@ -194,9 +196,9 @@
                                                                         <h5>${ci.car.name}
                                                                         </h5>
                                                                     </a>
-                                                                    <h6 style="position: absolute"><span>1 x</span> $${ci.car.price}</h6>
-                                                                    <form action="cart?action=delete&item_id=${ci.item_id}" id="form-del-${ci.item_id}" method="post">
-                                                                        <button class="close-button close_button">
+                                                                    <h6>$${ci.car.price}</h6>
+                                                                    <form action="home?state=cart&action=delete&item=${ci.item_id}&index=header" id="form-del-${ci.item_id}" method="post">
+                                                                        <button class="close-button close_button " style="position: absolute;right: 10px;top:8px">
                                                                             <i class="fa-solid fa-xmark"></i>
                                                                         </button>
                                                                     </form>
@@ -209,7 +211,7 @@
 
                                                 <div class="price-box">
                                                     <h5>Total :</h5>
-                                                    <h4 class="theme-color fw-bold">$106.58</h4>
+                                                    <h4 class="theme-color fw-bold">$${total}</h4>
                                                 </div>
 
                                                 <div class="button-group">
@@ -289,3 +291,62 @@
         </div>
     </div>
 </header>
+<!-- Deal Box Modal Start -->
+<div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
+                    <p class="mt-1 text-content">Recommended deals for you.</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="deal-offer-box">
+                    <ul class="deal-offer-list">
+                        <c:forEach var="cl" items="${carList}" begin="${beginIndex}" end="${endIndex}">
+                            <li class="list-1">
+                                <div class="deal-offer-contain">
+                                    <a href="shop-left-sidebar.html" class="deal-image">
+                                        <c:set var="firstImagePrinted" value="false" />
+                                        <c:forEach items="${carImage}" var="ci">
+                                            <c:if test="${ci.car_id == cl.car_id}">
+                                                <c:forEach items="${ci.image_url}" var="obj">
+                                                    <c:if test="${not firstImagePrinted}">
+                                                        <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                        <c:set var="firstImagePrinted" value="true" />
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if> 
+                                        </c:forEach>
+
+                                    </a>
+
+                                    <a href="home?state=detail&id=${cl.car_id}" class="deal-contain">
+                                        <h5 class="my-1">${cl.name}</h5>
+                                        <c:forEach var="cc" items="${carCate}">
+                                            <c:if test="${cl.category_id == cc.id}">
+                                                <p class="my-1 text-warning">${cc.name}</p>
+                                            </c:if>
+                                        </c:forEach></h6>
+                                        <h6 class="my-1">$${cl.price} <del>$${cl.price + 10000}</del> <c:forEach var="cb" items="${carBrand}">
+                                                <c:if test="${cl.brand_id == cb.id}">
+                                                    <span>${cb.name}</span>
+                                                </c:if>
+                                            </c:forEach></h6>
+
+                                    </a>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Deal Box Modal End -->

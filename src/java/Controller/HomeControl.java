@@ -52,14 +52,12 @@ public class HomeControl extends HttpServlet {
                     .forward(request, response);
         } else if ("cart".equals(state)) {
             List<CarImage> carImage = dao.viewImageForCar();
-            request.setAttribute("carImage", carImage);
             List<CartItems> carts = dao.cartItems(ua.getUser_id());
+            request.setAttribute("carImage", carImage);
             session.setAttribute("cartItems", carts);
-            if (carts.isEmpty()) {
-                response.sendRedirect("home");
-            } else {
-                request.getRequestDispatcher("/front-end/cart.jsp").forward(request, response);
-            }
+            request
+                    .getRequestDispatcher("/front-end/cart.jsp")
+                    .forward(request, response);
         } else {
             CarDao dao = new CarDao();
             List<Car> carList = dao.viewProducts();
@@ -69,7 +67,7 @@ public class HomeControl extends HttpServlet {
             } catch (Exception e) {
                 index = 0;
             }
-            int nrpp = 9;
+            int nrpp = 6;
             Paging p = new Paging(carList.size(), nrpp, index);
             p.calc();
             List<Car> carsOnCurrentPage = carList.subList(p.getBegin(), p.getEnd());
@@ -99,40 +97,48 @@ public class HomeControl extends HttpServlet {
         UserAccount ua = (UserAccount) session.getAttribute("user");
         String action = request.getParameter("action");
         if ("cart".equals(state)) {
+            String index = request.getParameter("index");
             if ("add".equals(action)) {
                 String item = request.getParameter("item");
                 try {
                     int itemId = Integer.parseInt(item);
-                    dao.addToCart(ua.getUser_id(), itemId);
-                    success = "Add item to cart successfully !";
+                    if (dao.checkExistedItems(itemId)) {
+                        error = "You cannot buy multiple cars at once !";
+                    } else {
+                        dao.addToCart(ua.getUser_id(), itemId);
+                        success = "Add item to cart successfully !";
+                    }
                 } catch (Exception e) {
                     error = "Unable to add item to cart ! Error code : " + e.getMessage() + " !";
                 }
                 response.sendRedirect("home");
-
             } else if ("delete".equals(action)) {
                 String item = request.getParameter("item");
-                List<CartItems> carts = dao.cartItems(ua.getUser_id());
-
                 try {
-                    int itemId = Integer.parseInt(item);
-                    dao.deleteFromCart(itemId);
-                    success = "Delete item from cart successfully !";
+                    if (item != null && !item.isEmpty()) {
+                        int itemId = Integer.parseInt(item);
+                        dao.deleteFromCart(itemId);
+                        success = "Delete item from cart successfully !";
+                    } else {
+                        error = "Invalid item ID !";
+                    }
                 } catch (Exception e) {
-                    error = "Unable to delete item from cart ! Error code : " + e.getMessage() + " !";
+                    error = "Unable to delete item from cart ! Error: " + e.getMessage() + " !";
                 }
-                if (carts.isEmpty()) {
+                List<CartItems> updatedCarts = dao.cartItems(ua.getUser_id());
+                if (updatedCarts.isEmpty()) {
                     response.sendRedirect("home");
                 }
+                session.setAttribute("successMsg", success);
+                session.setAttribute("errorMsg", error);
+                if ("header".equals(index)) {
+                    response.sendRedirect("home");
+                } else if ("cart".equals(index)) {
+                    response.sendRedirect("cart");
+                }
+
             }
-            request.setAttribute("successMsg", success);
-            request.setAttribute("errorMsg", error);
-            doGet(request, response);
         }
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    } // </editor-fold>
 }

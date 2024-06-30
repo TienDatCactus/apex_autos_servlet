@@ -61,89 +61,98 @@
 
         <!-- Header Start -->
         <jsp:include page="pre-header.jsp"></jsp:include>
-        <!-- Header End -->
+            <!-- Header End -->
 
-        <!-- mobile fix menu start -->
-        <div class="mobile-menu d-md-none d-block mobile-cart">
-            <ul>
-                <li class="active">
-                    <a href="index.html">
-                        <i class="iconly-Home icli"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
+            <!-- mobile fix menu start -->
+            <div class="mobile-menu d-md-none d-block mobile-cart">
+                <ul>
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="iconly-Home icli"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
 
-                <li class="mobile-category">
-                    <a href="javascript:void(0)">
-                        <i class="iconly-Category icli js-link"></i>
-                        <span>Category</span>
-                    </a>
-                </li>
+                    <li class="mobile-category">
+                        <a href="javascript:void(0)">
+                            <i class="iconly-Category icli js-link"></i>
+                            <span>Category</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="search.html" class="search-box">
-                        <i class="iconly-Search icli"></i>
-                        <span>Search</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="search.html" class="search-box">
+                            <i class="iconly-Search icli"></i>
+                            <span>Search</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="wishlist.html" class="notifi-wishlist">
-                        <i class="iconly-Heart icli"></i>
-                        <span>My Wish</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="wishlist.html" class="notifi-wishlist">
+                            <i class="iconly-Heart icli"></i>
+                            <span>My Wish</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="cart.html">
-                        <i class="iconly-Bag-2 icli fly-cate"></i>
-                        <span>Cart</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- mobile fix menu end -->
+                    <li>
+                        <a href="cart.html">
+                            <i class="iconly-Bag-2 icli fly-cate"></i>
+                            <span>Cart</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- mobile fix menu end -->
 
-        <!-- Breadcrumb Section Start -->
-        <section class="breadscrumb-section pt-0">
-            <div class="container-fluid-lg">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadscrumb-contain">
-                            <h2>Cart</h2>
-                            <nav>
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item">
-                                        <a href="index.html">
-                                            <i class="fa-solid fa-house"></i>
-                                        </a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
-                                </ol>
-                            </nav>
+            <!-- Breadcrumb Section Start -->
+            <section class="breadscrumb-section pt-0">
+                <div class="container-fluid-lg">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadscrumb-contain">
+                                <h2>Cart</h2>
+                                <nav>
+                                    <ol class="breadcrumb mb-0">
+                                        <li class="breadcrumb-item">
+                                            <a href="index.html">
+                                                <i class="fa-solid fa-house"></i>
+                                            </a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                                    </ol>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Breadcrumb Section End -->
+            </section>
+            <!-- Breadcrumb Section End -->
 
-        <!-- Cart Section Start -->
-        <section class="cart-section section-b-space">
-            <div class="container-fluid-lg">
-                <div class="row g-sm-5 g-3">
-                    <div class="col-xxl-9">
-                        <div class="cart-table">
-                            <div class="table-responsive-xl">
-                                <table class="table">
-                                    <tbody>
+            <!-- Cart Section Start -->
+            <section class="cart-section section-b-space">
+                <div class="container-fluid-lg">
+                    <div class="row g-sm-5 g-3">
+                        <div class="col-xxl-9">
+                            <div class="cart-table">
+                                <div class="table-responsive-xl">
+                                    <table class="table">
+                                        <tbody class="custom-height">
                                         <c:forEach var="ci" items="${cartItems}">
                                             <tr class="product-box-contain">
                                                 <td class="product-detail">
                                                     <div class="product border-0">
                                                         <a href="product-left-thumbnail.html" class="product-image">
-                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/1.png"
-                                                                 class="img-fluid blur-up lazyload" alt="">
+                                                            <c:set var="firstImagePrinted" value="false" />
+                                                            <c:forEach items="${carImage}" var="cm">
+                                                                <c:if test="${ci.car.car_id == cm.car_id}">
+                                                                    <c:forEach items="${cm.image_url}" var="obj">
+                                                                        <c:if test="${not firstImagePrinted}">
+                                                                            <img src="${obj}" alt="Car Image" class="img-fluid lazyload rounded m-2"  style="object-fit: cover;width:100%; max-height: 100%;">
+                                                                            <c:set var="firstImagePrinted" value="true" />
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </c:if> 
+                                                            </c:forEach>
                                                         </a>
                                                         <div class="product-detail">
                                                             <ul>
@@ -210,23 +219,23 @@
                                                 <td class="quantity">
                                                     <h4 class="table-title text-content ">
                                                         Qty</h4>
-                                                    <div style="width: 80px"
+                                                    <div style="width: 70px"
                                                          <div class="cart_qty">
-                                                        <input class="form-control input-number qty-input "
-                                                               type="text" name="quantity" value="1" readonly style="height: 42.127778px;">
-                                                    </div>
+                                                            <input class="form-control input-number qty-input "
+                                                                   type="text" name="quantity" value="1" readonly style="height: 42.127778px;">
+                                                        </div>
                                                     </div>
                                                 </td>
 
 
                                                 <td class="subtotal">
                                                     <h4 class="table-title text-content">Total</h4>
-                                                    <h5 class="pricee">${ci.car.price}</h5>
+                                                    <h5 class="pricee">$${ci.car.price}</h5>
                                                 </td>
 
                                                 <td class="save-remove">
                                                     <h4 class="table-title text-content">Action</h4>
-                                                    <form action="home?state=cart&action=delete&item=${ci.car.car_id}" id="form-del-${ci.item_id}" method="post">
+                                                    <form action="home?state=cart&action=delete&item=${ci.car.car_id}&index=cart" id="form-del-${ci.item_id}" method="post">
                                                         <input type="submit" value="Remove" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
                                                     </form>
                                                 </td>
@@ -291,126 +300,126 @@
         <!-- Cart Section End -->
 
         <!-- Footer Section Start -->
-         <jsp:include page="footer.jsp"></jsp:include>
-        <!-- Footer Section End -->
+        <jsp:include page="footer.jsp"></jsp:include>
+            <!-- Footer Section End -->
 
-        <!-- Location Modal Start -->
-        <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
-                        <p class="mt-1 text-content">Enter your address and we will specify the offer for your
-                            area.</p>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="location-list">
-                            <div class="search-input">
-                                <input type="search" class="form-control" placeholder="Search Your Area">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+            <!-- Location Modal Start -->
+            <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                            <p class="mt-1 text-content">Enter your address and we will specify the offer for your
+                                area.</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="location-list">
+                                <div class="search-input">
+                                    <input type="search" class="form-control" placeholder="Search Your Area">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+
+                                <div class="disabled-box">
+                                    <h6>Select a Location</h6>
+                                </div>
+
+                                <ul class="location-select custom-height">
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Alabama</h6>
+                                            <span>Min: $130</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Arizona</h6>
+                                            <span>Min: $150</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>California</h6>
+                                            <span>Min: $110</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Colorado</h6>
+                                            <span>Min: $140</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Florida</h6>
+                                            <span>Min: $160</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Georgia</h6>
+                                            <span>Min: $120</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Kansas</h6>
+                                            <span>Min: $170</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Minnesota</h6>
+                                            <span>Min: $120</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>New York</h6>
+                                            <span>Min: $110</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Washington</h6>
+                                            <span>Min: $130</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-
-                            <div class="disabled-box">
-                                <h6>Select a Location</h6>
-                            </div>
-
-                            <ul class="location-select custom-height">
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Alabama</h6>
-                                        <span>Min: $130</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Arizona</h6>
-                                        <span>Min: $150</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>California</h6>
-                                        <span>Min: $110</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Colorado</h6>
-                                        <span>Min: $140</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Florida</h6>
-                                        <span>Min: $160</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Georgia</h6>
-                                        <span>Min: $120</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Kansas</h6>
-                                        <span>Min: $170</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Minnesota</h6>
-                                        <span>Min: $120</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>New York</h6>
-                                        <span>Min: $110</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Washington</h6>
-                                        <span>Min: $130</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <!-- Tap to top start -->
-        <div class="theme-option">
-            <div class="back-to-top">
-                <a id="back-to-top" href="#">
-                    <i class="fas fa-chevron-up"></i>
-                </a>
+            <!-- Tap to top start -->
+            <div class="theme-option">
+                <div class="back-to-top">
+                    <a id="back-to-top" href="#">
+                        <i class="fas fa-chevron-up"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-        <!-- Tap to top end -->
-        <!-- Bg overlay Start -->
-        <div class="bg-overlay"></div>
-        <!-- Bg overlay End -->
+            <!-- Tap to top end -->
+            <!-- Bg overlay Start -->
+            <div class="bg-overlay"></div>
+            <!-- Bg overlay End -->
 
-        <!-- latest jquery-->
-        <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
+            <!-- latest jquery-->
+            <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
 
         <!-- jquery ui-->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-ui.min.js"></script>
@@ -437,19 +446,19 @@
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script>
-                                               window.onload = updateSubTotal();
+                                            window.onload = updateSubTotal();
 
-                                               function updateSubTotal() {
-                                                   let totalPriceOfEachProduct = document.querySelectorAll('h5.pricee');
-                                                   let totalCart = 0;
-                                                   totalPriceOfEachProduct.forEach(e => {
-                                                       let totalPrice = parseFloat(e.textContent.trim());
-                                                       totalCart += totalPrice;
-                                                   });
-                                                   document.querySelector('#subTotal').innerHTML = totalCart;
-                                                   document.querySelector('#totalprice').innerHTML = totalCart;
+                                            function updateSubTotal() {
+                                                let totalPriceOfEachProduct = document.querySelectorAll('h5.pricee');
+                                                let totalCart = 0;
+                                                totalPriceOfEachProduct.forEach(e => {
+                                                    let totalPrice = parseFloat(e.textContent.trim());
+                                                    totalCart += totalPrice;
+                                                });
+                                                document.querySelector('#subTotal').innerHTML = totalCart;
+                                                document.querySelector('#totalprice').innerHTML = totalCart;
 
-                                               }
+                                            }
         </script>
     </body>
 
