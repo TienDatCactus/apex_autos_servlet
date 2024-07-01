@@ -1359,7 +1359,7 @@
 
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
-
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
 
 
     </body>

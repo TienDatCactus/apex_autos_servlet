@@ -133,118 +133,130 @@
                 <div class="container-fluid-lg">
                     <div class="row g-sm-5 g-3">
                         <div class="col-xxl-9">
-                            <div class="cart-table">
-                                <div class="table-responsive-xl">
-                                    <table class="table">
-                                        <tbody class="custom-height">
-                                        <c:forEach var="ci" items="${cartItems}">
-                                            <tr class="product-box-contain">
-                                                <td class="product-detail">
-                                                    <div class="product border-0">
-                                                        <a href="product-left-thumbnail.html" class="product-image">
-                                                            <c:set var="firstImagePrinted" value="false" />
-                                                            <c:forEach items="${carImage}" var="cm">
-                                                                <c:if test="${ci.car.car_id == cm.car_id}">
-                                                                    <c:forEach items="${cm.image_url}" var="obj">
-                                                                        <c:if test="${not firstImagePrinted}">
-                                                                            <img src="${obj}" alt="Car Image" class="img-fluid lazyload rounded m-2"  style="object-fit: cover;width:100%; max-height: 100%;">
-                                                                            <c:set var="firstImagePrinted" value="true" />
-                                                                        </c:if>
+                        <c:choose>
+                            <c:when test="${empty cartItems}">
+                                <div class="alert alert-warning d-flex justify-content-center" style="font-size: 32px " role="alert">
+                                    Your cart is empty !
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="cart-table">
+                                    <div class="table-responsive-xl">
+
+                                        <table class="table">
+                                            <tbody class="custom-height">
+
+                                                <c:forEach var="ci" items="${cartItems}">
+                                                    <tr class="product-box-contain">
+                                                        <td class="product-detail">
+                                                            <div class="product border-0">
+                                                                <a href="product-left-thumbnail.html" class="product-image">
+                                                                    <c:set var="firstImagePrinted" value="false" />
+                                                                    <c:forEach items="${carImage}" var="cm">
+                                                                        <c:if test="${ci.car.car_id == cm.car_id}">
+                                                                            <c:forEach items="${cm.image_url}" var="obj">
+                                                                                <c:if test="${not firstImagePrinted}">
+                                                                                    <img src="${obj}" alt="Car Image" class="img-fluid lazyload rounded m-2"  style="object-fit: cover;width:100%; max-height: 100%;">
+                                                                                    <c:set var="firstImagePrinted" value="true" />
+                                                                                </c:if>
+                                                                            </c:forEach>
+                                                                        </c:if> 
                                                                     </c:forEach>
-                                                                </c:if> 
-                                                            </c:forEach>
-                                                        </a>
-                                                        <div class="product-detail">
-                                                            <ul>
-                                                                <li class="name">
-                                                                    <a href="product-left-thumbnail.html">${ci.car.name}</a>
-                                                                </li>
+                                                                </a>
+                                                                <div class="product-detail">
+                                                                    <ul>
+                                                                        <li class="name">
+                                                                            <a href="product-left-thumbnail.html">${ci.car.name}</a>
+                                                                        </li>
 
-                                                                <li class="text-content"><span
-                                                                        class="text-title">Brand:</span> ${ci.car.brand_id}</li>
+                                                                        <li class="text-content"><span
+                                                                                class="text-title">Brand:</span> ${ci.car.brand_id}</li>
 
-                                                                <li class="text-content"><span
-                                                                        class="text-title">Category</span> - ${ci.car.category_id}
-                                                                </li>
+                                                                        <li class="text-content"><span
+                                                                                class="text-title">Category</span> - ${ci.car.category_id}
+                                                                        </li>
 
-                                                                <li>
-                                                                    <h5 class="text-content d-inline-block">Price :
-                                                                    </h5>
-                                                                    <span>$${ci.car.price}</span>
-                                                                    <span class="text-content">$${ci.car.price  + 10000}</span>
-                                                                </li>
+                                                                        <li>
+                                                                            <h5 class="text-content d-inline-block">Price :
+                                                                            </h5>
+                                                                            <span>$${ci.car.price}</span>
+                                                                            <span class="text-content">$${ci.car.price  + 10000}</span>
+                                                                        </li>
 
-                                                                <li>
-                                                                    <h5 class="saving theme-color">Saving : $20.68
-                                                                    </h5>
-                                                                </li>
+                                                                        <li>
+                                                                            <h5 class="saving theme-color">Saving : $20.68
+                                                                            </h5>
+                                                                        </li>
 
-                                                                <li class="quantity-price-box">
-                                                                    <div class="cart_qty">
-                                                                        <div class="input-group">
-                                                                            <button type="button"
-                                                                                    class="btn qty-left-minus"
-                                                                                    data-type="minus" data-field="">
-                                                                                <i class="fa fa-minus ms-0"
-                                                                                   aria-hidden="true"></i>
-                                                                            </button>
-                                                                            <input
-                                                                                class="form-control input-number qty-input"
-                                                                                type="text" name="quantity"
-                                                                                value="0">
-                                                                            <button type="button"
-                                                                                    class="btn qty-right-plus"
-                                                                                    data-type="plus" data-field="">
-                                                                                <i class="fa fa-plus ms-0"
-                                                                                   aria-hidden="true"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
+                                                                        <li class="quantity-price-box">
+                                                                            <div class="cart_qty">
+                                                                                <div class="input-group">
+                                                                                    <button type="button"
+                                                                                            class="btn qty-left-minus"
+                                                                                            data-type="minus" data-field="">
+                                                                                        <i class="fa fa-minus ms-0"
+                                                                                           aria-hidden="true"></i>
+                                                                                    </button>
+                                                                                    <input
+                                                                                        class="form-control input-number qty-input"
+                                                                                        type="text" name="quantity"
+                                                                                        value="0">
+                                                                                    <button type="button"
+                                                                                            class="btn qty-right-plus"
+                                                                                            data-type="plus" data-field="">
+                                                                                        <i class="fa fa-plus ms-0"
+                                                                                           aria-hidden="true"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
 
-                                                                <li>
-                                                                    <h5>Total: ${ci.car.price}</h5>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                                        <li>
+                                                                            <h5>Total: ${ci.car.price}</h5>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </td>
 
-                                                <td class="price">
-                                                    <h4 class="table-title text-content">Price</h4>
-                                                    <h5>${ci.car.price}<del class="text-content">${ci.car.price}</del></h5>
-                                                    <h6 class="theme-color">You Save : 0</h6>
-                                                </td>
+                                                        <td class="price">
+                                                            <h4 class="table-title text-content">Price</h4>
+                                                            <h5>${ci.car.price}<del class="text-content">${ci.car.price}</del></h5>
+                                                            <h6 class="theme-color">You Save : 0</h6>
+                                                        </td>
 
-                                                <td class="quantity">
-                                                    <h4 class="table-title text-content ">
-                                                        Qty</h4>
-                                                    <div style="width: 70px"
-                                                         <div class="cart_qty">
-                                                            <input class="form-control input-number qty-input "
-                                                                   type="text" name="quantity" value="1" readonly style="height: 42.127778px;">
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                        <td class="quantity">
+                                                            <h4 class="table-title text-content ">
+                                                                Qty</h4>
+                                                            <div style="width: 70px"
+                                                                 <div class="cart_qty">
+                                                                    <input class="form-control input-number qty-input "
+                                                                           type="text" name="quantity" value="1" readonly style="height: 42.127778px;">
+                                                                </div>
+                                                            </div>
+                                                        </td>
 
 
-                                                <td class="subtotal">
-                                                    <h4 class="table-title text-content">Total</h4>
-                                                    <h5 class="pricee">$${ci.car.price}</h5>
-                                                </td>
+                                                        <td class="subtotal">
+                                                            <h4 class="table-title text-content">Total</h4>
+                                                            <h5 class="pricee">$${ci.car.price}</h5>
+                                                        </td>
 
-                                                <td class="save-remove">
-                                                    <h4 class="table-title text-content">Action</h4>
-                                                    <form action="home?state=cart&action=delete&item=${ci.car.car_id}&index=cart" id="form-del-${ci.item_id}" method="post">
-                                                        <input type="submit" value="Remove" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                                        <td class="save-remove">
+                                                            <h4 class="table-title text-content">Action</h4>
+                                                            <form action="home?state=cart&action=delete&item=${ci.car.car_id}&index=cart" id="form-del-${ci.item_id}" method="post">
+                                                                <input type="submit" value="Remove" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
 
                     <div class="col-xxl-3">

@@ -153,11 +153,12 @@
                                         <div class="delivery-detail">
                                             <h6>24/7 Delivery</h6>
                                             <h5>+91 888 104 2340
-                                            </h5>
+                                            </h5>   
                                         </div>
                                     </a>
                                 </li>
                                 <c:if test="${sessionScope.user != null && user.permission_id == 3}">
+
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge ">
                                             <button type="button button-83"
@@ -171,55 +172,69 @@
 
                                             <div class="onhover-div">
                                                 <ul class="cart-list custom-height">
-                                                    <c:forEach var="ci" items="${cartItems}">
-                                                        <c:set var="total" value="${0}"/>
-                                                        <c:set var="total" value="${total + ci.car.price}" />
-                                                        <li class="product-box-contain w-100">
-                                                            <div class="drop-cart">
-                                                                <a href="home?state=detail&id=${ci.car.car_id}"
-                                                                   class="drop-image p-0">
-                                                                    <c:set var="firstImagePrinted" value="false" />
-                                                                    <c:forEach items="${carImage}" var="cm">
-                                                                        <c:if test="${ci.car.car_id == cm.car_id}">
-                                                                            <c:forEach items="${cm.image_url}" var="obj">
-                                                                                <c:if test="${not firstImagePrinted}">
-                                                                                    <img src="${obj}" alt="Car Image" class="img-fluid lazyload rounded p-0"  style="object-fit: contain;max-width:100%; max-height: 100%;">
-                                                                                    <c:set var="firstImagePrinted" value="true" />
+                                                    <c:choose>
+                                                        <c:when test="${empty cartItems}">
+                                                            <li class="product-box-contain w-100">
+                                                                <div class="alert alert-warning my-0" role="alert">
+                                                                    Your cart is empty !
+                                                                </div>
+                                                            </li>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:forEach var="ci" items="${cartItems}">
+                                                                <c:set var="total" value="${0}"/>
+                                                                <c:set var="total" value="${total + ci.car.price}" />
+                                                                <li class="product-box-contain w-100">
+                                                                    <div class="drop-cart">
+                                                                        <a href="home?state=detail&id=${ci.car.car_id}" class="drop-image p-0">
+                                                                            <c:set var="firstImagePrinted" value="false" />
+                                                                            <c:forEach items="${carImage}" var="cm">
+                                                                                <c:if test="${ci.car.car_id == cm.car_id}">
+                                                                                    <c:forEach items="${cm.image_url}" var="obj">
+                                                                                        <c:if test="${not firstImagePrinted}">
+                                                                                            <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded p-0" style="object-fit: cover; max-width:100%; max-height: 100%;">
+                                                                                            <c:set var="firstImagePrinted" value="true" />
+                                                                                        </c:if>
+                                                                                    </c:forEach>
+                                                                                </c:if> 
+                                                                            </c:forEach>
+                                                                        </a>
+                                                                        <div class="drop-contain">
+                                                                            <a href="home?state=detail&id=${ci.car.car_id}">
+                                                                                <h5>${ci.car.name}</h5>
+                                                                            </a>
+                                                                            <c:forEach var="cb" items="${carBrand}">
+                                                                                <c:if test="${ci.car.brand_id == cb.id}">
+                                                                                    <h6 style="position: absolute">${cb.name}</h6>
                                                                                 </c:if>
                                                                             </c:forEach>
-                                                                        </c:if> 
-                                                                    </c:forEach>
-
-                                                                </a>
-                                                                <div class="drop-contain">
-                                                                    <a href="home?state=detail&id=${ci.car.car_id}">
-                                                                        <h5>${ci.car.name}
-                                                                        </h5>
-                                                                    </a>
-                                                                    <h6>$${ci.car.price}</h6>
-                                                                    <form action="home?state=cart&action=delete&item=${ci.item_id}&index=header" id="form-del-${ci.item_id}" method="post">
-                                                                        <button class="close-button close_button " style="position: absolute;right: 10px;top:8px">
-                                                                            <i class="fa-solid fa-xmark"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </c:forEach>
-
+                                                                            <form id="form-del-${ci.item_id}" method="post">
+                                                                                <input type="hidden" name="state" value="cart">
+                                                                                <input type="hidden" name="action" value="delete">
+                                                                                <input type="hidden" name="item" value="${ci.item_id}">
+                                                                                <button class="close-button close_button" style="position: absolute; right: 10px; top: 8px;" onclick="deleteCartItem(${ci.item_id}); return false;">
+                                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                                </button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </c:forEach>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </ul>
+
 
                                                 <div class="price-box">
                                                     <h5>Total :</h5>
-                                                    <h4 class="theme-color fw-bold">$${total}</h4>
+                                                    <h4 id="totalprice" class="theme-color fw-bold">$${total != null ? total : 0}</h4>
                                                 </div>
 
                                                 <div class="button-group">
-                                                    <a href="home?state=cart&user=${user.user_id}"
-                                                       class="btn btn-sm cart-button">View
+                                                    <a href="home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">View
                                                         Cart</a>
-                                                    <a href="checkout" class="btn btn-sm cart-button theme-bg-color
-                                                       text-white">Checkout</a>
+                                                    <a href="checkout"
+                                                       class="btn btn-sm cart-button theme-bg-color text-white">Checkout</a>
                                                 </div>
                                             </div>
                                         </div>

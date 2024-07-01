@@ -102,10 +102,11 @@ public class CarDao {
         }
     }
 
-    public boolean checkExistedItems(int carId) {
-        String sql = "SELECT COUNT(*) FROM [dbo].[cart_items] WHERE car_id = ?;";
+    public boolean checkExistedItems(int carId, int userId) {
+        String sql = "SELECT COUNT(*) FROM [dbo].[cart_items] WHERE car_id = ? and cart_id = ? ;";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, carId);
+            ps.setInt(2, getCartId(userId));
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     int count = rs.getInt(1);
@@ -116,6 +117,22 @@ public class CarDao {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public int getCartId(int userId) {
+        int cartId = -1;
+        String sql = "Select cart_id from cart where user_id = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    cartId = rs.getInt("cart_id");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cartId;
     }
 
     public void addToCart(int user_id, int car_id) {
@@ -707,7 +724,7 @@ public class CarDao {
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
         System.out.println(carDAO.CarImageById(69));
-        System.out.println(carDAO.checkExistedItems(69));
+        System.out.println(carDAO.getCartId(22));
     }
 
     public List<String> getCarImages(int carId) {

@@ -87,7 +87,7 @@
             <div class="mobile-menu d-md-none d-block mobile-cart">
                 <ul>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="home">
                             <i class="iconly-Home icli"></i>
                             <span>Home</span>
                         </a>
@@ -101,7 +101,7 @@
                     </li>
 
                     <li>
-                        <a href="search.html" class="search-box">
+                        <a class="search-box">
                             <i class="iconly-Search icli"></i>
                             <span>Search</span>
                         </a>
@@ -596,7 +596,7 @@
                                                         <span class="span-name">${cb.name}</span>
                                                     </c:if>
                                                 </c:forEach>
-                                                <a href="product-left-thumbnail.html">
+                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
                                                     <h5 class="name">${cl.name}</h5>
                                                 </a>
                                                 <p class="text-content mt-1 mb-2 product-content">${cl.description}</p>
@@ -625,10 +625,10 @@
                                                 </h5>
                                                 <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
                                                     <div class="add-to-cart-box">
-                                                        <form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=add&item=${cl.car_id}">
-                                                            <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="document.getElementById('form-cart-${cl.car_id}').submit()">Add
-                                                            </button>
-                                                        </form>
+                                                        <!--<form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=add&item=${cl.car_id}">-->
+                                                        <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="addToCart(${cl.car_id})">Add
+                                                        </button>
+                                                        <!--</form>-->
                                                     </div>
                                                 </c:if>
 
@@ -641,7 +641,7 @@
 
                         </div>
 
-                        <nav class="custom-pagination">
+                        <nav class="custome-pagination">
                             <ul class="d-flex justify-content-center pagination-md">
                                 <c:if test="${page.index != 0}">
                                     <li class="page-item">
@@ -663,12 +663,12 @@
                                 </c:forEach>
                                 <c:if test="${page.index  != page.totalPage - 1}">
                                     <li class="page-item">
-                                        <a href='${pageContext.request.contextPath}/home?index=${page.index+1}'
+                                        <a href="${pageContext.request.contextPath}/home?index=${page.index+1}"
                                            class="page-link" style="color: var(--theme-color);">
                                             Next</a>
                                     </li>
                                     <li class="page-item">
-                                        <a href='${pageContext.request.contextPath}/home?index=${page.totalPage-1}'
+                                        <a href="${pageContext.request.contextPath}/home?index=${page.totalPage-1}"
                                            class="page-link" style="color: var(--theme-color);"> End </a>
                                     </li>
                                 </c:if>
@@ -800,7 +800,7 @@
                 </div>
 
                 <div class="cookie-contain">
-                    <h5 class="text-content">We use cookies to make your experience better</h5>
+                    <h5 class="text-content" >We use cookies to make your experience better</h5>
                 </div>
             </div>
 
@@ -812,19 +812,7 @@
         <!-- Cookie Bar Box End -->
 
 
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="..." class="rounded me-2" alt="...">
-                    <strong class="me-auto">Bootstrap</strong>
-                    <small>11 mins ago</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    Hello, world! This is a toast message.
-                </div>
-            </div>
-        </div>
+
         <!-- Tap to top start -->
         <div class="theme-option">
             <div class="back-to-top">
@@ -881,22 +869,9 @@
 
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
 
-        <script>
-                                                                document.getElementById('searchBox').addEventListener('keyup', function () {
-                                                                    let filter = this.value.toLowerCase();
-                                                                    let carCards = document.querySelectorAll('.car-card');
-                                                                    carCards.forEach(function (card) {
-                                                                        let carName = card.getAttribute('data-name').toLowerCase();
-                                                                        if (carName.includes(filter)) {
-                                                                            card.style.display = 'block';
-                                                                        } else {
-                                                                            card.style.display = 'none';
-                                                                        }
-                                                                    });
-                                                                });
-        </script>
-
+       
 
     </body>
 

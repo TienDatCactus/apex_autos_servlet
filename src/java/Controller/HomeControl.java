@@ -19,7 +19,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.util.List;
+import org.json.JSONObject;
 
 /**
  * @author Tiến_Đạt
@@ -53,8 +55,8 @@ public class HomeControl extends HttpServlet {
         } else if ("cart".equals(state)) {
             List<CarImage> carImage = dao.viewImageForCar();
             List<CartItems> carts = dao.cartItems(ua.getUser_id());
-            request.setAttribute("carImage", carImage);
             session.setAttribute("cartItems", carts);
+            request.setAttribute("carImage", carImage);
             request
                     .getRequestDispatcher("/front-end/cart.jsp")
                     .forward(request, response);
@@ -88,57 +90,55 @@ public class HomeControl extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String error = "";
-        String success = "";
-        HttpSession session = request.getSession();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
         String state = request.getParameter("state");
-        UserAccount ua = (UserAccount) session.getAttribute("user");
         String action = request.getParameter("action");
+        String item = request.getParameter("item");
+        HttpSession session = request.getSession();
+
+        UserAccount ua = (UserAccount) session.getAttribute("user");
+        PrintWriter out = response.getWriter();
+        JSONObject jsonResponse = new JSONObject();
+
         if ("cart".equals(state)) {
-            String index = request.getParameter("index");
             if ("add".equals(action)) {
-                String item = request.getParameter("item");
                 try {
                     int itemId = Integer.parseInt(item);
-                    if (dao.checkExistedItems(itemId)) {
-                        error = "You cannot buy multiple cars at once !";
+                    if (dao.checkExistedItems(itemId,ua.getUser_id())) {
+                        jsonResponse.put("error", false);
+                        jsonResponse.put("message", "Item already exists in cart!");
                     } else {
                         dao.addToCart(ua.getUser_id(), itemId);
-                        success = "Add item to cart successfully !";
+                        jsonResponse.put("success", true);
+                        jsonResponse.put("message", "Item added to cart successfully!");
                     }
                 } catch (Exception e) {
-                    error = "Unable to add item to cart ! Error code : " + e.getMessage() + " !";
+                    jsonResponse.put("error", false);
+                    jsonResponse.put("message", "Failed to add item to cart. Error: " + e.getMessage());
                 }
-                response.sendRedirect("home");
             } else if ("delete".equals(action)) {
-                String item = request.getParameter("item");
                 try {
                     if (item != null && !item.isEmpty()) {
                         int itemId = Integer.parseInt(item);
-                        dao.deleteFromCart(itemId);
-                        success = "Delete item from cart successfully !";
+                        if (dao.deleteFromCart(itemId)) {
+                            jsonResponse.put("success", true);
+                            jsonResponse.put("message", "Item deleted from cart successfully!");
+                        }
                     } else {
-                        error = "Invalid item ID !";
+                        jsonResponse.put("error", false);
+                        jsonResponse.put("message", "Invalid item ID!");
                     }
                 } catch (Exception e) {
-                    error = "Unable to delete item from cart ! Error: " + e.getMessage() + " !";
+                    jsonResponse.put("error", false);
+                    jsonResponse.put("message", "Failed to delete item from cart. Error: " + e.getMessage());
                 }
-                List<CartItems> updatedCarts = dao.cartItems(ua.getUser_id());
-                if (updatedCarts.isEmpty()) {
-                    response.sendRedirect("home");
-                }
-                session.setAttribute("successMsg", success);
-                session.setAttribute("errorMsg", error);
-                if ("header".equals(index)) {
-                    response.sendRedirect("home");
-                } else if ("cart".equals(index)) {
-                    response.sendRedirect("cart");
-                }
-
             }
         }
-    }
 
+        // Write JSON response to output
+        out.print(jsonResponse.toString());
+        out.flush();
+    }
 }
