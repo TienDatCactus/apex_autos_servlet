@@ -313,3 +313,86 @@ function showNoti(icon, title, msg, type) {
                 '</div>',
     });
 }
+
+
+function autocomplete(inp, arr) {
+    var currentFocus;
+
+    inp.addEventListener("input", function (e) {
+        var dropdown,
+                item,
+                i,
+                val = this.value;
+        closeAllLists();
+        if (!val) {
+            return false;
+        }
+        currentFocus = -1;
+        dropdown = document.getElementById(this.id + "Dropdown");
+        dropdown.innerHTML = "";
+        dropdown.style.display = "block";
+
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
+                item = document.createElement("li");
+                item.classList.add("dropdown-item");
+                item.innerHTML =
+                        "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                item.innerHTML += arr[i].substr(val.length);
+                item.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                item.addEventListener("click", function (e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+                dropdown.appendChild(item);
+            }
+        }
+    });
+
+    inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "Dropdown");
+        if (x)
+            x = x.getElementsByTagName("li");
+        if (e.keyCode == 40) {
+            currentFocus++;
+            addActive(x);
+        } else if (e.keyCode == 38) {
+            currentFocus--;
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            e.preventDefault();
+            if (currentFocus > -1) {
+                if (x)
+                    x[currentFocus].click();
+            }
+        }
+    });
+
+    function addActive(x) {
+        if (!x)
+            return false;
+        removeActive(x);
+        if (currentFocus >= x.length)
+            currentFocus = 0;
+        if (currentFocus < 0)
+            currentFocus = x.length - 1;
+        x[currentFocus].classList.add("autocomplete-active");
+    }
+
+    function removeActive(x) {
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
+
+    function closeAllLists(elmnt) {
+        var x = document.getElementsByClassName("dropdown-menu");
+        for (var i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+    }
+
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+}

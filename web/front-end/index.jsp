@@ -23,16 +23,9 @@
         <title>On-demand last-mile delivery</title>
 
         <!-- Google font -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
-              rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet">
         <!-- bootstrap css -->
         <link id="rtl-link" rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}/front-end/assets/css/vendors/bootstrap.css">
@@ -96,7 +89,7 @@
                     <li class="mobile-category">
                         <a href="javascript:void(0)">
                             <i class="iconly-Category icli js-link"></i>
-                            <span>Category</span>
+                            <span>Dashboard</span>
                         </a>
                     </li>
 
@@ -163,18 +156,18 @@
                         <div class="left-box wow fadeInUp">
                             <div class="shop-left-sidebar custom-height" style="padding-right: 20px;max-height: 550px">
                                 <div class="back-button">
-                                    <h3><i class="fa-solid fa-arrow-left"></i> Back</h3>
+                                    <h3><i class="fa-solid fa-arrow-left"></i>Quay lại</h3>
                                 </div>
 
                                 <div class="filter-category">
                                     <div class="filter-title">
-                                        <h2>Filters</h2>
-                                        <a href="javascript:void(0)">Clear All</a>
+                                        <h2>Bộ lọc</h2>
+                                        <a href="javascript:void(0)">Xóa tất cả</a>
                                     </div>
                                     <div class="form-floating theme-form-floating-2 search-box">
                                         <input type="search" class="form-control" id="search"
-                                               placeholder="Search ..">
-                                        <label for="search">Search</label>
+                                               placeholder="Search ...">
+                                        <label for="search">Tìm kiếm</label>
                                     </div>
                                 </div>
 
@@ -184,7 +177,7 @@
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                                     data-bs-target="#collapseOne" aria-expanded="true"
                                                     aria-controls="collapseOne">
-                                                <span>Categories</span>
+                                                <span>Kiểu loại</span>
                                             </button>
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse show"
@@ -214,7 +207,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                                                     aria-expanded="false" aria-controls="collapseTwo">
-                                                <span>Brands</span>
+                                                <span>Nhãn hàng</span>
                                             </button>
                                         </h2>
                                         <div id="collapseTwo" class="accordion-collapse collapse show"
@@ -236,233 +229,228 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingThree">
                                             <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse" data-bs-target="#collapseThree"
                                                     aria-expanded="false" aria-controls="collapseThree">
-                                                <span>Price</span>
+                                                <span>Nguồn gốc</span>
                                             </button>
                                         </h2>
                                         <div id="collapseThree" class="accordion-collapse collapse show"
                                              aria-labelledby="headingThree">
                                             <div class="accordion-body py-0">
                                                 <div class="range-slider">
+                                                    <input type="text" style="    margin-top: 15px;
+                                                           padding: 10px;
+                                                           border-radius: 5px;
+                                                           border: 1px solid #ddd;
+                                                           color: #222;
+                                                           width: 100%;" placeholder="USA , ...">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                <span>Giá</span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse show"
+                                             aria-labelledby="headingThree">
+                                            <div class="accordion-body">
+                                                <div class="range-slider">
                                                     <input type="text" class="js-range-slider" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+
+                                    <!--                                    <div class="accordion-item">
+                                                                            <h2 class="accordion-header" id="headingSix">
+                                                                                <button class="accordion-button collapsed" type="button"
+                                                                                        data-bs-toggle="collapse" data-bs-target="#collapseSix"
+                                                                                        aria-expanded="false" aria-controls="collapseSix">
+                                                                                    <span>Rating</span>
+                                                                                </button>
+                                                                            </h2>
+                                                                            <div id="collapseSix" class="accordion-collapse collapse show"
+                                                                                 aria-labelledby="headingSix">
+                                                                                <div class="accordion-body">
+                                                                                    <ul class="category-list custom-padding">
+                                                                                        <li>
+                                                                                            <div class="form-check ps-0 m-0 category-list-box">
+                                                                                                <input class="checkbox_animated" type="checkbox">
+                                                                                                <div class="form-check-label">
+                                                                                                    <ul class="rating">
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                    <span class="text-content">(5 Star)</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </li>
+                                    
+                                                                                        <li>
+                                                                                            <div class="form-check ps-0 m-0 category-list-box">
+                                                                                                <input class="checkbox_animated" type="checkbox">
+                                                                                                <div class="form-check-label">
+                                                                                                    <ul class="rating">
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                    <span class="text-content">(4 Star)</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </li>
+                                    
+                                                                                        <li>
+                                                                                            <div class="form-check ps-0 m-0 category-list-box">
+                                                                                                <input class="checkbox_animated" type="checkbox">
+                                                                                                <div class="form-check-label">
+                                                                                                    <ul class="rating">
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                    <span class="text-content">(3 Star)</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </li>
+                                    
+                                                                                        <li>
+                                                                                            <div class="form-check ps-0 m-0 category-list-box">
+                                                                                                <input class="checkbox_animated" type="checkbox">
+                                                                                                <div class="form-check-label">
+                                                                                                    <ul class="rating">
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                    <span class="text-content">(2 Star)</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </li>
+                                    
+                                                                                        <li>
+                                                                                            <div class="form-check ps-0 m-0 category-list-box">
+                                                                                                <input class="checkbox_animated" type="checkbox">
+                                                                                                <div class="form-check-label">
+                                                                                                    <ul class="rating">
+                                                                                                        <li>
+                                                                                                            <i data-feather="star" class="fill"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <i data-feather="star"></i>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                    <span class="text-content">(1 Star)</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
+
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                <span>Năm sản xuất</span>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse show "
+                                             aria-labelledby="headingThree">
+                                            <div class="accordion-body py-0">
+                                                <div class="range-slider">
+                                                    <input type="date" style="    margin-top: 15px;
+                                                           padding: 10px;
+                                                           border-radius: 5px;
+                                                           border: 1px solid #ddd;
+                                                           color: #222;
+                                                           width: 100%;" >
+                                                </div>
+                                            </div>
+                                            <div class="position-relative" style="top:8px">đến</div>
+                                            <div class="accordion-body py-0">
+                                                <div class="range-slider">
+                                                    <input type="date" style="    margin-top: 15px;
+                                                           padding: 10px;
+                                                           border-radius: 5px;
+                                                           border: 1px solid #ddd;
+                                                           color: #222;
+                                                           width: 100%;" >
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingSix">
-                                            <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseSix"
-                                                    aria-expanded="false" aria-controls="collapseSix">
-                                                <span>Rating</span>
-                                            </button>
-                                        </h2>
-                                        <div id="collapseSix" class="accordion-collapse collapse show"
-                                             aria-labelledby="headingSix">
-                                            <div class="accordion-body">
-                                                <ul class="category-list custom-padding">
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox">
-                                                            <div class="form-check-label">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                </ul>
-                                                                <span class="text-content">(5 Star)</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox">
-                                                            <div class="form-check-label">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                                <span class="text-content">(4 Star)</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox">
-                                                            <div class="form-check-label">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                                <span class="text-content">(3 Star)</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox">
-                                                            <div class="form-check-label">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                                <span class="text-content">(2 Star)</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox">
-                                                            <div class="form-check-label">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                                <span class="text-content">(1 Star)</span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingFive">
-                                            <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseFive"
-                                                    aria-expanded="false" aria-controls="collapseFive">
-                                                <span>Cylinders</span>
-                                            </button>
-                                        </h2>
-                                        <div id="collapseFive" class="accordion-collapse collapse show"
-                                             aria-labelledby="headingFive">
-                                            <div class="accordion-body">
-                                                <ul class="category-list custom-padding custom-height">
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox"
-                                                                   id="flexCheckDefault5">
-                                                            <label class="form-check-label" for="flexCheckDefault5">
-                                                                <span class="name">4</span>
-                                                                <span class="number">(05)</span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox"
-                                                                   id="flexCheckDefault6">
-                                                            <label class="form-check-label" for="flexCheckDefault6">
-                                                                <span class="name">6</span>
-                                                                <span class="number">(02)</span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox"
-                                                                   id="flexCheckDefault7">
-                                                            <label class="form-check-label" for="flexCheckDefault7">
-                                                                <span class="name">8</span>
-                                                                <span class="number">(04)</span>
-                                                            </label>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="form-check ps-0 m-0 category-list-box">
-                                                            <input class="checkbox_animated" type="checkbox"
-                                                                   id="flexCheckDefault8">
-                                                            <label class="form-check-label" for="flexCheckDefault8">
-                                                                <input type="number" class="js-range-slider" value="" placeholder="Custom">
-                                                            </label>
-                                                        </div>
-                                                    </li>
-
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -541,104 +529,224 @@
 
                         <div
                             class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section list-style">
-                            <c:forEach var="cl" items="${carList}">
-                                <div data-name="${cl.name}" class="car-card">
-                                    <div class="product-box-3 h-100 wow fadeInUp">
-                                        <div class="product-header">
-                                            <div class="product-image p-1 my-2 ">
-                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}" class='copy-ele-${cl.car_id}'>
-                                                    <c:set var="firstImagePrinted" value="false" />
-                                                    <c:forEach items="${carImage}" var="ci">
-                                                        <c:if test="${ci.car_id == cl.car_id}">
-                                                            <c:forEach items="${ci.image_url}" var="obj">
-                                                                <c:if test="${not firstImagePrinted}">
-                                                                    <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
-                                                                    <c:set var="firstImagePrinted" value="true" />
-                                                                </c:if>
-                                                            </c:forEach>
-                                                        </c:if> 
-                                                    </c:forEach>
-
-                                                </a>
-
-                                                <ul class="product-option">
-                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                           data-bs-target="#view">
-                                                            <i data-feather="eye"></i>
-                                                        </a>
-                                                    </li>
-
-                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                        <a >
-                                                            <i data-feather="refresh-cw"></i>
-                                                        </a>
-                                                    </li>
-
-                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
-                                                        <a style="cursor: pointer" class="notifi-wishlist" onclick="(() => {
-                                                                    let element = document.querySelector('.copy-ele-${cl.car_id}');
-                                                                    if (element) {
-                                                                        console.log(element.href)
-                                                                        navigator.clipboard.writeText(element.href);
-                                                                    }
-                                                                })()">
-                                                            <i data-feather="clipboard"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="product-footer px-3">
-                                            <div class="product-detail">
-                                                <c:forEach var="cb" items="${carBrand}">
-                                                    <c:if test="${cb.id == cl.brand_id}">
-                                                        <span class="span-name">${cb.name}</span>
-                                                    </c:if>
-                                                </c:forEach>
-                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
-                                                    <h5 class="name">${cl.name}</h5>
-                                                </a>
-                                                <p class="text-content mt-1 mb-2 product-content">${cl.description}</p>
-                                                <div class="product-rating mt-2">
-                                                    <ul class="rating">
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star"></i>
-                                                        </li>
-                                                    </ul>
-                                                    <span>(4.0)</span>
-                                                </div>
-                                                <h6 class="unit">${cl.model_year}</h6>
-                                                <h5 class="price"><span class="theme-color">$${cl.price}</span> <del>$${cl.price + 100000}</del>
-                                                </h5>
-                                                <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
-                                                    <div class="add-to-cart-box">
-                                                        <!--<form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=add&item=${cl.car_id}">-->
-                                                        <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="addToCart(${cl.car_id})">Add
-                                                        </button>
-                                                        <!--</form>-->
-                                                    </div>
-                                                </c:if>
-
-                                            </div>
-                                        </div>
+                            <c:choose>
+                                <c:when test="${empty carList}">
+                                    <div class="alert alert-danger " style="font-size:32px; text-align: center" role="alert">
+                                        Sorry there's currently no product available !
                                     </div>
-                                </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach var="cl" items="${carList}">
+                                        <div data-name="${cl.name}" class="car-card">
+                                            <div class="product-box-3 h-100 wow fadeInUp">
+                                                <div class="product-header">
+                                                    <div class="product-image p-1 my-2 ">
+                                                        <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}" class='copy-ele-${cl.car_id}'>
+                                                            <c:set var="firstImagePrinted" value="false" />
+                                                            <c:forEach items="${carImage}" var="ci">
+                                                                <c:if test="${ci.car_id == cl.car_id}">
+                                                                    <c:forEach items="${ci.image_url}" var="obj">
+                                                                        <c:if test="${not firstImagePrinted}">
+                                                                            <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                            <c:set var="firstImagePrinted" value="true" />
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </c:if> 
+                                                            </c:forEach>
 
-                            </c:forEach>
+                                                        </a>
 
+                                                        <ul class="product-option">
+                                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                                   data-bs-target="#view-${cl.car_id}">
+                                                                    <i data-feather="eye"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                                                <a >
+                                                                    <i data-feather="refresh-cw"></i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
+                                                                <a style="cursor: pointer" class="notifi-wishlist" onclick="(() => {
+                                                                            let element = document.querySelector('.copy-ele-${cl.car_id}');
+                                                                            if (element) {
+                                                                                navigator.clipboard.writeText(element.href);
+                                                                            }
+                                                                        })()">
+                                                                    <i data-feather="clipboard"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="product-footer px-3">
+                                                    <div class="product-detail">
+                                                        <c:forEach var="cb" items="${carBrand}">
+                                                            <c:if test="${cb.id == cl.brand_id}">
+                                                                <span class="span-name">${cb.name}</span>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
+                                                            <h5 class="name">${cl.name}</h5>
+                                                        </a>
+                                                        <p class="text-content mt-1 mb-2 product-content">${cl.description}</p>
+                                                        <div class="product-rating mt-2">
+                                                            <ul class="rating">
+                                                                <li>
+                                                                    <i data-feather="star" class="fill"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i data-feather="star" class="fill"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i data-feather="star" class="fill"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i data-feather="star" class="fill"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i data-feather="star"></i>
+                                                                </li>
+                                                            </ul>
+                                                            <span>(4.0)</span>
+                                                        </div>
+                                                        <h6 class="unit">${cl.model_year}</h6>
+                                                        <h5 class="price"><span class="theme-color">$${cl.price}</span> <del>$${cl.price + 100000}</del>
+                                                        </h5>
+                                                        <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
+                                                            <div class="add-to-cart-box">
+                                                                <!--<form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=add&item=${cl.car_id}">-->
+                                                                <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="addToCart(${cl.car_id})">Add
+                                                                </button>
+                                                                <!--</form>-->
+                                                            </div>
+                                                        </c:if>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-danger noCar" style="display: none;font-size:32px; text-align: center; width: 80% ; margin: 20px auto" role="alert">
+                                            Sorry , but try on another page instead !
+                                        </div>                
+                                        <!-- Quick view Modal -->
+                                        <div class="modal fade theme-modal view-modal" id="view-${cl.car_id}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
+                                                <div class="modal-content">
+                                                    <div class="modal-header p-0">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row g-sm-4 g-2">
+                                                            <div class="col-lg-6">
+                                                                <div class="slider-image">
+                                                                    <c:set var="firstImagePrinted" value="false" />
+                                                                    <c:forEach items="${carImage}" var="ci">
+                                                                        <c:if test="${ci.car_id == cl.car_id}">
+                                                                            <c:forEach items="${ci.image_url}" var="obj">
+                                                                                <c:if test="${not firstImagePrinted}">
+                                                                                    <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                                    <c:set var="firstImagePrinted" value="true" />
+                                                                                </c:if>
+                                                                            </c:forEach>
+                                                                        </c:if> 
+                                                                    </c:forEach>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6">
+                                                                <div class="right-sidebar-modal">
+                                                                    <h4 class="title-name">${cl.name}</h4>
+                                                                    <h4 class="price">$${cl.price}</h4>
+                                                                    <div class="product-rating">
+                                                                        <ul class="rating">
+                                                                            <li>
+                                                                                <i data-feather="star" class="fill"></i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star" class="fill"></i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star" class="fill"></i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star" class="fill"></i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star"></i>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <span class="ms-2">8 Reviews</span>
+                                                                        <span class="ms-2 text-danger">6 sold in last 16 hours</span>
+                                                                    </div>
+
+                                                                    <div class="product-detail">
+                                                                        <h4>Product Details :</h4>
+                                                                        <p>${cl.description}</p>
+                                                                    </div>
+
+                                                                    <ul class="brand-list">
+                                                                        <li>
+                                                                            <div class="brand-box">
+                                                                                <h5>Brand Name:</h5>
+                                                                                <c:forEach var="cb" items="${carBrand}">
+                                                                                    <c:if test="${cb.id == cl.brand_id}">
+                                                                                        <h6>${cb.name}</h6>
+                                                                                    </c:if>
+                                                                                </c:forEach>
+                                                                            </div>
+                                                                        </li>
+
+                                                                        <li>
+                                                                            <div class="brand-box">
+                                                                                <h5>Product Code:</h5>
+                                                                                <h6>WDU-${cl.car_id}</h6>
+                                                                            </div>
+                                                                        </li>
+
+                                                                        <li>
+                                                                            <div class="brand-box">
+                                                                                <h5>Category:</h5>
+                                                                                <c:forEach var="cc" items="${carCate}">
+                                                                                    <c:if test="${cc.id == cl.category_id}">
+                                                                                        <h6>${cc.name}</h6>
+                                                                                    </c:if>
+                                                                                </c:forEach>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+
+                                                                    <div class="select-size">
+                                                                        <h4>Car Size :</h4>
+                                                                        <input class="form-control input-number qty-input w-25"
+                                                                               type="text" name="quantity" value="${cl.weight} kg" readonly style="height: 42.127778px;">
+                                                                    </div>
+
+                                                                    <div class="modal-button">
+                                                                        <button onclick="addToCart(${cl.car_id})"
+                                                                                class="button-86 icon">Add
+                                                                            To Cart</button>
+                                                                        <button onclick="location.href = '${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}';"
+                                                                                class="button-83  view-button icon fw-bold btn-md">
+                                                                            View More Details</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
 
                         <nav class="custome-pagination">
@@ -679,166 +787,23 @@
             </div>
         </section>
 
-
-
         <!-- Footer Section Start -->
         <jsp:include page="footer.jsp"></jsp:include>
             <!-- Footer Section End -->
 
+            <!-- Bg overlay Start -->
+            <div class="bg-overlay"></div>
+            <!-- Bg overlay End -->
 
-
-            <!-- Location Modal Start -->
-            <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
-                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
-                            <p class="mt-1 text-content">Enter your address and we will specify the offer for your
-                                area.
-                            </p>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="location-list">
-                                <div class="search-input">
-                                    <input type="search" class="form-control" placeholder="Search Your Area">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </div>
-
-                                <div class="disabled-box">
-                                    <h6>Select a Location</h6>
-                                </div>
-
-                                <ul class="location-select custom-height">
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Alabama</h6>
-                                            <span>Min: $130</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Arizona</h6>
-                                            <span>Min: $150</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>California</h6>
-                                            <span>Min: $110</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Colorado</h6>
-                                            <span>Min: $140</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Florida</h6>
-                                            <span>Min: $160</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Georgia</h6>
-                                            <span>Min: $120</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Kansas</h6>
-                                            <span>Min: $170</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Minnesota</h6>
-                                            <span>Min: $120</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>New York</h6>
-                                            <span>Min: $110</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <h6>Washington</h6>
-                                            <span>Min: $130</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Location Modal End -->
-
-            <!-- Cookie Bar Box Start -->
-            <div class="cookie-bar-box">
-                <div class="cookie-box">
-                    <div class="cookie-image">
-                        <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png"
-                         class="blur-up lazyload" alt="">
-                    <h2>Cookies!</h2>
-                </div>
-
-                <div class="cookie-contain">
-                    <h5 class="text-content" >We use cookies to make your experience better</h5>
-                </div>
-            </div>
-
-            <div class="button-group">
-                <button class="btn privacy-button">Privacy Policy</button>
-                <button class="btn ok-button">OK</button>
-            </div>
-        </div>
-        <!-- Cookie Bar Box End -->
-
-
-
-        <!-- Tap to top start -->
-        <div class="theme-option">
-            <div class="back-to-top">
-                <a id="back-to-top" href="#">
-                    <i class="fas fa-chevron-up"></i>
-                </a>
-            </div>
-        </div>
-        <!-- Tap to top end -->
-
-
-        <!-- Bg overlay Start -->
-        <div class="bg-overlay"></div>
-        <!-- Bg overlay End -->
-
-        <!-- latest jquery-->
-        <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
+            <!-- latest jquery-->
+            <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
 
         <!-- jquery ui-->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-ui.min.js"></script>
 
         <!-- Bootstrap js-->
-        <script
-        src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-        <script
-        src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap-notify.min.js"></script>
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap-notify.min.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/popper.min.js"></script>
 
         <!-- feather icon js-->
@@ -850,18 +815,17 @@
 
         <!-- Slick js-->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick.js"></script>
-        <script
-        src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick-animation.min.js"></script>
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/slick-animation.min.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/slick/custom_slick.js"></script>
 
-        <!-- Auto Height Js -->
-        <script src="${pageContext.request.contextPath}/front-end/assets/js/auto-height.js"></script>
-
-        <!-- Fly Cart Js -->
-        <script src="${pageContext.request.contextPath}/front-end/assets/js/fly-cart.js"></script>
+        <!-- Price Range Js -->
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/ion.rangeSlider.min.js"></script>
 
         <!-- Quantity js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/quantity-2.js"></script>
+
+        <!-- sidebar open js -->
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/filter-sidebar.js"></script>
 
         <!-- WOW js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/wow.min.js"></script>
@@ -871,8 +835,26 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
 
-       
+
 
     </body>
+    <script>
+                                                                            const searchBox = document.getElementById('searchBox');
+                                                                            const carCards = document.querySelectorAll('.car-card');
+                                                                            const alert = document.querySelector('.noCar');
+                                                                            searchBox.addEventListener('input', function () {
+                                                                                const searchTerm = searchBox.value.toLowerCase();
+                                                                                carCards.forEach(card => {
+                                                                                    const dataName = card.getAttribute('data-name').toLowerCase();
+                                                                                    if (dataName.includes(searchTerm)) {
+                                                                                        card.style.display = 'block';
+                                                                                        alert.style.display = 'none'
+                                                                                    } else {
+                                                                                        card.style.display = 'none';
+                                                                                        alert.style.display = 'block';
+                                                                                    }
+                                                                                })
+                                                                            })
 
+    </script>
 </html>

@@ -47,12 +47,12 @@
                                             <ul class="navbar-nav">
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle"
-                                                       href="home">Home</a>
+                                                       href="home">Trang chủ</a>
                                                 </li>
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle"
                                                        href="javascript:void(0)"
-                                                       data-bs-toggle="dropdown">Brand</a>
+                                                       data-bs-toggle="dropdown">Nhãn hàng</a>
 
                                                     <ul class="dropdown-menu">
                                                         <c:forEach var="cb" items="${carBrand}">
@@ -66,7 +66,7 @@
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle"
                                                        href="javascript:void(0)"
-                                                       data-bs-toggle="dropdown">Categories</a>
+                                                       data-bs-toggle="dropdown">Kiểu loại</a>
                                                     <ul class="dropdown-menu">
                                                         <c:forEach var="cc" items="${carCate}">
                                                             <li>
@@ -77,27 +77,27 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item dropdown new-nav-item">
-                                                    <label class="new-dropdown">Hot</label>
+                                                    <label class="new-dropdown">Mới</label>
                                                     <a class="nav-link dropdown-toggle"
                                                        href="javascript:void(0)"
-                                                       data-bs-toggle="dropdown">Resources</a>
+                                                       data-bs-toggle="dropdown">Xem thêm...</a>
                                                     <ul class="dropdown-menu">
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="!">Comparisons</a>
+                                                               href="!">So sánh</a>
                                                         </li>
 
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="!">Buying Guides</a>
+                                                               href="!">Hướng dẫn mua hàng</a>
                                                         </li>
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="!">Car reviews</a>
+                                                               href="!">Review xe</a>
                                                         </li>
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="!">Contact Us</a>
+                                                               href="!">Liên hệ</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -112,13 +112,11 @@
                                                         <label class="new-dropdown">New</label>
                                                         <a class="nav-link dropdown-toggle"
                                                            href="javascript:void(0)"
-                                                           data-bs-toggle="dropdown">Become our
-                                                            Seller</a>
+                                                           data-bs-toggle="dropdown">Hợp tác bán hàng</a>
                                                         <ul class="dropdown-menu">
                                                             <li class="">
                                                                 <a class="dropdown-item"
-                                                                   href="javascript:void(0)">Sign up
-                                                                    for the program
+                                                                   href="javascript:void(0)">Đăng kí chương trình
                                                                     <span class="new-text"><i
                                                                             class="fa-solid fa-bolt-lightning"></i></span></a>
 
@@ -140,7 +138,7 @@
                                     <span class="location-arrow">
                                         <i data-feather="map-pin"></i>
                                     </span>
-                                    <span class="locat-name">Your Location</span>
+                                    <span class="locat-name">Địa điểm</span>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </button>
                             </div>
@@ -151,7 +149,7 @@
                                             <i data-feather="phone-call"></i>
                                         </div>
                                         <div class="delivery-detail">
-                                            <h6>24/7 Delivery</h6>
+                                            <h6> Giao hàng 24/7 </h6>
                                             <h5>+91 888 104 2340
                                             </h5>   
                                         </div>
@@ -166,7 +164,7 @@
                                                 <i data-feather="shopping-cart"></i>
                                                 <span
                                                     class="position-absolute top-0 start-100 translate-middle badge"> ${fn:length(sessionScope.cartItems)}
-                                                    <span class="visually-hidden">Cart items</span>
+                                                    <span class="visually-hidden">Giỏ hàng</span>
                                                 </span>
                                             </button>
 
@@ -176,7 +174,7 @@
                                                         <c:when test="${empty cartItems}">
                                                             <li class="product-box-contain w-100">
                                                                 <div class="alert alert-warning my-0" role="alert">
-                                                                    Your cart is empty !
+                                                                    Giỏ hàng của bạn đang trống
                                                                 </div>
                                                             </li>
                                                         </c:when>
@@ -247,8 +245,8 @@
                                         </div>
                                         <c:if test="${sessionScope.user == null}">
                                             <div class="delivery-detail">
-                                                <h6>Sorry,</h6>
-                                                <h5>Not logged-In</h5>
+                                                <h6>Xin lỗi,</h6>
+                                                <h5>Bạn chưa đăng nhập  </h5>
                                             </div>
                                         </c:if>
                                         <c:if test="${sessionScope.user != null}">
@@ -256,7 +254,7 @@
                                             <c:set var="fullname" value="${user.family_name} ${user.given_name}" />
                                             <c:set var="displayName" value="${not empty fullname ? fullname : username}" />
                                             <div class="delivery-detail">
-                                                <h6 class="my-0">Hello,</h6>
+                                                <h6 class="my-0">Xin chào,</h6>
                                                 <h5>${displayName}</h5>
                                             </div>
                                         </div>
@@ -266,15 +264,15 @@
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
                                                     <i></i>
-                                                    <a href="login">Log In</a>
+                                                    <a href="login">Đăng nhập</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="register">Register</a>
+                                                    <a href="register">Đăng kí</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="mail">Forgot Password</a>
+                                                    <a href="mail">Quên mật khẩu</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -284,15 +282,15 @@
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
                                                     <i></i>
-                                                    <a href="${pageContext.request.contextPath}/${user.permission_id == 3 ? "user" : (user.permission_id == 2 ? "seller" : (user.permission_id == 1 ? "admin" : ""))  }/dashboard">Dashboard</a>
+                                                    <a href="${pageContext.request.contextPath}/${user.permission_id == 3 ? "user" : (user.permission_id == 2 ? "seller" : (user.permission_id == 1 ? "admin" : ""))  }/dashboard">Quản lí tài khoản</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="cart">Cart</a>
+                                                    <a href="cart">Giỏ hàng</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="logout">Logout</a>
+                                                    <a href="logout">Đăng xuất</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -365,3 +363,138 @@
     </div>
 </div>
 <!-- Deal Box Modal End -->
+<!-- Location Modal Start -->
+<div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                <p class="mt-1 text-content">Enter your address and we will specify the offer for your
+                    area.
+                </p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="location-list">
+                    <div class="search-input">
+                        <input type="search" class="form-control" placeholder="Search Your Area">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div class="disabled-box">
+                        <h6>Select a Location</h6>
+                    </div>
+
+                    <ul class="location-select custom-height">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Alabama</h6>
+                                <span>Min: $130</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Arizona</h6>
+                                <span>Min: $150</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>California</h6>
+                                <span>Min: $110</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Colorado</h6>
+                                <span>Min: $140</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Florida</h6>
+                                <span>Min: $160</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Georgia</h6>
+                                <span>Min: $120</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Kansas</h6>
+                                <span>Min: $170</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Minnesota</h6>
+                                <span>Min: $120</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>New York</h6>
+                                <span>Min: $110</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Washington</h6>
+                                <span>Min: $130</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Location Modal End -->
+
+<!-- Cookie Bar Box Start -->
+<div class="cookie-bar-box">
+    <div class="cookie-box">
+        <div class="cookie-image">
+            <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png"
+                 class="blur-up lazyload" alt="">
+            <h2>Cookies!</h2>
+        </div>
+
+        <div class="cookie-contain">
+            <h5 class="text-content" >We use cookies to make your experience better</h5>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="btn privacy-button">Privacy Policy</button>
+        <button class="btn ok-button">OK</button>
+    </div>
+</div>
+<!-- Cookie Bar Box End -->
+
+
+
+<!-- Tap to top start -->
+<div class="theme-option">
+    <div class="back-to-top">
+        <a id="back-to-top" href="#">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+</div>
+<!-- Tap to top end -->

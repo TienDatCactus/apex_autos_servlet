@@ -145,154 +145,84 @@
     </head>
 
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="seller/dashboard">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                    class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                           aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                            class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="logout">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="dashboard">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Platform Management ${dat}</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                               data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Cars Management
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                                 data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="dashboard?state=attributes">Attributes</a>
-                                    <a class="nav-link" href="dashboard?state=detail">Details</a>
-                                    <a class="nav-link" href="dashboard?state=specs">Specifications</a>
-                                    <a class="nav-link" href="dashboard?state=image">Car Images</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link" href="orders.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Orders
-                            </a>
+        
+            <jsp:include page="navbar.jsp"></jsp:include>
+                <div id="layoutSidenav_content">
+                    <main>
 
-                            <div class="sb-sidenav-menu-heading">Others</div>
-                            <a class="nav-link" href="chart">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Total Profits
-                            </a>
-                            <a class="nav-link" href="dashboard?state=setting">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Page Settings
-                            </a>
-                            <!-- <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a> -->
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        ${user.email}
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                <main>
+                        <div class="album py-2 bg-body-tertiary">
+                            <div class="container">
 
-                    <div class="album py-5 bg-body-tertiary">
-                        <div class="container">
-
-                            <div class="input-group mb-3">
-                                <input type="text" id="searchBox" class="form-control" placeholder="Search for a car by name...">
-                                <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="searchBox" class="form-control" placeholder="Search for a car by name...">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                    </div>
                                 </div>
-                            </div>
                             <c:if test="${not empty successMsg}">
                                 <div class="form-msg mt-2 alert alert-success w-75" role="alert">
                                     ${successMsg}
                                 </div>
                             </c:if>
+
                             <div id="carList" class="row">
-                                <c:forEach var="cl" items="${carList}" varStatus="loop">
-                                    <div class="col-md-4 car-card mb-3" data-name="${cl.name}" >
-                                        <div class="card" >
-                                            <c:set var="hasImages" value="false"/>
-                                            <c:set var="mainImage" value=""/>
+                                <c:choose>
+                                    <c:when test="${empty carList}">
+                                        <div class="alert alert-danger " style="font-size:32px; text-align: center" role="alert">
+                                            Sorry there's currently no product available !
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="cl" items="${carList}" varStatus="loop">
+                                            <div class="col-md-4 car-card mb-3" data-name="${cl.name}" >
+                                                <div class="card" >
+                                                    <c:set var="hasImages" value="false"/>
+                                                    <c:set var="mainImage" value=""/>
 
-                                            <c:forEach items="${imageCar}" var="ci">
-                                                <c:if test="${ci.car_id eq cl.car_id}">
-                                                    <c:if test="${not empty ci.image_url}">
-                                                        <c:set var="mainImage" value="${ci.image_url[0]}"/>
-                                                        <c:set var="hasImages" value="true"/>
+                                                    <c:forEach items="${imageCar}" var="ci">
+                                                        <c:if test="${ci.car_id eq cl.car_id}">
+                                                            <c:if test="${not empty ci.image_url}">
+                                                                <c:set var="mainImage" value="${ci.image_url[0]}"/>
+                                                                <c:set var="hasImages" value="true"/>
+                                                            </c:if>
+                                                        </c:if>
+                                                    </c:forEach>
+
+                                                    <c:if test="${not hasImages}">
+                                                        <img id="mainImage-${cl.car_id}" src="${pageContext.request.contextPath}/seller/assets/img/images.png" alt="No Image Available" class="main-image card-img-top">
                                                     </c:if>
-                                                </c:if>
-                                            </c:forEach>
+                                                    <c:if test="${hasImages}">
+                                                        <img id="mainImage-${cl.car_id}" src="${mainImage}" alt="Main Image" class="main-image card-img-top">
+                                                    </c:if>
 
-                                            <c:if test="${not hasImages}">
-                                                <img id="mainImage-${cl.car_id}" src="${pageContext.request.contextPath}/seller/assets/img/images.png" alt="No Image Available" class="main-image card-img-top">
-                                            </c:if>
-                                            <c:if test="${hasImages}">
-                                                <img id="mainImage-${cl.car_id}" src="${mainImage}" alt="Main Image" class="main-image card-img-top">
-                                            </c:if>
-
-                                            <div class="thumbnails">
-                                                <c:forEach items="${imageCar}" var="ci">
-                                                    <c:if test="${ci.car_id eq cl.car_id}">
-                                                        <c:forEach items="${ci.image_url}" var="obj" varStatus="thumbLoop">
-                                                            <img src="${obj}" alt="Thumbnail" class="thumbnail" onclick="changeImage('${obj}', 'mainImage-${cl.car_id}')">
+                                                    <div class="thumbnails">
+                                                        <c:forEach items="${imageCar}" var="ci">
+                                                            <c:if test="${ci.car_id eq cl.car_id}">
+                                                                <c:forEach items="${ci.image_url}" var="obj" varStatus="thumbLoop">
+                                                                    <img src="${obj}" alt="Thumbnail" class="thumbnail" onclick="changeImage('${obj}', 'mainImage-${cl.car_id}')">
+                                                                </c:forEach>
+                                                            </c:if>
                                                         </c:forEach>
-                                                    </c:if>
-                                                </c:forEach>
-                                            </div>
+                                                    </div>
 
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-1">${cl.name}</h5>
-                                                <p class="card-text mb-1">#${cl.car_id}</p>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-sm btn-outline-secondary edit-btn" name="idToUpdate"
-                                                                data-id="${cl.car_id}" onclick="editProductModal('${cl.car_id}')">Edit</button>
-                                                        <button type="button" class="btn btn-sm btn-outline-danger delete-btn" name="idToDel"
-                                                                onclick="location.href = 'dashboard?state=image&type=delete&id=${cl.car_id}'">Delete</button>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title mb-1">${cl.name}</h5>
+                                                        <p class="card-text mb-1">#${cl.car_id}</p>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-sm btn-outline-secondary edit-btn" name="idToUpdate"
+                                                                        data-id="${cl.car_id}" onclick="editProductModal('${cl.car_id}')">Edit</button>
+                                                                <button type="button" class="btn btn-sm btn-outline-danger delete-btn" name="idToDel"
+                                                                        onclick="location.href = 'dashboard?state=image&type=delete&id=${cl.car_id}'">Delete</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </c:forEach>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+
                             </div>
                         </div>
                     </div>

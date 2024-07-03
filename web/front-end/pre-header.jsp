@@ -5,11 +5,20 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page import="java.util.*"%>
 <%@page import="Models.*" %>
 <%@page import="DAO.*" %>
 <%@page import="java.sql.*"%>
+<%@page import="java.util.Random" %>
+
+<c:set var="chars" value="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"/>
+<c:set var="finalString" value=""/>
+<c:forEach var="i" begin="1" end="6">
+    <c:set var="randomIndex" value="${Math.floor(Math.random() * fn:length(chars))}"/>
+    <c:set var="finalString" value="${finalString}${chars.substring(randomIndex, randomIndex + 1)}"/>
+</c:forEach>
+<c:set var="finalString" value="${finalString}${Math.floor(Math.random() * 100)}"/>
 <%  
     CarDao dao = new CarDao();
     List<Car> cars = dao.viewProducts();
@@ -27,7 +36,7 @@
       
 %> 
 <header class="pb-md-4 pb-0">
-    <div class="header-top">
+    <div class="header-top py-2">
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-xxl-3 d-xxl-block d-none">
@@ -39,25 +48,30 @@
 
                 <div class="col-xxl-6 col-lg-9 d-lg-block d-none">
                     <div class="header-offer">
-                        <div class="notification-slider">
+                        <div class="notification-slider h-100">
                             <div>
                                 <div class="timer-notification" style="overflow-x: hidden">
                                     <h6>
-                                        <strong class="me-1">Welcome to ApexAutos!</strong>Wrap
-                                        new offers/gift every day on Weekends.<strong
-                                            class="ms-1"
-                                            >New Coupon Code: niggaWhat!
+                                        <strong class="me-1">Chào mừng đến với ApexAutos!</strong>Điểm đến cho những người yêu xe
+
+                                    </h6>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="timer-notification" style="overflow-x: hidden">
+                                    <h6>
+                                        <strong class="ms-1">
+                                            Mã giảm giá hôm nay : ${finalString}
                                         </strong>
                                     </h6>
                                 </div>
                             </div>
-
                             <div>
                                 <div class="timer-notification">
                                     <h6>
-                                        Something you love is now on sale!
-                                        <a href="shop-left-sidebar.html" class="text-white"
-                                           >Buy Now !</a
+                                        Vô vàn xe mới để lựa chọn
+                                        <a href="home" class="text-white"
+                                           >Mua ngay !</a
                                         >
                                     </h6>
                                 </div>
@@ -583,3 +597,138 @@
     </div>
 </div>
 <!-- Deal Box Modal End -->
+<!-- Location Modal Start -->
+<div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                <p class="mt-1 text-content">Enter your address and we will specify the offer for your
+                    area.
+                </p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="location-list">
+                    <div class="search-input">
+                        <input type="search" class="form-control" placeholder="Search Your Area">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div class="disabled-box">
+                        <h6>Select a Location</h6>
+                    </div>
+
+                    <ul class="location-select custom-height">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Alabama</h6>
+                                <span>Min: $130</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Arizona</h6>
+                                <span>Min: $150</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>California</h6>
+                                <span>Min: $110</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Colorado</h6>
+                                <span>Min: $140</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Florida</h6>
+                                <span>Min: $160</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Georgia</h6>
+                                <span>Min: $120</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Kansas</h6>
+                                <span>Min: $170</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Minnesota</h6>
+                                <span>Min: $120</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>New York</h6>
+                                <span>Min: $110</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Washington</h6>
+                                <span>Min: $130</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Location Modal End -->
+
+<!-- Cookie Bar Box Start -->
+<div class="cookie-bar-box">
+    <div class="cookie-box">
+        <div class="cookie-image">
+            <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png"
+                 class="blur-up lazyload" alt="">
+            <h2>Cookies!</h2>
+        </div>
+
+        <div class="cookie-contain">
+            <h5 class="text-content" >We use cookies to make your experience better</h5>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="btn privacy-button">Privacy Policy</button>
+        <button class="btn ok-button">OK</button>
+    </div>
+</div>
+<!-- Cookie Bar Box End -->
+
+
+
+<!-- Tap to top start -->
+<div class="theme-option">
+    <div class="back-to-top">
+        <a id="back-to-top" href="#">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+</div>
+<!-- Tap to top end -->
