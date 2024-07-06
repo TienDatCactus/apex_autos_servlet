@@ -56,6 +56,11 @@
         <!-- Template css -->
         <link id="color-link" rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
+        <style>
+            .hidden {
+                display: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -154,7 +159,7 @@
                 <div class="row">
                     <div class="col-custome-3">
                         <div class="left-box wow fadeInUp">
-                            <div class="shop-left-sidebar custom-height" style="padding-right: 20px;max-height: 550px">
+                            <div class="shop-left-sidebar custom-height" style="padding-right: 20px;max-height: 860px">
                                 <div class="back-button">
                                     <h3><i class="fa-solid fa-arrow-left"></i>Quay lại</h3>
                                 </div>
@@ -162,7 +167,8 @@
                                 <div class="filter-category">
                                     <div class="filter-title">
                                         <h2>Bộ lọc</h2>
-                                        <a href="javascript:void(0)">Xóa tất cả</a>
+                                        <a href="javascript:void(0)" id="resetFilters">Xóa tất cả</a>
+
                                     </div>
                                     <div class="form-floating theme-form-floating-2 search-box">
                                         <input type="search" class="form-control" id="search"
@@ -189,7 +195,7 @@
                                                     <c:forEach var="cc" items="${carCate}">
                                                         <li>
                                                             <div class="form-check ps-0 m-0 category-list-box">
-                                                                <input class="checkbox_animated" type="checkbox" id="cate-${cc.id}">
+                                                                <input class="checkbox_animated" type="checkbox" id="cate-${cc.id}" data-cate-id="${cc.id}">
                                                                 <label class="form-check-label" for="cate-${cc.id}">
                                                                     <span class="name">${cc.name}</span>
                                                                     <span class="number">(15)</span>
@@ -217,7 +223,7 @@
                                                     <c:forEach var="cb" items="${carBrand}">
                                                         <li>
                                                             <div class="form-check ps-0 m-0 category-list-box">
-                                                                <input class="checkbox_animated" type="checkbox" id="brand-${cb.id}">
+                                                                <input class="checkbox_animated" type="checkbox" id="brand-${cb.id}" data-brand-id="${cb.id}">
                                                                 <label class="form-check-label" for="brand-${cb.id}">
                                                                     <span class="name">${cb.name}</span>
                                                                     <span class="number">(09)</span>
@@ -246,7 +252,7 @@
                                                            border-radius: 5px;
                                                            border: 1px solid #ddd;
                                                            color: #222;
-                                                           width: 100%;" placeholder="USA , ...">
+                                                           width: 100%;" placeholder="USA , ..."  id="originInput" >
                                                 </div>
                                             </div>
 
@@ -264,158 +270,11 @@
                                              aria-labelledby="headingThree">
                                             <div class="accordion-body">
                                                 <div class="range-slider">
-                                                    <input type="text" class="js-range-slider" value="">
+                                                    <input type="text" id="priceInput" class="js-range-slider disabled" value="">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>  
-
-                                    <!--                                    <div class="accordion-item">
-                                                                            <h2 class="accordion-header" id="headingSix">
-                                                                                <button class="accordion-button collapsed" type="button"
-                                                                                        data-bs-toggle="collapse" data-bs-target="#collapseSix"
-                                                                                        aria-expanded="false" aria-controls="collapseSix">
-                                                                                    <span>Rating</span>
-                                                                                </button>
-                                                                            </h2>
-                                                                            <div id="collapseSix" class="accordion-collapse collapse show"
-                                                                                 aria-labelledby="headingSix">
-                                                                                <div class="accordion-body">
-                                                                                    <ul class="category-list custom-padding">
-                                                                                        <li>
-                                                                                            <div class="form-check ps-0 m-0 category-list-box">
-                                                                                                <input class="checkbox_animated" type="checkbox">
-                                                                                                <div class="form-check-label">
-                                                                                                    <ul class="rating">
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <span class="text-content">(5 Star)</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                    
-                                                                                        <li>
-                                                                                            <div class="form-check ps-0 m-0 category-list-box">
-                                                                                                <input class="checkbox_animated" type="checkbox">
-                                                                                                <div class="form-check-label">
-                                                                                                    <ul class="rating">
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <span class="text-content">(4 Star)</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                    
-                                                                                        <li>
-                                                                                            <div class="form-check ps-0 m-0 category-list-box">
-                                                                                                <input class="checkbox_animated" type="checkbox">
-                                                                                                <div class="form-check-label">
-                                                                                                    <ul class="rating">
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <span class="text-content">(3 Star)</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                    
-                                                                                        <li>
-                                                                                            <div class="form-check ps-0 m-0 category-list-box">
-                                                                                                <input class="checkbox_animated" type="checkbox">
-                                                                                                <div class="form-check-label">
-                                                                                                    <ul class="rating">
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <span class="text-content">(2 Star)</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                    
-                                                                                        <li>
-                                                                                            <div class="form-check ps-0 m-0 category-list-box">
-                                                                                                <input class="checkbox_animated" type="checkbox">
-                                                                                                <div class="form-check-label">
-                                                                                                    <ul class="rating">
-                                                                                                        <li>
-                                                                                                            <i data-feather="star" class="fill"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                        <li>
-                                                                                                            <i data-feather="star"></i>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                    <span class="text-content">(1 Star)</span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>-->
-
 
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingThree">
@@ -434,7 +293,8 @@
                                                            border-radius: 5px;
                                                            border: 1px solid #ddd;
                                                            color: #222;
-                                                           width: 100%;" >
+                                                           width: 100%;" 
+                                                           id="yearStartInput">
                                                 </div>
                                             </div>
                                             <div class="position-relative" style="top:8px">đến</div>
@@ -445,7 +305,8 @@
                                                            border-radius: 5px;
                                                            border: 1px solid #ddd;
                                                            color: #222;
-                                                           width: 100%;" >
+                                                           width: 100%;" 
+                                                           id="yearEndInput">
                                                 </div>
                                             </div>
                                         </div>
@@ -537,7 +398,17 @@
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach var="cl" items="${carList}">
-                                        <div data-name="${cl.name}" class="car-card">
+                                        <c:forEach var="cb" items="${carBrand}">
+                                            <c:if test="${cb.id == cl.brand_id}">
+                                                <c:set var="brandName" value="${cb.name}" />
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:forEach var="cc" items="${carCate}">
+                                            <c:if test="${cc.id == cl.category_id}">
+                                                <c:set var="cateName" value="${cc.name}" />
+                                            </c:if>
+                                        </c:forEach>
+                                        <div data-name="${cl.name}" data-brand="${brandName}" data-cate="${cateName}" data-year="${cl.model_year}" data-price="${cl.price}" data-origin="${cl.origin}" class="car-card">
                                             <div class="product-box-3 h-100 wow fadeInUp">
                                                 <div class="product-header">
                                                     <div class="product-image p-1 my-2 ">
@@ -585,11 +456,7 @@
                                                 </div>
                                                 <div class="product-footer px-3">
                                                     <div class="product-detail">
-                                                        <c:forEach var="cb" items="${carBrand}">
-                                                            <c:if test="${cb.id == cl.brand_id}">
-                                                                <span class="span-name">${cb.name}</span>
-                                                            </c:if>
-                                                        </c:forEach>
+                                                        <span class="span-name">${brandName}</span>
                                                         <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
                                                             <h5 class="name">${cl.name}</h5>
                                                         </a>
@@ -714,11 +581,7 @@
                                                                         <li>
                                                                             <div class="brand-box">
                                                                                 <h5>Category:</h5>
-                                                                                <c:forEach var="cc" items="${carCate}">
-                                                                                    <c:if test="${cc.id == cl.category_id}">
-                                                                                        <h6>${cc.name}</h6>
-                                                                                    </c:if>
-                                                                                </c:forEach>
+                                                                                <h6>${cateName}</h6>
                                                                             </div>
                                                                         </li>
                                                                     </ul>
@@ -838,23 +701,5 @@
 
 
     </body>
-    <script>
-                                                                            const searchBox = document.getElementById('searchBox');
-                                                                            const carCards = document.querySelectorAll('.car-card');
-                                                                            const alert = document.querySelector('.noCar');
-                                                                            searchBox.addEventListener('input', function () {
-                                                                                const searchTerm = searchBox.value.toLowerCase();
-                                                                                carCards.forEach(card => {
-                                                                                    const dataName = card.getAttribute('data-name').toLowerCase();
-                                                                                    if (dataName.includes(searchTerm)) {
-                                                                                        card.style.display = 'block';
-                                                                                        alert.style.display = 'none'
-                                                                                    } else {
-                                                                                        card.style.display = 'none';
-                                                                                        alert.style.display = 'block';
-                                                                                    }
-                                                                                })
-                                                                            })
-
-    </script>
+    
 </html>

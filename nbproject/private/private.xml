@@ -61,23 +61,6 @@
             <file>file:/D:/apex_autos_servlet/web/front-end/checkout.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/compare.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/header.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/user-dashboard.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/CarDao.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/AdminDashboard.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/product-bottom-thumbnail.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/sign-up.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/pre-header.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/cart.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/contact-us.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/shop-left-sidebar.jsp</file>
-        </group>
-        <group>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/AdminDashboard.java</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/blog-list.jsp</file>
@@ -87,5 +70,6 @@
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/header.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
         </group>
+        <group/>
     </open-files>
 </project-private>

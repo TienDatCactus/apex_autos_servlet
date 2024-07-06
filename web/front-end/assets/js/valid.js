@@ -8,13 +8,11 @@ function validator(opts) {
         }
     }
     var selectorRules = {};
-
     function validate(inputElement, rule) {
         var error = getParent(inputElement, opts.inputSelector).querySelector(
                 opts.errorSelector
                 );
         var message;
-
         // takes out rules of selector
         var ruled = selectorRules[rule.selector];
         // loop through rules & check
@@ -47,9 +45,7 @@ function validator(opts) {
     if (form) {
         form.onsubmit = function (e) {
             e.preventDefault();
-
             var isValid = true;
-
             opts.rules.forEach(function (rule) {
                 var inputElement = form.querySelector(rule.selector);
                 var valid = validate(inputElement, rule);
@@ -57,9 +53,8 @@ function validator(opts) {
                     isValid = false;
                 }
             });
-
             if (isValid) {
-                // submit with js
+// submit with js
                 if (typeof opts.onSubmit === "function") {
                     var formData = form.querySelectorAll("[name]");
                     var formValue = Array.from(formData).reduce(function (values, input) {
@@ -73,7 +68,6 @@ function validator(opts) {
                             case "checkbox":
                                 if (input.matches(":checked"))
                                     return values;
-
                                 if (!Array.isArray(values[input.name])) {
                                     values[input.name] = [];
                                 }
@@ -120,7 +114,6 @@ function validator(opts) {
                             );
                     error.innerText = " ";
                 };
-
                 // while input
                 inputElement.oninput = function () {
                     var error = getParent(inputElement, opts.inputSelector).querySelector(
@@ -147,7 +140,6 @@ validator.isRequired = function (selector) {
         },
     };
 };
-
 validator.isEmail = function (selector) {
     return {
         selector: selector,
@@ -159,7 +151,6 @@ validator.isEmail = function (selector) {
         },
     };
 };
-
 validator.minLength = function (selector, min) {
     return {
         selector: selector,
@@ -170,7 +161,6 @@ validator.minLength = function (selector, min) {
         },
     };
 };
-
 validator.checkPass = function (selector, getPass) {
     return {
         selector: selector,
@@ -183,7 +173,6 @@ validator.checkPass = function (selector, getPass) {
         },
     };
 };
-
 validator.phone = (selector) => {
     return {
         selector: selector,
@@ -194,7 +183,6 @@ validator.phone = (selector) => {
         },
     };
 };
-
 // const emailInput = document.getElementById("email");
 // const passInput = document.getElementById("password");
 // const admin = document.querySelector(".admin-col");
@@ -277,7 +265,6 @@ function showNoti(icon, title, msg, type) {
     var notificationDelay = 1500;
     var notificationAnimationEnter = "animated fadeInDown";
     var notificationAnimationExit = "animated fadeOutUp";
-
     $.notify({
         icon: notificationIcon,
         title: notificationTitle,
@@ -317,7 +304,6 @@ function showNoti(icon, title, msg, type) {
 
 function autocomplete(inp, arr) {
     var currentFocus;
-
     inp.addEventListener("input", function (e) {
         var dropdown,
                 item,
@@ -331,7 +317,6 @@ function autocomplete(inp, arr) {
         dropdown = document.getElementById(this.id + "Dropdown");
         dropdown.innerHTML = "";
         dropdown.style.display = "block";
-
         for (i = 0; i < arr.length; i++) {
             if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
                 item = document.createElement("li");
@@ -348,7 +333,6 @@ function autocomplete(inp, arr) {
             }
         }
     });
-
     inp.addEventListener("keydown", function (e) {
         var x = document.getElementById(this.id + "Dropdown");
         if (x)
@@ -367,7 +351,6 @@ function autocomplete(inp, arr) {
             }
         }
     });
-
     function addActive(x) {
         if (!x)
             return false;
@@ -396,3 +379,101 @@ function autocomplete(inp, arr) {
         closeAllLists(e.target);
     });
 }
+
+
+const searchBox = document.getElementById('searchBox');
+const carCards = document.querySelectorAll('.car-card');
+const alert = document.querySelector('.noCar');
+searchBox.addEventListener('input', function () {
+    const searchTerm = searchBox.value.toLowerCase();
+    carCards.forEach(card => {
+        const dataName = card.getAttribute('data-name').toLowerCase();
+        if (dataName.includes(searchTerm)) {
+            card.style.display = 'block';
+            alert.style.display = 'none';
+        } else {
+            card.style.display = 'none';
+            alert.style.display = 'block';
+        }
+    });
+});
+
+$(document).ready(function () {
+    const items = $('.car-card');
+    const applyFilters = () => {
+        const selectedCategories = [];
+        const selectedBrands = [];
+        const origin = $('#originInput').val().toLowerCase();
+        const priceRange = $('#priceInput').val();
+        const yearStart = $('#yearStartInput').val();
+        const yearEnd = $('#yearEndInput').val();
+        $('.checkbox_animated:checked').each(function () {
+            const cateId = $(this).data('cate-id');
+            const brandId = $(this).data('brand-id');
+            if (cateId) {
+                const label = this.closest('div').querySelector('label');
+                const cateName = label.querySelector('.name').textContent;
+                selectedCategories.push(cateName);
+            }
+            if (brandId) {
+                const label = this.closest('div').querySelector('label');
+                const brandName = label.querySelector('.name').textContent;
+                selectedBrands.push(brandName);
+            }
+        });
+        if (selectedCategories.length == 0 && selectedBrands.length == 0 && !origin && !priceRange && !yearStart && !yearEnd) {
+            items.removeClass('hidden');
+        } else {
+            items.each(function () {
+                const item = $(this);
+                const itemCategory = item.data('cate');
+                const itemBrand = item.data('brand');
+                const itemOrigin = item.data('origin').toLowerCase();
+                const itemPrice = parseFloat(item.data('price'));
+                const itemYear = parseInt(item.data('year'));
+                let isMatch = true;
+                if (selectedCategories.length && !selectedCategories.includes(itemCategory)) {
+                    isMatch = false;
+                }
+                if (selectedBrands.length && !selectedBrands.includes(itemBrand)) {
+                    isMatch = false;
+                }
+                if (origin && !itemOrigin.includes(origin)) {
+                    isMatch = false;
+                }
+                if (priceRange) {
+                    const [minPrice, maxPrice] = priceRange.split(';').map(Number);
+                    if (itemPrice < minPrice || itemPrice > maxPrice) {
+                        isMatch = false;
+                    }
+                }
+                if (yearStart && yearEnd) {
+                    const yearStartInt = parseInt(yearStart);
+                    const yearEndInt = parseInt(yearEnd);
+                    if (itemYear < yearStartInt || itemYear > yearEndInt) {
+                        isMatch = false;
+                    }
+                }
+
+                if (isMatch) {
+                    item.removeClass('hidden');
+                } else {
+                    item.addClass('hidden');
+                }
+            });
+        }
+    };
+    const resetFilters = () => {
+        $('.checkbox_animated').prop('checked', false);
+        $('#originInput').val('');
+        $('#priceInput').val('');
+        $('#yearStartInput').val('');
+        $('#yearEndInput').val('');
+        items.removeClass('hidden');
+    };
+    $('.checkbox_animated').on('change', applyFilters);
+    $('#originInput').on('input', applyFilters);
+    $('#priceInput').on('input', applyFilters);
+    $('#yearStartInput, #yearEndInput').on('change', applyFilters);
+    $('#resetFilters').on('click', resetFilters);
+});
