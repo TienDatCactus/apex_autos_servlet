@@ -9,14 +9,23 @@ import Models.Car;
 import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
+import Models.Comment;
 import Models.Paging;
+import Models.Status;
+
 import Models.TradeMark;
+import Models.UserAccount;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -25,9 +34,12 @@ import java.util.List;
 @WebServlet(
         name = "HomeControl",
         urlPatterns = {"/home"})
+@MultipartConfig
 public class HomeControl extends HttpServlet {
 
     CarDao dao = new CarDao();
+    UserDAO daou = new UserDAO();
+    AdminDAO daoa = new AdminDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -50,23 +62,37 @@ public class HomeControl extends HttpServlet {
             request
                     .getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
                     .forward(request, response);
-        }
-        else if ("trademark".equals(state)) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            
-            TradeMark tradeMark = dao.viewTradeMarkByID(id);
-            int idSe = dao.getSellerIDByTmID(id);
+        } else if ("blog".equals(state)) {
+
+            List<Car> carTrending = dao.viewTrending();
             List<CarCategory> carCate = dao.viewCarCategory();
             List<CarBrand> carBrand = dao.viewCarBrand();
-            List<Car> carList = dao.viewProductForSeller(idSe);
             List<CarImage> carImage = dao.viewImageForCar();
-            request.setAttribute("tradeMark", tradeMark);
-            request.setAttribute("carList", carList);
+            List<Status> allStatus = daou.viewAllStatus();
+            List<UserAccount> allAccounts = daoa.viewUsers();
+            List<Comment> allComment = daou.viewAllComment();
+
+            request.setAttribute("carTrending", carTrending);
+            request.setAttribute("allComment", allComment);
+            request.setAttribute("allAccounts", allAccounts);
+            request.setAttribute("allStatus", allStatus);
             request.setAttribute("carCate", carCate);
             request.setAttribute("carBrand", carBrand);
             request.setAttribute("carImage", carImage);
-             request
-                    .getRequestDispatcher("/front-end/seller-detail.jsp")
+            request.getRequestDispatcher("/front-end/blog-list.jsp").forward(request, response);
+        } 
+        else if ("manage".equals(state)) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            
+            List<Status> listStatusFor1User = daou.viewAllStatusFor1User(id);
+            List<Car> carTrending = dao.viewTrending();
+            List<CarImage> carImage = dao.viewImageForCar();
+            
+            request.setAttribute("carTrending", carTrending);
+            request.setAttribute("listStatusFor1User", listStatusFor1User);
+            request.setAttribute("carImage", carImage);
+            request
+                    .getRequestDispatcher("/front-end/blog-manager.jsp")
                     .forward(request, response);
         } else {
             CarDao dao = new CarDao();
@@ -96,6 +122,83 @@ public class HomeControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
+        switch (action) {
+            case "add":
+                int user_id = Integer.parseInt(request.getParameter("idu"));
+                String title = request.getParameter("title");
+                String content = request.getParameter("content");
+
+                Collection<Part> parts = request.getParts();
+                String path = request.getServletContext().getRealPath("/images");
+                File dir = new File(path);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                List<String> imagePaths = new ArrayList<>(); // List of image paths
+
+                for (Part part : parts) {
+                    String fileName = part.getSubmittedFileName();
+                    if (fileName != null && !fileName.isEmpty()) {
+                        File image = new File(dir, fileName);
+                        part.write(image.getAbsolutePath());
+                        imagePaths.add(
+                                request.getContextPath() + "/images/" + fileName); // Add image path to list
+                    }
+                }
+                Status s = new Status(0, content, imagePaths, title, user_id);
+                daou.addNewStatus(s);
+                break;
+            case "update":
+                int status_id = Integer.parseInt(request.getParameter("statusIdEditInput"));
+                String titleEditInput = request.getParameter("titleEditInput");
+                String contentEditInput = request.getParameter("contentEditInput");
+
+                Collection<Part> partss = request.getParts();
+                String pathh = request.getServletContext().getRealPath("/images");
+                File dirr = new File(pathh);
+                if (!dirr.exists()) {
+                    dirr.mkdirs();
+                }
+
+                List<String> imagePathss = new ArrayList<>(); // List of image paths
+
+                for (Part part : partss) {
+                    String fileName = part.getSubmittedFileName();
+                    if (fileName != null && !fileName.isEmpty()) {
+                        File image = new File(dirr, fileName);
+                        part.write(image.getAbsolutePath());
+                        imagePathss.add(
+                                request.getContextPath() + "/images/" + fileName); // Add image path to list
+                    }
+                }
+                Status ss = new Status(status_id, contentEditInput, imagePathss, titleEditInput, 0);
+                daou.updateStatus(ss);
+                break;
+            case "delete":
+                int status_del = Integer.parseInt(request.getParameter("idDel"));
+                daou.deleteStatus(status_del);
+                break;
+            case "addcmt":
+                int status_id_check = Integer.parseInt(request.getParameter("status_id"));
+                int user_id_check = Integer.parseInt(request.getParameter("user_id"));
+                String comment = request.getParameter("comment");
+                Comment c = new Comment(0, comment, status_id_check, user_id_check);
+                daou.addNewComment(c);
+                break;
+            default:
+                throw new AssertionError();
+        }
+        List<Status> allStatus = daou.viewAllStatus();
+        List<Comment> allComment = daou.viewAllComment();
+        List<UserAccount> allAccounts = daoa.viewUsers();
+        
+        request.setAttribute("allStatus", allStatus);
+        request.setAttribute("allComment", allComment);
+        request.setAttribute("allAccounts", allAccounts);
+        
+        request.getRequestDispatcher("/front-end/blog-list.jsp").forward(request, response);
     }
 
     @Override

@@ -10,6 +10,7 @@ import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
 import Models.CartItems;
+import Models.Status;
 import Models.TradeMark;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -668,7 +669,7 @@ public class CarDao {
 
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
-        System.out.println(carDAO.viewProductForSeller(1012));
+       
     }
 
     public List<String> getCarImages(int carId) {
@@ -876,7 +877,6 @@ public class CarDao {
         return seller_id; // Trả về ca
     }
 
-    
-    
-    
+   
+
 }

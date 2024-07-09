@@ -207,6 +207,11 @@
                                                                 </li>
                                                             </ul>
                                                         </li>
+                                                        
+                                                          <a class="nav-link dropdown-toggle"
+                                                               href="home?state=blog"
+                                                              >Blog</a>
+                                                        
                                                         <c:if test="${sessionScope.user != null}">
                                                             <li class="nav-item dropdown new-nav-item">
                                                                 <label class="new-dropdown">New</label>
