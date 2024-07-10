@@ -306,7 +306,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <button class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold">Pay</button>
+                                <button class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold" type="submit">Pay</button>
                             </div>
                         </form>
                     </div>

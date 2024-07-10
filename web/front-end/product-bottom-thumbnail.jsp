@@ -46,6 +46,8 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/bulk-style.css">
 
         <!-- Template css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <link id="color-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
     </head>
 
@@ -278,6 +280,7 @@
                                                 <li>Origin : <a href="javascript:void(0)">${carDT.origin}</a></li>
                                             </ul>
                                         </div>
+                                        <div class="button-83 col-4">${carDT.weight} Kg</div>
                                     </div>
 
                                     <div class="paymnet-option">
@@ -330,17 +333,18 @@
                                         </li>
 
 
+                                        <div class="buy-box">
 
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="care-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#care" type="button" role="tab" aria-controls="care"
-                                                    aria-selected="false">Videos</button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="care-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#review" type="button" role="tab" aria-controls="review"
-                                                    aria-selected="false">Customer Reviews</button>
-                                        </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="yt-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#yt" type="button" role="tab" aria-controls="care"
+                                                        aria-selected="false">Videos</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="review-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#review" type="button" role="tab" aria-controls="review"
+                                                        aria-selected="false">Customer Reviews</button>
+                                            </li>
 
 
                                     </ul>
@@ -433,7 +437,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="tab-pane fade" id="care" role="tabpanel" aria-labelledby="care-tab">
+                                        <div class="tab-pane fade" id="yt" role="tabpanel" aria-labelledby="yt-tab">
                                             <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5 video-sg ">
 
 
@@ -547,46 +551,14 @@
                                                         </div>
 
                                                         <div class="row g-4">
-                                                            <div class="col-md-6">
-                                                                <div class="form-floating theme-form-floating">
-                                                                    <input type="text" class="form-control" id="name"
-                                                                           placeholder="Name">
-                                                                    <label for="name">Your Name</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="form-floating theme-form-floating">
-                                                                    <input type="email" class="form-control" id="email"
-                                                                           placeholder="Email Address">
-                                                                    <label for="email">Email Address</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="form-floating theme-form-floating">
-                                                                    <input type="url" class="form-control" id="website"
-                                                                           placeholder="Website">
-                                                                    <label for="website">Website</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="form-floating theme-form-floating">
-                                                                    <input type="url" class="form-control" id="review1"
-                                                                           placeholder="Give your review a title">
-                                                                    <label for="review1">Review Title</label>
-                                                                </div>
-                                                            </div>
 
                                                             <div class="col-12">
                                                                 <div class="form-floating theme-form-floating">
                                                                     <textarea class="form-control"
                                                                               placeholder="Leave a comment here"
-                                                                              id="floatingTextarea2"
-                                                                              style="height: 150px"></textarea>
-                                                                    <label for="floatingTextarea2">Write Your
-                                                                        Comment</label>
+                                                                              id="simplemde"
+                                                                              ></textarea>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -906,7 +878,35 @@
             </div>
         </section>
         <!-- Product Left Sidebar End -->
+        <c:forEach items="${allComment1Car}" var="ac" >
 
+            <div class="comments" style="margin-left: 150px;margin-top: 20px">
+                <c:forEach items="${allAccounts}" var="aa">    
+                    <c:if test="${aa.user_id == ac.user_id && carDT.car_id == ac.car_id}">
+                        <div class="comment">
+                            <span class="super"><i data-feather="user"></i> 
+                                <span class="comment-content">${aa.email}</span>                                              
+                            </span>   
+                        </div>
+                        <div class="comment">
+                            <span class="comment-user">${ac.comment_content}</span>
+                        </div>
+                    </c:if>
+
+                </c:forEach>     
+            </div>
+
+        </c:forEach>
+        <form action="home?state=detail&action=adCmt" method="post" style="margin-left: 150px;margin-top: 20px">
+            <div class="form-group">
+                <label for="comment">Write you comment here:</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3" style="width: 300px; height: 100px;"></textarea>
+
+            </div>
+            <input type="hidden" name="id" value="${carDT.car_id}">
+            <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
+            <button type="submit" class="btn btn-primary">Comment</button>
+        </form>
         <!-- Releted Product Section Start -->
         <section class="product-list-section section-b-space">
             <div class="container-fluid-lg">
@@ -922,18 +922,17 @@
                     <div class="col-12">
                         <div class="slider-6_1 product-wrapper">
                             <c:forEach var="cl" items="${carList}">
-
                                 <div>
                                     <div class="product-box-3 wow fadeInUp">
                                         <div class="product-header">
-                                            <div class="product-image p-0">
+                                            <div class="product-image">
                                                 <a href="detail?id=${cl.car_id}">
                                                     <c:set var="firstImagePrinted" value="false" />
                                                     <c:forEach items="${carImage}" var="ci">
                                                         <c:if test="${ci.car_id == cl.car_id}">
                                                             <c:forEach items="${ci.image_url}" var="obj">
                                                                 <c:if test="${not firstImagePrinted}">
-                                                                    <img src="${obj}"  alt="Car Image" class="card-img-top rounded my-2"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                    <img src="${obj}"  alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width:100%; max-height: 100%;">
                                                                     <c:set var="firstImagePrinted" value="true" />
                                                                 </c:if>
                                                             </c:forEach>
@@ -1342,7 +1341,6 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
         <script>
-// fetch youtube api
                                     async function fetchData(url, options) {
                                         const response = await fetch(url, options);
                                         const data = await response.json();
@@ -1364,11 +1362,11 @@
                                             }
                                         };
                                         try {
-                                            const ytData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${carDT.name}-${brand}-${cate}-${carDT.model_year}`, options);
+                                            const ytData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${model_year}-${name}-${brand}-${cate}-review`, options);
                                             ytData.contents.slice(0, 4).forEach((data) => {
                                                 console.log(data.video)
                                                 const cardHTML = "<div class=\"col\">" +
-                                                        "<div class=\"card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg\" style=\"cursor:pointer;background-repeat: no-repeat;background-clip: border-box ;background-size: cover;background-image: url('" + data.video.thumbnails[0].url + "');\" onClick=\"location.href='https://www.youtube.com/watch?v=" + data.video.videoId + "';\">" +
+                                                        "<div class=\"card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg\" style=\"cursor:pointer;background-repeat: no-repeat;background-clip: border-box ;background-size: cover;background-image: url('" + data.video.thumbnails[0].url + "');\"  onClick=\"location.href='https://www.youtube.com/watch?v=" + data.video.videoId + "';\">" +
                                                         "<div class=\"d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1\">" +
                                                         "<h3 class=\"pt-5 mt-5 mb-4 display-6 lh-1 fw-bold\">" + data.video.title + "</h3>" +
                                                         "<ul class=\"d-flex list-unstyled mt-auto\">" +
@@ -1396,6 +1394,11 @@
                                     }
 
                                     window.onload = fetchYouTubeData;
+        </script>
+        <script>
+            var simplemde = new SimpleMDE({
+                element: document.getElementById("simplemde")
+            });
         </script>
     </body>
 

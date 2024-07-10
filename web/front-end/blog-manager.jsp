@@ -1,6 +1,10 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
+
 <html lang="en">
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1189,124 +1193,94 @@
 
 
         <!-- Modal -->
+
+        <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Upload new post</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Update status</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="home?state=blog&action=add" method="post" enctype="multipart/form-data">
-                        <div class="modal-body">
+                    <form action="home?state=blog&action=update" method="post">
+                    <div class="modal-body">
 
-                            <input type="hidden" name="idu" value="${sessionScope.user.user_id}"> 
-
-                            <div class="form-group">
-                                <label for="titleInput">Title:</label>
-                                <input type="text" class="form-control" id="titleInput" placeholder="Enter title" name="title">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="postContent">Content:</label>
-                                <textarea name="content" class="form-control" id="postContent" rows="5" placeholder="Write your content here..."></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Images</label>
-                                <input type="file" class="form-control" onchange="displayImage(this)" name="image" multiple>
-                                <img id="previewImage" style="max-width: 300px; max-height: 300px;">
-                            </div>
-
+                        
+                        <input type="hidden" class="form-control" id="statusIdEditInput" name="statusIdEditInput">
+                        <div class="form-group">
+                            <label for="titleEditInput">Title:</label>
+                            <input type="text" class="form-control" id="titleEditInput" placeholder="Enter title" name="titleEditInput">
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Upload</button>
+                        
+                        <div class="form-group">
+                            <label for="contentEditInput">Content:</label>
+                            <textarea class="form-control" id="contentEditInput" name="contentEditInput" rows="5" placeholder="Write your content here..."></textarea>
                         </div>
-                    </form>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Images</label>
+                            <input type="file" class="form-control" onchange="displayImage(this)" id="previewImage" name="previewImage" multiple>
+                            <img id="previewImageDisplay" name="previewImageDisplay" style="max-width: 300px; max-height: 300px;">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                        </form>
                 </div>
             </div>
         </div>
-        <c:if test="${sessionScope.user != null}">
-            <div class="container mt-5" style="display: flex;justify-content: space-between">
-                <div class="card" style="width: 200px;margin-left: 400px">
-                    <div class="form-group" >
-                        <div class="form-control" id="postContent" rows="3"
-                             data-toggle="modal" data-target="#exampleModal">
-                            What's on your mind?
-                        </div>
-                    </div>
-                </div>
-                <div style="width: 200px;margin-left: 400px">
-                    <div class="form-group" >
-                        <div>
-                            <a href="home?state=manage&id=${sessionScope.user.user_id}">
-                                Manage your status
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </c:if>
         <section class="blog-section section-b-space">
             <div class="container-fluid-lg">
                 <div class="row g-4">
                     <div class="col-xxl-9 col-xl-8 col-lg-7 order-lg-2">
                         <div class="row g-4">
-                            <c:forEach items="${allStatus}" var="as">
-                                <div class="col-12">
-                                    <div class="blog-box blog-list wow fadeInUp">
-                                        <div class="blog-contain blog-contain-2">
-                                            <div class="blog-label">
-                                                <c:forEach items="${allAccounts}" var="aa">
-                                                    <c:if test="${as.user_id == aa.user_id}">                                                
-                                                        <span class="super"><i data-feather="user"></i> 
-                                                            <span>${aa.email}</span>                                               
-                                                        </span>
-                                                    </c:if>
-                                                </c:forEach>
-                                            </div>
-                                            <h3>${as.status_title}</h3>
+
+                            <c:forEach items="${listStatusFor1User}" var="as">
+                                <div class="col-12"  style="display: flex;justify-content: space-between">
+
+                                    <div class="blog-box blog-list wow fadeInUp" style="width: 100%">
+
+
+                                        <div class="blog-contain blog-contain-2" >
+
+                                            
+                                                <h3>${as.status_title}</h3>
+                                            
                                             <p>${as.status_content}</p>
+
                                             <c:forEach items="${as.status_images}" var="obj">
-                                                <img src="${obj}" alt="Car Image" class="card-img-top" style="object-fit: cover; max-width: 100%; max-height: 100%;">
-                                            </c:forEach>
 
-                                            <c:forEach items="${allComment}" var="ac">
+                                                <img src="${obj}"  alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width:100%; max-height: 100%;">
 
-                                                <div class="comments">
-                                                    <c:forEach items="${allAccounts}" var="aa">    
-                                                        <c:if test="${aa.user_id == ac.user_id && as.status_id == ac.status_id}">
-                                                            <div class="comment">
-                                                                <span class="super"><i data-feather="user"></i> 
-                                                                    <span class="comment-content">${aa.email}</span>                                              
-                                                                </span>   
-                                                            </div>
-                                                            <div class="comment">
-                                                                <span class="comment-user">${ac.comment_content}</span>
-                                                            </div>
-                                                        </c:if>
-                                                    </c:forEach>     
-                                                </div>
 
                                             </c:forEach>
-                                            <form action="home?state=blog&action=addcmt" method="post">
-                                                <div class="form-group">
-                                                    <label for="comment">Write you comment here:</label>
-                                                    <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
-                                                </div>
-                                                <input type="hidden" name="status_id" value="${as.status_id}">
-                                                <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
-                                                <button type="submit" class="btn btn-primary">Comment</button>
-                                            </form>
+
                                         </div>
+
+                                        <div class="blog-contain blog-contain-2" style="margin-left: 400px">
+
+                                            <button class="btn btn-success" type="button"
+                                                    data-toggle="modal" data-target="#exampleModal" 
+                                                    onclick="editProductModal('${as.status_id}','${as.status_content}', '${as.status_images[0]}', '${as.status_title}')">Edit</button>
+                                                    <form action="home?state=blog&action=delete&idDel=${as.status_id}" method="post">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                        </div> 
+
                                     </div>
+
                                 </div>
+
                             </c:forEach>
                         </div>
-                    </div>
 
+
+                    </div>
 
                     <div class="col-xxl-3 col-xl-4 col-lg-5 order-lg-1">
                         <div class="left-sidebar-box wow fadeInUp">
@@ -1315,7 +1289,7 @@
                             <div class="accordion left-accordion-box" id="accordionPanelsStayOpenExample">
 
 
-                                <div class="accordion-item" style="margin-top: 40px">
+                                <div class="accordion-item" >
                                     <h2 class="accordion-header" id="panelsStayOpen-headingFour">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                                 data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
@@ -1422,9 +1396,307 @@
                     </div>
                 </div>
 
-    <!-- Footer Section Start -->
-   <jsp:include page="footer.jsp"></jsp:include>
-    <!-- Footer Section End -->
+                <div class="main-footer section-b-space section-t-space">
+                    <div class="row g-md-4 g-3">
+                        <div class="col-xl-3 col-lg-4 col-sm-6">
+                            <div class="footer-logo">
+                                <div class="theme-logo">
+                                    <a href="index.html">
+                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="footer-logo-contain">
+                                    <p>We are a friendly bar serving a variety of cocktails, wines and beers. Our bar is a
+                                        perfect place for a couple.</p>
+
+                                    <ul class="address">
+                                        <li>
+                                            <i data-feather="home"></i>
+                                            <a href="javascript:void(0)">1418 Riverwood Drive, CA 96052, US</a>
+                                        </li>
+                                        <li>
+                                            <i data-feather="mail"></i>
+                                            <a href="javascript:void(0)">support@fastkart.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                            <div class="footer-title">
+                                <h4>Categories</h4>
+                            </div>
+
+                            <div class="footer-contain">
+                                <ul>
+                                    <li>
+                                        <a href="shop-left-sidebar.html" class="text-content">Vegetables & Fruit</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-left-sidebar.html" class="text-content">Beverages</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-left-sidebar.html" class="text-content">Meats & Seafood</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-left-sidebar.html" class="text-content">Frozen Foods</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-left-sidebar.html" class="text-content">Biscuits & Snacks</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-left-sidebar.html" class="text-content">Grocery & Staples</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xl col-lg-2 col-sm-3">
+                            <div class="footer-title">
+                                <h4>Useful Links</h4>
+                            </div>
+
+                            <div class="footer-contain">
+                                <ul>
+                                    <li>
+                                        <a href="index.html" class="text-content">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-left-sidebar.html" class="text-content">Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="about-us.html" class="text-content">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-list.html" class="text-content">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="contact-us.html" class="text-content">Contact Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-2 col-sm-3">
+                            <div class="footer-title">
+                                <h4>Help Center</h4>
+                            </div>
+
+                            <div class="footer-contain">
+                                <ul>
+                                    <li>
+                                        <a href="order-success.html" class="text-content">Your Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="user-dashboard.html" class="text-content">Your Account</a>
+                                    </li>
+                                    <li>
+                                        <a href="order-tracking.html" class="text-content">Track Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="wishlist.html" class="text-content">Your Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="search.html" class="text-content">Search</a>
+                                    </li>
+                                    <li>
+                                        <a href="faq.html" class="text-content">FAQ</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-4 col-sm-6">
+                            <div class="footer-title">
+                                <h4>Contact Us</h4>
+                            </div>
+
+                            <div class="footer-contact">
+                                <ul>
+                                    <li>
+                                        <div class="footer-number">
+                                            <i data-feather="phone"></i>
+                                            <div class="contact-number">
+                                                <h6 class="text-content">Hotline 24/7 :</h6>
+                                                <h5>+91 888 104 2340</h5>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="footer-number">
+                                            <i data-feather="mail"></i>
+                                            <div class="contact-number">
+                                                <h6 class="text-content">Email Address :</h6>
+                                                <h5>fastkart@hotmail.com</h5>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="social-app">
+                                        <h5 class="mb-2 text-content">Download App :</h5>
+                                        <ul>
+                                            <li class="mb-0">
+                                                <a href="https://play.google.com/store/apps" target="_blank">
+                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/playstore.svg" class="blur-up lazyload"
+                                                         alt="">
+                                                </a>
+                                            </li>
+                                            <li class="mb-0">
+                                                <a href="https://www.apple.com/in/app-store/" target="_blank">
+                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/appstore.svg" class="blur-up lazyload"
+                                                         alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-footer section-small-space">
+                    <div class="reserve">
+                        <h6 class="text-content">Â©2022 Fastkart All rights reserved</h6>
+                    </div>
+
+                    <div class="payment">
+                        <img src="${pageContext.request.contextPath}/front-end/assets/images/payment/1.png" class="blur-up lazyload" alt="">
+                    </div>
+
+                    <div class="social-link">
+                        <h6 class="text-content">Stay connected :</h6>
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/" target="_blank">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/" target="_blank">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://in.pinterest.com/" target="_blank">
+                                    <i class="fa-brands fa-pinterest-p"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Section End -->
+
+        <!-- Location Modal Start -->
+        <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                        <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="location-list">
+                            <div class="search-input">
+                                <input type="search" class="form-control" placeholder="Search Your Area">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+
+                            <div class="disabled-box">
+                                <h6>Select a Location</h6>
+                            </div>
+
+                            <ul class="location-select custom-height">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Alabama</h6>
+                                        <span>Min: $130</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Arizona</h6>
+                                        <span>Min: $150</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>California</h6>
+                                        <span>Min: $110</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Colorado</h6>
+                                        <span>Min: $140</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Florida</h6>
+                                        <span>Min: $160</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Georgia</h6>
+                                        <span>Min: $120</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Kansas</h6>
+                                        <span>Min: $170</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Minnesota</h6>
+                                        <span>Min: $120</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>New York</h6>
+                                        <span>Min: $110</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <h6>Washington</h6>
+                                        <span>Min: $130</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Location Modal End -->
 
         <!-- Deal Box Modal Start -->
         <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -1506,9 +1778,15 @@
         </div>
         <!-- Deal Box Modal End -->
 
-    <!-- Deal Box Modal Start -->
-  
-    <!-- Deal Box Modal End -->
+        <!-- Tap to top start -->
+        <div class="theme-option">
+            <div class="back-to-top">
+                <a id="back-to-top" href="#">
+                    <i class="fas fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Tap to top end -->
 
         <!-- Bg overlay Start -->
         <div class="bg-overlay"></div>
@@ -1549,28 +1827,45 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-                                    $(document).ready(function () {
-                                        // B?t s? ki?n click v�o input
-                                        $('#postContent').click(function () {
-                                            // Hi?n th? modal khi click v�o input
-                                            $('#exampleModal').modal('show');
-                                        });
-                                    });
-                                    function displayImage(input) {
-                                        var previewImage = document.getElementById("previewImage");
-                                        var file = input.files[0];
-                                        var reader = new FileReader();
+                                                        $(document).ready(function () {
+                                                            // Bắt sự kiện click vào input
+                                                            $('#postContent').click(function () {
+                                                                // Hiển thị modal khi click vào input
+                                                                $('#exampleModal').modal('show');
+                                                            });
+                                                        });
+                                                        function displayImage(input) {
+                                                            var previewImage = document.getElementById("previewImage");
+                                                            var file = input.files[0];
+                                                            var reader = new FileReader();
 
-                                        reader.onload = function (e) {
-                                            previewImage.src = e.target.result;
-                                        }
+                                                            reader.onload = function (e) {
+                                                                previewImage.src = e.target.result;
+                                                            }
 
-                                        if (file) {
-                                            reader.readAsDataURL(file);
-                                        } else {
-                                            previewImage.src = "#";
-                                        }
-                                    }
+                                                            if (file) {
+                                                                reader.readAsDataURL(file);
+                                                            } else {
+                                                                previewImage.src = "#";
+                                                            }
+                                                        }
+
+                                                        function editProductModal(status_id,status_content, status_images, status_title) {
+                                                            console.log("Status id", status_id);
+                                                            console.log("Status Content:", status_content);
+                                                            console.log("Status Images:", status_images);
+                                                            console.log("Status Title:", status_title);
+
+                                                            document.getElementById('contentEditInput').value = status_content;
+                                                            document.getElementById('statusIdEditInput').value = status_id;
+                                                            // Display the first logo image in the modal
+                                                            var previewImage = document.getElementById('previewImageDisplay');
+                                                            previewImage.src = status_images;
+
+                                                            document.getElementById('titleEditInput').value = status_title;
+                                                        }
+
+
         </script>
     </body>
 

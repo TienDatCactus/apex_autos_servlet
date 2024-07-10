@@ -52,6 +52,10 @@
                                                         <img id="previewImage" style="max-width: 300px; max-height: 300px;">
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label for="nameEditInput" class="form-label">Describe</label>
+                                                        <input type="text" class="form-control"  placeholder="Enter describe" name="describeEditInput">
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label for="privacyEditInput" class="form-label">Privacy Policy</label>
                                                         <textarea class="form-control"  rows="4" name="privacyEditInput" placeholder="Enter privacy policy"></textarea>
                                                     </div>
@@ -87,6 +91,10 @@
                                                         <img id="previewImage" style="max-width: 300px; max-height: 300px;">
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label for="nameEditInput" class="form-label">Describe</label>
+                                                        <input type="text" class="form-control" id="describeEditInput" placeholder="Enter describe" name="describeEditInput">
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label for="privacyEditInput" class="form-label">Privacy Policy</label>
                                                         <textarea class="form-control" id="privacyEditInput" rows="4" name="privacyEditInput" placeholder="Enter privacy policy"></textarea>
                                                     </div>
@@ -120,6 +128,7 @@
                                                 <tr>
                                                     <th>Site Name</th>                                                  
                                                     <th>Site Logo</th> 
+                                                    <th>Describe</th> 
                                                     <th>Privacy Policy</th>
                                                     <th>Terms & Conditions</th>
                                                     <th>Action</th>
@@ -135,12 +144,13 @@
                                                         <img src="${obj}" alt="Logo" style="max-width: 100px; max-height: 100px;">
                                                     </c:forEach>
                                                 </td>
+                                                <td name="describe">${tm.describe}</td>
                                                 <td name="privacy">${tm.privacy}</td>
                                                 <td name="term">${tm.terms}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary" 
                                                             data-toggle="modal" data-target="#editProductModal"
-                                                            onclick="editProductModal('${tm.trademard_id}', '${tm.name}', '${tm.url_logo[0]}', '${tm.privacy}', '${tm.terms}')">
+                                                            onclick="editProductModal('${tm.trademard_id}', '${tm.name}', '${tm.url_logo[0]}', '${tm.describe}', '${tm.privacy}', '${tm.terms}')">
                                                         Update
                                                     </button>
                                                 </td>
@@ -161,14 +171,14 @@
         </div>
     </body>
     <script>
-        function editProductModal(id, name, logo, privacy, terms) {
+        function editProductModal(id, name, logo,describe, privacy, terms) {
             document.getElementById('idEditInput').value = id;
             document.getElementById('nameEditInput').value = name;
 
             // Display the first logo image in the modal
             var previewImage = document.getElementById('previewImage');
             previewImage.src = logo;
-
+            document.getElementById('describeEditInput').value = describe;
             document.getElementById('privacyEditInput').value = privacy;
             document.getElementById('termEditInput').value = terms;
         }

@@ -9,6 +9,7 @@ import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
 import Models.CartItems;
+import Models.Status;
 import Models.TradeMark;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -651,34 +652,35 @@ public class CarDao {
         // Cập nhật lại các URL ảnh
     }
 
-    public List<TradeMark> getTradeMark(int user_id) {
-        List<TradeMark> listTrade = new ArrayList<>();
-        String query = "SELECT * FROM [dbo].[trade_mark] WHERE seller_id = ?";
-
-        try (PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setInt(1, user_id);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    String logo_url = rs.getString("logo_url");
-
-                    List<String> imageUrls = new ArrayList<>();
-                    imageUrls.add(logo_url);
-                    TradeMark trade
-                            = new TradeMark(
-                                    rs.getInt("trademark_id"),
-                                    rs.getString("name"),
-                                    imageUrls,
-                                    rs.getString("privacy"),
-                                    rs.getString("terms"),
-                                    rs.getInt("seller_id"));
-                    listTrade.add(trade);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return listTrade;
-    }
+//    public List<TradeMark> getTradeMark(int user_id) {
+//        List<TradeMark> listTrade = new ArrayList<>();
+//        String query = "SELECT * FROM [dbo].[trade_mark] WHERE seller_id = ?";
+//
+//        try (PreparedStatement ps = con.prepareStatement(query)) {
+//            ps.setInt(1, user_id);
+//            try (ResultSet rs = ps.executeQuery()) {
+//                while (rs.next()) {
+//                    String logo_url = rs.getString("logo_url");
+//
+//                    List<String> imageUrls = new ArrayList<>();
+//                    imageUrls.add(logo_url);
+//                    TradeMark trade
+//                            = new TradeMark(
+//                                    rs.getInt("trademark_id"),
+//                                    rs.getString("name"),
+//                                    imageUrls,
+//                                    rs.getString("des")
+//                                    rs.getString("privacy"),
+//                                    
+//                                    );
+//                    listTrade.add(trade);
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return listTrade;
+//    }
 
     public boolean updateTradeMark(TradeMark mark) {
         String query

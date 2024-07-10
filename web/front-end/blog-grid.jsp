@@ -8,7 +8,7 @@
     <meta name="description" content="Fastkart">
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="./assets/images/favicon/1.png" type="image/x-icon">
     <title>Blog Grid</title>
 
     <!-- Google font -->
@@ -21,26 +21,26 @@
         rel="stylesheet">
 
     <!-- bootstrap css -->
-    <link id="rtl-link" rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css">
+    <link id="rtl-link" rel="stylesheet" type="text/css" href="./assets/css/vendors/bootstrap.css">
 
     <!-- wow css -->
-    <link rel="stylesheet" href="../assets/css/animate.min.css" />
+    <link rel="stylesheet" href="./assets/css/animate.min.css" />
 
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/font-awesome.css">
 
     <!-- feather icon css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/feather-icon.css">
 
     <!-- slick css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/vendors/slick/slick-theme.css">
 
     <!-- Iconly css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bulk-style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/bulk-style.css">
 
     <!-- Template css -->
-    <link id="color-link" rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link id="color-link" rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -98,28 +98,28 @@
                                 <div class="dropdown theme-form-select">
                                     <button class="btn dropdown-toggle" type="button" id="select-language"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="../assets/images/country/united-states.png"
+                                        <img src="./assets/images/country/united-states.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <span>English</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                                <img src="../assets/images/country/united-kingdom.png"
+                                                <img src="./assets/images/country/united-kingdom.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>English</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                                <img src="../assets/images/country/germany.png"
+                                                <img src="./assets/images/country/germany.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>Germany</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                                <img src="../assets/images/country/turkish.png"
+                                                <img src="./assets/images/country/turkish.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                                 <span>Turki</span>
                                             </a>
@@ -165,7 +165,7 @@
                                 </span>
                             </button>
                             <a href="index.html" class="web-logo nav-logo">
-                                <img src="../assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                                <img src="./assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
                             </a>
 
                             <div class="middle-box">
@@ -243,7 +243,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/1.png"
+                                                                <img src="./assets/images/vegetable/product/1.png"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
@@ -262,7 +262,7 @@
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.html" class="drop-image">
-                                                                <img src="../assets/images/vegetable/product/2.png"
+                                                                <img src="./assets/images/vegetable/product/2.png"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
@@ -357,7 +357,7 @@
                                 <ul class="category-list">
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/vegetable.svg" alt="">
+                                            <img src="./assets/svg/1/vegetable.svg" alt="">
                                             <h6>Vegetables & Fruit</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -425,7 +425,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/cup.svg" alt="">
+                                            <img src="./assets/svg/1/cup.svg" alt="">
                                             <h6>Beverages</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -464,7 +464,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/meats.svg" alt="">
+                                            <img src="./assets/svg/1/meats.svg" alt="">
                                             <h6>Meats & Seafood</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -523,7 +523,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/breakfast.svg" alt="">
+                                            <img src="./assets/svg/1/breakfast.svg" alt="">
                                             <h6>Breakfast & Dairy</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -597,7 +597,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/frozen.svg" alt="">
+                                            <img src="./assets/svg/1/frozen.svg" alt="">
                                             <h6>Frozen Foods</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -630,7 +630,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/biscuit.svg" alt="">
+                                            <img src="./assets/svg/1/biscuit.svg" alt="">
                                             <h6>Biscuits & Snacks</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -683,7 +683,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="../assets/svg/1/grocery.svg" alt="">
+                                            <img src="./assets/svg/1/grocery.svg" alt="">
                                             <h6>Grocery & Staples</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -990,22 +990,22 @@
                                                         <ul class="sub-menu">
                                                             <li>
                                                                 <a
-                                                                    href="../email-templete/abandonment-email.html">Abandonment</a>
+                                                                    href="./email-templete/abandonment-email.html">Abandonment</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/offer-template.html">Offer
+                                                                <a href="./email-templete/offer-template.html">Offer
                                                                     Template</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/order-success.html">Order
+                                                                <a href="./email-templete/order-success.html">Order
                                                                     Success</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/reset-password.html">Reset
+                                                                <a href="./email-templete/reset-password.html">Reset
                                                                     Password</a>
                                                             </li>
                                                             <li>
-                                                                <a href="../email-templete/welcome.html">Welcome
+                                                                <a href="./email-templete/welcome.html">Welcome
                                                                     template</a>
                                                             </li>
                                                         </ul>
@@ -1016,15 +1016,15 @@
                                                                     class="fa-solid fa-bolt-lightning"></i></span></a>
                                                         <ul class="sub-menu">
                                                             <li>
-                                                                <a href="../invoice/invoice-1.html">Invoice 1</a>
+                                                                <a href="./invoice/invoice-1.html">Invoice 1</a>
                                                             </li>
 
                                                             <li>
-                                                                <a href="../invoice/invoice-2.html">Invoice 2</a>
+                                                                <a href="./invoice/invoice-2.html">Invoice 2</a>
                                                             </li>
 
                                                             <li>
-                                                                <a href="../invoice/invoice-3.html">Invoice 3</a>
+                                                                <a href="./invoice/invoice-3.html">Invoice 3</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -1199,7 +1199,7 @@
                             <div class="blog-box wow fadeInUp">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/1.jpg"
+                                        <img src="./assets/images/inner-page/blog/1.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1223,7 +1223,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/2.jpg" class="bg-img" alt="">
+                                        <img src="./assets/images/inner-page/blog/2.jpg" class="bg-img" alt="">
                                     </a>
                                 </div>
 
@@ -1246,7 +1246,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/3.jpg"
+                                        <img src="./assets/images/inner-page/blog/3.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                     <label><i class="fa-solid fa-bolt-lightning"></i> popular</label>
@@ -1271,7 +1271,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.15s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/4.jpg"
+                                        <img src="./assets/images/inner-page/blog/4.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1295,7 +1295,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.2s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/5.jpg"
+                                        <img src="./assets/images/inner-page/blog/5.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1319,7 +1319,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.25s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/1.jpg"
+                                        <img src="./assets/images/inner-page/blog/1.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1343,7 +1343,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.3s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/2.jpg"
+                                        <img src="./assets/images/inner-page/blog/2.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1367,7 +1367,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.35s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/3.jpg"
+                                        <img src="./assets/images/inner-page/blog/3.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1392,7 +1392,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.4s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/4.jpg"
+                                        <img src="./assets/images/inner-page/blog/4.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1416,7 +1416,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.45s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/3.jpg"
+                                        <img src="./assets/images/inner-page/blog/3.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                     <label><i class="fa-solid fa-bolt-lightning"></i> popular</label>
@@ -1441,7 +1441,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/4.jpg"
+                                        <img src="./assets/images/inner-page/blog/4.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1465,7 +1465,7 @@
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.55s">
                                 <div class="blog-image">
                                     <a href="blog-detail.html">
-                                        <img src="../assets/images/inner-page/blog/5.jpg"
+                                        <img src="./assets/images/inner-page/blog/5.jpg"
                                             class="bg-img blur-up lazyload" alt="">
                                     </a>
                                 </div>
@@ -1535,7 +1535,7 @@
                                         <div class="recent-post-box">
                                             <div class="recent-box">
                                                 <a href="blog-detail.html" class="recent-image">
-                                                    <img src="../assets/images/inner-page/blog/1.jpg"
+                                                    <img src="./assets/images/inner-page/blog/1.jpg"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
 
@@ -1549,7 +1549,7 @@
 
                                             <div class="recent-box">
                                                 <a href="blog-detail.html" class="recent-image">
-                                                    <img src="../assets/images/inner-page/blog/2.jpg"
+                                                    <img src="./assets/images/inner-page/blog/2.jpg"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
 
@@ -1563,7 +1563,7 @@
 
                                             <div class="recent-box">
                                                 <a href="blog-detail.html" class="recent-image">
-                                                    <img src="../assets/images/inner-page/blog/3.jpg"
+                                                    <img src="./assets/images/inner-page/blog/3.jpg"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
 
@@ -1577,7 +1577,7 @@
 
                                             <div class="recent-box">
                                                 <a href="blog-detail.html" class="recent-image">
-                                                    <img src="../assets/images/inner-page/blog/4.jpg"
+                                                    <img src="./assets/images/inner-page/blog/4.jpg"
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </a>
 
@@ -1731,7 +1731,7 @@
                                             <li>
                                                 <div class="offer-product">
                                                     <a href="shop-left-sidebar.html" class="offer-image">
-                                                        <img src="../assets/images/vegetable/product/23.png"
+                                                        <img src="./assets/images/vegetable/product/23.png"
                                                             class="blur-up lazyload" alt="">
                                                     </a>
 
@@ -1750,7 +1750,7 @@
                                             <li>
                                                 <div class="offer-product">
                                                     <a href="shop-left-sidebar.html" class="offer-image">
-                                                        <img src="../assets/images/vegetable/product/24.png"
+                                                        <img src="./assets/images/vegetable/product/24.png"
                                                             class="blur-up lazyload" alt="">
                                                     </a>
 
@@ -1769,7 +1769,7 @@
                                             <li class="mb-0">
                                                 <div class="offer-product">
                                                     <a href="shop-left-sidebar.html" class="offer-image">
-                                                        <img src="../assets/images/vegetable/product/26.png"
+                                                        <img src="./assets/images/vegetable/product/26.png"
                                                             class="blur-up lazyload" alt="">
                                                     </a>
 
@@ -1918,34 +1918,34 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- jquery ui-->
-    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="./assets/js/jquery-ui.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/bootstrap/bootstrap-notify.min.js"></script>
-    <script src="../assets/js/bootstrap/popper.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="./assets/js/bootstrap/popper.min.js"></script>
 
     <!-- feather icon js-->
-    <script src="../assets/js/feather/feather.min.js"></script>
-    <script src="../assets/js/feather/feather-icon.js"></script>
+    <script src="./assets/js/feather/feather.min.js"></script>
+    <script src="./assets/js/feather/feather-icon.js"></script>
 
     <!-- Lazyload Js -->
-    <script src="../assets/js/lazysizes.min.js"></script>
+    <script src="./assets/js/lazysizes.min.js"></script>
 
     <!-- Slick js-->
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/slick/slick-animation.min.js"></script>
-    <script src="../assets/js/slick/custom_slick.js"></script>
+    <script src="./assets/js/slick/slick.js"></script>
+    <script src="./assets/js/slick/slick-animation.min.js"></script>
+    <script src="./assets/js/slick/custom_slick.js"></script>
 
     <!-- WOW js -->
-    <script src="../assets/js/wow.min.js"></script>
-    <script src="../assets/js/custom-wow.js"></script>
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/custom-wow.js"></script>
 
     <!-- script js -->
-    <script src="../assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

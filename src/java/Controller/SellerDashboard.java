@@ -419,6 +419,10 @@ public class SellerDashboard extends HttpServlet {
 
                     List<String> imagePaths = new ArrayList<>(); // List of image paths
 
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
+
                     for (Part part : parts) {
                         String fileName = part.getSubmittedFileName();
                         if (fileName != null && !fileName.isEmpty()) {
@@ -428,8 +432,8 @@ public class SellerDashboard extends HttpServlet {
                                     request.getContextPath() + "/images/" + fileName); // Add image path to list
                         }
                     }
-                    TradeMark mark = new TradeMark(id, name, imagePaths, privacy, terms, sellerId);
-                    daoc.updateTradeMark(mark);
+//                    TradeMark mark = new TradeMark(id, name, imagePaths, privacy, terms, );
+//                    daoc.updateTradeMark(mark);
 
                 } else if ("add".equals(action)) {
 
@@ -456,8 +460,8 @@ public class SellerDashboard extends HttpServlet {
                                     request.getContextPath() + "/images/" + fileName); // Add image path to list
                         }
                     }
-                    TradeMark mark = new TradeMark(0, name, imagePaths, privacy, terms, sellerId);
-                    daoc.addNewTradeMark(mark);
+//                    TradeMark mark = new TradeMark(0, name, imagePaths, privacy, terms, ua);
+//                    daoc.addNewTradeMark(mark);
                 }
             } else if ("image".equals(state)) {
                 if ("add".equals(action)) {
@@ -511,9 +515,9 @@ public class SellerDashboard extends HttpServlet {
                 }
             }
 
-            List<TradeMark> tradeMark = daoc.getTradeMark(sellerId);
+//            List<TradeMark> tradeMark = daoc.getTradeMark(sellerId);
             List<CarImage> imageCar = daoc.getAllImgBySellerID(sellerId);
-            request.setAttribute("tradeMark", tradeMark);
+//            request.setAttribute("tradeMark", tradeMark);
             request.setAttribute("imageCar", imageCar);
             doGet(request, response);
         } else {
