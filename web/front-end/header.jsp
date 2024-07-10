@@ -284,11 +284,11 @@
                                                     <i></i>
                                                     <a href="${pageContext.request.contextPath}/${user.permission_id == 3 ? "user" : (user.permission_id == 2 ? "seller" : (user.permission_id == 1 ? "admin" : ""))  }/dashboard">Quản lí tài khoản</a>
                                                 </li>
-
-                                                <li class="product-box-contain">
-                                                    <a href="cart">Giỏ hàng</a>
-                                                </li>
-
+                                                <c:if test="${sessionScope.user != null && user.permission_id == 3}">
+                                                    <li class="product-box-contain">
+                                                        <a href="home?state=cart&user=${user.user_id}">Giỏ hàng</a>
+                                                    </li>
+                                                </c:if>
                                                 <li class="product-box-contain">
                                                     <a href="logout">Đăng xuất</a>
                                                 </li>
@@ -467,7 +467,7 @@
 <!-- Location Modal End -->
 
 <!-- Cookie Bar Box Start -->
-<div class="cookie-bar-box">
+<!--<div class="cookie-bar-box">
     <div class="cookie-box">
         <div class="cookie-image">
             <img src="${pageContext.request.contextPath}/front-end/assets/images/cookie-bar.png"
@@ -484,7 +484,7 @@
         <button class="btn privacy-button">Privacy Policy</button>
         <button class="btn ok-button">OK</button>
     </div>
-</div>
+</div>-->
 <!-- Cookie Bar Box End -->
 
 

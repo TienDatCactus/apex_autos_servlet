@@ -397,7 +397,6 @@ searchBox.addEventListener('input', function () {
         }
     });
 });
-
 $(document).ready(function () {
     const items = $('.car-card');
     const applyFilters = () => {
@@ -477,3 +476,4 @@ $(document).ready(function () {
     $('#yearStartInput, #yearEndInput').on('change', applyFilters);
     $('#resetFilters').on('click', resetFilters);
 });
+

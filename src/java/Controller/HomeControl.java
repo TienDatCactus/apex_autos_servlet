@@ -5,6 +5,7 @@
 package Controller;
 
 import DAO.*;
+import Constant.Constants;
 import Models.Car;
 import Models.CarBrand;
 import Models.CarCategory;
@@ -22,6 +23,12 @@ import jakarta.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.List;
 import org.json.JSONObject;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Tiến_Đạt
@@ -33,7 +40,6 @@ public class HomeControl extends HttpServlet {
 
     CarDao dao = new CarDao();
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String error = "";
@@ -41,16 +47,29 @@ public class HomeControl extends HttpServlet {
         String state = request.getParameter("state");
         HttpSession session = request.getSession();
         UserAccount ua = (UserAccount) session.getAttribute("user");
+
         if ("detail".equals(state)) {
             List<Car> carList = dao.viewProducts();
-            int id = Integer.parseInt(request.getParameter("id"));
+            String carId = request.getParameter("id");
+            int id = 0;
+
+            try {
+                id = Integer.parseInt(carId);
+            } catch (NumberFormatException e) {
+                // Handle parsing error
+                error = "Invalid car ID format";
+                Logger.getLogger(HomeControl.class.getName()).log(Level.SEVERE, "Invalid car ID format", e);
+            }
             Car carDT = dao.viewDetail(id);
             List<CarImage> carImage = dao.viewImageForCar();
+            // Set attributes for JSP
             request.setAttribute("carImage", carImage);
             request.setAttribute("carList", carList);
             request.setAttribute("carDT", carDT);
-            request
-                    .getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
+            request.setAttribute("error", error);
+            request.setAttribute("success", success);
+            // Forward to JSP for rendering
+            request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
                     .forward(request, response);
         } else if ("cart".equals(state)) {
             List<CarImage> carImage = dao.viewImageForCar();
@@ -106,7 +125,7 @@ public class HomeControl extends HttpServlet {
             if ("add".equals(action)) {
                 try {
                     int itemId = Integer.parseInt(item);
-                    if (dao.checkExistedItems(itemId,ua.getUser_id())) {
+                    if (dao.checkExistedItems(itemId, ua.getUser_id())) {
                         jsonResponse.put("error", false);
                         jsonResponse.put("message", "Item already exists in cart!");
                     } else {

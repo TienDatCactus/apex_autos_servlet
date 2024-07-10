@@ -2,14 +2,11 @@
 package Controller;
 
 import Constant.Constants;
-import DAO.CarDao;
 import DAO.UserDAO;
-import Models.*;
 import Models.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,9 +28,7 @@ public class GoogleLogin extends HttpServlet {
         String code = request.getParameter("code");
         String accessToken = getToken(code);
         UserAccount user = getUserInfo(accessToken);
-        System.out.println(user);
         UserDAO dao = new UserDAO();
-        CarDao daoc = new CarDao();
         boolean check = dao.checkRegisterByGG(user);
         if (check) {
             dao.registerByGG(user);

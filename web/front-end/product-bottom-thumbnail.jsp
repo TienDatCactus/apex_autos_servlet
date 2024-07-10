@@ -98,7 +98,7 @@
                     </li>
 
                     <li>
-                        <a href="cart.html">
+                        <a href="home?cart">
                             <i class="iconly-Bag-2 icli fly-cate"></i>
                             <span>Cart</span>
                         </a>
@@ -175,8 +175,7 @@
 
                                     <h2 class="name">${carDT.name}</h2>
                                     <div class="price-rating">
-                                        <h3 class="theme-color price">${carDT.price} <del class="text-content">$90.00</del> <span
-                                                class="offer theme-color">(20% off)</span></h3>
+                                        <h3 class="theme-color price">${carDT.price} <del class="text-content">$90.00</del></h3>
                                         <div class="product-rating custom-rate">
                                             <ul class="rating">
                                                 <li>
@@ -250,10 +249,9 @@
                                     </div>
 
                                     <div class="note-box product-packege">
-                                        <form method="post" id="form-cart-${cl.car_id}" class="w-75" action="home?state=cart&action=addtocart&item=${cl.car_id}">
-                                            <button onclick='${sessionScope.user != null ? "document.getElementById('form-cart-${cl.car_id}').submit()" : 'location.href="login"'}'
-                                                    class = "button-86 text-white w-75 ">Add To Cart</button>
-                                        </form>
+
+                                        <button onClick='addToCart(${carDT.car_id})'
+                                                class = "button-86 text-white w-75 ">Add To Cart</button>
                                     </div>
                                     <div class="buy-box">
 
@@ -336,7 +334,12 @@
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link" id="care-tab" data-bs-toggle="tab"
                                                     data-bs-target="#care" type="button" role="tab" aria-controls="care"
-                                                    aria-selected="false">Care Instuctions</button>
+                                                    aria-selected="false">Videos</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="care-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#review" type="button" role="tab" aria-controls="review"
+                                                    aria-selected="false">Customer Reviews</button>
                                         </li>
 
 
@@ -358,8 +361,8 @@
                                                     <div class="banner-details p-center banner-b-space w-100 text-center">
                                                         <div>
                                                             <h6 class="ls-expanded theme-color mb-sm-3 mb-1">SUMMER</h6>
-                                                            <h2>VEGETABLE</h2>
-                                                            <p class="mx-auto mt-1">Save up to 20% OFF</p>
+                                                            <h2 class="text-light">${carDT.name}</h2>
+                                                            <p class="mx-auto mt-1 ">Save up to 20% OFF</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -431,28 +434,9 @@
                                         </div>
 
                                         <div class="tab-pane fade" id="care" role="tabpanel" aria-labelledby="care-tab">
-                                            <div class="information-box">
-                                                <ul>
-                                                    <li>Regularly Check and Change Engine Oil: Engine oil is the 
-                                                        lifeblood of your car's engine, helping to lubricate moving parts 
-                                                        and reduce friction. Check the oil level regularly and change it according 
-                                                        to the manufacturer's recommendations, usually every 5,000 to 10,000 km.</li>
+                                            <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5 video-sg ">
 
-                                                    <li>Inspect the Cooling System: Your car's engine needs proper cooling to prevent 
-                                                        overheating. Check the coolant
-                                                        level and top it up if necessary. Also, ensure 
-                                                        the cooling system is free from leaks.</li>
 
-                                                    <li>Check Tires: Tires should be inflated to the correct pressure and
-                                                        inspected for even wear. Rotate the tires regularly to ensure they wear
-                                                        evenly and last longer.</li>
-
-                                                    <li>Check Brakes: The braking system is crucial for safe driving. Inspect the brake pads and discs for wear and replace them when necessary.
-
-                                                    </li>
-
-                                                    <li>Enjoy your car!</li>
-                                                </ul>
                                             </div>
                                         </div>
 
@@ -910,7 +894,7 @@
                                                     class="theme-color fw-bold">Freshes</span> Products</h3>
                                             <h3 class="fw-light">every hour</h3>
                                             <button onclick="location.href = 'shop-left-sidebar.html';"
-                                                    class="btn btn-animation btn-md fw-bold mend-auto">Shop Now <i
+                                                    class="button-86 btn-md fw-bold mend-auto">Shop Now <i
                                                     class="fa-solid fa-arrow-right icon"></i></button>
                                         </div>
                                     </div>
@@ -938,6 +922,7 @@
                     <div class="col-12">
                         <div class="slider-6_1 product-wrapper">
                             <c:forEach var="cl" items="${carList}">
+
                                 <div>
                                     <div class="product-box-3 wow fadeInUp">
                                         <div class="product-header">
@@ -981,7 +966,15 @@
 
                                         <div class="product-footer">
                                             <div class="product-detail">
+                                                <c:forEach var="cc" items="${carCate}">
+                                                    <c:if test="${carDT.category_id == cc.id}">
+                                                        <c:set value="${cc.name}" var="cate"></c:set>
+                                                    </c:if> 
+                                                </c:forEach>
                                                 <c:forEach var="cb" items="${carBrand}">
+                                                    <c:if test="${carDT.brand_id == cb.id}">
+                                                        <c:set value="${cb.name}" var="brand"></c:set>
+                                                    </c:if>
                                                     <c:if test="${cl.brand_id == cb.id}">
                                                         <span class="span-name">${cb.name}</span>
                                                     </c:if>
@@ -1014,10 +1007,8 @@
                                                 </h5>
                                                 <c:if test="${not empty sessionScope.user}">
                                                     <div class="add-to-cart-box">
-                                                        <form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=addtocart&item=${cl.car_id}">
-                                                            <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="document.getElementById('form-cart-${cl.car_id}').submit()">Add
-                                                            </button>
-                                                        </form>
+                                                        <button class="button-13 py-1 btn-add-cart addcart-button"  onClick='addToCart(${carDT.car_id})'>Add
+                                                        </button>
                                                     </div>
                                                 </c:if>
                                             </div>
@@ -1032,6 +1023,7 @@
             </div>
         </section>
         <!-- Releted Product Section End -->
+
 
         <!-- Footer Section Start -->
         <jsp:include page="footer.jsp"></jsp:include>
@@ -1126,7 +1118,7 @@
                                     </div>
 
                                     <div class="modal-button">
-                                        <button onclick="location.href = 'cart.html';"
+                                        <button onclick="addToCart(${carDT.car_id})"
                                                 class="btn btn-md add-cart-button icon">Add
                                             To Cart</button>
                                         <button onclick="location.href = 'product-left.html';"
@@ -1245,17 +1237,6 @@
 
 
 
-        <!-- Add to cart Modal Start -->
-        <div class="add-cart-box">
-            <div class="add-iamge">
-                <img src="${pageContext.request.contextPath}/front-end/assets/images/cake/pro/1.jpg" class="img-fluid" alt="">
-            </div>
-
-            <div class="add-contain">
-                <h6>Added to Cart</h6>
-            </div>
-        </div>
-        <!-- Add to cart Modal End -->
 
         <!-- Tap to top start -->
         <div class="theme-option">
@@ -1289,14 +1270,14 @@
                                 </c:forEach>
                                 <div class="content">
                                     <h5>${carDT.name}</h5>
-                                    <h6>${carDT.price}<del class="text-danger">$90.00</del><span>20% off</span></h6>
+                                    <h6>${carDT.price}<del class="text-danger">$90.00</del></h6>
                                 </div>
                             </div>
 
                             <div class="add-btn">
                                 <a class="btn theme-bg-color text-white wishlist-btn" href="wishlist.html"><i
                                         class="fa fa-bookmark"></i> Wishlist</a>
-                                <a class="button-86 text-white" href="cart.html"><i
+                                <a class="button-86 text-white" onclick="addToCart(${carDT.car_id})"><i
                                         class="fas fa-shopping-cart"></i> Add To Cart</a>
                             </div>
                         </div>
@@ -1360,8 +1341,62 @@
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
+        <script>
+// fetch youtube api
+                                    async function fetchData(url, options) {
+                                        const response = await fetch(url, options);
+                                        const data = await response.json();
+                                        return data;
+                                    }
 
+                                    async function fetchYouTubeData() {
+                                        const ytResults = document.querySelector('.video-sg');
+                                        if (!ytResults) {
+                                            console.error('Target element .video-sg not found');
+                                            return;
+                                        }
 
+                                        const options = {
+                                            method: 'GET',
+                                            headers: {
+                                                'x-rapidapi-key': '23f6c4678fmsh60a151904aa61e4p1df63bjsn03ca2aad09db',
+                                                'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com'
+                                            }
+                                        };
+                                        try {
+                                            const ytData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${carDT.name}-${brand}-${cate}-${carDT.model_year}`, options);
+                                            ytData.contents.slice(0, 4).forEach((data) => {
+                                                console.log(data.video)
+                                                const cardHTML = "<div class=\"col\">" +
+                                                        "<div class=\"card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg\" style=\"cursor:pointer;background-repeat: no-repeat;background-clip: border-box ;background-size: cover;background-image: url('" + data.video.thumbnails[0].url + "');\" onClick=\"location.href='https://www.youtube.com/watch?v=" + data.video.videoId + "';\">" +
+                                                        "<div class=\"d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1\">" +
+                                                        "<h3 class=\"pt-5 mt-5 mb-4 display-6 lh-1 fw-bold\">" + data.video.title + "</h3>" +
+                                                        "<ul class=\"d-flex list-unstyled mt-auto\">" +
+                                                        "<li class=\"me-auto\">" +
+                                                        "<img src=\'" + data.video.thumbnails[0].url + "' alt=\"Bootstrap\" width=\"32\" height=\"32\" class=\"rounded-circle border border-white\">" +
+                                                        "</li>" +
+                                                        "<li class=\"d-flex align-items-center me-3\">" +
+                                                        "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#geo-fill\"></use></svg>" +
+                                                        "<small>" + data.video.channelName + "</small>" +
+                                                        "</li>" +
+                                                        "<li class=\"d-flex align-items-center\">" +
+                                                        "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>" +
+                                                        "<small>" + data.video.publishedTimeText + "</small>" +
+                                                        "</li>" +
+                                                        "</ul>" +
+                                                        "</div>" +
+                                                        "</div>" +
+                                                        "</div>";
+                                                ;
+                                                ytResults.insertAdjacentHTML('beforeend', cardHTML);
+                                            });
+                                        } catch (error) {
+                                            console.error('Error fetching YouTube data:', error);
+                                        }
+                                    }
+
+                                    window.onload = fetchYouTubeData;
+        </script>
     </body>
 
 </html>

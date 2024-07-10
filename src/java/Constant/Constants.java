@@ -20,4 +20,5 @@ public class Constants {
 	public static String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 
 	public static String GOOGLE_GRANT_TYPE = "authorization_code";
+	public static String RAPID_API_KEY = "23f6c4678fmsh60a151904aa61e4p1df63bjsn03ca2aad09db";
 }
