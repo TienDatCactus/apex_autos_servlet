@@ -1749,17 +1749,17 @@
                     <div class="col-xxl-3 col-xl-4 col-lg-5 d-none d-lg-block wow fadeInUp">
                         <div class="right-sidebar-box">
                             <div class="vendor-box">
-                                 
+
                                 <div class="verndor-contain">
-                                   
+
                                     <div class="vendor-image">
                                         <c:forEach items="${tradeMark.url_logo}" var="obj">
-                                            
-                                                <img src="${obj}"  alt="Car Image" class=" "  style="object-fit: contain;max-width: 100%;border-radius: 50%">
-                                                
+
+                                            <img src="${obj}"  alt="Car Image" class=" "  style="object-fit: contain;max-width: 100%;border-radius: 50%">
+
                                         </c:forEach>
                                     </div>
-                                    
+
                                     <div class="vendor-name">
                                         <h5>
                                             <a href="home?state=trademark&id=${tradeMark.trademard_id}">
@@ -1786,13 +1786,13 @@
                                                     <i data-feather="star"></i>
                                                 </li>
                                             </ul>
-                                           
+
                                         </div>
 
                                     </div>
                                 </div>
 
-                                         
+
 
                                 <div class="vendor-list">
                                     <ul>
@@ -1800,11 +1800,11 @@
                                             <div class="address-contact">
                                                 <i data-feather="map-pin"></i>
                                                 <h5>Describe: <span class="text-content" style="  display: block;
-  width: 100px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  " maxlength="20">${tradeMark.describe}</span></h5>
+                                                                    width: 100px;
+                                                                    overflow: hidden;
+                                                                    white-space: nowrap;
+                                                                    text-overflow: ellipsis;
+                                                                    " maxlength="20">${tradeMark.describe}</span></h5>
                                             </div>
                                         </li>
                                         <li>
@@ -1891,7 +1891,35 @@
             </div>
         </section>
         <!-- Product Left Sidebar End -->
+        <c:forEach items="${allComment1Car}" var="ac" >
 
+            <div class="comments" style="margin-left: 150px;margin-top: 20px">
+                <c:forEach items="${allAccounts}" var="aa">    
+                    <c:if test="${aa.user_id == ac.user_id && carDT.car_id == ac.car_id}">
+                        <div class="comment">
+                            <span class="super"><i data-feather="user"></i> 
+                                <span class="comment-content">${aa.email}</span>                                              
+                            </span>   
+                        </div>
+                        <div class="comment">
+                            <span class="comment-user">${ac.comment_content}</span>
+                        </div>
+                    </c:if>
+                    
+                </c:forEach>     
+            </div>
+
+        </c:forEach>
+        <form action="home?state=detail&action=adCmt" method="post" style="margin-left: 150px;margin-top: 20px">
+            <div class="form-group">
+                <label for="comment">Write you comment here:</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3" style="width: 300px; height: 100px;"></textarea>
+
+            </div>
+            <input type="hidden" name="id" value="${carDT.car_id}">
+            <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
+            <button type="submit" class="btn btn-primary">Comment</button>
+        </form>
         <!-- Releted Product Section Start -->
         <section class="product-list-section section-b-space">
             <div class="container-fluid-lg">

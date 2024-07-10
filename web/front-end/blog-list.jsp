@@ -1198,7 +1198,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="home?action=add" method="post" enctype="multipart/form-data">
+                    <form action="home?state=blog&action=add" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
 
                             <input type="hidden" name="idu" value="${sessionScope.user.user_id}"> 
@@ -1291,7 +1291,7 @@
                                                 </div>
 
                                             </c:forEach>
-                                            <form action="home?action=addcmt" method="post">
+                                            <form action="home?state=blog&action=addcmt" method="post">
                                                 <div class="form-group">
                                                     <label for="comment">Write you comment here:</label>
                                                     <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>

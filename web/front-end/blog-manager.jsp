@@ -1204,7 +1204,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="home?action=update" method="post">
+                    <form action="home?state=blog&action=update" method="post">
                     <div class="modal-body">
 
                         
@@ -1267,7 +1267,7 @@
                                             <button class="btn btn-success" type="button"
                                                     data-toggle="modal" data-target="#exampleModal" 
                                                     onclick="editProductModal('${as.status_id}','${as.status_content}', '${as.status_images[0]}', '${as.status_title}')">Edit</button>
-                                                    <form action="home?action=delete&idDel=${as.status_id}" method="post">
+                                                    <form action="home?state=blog&action=delete&idDel=${as.status_id}" method="post">
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                         </div> 

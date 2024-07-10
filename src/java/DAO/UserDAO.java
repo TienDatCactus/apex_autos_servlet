@@ -335,7 +335,8 @@ public class UserDAO {
         a.add("a");
         Status s = new Status(15, "a2", a, "a2", 0);
         Comment c = new Comment(0, "giangnoi", 1, 5);
-        System.out.println(r.addNewComment(c));
+        CommentCar cc = new CommentCar(0, "cmt3", 1110, 4);
+        System.out.println(r.addNewCommentFor1Car(cc));
 
         // Edit the address
     }
@@ -487,6 +488,53 @@ public class UserDAO {
             
                 ps.setString(1, c.getComment_content());               
                 ps.setInt(2, c.getStatus_id());
+                ps.setInt(3, c.getUser_id());
+
+                int rowAffected = ps.executeUpdate();
+                if (rowAffected <= 0) {
+                    return false; // If any row is not affected, return false
+                }
+            
+
+            return true; // All rows inserted successfully
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public List<CommentCar> viewAllCommentFor1Car() {
+        List<CommentCar> comment = new ArrayList<>();
+        String query
+                = "SELECT * from comment_car";
+
+        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+
+                CommentCar c = new CommentCar();
+                c.setComment_id(rs.getInt("comment_id"));
+                c.setComment_content(rs.getString("comment_content"));
+                c.setCar_id(rs.getInt("car_id"));
+                c.setUser_id(rs.getInt("user_id"));
+
+                comment.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return comment;
+    }
+
+    public boolean addNewCommentFor1Car(CommentCar c) {
+        try {
+            String query
+                    = "INSERT INTO comment_car (comment_content,car_id,user_id) VALUES (?,?,?)";
+            PreparedStatement ps = con.prepareStatement(query);
+
+            // Loop through each image_url and insert into database separately
+            
+                ps.setString(1, c.getComment_content());               
+                ps.setInt(2, c.getCar_id());
                 ps.setInt(3, c.getUser_id());
 
                 int rowAffected = ps.executeUpdate();
