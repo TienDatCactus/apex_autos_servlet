@@ -1995,7 +1995,7 @@
                                         <div class="product-box-3 h-100 wow fadeInUp">
                                             <div class="product-header">
                                                 <div class="product-image">
-                                                    <a href="home?state=detail&id=${cl.car_id}">
+                                                    <a href="home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
                                                         <c:set var="firstImagePrinted" value="false" />
                                                         <c:forEach items="${carImage}" var="ci">
                                                             <c:if test="${ci.car_id == cl.car_id}">

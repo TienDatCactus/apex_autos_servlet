@@ -19,7 +19,6 @@ import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.List;
-import org.json.JSONObject;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -29,6 +28,7 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.json.JSONObject;
 
 /**
  * @author Tiến_Đạt
@@ -65,7 +65,10 @@ public class HomeControl extends HttpServlet {
             }
             Car carDT = dao.viewDetail(id);
             List<CarImage> carImage = dao.viewImageForCar();
+            int idSeller = Integer.parseInt(request.getParameter("idSeller"));
+            TradeMark listTradeMark = dao.getTradeMark(idSeller);
             // Set attributes for JSP
+            request.setAttribute("tradeMark", listTradeMark);
             request.setAttribute("carImage", carImage);
             request.setAttribute("carList", carList);
             request.setAttribute("carDT", carDT);
@@ -73,6 +76,18 @@ public class HomeControl extends HttpServlet {
             request.setAttribute("success", success);
             // Forward to JSP for rendering
             request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
+                    .forward(request, response);
+        } else if ("tradeDetail".equals(state)) {
+            int idTr = Integer.parseInt(request.getParameter("idTr"));
+            TradeMark listTradeMark = dao.getTradeMarkByIDTrade(idTr);
+            int idSell = Integer.parseInt(request.getParameter("idSell"));
+            List<Car> carList = dao.getCarForOneTradeMark(idSell);
+            List<CarImage> carImage = dao.viewImageForCar();
+            request.setAttribute("carImage", carImage);
+            request.setAttribute("carList", carList);
+            request.setAttribute("tradeMark", listTradeMark);
+            request
+                    .getRequestDispatcher("/front-end/seller-detail.jsp")
                     .forward(request, response);
         } else if ("cart".equals(state)) {
             List<CarImage> carImage = dao.viewImageForCar();

@@ -652,36 +652,6 @@ public class CarDao {
         // Cập nhật lại các URL ảnh
     }
 
-//    public List<TradeMark> getTradeMark(int user_id) {
-//        List<TradeMark> listTrade = new ArrayList<>();
-//        String query = "SELECT * FROM [dbo].[trade_mark] WHERE seller_id = ?";
-//
-//        try (PreparedStatement ps = con.prepareStatement(query)) {
-//            ps.setInt(1, user_id);
-//            try (ResultSet rs = ps.executeQuery()) {
-//                while (rs.next()) {
-//                    String logo_url = rs.getString("logo_url");
-//
-//                    List<String> imageUrls = new ArrayList<>();
-//                    imageUrls.add(logo_url);
-//                    TradeMark trade
-//                            = new TradeMark(
-//                                    rs.getInt("trademark_id"),
-//                                    rs.getString("name"),
-//                                    imageUrls,
-//                                    rs.getString("des")
-//                                    rs.getString("privacy"),
-//                                    
-//                                    );
-//                    listTrade.add(trade);
-//                }
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return listTrade;
-//    }
-
     public boolean updateTradeMark(TradeMark mark) {
         String query
                 = "UPDATE [dbo].[trade_mark] SET [name] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE seller_id = ?";
@@ -725,8 +695,8 @@ public class CarDao {
 
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
-        System.out.println(carDAO.CarImageById(69));
-        System.out.println(carDAO.getCartId(22));
+       
+        System.out.println(carDAO.getCarForOneTradeMark(3));
     }
 
     public List<String> getCarImages(int carId) {
@@ -814,4 +784,91 @@ public class CarDao {
         }
         return false;
     }
+
+    public TradeMark getTradeMark(int idSeller) {
+        TradeMark trademark = null; 
+        String query
+                = "SELECT * FROM [dbo].[trade_mark] WHERE [seller_id] = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, idSeller); // Thiết lập giá trị cho tham số car_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) { 
+                    trademark = new TradeMark();
+                    List<String> logo = new ArrayList<>();
+                    logo.add(rs.getString("logo_url"));
+                    trademark.setTrademard_id(rs.getInt("trademark_id"));
+                    trademark.setSeller_id(idSeller);
+                    trademark.setName(rs.getString("name"));
+                    trademark.setUrl_logo(logo);
+                    trademark.setDescribe(rs.getString("describe"));
+                    trademark.setPrivacy(rs.getString("privacy"));
+                    trademark.setTerms(rs.getString("terms"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trademark;
+    }
+
+    public TradeMark getTradeMarkByIDTrade(int idTr) {
+        TradeMark trademark = null; 
+        String query
+                = "SELECT * FROM [dbo].[trade_mark] WHERE [trademark_id] = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, idTr); // Thiết lập giá trị cho tham số car_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) { 
+                    trademark = new TradeMark();
+                    List<String> logo = new ArrayList<>();
+                    logo.add(rs.getString("logo_url"));
+                    trademark.setTrademard_id(idTr);
+                    trademark.setSeller_id(rs.getInt("seller_id"));
+                    trademark.setName(rs.getString("name"));
+                    trademark.setUrl_logo(logo);
+                    trademark.setDescribe(rs.getString("describe"));
+                    trademark.setPrivacy(rs.getString("privacy"));
+                    trademark.setTerms(rs.getString("terms"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trademark;
+    }
+
+    public List<Car> getCarForOneTradeMark(int idSell) {
+        List<Car> cars = new ArrayList<>();
+        String query
+                = "select * from car where seller_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, idSell);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Car car = new Car();
+                car.setCar_id(rs.getInt("car_id"));
+                car.setName(rs.getString("name"));
+                car.setCylinders(rs.getInt("cylinders"));
+                car.setHorsepower(rs.getFloat("horsepower"));
+                car.setWeight(rs.getFloat("weight"));
+                car.setAcceleration(rs.getFloat("acceleration"));
+                car.setModel_year(rs.getString("model_year"));
+                car.setOrigin(rs.getString("origin"));
+                car.setPrice(rs.getInt("price"));
+                car.setDescription(rs.getString("description"));
+                car.setBrand_id(rs.getInt("brand_id"));
+                car.setCategory_id(rs.getInt("category_id"));
+                car.setSeller_id(idSell);
+                cars.add(car);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cars;
+    }
+    
+    
 }

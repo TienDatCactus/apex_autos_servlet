@@ -204,7 +204,7 @@
 
                                     <div class="product-packege">
                                         <div class="product-title">
-                                            <h4>Weight</h4>
+                                            <h4>Trọng lượng</h4>
                                         </div>
                                         <div class="button-83 col-4 p-3 " >${carDT.weight} Kg</div>
                                     </div>
@@ -212,7 +212,7 @@
                                     <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                          data-hours="1" data-minutes="2" data-seconds="3">
                                         <div class="product-title">
-                                            <h4>Hurry up! Sales Ends In</h4>
+                                            <h4>Giảm giá chỉ còn:</h4>
                                         </div>
                                         <ul>
                                             <li>
@@ -220,7 +220,7 @@
                                                     <div class="days d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Days</h6>
+                                                    <h6>Ngày</h6>
                                                 </div>
                                             </li>
                                             <li>
@@ -228,7 +228,7 @@
                                                     <div class="hours d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Hours</h6>
+                                                    <h6>Giờ</h6>
                                                 </div>
                                             </li>
                                             <li>
@@ -236,7 +236,7 @@
                                                     <div class="minutes d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Min</h6>
+                                                    <h6>Phút</h6>
                                                 </div>
                                             </li>
                                             <li>
@@ -244,7 +244,7 @@
                                                     <div class="seconds d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Sec</h6>
+                                                    <h6>Giây</h6>
                                                 </div>
                                             </li>
                                         </ul>
@@ -253,31 +253,31 @@
                                     <div class="note-box product-packege">
 
                                         <button onClick='addToCart(${carDT.car_id})'
-                                                class = "button-86 text-white w-75 ">Add To Cart</button>
+                                                class = "button-86 text-white w-75 ">Thêm vào giỏ hàng</button>
                                     </div>
                                     <div class="buy-box">
 
                                         <a href="compare.html">
                                             <i data-feather="shuffle"></i>
-                                            <span>Add To Compare</span>
+                                            <span>So sánh</span>
                                         </a>
                                     </div>
 
                                     <div class="pickup-box">
                                         <div class="product-title">
-                                            <h4>Car Information</h4>
+                                            <h4>Thông tin xe</h4>
                                         </div>
 
 
 
                                         <div class="product-info">
                                             <ul class="product-info-list product-info-list-2">
-                                                <li>Cylinders : <a href="javascript:void(0)">${carDT.cylinders}</a></li>
-                                                <li>Horsepower : <a href="javascript:void(0)">${carDT.horsepower}</a></li>
-                                                <li>Weight : <a href="javascript:void(0)">${carDT.weight}</a></li>
-                                                <li>Acceleration : <a href="javascript:void(0)">${carDT.acceleration}</a></li>
-                                                <li>Model year : <a href="javascript:void(0)" >${carDT.model_year}</a></li>
-                                                <li>Origin : <a href="javascript:void(0)">${carDT.origin}</a></li>
+                                                <li>Xi lanh : <a href="javascript:void(0)">${carDT.cylinders}</a></li>
+                                                <li>Mã lực : <a href="javascript:void(0)">${carDT.horsepower}</a></li>
+                                                <li>Trọng lượng : <a href="javascript:void(0)">${carDT.weight}</a></li>
+                                                <li>Tăng tốc : <a href="javascript:void(0)">${carDT.acceleration}</a></li>
+                                                <li>Năm : <a href="javascript:void(0)" >${carDT.model_year}</a></li>
+                                                <li>Nguồn gốc : <a href="javascript:void(0)">${carDT.origin}</a></li>
                                             </ul>
                                         </div>
                                         <div class="button-83 col-4">${carDT.weight} Kg</div>
@@ -751,6 +751,7 @@
                     <div class="col-xxl-3 col-xl-4 col-lg-5 d-none d-lg-block wow fadeInUp">
                         <div class="right-sidebar-box">
                             <div class="vendor-box">
+
                                 <div class="verndor-contain">
                                     <div class="vendor-image">
                                         <c:forEach items="${tradeMark.url_logo}" var="obj">
@@ -762,7 +763,7 @@
 
                                     <div class="vendor-name">
                                         <h5>
-                                            <a href="#">
+                                            <a href="home?state=tradeDetail&idTr=${tradeMark.trademard_id}&idSell=${tradeMark.seller_id}" >
                                                 ${tradeMark.name}
                                             </a>
 
@@ -786,28 +787,31 @@
                                                     <i data-feather="star"></i>
                                                 </li>
                                             </ul>
-                                            <span>(36 Reviews)</span>
+                                            
                                         </div>
 
                                     </div>
                                 </div>
 
-                                <p class="vendor-detail">Noodles & Company is an American fast-casual
-                                    restaurant that offers international and American noodle dishes and pasta.</p>
+                                <p class="vendor-detail" style="text-overflow: ellipsis;
+                                   overflow: hidden;
+                                   width: 160px;
+                                   height: 1.2em;
+                                   white-space: nowrap;">${tradeMark.describe}</p>
 
                                 <div class="vendor-list">
                                     <ul>
                                         <li>
                                             <div class="address-contact">
                                                 <i data-feather="map-pin"></i>
-                                                <h5>Privacy: <span class="text-content">${tradeMark.privacy}</span></h5>
+                                                <h5>Chính sách bảo mật: <span class="text-content">${tradeMark.privacy}</span></h5>
                                             </div>
                                         </li>
 
                                         <li>
                                             <div class="address-contact">
                                                 <i data-feather="headphones"></i>
-                                                <h5>Terms: <span class="text-content">${tradeMark.terms}</span></h5>
+                                                <h5>Điều khoản và dịch vụ: <span class="text-content">${tradeMark.terms}</span></h5>
                                             </div>
                                         </li>
                                     </ul>
@@ -817,7 +821,7 @@
                             <!-- Trending Product -->
                             <div class="pt-25">
                                 <div class="category-menu">
-                                    <h3>Trending Products</h3>
+                                    <h3>Xe thịnh hành</h3>
 
                                     <ul class="product-list product-right-sidebar border-0 p-0">
                                         <c:forEach items="${carTrending}" var="ct">

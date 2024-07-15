@@ -40,7 +40,7 @@ public class TradeMark {
         this.privacy = privacy;
         this.terms = terms;
     }
-
+    
     
 
     
