@@ -84,7 +84,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="!">So sánh</a>
+                                                               href="compare">So sánh</a>
                                                         </li>
 
                                                         <li>

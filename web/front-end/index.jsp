@@ -437,9 +437,10 @@
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                                <a >
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
+                                                                <form id="compare-form-${cl.car_id}" action="compare" method="post">
+                                                                    <input type="hidden" value="${cl.car_id}" name="carId"/>
+                                                                    <a class="compare-link" data-car-id="${cl.car_id}"><i data-feather="refresh-cw"></i></a>
+                                                                </form>
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
@@ -926,7 +927,17 @@
                                                                             ];
                                                                             autocomplete(document.getElementById("originInput"), countries);
         </script>
-
+                <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.compare-link').forEach(function(element) {
+            element.addEventListener('click', function(event) {
+                event.preventDefault();
+                var carId = event.currentTarget.getAttribute('data-car-id');
+                document.getElementById('compare-form-' + carId).submit();
+            });
+        });
+    });
+</script>
     </body>
 
 </html>

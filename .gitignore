@@ -44,3 +44,4 @@ test/DAO/CarDaoTest.java
 lib
         
 build/web/images/
+/nbproject/private/
