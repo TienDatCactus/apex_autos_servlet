@@ -135,27 +135,27 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach var="tm" items="${tradeMark}">
+                                               
                                                     <tr>
-                                                <input type="hidden" value="${tm.trademard_id}" name="idz">
-                                                <td name="name">${tm.name}</td>
+                                                <input type="hidden" value="${tradeMark.trademard_id}" name="idz">
+                                                <td name="name">${tradeMark.name}</td>
                                                 <td name="logo">
-                                                    <c:forEach items="${tm.url_logo}" var="obj">
+                                                    <c:forEach items="${tradeMark.url_logo}" var="obj">
                                                         <img src="${obj}" alt="Logo" style="max-width: 100px; max-height: 100px;">
                                                     </c:forEach>
                                                 </td>
-                                                <td name="describe">${tm.describe}</td>
-                                                <td name="privacy">${tm.privacy}</td>
-                                                <td name="term">${tm.terms}</td>
+                                                <td name="describe">${tradeMark.describe}</td>
+                                                <td name="privacy">${tradeMark.privacy}</td>
+                                                <td name="term">${tradeMark.terms}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary" 
                                                             data-toggle="modal" data-target="#editProductModal"
-                                                            onclick="editProductModal('${tm.trademard_id}', '${tm.name}', '${tm.url_logo[0]}', '${tm.describe}', '${tm.privacy}', '${tm.terms}')">
+                                                            onclick="editProductModal('${tradeMark.trademard_id}', '${tradeMark.name}', '${tradeMark.url_logo[0]}', '${tradeMark.describe}', '${tradeMark.privacy}', '${tradeMark.terms}')">
                                                         Update
                                                     </button>
                                                 </td>
                                                 </tr>
-                                            </c:forEach>
+                                          
                                             </tbody>
                                         </table>
 

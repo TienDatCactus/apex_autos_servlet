@@ -89,7 +89,7 @@
 
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="!">Hướng dẫn mua hàng</a>
+                                                               href="home?state=allTrade">Thông tin cửa hàng</a>
                                                         </li>
                                                         <li>
                                                             <a class="dropdown-item"

@@ -80,14 +80,23 @@ public class HomeControl extends HttpServlet {
         } else if ("tradeDetail".equals(state)) {
             int idTr = Integer.parseInt(request.getParameter("idTr"));
             TradeMark listTradeMark = dao.getTradeMarkByIDTrade(idTr);
-            int idSell = Integer.parseInt(request.getParameter("idSell"));
-            List<Car> carList = dao.getCarForOneTradeMark(idSell);
+            TradeMark tr = dao.getTradeMarkByIDTrade(idTr);
+            int id_find = tr.getSeller_id();
+            List<Car> carList = dao.getCarForOneTradeMark(id_find);
             List<CarImage> carImage = dao.viewImageForCar();
             request.setAttribute("carImage", carImage);
             request.setAttribute("carList", carList);
             request.setAttribute("tradeMark", listTradeMark);
             request
                     .getRequestDispatcher("/front-end/seller-detail.jsp")
+                    .forward(request, response);
+        } else if ("allTrade".equals(state)) {
+            List<TradeMark> allTradeMarkss = dao.viewAllTradeMark();
+            
+            
+            request.setAttribute("allTradeMarkss", allTradeMarkss);
+            request
+                    .getRequestDispatcher("/front-end/seller-grid-2.jsp")
                     .forward(request, response);
         } else if ("cart".equals(state)) {
             List<CarImage> carImage = dao.viewImageForCar();

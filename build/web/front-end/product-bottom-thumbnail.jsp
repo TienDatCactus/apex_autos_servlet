@@ -763,7 +763,7 @@
 
                                     <div class="vendor-name">
                                         <h5>
-                                            <a href="home?state=tradeDetail&idTr=${tradeMark.trademard_id}&idSell=${tradeMark.seller_id}" >
+                                            <a href="home?state=tradeDetail&idTr=${tradeMark.trademard_id}" >
                                                 ${tradeMark.name}
                                             </a>
 

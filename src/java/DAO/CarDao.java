@@ -654,17 +654,18 @@ public class CarDao {
 
     public boolean updateTradeMark(TradeMark mark) {
         String query
-                = "UPDATE [dbo].[trade_mark] SET [name] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE seller_id = ?";
+                = "UPDATE [dbo].[trade_mark] SET [name] = ?, [describe] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE trademark_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
 
             String logoUrl = mark.getUrl_logo().isEmpty() ? "" : mark.getUrl_logo().get(0);
 
             ps.setString(1, mark.getName());
-            ps.setString(2, logoUrl);
-            ps.setString(3, mark.getPrivacy());
-            ps.setString(4, mark.getTerms());
-            ps.setInt(5, mark.getSeller_id());
+            ps.setString(2, mark.getDescribe());
+            ps.setString(3, logoUrl);
+            ps.setString(4, mark.getPrivacy());
+            ps.setString(5, mark.getTerms());
+            ps.setInt(6, mark.getTrademard_id());
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
@@ -677,14 +678,15 @@ public class CarDao {
     public boolean addNewTradeMark(TradeMark mark) {
         try {
             String query
-                    = "INSERT INTO trade_mark (name,logo_url,privacy,terms,seller_id) VALUES ( ?,?,?,?,?)";
+                    = "INSERT INTO trade_mark (name,logo_url,describe,privacy,terms,seller_id) VALUES ( ?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, mark.getName());
             String logoUrls = String.join(",", mark.getUrl_logo());
             ps.setString(2, logoUrls);
-            ps.setString(3, mark.getPrivacy());
-            ps.setString(4, mark.getTerms());
-            ps.setInt(5, mark.getSeller_id());
+            ps.setString(3, mark.getDescribe());
+            ps.setString(4, mark.getPrivacy());
+            ps.setString(5, mark.getTerms());
+            ps.setInt(6, mark.getSeller_id());
             int rowAffected = ps.executeUpdate();
             return rowAffected > 0;
         } catch (SQLException e) {
@@ -695,8 +697,11 @@ public class CarDao {
 
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
-       
-        System.out.println(carDAO.getCarForOneTradeMark(3));
+        List<String> list = new ArrayList<>();
+        String az = "az";
+        list.add(az);
+        TradeMark m = new TradeMark(4, "nameu3", list, "aa", "bb", "cc");
+        System.out.println(carDAO.getTradeMarkByIDTrade(4));
     }
 
     public List<String> getCarImages(int carId) {
@@ -786,14 +791,14 @@ public class CarDao {
     }
 
     public TradeMark getTradeMark(int idSeller) {
-        TradeMark trademark = null; 
+        TradeMark trademark = null;
         String query
                 = "SELECT * FROM [dbo].[trade_mark] WHERE [seller_id] = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, idSeller); // Thiết lập giá trị cho tham số car_id
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) { 
+                if (rs.next()) {
                     trademark = new TradeMark();
                     List<String> logo = new ArrayList<>();
                     logo.add(rs.getString("logo_url"));
@@ -813,14 +818,14 @@ public class CarDao {
     }
 
     public TradeMark getTradeMarkByIDTrade(int idTr) {
-        TradeMark trademark = null; 
+        TradeMark trademark = null;
         String query
                 = "SELECT * FROM [dbo].[trade_mark] WHERE [trademark_id] = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, idTr); // Thiết lập giá trị cho tham số car_id
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) { 
+                if (rs.next()) {
                     trademark = new TradeMark();
                     List<String> logo = new ArrayList<>();
                     logo.add(rs.getString("logo_url"));
@@ -869,6 +874,31 @@ public class CarDao {
         }
         return cars;
     }
-    
-    
+
+    public List<TradeMark> viewAllTradeMark() {
+        List<TradeMark> tradeMarks = new ArrayList<>();
+        String query = "SELECT * FROM [dbo].[trade_mark]";
+
+        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                TradeMark trademark = new TradeMark();
+                List<String> logo = new ArrayList<>();
+                logo.add(rs.getString("logo_url"));
+
+                trademark.setTrademard_id(rs.getInt("trademark_id"));  
+                trademark.setSeller_id(rs.getInt("seller_id"));
+                trademark.setName(rs.getString("name"));
+                trademark.setUrl_logo(logo);
+                trademark.setDescribe(rs.getString("describe"));
+                trademark.setPrivacy(rs.getString("privacy"));
+                trademark.setTerms(rs.getString("terms"));
+
+                tradeMarks.add(trademark);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tradeMarks;
+    }
+
 }
