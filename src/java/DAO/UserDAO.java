@@ -55,7 +55,7 @@ public class UserDAO {
                 c.setComment_content(rs.getString("comment_content"));
                 c.setCar_id(rs.getInt("car_id"));
                 c.setUser_id(rs.getInt("user_id"));
-
+                c.setCreated_at("created_at");
                 comment.add(c);
             }
         } catch (SQLException e) {
@@ -478,6 +478,7 @@ public class UserDAO {
         }
     }
 
+
     public void deleteStatus(int status_del) {
         String query = "Delete from status where status_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
@@ -538,9 +539,7 @@ public class UserDAO {
     public static void main(String[] args) {
 
         UserDAO r = new UserDAO();
-        UserAccount ua = new UserAccount("multivncraft@gmail.com", "dat123");
-        System.out.println(r.userExisted("datnthe180012@fpt.edu.vn"));
-        System.out.println(r.getUserByEmail("datnthe180012@fpt.edu.vn"));
+        System.out.println(r.viewAllCommentFor1Car());
         // Edit the address
     }
 }

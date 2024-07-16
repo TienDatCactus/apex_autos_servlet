@@ -22,7 +22,7 @@
                             </div>
 
                             <div class="service-detail">
-                                <h5>Newest Cars</h5>
+                                <h5>Xe mới giá mềm</h5>
                             </div>
                         </div>
 
@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="service-detail">
-                                <h5>Free Delivery For Order Over $50k</h5>
+                                <h5>Xem hàng nhanh chóng</h5>
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="service-detail">
-                                <h5>Monthly Mega Discounts</h5>
+                                <h5>Ưu đãi hàng tháng</h5>
                             </div>
                         </div>
 
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="service-detail">
-                                <h5>Best Price On The Market</h5>
+                                <h5>Giá tốt nhất trên thị trường</h5>
                             </div>
                         </div>
                     </div>
@@ -88,9 +88,7 @@
 
                         <div class="footer-logo-contain">
                             <p>
-                                Discover a <b>seamless online car buying experience</b> with
-                                unbeatable prices, extensive selections, and convenient
-                                delivery.
+                                Khám phá <b>sự mới mẻ trong trải nghiệm thương mại xe hơi</b> với vô vàn ưu đãi, thoải mái lựa chọn theo sở thích của bạn
                             </p>
 
                             <ul class="address">
@@ -100,7 +98,7 @@
                                 </li>
                                 <li>
                                     <i data-feather="mail"></i>
-                                    <a href="javascript:void(0)">niggawhat@fpt.edu.vn</a>
+                                    <a href="javascript:void(0)">apexautos1110@gmail.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -122,63 +120,51 @@
 
                 <div class="col-xl col-lg-2 col-sm-3">
                     <div class="footer-title">
-                        <h4>Useful Links</h4>
+                        <h4>Tiện ích</h4>
                     </div>
 
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="index.html" class="text-content">Home</a>
+                                <a href="/home" class="text-content">Trang chủ</a>
                             </li>
                             <li>
                                 <a href="shop-left-sidebar.html" class="text-content"
-                                   >Shop</a
+                                   >Các nhà bán hàng</a
                                 >
                             </li>
                             <li>
-                                <a href="about-us.html" class="text-content">About Us</a>
+                                <a href="about-us.html" class="text-content">Thông tin thêm</a>
                             </li>
                             <li>
                                 <a href="blog-list.html" class="text-content">Blog</a>
                             </li>
-                            <li>
-                                <a href="contact-us.html" class="text-content"
-                                   >Contact Us</a
-                                >
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-xl-2 col-sm-3">
                     <div class="footer-title">
-                        <h4>Help Center</h4>
+                        <h4>Trung tâm hỗ trợ</h4>
                     </div>
 
                     <div class="footer-contain">
                         <ul>
+                            
                             <li>
-                                <a href="order-success.html" class="text-content"
-                                   >Your Order</a
+                                <a href="/dashboard" class="text-content"
+                                   >Tài khoản của bạn</a
                                 >
                             </li>
-                            <li>
-                                <a href="user-dashboard.html" class="text-content"
-                                   >Your Account</a
-                                >
-                            </li>
-                            <li>
-                                <a href="order-tracking.html" class="text-content"
-                                   >Track Order</a
-                                >
-                            </li>
+                           
                             <li>
                                 <a href="wishlist.html" class="text-content"
-                                   >Your Wishlist</a
+                                   >Giỏ hàng của bạn</a
                                 >
                             </li>
                             <li>
-                                <a href="search.html" class="text-content">Search</a>
+                                <a href="search.html" class="text-content">Tìm kiếm</a>
                             </li>
                             <li>
                                 <a href="faq.html" class="text-content">FAQ</a>
@@ -189,7 +175,7 @@
 
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="footer-title">
-                        <h4>Contact Us</h4>
+                        <h4>Liên hệ chúng tôi</h4>
                     </div>
 
                     <div class="footer-contact">
@@ -208,14 +194,14 @@
                                 <div class="footer-number">
                                     <i data-feather="mail"></i>
                                     <div class="contact-number">
-                                        <h6 class="text-content">Email Address :</h6>
-                                        <h5>apexautos@hotmail.com</h5>
+                                        <h6 class="text-content">Địa chỉ email :</h6>
+                                        <h5>apexautos1110@gmail.com</h5>
                                     </div>
                                 </div>
                             </li>
 
                             <li class="social-app">
-                                <h5 class="mb-2 text-content">Download App :</h5>
+                                <h5 class="mb-2 text-content">Tải ứng dụng qua :</h5>
                                 <ul>
                                     <li class="mb-0">
                                         <a

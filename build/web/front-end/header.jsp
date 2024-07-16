@@ -58,7 +58,7 @@
                                                         <c:forEach var="cb" items="${carBrand}">
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                   href="!">${cb.name}</a>
+                                                                  >${cb.name}</a>
                                                             </li>
                                                         </c:forEach>
                                                     </ul>
@@ -116,7 +116,7 @@
                                                         <ul class="dropdown-menu">
                                                             <li class="">
                                                                 <a class="dropdown-item"
-                                                                   href="javascript:void(0)">Đăng kí chương trình
+                                                                   href="home?state=affiliate">Đăng kí chương trình
                                                                     <span class="new-text"><i
                                                                             class="fa-solid fa-bolt-lightning"></i></span></a>
 

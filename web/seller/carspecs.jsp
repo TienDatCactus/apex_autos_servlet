@@ -173,8 +173,8 @@
                                             <div>
                                                 <input type="button"
                                                        onclick="(() => {
-                                                                        location.href = 'dashboard?state=specs';
-                                                                    })()"
+                                                                   location.href = 'dashboard?state=specs';
+                                                               })()"
                                                        class="btn btn-primary" id="cancel" value="Cancel"
                                                        name="cancel">
                                             </div>
@@ -205,9 +205,9 @@ crossorigin="anonymous"></script>
 
 <script>
 
-                                                    if (window.history.replaceState) {
-                                                        window.history.replaceState(null, null, window.location.href);
-                                                    }
+                                                           if (window.history.replaceState) {
+                                                               window.history.replaceState(null, null, window.location.href);
+                                                           }
 </script>
 <script>
     var countries = [

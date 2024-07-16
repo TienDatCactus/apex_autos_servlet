@@ -31,8 +31,8 @@ public class CarDao {
 
     public List<Car> viewProducts() {
         List<Car> cars = new ArrayList<>();
-        String query
-                = "select distinct c.car_id, c.name,c.cylinders,c.horsepower,c.weight,c.acceleration,c.model_year,c.origin,c.price,c.description,c.brand_id,c.category_id,c.seller_id from car c join car_images ci on c.car_id = ci.car_id where c.cylinders is not null";
+        String query = "select * from car";
+//                = "select distinct c.car_id, c.name,c.cylinders,c.horsepower,c.weight,c.acceleration,c.model_year,c.origin,c.price,c.description,c.brand_id,c.category_id,c.seller_id from car c join car_images ci on c.car_id = ci.car_id where c.cylinders is not null";
 
         try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
@@ -104,7 +104,7 @@ public class CarDao {
     }
 
     public boolean checkExistedItems(int carId, int userId) {
-        String sql = "SELECT COUNT(*) FROM [dbo].[cart_items] WHERE car_id = ? and cart_id = ? ;";
+        String sql = "SELECT COUNT(*) FROM [dbo].[cart_item] WHERE car_id = ? and cart_id = ? ;";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, carId);
             ps.setInt(2, getCartId(userId));
@@ -136,10 +136,10 @@ public class CarDao {
         return cartId;
     }
 
-    public void addToCart(int user_id, int car_id) {
+    public boolean addToCart(int user_id, int car_id) {
         String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
         String insertCartQuery = "INSERT INTO cart (user_id) VALUES (?)";
-        String insertCartItemQuery = "INSERT INTO cart_items (cart_id, car_id) VALUES (?, ?)";
+        String insertCartItemQuery = "INSERT INTO cart_item (cart_id, car_id) VALUES (?, ?)";
 
         try (PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psInsertCart
                 = con.prepareStatement(insertCartQuery, Statement.RETURN_GENERATED_KEYS); PreparedStatement psInsertCartItem = con.prepareStatement(insertCartItemQuery)) {
@@ -163,19 +163,25 @@ public class CarDao {
                 try (ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys()) {
                     if (rsGeneratedKeys.next()) {
                         cart_id = rsGeneratedKeys.getInt(1);
+                      
                     } else {
                         throw new SQLException("Creating cart failed, no ID obtained.");
+                        
                     }
                 }
+                
             }
 
             // Add the item to the cart
             psInsertCartItem.setInt(1, cart_id);
             psInsertCartItem.setInt(2, car_id);
             psInsertCartItem.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            
         }
+        return false;
     }
 
     public List<CartItems> cartItems(int user_id) {
@@ -183,7 +189,7 @@ public class CarDao {
 
         String selectCartQuery = "SELECT cart_id FROM cart WHERE user_id = ?";
         String selectCartItemsQuery
-                = "SELECT ci.item_id, ci.cart_id, c.* FROM cart_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
+                = "SELECT ci.item_id, ci.cart_id, c.* FROM cart_item ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.cart_id = ?";
 
         try (PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psSelectCartItems = con.prepareStatement(selectCartItemsQuery)) {
 
@@ -226,7 +232,7 @@ public class CarDao {
     }
 
     public boolean deleteFromCart(int item_id) {
-        String query = "DELETE FROM [dbo].[cart_items] WHERE item_id = ?";
+        String query = "DELETE FROM [dbo].[cart_item] WHERE item_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, item_id);
             int rowsAffected = ps.executeUpdate();
@@ -725,8 +731,8 @@ public class CarDao {
 
     public static void main(String[] args) {
         CarDao carDAO = new CarDao();
-        System.out.println(carDAO.CarImageById(69));
-        System.out.println(carDAO.getCartId(22));
+        System.out.println(carDAO.addToCart(1018,201));
+        
     }
 
     public List<String> getCarImages(int carId) {

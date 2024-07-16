@@ -149,7 +149,6 @@
             <jsp:include page="navbar.jsp"></jsp:include>
                 <div id="layoutSidenav_content">
                     <main>
-
                         <div class="album py-2 bg-body-tertiary">
                             <div class="container">
 

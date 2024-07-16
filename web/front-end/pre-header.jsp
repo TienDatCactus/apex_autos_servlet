@@ -203,7 +203,7 @@
                                     <span class="location-arrow">
                                         <i data-feather="map-pin"></i>
                                     </span>
-                                    <span class="locat-name">Your Location</span>
+                                    <span class="locat-name">Vị trí</span>
                                     <i class="fa-solid fa-angle-down"></i>
                                 </button>
                             </div>
@@ -213,11 +213,11 @@
                                     <input
                                         type="search"
                                         class="form-control"
-                                        placeholder="I'm searching for..."
+                                        placeholder="Tôi đang tìm kiếm..."
                                         aria-label="Recipient's username"
                                         aria-describedby="button-addon2"
                                         />
-                                    <button class="btn" type="button" id="button-addon2">
+                                    <button class="btn" type="button" id="button-addon2" onclick="location.href='home'">
                                         <i data-feather="search"></i>
                                     </button>
                                 </div>
@@ -269,7 +269,7 @@
                                                 <i data-feather="shopping-cart"></i>
                                                 <span
                                                     class="position-absolute top-0 start-100 translate-middle badge"> ${fn:length(sessionScope.cartItems)}
-                                                    <span class="visually-hidden">cart items</span>
+                                                    <span class="visually-hidden">Giỏ hàng</span>
                                                 </span>
                                             </button>
 
@@ -279,7 +279,7 @@
                                                         <c:when test="${empty cartItems}">
                                                             <li class="product-box-contain w-100">
                                                                 <div class="alert alert-warning my-0" role="alert">
-                                                                    Your cart is empty !
+                                                                 Giỏ hàng của bạn đang trống !
                                                                 </div>
                                                             </li>
                                                         </c:when>
@@ -334,10 +334,9 @@
                                                 </div>
 
                                                 <div class="button-group">
-                                                    <a href="home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">View
-                                                        Cart</a>
+                                                    <a href="home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">Xem giỏ hàng</a>
                                                     <a href="checkout"
-                                                       class="btn btn-sm cart-button theme-bg-color text-white">Checkout</a>
+                                                       class="btn btn-sm cart-button theme-bg-color text-white">Thanh toán cọc</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -350,8 +349,8 @@
                                         </div>
                                         <c:if test="${sessionScope.user == null}">
                                             <div class="delivery-detail">
-                                                <h6>Sorry,</h6>
-                                                <h5>Not logged-In</h5>
+                                                <h6>Xin lỗi,</h6>
+                                                <h5>Bạn chưa đăng nhập</h5>
                                             </div>
                                         </c:if>
                                         <c:if test="${sessionScope.user != null}">
@@ -369,33 +368,34 @@
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
                                                     <i></i>
-                                                    <a href="login">Log In</a>
+                                                    <a href="login">Đăng nhập</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="register">Register</a>
+                                                    <a href="register">Đăng kí</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="mail">Forgot Password</a>
+                                                    <a href="mail">Quên mật khẩu</a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </c:if>
                                     <c:if test="${sessionScope.user != null}">
+
                                         <div class="onhover-div onhover-div-login">
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
-                                                    <i></i>
-                                                    <a href="${pageContext.request.contextPath}/user/dashboard">Dashboard</a>
+
+                                                    <a href=${ sessionScope.user.permission_id == 3 ? "${pageContext.request.contextPath}/user/dashboard" :  sessionScope.user.permission_id == 2 ? "${pageContext.request.contextPath}/seller/dashboard": sessionScope.user.permission_id == 1 ?"${pageContext.request.contextPath}/admin/dashboard" : "#"}>${user.permission_id == 3 ? "Hồ sơ" : "Điều khiển"}</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="cart">Cart</a>
+                                                    <a href="cart">Giỏ hàng</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="logout">Logout</a>
+                                                    <a href="logout">Đăng xuất</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -446,7 +446,7 @@
                                                 class="nav-link dropdown-toggle"
                                                 href="javascript:void(0)"
                                                 data-bs-toggle="dropdown"
-                                                >Brand</a
+                                                >Nhãn hàng</a
                                             >
 
                                             <ul
@@ -471,7 +471,7 @@
                                                 class="nav-link dropdown-toggle"
                                                 href="javascript:void(0)"
                                                 data-bs-toggle="dropdown"
-                                                >Categories</a
+                                                >Kiểu loại</a
                                             >
                                             <ul
                                                 class="dropdown-menu my-2 show"
@@ -492,26 +492,26 @@
                                                 class="nav-link dropdown-toggle"
                                                 href="javascript:void(0)"
                                                 data-bs-toggle="dropdown"
-                                                >Resources</a
+                                                >Thông tin thêm</a
                                             >
                                             <ul class="dropdown-menu my-2 show"
                                                 data-bs-popper="none">
                                                 <li>
                                                     <a class="dropdown-item"
-                                                       href="!">Comparisons</a>
+                                                       href="!">So sánh</a>
                                                 </li>
 
                                                 <li>
                                                     <a class="dropdown-item"
-                                                       href="!">Buying Guides</a>
+                                                       href="!">Hướng dẫn mua hàng</a>
                                                 </li>
                                                 <li>
                                                     <a class="dropdown-item"
-                                                       href="!">Car reviews</a>
+                                                       href="!">Review</a>
                                                 </li>
                                                 <li>
                                                     <a class="dropdown-item"
-                                                       href="!">Contact Us</a>
+                                                       href="!">Liên hệ</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -530,7 +530,7 @@
 
                             >
                             <i data-feather="zap"></i>
-                            <span>Deal Today</span>
+                            <span>Ưu đãi</span>
                         </button>
                     </div>
                 </div>
@@ -545,8 +545,8 @@
         <div class="modal-content" >
             <div class="modal-header">
                 <div>
-                    <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
-                    <p class="mt-1 text-content">Recommended deals for you.</p>
+                    <h5 class="modal-title w-100" id="deal_today">Ưu đãi hôm nay</h5>
+                    <p class="mt-1 text-content">Ưu đãi dành riêng cho bạn.</p>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fa-solid fa-xmark"></i>
@@ -603,9 +603,8 @@
     <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
-                <p class="mt-1 text-content">Enter your address and we will specify the offer for your
-                    area.
+                <h5 class="modal-title" id="exampleModalLabel">Lựa chọn địa điểm nhận hàng</h5>
+                <p class="mt-1 text-content">Nhập vào địa điểm nhận hàng của bạn
                 </p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fa-solid fa-xmark"></i>
@@ -619,7 +618,7 @@
                     </div>
 
                     <div class="disabled-box">
-                        <h6>Select a Location</h6>
+                        <h6>Địa điểm</h6>
                     </div>
 
                     <ul class="location-select custom-height">
