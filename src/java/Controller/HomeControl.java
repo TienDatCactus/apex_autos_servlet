@@ -117,6 +117,33 @@ public class HomeControl extends HttpServlet {
             request
                     .getRequestDispatcher("/front-end/seller-become.jsp")
                     .forward(request, response);
+        } else if ("compare".equals(state)) {
+            try {
+
+                CarDao cdao = new CarDao();
+                Compare c = cdao.findCompareByUserId(ua.getUser_id());
+                List<Integer> idList = new ArrayList<>();
+                if (c != null) {
+                    idList = c.getItems().stream()
+                            .map(CompareItem::getCarId)
+                            .toList();
+                }
+
+                // Lấy thông tin xe để so sánh
+                CarDao carDAO = new CarDao();
+                List<Car> lst = carDAO.compareCars(idList);
+                request.setAttribute("compareItems", lst);
+
+                request.setAttribute("message", request.getAttribute("message"));
+                request.setAttribute("error", request.getAttribute("error"));
+                // Chuyển tiếp đến trang so sánh
+                request.getRequestDispatcher("/front-end/compare.jsp").forward(request, response);
+
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+                throw new ServletException(e);
+            }
+
         } else {
             CarDao dao = new CarDao();
             List<Car> carList = dao.viewProducts();
@@ -319,6 +346,25 @@ public class HomeControl extends HttpServlet {
             request.setAttribute("allComment", allComment);
             request.setAttribute("allAccounts", allAccounts);
             request.setAttribute("allComment1Car", allComment1Car);
+        } else if ("compare".equals(state)) {
+            String carId = request.getParameter("carId");
+            try {
+                if (action != null && action.equals("delete")) {
+                    //delete
+                    Compare c = dao.findCompareByUserId(ua.getUser_id());
+                    dao.deleteCompareItems(c.getCompare_id(), Integer.parseInt(carId));
+                    request.setAttribute("message", "Remove this item success");
+                } else {
+                    //add
+                    dao.AddtoCompare(ua.getUser_id(), Integer.parseInt(carId));
+                    jsonResponse.put("success", true);
+                    jsonResponse.put("message", "Item added to cart successfully!");
+                    request.getRequestDispatcher("/front-end/index.jsp")
+                            .forward(request, response);
+                }
+            } catch (Exception e) {
+                request.setAttribute("error", e.getMessage());
+            }
         }
         doGet(request, response);
     }

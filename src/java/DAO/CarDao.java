@@ -4,13 +4,7 @@
  */
 package DAO;
 
-import Models.Car;
-import Models.CarBrand;
-import Models.CarCategory;
-import Models.CarImage;
-import Models.CartItems;
-import Models.Status;
-import Models.TradeMark;
+import Models.*;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -18,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Tiến_Đạt
@@ -163,13 +158,13 @@ public class CarDao {
                 try (ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys()) {
                     if (rsGeneratedKeys.next()) {
                         cart_id = rsGeneratedKeys.getInt(1);
-                      
+
                     } else {
                         throw new SQLException("Creating cart failed, no ID obtained.");
-                        
+
                     }
                 }
-                
+
             }
 
             // Add the item to the cart
@@ -179,7 +174,7 @@ public class CarDao {
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            
+
         }
         return false;
     }
@@ -687,7 +682,6 @@ public class CarDao {
 //        }
 //        return listTrade;
 //    }
-
     public boolean updateTradeMark(TradeMark mark) {
         String query
                 = "UPDATE [dbo].[trade_mark] SET [name] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE seller_id = ?";
@@ -729,11 +723,7 @@ public class CarDao {
         }
     }
 
-    public static void main(String[] args) {
-        CarDao carDAO = new CarDao();
-        System.out.println(carDAO.addToCart(1018,201));
-        
-    }
+   
 
     public List<String> getCarImages(int carId) {
         List<String> imageUrls = new ArrayList<>();
@@ -819,5 +809,156 @@ public class CarDao {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Compare findCompareByUserId(int userId) {
+        Compare c = null;
+        String sql = "select * from compare right join compare_item\n"
+                + "on compare.compare_id = compare_item.compare_id\n"
+                + "where user_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            List<CompareItem> cis = new ArrayList<>();
+            int i = 0;
+            while (rs.next()) {
+                cis.add(new CompareItem(rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+            }
+
+            if (!cis.isEmpty()) {
+                c = new Compare(cis.get(0).getCompareId(), cis.get(0).getCarId());
+                c.setItems(cis);
+            }
+            return c;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
+    public void deleteCompareItems(int compareId, int car_id) {
+        String query = "Delete from compare_item where compare_id = ? and car_id = ?";
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, compareId);
+            ps.setInt(2, car_id);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void AddtoCompare(int user_id, int id_car) throws SQLException {
+        String selectCartQuery = "SELECT compare_id FROM compare WHERE user_id = ?";
+        String insertCartQuery = "INSERT INTO compare (user_id) VALUES (?)";
+        String insertCartItemQuery = "INSERT INTO compare_item (compare_id, car_id) VALUES (?, ?)";
+        String coutnCartItemQuery = "select count(*) from compare_item where compare_id = ?";
+        String countDupplicateQuery = "select count(*) from compare_item where compare_id = ? and car_id = ?";
+
+        try (
+                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psInsertCart = con.prepareStatement(insertCartQuery, Statement.RETURN_GENERATED_KEYS); PreparedStatement psCoutnCartItem = con.prepareStatement(coutnCartItemQuery); PreparedStatement psInsertCartItem = con.prepareStatement(insertCartItemQuery); PreparedStatement psCountDupplicate = con.prepareStatement(countDupplicateQuery);) {
+
+            // Check if the user already has a cart
+            psSelectCart.setInt(1, user_id);
+            ResultSet rsCart = psSelectCart.executeQuery();
+
+            int compare_id;
+            if (rsCart.next()) {
+                // If the user already has a cart, get its ID
+                compare_id = rsCart.getInt("compare_id");
+            } else {
+                // If the user doesn't have a cart, create one and get its ID
+                psInsertCart.setInt(1, user_id);
+                int affectedRows = psInsertCart.executeUpdate();
+                if (affectedRows == 0) {
+                    throw new SQLException("Creating compare failed, no rows affected.");
+                }
+
+                try (ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys()) {
+                    if (rsGeneratedKeys.next()) {
+                        compare_id = rsGeneratedKeys.getInt(1);
+                    } else {
+                        throw new SQLException("Creating compare failed, no ID obtained.");
+                    }
+                }
+            }
+
+            //check duplicate
+            psCountDupplicate.setInt(1, compare_id);
+            psCountDupplicate.setInt(2, id_car);
+            ResultSet rsDupplicate = psCountDupplicate.executeQuery();
+            if (rsDupplicate.next()) {
+                if (rsDupplicate.getInt(1) > 0) {
+                    throw new SQLException("This item already added!");
+                }
+            }
+
+            //count compare item
+            psCoutnCartItem.setInt(1, compare_id);
+            ResultSet rsCount = psCoutnCartItem.executeQuery();
+            if (rsCount.next()) {
+                int count = rsCount.getInt(1);
+                if (count >= 4) {
+                    throw new SQLException("Cannot add because have >= 4 item");
+                } else {
+
+                    //insert
+                    // Add the item to the cart
+                    psInsertCartItem.setInt(1, compare_id);
+                    psInsertCartItem.setInt(2, id_car);
+                    psInsertCartItem.executeUpdate();
+                }
+            } else {
+                //insert
+                // Add the item to the cart
+                psInsertCartItem.setInt(1, compare_id);
+                psInsertCartItem.setInt(2, id_car);
+                psInsertCartItem.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public List<Car> compareCars(List<Integer> carIds) {
+        List<Car> carsToCompare = new ArrayList<>();
+
+        if (carIds == null || carIds.isEmpty()) {
+            return carsToCompare;
+        }
+
+        String selectCarsQuery = "SELECT * FROM car WHERE car_id IN ("
+                + carIds.stream().map(String::valueOf).collect(Collectors.joining(",")) + ")";
+
+        try (Connection conn = db.connection; PreparedStatement ps = conn.prepareStatement(selectCarsQuery)) {
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Car car = new Car(
+                        rs.getInt("car_id"),
+                        rs.getString("name"),
+                        rs.getInt("cylinders"),
+                        rs.getFloat("horsepower"),
+                        rs.getFloat("weight"),
+                        rs.getFloat("acceleration"),
+                        rs.getString("model_year"),
+                        rs.getString("origin"),
+                        rs.getFloat("price"),
+                        rs.getString("description"),
+                        rs.getInt("brand_id"),
+                        rs.getInt("category_id")
+                );
+                carsToCompare.add(car);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return carsToCompare;
+    }
+    
+    public static void main(String[] args) {
+        
     }
 }

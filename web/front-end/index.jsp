@@ -314,71 +314,11 @@
                         <div class="show-button">
                             <div class="filter-button-group mt-0">
                                 <div class="filter-button d-inline-block d-lg-none">
-                                    <a><i class="fa-solid fa-filter"></i> Filter Menu</a>
+                                    <a style="cursor: pointer"><i class="fa-solid fa-filter"></i> Filter Menu</a>
                                 </div>
                             </div>
 
-                            <div class="top-filter-menu">
-                                <div class="category-dropdown">
-                                    <h5 class="text-content">Sort By :</h5>
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                                data-bs-toggle="dropdown">
-                                            <span>Most Popular</span> <i class="fa-solid fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>
-                                                <a class="dropdown-item" id="pop" href="javascript:void(0)">Popularity</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="low" href="javascript:void(0)">Low - High
-                                                    Price</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="high" href="javascript:void(0)">High - Low
-                                                    Price</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="rating" href="javascript:void(0)">Average
-                                                    Rating</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="aToz" href="javascript:void(0)">A - Z Order</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="zToa" href="javascript:void(0)">Z - A Order</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="off" href="javascript:void(0)">% Off - Hight To
-                                                    Low</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="grid-option d-none d-md-block">
-                                    <ul>
-                                        <li class="three-grid">
-                                            <a href="javascript:void(0)">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-3.svg" class="blur-up lazyload" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="grid-btn d-xxl-inline-block d-none">
-                                            <a href="javascript:void(0)">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-4.svg"
-                                                     class="blur-up lazyload d-lg-inline-block d-none" alt="">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid.svg"
-                                                     class="blur-up lazyload img-fluid d-lg-none d-inline-block" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="list-btn active">
-                                            <a href="javascript:void(0)">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/list.svg" class="blur-up lazyload" alt="">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <div
@@ -429,9 +369,10 @@
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                                <a >
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
+                                                                <form id="compare-form-${cl.car_id}" action="home?state=compare" method="post">
+                                                                    <input type="hidden" value="${cl.car_id}" name="carId"/>
+                                                                    <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer"><i data-feather="refresh-cw"></i></a>
+                                                                </form>
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
@@ -695,7 +636,17 @@
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
-      
+        <script>
+                                                                            document.addEventListener('DOMContentLoaded', function () {
+                                                                                document.querySelectorAll('.compare-link').forEach(function (element) {
+                                                                                    element.addEventListener('click', function (event) {
+                                                                                        event.preventDefault();
+                                                                                        var carId = event.currentTarget.getAttribute('data-car-id');
+                                                                                        document.getElementById('compare-form-' + carId).submit();
+                                                                                    });
+                                                                                });
+                                                                            });
+        </script>
         <script>
             var countries = [
                 "Afghanistan",

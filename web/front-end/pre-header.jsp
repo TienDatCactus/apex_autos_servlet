@@ -70,7 +70,7 @@
                                 <div class="timer-notification">
                                     <h6>
                                         Vô vàn xe mới để lựa chọn
-                                        <a href="home" class="text-white"
+                                        <a href="${pageContext.request.contextPath}/home" class="text-white"
                                            >Mua ngay !</a
                                         >
                                     </h6>
@@ -188,7 +188,7 @@
                                 <i class="fa-solid fa-bars"></i>
                             </span>
                         </button>
-                        <a href="home" class="web-logo nav-logo">
+                        <a href="${pageContext.request.contextPath}/home" class="web-logo nav-logo">
                             <img
                                 src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png"
                                 class="img-fluid blur-up lazyload"
@@ -217,7 +217,7 @@
                                         aria-label="Recipient's username"
                                         aria-describedby="button-addon2"
                                         />
-                                    <button class="btn" type="button" id="button-addon2" onclick="location.href='home'">
+                                    <button class="btn" type="button" id="button-addon2" onclick="location.href='${pageContext.request.contextPath}/home'">
                                         <i data-feather="search"></i>
                                     </button>
                                 </div>
@@ -289,7 +289,7 @@
                                                                 <c:set var="total" value="${total + ci.car.price}" />
                                                                 <li class="product-box-contain w-100">
                                                                     <div class="drop-cart">
-                                                                        <a href="home?state=detail&id=${ci.car.car_id}" class="drop-image p-0">
+                                                                        <a href="${pageContext.request.contextPath}/home?state=detail&id=${ci.car.car_id}" class="drop-image p-0">
                                                                             <c:set var="firstImagePrinted" value="false" />
                                                                             <c:forEach items="${carImage}" var="cm">
                                                                                 <c:if test="${ci.car.car_id == cm.car_id}">
@@ -303,7 +303,7 @@
                                                                             </c:forEach>
                                                                         </a>
                                                                         <div class="drop-contain">
-                                                                            <a href="home?state=detail&id=${ci.car.car_id}">
+                                                                            <a href="${pageContext.request.contextPath}/home?state=detail&id=${ci.car.car_id}">
                                                                                 <h5>${ci.car.name}</h5>
                                                                             </a>
                                                                             <c:forEach var="cb" items="${carBrand}">
@@ -334,8 +334,8 @@
                                                 </div>
 
                                                 <div class="button-group">
-                                                    <a href="home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">Xem giỏ hàng</a>
-                                                    <a href="checkout"
+                                                    <a href="${pageContext.request.contextPath}/home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">Xem giỏ hàng</a>
+                                                    <a href="${pageContext.request.contextPath}/checkout"
                                                        class="btn btn-sm cart-button theme-bg-color text-white">Thanh toán cọc</a>
                                                 </div>
                                             </div>
@@ -368,15 +368,15 @@
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
                                                     <i></i>
-                                                    <a href="login">Đăng nhập</a>
+                                                    <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="register">Đăng kí</a>
+                                                    <a href="${pageContext.request.contextPath}/register">Đăng kí</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="mail">Quên mật khẩu</a>
+                                                    <a href="${pageContext.request.contextPath}/mail">Quên mật khẩu</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -387,15 +387,15 @@
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
 
-                                                    <a href=${ sessionScope.user.permission_id == 3 ? "${pageContext.request.contextPath}/user/dashboard" :  sessionScope.user.permission_id == 2 ? "${pageContext.request.contextPath}/seller/dashboard": sessionScope.user.permission_id == 1 ?"${pageContext.request.contextPath}/admin/dashboard" : "#"}>${user.permission_id == 3 ? "Hồ sơ" : "Điều khiển"}</a>
+                                                    <a href="${pageContext.request.contextPath}/${user.permission_id == 3 ? "user" : (user.permission_id == 2 ? "seller" : (user.permission_id == 1 ? "admin" : ""))  }/dashboard">${user.permission_id == 3 ? "Hồ sơ" : "Điều khiển"}</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="cart">Giỏ hàng</a>
+                                                    <a href="${pageContext.request.contextPath}/cart">Giỏ hàng</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="logout">Đăng xuất</a>
+                                                    <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -414,7 +414,7 @@
             <div class="col-12">
                 <div class="header-nav">
                     <div class="header-nav-left">
-                        <button class="dropdown-category button-86" onclick="location.href = 'home'">
+                        <button class="dropdown-category button-86" onclick="location.href = '${pageContext.request.contextPath}/home'">
                             <span>Apex Autos</span>
                         </button>
 
@@ -573,7 +573,7 @@
 
                                     </a>
 
-                                    <a href="home?state=detail&id=${cl.car_id}" class="deal-contain">
+                                    <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}" class="deal-contain">
                                         <h5 class="my-1">${cl.name}</h5>
                                         <c:forEach var="cc" items="${carCate}">
                                             <c:if test="${cl.category_id == cc.id}">
