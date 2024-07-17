@@ -59,10 +59,10 @@ public class VerifyControl extends HttpServlet {
                 if (storedCode == Integer.parseInt(otp)) {
                     UserAccount user = new UserAccount(mail, pass);
                     if (dao.checkRegister(user)) {
-                        request.setAttribute("successMessageVerify", "Registration successful. Please login.");
+                        request.setAttribute("successMessageVerify", "Đăng kí thành công. Xin tiếp tục đăng nhập.");
                         request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
                     } else {
-                        request.setAttribute("errorMessageVerify", "Register failed...");
+                        request.setAttribute("errorMessageVerify", "Đăng kí thất bại...");
                         request.getRequestDispatcher("/front-end/sign-up.jsp").forward(request,
                                 response);
                     }
@@ -77,7 +77,7 @@ public class VerifyControl extends HttpServlet {
                 if (storedCode == Integer.parseInt(otp)) {
                     request.getRequestDispatcher("/front-end/reset-pw.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("errorMessageVerify", "Verification failed. The code you entered is incorrect.");
+                    request.setAttribute("errorMessageVerify", "Xác thực thất bại. Sai mã xác thực !");
                     request.getRequestDispatcher("/front-end/otp.jsp").forward(request,
                             response);
                 }
@@ -86,7 +86,7 @@ public class VerifyControl extends HttpServlet {
                 response.sendRedirect("verify");
             }
         } else {
-            request.setAttribute("errorMessageVerify", "Verification failed. The code you entered is incorrect.");
+            request.setAttribute("errorMessageVerify", "Xác thực thất bại. Sai mã xác thực !");
             request.getRequestDispatcher("/front-end/otp.jsp").forward(request,
                     response);
         }

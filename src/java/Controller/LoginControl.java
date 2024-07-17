@@ -84,7 +84,7 @@ public class LoginControl extends HttpServlet {
 
         } else {
             // Login failed, redirect back to login page
-            request.setAttribute("errorMessage", "Invalid email or password.");
+            request.setAttribute("errorMessage", "Tài khoản hoặc mật khẩu không hợp lệ !");
             request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
         }
     }

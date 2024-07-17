@@ -58,7 +58,7 @@
                                                         <c:forEach var="cb" items="${carBrand}">
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                  >${cb.name}</a>
+                                                                   >${cb.name}</a>
                                                             </li>
                                                         </c:forEach>
                                                     </ul>
@@ -224,15 +224,14 @@
 
 
                                                 <div class="price-box">
-                                                    <h5>Total :</h5>
+                                                    <h5>Ước tính :</h5>
                                                     <h4 id="totalprice" class="theme-color fw-bold">$${total != null ? total : 0}</h4>
                                                 </div>
 
                                                 <div class="button-group">
-                                                    <a href="home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">View
-                                                        Cart</a>
+                                                    <a href="home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">Xem giỏ hàng</a>
                                                     <a href="checkout"
-                                                       class="btn btn-sm cart-button theme-bg-color text-white">Checkout</a>
+                                                       class="btn btn-sm cart-button theme-bg-color text-white">Thanh toán cọc</a>
                                                 </div>
                                             </div>
                                         </div>

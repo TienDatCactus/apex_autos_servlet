@@ -5,7 +5,6 @@
 package Controller;
 
 import DAO.*;
-import Constant.Constants;
 import Models.*;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -18,12 +17,8 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.List;
 import org.json.JSONObject;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
@@ -81,11 +76,21 @@ public class HomeControl extends HttpServlet {
         } else if ("cart".equals(state)) {
             List<CarImage> carImage = dao.viewImageForCar();
             List<CartItems> carts = dao.cartItems(ua.getUser_id());
+            List<CarCategory> carCate = dao.viewCarCategory();
+            List<CarBrand> carBrand = dao.viewCarBrand();
             session.setAttribute("cartItems", carts);
             request.setAttribute("carImage", carImage);
+            request.setAttribute("carCate", carCate);
+            request.setAttribute("carBrand", carBrand);
             request
                     .getRequestDispatcher("/front-end/cart.jsp")
                     .forward(request, response);
+        } else if ("checkout".equals(state)) {
+            List<CartItems> carts = dao.cartItems(ua.getUser_id());
+            session.setAttribute("cartItems", carts);
+            List<Address> listAddr = daou.viewAllAddressFor1User(ua.getUser_id());
+            session.setAttribute("listAddr", listAddr);
+            request.getRequestDispatcher("/front-end/checkout.jsp").forward(request, response);
         } else if ("blog".equals(state)) {
 
             List<CarCategory> carCate = dao.viewCarCategory();
@@ -193,15 +198,15 @@ public class HomeControl extends HttpServlet {
                     int itemId = Integer.parseInt(item);
                     if (dao.checkExistedItems(itemId, ua.getUser_id())) {
                         jsonResponse.put("error", false);
-                        jsonResponse.put("message", "Item already exists in cart!");
+                        jsonResponse.put("message", "Sản phẩm đã có trong giỏ hàng!");
                     } else {
                         dao.addToCart(ua.getUser_id(), itemId);
                         jsonResponse.put("success", true);
-                        jsonResponse.put("message", "Item added to cart successfully!");
+                        jsonResponse.put("message", "Thêm sản phẩm vào giỏ hàng thành công!");
                     }
                 } catch (Exception e) {
                     jsonResponse.put("error", false);
-                    jsonResponse.put("message", "Failed to add item to cart. Error: " + e.getMessage());
+                    jsonResponse.put("message", "Không thể thêm sản phẩm. Lỗi : " + e.getMessage());
                 }
             } else if ("delete".equals(action)) {
                 try {
@@ -209,15 +214,15 @@ public class HomeControl extends HttpServlet {
                         int itemId = Integer.parseInt(item);
                         if (dao.deleteFromCart(itemId)) {
                             jsonResponse.put("success", true);
-                            jsonResponse.put("message", "Item deleted from cart successfully!");
+                            jsonResponse.put("message", "Xóa sản phẩm khỏi giỏ hàng thành công!");
                         }
                     } else {
                         jsonResponse.put("error", false);
-                        jsonResponse.put("message", "Invalid item ID!");
+                        jsonResponse.put("message", "Mã sản phẩm không hợp lệ !");
                     }
                 } catch (Exception e) {
                     jsonResponse.put("error", false);
-                    jsonResponse.put("message", "Failed to delete item from cart. Error: " + e.getMessage());
+                    jsonResponse.put("message", "Không thể xóa sản phẩm . Lỗi : " + e.getMessage());
                 }
             }
 
@@ -353,14 +358,11 @@ public class HomeControl extends HttpServlet {
                     //delete
                     Compare c = dao.findCompareByUserId(ua.getUser_id());
                     dao.deleteCompareItems(c.getCompare_id(), Integer.parseInt(carId));
-                    request.setAttribute("message", "Remove this item success");
-                } else {
+                    request.setAttribute("message", "Xóa sản phẩm thành công");
+                }
+                if (action != null && action.equals("add")) {
                     //add
                     dao.AddtoCompare(ua.getUser_id(), Integer.parseInt(carId));
-                    jsonResponse.put("success", true);
-                    jsonResponse.put("message", "Item added to cart successfully!");
-                    request.getRequestDispatcher("/front-end/index.jsp")
-                            .forward(request, response);
                 }
             } catch (Exception e) {
                 request.setAttribute("error", e.getMessage());

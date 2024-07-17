@@ -47,7 +47,7 @@ public class MailControl extends HttpServlet {
             logger.log(Level.INFO, "Token: {0}", token);
             UserAccount ua = new UserAccount(to, newPassword);
             if (dao.userExisted(ua.getEmail())) {
-                request.setAttribute("errorMessage", "Existed account found on the system !");
+                request.setAttribute("errorMessage", "Tài khoản đã xuất hiện trên hệ thống !");
                 request.getRequestDispatcher("/front-end/login.jsp").forward(request, response);
             } else {
                 session.setAttribute("token", token);
@@ -62,7 +62,7 @@ public class MailControl extends HttpServlet {
             }
         } else if ("forgot".equals(action)) {
             if (!dao.userExisted(to)) {
-                session.setAttribute("alert", "No email address found inside the system !");
+                session.setAttribute("alert", "Tài khoản không xuất hiện trên hệ thống !");
                 response.sendRedirect("mail");
                 return;
             }

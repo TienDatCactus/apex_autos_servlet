@@ -26,23 +26,20 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                      data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="dashboard?state=user">Users List</a>
-                        <a class="nav-link" href="dashboard?state=role">Roles</a>
+                        <a class="nav-link" href="dashboard?state=user">Danh sách người dùng</a>
+                        <a class="nav-link" href="dashboard?state=role">Quản lí quyền</a>
                     </nav>
                 </div>
                 <a class="nav-link" href="dashboard?state=seller">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Sellers
+                    Yêu cầu
                 </a>
 
                 <div class="sb-sidenav-menu-heading">Others</div>
-                <a class="nav-link" href="dashboard?state=chart">
-                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Total Profits
-                </a>
+               
                 <a class="nav-link" href="dashboard?state=setting">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    Page Settings
+                    Cài đặt trang
                 </a>
                 <!-- <a class="nav-link" href="tables.html">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -51,7 +48,7 @@
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
+            <div class="small">Đăng nhập với:</div>
             ${user.email}
         </div>
     </nav>

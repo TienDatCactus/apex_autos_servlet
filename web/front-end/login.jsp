@@ -164,7 +164,7 @@
                                                 <i class="fa-solid fa-house"></i>
                                             </a>
                                         </li>
-                                        <li class="breadcrumb-item active">Log In</li>
+                                        <li class="breadcrumb-item active">Đăng nhập</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -187,8 +187,8 @@
                     <div class="col-xxl-4 col-xl-4 col-lg-6 col-sm-8 mx-auto w-60">
                         <div class="log-in-box">
                             <div class="log-in-title">
-                                <h3>Welcome To <b>ApexAutos</b></h3>
-                                <h4>Log In Your Account</h4>
+                                <h3>Chào mừng đến với <b>ApexAutos</b></h3>
+                                <h5>Đăng nhập vào tài khoản của bạn</h5>
                             </div>
 
                             <div class="input-box">
@@ -202,9 +202,9 @@
                                                 name="email"
                                                 class="form-control input"
                                                 id="email"
-                                                placeholder="Email Address"
+                                                placeholder="Địa chỉ Email"
                                                 />
-                                            <label for="email">Email Address</label>
+                                            <label for="email">Địa chỉ Email</label>
                                             <span class="form-msg"></span>
                                         </div>
                                     </div>
@@ -217,9 +217,9 @@
                                                 name="password"
                                                 class="form-control input"
                                                 id="password"
-                                                placeholder="Password"
+                                                placeholder="Mật khẩu"
                                                 />
-                                            <label for="password">Password</label>
+                                            <label for="password">Mật khẩu</label>
                                             <span class="form-msg"></span>
                                         </div>
                                     </div>
@@ -230,14 +230,14 @@
 
                                             </div>
                                             <a href="mail" class="forgot-password"
-                                               >Forgot Password?</a
+                                               >Quên mật khẩu ?</a
                                             >
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <input
                                             class="button-38 w-100 justify-content-center"
-                                            value="Login"
+                                            value="Đăng nhập"
                                             type="submit"
                                             />
                                     </div>
@@ -248,7 +248,7 @@
                             </div>
 
                             <div class="other-log-in">
-                                <h6>or</h6>
+                                <h6>hoặc</h6>
                             </div>
 
                             <div class="log-in-button">
@@ -264,7 +264,7 @@
                                                 class="blur-up lazyload"
                                                 alt=""
                                                 />
-                                            Log In with Google
+                                            Đăng nhập bằng Google
                                         </a>
                                     </li>
                                 </ul>
@@ -275,8 +275,8 @@
                             </div>
 
                             <div class="sign-up-box">
-                                <h4>Don't have an account?</h4>
-                                <a href="register">Sign Up</a>
+                                <h4>Chưa có tài khoản ?</h4>
+                                <a href="register">Đăng kí</a>
                             </div>
                         </div>
                     </div>

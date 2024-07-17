@@ -208,6 +208,7 @@ public class UserDAO {
                     userAccount.setFamily_name(rs.getString("family_name"));
 
                     userAccount.setPhone(rs.getString("phone"));
+                    userAccount.setCreated_at(rs.getString("created_at"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
                     return null;
@@ -229,8 +230,6 @@ public class UserDAO {
             ps.setString(2, userAccount.getPassword());
             ps.setString(3, userAccount.getGiven_name());
             ps.setString(4, userAccount.getFamily_name());
-            ps.setString(5, "You need to edit for the first time");
-            ps.setString(6, "You need to edit for the first time");
 
             // Execute the update
             int affectedRows = ps.executeUpdate();
@@ -281,6 +280,7 @@ public class UserDAO {
                     userAccount.setDob(rs.getString("dob"));
                     userAccount.setPhone(rs.getString("phone"));
                     userAccount.setPermission_id(rs.getInt("permission_id"));
+                    userAccount.setCreated_at(rs.getString("created_at"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
                     return null;

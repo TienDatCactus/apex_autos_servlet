@@ -21,6 +21,7 @@ public class UserAccount {
     String phone;
     String dob;
     int permission_id;
+    String created_at;
 
     public UserAccount() {
     }
@@ -38,13 +39,14 @@ public class UserAccount {
         this.dob = dob;
     }
 
-    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob) {
+    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob,String created_at) {
         this.email = email;
         this.password = password;
         this.given_name = given_name;
         this.family_name = family_name;
         this.phone = phone;
         this.dob = dob;
+        this.created_at = created_at;
     }
 
     public UserAccount(int user_id, String email, String given_name, String family_name, String phone, String dob) {
@@ -71,6 +73,24 @@ public class UserAccount {
         this.dob = dob;
         this.phone = phone;
     }
+
+    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob) {
+        this.email = email;
+        this.password = password;
+        this.given_name = given_name;
+        this.family_name = family_name;
+        this.phone = phone;
+        this.dob = dob;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+    
 
     public String getDob() {
         return dob;

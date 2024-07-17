@@ -318,7 +318,7 @@
                                 </div>
                             </div>
 
-                            
+
                         </div>
 
                         <div
@@ -369,10 +369,13 @@
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                                <form id="compare-form-${cl.car_id}" action="home?state=compare" method="post">
-                                                                    <input type="hidden" value="${cl.car_id}" name="carId"/>
-                                                                    <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer"><i data-feather="refresh-cw"></i></a>
-                                                                </form>
+
+                                                                <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="submitCompareForm(${cl.car_id})">
+                                                                    <form id="compare-form-${cl.car_id}" method="post">
+                                                                        <input type="hidden" value="${cl.car_id}" name="carId"/>
+                                                                        <i data-feather="refresh-cw"></i>
+                                                                    </form></a>
+
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
@@ -421,7 +424,7 @@
                                                         <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
                                                             <div class="add-to-cart-box">
                                                                 <!--<form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=add&item=${cl.car_id}">-->
-                                                                <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="addToCart(${cl.car_id})">Add
+                                                                <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="addToCart(${cl.car_id})">Thêm vào giỏ hàng
                                                                 </button>
                                                                 <!--</form>-->
                                                             </div>
@@ -646,6 +649,13 @@
                                                                                     });
                                                                                 });
                                                                             });
+        </script>
+        <script>
+            function submitCompareForm(carId) {
+                var form = document.getElementById('compare-form-' + carId);
+                form.action = 'home?state=compare&action=add';
+                form.submit();
+            }
         </script>
         <script>
             var countries = [

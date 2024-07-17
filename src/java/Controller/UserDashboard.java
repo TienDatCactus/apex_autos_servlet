@@ -1,4 +1,3 @@
-
 package Controller;
 
 import java.io.IOException;
@@ -13,15 +12,22 @@ import Models.*;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
-
 @WebServlet(name = "UserDashBoard", urlPatterns = {"/user/dashboard"})
 public class UserDashboard extends HttpServlet {
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        UserDAO dao = new UserDAO();
+        String action = request.getParameter("action");
+        if ("delete".equals(action)) {
+            int idv = Integer.parseInt(request.getParameter("idz"));
+            int id_delete = Integer.parseInt(request.getParameter("id_address"));
+            dao.deleteAddress(id_delete);
+            List<Address> listAddrrr = dao.viewAllAddressFor1User(idv);
+            session.setAttribute("listAddr", listAddrrr);
+        }
         request.getRequestDispatcher("/front-end/user-dashboard.jsp").forward(request, response);
     }
 
@@ -52,13 +58,7 @@ public class UserDashboard extends HttpServlet {
                 List<Address> listAddrr = dao.viewAllAddressFor1User(idz);
                 session.setAttribute("listAddr", listAddrr);
                 break;
-            case "delete":
-                int idv = Integer.parseInt(request.getParameter("idz"));
-                int id_delete = Integer.parseInt(request.getParameter("id_address"));
-                dao.deleteAddress(id_delete);
-                List<Address> listAddrrr = dao.viewAllAddressFor1User(idv);
-                session.setAttribute("listAddr", listAddrrr);
-                break;
+
             case "editPro":
                 int id_pro = Integer.parseInt(request.getParameter("idz"));
                 String given_name = request.getParameter("fname");
@@ -78,7 +78,6 @@ public class UserDashboard extends HttpServlet {
         response.sendRedirect("dashboard");
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

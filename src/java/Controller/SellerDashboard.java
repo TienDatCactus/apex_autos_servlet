@@ -142,7 +142,7 @@ public class SellerDashboard extends HttpServlet {
                     if (type.equals("delete")) {
                         if (id != null) {
                             if (daoc.deleteImagesByCarID(Integer.parseInt(id + ""))) {
-                                success = "Car images deleted successfully !";
+                                success = "Xóa ảnh của xe #" + id + " thành công!";
                                 request.setAttribute("successMsg", success);
                             }
                         }
@@ -182,16 +182,16 @@ public class SellerDashboard extends HttpServlet {
                         success = "";
                         try {
                             if (cate == "") {
-                                error = "Please fill in the form before submit...";
+                                error = "Vui lòng điền đầy đủ thông tin trước khi ấn gửi...";
                             } else if (daoc.checkExistedCate(cate)) {
-                                error = "That car category's already existed ...";
+                                error = "Có kiểu xe đó trong dữ liệu hệ thống rồi ...";
                             } else {
                                 if (daoc.addNewCategory(cate)) {
-                                    success = "new Category added successfully !";
+                                    success = "Kiểu xe mới đã được thêm thành công!";
                                 }
                             }
                         } catch (Exception e) {
-                            error = "An unexpected error occurred. Please try again.";
+                            error = "Có lỗi bất ngờ xảy ra ! Vui lòng thử lại !";
                         }
                         request.setAttribute("errorMsg", error);
                         request.setAttribute("successMsg", success);
@@ -200,18 +200,19 @@ public class SellerDashboard extends HttpServlet {
                         CarCategory cc = new CarCategory(cateId, cate);
                         try {
                             if (cate == "") {
-                                error = "Please fill in the form before submit...";
+                                error = "Vui lòng điền đầy đủ thông tin trước khi ấn gửi....";
                             } else if (daoc.checkExistedCate(cate)) {
-                                error = "That car category's already existed ...";
+                                error = "Có kiểu xe đó trong dữ liệu hệ thống rồi...";
                             } else {
                                 if (daoc.updateCCate(cc)) {
-                                    success = "Category updated successfully !";
+                                    success = "Kiểu xe #" + cc.getId()
+                                            + " đã được cập nhật thành công!!";
                                 } else {
-                                    error = "Category updated failed !!!";
+                                    error = "Kiểu xe cập nhật thất bại !!!";
                                 }
                             }
                         } catch (Exception e) {
-                            error = "An unexpected error occurred. Please try again.";
+                            error = "Có lỗi bất ngờ xảy ra ! Vui lòng thử lại !";
                         }
                         request.setAttribute("errorMsg", error);
                         request.setAttribute("successMsg", success);
@@ -225,18 +226,18 @@ public class SellerDashboard extends HttpServlet {
                         success = "";
                         try {
                             if (brand == "") {
-                                error = "Please fill in the form before submitting...";
+                                error = "Vui lòng điền đầy đủ thông tin trước khi ấn gửi....";
                             } else if (daoc.checkExistedBrand(brand)) {
-                                error = "That car brand's already existed ...";
+                                error = "Có hãng xe đó trong dữ liệu hệ thống rồi ...";
                             } else {
                                 if (daoc.addNewBrand(brand)) {
-                                    success = "New brand added successfully!";
+                                    success = "Hãng xe mới đã được thêm thành công!";
                                 } else {
-                                    error = "Failed to add new brand. Please try again.";
+                                    error = "Hãng xe thêm mới thất bại !!!";
                                 }
                             }
                         } catch (Exception e) {
-                            error = "An unexpected error occurred. Please try again.";
+                            error = "Có lỗi bất ngờ xảy ra ! Vui lòng thử lại !";
                         }
 
                         // Set request attributes for messages
@@ -246,23 +247,23 @@ public class SellerDashboard extends HttpServlet {
                         int brandId = Integer.parseInt(brandValue);
                         CarBrand cb = new CarBrand(brandId, brand);
                         if (brand == null || brand.isEmpty()) {
-                            error = "Please fill in the form before submit...";
+                            error = "Vui lòng điền đầy đủ thông tin trước khi ấn gửi....";
                         } else {
                             // Clear previous messages
                             error = "";
                             success = "";
                             try {
                                 if (daoc.checkExistedBrand(brand)) {
-                                    error = "That car brand already existed ...";
+                                    error = "Có hãng xe đó trong dữ liệu hệ thống rồi ...";
                                 } else {
                                     if (daoc.updateCBrand(cb)) {
-                                        success = "Brand updated successfully!";
+                                        success = "Hãng xe #" + cb.getId() + "đã được cập nhật thành công!";
                                     } else {
-                                        error = "Brand updated failed!!!";
+                                        error = "Hãng xe cập nhật thất bại !!!";
                                     }
                                 }
                             } catch (Exception e) {
-                                error = "An unexpected error occurred. Please try again.";
+                                error = "Có lỗi bất ngờ xảy ra ! Vui lòng thử lại !";
                             }
 
                             request.setAttribute("errorMsg", error);
@@ -296,7 +297,7 @@ public class SellerDashboard extends HttpServlet {
                                 || brandStr.isEmpty()
                                 || categoryStr == null
                                 || categoryStr.isEmpty()) {
-                            throw new IllegalArgumentException("All fields must be filled out.");
+                            throw new IllegalArgumentException("Vui lòng điền đầy đủ thông tin trước khi ấn gửi....");
                         }
 
                         // Parse numeric values
@@ -310,7 +311,7 @@ public class SellerDashboard extends HttpServlet {
 
                         // Update the car item
                         daoc.updateSellerItems(car);
-                        success = "Car details updated successfully !";
+                        success = "Thông tin xe được cập nhật thành công !";
                         request.setAttribute("successMsg", success);
 
                     } catch (IllegalArgumentException e) {
@@ -340,14 +341,14 @@ public class SellerDashboard extends HttpServlet {
                                 || brandStr.isEmpty()
                                 || categoryStr == null
                                 || categoryStr.isEmpty()) {
-                            throw new IllegalArgumentException("All fields must be filled out.");
+                            throw new IllegalArgumentException("Vui lòng điền đầy đủ thông tin trước khi ấn gửi....");
                         }
                         float price = Float.parseFloat(priceStr);
                         int brand = Integer.parseInt(brandStr);
                         int category = Integer.parseInt(categoryStr);
 
                         Car car = new Car(car_name, model_year, price, desc, brand, category, sellerId);
-                        success = "New car has been added succesfully !";
+                        success = "Xe được thêm mới thành công";
                         daoc.addSellerItem(car);
                     } catch (IllegalArgumentException e) {
                         error = e.getMessage();
@@ -383,7 +384,7 @@ public class SellerDashboard extends HttpServlet {
                                 || accelerationStr.isEmpty()
                                 || origin == null
                                 || origin.isEmpty()) {
-                            throw new IllegalArgumentException("All fields must be filled out.");
+                            throw new IllegalArgumentException("Vui lòng điền đầy đủ thông tin trước khi ấn gửi....");
                         }
 
                         // Parse numeric values
@@ -395,7 +396,7 @@ public class SellerDashboard extends HttpServlet {
 
                         Car spec = new Car(carId, cylinders, horsepower, weight, acceleration, origin);
                         daoc.updateSpecs(spec);
-                        success = "Car specifications updated successfully !";
+                        success = "Thông số của xe #" + carId + " được cập nhật thành công !";
                         request.setAttribute("successMsg", success);
                     } catch (IllegalArgumentException e) {
                         error = e.getMessage();

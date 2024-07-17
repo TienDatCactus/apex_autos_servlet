@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="breadscrumb-contain">
-                                <h2>Cart</h2>
+                                <h2>Giỏ hàng</h2>
                                 <nav>
                                     <ol class="breadcrumb mb-0">
                                         <li class="breadcrumb-item">
@@ -118,7 +118,7 @@
                                                 <i class="fa-solid fa-house"></i>
                                             </a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -136,7 +136,7 @@
                         <c:choose>
                             <c:when test="${empty cartItems}">
                                 <div class="alert alert-warning d-flex justify-content-center" style="font-size: 32px " role="alert">
-                                    Your cart is empty !
+                                    Giỏ hàng của bạn đang trống
                                 </div>
                             </c:when>
                             <c:otherwise>
@@ -147,6 +147,8 @@
                                             <tbody class="custom-height">
 
                                                 <c:forEach var="ci" items="${cartItems}">
+                                                    <c:set var="total" value="${0}"/>
+                                                    <c:set var="total" value="${total + ci.car.price}" />
                                                     <tr class="product-box-contain">
                                                         <td class="product-detail">
                                                             <div class="product border-0">
@@ -168,23 +170,30 @@
                                                                         <li class="name">
                                                                             <a href="product-left-thumbnail.html">${ci.car.name}</a>
                                                                         </li>
-
-                                                                        <li class="text-content"><span
-                                                                                class="text-title">Brand:</span> ${ci.car.brand_id}</li>
-
-                                                                        <li class="text-content"><span
-                                                                                class="text-title">Category</span> - ${ci.car.category_id}
-                                                                        </li>
+                                                                        <c:forEach var="cb" items="${carBrand}">
+                                                                            <c:if test="${cb.id == ci.car.brand_id}">
+                                                                                <li class="text-content"><span
+                                                                                        class="text-title">Hãng xe :</span> ${cb.name}
+                                                                                </li>
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <c:forEach var="cc" items="${carCate}">
+                                                                            <c:if test="${cc.id == ci.car.category_id}">
+                                                                                <li class="text-content"><span
+                                                                                        class="text-title">Kiểu xe :</span> ${cc.name}
+                                                                                </li>
+                                                                            </c:if>
+                                                                        </c:forEach>
 
                                                                         <li>
-                                                                            <h5 class="text-content d-inline-block">Price :
+                                                                            <h5 class="text-content d-inline-block">Giá tiền :
                                                                             </h5>
                                                                             <span>$${ci.car.price}</span>
                                                                             <span class="text-content">$${ci.car.price  + 10000}</span>
                                                                         </li>
 
                                                                         <li>
-                                                                            <h5 class="saving theme-color">Saving : $20.68
+                                                                            <h5 class="saving theme-color">Tiết kiệm : $10000
                                                                             </h5>
                                                                         </li>
 
@@ -212,7 +221,7 @@
                                                                         </li>
 
                                                                         <li>
-                                                                            <h5>Total: ${ci.car.price}</h5>
+                                                                            <h5>Tổng : ${ci.car.price}</h5>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -220,14 +229,14 @@
                                                         </td>
 
                                                         <td class="price">
-                                                            <h4 class="table-title text-content">Price</h4>
+                                                            <h4 class="table-title text-content">Đơn giá</h4>
                                                             <h5>${ci.car.price}<del class="text-content">${ci.car.price}</del></h5>
-                                                            <h6 class="theme-color">You Save : 0</h6>
+                                                            <h6 class="theme-color">Tiết kiệm : $10000</h6>
                                                         </td>
 
                                                         <td class="quantity">
                                                             <h4 class="table-title text-content ">
-                                                                Qty</h4>
+                                                                Số lượng</h4>
                                                             <div style="width: 70px"
                                                                  <div class="cart_qty">
                                                                     <input class="form-control input-number qty-input "
@@ -238,14 +247,14 @@
 
 
                                                         <td class="subtotal">
-                                                            <h4 class="table-title text-content">Total</h4>
+                                                            <h4 class="table-title text-content">Tổng</h4>
                                                             <h5 class="pricee">$${ci.car.price}</h5>
                                                         </td>
 
                                                         <td class="save-remove">
-                                                            <h4 class="table-title text-content">Action</h4>
+                                                            <h4 class="table-title text-content">Hành động</h4>
                                                             <form action="home?state=cart&action=delete&item=${ci.car.car_id}&index=cart" id="form-del-${ci.item_id}" method="post">
-                                                                <input type="submit" value="Remove" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
+                                                                <input type="submit" value="Xóa khỏi giỏ" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
                                                             </form>
                                                         </td>
                                                     </tr>
@@ -262,22 +271,19 @@
                     <div class="col-xxl-3">
                         <div class="summery-box p-sticky">
                             <div class="summery-header">
-                                <h3>Cart Total</h3>
+                                <h3>Tổng giá trị Cọc</h3>
                             </div>
 
                             <div class="summery-contain">
 
                                 <ul>
                                     <li>
-                                        <h4 >Subtotal</h4>
-                                        <h4 id="subTotal" class="price">$125.65</h4>
+                                        <h4 >Giá trị ước tính</h4>
+                                        <h4 id="subTotal" class="price">${total} VND</h4>
                                     </li>
 
 
-                                    <li class="align-items-start">
-                                        <h4  class="price text-end">Freeship</h4>
 
-                                    </li>
                                 </ul>
                             </div>
 
@@ -291,16 +297,14 @@
                             <div class="button-group cart-button">
                                 <ul>
                                     <li>
-                                        <button onclick="location.href = 'checkout';"
-                                                class="button-83 text-center proceed-btn fw-bold d-flex justify-content-center">Process To
-                                            Checkout</button>
+                                        <button onclick="location.href = 'home?state=checkout';"
+                                                class="button-83 text-center proceed-btn fw-bold d-flex justify-content-center">Tiến hành thanh toán Cọc</button>
                                     </li>
 
                                     <li>
                                         <button onclick="location.href = 'home';"
                                                 class="button-39 text-dark d-flex justify-content-evenly align-items-center">
-                                            <i class="fa-solid fa-arrow-left-long"></i>Return To
-                                            Shopping</button>
+                                            <i class="fa-solid fa-arrow-left-long"></i>Quay lại trang chủ</button>
                                     </li>
                                 </ul>
                             </div>
