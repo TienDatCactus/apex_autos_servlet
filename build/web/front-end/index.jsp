@@ -87,30 +87,25 @@
                     <li class="active">
                         <a href="home">
                             <i class="iconly-Home icli"></i>
-                            <span>Home</span>
+                            <span>Trang chủ</span>
                         </a>
                     </li>
 
                     <li class="mobile-category">
-                        <a href="javascript:void(0)">
-                            <i class="iconly-Category icli js-link"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="search-box">
-                            <i class="iconly-Search icli"></i>
-                            <span>Search</span>
-                        </a>
-                    </li>
-
-
-                    <li>
-                        <a href="home?state=cart&user=${user.user_id}">
-                        <i class="iconly-Bag-2 icli fly-cate"></i>
-                        <span>Cart</span>
+                        <a href="${pageContext.request.contextPath}/${user.permission_id == 3 ? "user" : (user.permission_id == 2 ? "seller" : (user.permission_id == 1 ? "admin" : ""))  }/dashboard">
+                        <i class="iconly-Category icli js-link"></i>
+                        <span>${user.permission_id == 3 ? "Hồ sơ" : "Điều khiển"}</span>
                     </a>
+                </li>
+
+                <li>
+                    <a class="search-box" href="${pageContext.request.contextPath}/home?state=cart&user=${user.user_id}">
+                        <i class="iconly-Search icli"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                </li>
+
+
                 </li>
             </ul>
         </div>
@@ -130,14 +125,11 @@
                                         class="home-detail p-center text-center home-overlay position-relative">
                                         <div>
                                             <div class="content ">
-                                                <h1 class="text-light">Find your dream car online</h1>
-                                                <h3 class="text-light">Explore a wide selection of car models
-                                                    and
-                                                    make your
-                                                    purchase today</h3>
+                                                <h1 class="text-light">Tìm kiếm chiếc xe mơ ước của bạn tại đây</h1>
+                                                <h3 class="text-light">Khám phá vô vàn mẫu mã và đưa ra lựa chọn trong hôm nay</h3>
                                                 <div class="search-box">
                                                     <input type="search" id="searchBox" class="form-control"
-                                                           placeholder="I'm searching for..."
+                                                           placeholder="Bạn đang tìm kiếm ..."
                                                            aria-label="Recipient's username">
                                                     <i data-feather="search"></i>
                                                 </div>
@@ -171,9 +163,9 @@
 
                                     </div>
                                     <div class="form-floating theme-form-floating-2 search-box">
-                                        <input type="search" class="form-control" id="search"
+                                        <input type="search" class="form-control" id="searchProp"
                                                placeholder="Search ...">
-                                        <label for="search">Tìm kiếm</label>
+                                        <label for="searchProp">Tìm kiếm</label>
                                     </div>
                                 </div>
 
@@ -193,7 +185,7 @@
 
                                                 <ul class="category-list custom-padding custom-height">
                                                     <c:forEach var="cc" items="${carCate}">
-                                                        <li>
+                                                        <li class="cateItems" data-name="${cc.name}">
                                                             <div class="form-check ps-0 m-0 category-list-box">
                                                                 <input class="checkbox_animated" type="checkbox" id="cate-${cc.id}" data-cate-id="${cc.id}">
                                                                 <label class="form-check-label" for="cate-${cc.id}">
@@ -221,7 +213,7 @@
                                             <div class="accordion-body">
                                                 <ul class="category-list custom-padding custom-height">
                                                     <c:forEach var="cb" items="${carBrand}">
-                                                        <li>
+                                                        <li class="brandItems" data-name="${cb.name}">
                                                             <div class="form-check ps-0 m-0 category-list-box">
                                                                 <input class="checkbox_animated" type="checkbox" id="brand-${cb.id}" data-brand-id="${cb.id}">
                                                                 <label class="form-check-label" for="brand-${cb.id}">
@@ -322,71 +314,11 @@
                         <div class="show-button">
                             <div class="filter-button-group mt-0">
                                 <div class="filter-button d-inline-block d-lg-none">
-                                    <a><i class="fa-solid fa-filter"></i> Filter Menu</a>
+                                    <a style="cursor: pointer"><i class="fa-solid fa-filter"></i> Filter Menu</a>
                                 </div>
                             </div>
 
-                            <div class="top-filter-menu">
-                                <div class="category-dropdown">
-                                    <h5 class="text-content">Sort By :</h5>
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                                data-bs-toggle="dropdown">
-                                            <span>Most Popular</span> <i class="fa-solid fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li>
-                                                <a class="dropdown-item" id="pop" href="javascript:void(0)">Popularity</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="low" href="javascript:void(0)">Low - High
-                                                    Price</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="high" href="javascript:void(0)">High - Low
-                                                    Price</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="rating" href="javascript:void(0)">Average
-                                                    Rating</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="aToz" href="javascript:void(0)">A - Z Order</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="zToa" href="javascript:void(0)">Z - A Order</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" id="off" href="javascript:void(0)">% Off - Hight To
-                                                    Low</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
 
-                                <div class="grid-option d-none d-md-block">
-                                    <ul>
-                                        <li class="three-grid">
-                                            <a href="javascript:void(0)">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-3.svg" class="blur-up lazyload" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="grid-btn d-xxl-inline-block d-none">
-                                            <a href="javascript:void(0)">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-4.svg"
-                                                     class="blur-up lazyload d-lg-inline-block d-none" alt="">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid.svg"
-                                                     class="blur-up lazyload img-fluid d-lg-none d-inline-block" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="list-btn active">
-                                            <a href="javascript:void(0)">
-                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/list.svg" class="blur-up lazyload" alt="">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
 
                         <div
@@ -437,10 +369,13 @@
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                                <form id="compare-form-${cl.car_id}" action="compare" method="post">
+                                                                
+                                                                    <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="submitCompareForm(${cl.car_id})">
+                                                                        <form id="compare-form-${cl.car_id}" method="post">
                                                                     <input type="hidden" value="${cl.car_id}" name="carId"/>
-                                                                    <a class="compare-link" data-car-id="${cl.car_id}"><i data-feather="refresh-cw"></i></a>
-                                                                </form>
+                                                                        <i data-feather="refresh-cw"></i>
+                                                                    </form></a>
+                                                                
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
@@ -558,7 +493,12 @@
 
                                                                     <div class="product-detail">
                                                                         <h4>Product Details :</h4>
-                                                                        <p>${cl.description}</p>
+                                                                        <p style="
+                                                                           line-height: 1.5;
+                                                                           -webkit-line-clamp: 2;
+                                                                           -webkit-box-orient: vertical;
+                                                                           display: -webkit-box;
+                                                                           overflow: hidden;">${cl.description}</p>
                                                                     </div>
 
                                                                     <ul class="brand-list">
@@ -699,245 +639,242 @@
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
+        <script>
+                                                                            function submitCompareForm(carId) {
+                                                                                var form = document.getElementById('compare-form-' + carId);
+                                                                                form.action = 'home?state=compare&action=add';
+                                                                                form.submit();
+                                                                            }
+        </script>
 
         <script>
-                                                                            var countries = [
-                                                                                "Afghanistan",
-                                                                                "Albania",
-                                                                                "Algeria",
-                                                                                "Andorra",
-                                                                                "Angola",
-                                                                                "Anguilla",
-                                                                                "Antigua &amp; Barbuda",
-                                                                                "Argentina",
-                                                                                "Armenia",
-                                                                                "Aruba",
-                                                                                "Australia",
-                                                                                "Austria",
-                                                                                "Azerbaijan",
-                                                                                "Bahamas",
-                                                                                "Bahrain",
-                                                                                "Bangladesh",
-                                                                                "Barbados",
-                                                                                "Belarus",
-                                                                                "Belgium",
-                                                                                "Belize",
-                                                                                "Benin",
-                                                                                "Bermuda",
-                                                                                "Bhutan",
-                                                                                "Bolivia",
-                                                                                "Bosnia &amp; Herzegovina",
-                                                                                "Botswana",
-                                                                                "Brazil",
-                                                                                "British Virgin Islands",
-                                                                                "Brunei",
-                                                                                "Bulgaria",
-                                                                                "Burkina Faso",
-                                                                                "Burundi",
-                                                                                "Cambodia",
-                                                                                "Cameroon",
-                                                                                "Canada",
-                                                                                "Cape Verde",
-                                                                                "Cayman Islands",
-                                                                                "Central Arfrican Republic",
-                                                                                "Chad",
-                                                                                "Chile",
-                                                                                "China",
-                                                                                "Colombia",
-                                                                                "Congo",
-                                                                                "Cook Islands",
-                                                                                "Costa Rica",
-                                                                                "Cote D Ivoire",
-                                                                                "Croatia",
-                                                                                "Cuba",
-                                                                                "Curacao",
-                                                                                "Cyprus",
-                                                                                "Czech Republic",
-                                                                                "Denmark",
-                                                                                "Djibouti",
-                                                                                "Dominica",
-                                                                                "Dominican Republic",
-                                                                                "Ecuador",
-                                                                                "Egypt",
-                                                                                "El Salvador",
-                                                                                "Equatorial Guinea",
-                                                                                "Eritrea",
-                                                                                "Estonia",
-                                                                                "Ethiopia",
-                                                                                "Falkland Islands",
-                                                                                "Faroe Islands",
-                                                                                "Fiji",
-                                                                                "Finland",
-                                                                                "France",
-                                                                                "French Polynesia",
-                                                                                "French West Indies",
-                                                                                "Gabon",
-                                                                                "Gambia",
-                                                                                "Georgia",
-                                                                                "Germany",
-                                                                                "Ghana",
-                                                                                "Gibraltar",
-                                                                                "Greece",
-                                                                                "Greenland",
-                                                                                "Grenada",
-                                                                                "Guam",
-                                                                                "Guatemala",
-                                                                                "Guernsey",
-                                                                                "Guinea",
-                                                                                "Guinea Bissau",
-                                                                                "Guyana",
-                                                                                "Haiti",
-                                                                                "Honduras",
-                                                                                "Hong Kong",
-                                                                                "Hungary",
-                                                                                "Iceland",
-                                                                                "India",
-                                                                                "Indonesia",
-                                                                                "Iran",
-                                                                                "Iraq",
-                                                                                "Ireland",
-                                                                                "Isle of Man",
-                                                                                "Israel",
-                                                                                "Italy",
-                                                                                "Jamaica",
-                                                                                "Japan",
-                                                                                "Jersey",
-                                                                                "Jordan",
-                                                                                "Kazakhstan",
-                                                                                "Kenya",
-                                                                                "Kiribati",
-                                                                                "Kosovo",
-                                                                                "Kuwait",
-                                                                                "Kyrgyzstan",
-                                                                                "Laos",
-                                                                                "Latvia",
-                                                                                "Lebanon",
-                                                                                "Lesotho",
-                                                                                "Liberia",
-                                                                                "Libya",
-                                                                                "Liechtenstein",
-                                                                                "Lithuania",
-                                                                                "Luxembourg",
-                                                                                "Macau",
-                                                                                "Macedonia",
-                                                                                "Madagascar",
-                                                                                "Malawi",
-                                                                                "Malaysia",
-                                                                                "Maldives",
-                                                                                "Mali",
-                                                                                "Malta",
-                                                                                "Marshall Islands",
-                                                                                "Mauritania",
-                                                                                "Mauritius",
-                                                                                "Mexico",
-                                                                                "Micronesia",
-                                                                                "Moldova",
-                                                                                "Monaco",
-                                                                                "Mongolia",
-                                                                                "Montenegro",
-                                                                                "Montserrat",
-                                                                                "Morocco",
-                                                                                "Mozambique",
-                                                                                "Myanmar",
-                                                                                "Namibia",
-                                                                                "Nauro",
-                                                                                "Nepal",
-                                                                                "Netherlands",
-                                                                                "Netherlands Antilles",
-                                                                                "New Caledonia",
-                                                                                "New Zealand",
-                                                                                "Nicaragua",
-                                                                                "Niger",
-                                                                                "Nigeria",
-                                                                                "North Korea",
-                                                                                "Norway",
-                                                                                "Oman",
-                                                                                "Pakistan",
-                                                                                "Palau",
-                                                                                "Palestine",
-                                                                                "Panama",
-                                                                                "Papua New Guinea",
-                                                                                "Paraguay",
-                                                                                "Peru",
-                                                                                "Philippines",
-                                                                                "Poland",
-                                                                                "Portugal",
-                                                                                "Puerto Rico",
-                                                                                "Qatar",
-                                                                                "Reunion",
-                                                                                "Romania",
-                                                                                "Russia",
-                                                                                "Rwanda",
-                                                                                "Saint Pierre &amp; Miquelon",
-                                                                                "Samoa",
-                                                                                "San Marino",
-                                                                                "Sao Tome and Principe",
-                                                                                "Saudi Arabia",
-                                                                                "Senegal",
-                                                                                "Serbia",
-                                                                                "Seychelles",
-                                                                                "Sierra Leone",
-                                                                                "Singapore",
-                                                                                "Slovakia",
-                                                                                "Slovenia",
-                                                                                "Solomon Islands",
-                                                                                "Somalia",
-                                                                                "South Africa",
-                                                                                "South Korea",
-                                                                                "South Sudan",
-                                                                                "Spain",
-                                                                                "Sri Lanka",
-                                                                                "St Kitts &amp; Nevis",
-                                                                                "St Lucia",
-                                                                                "St Vincent",
-                                                                                "Sudan",
-                                                                                "Suriname",
-                                                                                "Swaziland",
-                                                                                "Sweden",
-                                                                                "Switzerland",
-                                                                                "Syria",
-                                                                                "Taiwan",
-                                                                                "Tajikistan",
-                                                                                "Tanzania",
-                                                                                "Thailand",
-                                                                                "Timor L'Este",
-                                                                                "Togo",
-                                                                                "Tonga",
-                                                                                "Trinidad &amp; Tobago",
-                                                                                "Tunisia",
-                                                                                "Turkey",
-                                                                                "Turkmenistan",
-                                                                                "Turks &amp; Caico  s",
-                                                                                "Tuvalu",
-                                                                                "Uganda",
-                                                                                "Ukraine",
-                                                                                "United Arab Emirates",
-                                                                                "United Kingdom",
-                                                                                "United States of America",
-                                                                                "Uruguay",
-                                                                                "Uzbekistan",
-                                                                                "Vanuatu",
-                                                                                "Vatican City",
-                                                                                "Venezuela",
-                                                                                "Vietnam",
-                                                                                "Virgin Islands (US)",
-                                                                                "Yemen",
-                                                                                "Zambia",
-                                                                                "Zimbabwe",
-                                                                            ];
-                                                                            autocomplete(document.getElementById("originInput"), countries);
+            var countries = [
+                "Afghanistan",
+                "Albania",
+                "Algeria",
+                "Andorra",
+                "Angola",
+                "Anguilla",
+                "Antigua &amp; Barbuda",
+                "Argentina",
+                "Armenia",
+                "Aruba",
+                "Australia",
+                "Austria",
+                "Azerbaijan",
+                "Bahamas",
+                "Bahrain",
+                "Bangladesh",
+                "Barbados",
+                "Belarus",
+                "Belgium",
+                "Belize",
+                "Benin",
+                "Bermuda",
+                "Bhutan",
+                "Bolivia",
+                "Bosnia &amp; Herzegovina",
+                "Botswana",
+                "Brazil",
+                "British Virgin Islands",
+                "Brunei",
+                "Bulgaria",
+                "Burkina Faso",
+                "Burundi",
+                "Cambodia",
+                "Cameroon",
+                "Canada",
+                "Cape Verde",
+                "Cayman Islands",
+                "Central Arfrican Republic",
+                "Chad",
+                "Chile",
+                "China",
+                "Colombia",
+                "Congo",
+                "Cook Islands",
+                "Costa Rica",
+                "Cote D Ivoire",
+                "Croatia",
+                "Cuba",
+                "Curacao",
+                "Cyprus",
+                "Czech Republic",
+                "Denmark",
+                "Djibouti",
+                "Dominica",
+                "Dominican Republic",
+                "Ecuador",
+                "Egypt",
+                "El Salvador",
+                "Equatorial Guinea",
+                "Eritrea",
+                "Estonia",
+                "Ethiopia",
+                "Falkland Islands",
+                "Faroe Islands",
+                "Fiji",
+                "Finland",
+                "France",
+                "French Polynesia",
+                "French West Indies",
+                "Gabon",
+                "Gambia",
+                "Georgia",
+                "Germany",
+                "Ghana",
+                "Gibraltar",
+                "Greece",
+                "Greenland",
+                "Grenada",
+                "Guam",
+                "Guatemala",
+                "Guernsey",
+                "Guinea",
+                "Guinea Bissau",
+                "Guyana",
+                "Haiti",
+                "Honduras",
+                "Hong Kong",
+                "Hungary",
+                "Iceland",
+                "India",
+                "Indonesia",
+                "Iran",
+                "Iraq",
+                "Ireland",
+                "Isle of Man",
+                "Israel",
+                "Italy",
+                "Jamaica",
+                "Japan",
+                "Jersey",
+                "Jordan",
+                "Kazakhstan",
+                "Kenya",
+                "Kiribati",
+                "Kosovo",
+                "Kuwait",
+                "Kyrgyzstan",
+                "Laos",
+                "Latvia",
+                "Lebanon",
+                "Lesotho",
+                "Liberia",
+                "Libya",
+                "Liechtenstein",
+                "Lithuania",
+                "Luxembourg",
+                "Macau",
+                "Macedonia",
+                "Madagascar",
+                "Malawi",
+                "Malaysia",
+                "Maldives",
+                "Mali",
+                "Malta",
+                "Marshall Islands",
+                "Mauritania",
+                "Mauritius",
+                "Mexico",
+                "Micronesia",
+                "Moldova",
+                "Monaco",
+                "Mongolia",
+                "Montenegro",
+                "Montserrat",
+                "Morocco",
+                "Mozambique",
+                "Myanmar",
+                "Namibia",
+                "Nauro",
+                "Nepal",
+                "Netherlands",
+                "Netherlands Antilles",
+                "New Caledonia",
+                "New Zealand",
+                "Nicaragua",
+                "Niger",
+                "Nigeria",
+                "North Korea",
+                "Norway",
+                "Oman",
+                "Pakistan",
+                "Palau",
+                "Palestine",
+                "Panama",
+                "Papua New Guinea",
+                "Paraguay",
+                "Peru",
+                "Philippines",
+                "Poland",
+                "Portugal",
+                "Puerto Rico",
+                "Qatar",
+                "Reunion",
+                "Romania",
+                "Russia",
+                "Rwanda",
+                "Saint Pierre &amp; Miquelon",
+                "Samoa",
+                "San Marino",
+                "Sao Tome and Principe",
+                "Saudi Arabia",
+                "Senegal",
+                "Serbia",
+                "Seychelles",
+                "Sierra Leone",
+                "Singapore",
+                "Slovakia",
+                "Slovenia",
+                "Solomon Islands",
+                "Somalia",
+                "South Africa",
+                "South Korea",
+                "South Sudan",
+                "Spain",
+                "Sri Lanka",
+                "St Kitts &amp; Nevis",
+                "St Lucia",
+                "St Vincent",
+                "Sudan",
+                "Suriname",
+                "Swaziland",
+                "Sweden",
+                "Switzerland",
+                "Syria",
+                "Taiwan",
+                "Tajikistan",
+                "Tanzania",
+                "Thailand",
+                "Timor L'Este",
+                "Togo",
+                "Tonga",
+                "Trinidad &amp; Tobago",
+                "Tunisia",
+                "Turkey",
+                "Turkmenistan",
+                "Turks &amp; Caico  s",
+                "Tuvalu",
+                "Uganda",
+                "Ukraine",
+                "United Arab Emirates",
+                "United Kingdom",
+                "United States of America",
+                "Uruguay",
+                "Uzbekistan",
+                "Vanuatu",
+                "Vatican City",
+                "Venezuela",
+                "Vietnam",
+                "Virgin Islands (US)",
+                "Yemen",
+                "Zambia",
+                "Zimbabwe",
+            ];
+            autocomplete(document.getElementById("originInput"), countries);
         </script>
-                <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.compare-link').forEach(function(element) {
-            element.addEventListener('click', function(event) {
-                event.preventDefault();
-                var carId = event.currentTarget.getAttribute('data-car-id');
-                document.getElementById('compare-form-' + carId).submit();
-            });
-        });
-    });
-</script>
+
     </body>
 
 </html>

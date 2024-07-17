@@ -11,9 +11,10 @@ import java.util.List;
  * @author admin123
  */
 public class Compare {
-     private int compare_id;
-     private int user_id;
-    private List<CompareItems> items;
+
+    private int compare_id;
+    private int user_id;
+    private List<CompareItem> items;
 
     public Compare() {
     }
@@ -23,7 +24,7 @@ public class Compare {
         this.user_id = user_id;
     }
 
-    public Compare(int compare_id, List<CompareItems> items) {
+    public Compare(int compare_id, List<CompareItem> items) {
         this.compare_id = compare_id;
         this.items = items;
     }
@@ -40,7 +41,7 @@ public class Compare {
         return compare_id;
     }
 
-    public List<CompareItems> getItems() {
+    public List<CompareItem> getItems() {
         return items;
     }
 
@@ -48,8 +49,8 @@ public class Compare {
         this.compare_id = compare_id;
     }
 
-    public void setItems(List<CompareItems> items) {
+    public void setItems(List<CompareItem> items) {
         this.items = items;
     }
-    
+
 }

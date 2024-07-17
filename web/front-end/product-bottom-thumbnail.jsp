@@ -202,12 +202,7 @@
 
 
 
-                                    <div class="product-packege">
-                                        <div class="product-title">
-                                            <h4>Weight</h4>
-                                        </div>
-                                        <div class="button-83 col-4 p-3 " >${carDT.weight} Kg</div>
-                                    </div>
+
 
                                     <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                          data-hours="1" data-minutes="2" data-seconds="3">
@@ -263,25 +258,7 @@
                                         </a>
                                     </div>
 
-                                    <div class="pickup-box">
-                                        <div class="product-title">
-                                            <h4>Car Information</h4>
-                                        </div>
 
-
-
-                                        <div class="product-info">
-                                            <ul class="product-info-list product-info-list-2">
-                                                <li>Cylinders : <a href="javascript:void(0)">${carDT.cylinders}</a></li>
-                                                <li>Horsepower : <a href="javascript:void(0)">${carDT.horsepower}</a></li>
-                                                <li>Weight : <a href="javascript:void(0)">${carDT.weight}</a></li>
-                                                <li>Acceleration : <a href="javascript:void(0)">${carDT.acceleration}</a></li>
-                                                <li>Model year : <a href="javascript:void(0)" >${carDT.model_year}</a></li>
-                                                <li>Origin : <a href="javascript:void(0)">${carDT.origin}</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="button-83 col-4">${carDT.weight} Kg</div>
-                                    </div>
 
                                     <div class="paymnet-option">
                                         <div class="product-title">
@@ -328,23 +305,24 @@
                                     <ul class="nav nav-tabs custom-nav" id="myTab" role="tablist">
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#description" type="button" role="tab"
+                                                    data-bs-target="#description" role="tab"
                                                     aria-controls="description" aria-selected="true">Description</button>
                                         </li>
-
-
-                                        <div class="buy-box">
-
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="yt-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#yt" type="button" role="tab" aria-controls="care"
-                                                        aria-selected="false">Videos</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="review-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#review" type="button" role="tab" aria-controls="review"
-                                                        aria-selected="false">Customer Reviews</button>
-                                            </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="info-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#info" type="button" role="tab" aria-controls="info"
+                                                    aria-selected="false">Additional info</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="yt-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#yt" type="button" role="tab" aria-controls="care"
+                                                    aria-selected="false">Videos</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="review-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#review" type="button" role="tab" aria-controls="review"
+                                                    aria-selected="false">Customer Reviews</button>
+                                        </li>
 
 
                                     </ul>
@@ -401,37 +379,46 @@
                                                 <table class="table info-table">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Specialty</td>
-                                                            <td>Vegetarian</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ingredient Type</td>
-                                                            <td>Vegetarian</td>
-                                                        </tr>
-                                                        <tr>
                                                             <td>Brand</td>
-                                                            <td>Lavian Exotique</td>
+                                                            <c:forEach var="cb" items="${carBrand}">
+                                                                <c:if test="${cb.id == carDT.brand_id}" >
+                                                                    <td>${cb.name}</td>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </tr>
                                                         <tr>
-                                                            <td>Form</td>
-                                                            <td>Bar Brownie</td>
+                                                            <td>Category</td>
+                                                            <c:forEach var="cc" items="${carCate}">
+                                                                <c:if test="${cc.id == carDT.category_id}" >
+                                                                    <td>${cc.name}</td>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </tr>
                                                         <tr>
-                                                            <td>Package Information</td>
-                                                            <td>Box</td>
+                                                            <td>Cylinders</td>
+                                                            <td>${carDT.horsepower}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Manufacturer</td>
-                                                            <td>Prayagh Nutri Product Pvt Ltd</td>
+                                                            <td>Horsepower</td>
+                                                            <td>${carDT.horsepower}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Item part number</td>
-                                                            <td>LE 014 - 20pcs Crème Bakes (Pack of 2)</td>
+                                                            <td>Weight</td>
+                                                            <td>${carDT.weight}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Net Quantity</td>
-                                                            <td>40.00 count</td>
+                                                            <td>Acceleration</td>
+                                                            <td>${carDT.acceleration}</td>
                                                         </tr>
+                                                        <tr>
+                                                            <td>Model Year</td>
+                                                            <td>${carDT.model_year}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Origin</td>
+                                                            <td>${carDT.origin}</td>
+                                                        </tr>
+
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -447,7 +434,7 @@
                                         <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                                             <div class="review-box">
                                                 <div class="row g-4">
-                                                    <div class="col-xl-6">
+                                                    <div class=${sessionScope.user != null ? "col-xl-6" : "col-xl-12"}>
                                                         <div class="review-title">
                                                             <h4 class="fw-500">Customer reviews</h4>
                                                         </div>
@@ -544,25 +531,31 @@
                                                             </ul>
                                                         </div>
                                                     </div>
+                                                    <c:if test="${sessionScope.user != null}">
+                                                        <div class="col-xl-6">
+                                                            <div class="review-title">
+                                                                <h4 class="fw-500">Add a review</h4>
+                                                            </div>
 
-                                                    <div class="col-xl-6">
-                                                        <div class="review-title">
-                                                            <h4 class="fw-500">Add a review</h4>
-                                                        </div>
+                                                            <div class="row g-4">
 
-                                                        <div class="row g-4">
-
-                                                            <div class="col-12">
-                                                                <div class="form-floating theme-form-floating">
-                                                                    <textarea class="form-control"
-                                                                              placeholder="Leave a comment here"
-                                                                              id="simplemde"
-                                                                              ></textarea>
+                                                                <div class="col-12">
+                                                                    <div class="form-floating theme-form-floating">
+                                                                        <form action="home?state=detail&action=adCmt" method="post" >
+                                                                            <input type="hidden" name="id" value="${carDT.car_id}">
+                                                                            <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
+                                                                            <textarea class="form-control"
+                                                                                      placeholder="Leave a comment here"
+                                                                                      id="simplemde" name="comment"
+                                                                                      ></textarea>
+                                                                            <button type="submit" class="button-83">Comment</button>
+                                                                        </form>
+                                                                    </div>
 
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </c:if>
 
                                                     <div class="col-12">
                                                         <div class="review-title">
@@ -571,171 +564,61 @@
 
                                                         <div class="review-people">
                                                             <ul class="review-list">
-                                                                <li>
-                                                                    <div class="people-box">
-                                                                        <div>
-                                                                            <div class="people-image">
-                                                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/review/1.jpg"
-                                                                                     class="img-fluid blur-up lazyload"
-                                                                                     alt="">
-                                                                            </div>
-                                                                        </div>
+                                                                <c:forEach items="${carComment}" var="ac" >
+                                                                    <c:forEach items="${allAccounts}" var="aa"> 
+                                                                        <c:if test="${aa.user_id == ac.user_id && carDT.car_id == ac.car_id}">
+                                                                            <c:set var="username" value="${fn:substringBefore(aa.email, '@')}" />
+                                                                            <li>
+                                                                                <div class="people-box">
+                                                                                    <div>
+                                                                                        <div class="people-image">
+                                                                                            <img src="${pageContext.request.contextPath}/front-end/assets/images/review/1.jpg"
+                                                                                                 class="img-fluid blur-up lazyload"
+                                                                                                 alt="">
+                                                                                        </div>
+                                                                                    </div>
 
-                                                                        <div class="people-comment">
-                                                                            <a class="name"
-                                                                               href="javascript:void(0)">Tracey</a>
-                                                                            <div class="date-time">
-                                                                                <h6 class="text-content">14 Jan, 2022 at
-                                                                                    12.58 AM</h6>
+                                                                                    <div class="people-comment">
+                                                                                        <a class="name"
+                                                                                           href="javascript:void(0)">${username}</a>
+                                                                                        <div class="date-time">
+                                                                                            <h6 class="text-content">${ac.created_at != null ? ac.created_at : ""}</h6>
 
-                                                                                <div class="product-rating">
-                                                                                    <ul class="rating">
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"></i>
-                                                                                        </li>
-                                                                                    </ul>
+                                                                                            <div class="product-rating">
+                                                                                                <ul class="rating">
+                                                                                                    <li>
+                                                                                                        <i data-feather="star"
+                                                                                                           class="fill"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i data-feather="star"
+                                                                                                           class="fill"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i data-feather="star"
+                                                                                                           class="fill"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i data-feather="star"></i>
+                                                                                                    </li>
+                                                                                                    <li>
+                                                                                                        <i data-feather="star"></i>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="reply">
+                                                                                            <p>${ac.comment_content}
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
+                                                                            </li>
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </c:forEach>
 
-                                                                            <div class="reply">
-                                                                                <p>Icing cookie carrot cake chocolate cake
-                                                                                    sugar plum jelly-o danish. Dragée dragée
-                                                                                    shortbread tootsie roll croissant muffin
-                                                                                    cake I love gummi bears. Candy canes ice
-                                                                                    cream caramels tiramisu marshmallow cake
-                                                                                    shortbread candy canes cookie.<a
-                                                                                        href="javascript:void(0)">Reply</a>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-
-                                                                <li>
-                                                                    <div class="people-box">
-                                                                        <div>
-                                                                            <div class="people-image">
-                                                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/review/2.jpg"
-                                                                                     class="img-fluid blur-up lazyload"
-                                                                                     alt="">
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="people-comment">
-                                                                            <a class="name"
-                                                                               href="javascript:void(0)">Olivia</a>
-                                                                            <div class="date-time">
-                                                                                <h6 class="text-content">01 May, 2022 at
-                                                                                    08.31 AM</h6>
-                                                                                <div class="product-rating">
-                                                                                    <ul class="rating">
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"></i>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="reply">
-                                                                                <p>Tootsie roll cake danish halvah powder
-                                                                                    Tootsie roll candy marshmallow cookie
-                                                                                    brownie apple pie pudding brownie
-                                                                                    chocolate bar. Jujubes gummi bears I
-                                                                                    love powder danish oat cake tart
-                                                                                    croissant.<a
-                                                                                        href="javascript:void(0)">Reply</a>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-
-                                                                <li>
-                                                                    <div class="people-box">
-                                                                        <div>
-                                                                            <div class="people-image">
-                                                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/review/3.jpg"
-                                                                                     class="img-fluid blur-up lazyload"
-                                                                                     alt="">
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="people-comment">
-                                                                            <a class="name"
-                                                                               href="javascript:void(0)">Gabrielle</a>
-                                                                            <div class="date-time">
-                                                                                <h6 class="text-content">21 May, 2022 at
-                                                                                    05.52 PM</h6>
-
-                                                                                <div class="product-rating">
-                                                                                    <ul class="rating">
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"
-                                                                                               class="fill"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"></i>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <i data-feather="star"></i>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="reply">
-                                                                                <p>Biscuit chupa chups gummies powder I love
-                                                                                    sweet pudding jelly beans. Lemon drops
-                                                                                    marzipan apple pie gingerbread macaroon
-                                                                                    croissant cotton candy pastry wafer.
-                                                                                    Carrot cake halvah I love tart caramels
-                                                                                    pudding icing chocolate gummi bears.
-                                                                                    Gummi bears danish cotton candy muffin
-                                                                                    marzipan caramels awesome feel. <a
-                                                                                        href="javascript:void(0)">Reply</a>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -747,6 +630,25 @@
                             </div>
                         </div>
                     </div>
+                    <c:forEach items="${allComment1Car}" var="ac" >
+
+                        <div class="comments" style="margin-left: 150px;margin-top: 20px">
+                            <c:forEach items="${allAccounts}" var="aa">    
+                                <c:if test="${aa.user_id == ac.user_id && carDT.car_id == ac.car_id}">
+                                    <div class="comment">
+                                        <span class="super"><i data-feather="user"></i> 
+                                            <span class="comment-content">${aa.email}</span>                                              
+                                        </span>   
+                                    </div>
+                                    <div class="comment">
+                                        <span class="comment-user">${ac.comment_content}</span>
+                                    </div>
+                                </c:if>
+
+                            </c:forEach>     
+                        </div>
+
+                    </c:forEach>
 
                     <div class="col-xxl-3 col-xl-4 col-lg-5 d-none d-lg-block wow fadeInUp">
                         <div class="right-sidebar-box">
@@ -820,7 +722,7 @@
                                     <h3>Trending Products</h3>
 
                                     <ul class="product-list product-right-sidebar border-0 p-0">
-                                        <c:forEach items="${carTrending}" var="ct">
+                                        <c:forEach items="${carList}" begin="0" end="4"  var="ct">
                                             <li>
                                                 <div class="offer-product">
                                                     <a href="product-left-thumbnail.html" class="offer-image">
@@ -866,7 +768,7 @@
                                                     class="theme-color fw-bold">Freshes</span> Products</h3>
                                             <h3 class="fw-light">every hour</h3>
                                             <button onclick="location.href = 'shop-left-sidebar.html';"
-                                                    class="button-86 btn-md fw-bold mend-auto">Shop Now <i
+                                                    class="button-86 btn-md fw-bold mend-auto">Shop Now  <i
                                                     class="fa-solid fa-arrow-right icon"></i></button>
                                         </div>
                                     </div>
@@ -878,35 +780,7 @@
             </div>
         </section>
         <!-- Product Left Sidebar End -->
-        <c:forEach items="${allComment1Car}" var="ac" >
 
-            <div class="comments" style="margin-left: 150px;margin-top: 20px">
-                <c:forEach items="${allAccounts}" var="aa">    
-                    <c:if test="${aa.user_id == ac.user_id && carDT.car_id == ac.car_id}">
-                        <div class="comment">
-                            <span class="super"><i data-feather="user"></i> 
-                                <span class="comment-content">${aa.email}</span>                                              
-                            </span>   
-                        </div>
-                        <div class="comment">
-                            <span class="comment-user">${ac.comment_content}</span>
-                        </div>
-                    </c:if>
-
-                </c:forEach>     
-            </div>
-
-        </c:forEach>
-        <form action="home?state=detail&action=adCmt" method="post" style="margin-left: 150px;margin-top: 20px">
-            <div class="form-group">
-                <label for="comment">Write you comment here:</label>
-                <textarea class="form-control" id="comment" name="comment" rows="3" style="width: 300px; height: 100px;"></textarea>
-
-            </div>
-            <input type="hidden" name="id" value="${carDT.car_id}">
-            <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
-            <button type="submit" class="btn btn-primary">Comment</button>
-        </form>
         <!-- Releted Product Section Start -->
         <section class="product-list-section section-b-space">
             <div class="container-fluid-lg">
@@ -921,7 +795,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="slider-6_1 product-wrapper">
-                            <c:forEach var="cl" items="${carList}">
+                            <c:forEach var="cl" items="${carList}" begin="1" end="20">
                                 <div>
                                     <div class="product-box-3 wow fadeInUp">
                                         <div class="product-header">
@@ -1002,7 +876,7 @@
                                                     <span>(5.0)</span>
                                                 </div>
                                                 <h6 class="unit">${cl.weight} Kg</h6>
-                                                <h5 class="price"><span class="theme-color">$ ${cl.price}</span> <del>$ ${cl.price + 1000}</del>
+                                                <h5 class="price"><span class="theme-color">$ ${cl.price}</span>
                                                 </h5>
                                                 <c:if test="${not empty sessionScope.user}">
                                                     <div class="add-to-cart-box">
@@ -1375,7 +1249,7 @@
                                                         "</li>" +
                                                         "<li class=\"d-flex align-items-center me-3\">" +
                                                         "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#geo-fill\"></use></svg>" +
-                                                        "<small>" + data.video.channelName + "</small>" +
+                                                        "<h5>" + data.video.channelName + "</h5>" +
                                                         "</li>" +
                                                         "<li class=\"d-flex align-items-center\">" +
                                                         "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>" +
@@ -1399,7 +1273,11 @@
             var simplemde = new SimpleMDE({
                 element: document.getElementById("simplemde")
             });
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
         </script>
+
     </body>
 
 </html>

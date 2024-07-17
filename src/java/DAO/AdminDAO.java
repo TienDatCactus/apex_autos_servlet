@@ -172,17 +172,7 @@ public class AdminDAO {
 
   public static void main(String[] args) {
     AdminDAO dao = new AdminDAO();
-    UserAccount ua =
-        new UserAccount(
-            1,
-            "datnthe180012@fpt.edu.vn", // email
-            "Dat", // given_name
-            "Lords", // family_name
-            "+1234567890", // phone
-            "1990-01-01" // dob
-            );
-    System.out.println(dao.viewRoles());
-    System.out.println(dao.updateRoles(1, 19));
+      System.out.println(dao.userDelete("1012"));
     ;
   }
 }

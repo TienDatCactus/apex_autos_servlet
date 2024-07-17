@@ -39,7 +39,7 @@
 
         <!-- Template css -->
         <link id="color-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
-        
+
     </head>
 
     <body>
@@ -63,7 +63,7 @@
             <div class="mobile-menu d-md-none d-block mobile-cart">
                 <ul>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="${pageContext.request.contextPath}/home">
                             <i class="iconly-Home icli"></i>
                             <span>Home</span>
                         </a>
@@ -83,12 +83,7 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="wishlist.html" class="notifi-wishlist">
-                            <i class="iconly-Heart icli"></i>
-                            <span>My Wish</span>
-                        </a>
-                    </li>
+                  
 
                     <li>
                         <a href="cart.html">
@@ -204,9 +199,9 @@
 <!--                                                <form id="form-cart-${ci.car_id}"
                                                       action="home?state=cart&action=add&id_car=${ci.car_id}"
                                                       method="post">-->
-                                                    <button type="submit" class="btn btn-animation btn-sm w-100"  onclick="addToCart(${cl.car_id})">Add To Cart</button>
+                                                <button type="submit" class="btn btn-animation btn-sm w-100"  onclick="addToCart(${cl.car_id})">Add To Cart</button>
 
-<!--                                                </form>-->
+                                                <!--                                                </form>-->
                                                 <!--                                                    <button type="button" onclick="location.href='cart?user=';" class="btn btn-animation btn-sm w-100">Add To Cart</button>-->
 
                                             </td>
@@ -217,7 +212,7 @@
                                         <th></th>
                                             <c:forEach var="ci" items="${compareItems}">
                                             <td>
-                                                <form id="delete-form-${ci.car_id}" action="compare" method="post">
+                                                <form id="delete-form-${ci.car_id}" action="home?state=compare&action=delete" method="post">
                                                     <input type="hidden" name="action" value="delete">
                                                     <input type="hidden" name="carId" value="${ci.car_id}">
                                                     <a class="delete-link" data-car-id="${ci.car_id}">
@@ -385,16 +380,16 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
         <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.delete-link').forEach(function(element) {
-            element.addEventListener('click', function(event) {
-                event.preventDefault();
-                var carId = event.currentTarget.getAttribute('data-car-id');
-                document.getElementById('delete-form-' + carId).submit();
-            });
-        });
-    });
-</script>
+                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                            document.querySelectorAll('.delete-link').forEach(function (element) {
+                                                                element.addEventListener('click', function (event) {
+                                                                    event.preventDefault();
+                                                                    var carId = event.currentTarget.getAttribute('data-car-id');
+                                                                    document.getElementById('delete-form-' + carId).submit();
+                                                                });
+                                                            });
+                                                        });
+        </script>
     </body>
 
 </html>

@@ -19,10 +19,7 @@
     </head>
 
     <body class="sb-nav-fixed">
-        
-               <jsp:include page="navbar.jsp"></jsp:include>
-
-        </div>
+        <jsp:include page="navbar.jsp"></jsp:include>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">

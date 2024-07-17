@@ -198,12 +198,6 @@
                     </a>
 
                     <div class="sb-sidenav-menu-heading">Others</div>
-                    <a class="nav-link" href="chart">
-                        <div class="sb-nav-link-icon">
-                            <i class="fas fa-chart-area"></i>
-                        </div>
-                        Thống kê
-                    </a>
                     <a class="nav-link" href="dashboard?state=setting">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-chart-area"></i>

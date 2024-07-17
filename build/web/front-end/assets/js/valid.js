@@ -212,7 +212,7 @@ validator.phone = (selector) => {
 
 function addToCart(carId) {
     $.ajax({
-        url: 'home',
+        url: 'http://localhost:9999/apex_autos_servlet/home',
         type: 'POST',
         data: {
             state: 'cart',
@@ -220,6 +220,7 @@ function addToCart(carId) {
             item: carId
         },
         success: function (response) {
+            console.log(response.message)
             if (response.success) {
                 showNoti("fa fa-check", "Success!", response.message, "info");
             } else {
@@ -227,7 +228,7 @@ function addToCart(carId) {
             }
         },
         error: function (xhr, status, error) {
-            console.error(xhr);
+            console.error("Error: ", status, error);
             showNoti("fa fa-times", "Error!", "Failed to add item to cart.", "danger");
         }
     });
@@ -235,7 +236,7 @@ function addToCart(carId) {
 
 function deleteCartItem(itemId) {
     $.ajax({
-        url: 'home',
+        url: 'http://localhost:9999/apex_autos_servlet/home',
         type: 'POST',
         data: {
             state: 'cart',
@@ -243,6 +244,7 @@ function deleteCartItem(itemId) {
             item: itemId
         },
         success: function (response) {
+            console.log(response)
             if (response.success) {
                 $('#form-del-' + itemId).closest('.cart-item').remove(); // Example: Remove the item's container
                 showNoti("fa fa-check", "Success!", response.message, "success");
@@ -250,8 +252,8 @@ function deleteCartItem(itemId) {
                 showNoti("fa fa-exclamation-triangle", "Failed!", response.message, "warning");
             }
         },
-        error: function (xhr, status, error) {
-            console.error(xhr);
+        error: function (error) {
+            console.log(error);
             showNoti("fa fa-times", "Error!", "Failed to delete item from cart.", "danger");
         }
     });
@@ -262,7 +264,7 @@ function showNoti(icon, title, msg, type) {
     var notificationTitle = title;
     var notificationMessage = msg;
     var notificationType = type;
-    var notificationDelay = 1500;
+    var notificationDelay = 1000;
     var notificationAnimationEnter = "animated fadeInDown";
     var notificationAnimationExit = "animated fadeOutUp";
     $.notify({
@@ -381,20 +383,38 @@ function autocomplete(inp, arr) {
 }
 
 
-const searchBox = document.getElementById('searchBox');
-const carCards = document.querySelectorAll('.car-card');
-const alert = document.querySelector('.noCar');
-searchBox.addEventListener('input', function () {
+const searchBox = document.getElementById("searchBox");
+const searchProp = document.getElementById("searchProp");
+const carCards = document.querySelectorAll(".car-card");
+const alert = document.querySelector(".noCar");
+const brandItems = document.querySelectorAll(".brandItems");
+const cateItems = document.querySelectorAll(".cateItems");
+searchBox.addEventListener("input", function () {
     const searchTerm = searchBox.value.toLowerCase();
-    carCards.forEach(card => {
-        const dataName = card.getAttribute('data-name').toLowerCase();
-        if (dataName.includes(searchTerm)) {
-            card.style.display = 'block';
-            alert.style.display = 'none';
-        } else {
-            card.style.display = 'none';
-            alert.style.display = 'block';
-        }
+    carCards.forEach((card) => {
+        const dataName = card.getAttribute("data-name").toLowerCase();
+
+        return dataName.includes(searchTerm)
+                ? ((card.style.display = "block"), (alert.style.display = "none"))
+                : ((card.style.display = "none"), (alert.style.display = "block"));
+    });
+});
+searchProp.addEventListener("input", function () {
+    const searchTerm = searchProp.value.toLowerCase();
+    let dataName = "";
+    brandItems.forEach((brand) => {
+        dataName = brand.getAttribute("data-name").toLowerCase();
+        console.log(dataName)
+        return dataName.includes(searchTerm)
+                ? (brand.style.display = "block")
+                : (brand.style.display = "none");
+    });
+    cateItems.forEach((cate) => {
+        dataName = cate.getAttribute("data-name").toLowerCase();
+        console.log(dataName)
+        return dataName.includes(searchTerm)
+                ? (cate.style.display = "block")
+                : (cate.style.display = "none");
     });
 });
 $(document).ready(function () {
@@ -427,9 +447,12 @@ $(document).ready(function () {
                 const item = $(this);
                 const itemCategory = item.data('cate');
                 const itemBrand = item.data('brand');
-                const itemOrigin = item.data('origin').toLowerCase();
+                const itemOrigin = item.data('origin');
                 const itemPrice = parseFloat(item.data('price'));
                 const itemYear = parseInt(item.data('year'));
+                console.log(itemOrigin)
+                console.log(itemCategory)
+                console.log(itemBrand)
                 let isMatch = true;
                 if (selectedCategories.length && !selectedCategories.includes(itemCategory)) {
                     isMatch = false;
@@ -476,4 +499,3 @@ $(document).ready(function () {
     $('#yearStartInput, #yearEndInput').on('change', applyFilters);
     $('#resetFilters').on('click', resetFilters);
 });
-

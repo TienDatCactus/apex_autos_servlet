@@ -27,7 +27,7 @@
                                 <i class="fa-solid fa-bars"></i>
                             </span>
                         </button>
-                        <a href="home" class="web-logo nav-logo">
+                        <a href="${pageContext.request.contextPath}/home" class="web-logo nav-logo">
                             <img src="${pageContext.request.contextPath}/front-end/assets/images/logo/1.png"
                                  class="img-fluid blur-up lazyload" alt="">
                         </a>
@@ -47,7 +47,7 @@
                                             <ul class="navbar-nav">
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle"
-                                                       href="home">Trang chủ</a>
+                                                       href="${pageContext.request.contextPath}/home">Trang chủ</a>
                                                 </li>
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle"
@@ -58,7 +58,7 @@
                                                         <c:forEach var="cb" items="${carBrand}">
                                                             <li>
                                                                 <a class="dropdown-item"
-                                                                   href="!">${cb.name}</a>
+                                                                  >${cb.name}</a>
                                                             </li>
                                                         </c:forEach>
                                                     </ul>
@@ -84,7 +84,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="compare">So sánh</a>
+                                                               href="home?state=compare">So sánh</a>
                                                         </li>
 
                                                         <li>
@@ -116,7 +116,7 @@
                                                         <ul class="dropdown-menu">
                                                             <li class="">
                                                                 <a class="dropdown-item"
-                                                                   href="javascript:void(0)">Đăng kí chương trình
+                                                                   href="home?state=affiliate">Đăng kí chương trình
                                                                     <span class="new-text"><i
                                                                             class="fa-solid fa-bolt-lightning"></i></span></a>
 
@@ -282,7 +282,7 @@
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
                                                     <i></i>
-                                                    <a href="${pageContext.request.contextPath}/${user.permission_id == 3 ? "user" : (user.permission_id == 2 ? "seller" : (user.permission_id == 1 ? "admin" : ""))  }/dashboard">Quản lí tài khoản</a>
+                                                    <a href="${pageContext.request.contextPath}/${user.permission_id == 3 ? "user" : (user.permission_id == 2 ? "seller" : (user.permission_id == 1 ? "admin" : ""))  }/dashboard">${user.permission_id == 3 ? "Hồ sơ" : "Điều khiển"}</a>
                                                 </li>
                                                 <c:if test="${sessionScope.user != null && user.permission_id == 3}">
                                                     <li class="product-box-contain">
