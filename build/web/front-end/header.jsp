@@ -84,7 +84,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li>
                                                             <a class="dropdown-item"
-                                                               href="!">So sánh</a>
+                                                               href="home?state=compare">So sánh</a>
                                                         </li>
 
                                                         <li>
@@ -230,7 +230,7 @@
 
                                                 <div class="button-group">
                                                     <a href="home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">Xem giỏ hàng</a>
-                                                    <a href="checkout"
+                                                    <a href="home?state=checkout"
                                                        class="btn btn-sm cart-button theme-bg-color text-white">Thanh toán cọc</a>
                                                 </div>
                                             </div>

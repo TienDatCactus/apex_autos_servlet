@@ -1,15 +1,25 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
-    <%@page contentType="text/html" pageEncoding="UTF-8" %>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Fastkart">
-        <meta name="keywords" content="Fastkart">
-        <meta name="author" content="Fastkart">
-        <link rel="icon" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/1.png" type="image/x-icon">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="ApexAutos" />
+        <meta name="keywords" content="ApexAutos" />
+        <meta name="author" content="ApexAutos" />
+        <link rel="apple-touch-icon" sizes="180x180"
+              href="${pageContext.request.contextPath}/front-end/assets/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32"
+              href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16"
+              href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png">
+        <link rel="manifest"
+              href="${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest">
         <title>So sánh</title>
 
         <!-- Google font -->
@@ -64,72 +74,72 @@
                 <ul>
                     <li class="active">
                         <a href="${pageContext.request.contextPath}/home">
-                            <i class="iconly-Home icli"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
+                        <i class="iconly-Home icli"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
 
-                    <li class="mobile-category">
-                        <a href="javascript:void(0)">
-                            <i class="iconly-Category icli js-link"></i>
-                            <span>Category</span>
-                        </a>
-                    </li>
+                <li class="mobile-category">
+                    <a href="javascript:void(0)">
+                        <i class="iconly-Category icli js-link"></i>
+                        <span>Category</span>
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="search.html" class="search-box">
-                            <i class="iconly-Search icli"></i>
-                            <span>Search</span>
-                        </a>
-                    </li>
+                <li>
+                    <a href="search.html" class="search-box">
+                        <i class="iconly-Search icli"></i>
+                        <span>Search</span>
+                    </a>
+                </li>
 
-                  
 
-                    <li>
-                        <a href="cart.html">
-                            <i class="iconly-Bag-2 icli fly-cate"></i>
-                            <span>Cart</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- mobile fix menu end -->
 
-            <!-- Breadcrumb Section Start -->
-            <section class="breadscrumb-section pt-0">
-                <div class="container-fluid-lg">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="breadscrumb-contain">
-                                <h2 class="mb-2">So sánh</h2>
-                                <nav>
-                                    <ol class="breadcrumb mb-0">
-                                        <li class="breadcrumb-item">
-                                            <a href="index.html">
-                                                <i class="fa-solid fa-house"></i>
-                                            </a>
-                                        </li>
-                                        <li class="breadcrumb-item">Xem thêm</li>
-                                        <li class="breadcrumb-item active">So sánh</li>
-                                    </ol>
-                                </nav>
-                            </div>
+                <li>
+                    <a href="cart.html">
+                        <i class="iconly-Bag-2 icli fly-cate"></i>
+                        <span>Cart</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- mobile fix menu end -->
+
+        <!-- Breadcrumb Section Start -->
+        <section class="breadscrumb-section pt-0">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadscrumb-contain">
+                            <h2 class="mb-2">So sánh</h2>
+                            <nav>
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html">
+                                            <i class="fa-solid fa-house"></i>
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item">Xem thêm</li>
+                                    <li class="breadcrumb-item active">So sánh</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- Breadcrumb Section End -->
+            </div>
+        </section>
+        <!-- Breadcrumb Section End -->
 
-            <!-- Compare Section Start -->
-            <section class="compare-section section-b-space">
-                <div class="container-fluid-lg">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="table-responsive">
-                                <table class="table compare-table">
-                                    <tbody>
-                                        <tr>
-                                            <th>Tên xe</th>
+        <!-- Compare Section Start -->
+        <section class="compare-section section-b-space">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table compare-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Tên xe</th>
                                             <c:forEach var="ci" items="${compareItems}">
                                             <td>
                                                 <a class="text-title">${ci.name}</a>
@@ -142,9 +152,19 @@
                                         <th>Ảnh</th>
                                             <c:forEach var="ci" items="${compareItems}">
                                             <td>
-                                                <a href="product-left-thumbnail.html" class="compare-image">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/inner-page/compare/1.png"
-                                                         class="img-fluid blur-up lazyload" alt="">
+                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}" class="compare-image w-100">
+                                                    <c:set var="firstImagePrinted" value="false" />
+                                                    <c:forEach items="${carImage}" var="ci">
+                                                        <c:if test="${ci.car_id == cl.car_id}">
+                                                            <c:forEach items="${ci.image_url}" var="obj">
+                                                                <c:if test="${not firstImagePrinted}">
+                                                                    <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                    <c:set var="firstImagePrinted" value="true" />
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:if> 
+                                                    </c:forEach>
+
                                                 </a>
                                             </td>
                                         </c:forEach>
@@ -155,7 +175,7 @@
                                     <tr>
                                         <th >Xi lanh</th>
                                             <c:forEach var="ci" items="${compareItems}">
-                                            <td style="background-color: orange">${ci.cylinders}</td>
+                                            <td style="color: rgb(223, 157, 25);font-size:20px ">${ci.cylinders}</td>
                                         </c:forEach>
                                     </tr>
                                     </tr>
@@ -164,7 +184,7 @@
                                     <tr>
                                         <th >Mã lực</th>
                                             <c:forEach var="ci" items="${compareItems}">
-                                            <td style="background-color: orange">${ci.horsepower}</td>
+                                            <td style="color: rgb(223, 157, 25) ;font-size:20px">${ci.horsepower}</td>
                                         </c:forEach>
                                     </tr>
 
@@ -172,20 +192,22 @@
                                     <tr>
                                         <th>Nguồn gốc</th>
                                             <c:forEach var="ci" items="${compareItems}">
-                                            <td style="background-color: orange">${ci.origin}</td>
+                                            <td style="color: rgb(223, 157, 25) ;font-size:20px">${ci.origin}</td>
                                         </c:forEach>
 
                                     </tr>
                                     <tr>
                                         <th>Mô tả</th>
                                             <c:forEach var="ci" items="${compareItems}">
-                                            <td>${ci.description}</td></c:forEach>
+                                                <c:set var="shortDesc" value="${fn:substring(ci.description, 0, 200)}" />
+                                                <c:set var="shortDesc" value="${shortDesc} ..."/>
+                                            <td >${shortDesc}</td></c:forEach>
 
                                         </tr>
                                         <tr >
                                             <th >Giá</th>
                                             <c:forEach var="ci" items="${compareItems}">
-                                            <td  style="background-color: orange">${ci.price} USD</td></c:forEach>
+                                            <td  style="color: rgb(223, 157, 25) ;font-size:20px">${ci.price} USD</td></c:forEach>
 
                                         </tr>
 
@@ -194,12 +216,12 @@
                                         <tr>
                                             <th></th>
                                             <c:forEach var="ci" items="${compareItems}">
-                                            <td>
+                                            <td class="p-2">
 
 <!--                                                <form id="form-cart-${ci.car_id}"
                                                       action="home?state=cart&action=add&id_car=${ci.car_id}"
                                                       method="post">-->
-                                                <button type="submit" class="btn btn-animation btn-sm w-100"  onclick="addToCart(${cl.car_id})">Add To Cart</button>
+                                                <button type="submit" class="button-39 btn-sm w-100"  onclick="addToCart(${ci.car_id})">Thêm vào giỏ hàng</button>
 
                                                 <!--                                                </form>-->
                                                 <!--                                                    <button type="button" onclick="location.href='cart?user=';" class="btn btn-animation btn-sm w-100">Add To Cart</button>-->
@@ -212,11 +234,11 @@
                                         <th></th>
                                             <c:forEach var="ci" items="${compareItems}">
                                             <td>
-                                                <form id="delete-form-${ci.car_id}" action="compare" method="post">
+                                                <form id="delete-form-${ci.car_id}" action="home?state=compare&action=delete" method="post">
                                                     <input type="hidden" name="action" value="delete">
                                                     <input type="hidden" name="carId" value="${ci.car_id}">
-                                                    <a class="delete-link" data-car-id="${ci.car_id}">
-                                                        <i class="fa-solid fa-trash-can me-2"></i> Remove
+                                                    <a class="delete-link button-38" data-car-id="${ci.car_id}" style="cursor: pointer">
+                                                        <i class="fa-solid fa-trash-can me-2"></i> Xóa
                                                     </a>
                                                 </form>
                                             </td>
@@ -380,15 +402,15 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
         <script>
-                                                        document.addEventListener('DOMContentLoaded', function () {
-                                                            document.querySelectorAll('.delete-link').forEach(function (element) {
-                                                                element.addEventListener('click', function (event) {
-                                                                    event.preventDefault();
-                                                                    var carId = event.currentTarget.getAttribute('data-car-id');
-                                                                    document.getElementById('delete-form-' + carId).submit();
-                                                                });
+                                                    document.addEventListener('DOMContentLoaded', function () {
+                                                        document.querySelectorAll('.delete-link').forEach(function (element) {
+                                                            element.addEventListener('click', function (event) {
+                                                                event.preventDefault();
+                                                                var carId = event.currentTarget.getAttribute('data-car-id');
+                                                                document.getElementById('delete-form-' + carId).submit();
                                                             });
                                                         });
+                                                    });
         </script>
     </body>
 

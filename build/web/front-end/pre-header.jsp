@@ -335,7 +335,7 @@
 
                                                 <div class="button-group">
                                                     <a href="${pageContext.request.contextPath}/home?state=cart&user=${user.user_id}" class="btn btn-sm cart-button">Xem giỏ hàng</a>
-                                                    <a href="${pageContext.request.contextPath}/checkout"
+                                                    <a href="${pageContext.request.contextPath}/home?state=checkout"
                                                        class="btn btn-sm cart-button theme-bg-color text-white">Thanh toán cọc</a>
                                                 </div>
                                             </div>
@@ -498,7 +498,7 @@
                                                 data-bs-popper="none">
                                                 <li>
                                                     <a class="dropdown-item"
-                                                       href="!">So sánh</a>
+                                                       href="home?state=compare">So sánh</a>
                                                 </li>
 
                                                 <li>

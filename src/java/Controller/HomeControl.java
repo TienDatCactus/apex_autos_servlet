@@ -124,7 +124,7 @@ public class HomeControl extends HttpServlet {
                     .forward(request, response);
         } else if ("compare".equals(state)) {
             try {
-
+                List<CarImage> carImage = dao.viewImageForCar();
                 CarDao cdao = new CarDao();
                 Compare c = cdao.findCompareByUserId(ua.getUser_id());
                 List<Integer> idList = new ArrayList<>();
@@ -138,7 +138,7 @@ public class HomeControl extends HttpServlet {
                 CarDao carDAO = new CarDao();
                 List<Car> lst = carDAO.compareCars(idList);
                 request.setAttribute("compareItems", lst);
-
+                request.setAttribute("carImage", carImage);
                 request.setAttribute("message", request.getAttribute("message"));
                 request.setAttribute("error", request.getAttribute("error"));
                 // Chuyển tiếp đến trang so sánh
@@ -303,8 +303,6 @@ public class HomeControl extends HttpServlet {
                     if (commentCheck != "") {
                         CommentCar cc = new CommentCar(0, commentCheck, carIdCheck, userIdCheck);
                         daou.addNewCommentFor1Car(cc);
-                    } else {
-
                     }
 
                     break;
@@ -320,7 +318,7 @@ public class HomeControl extends HttpServlet {
             request.setAttribute("allComment", allComment);
             request.setAttribute("allAccounts", allAccounts);
             request.setAttribute("allComment1Car", allComment1Car);
-            request.getRequestDispatcher("/front-end/blog-list.jsp").forward(request, response);
+            doGet(request, response);
         } else if ("detail".equals(state)) {
             switch (action) {
                 case "adCmt":
@@ -351,6 +349,8 @@ public class HomeControl extends HttpServlet {
             request.setAttribute("allComment", allComment);
             request.setAttribute("allAccounts", allAccounts);
             request.setAttribute("allComment1Car", allComment1Car);
+            doGet(request, response);
+
         } else if ("compare".equals(state)) {
             String carId = request.getParameter("carId");
             try {
@@ -359,15 +359,18 @@ public class HomeControl extends HttpServlet {
                     Compare c = dao.findCompareByUserId(ua.getUser_id());
                     dao.deleteCompareItems(c.getCompare_id(), Integer.parseInt(carId));
                     request.setAttribute("message", "Xóa sản phẩm thành công");
+                    response.sendRedirect("home?state=compare");
+
                 }
                 if (action != null && action.equals("add")) {
                     //add
                     dao.AddtoCompare(ua.getUser_id(), Integer.parseInt(carId));
+                    response.sendRedirect("home");
+
                 }
             } catch (Exception e) {
                 request.setAttribute("error", e.getMessage());
             }
         }
-        doGet(request, response);
     }
 }

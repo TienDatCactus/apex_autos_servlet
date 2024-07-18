@@ -250,13 +250,14 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <form id="frmCreateOrder" action="vnpayajax" method="post">
+                        <form id="frmCreateOrder" action="${pageContext.request.contextPath}/vnpayajax" method="post">
                             <input type="hidden" id="totalAmount" name="amount" value="">
                             <div class="right-side-summery-box">
                                 <div class="summery-box-2">
                                     <div class="summery-header">
                                         <h3>Nội dung hóa đơn</h3>
                                     </div>
+
                                     <ul class="summery-contain">
                                         <c:forEach var="ci" items="${cartItems}">
                                             <c:set var="total" value="${0}"/>
@@ -277,21 +278,25 @@
                                                 <h4 id="pricee" class="price">${ci.car.price}</h4>
                                             </li>
                                         </c:forEach>
+
                                     </ul>
+
                                     <ul class="summery-total">
-                                        <li class="pb-">
+                                        <li>
                                             <h4>Tổng giá trị ước tính</h4>
-                                            <h4 id="Subtotal" class="price">$${total}</h4>
+                                            <h4 id="Subtotal" class="price"></h4>
                                         </li>
 
 
                                         <li class="list-total">
                                             <h4>Đặt cọc <p>(10% tổng giá trị hóa đơn)</p></h4>
-                                            <h4 id="Pricee" class="price">$${(total * 10) / 100}</h4>
+
+                                            <h4 id="priceTotal" class="price"></h4>
                                         </li>
                                     </ul>
                                 </div>
-                                <button class="button-86 w-100 mt-2 fw-bold text-center" type="submit">Tiến hành Cọc</button>
+
+                                <button class="button-86 text-white btn-md w-100 mt-4 fw-bold">Tiến hành Cọc</button>
                             </div>
                         </form>
                     </div>
@@ -306,263 +311,23 @@
 
         <!-- Footer Section Start -->
         <jsp:include page="footer.jsp"></jsp:include>
-            <!-- Footer Section End -->
 
-            <!--         Location Modal Start 
-                    <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
-                                    <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="location-list">
-                                        <div class="search-input">
-                                            <input type="search" class="form-control" placeholder="Search Your Area">
-                                            <i class="fa-solid fa-magnifying-glass"></i>
-                                        </div>
-            
-                                        <div class="disabled-box">
-                                            <h6>Select a Location</h6>
-                                        </div>
-            
-                                        <ul class="location-select custom-height">
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Alabama</h6>
-                                                    <span>Min: $130</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Arizona</h6>
-                                                    <span>Min: $150</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>California</h6>
-                                                    <span>Min: $110</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Colorado</h6>
-                                                    <span>Min: $140</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Florida</h6>
-                                                    <span>Min: $160</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Georgia</h6>
-                                                    <span>Min: $120</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Kansas</h6>
-                                                    <span>Min: $170</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Minnesota</h6>
-                                                    <span>Min: $120</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>New York</h6>
-                                                    <span>Min: $110</span>
-                                                </a>
-                                            </li>
-            
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <h6>Washington</h6>
-                                                    <span>Min: $130</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-            <!-- Location Modal End -->
-
-            <!--         Add address modal box start 
-                    <div class="modal fade theme-modal" id="add-address" tabindex="-1" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel1">Add a new address</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-floating mb-4 theme-form-floating">
-                                            <input type="text" class="form-control" id="fname" placeholder="Enter First Name">
-                                            <label for="fname">First Name</label>
-                                        </div>
-                                    </form>
-            
-                                    <form>
-                                        <div class="form-floating mb-4 theme-form-floating">
-                                            <input type="text" class="form-control" id="lname" placeholder="Enter Last Name">
-                                            <label for="lname">Last Name</label>
-                                        </div>
-                                    </form>
-            
-                                    <form>
-                                        <div class="form-floating mb-4 theme-form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
-                                            <label for="email">Email Address</label>
-                                        </div>
-                                    </form>
-            
-                                    <form>
-                                        <div class="form-floating mb-4 theme-form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="address"
-                                                      style="height: 100px"></textarea>
-                                            <label for="address">Enter Address</label>
-                                        </div>
-                                    </form>
-            
-                                    <form>
-                                        <div class="form-floating mb-4 theme-form-floating">
-                                            <input type="email" class="form-control" id="pin" placeholder="Enter Pin Code">
-                                            <label for="pin">Pin Code</label>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn theme-bg-color btn-md text-white" data-bs-dismiss="modal">Save
-                                        changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     Add address modal box end 
-            
-                     Deal Box Modal Start 
-                    <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <div>
-                                        <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
-                                        <p class="mt-1 text-content">Recommended deals for you.</p>
-                                    </div>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="deal-offer-box">
-                                        <ul class="deal-offer-list">
-                                            <li class="list-1">
-                                                <div class="deal-offer-contain">
-                                                    <a href="shop-left-sidebar.html" class="deal-image">
-                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/10.png" class="blur-up lazyload"
-                                                             alt="">
-                                                    </a>
-            
-                                                    <a href="shop-left-sidebar.html" class="deal-contain">
-                                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                                    </a>
-                                                </div>
-                                            </li>
-            
-                                            <li class="list-2">
-                                                <div class="deal-offer-contain">
-                                                    <a href="shop-left-sidebar.html" class="deal-image">
-                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/11.png" class="blur-up lazyload"
-                                                             alt="">
-                                                    </a>
-            
-                                                    <a href="shop-left-sidebar.html" class="deal-contain">
-                                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                                    </a>
-                                                </div>
-                                            </li>
-            
-                                            <li class="list-3">
-                                                <div class="deal-offer-contain">
-                                                    <a href="shop-left-sidebar.html" class="deal-image">
-                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/12.png" class="blur-up lazyload"
-                                                             alt="">
-                                                    </a>
-            
-                                                    <a href="shop-left-sidebar.html" class="deal-contain">
-                                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                                    </a>
-                                                </div>
-                                            </li>
-            
-                                            <li class="list-1">
-                                                <div class="deal-offer-contain">
-                                                    <a href="shop-left-sidebar.html" class="deal-image">
-                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/product/13.png" class="blur-up lazyload"
-                                                             alt="">
-                                                    </a>
-            
-                                                    <a href="shop-left-sidebar.html" class="deal-contain">
-                                                        <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
-                                                        <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     Deal Box Modal End -->
-
-        <!-- Tap to top start -->
-        <div class="theme-option">
-            <div class="back-to-top">
-                <a id="back-to-top" href="#">
-                    <i class="fas fa-chevron-up"></i>
-                </a>
+            <!-- Tap to top start -->
+            <div class="theme-option">
+                <div class="back-to-top">
+                    <a id="back-to-top" href="#">
+                        <i class="fas fa-chevron-up"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-        <!-- Tap to top end -->
+            <!-- Tap to top end -->
 
-        <!-- Bg overlay Start -->
-        <div class="bg-overlay"></div>
-        <!-- Bg overlay End -->
+            <!-- Bg overlay Start -->
+            <div class="bg-overlay"></div>
+            <!-- Bg overlay End -->
 
-        <!-- latest jquery-->
-        <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
+            <!-- latest jquery-->
+            <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
 
         <!-- jquery ui-->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-ui.min.js"></script>
@@ -594,6 +359,7 @@
 
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
+
         <script>
             window.onload = updateSubTotal();
             function updateSubTotal() {
@@ -603,9 +369,10 @@
                     let totalPrice = parseFloat(e.textContent.trim());
                     totalCart += totalPrice;
                 });
+                const depo = totalCart / 10;
+                document.querySelector('#priceTotal').innerHTML = depo;
                 document.querySelector('#Subtotal').innerHTML = totalCart;
-                document.querySelector('#priceTotal').innerHTML = totalCart;
-                document.querySelector('#totalAmount').value = totalCart;
+                document.querySelector('#totalAmount').value =depo ;
             }
 
 
@@ -633,26 +400,6 @@
                     }
                 });
             });
-        </script>
-        <script>
-            window.onload = function () {
-                updateSubTotal();
-            };
-
-            function updateSubTotal() {
-                let totalPriceOfEachProduct = document.querySelectorAll('h4#pricee');
-                let totalCart = 0;
-                totalPriceOfEachProduct.forEach(e => {
-                    let totalPrice = parseFloat(e.textContent.trim());
-                    totalCart += totalPrice;
-                });
-                let deposit = totalCart * 0.10;
-
-                document.querySelector('#Subtotal').innerHTML = totalCart;
-                document.querySelector('#priceTotal').innerHTML = totalCart;
-                document.querySelector('#Pricee').innerHTML = deposit;
-                document.querySelector('#totalAmount').value = deposit;
-            }
         </script>
     </body>
 

@@ -212,7 +212,7 @@ validator.phone = (selector) => {
 
 function addToCart(carId) {
     $.ajax({
-        url: 'http://localhost:9999/apex_autos_servlet/home',
+        url: 'home?state=cart&action=add',
         type: 'POST',
         data: {
             state: 'cart',
@@ -220,7 +220,6 @@ function addToCart(carId) {
             item: carId
         },
         success: function (response) {
-            console.log(response.message)
             if (response.success) {
                 showNoti("fa fa-check", "Success!", response.message, "info");
             } else {
@@ -236,7 +235,7 @@ function addToCart(carId) {
 
 function deleteCartItem(itemId) {
     $.ajax({
-        url: 'http://localhost:9999/apex_autos_servlet/home',
+        url: 'home?state=cart&action=delete',
         type: 'POST',
         data: {
             state: 'cart',
