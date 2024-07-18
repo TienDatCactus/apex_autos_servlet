@@ -56,7 +56,7 @@ public class AdminFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         //kpiem tra xem da dang nhap  ( account da ton tai tren session )
-        UserAccount account = (UserAccount) session.getAttribute("admin");
+        UserAccount account = (UserAccount) session.getAttribute("user");
         if (account == null) {
             //chua tung dang nhap
             resp.sendRedirect(req.getContextPath() + "/login");
@@ -66,7 +66,6 @@ public class AdminFilter implements Filter {
             //kiem tra xem quyen cua account
             if (account.getPermission_id()!= 1) {
                 resp.sendRedirect(req.getContextPath() + "/home");
-                
             }
         }
         doBeforeProcessing(request, response);

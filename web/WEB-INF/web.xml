@@ -37,7 +37,7 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-<!--    <filter>
+    <filter>
         <filter-name>UserFilter</filter-name>
         <filter-class>Filter.UserFilter</filter-class>
     </filter>
@@ -68,5 +68,5 @@
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/admin/*</url-pattern>
-    </filter-mapping>-->
+    </filter-mapping>
 </web-app>

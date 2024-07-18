@@ -109,7 +109,7 @@ public class SellerFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         //kpiem tra xem da dang nhap  ( account da ton tai tren session )
-        UserAccount account = (UserAccount) session.getAttribute("seller");
+        UserAccount account = (UserAccount) session.getAttribute("user");
         if (account == null) {
             //chua tung dang nhap
             resp.sendRedirect(req.getContextPath() + "/login");

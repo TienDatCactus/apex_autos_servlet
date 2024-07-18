@@ -55,7 +55,7 @@ public class UserFilter implements Filter {
         HttpSession session = req.getSession();
         //kpiem tra xem da dang nhap  ( account da ton tai tren session )
         UserAccount account = (UserAccount) session.getAttribute("user"
-                + "");
+                );
         if (account == null) {
             //chua tung dang nhap
             resp.sendRedirect(req.getContextPath() + "/login");
