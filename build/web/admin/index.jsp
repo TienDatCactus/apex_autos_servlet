@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +55,7 @@
             <jsp:include page="navbar.jsp"></jsp:include>
 
                 <div id="layoutSidenav_content">
-                    <main>
+                    <main >
                         <div class="container-lg col-xxl-8 px-4 py-3">
                             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                                 <div class="col-10 col-sm-8 col-lg-6">
@@ -69,10 +70,10 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-                                        Dashboard For apexAutos Seller
+                                        Bảng điều khiển cho Admin
                                     </h1>
                                     <p class="lead">
-                                        Nulla aliquam sit amet dolor accumsan tristique. Suspendisse maximus purus rhoncus lorem congue auctor. Vestibulum egestas pharetra elit eget fermentum. Pellentesque laoreet aliquam quam dapibus mattis. Cras id blandit mi. Pellentesque id laoreet neque. Donec molestie semper ligula quis pharetra. Maecenas id sodales erat, in molestie mauris. Aenean vitae neque aliquam, placerat justo a, posuere erat.     
+                                    <h4><b>Chào mừng bạn đến với trang điều khiển quản trị viên!</b></h4>   Cảm ơn bạn đã đảm nhận vai trò quản trị. Từ đây, bạn có thể quản lý toàn bộ hệ thống, theo dõi hoạt động của người dùng, và duy trì sự hoạt động trơn tru của nền tảng. Nếu bạn cần hỗ trợ hoặc có câu hỏi, đừng ngần ngại liên hệ với đội ngũ hỗ trợ của chúng tôi.
                                     </p>
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                                         <button
@@ -80,14 +81,14 @@
                                             class="btn btn-primary btn-lg px-4 me-md-2"
                                             onclick="location.href = '${pageContext.request.contextPath}/home'"
                                         >
-                                        Back to Home
+                                        Quay về Trang chủ
                                     </button>
                                     <button
                                         type="button"
                                         class="btn btn-outline-secondary btn-lg px-4"
                                         onclick="location.href = '${pageContext.request.contextPath}/logout'"
                                         >
-                                        Logout
+                                        Đăng xuất
                                     </button>
                                 </div>
                             </div>

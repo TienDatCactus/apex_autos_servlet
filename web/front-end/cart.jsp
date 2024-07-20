@@ -140,11 +140,11 @@
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                <div class="cart-table">
-                                    <div class="table-responsive-xl">
+                                <div class="cart-table" >
+                                    <div class="table-responsive-xl custom-height custom-width" style="height: 500px">
 
-                                        <table class="table">
-                                            <tbody class="custom-height">
+                                        <table >
+                                            <tbody >
 
                                                 <c:forEach var="ci" items="${cartItems}">
                                                     <c:set var="total" value="${0}"/>
@@ -254,7 +254,7 @@
                                                         <td class="save-remove">
                                                             <h4 class="table-title text-content">Hành động</h4>
                                                             <form action="home?state=cart&action=delete&item=${ci.car.car_id}&index=cart" id="form-del-${ci.item_id}" method="post">
-                                                                <input type="submit" value="Xóa khỏi giỏ" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
+                                                                <input type="submit" value="Xóa khỏi Cart" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
                                                             </form>
                                                         </td>
                                                     </tr>

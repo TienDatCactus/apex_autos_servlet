@@ -5,6 +5,7 @@
      padding-right: 10px;
 }
 
+
 .custom-height {
      max-height: 190px;
      overflow-y: auto;
@@ -26,7 +27,27 @@
           background-color: rgba($color: #555, $alpha: .5);
      }
 }
+.custom-width {
+     max-width: 190px;
+     overflow-x: auto;
+     width: : 100%;
 
+     &::-webkit-scrollbar-track {
+          border-radius: 10px;
+          background-color: rgba($color: #555, $alpha: .14);
+     }
+
+     &::-webkit-scrollbar {
+          width: 4px;
+          background-color: #f5f5f5;
+          border-radius: 50px;
+     }
+
+     &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: rgba($color: #555, $alpha: .5);
+     }
+}
 .shop-banner-contain {
      position: relative;
      border-radius: 8px;

@@ -73,6 +73,26 @@ public class HomeControl extends HttpServlet {
 
             request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
                     .forward(request, response);
+        } else if ("tradeDetail".equals(state)) {
+            int idTr = Integer.parseInt(request.getParameter("idTr"));
+            TradeMark listTradeMark = dao.getTradeMarkByIDTrade(idTr);
+            TradeMark tr = dao.getTradeMarkByIDTrade(idTr);
+            int id_find = tr.getSeller_id();
+            List<Car> carList = dao.getCarForOneTradeMark(id_find);
+            List<CarImage> carImage = dao.viewImageForCar();
+            request.setAttribute("carImage", carImage);
+            request.setAttribute("carList", carList);
+            request.setAttribute("tradeMark", listTradeMark);
+            request
+                    .getRequestDispatcher("/front-end/seller-detail.jsp")
+                    .forward(request, response);
+        } else if ("allTrade".equals(state)) {
+            List<TradeMark> allTradeMarkss = dao.viewAllTradeMark();
+
+            request.setAttribute("allTradeMarkss", allTradeMarkss);
+            request
+                    .getRequestDispatcher("/front-end/seller-grid-2.jsp")
+                    .forward(request, response);
         } else if ("cart".equals(state)) {
             List<CarImage> carImage = dao.viewImageForCar();
             List<CartItems> carts = dao.cartItems(ua.getUser_id());
@@ -123,31 +143,26 @@ public class HomeControl extends HttpServlet {
                     .getRequestDispatcher("/front-end/seller-become.jsp")
                     .forward(request, response);
         } else if ("compare".equals(state)) {
-            try {
-                List<CarImage> carImage = dao.viewImageForCar();
-                CarDao cdao = new CarDao();
-                Compare c = cdao.findCompareByUserId(ua.getUser_id());
-                List<Integer> idList = new ArrayList<>();
-                if (c != null) {
-                    idList = c.getItems().stream()
-                            .map(CompareItem::getCarId)
-                            .toList();
-                }
 
-                // Lấy thông tin xe để so sánh
-                CarDao carDAO = new CarDao();
-                List<Car> lst = carDAO.compareCars(idList);
-                request.setAttribute("compareItems", lst);
-                request.setAttribute("carImage", carImage);
-                request.setAttribute("message", request.getAttribute("message"));
-                request.setAttribute("error", request.getAttribute("error"));
-                // Chuyển tiếp đến trang so sánh
-                request.getRequestDispatcher("/front-end/compare.jsp").forward(request, response);
+            Compare c = dao.findCompareByUserId(ua.getUser_id());
 
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-                throw new ServletException(e);
+            List<CarImage> carImage = dao.viewImageForCar();
+            List<Integer> idList = new ArrayList<>();
+            if (c != null) {
+                idList = c.getItems().stream()
+                        .map(CompareItem::getCarId)
+                        .toList();
             }
+
+            // Lấy thông tin xe để so sánh
+            CarDao carDAO = new CarDao();
+            List<Car> lst = carDAO.compareCars(idList);
+            request.setAttribute("compareItems", lst);
+            request.setAttribute("carImage", carImage);
+            request.setAttribute("message", request.getAttribute("message"));
+            request.setAttribute("error", request.getAttribute("error"));
+            // Chuyển tiếp đến trang so sánh
+            request.getRequestDispatcher("/front-end/compare.jsp").forward(request, response);
 
         } else {
             CarDao dao = new CarDao();
@@ -353,24 +368,39 @@ public class HomeControl extends HttpServlet {
 
         } else if ("compare".equals(state)) {
             String carId = request.getParameter("carId");
+            Compare c = dao.findCompareByUserId(ua.getUser_id());
+
             try {
-                if (action != null && action.equals("delete")) {
-                    //delete
-                    Compare c = dao.findCompareByUserId(ua.getUser_id());
-                    dao.deleteCompareItems(c.getCompare_id(), Integer.parseInt(carId));
-                    request.setAttribute("message", "Xóa sản phẩm thành công");
-                    response.sendRedirect("home?state=compare");
-
-                }
-                if (action != null && action.equals("add")) {
-                    //add
-                    dao.AddtoCompare(ua.getUser_id(), Integer.parseInt(carId));
-                    response.sendRedirect("home");
-
+                if ("add".equals(action)) {
+                    int carIdInt = Integer.parseInt(carId);
+                    // Assume dao.checkCompareItemExists is a method to check if the item exists in the compare list
+                    if (dao.checkCompareItems(c.getCompare_id(), carIdInt)) {
+                        jsonResponse.put("error", false);
+                        jsonResponse.put("message", "Xe đã có trong mẫu so sánh !");
+                    } else {
+                        dao.AddtoCompare(ua.getUser_id(), carIdInt);
+                        jsonResponse.put("success", true);
+                        jsonResponse.put("message", "Đã thêm xe vào mẫu so sánh !");
+                    }
+                } else if ("delete".equals(action)) {
+                    int carIdInt = Integer.parseInt(carId);
+                    if (dao.deleteCompareItems(c.getCompare_id(), carIdInt)) {
+                        jsonResponse.put("success", true);
+                        jsonResponse.put("message", "Xe đã được xóa khỏi mẫu so sánh !");
+                    } else {
+                        jsonResponse.put("error", false);
+                        jsonResponse.put("message", "Mã xe không hợp lệ");
+                    }
                 }
             } catch (Exception e) {
-                request.setAttribute("error", e.getMessage());
+                jsonResponse.put("error", false);
+                jsonResponse.put("message", "Có lỗi xảy ra . Mã lỗi : " + e.getMessage());
             }
+
+            // Write JSON response to output
+            out.print(jsonResponse.toString());
+            out.flush();
         }
+
     }
 }

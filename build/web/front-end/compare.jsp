@@ -234,13 +234,11 @@
                                         <th></th>
                                             <c:forEach var="ci" items="${compareItems}">
                                             <td>
-                                                <form id="delete-form-${ci.car_id}" action="home?state=compare&action=delete" method="post">
-                                                    <input type="hidden" name="action" value="delete">
-                                                    <input type="hidden" name="carId" value="${ci.car_id}">
-                                                    <a class="delete-link button-38" data-car-id="${ci.car_id}" style="cursor: pointer">
-                                                        <i class="fa-solid fa-trash-can me-2"></i> Xóa
-                                                    </a>
-                                                </form>
+                                                <input type="hidden" value="${ci.car_id}" name="carId"/>
+                                                <a class="delete-link button-38" data-car-id="${ci.car_id}"  style="cursor: pointer" onclick="deleteFromCompare(${ci.car_id})">
+                                                    <i class="fa-solid fa-trash-can me-2"></i> Xóa
+                                                </a>
+
                                             </td>
                                         </c:forEach>
                                     </tr>
@@ -401,17 +399,7 @@
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
-        <script>
-                                                    document.addEventListener('DOMContentLoaded', function () {
-                                                        document.querySelectorAll('.delete-link').forEach(function (element) {
-                                                            element.addEventListener('click', function (event) {
-                                                                event.preventDefault();
-                                                                var carId = event.currentTarget.getAttribute('data-car-id');
-                                                                document.getElementById('delete-form-' + carId).submit();
-                                                            });
-                                                        });
-                                                    });
-        </script>
+
     </body>
 
 </html>

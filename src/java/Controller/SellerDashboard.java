@@ -132,7 +132,9 @@ public class SellerDashboard extends HttpServlet {
                 request.getRequestDispatcher("/seller/carspecs.jsp").forward(request, response);
             } else if ("setting".equals(state)) {
                 List<Car> carL = daoc.viewProductForSeller(seller.getUser_id());
+                TradeMark tradeMark = daoc.getTradeMark(seller.getUser_id());
                 request.setAttribute("carList", carL);
+                request.setAttribute("tradeMark", tradeMark);
                 request.getRequestDispatcher("/seller/settings.jsp").forward(request, response);
             } else if ("image".equals(state)) {
                 Object type = request.getParameter("type");
@@ -407,7 +409,7 @@ public class SellerDashboard extends HttpServlet {
                 if ("update".equals(action)) {
                     int id = Integer.parseInt(request.getParameter("idEditInput"));
                     String name = request.getParameter("nameEditInput");
-
+                    String desc = request.getParameter("describeEditInput");
                     String privacy = request.getParameter("privacyEditInput");
                     String terms = request.getParameter("termEditInput");
 
@@ -418,7 +420,7 @@ public class SellerDashboard extends HttpServlet {
                         dir.mkdirs();
                     }
 
-                    List<String> imagePaths = new ArrayList<>(); // List of image paths
+                    List<String> imagePaths = new ArrayList<>();
 
                     if (!dir.exists()) {
                         dir.mkdirs();
@@ -433,13 +435,13 @@ public class SellerDashboard extends HttpServlet {
                                     request.getContextPath() + "/images/" + fileName); // Add image path to list
                         }
                     }
-//                    TradeMark mark = new TradeMark(id, name, imagePaths, privacy, terms, );
-//                    daoc.updateTradeMark(mark);
+                    TradeMark mark = new TradeMark(id, name, imagePaths, desc, privacy, terms);
+                    daoc.updateTradeMark(mark);
 
                 } else if ("add".equals(action)) {
 
                     String name = request.getParameter("nameEditInput");
-
+                    String desc = request.getParameter("describeEditInput");
                     String privacy = request.getParameter("privacyEditInput");
                     String terms = request.getParameter("termEditInput");
 
@@ -461,8 +463,8 @@ public class SellerDashboard extends HttpServlet {
                                     request.getContextPath() + "/images/" + fileName); // Add image path to list
                         }
                     }
-//                    TradeMark mark = new TradeMark(0, name, imagePaths, privacy, terms, ua);
-//                    daoc.addNewTradeMark(mark);
+                    TradeMark mark = new TradeMark(0, name, imagePaths, desc, privacy, terms);
+                    daoc.addNewTradeMark(mark);
                 }
             } else if ("image".equals(state)) {
                 if ("add".equals(action)) {
@@ -516,9 +518,9 @@ public class SellerDashboard extends HttpServlet {
                 }
             }
 
-//            List<TradeMark> tradeMark = daoc.getTradeMark(sellerId);
+            TradeMark tradeMark = daoc.getTradeMark(sellerId);
             List<CarImage> imageCar = daoc.getAllImgBySellerID(sellerId);
-//            request.setAttribute("tradeMark", tradeMark);
+            request.setAttribute("tradeMark", tradeMark);
             request.setAttribute("imageCar", imageCar);
             doGet(request, response);
         } else {

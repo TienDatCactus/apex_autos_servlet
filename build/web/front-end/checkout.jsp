@@ -364,7 +364,7 @@
             window.onload = updateSubTotal();
             function updateSubTotal() {
                 let totalPriceOfEachProduct = document.querySelectorAll('h4#pricee');
-                let totalCart = 0;
+                let totalCart = 100000;
                 totalPriceOfEachProduct.forEach(e => {
                     let totalPrice = parseFloat(e.textContent.trim());
                     totalCart += totalPrice;

@@ -209,10 +209,58 @@ validator.phone = (selector) => {
 //   admin.style.display = "block";
 //   admin.querySelector("input").setAttribute("name", "admin");
 // });
+function addToCompare(carId) {
+    $.ajax({
+        url: 'home', // Update with your servlet path
+        type: 'POST',
+        data: {
+            state: 'compare',
+            action: 'add',
+            carId: carId
+        },
+        success: function (response) {
+            if (response.success) {
+                showNoti("fa fa-check", "Success!", response.message, "info");
+            } else {
+                showNoti("fa fa-exclamation-triangle", "Failed!", response.message, "warning");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error: ", status, error);
+            showNoti("fa fa-times", "Error!", "Không thể thêm vào danh sách so sánh.", "danger");
+        }
 
+    });
+}
+
+function deleteFromCompare(carId) {
+    $.ajax({
+        url: 'home', // Update with your servlet path
+        type: 'POST',
+        data: {
+            state: 'compare',
+            action: 'delete',
+            carId: carId
+        },
+        success: function (response) {
+            if (response.success) {
+                showNoti("fa fa-check", "Success!", response.message, "info");
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1000);
+            } else {
+                showNoti("fa fa-exclamation-triangle", "Failed!", response.message, "warning");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Error: ", status, error);
+            showNoti("fa fa-times", "Error!", "Không thể xóa khỏi danh sách so sánh.", "danger");
+        }
+    });
+}
 function addToCart(carId) {
     $.ajax({
-        url: 'home?state=cart&action=add',
+        url: 'home',
         type: 'POST',
         data: {
             state: 'cart',
@@ -228,14 +276,14 @@ function addToCart(carId) {
         },
         error: function (xhr, status, error) {
             console.error("Error: ", status, error);
-            showNoti("fa fa-times", "Error!", "Failed to add item to cart.", "danger");
+            showNoti("fa fa-times", "Error!", "Không thể thêm vào giỏ hàng.", "danger");
         }
     });
 }
 
 function deleteCartItem(itemId) {
     $.ajax({
-        url: 'home?state=cart&action=delete',
+        url: 'home',
         type: 'POST',
         data: {
             state: 'cart',
@@ -245,7 +293,6 @@ function deleteCartItem(itemId) {
         success: function (response) {
             console.log(response)
             if (response.success) {
-                $('#form-del-' + itemId).closest('.cart-item').remove(); // Example: Remove the item's container
                 showNoti("fa fa-check", "Success!", response.message, "success");
             } else {
                 showNoti("fa fa-exclamation-triangle", "Failed!", response.message, "warning");
@@ -253,7 +300,7 @@ function deleteCartItem(itemId) {
         },
         error: function (error) {
             console.log(error);
-            showNoti("fa fa-times", "Error!", "Failed to delete item from cart.", "danger");
+            showNoti("fa fa-times", "Error!", "Không thể xóa khỏi giỏ hàng", "danger");
         }
     });
 }

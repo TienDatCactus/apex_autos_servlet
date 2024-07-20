@@ -4,6 +4,7 @@
  */
 package Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,15 +20,16 @@ public class Compare {
     public Compare() {
     }
 
+    public Compare(int compareId) {
+        this.compare_id = compareId;
+        this.items = new ArrayList<>();
+    }
+
     public Compare(int compare_id, int user_id) {
         this.compare_id = compare_id;
         this.user_id = user_id;
     }
 
-    public Compare(int compare_id, List<CompareItem> items) {
-        this.compare_id = compare_id;
-        this.items = items;
-    }
 
     public int getUser_id() {
         return user_id;
@@ -51,6 +53,11 @@ public class Compare {
 
     public void setItems(List<CompareItem> items) {
         this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "Compare{" + "compare_id=" + compare_id + ", user_id=" + user_id + ", items=" + items + '}';
     }
 
 }

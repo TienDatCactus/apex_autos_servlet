@@ -43,7 +43,6 @@ public class LoginControl extends HttpServlet {
         String password = request.getParameter("password");
 
         UserAccount userAccount = new UserAccount(email, password);
-        CarDao daoc = new CarDao();
         UserDAO daou = new UserDAO();
         HttpSession session = request.getSession();
         // delete un used session attributes

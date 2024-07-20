@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
  */
 public class CarDao {
 
-    PreparedStatement ps = null;
-    ResultSet rs = null;
     DBConnect db = new DBConnect();
     Connection con = db.connection;
 
@@ -653,48 +651,131 @@ public class CarDao {
         // Cập nhật lại các URL ảnh
     }
 
-//    public List<TradeMark> getTradeMark(int user_id) {
-//        List<TradeMark> listTrade = new ArrayList<>();
-//        String query = "SELECT * FROM [dbo].[trade_mark] WHERE seller_id = ?";
-//
-//        try (PreparedStatement ps = con.prepareStatement(query)) {
-//            ps.setInt(1, user_id);
-//            try (ResultSet rs = ps.executeQuery()) {
-//                while (rs.next()) {
-//                    String logo_url = rs.getString("logo_url");
-//
-//                    List<String> imageUrls = new ArrayList<>();
-//                    imageUrls.add(logo_url);
-//                    TradeMark trade
-//                            = new TradeMark(
-//                                    rs.getInt("trademark_id"),
-//                                    rs.getString("name"),
-//                                    imageUrls,
-//                                    rs.getString("des")
-//                                    rs.getString("privacy"),
-//                                    
-//                                    );
-//                    listTrade.add(trade);
-//                }
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return listTrade;
-//    }
+    public List<TradeMark> viewAllTradeMark() {
+        List<TradeMark> tradeMarks = new ArrayList<>();
+        String query = "SELECT * FROM [dbo].[trade_mark]";
+
+        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                TradeMark trademark = new TradeMark();
+                List<String> logo = new ArrayList<>();
+                logo.add(rs.getString("logo_url"));
+
+                trademark.setTrademard_id(rs.getInt("trademark_id"));
+                trademark.setSeller_id(rs.getInt("seller_id"));
+                trademark.setName(rs.getString("name"));
+                trademark.setUrl_logo(logo);
+                trademark.setDescribe(rs.getString("describe"));
+                trademark.setPrivacy(rs.getString("privacy"));
+                trademark.setTerms(rs.getString("terms"));
+
+                tradeMarks.add(trademark);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tradeMarks;
+    }
+
+    public List<Car> getCarForOneTradeMark(int idSell) {
+        List<Car> cars = new ArrayList<>();
+        String query
+                = "select * from car where seller_id = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, idSell);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Car car = new Car();
+                car.setCar_id(rs.getInt("car_id"));
+                car.setName(rs.getString("name"));
+                car.setCylinders(rs.getInt("cylinders"));
+                car.setHorsepower(rs.getFloat("horsepower"));
+                car.setWeight(rs.getFloat("weight"));
+                car.setAcceleration(rs.getFloat("acceleration"));
+                car.setModel_year(rs.getString("model_year"));
+                car.setOrigin(rs.getString("origin"));
+                car.setPrice(rs.getInt("price"));
+                car.setDescription(rs.getString("description"));
+                car.setBrand_id(rs.getInt("brand_id"));
+                car.setCategory_id(rs.getInt("category_id"));
+                car.setSeller_id(idSell);
+                cars.add(car);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cars;
+    }
+
+    public TradeMark getTradeMarkByIDTrade(int idTr) {
+        TradeMark trademark = null;
+        String query
+                = "SELECT * FROM [dbo].[trade_mark] WHERE [trademark_id] = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, idTr); // Thiết lập giá trị cho tham số car_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    trademark = new TradeMark();
+                    List<String> logo = new ArrayList<>();
+                    logo.add(rs.getString("logo_url"));
+                    trademark.setTrademard_id(idTr);
+                    trademark.setSeller_id(rs.getInt("seller_id"));
+                    trademark.setName(rs.getString("name"));
+                    trademark.setUrl_logo(logo);
+                    trademark.setDescribe(rs.getString("describe"));
+                    trademark.setPrivacy(rs.getString("privacy"));
+                    trademark.setTerms(rs.getString("terms"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trademark;
+    }
+
+    public TradeMark getTradeMark(int idSeller) {
+        TradeMark trademark = null;
+        String query
+                = "SELECT * FROM [dbo].[trade_mark] WHERE [seller_id] = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, idSeller); // Thiết lập giá trị cho tham số car_id
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    trademark = new TradeMark();
+                    List<String> logo = new ArrayList<>();
+                    logo.add(rs.getString("logo_url"));
+                    trademark.setTrademard_id(rs.getInt("trademark_id"));
+                    trademark.setSeller_id(idSeller);
+                    trademark.setName(rs.getString("name"));
+                    trademark.setUrl_logo(logo);
+                    trademark.setDescribe(rs.getString("describe"));
+                    trademark.setPrivacy(rs.getString("privacy"));
+                    trademark.setTerms(rs.getString("terms"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trademark;
+    }
+
     public boolean updateTradeMark(TradeMark mark) {
         String query
-                = "UPDATE [dbo].[trade_mark] SET [name] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE seller_id = ?";
+                = "UPDATE [dbo].[trade_mark] SET [name] = ?, [describe] = ?, [logo_url] = ?, [privacy] = ?, [terms] = ? WHERE trademark_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(query)) {
 
             String logoUrl = mark.getUrl_logo().isEmpty() ? "" : mark.getUrl_logo().get(0);
 
             ps.setString(1, mark.getName());
-            ps.setString(2, logoUrl);
-            ps.setString(3, mark.getPrivacy());
-            ps.setString(4, mark.getTerms());
-            ps.setInt(5, mark.getSeller_id());
+            ps.setString(2, mark.getDescribe());
+            ps.setString(3, logoUrl);
+            ps.setString(4, mark.getPrivacy());
+            ps.setString(5, mark.getTerms());
+            ps.setInt(6, mark.getTrademard_id());
 
             int rowsAffected = ps.executeUpdate();
             return rowsAffected > 0;
@@ -707,14 +788,15 @@ public class CarDao {
     public boolean addNewTradeMark(TradeMark mark) {
         try {
             String query
-                    = "INSERT INTO trade_mark (name,logo_url,privacy,terms,seller_id) VALUES ( ?,?,?,?,?)";
+                    = "INSERT INTO trade_mark (name,logo_url,describe,privacy,terms,seller_id) VALUES ( ?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, mark.getName());
             String logoUrls = String.join(",", mark.getUrl_logo());
             ps.setString(2, logoUrls);
-            ps.setString(3, mark.getPrivacy());
-            ps.setString(4, mark.getTerms());
-            ps.setInt(5, mark.getSeller_id());
+            ps.setString(3, mark.getDescribe());
+            ps.setString(4, mark.getPrivacy());
+            ps.setString(5, mark.getTerms());
+            ps.setInt(6, mark.getSeller_id());
             int rowAffected = ps.executeUpdate();
             return rowAffected > 0;
         } catch (SQLException e) {
@@ -722,8 +804,6 @@ public class CarDao {
             return false;
         }
     }
-
-   
 
     public List<String> getCarImages(int carId) {
         List<String> imageUrls = new ArrayList<>();
@@ -813,9 +893,7 @@ public class CarDao {
 
     public Compare findCompareByUserId(int userId) {
         Compare c = null;
-        String sql = "select * from compare right join compare_item\n"
-                + "on compare.compare_id = compare_item.compare_id\n"
-                + "where user_id = ?";
+        String sql = "select distinct * from compare c join compare_item ci on c.compare_id = ci.compare_id where user_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, userId);
@@ -823,7 +901,7 @@ public class CarDao {
             List<CompareItem> cis = new ArrayList<>();
             int i = 0;
             while (rs.next()) {
-                cis.add(new CompareItem(rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+                cis.add(new CompareItem(rs.getInt("item_id"), rs.getInt("compare_id"), rs.getInt("car_id")));
             }
 
             if (!cis.isEmpty()) {
@@ -837,90 +915,94 @@ public class CarDao {
         return c;
     }
 
-    public void deleteCompareItems(int compareId, int car_id) {
+    public boolean deleteCompareItems(int compareId, int car_id) {
         String query = "Delete from compare_item where compare_id = ? and car_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, compareId);
             ps.setInt(2, car_id);
-            ps.executeUpdate();
-
+            int rowAffected = ps.executeUpdate();
+            if (rowAffected > 0) {
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
+
     }
 
-    public void AddtoCompare(int user_id, int id_car) throws SQLException {
-        String selectCartQuery = "SELECT compare_id FROM compare WHERE user_id = ?";
-        String insertCartQuery = "INSERT INTO compare (user_id) VALUES (?)";
-        String insertCartItemQuery = "INSERT INTO compare_item (compare_id, car_id) VALUES (?, ?)";
-        String coutnCartItemQuery = "select count(*) from compare_item where compare_id = ?";
-        String countDupplicateQuery = "select count(*) from compare_item where compare_id = ? and car_id = ?";
-
-        try (
-                PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psInsertCart = con.prepareStatement(insertCartQuery, Statement.RETURN_GENERATED_KEYS); PreparedStatement psCoutnCartItem = con.prepareStatement(coutnCartItemQuery); PreparedStatement psInsertCartItem = con.prepareStatement(insertCartItemQuery); PreparedStatement psCountDupplicate = con.prepareStatement(countDupplicateQuery);) {
-
-            // Check if the user already has a cart
-            psSelectCart.setInt(1, user_id);
-            ResultSet rsCart = psSelectCart.executeQuery();
-
-            int compare_id;
-            if (rsCart.next()) {
-                // If the user already has a cart, get its ID
-                compare_id = rsCart.getInt("compare_id");
-            } else {
-                // If the user doesn't have a cart, create one and get its ID
-                psInsertCart.setInt(1, user_id);
-                int affectedRows = psInsertCart.executeUpdate();
-                if (affectedRows == 0) {
-                    throw new SQLException("Creating compare failed, no rows affected.");
-                }
-
-                try (ResultSet rsGeneratedKeys = psInsertCart.getGeneratedKeys()) {
-                    if (rsGeneratedKeys.next()) {
-                        compare_id = rsGeneratedKeys.getInt(1);
-                    } else {
-                        throw new SQLException("Creating compare failed, no ID obtained.");
-                    }
+    public boolean checkCompareItems(int compareId, int carId) {
+        String sql = " SELECT COUNT(*) FROM [dbo].[compare_item] WHERE compare_id =1 and car_id = 207 ;";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, compareId);
+            ps.setInt(2, carId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    return count > 0;
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-            //check duplicate
-            psCountDupplicate.setInt(1, compare_id);
-            psCountDupplicate.setInt(2, id_car);
-            ResultSet rsDupplicate = psCountDupplicate.executeQuery();
-            if (rsDupplicate.next()) {
-                if (rsDupplicate.getInt(1) > 0) {
-                    throw new SQLException("This item already added!");
-                }
+    public boolean AddtoCompare(int user_id, int car_id) {
+    String selectCompareQuery = "SELECT compare_id FROM compare WHERE user_id = ?";
+    String insertCompareQuery = "INSERT INTO compare (user_id) VALUES (?)";
+    String insertCompareItemQuery = "INSERT INTO compare_item (compare_id, car_id) VALUES (?, ?)";
+
+    try (PreparedStatement psSelectCompare = con.prepareStatement(selectCompareQuery);
+         PreparedStatement psInsertCompare = con.prepareStatement(insertCompareQuery, Statement.RETURN_GENERATED_KEYS);
+         PreparedStatement psInsertCompareItem = con.prepareStatement(insertCompareItemQuery)) {
+
+        // Check if the user already has a compare list
+        psSelectCompare.setInt(1, user_id);
+        ResultSet rsCompare = psSelectCompare.executeQuery();
+
+        int compare_id;
+        if (rsCompare.next()) {
+            // If the user already has a compare list, get its ID
+            compare_id = rsCompare.getInt("compare_id");
+        } else {
+            // If the user doesn't have a compare list, create one and get its ID
+            psInsertCompare.setInt(1, user_id);
+            int affectedRows = psInsertCompare.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating compare list failed, no rows affected.");
             }
 
-            //count compare item
-            psCoutnCartItem.setInt(1, compare_id);
-            ResultSet rsCount = psCoutnCartItem.executeQuery();
-            if (rsCount.next()) {
-                int count = rsCount.getInt(1);
-                if (count >= 4) {
-                    throw new SQLException("Cannot add because have >= 4 item");
+            try (ResultSet rsGeneratedKeys = psInsertCompare.getGeneratedKeys()) {
+                if (rsGeneratedKeys.next()) {
+                    compare_id = rsGeneratedKeys.getInt(1);
                 } else {
-
-                    //insert
-                    // Add the item to the cart
-                    psInsertCartItem.setInt(1, compare_id);
-                    psInsertCartItem.setInt(2, id_car);
-                    psInsertCartItem.executeUpdate();
+                    throw new SQLException("Creating compare list failed, no ID obtained.");
                 }
-            } else {
-                //insert
-                // Add the item to the cart
-                psInsertCartItem.setInt(1, compare_id);
-                psInsertCartItem.setInt(2, id_car);
-                psInsertCartItem.executeUpdate();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw e;
         }
+
+        // Check if the compare list already contains 4 items
+        String countCompareItemsQuery = "SELECT COUNT(*) AS itemCount FROM compare_item WHERE compare_id = ?";
+        try (PreparedStatement psCountCompareItems = con.prepareStatement(countCompareItemsQuery)) {
+            psCountCompareItems.setInt(1, compare_id);
+            ResultSet rsItemCount = psCountCompareItems.executeQuery();
+            if (rsItemCount.next() && rsItemCount.getInt("itemCount") >= 4) {
+                throw new SQLException("Compare list has reached its maximum size of 4 items.");
+            }
+        }
+
+        // Add the car to the compare list
+        psInsertCompareItem.setInt(1, compare_id);
+        psInsertCompareItem.setInt(2, car_id);
+        psInsertCompareItem.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return false;
+}
+
 
     public List<Car> compareCars(List<Integer> carIds) {
         List<Car> carsToCompare = new ArrayList<>();
@@ -957,8 +1039,11 @@ public class CarDao {
         }
         return carsToCompare;
     }
-    
+
     public static void main(String[] args) {
-        
+        CarDao dao = new CarDao();
+        Compare dat = dao.findCompareByUserId(1020);
+        System.out.println(dat.getCompare_id());
+        System.out.println(dao.AddtoCompare(1020,204));
     }
 }

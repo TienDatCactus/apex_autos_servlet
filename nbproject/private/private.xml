@@ -111,12 +111,16 @@
         </group>
         <group>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/login.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/NewClass.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/tables.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/product-bottom-thumbnail.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/settings.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/user.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/settings.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Constant/Constants.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/seller/index.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/index.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/GoogleLogin.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/LoginControl.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/seller.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/Controller/HomeControl.java</file>
         </group>
     </open-files>

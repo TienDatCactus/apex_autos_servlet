@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -34,7 +33,7 @@
             />
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-        <title>Log In</title>
+        <title>Đăng nhập</title>
 
         <!-- Google font -->
         <link rel="preconnect" href="https://fonts.gstatic.com" />

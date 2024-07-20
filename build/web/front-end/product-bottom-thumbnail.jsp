@@ -15,7 +15,8 @@
         <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/favicon-16x16.png">
         <link rel="manifest" href="${pageContext.request.contextPath}/front-end/assets/images/favicon/site.webmanifest">
-        <title>Product Right Thumbnail</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <title>Chi tiết sản phẩm #${carDT.car_id}</title>
 
         <!-- Google font -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -248,13 +249,18 @@
                                     <div class="note-box product-packege">
 
                                         <button onClick='addToCart(${carDT.car_id})'
-                                                class = "button-86 text-white w-75 ">Add To Cart</button>
+                                                class = "button-86 text-white w-75 ">Thêm vào giỏ hàng</button>
                                     </div>
                                     <div class="buy-box">
 
                                         <a href="compare.html">
-                                            <i data-feather="shuffle"></i>
-                                            <span>Add To Compare</span>
+                                            <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="submitCompareForm(${cl.car_id})">
+                                                <form id="compare-form-${cl.car_id}" method="post">
+                                                    <input type="hidden" value="${cl.car_id}" name="carId"/>
+                                                    <i data-feather="shuffle"></i>
+
+                                                    <span>Thêm vào so sánh</span>
+                                                </form></a>
                                         </a>
                                     </div>
 
@@ -262,40 +268,30 @@
 
                                     <div class="paymnet-option">
                                         <div class="product-title">
-                                            <h4>Guaranteed Safe Checkout</h4>
+                                            <h4>Ngân hàng hỗ trợ</h4>
                                         </div>
-                                        <ul>
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/1.svg"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/2.svg"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/3.svg"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/4.svg"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/5.svg"
-                                                         class="blur-up lazyload" alt="">
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <div style="display: flex; align-items: center; list-style-type: none; padding: 0; margin: 0;">
+                                            <div >
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/acb.svg"
+                                                     class="blur-up lazyload"style="width: 50%" alt="">
+                                            </div>
+                                            <div >
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/sea.svg"
+                                                     class="blur-up lazyload" style="width: 50%"alt="">
+                                            </div>
+                                            <div>
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/tp.svg"
+                                                     class="blur-up lazyload"style="width: 50%" alt="">
+                                            </div>
+                                            <div>
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/vnpay.svg"
+                                                     class="blur-up lazyload" style="width: 50%" alt="">
+                                            </div>
+                                            <div>
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/images/product/payment/vp.svg"
+                                                     class="blur-up lazyload" style="width: 50%" alt="">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -304,24 +300,24 @@
                                 <div class="product-section-box">
                                     <ul class="nav nav-tabs custom-nav" id="myTab" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#description" role="tab"
-                                                    aria-controls="description" aria-selected="true">Description</button>
+                                            <a class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                               data-bs-target="#description" role="tab"
+                                               aria-controls="description" aria-selected="true">Mô tả </a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="info-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#info" type="button" role="tab" aria-controls="info"
-                                                    aria-selected="false">Additional info</button>
+                                            <a class="nav-link" id="info-tab" data-bs-toggle="tab"
+                                               data-bs-target="#info" type="button" role="tab" aria-controls="info"
+                                               aria-selected="false">Thông số kĩ thuật</a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="yt-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#yt" type="button" role="tab" aria-controls="care"
-                                                    aria-selected="false">Videos</button>
+                                            <a class="nav-link" id="yt-tab" data-bs-toggle="tab"
+                                               data-bs-target="#yt" type="button" role="tab" aria-controls="care"
+                                               aria-selected="false">Video Tham khảo</a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <button class="nav-link" id="review-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#review" type="button" role="tab" aria-controls="review"
-                                                    aria-selected="false">Customer Reviews</button>
+                                            <a class="nav-link" id="review-tab" data-bs-toggle="tab"
+                                               data-bs-target="#review" type="button" role="tab" aria-controls="review"
+                                               aria-selected="false">Đánh giá</a>
                                         </li>
 
 
@@ -331,55 +327,39 @@
                                         <div class="tab-pane fade show active" id="description" role="tabpanel"
                                              aria-labelledby="description-tab">
                                             <div class="product-description">
+                                                <div class="banner-contain nav-desh">
+                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/shop/1.jpg"
+                                                         class="bg-img blur-up lazyload" alt="">
+                                                    <div class="banner-details p-center banner-b-space w-100 text-center">
+                                                        <div>
+                                                            <c:forEach var="cb" items="${carBrand}">
+                                                                <c:if test="${cb.id == carDT.brand_id}" >
+                                                                    <h6 class="ls-expanded theme-color mb-sm-3 mb-1"  >${cb.name}</h6>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                            <h2 class="text-light">${carDT.name}</h2>
+                                                            <p class="mx-auto mt-1 text-light " style="font-size: 20px">Ưu đãi lên tới 20%</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="nav-desh">
                                                     <p>${carDT.description}</p>
                                                 </div>
 
 
 
-                                                <div class="banner-contain nav-desh">
-                                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/banner/14.jpg"
-                                                         class="bg-img blur-up lazyload" alt="">
-                                                    <div class="banner-details p-center banner-b-space w-100 text-center">
-                                                        <div>
-                                                            <h6 class="ls-expanded theme-color mb-sm-3 mb-1">SUMMER</h6>
-                                                            <h2 class="text-light">${carDT.name}</h2>
-                                                            <p class="mx-auto mt-1 ">Save up to 20% OFF</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="nav-desh">
-                                                    <div class="desh-title">
-                                                        <h5>From The Manufacturer:</h5>
-                                                    </div>
-                                                    <p>Jelly beans shortbread chupa chups carrot cake jelly-o halvah apple
-                                                        pie pudding gingerbread. Apple pie halvah cake tiramisu shortbread
-                                                        cotton candy croissant chocolate cake. Tart cupcake caramels gummi
-                                                        bears macaroon gingerbread fruitcake marzipan wafer. Marzipan
-                                                        dessert cupcake ice cream tootsie roll. Brownie chocolate cake
-                                                        pudding cake powder candy ice cream ice cream cake. Jujubes soufflé
-                                                        chupa chups cake candy halvah donut. Tart tart icing lemon drops
-                                                        fruitcake apple pie.</p>
 
-                                                    <p>Dessert liquorice tart soufflé chocolate bar apple pie pastry danish
-                                                        soufflé. Gummi bears halvah gingerbread jelly icing. Chocolate cake
-                                                        chocolate bar pudding chupa chups bear claw pie dragée donut halvah.
-                                                        Gummi bears cookie ice cream jelly-o jujubes sweet croissant.
-                                                        Marzipan cotton candy gummi bears lemon drops lollipop lollipop
-                                                        chocolate. Ice cream cookie dragée cake sweet roll sweet roll.Lemon
-                                                        drops cookie muffin carrot cake chocolate marzipan gingerbread
-                                                        topping chocolate bar. Soufflé tiramisu pastry sweet dessert.</p>
-                                                </div>
+
                                             </div>
                                         </div>
 
                                         <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
                                             <div class="table-responsive">
-                                                <table class="table info-table">
+                                                <table class="table info-table" id="datatablesSimple">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Brand</td>
+                                                            <td>Nhãn hiệu</td>
                                                             <c:forEach var="cb" items="${carBrand}">
                                                                 <c:if test="${cb.id == carDT.brand_id}" >
                                                                     <td>${cb.name}</td>
@@ -387,7 +367,7 @@
                                                             </c:forEach>
                                                         </tr>
                                                         <tr>
-                                                            <td>Category</td>
+                                                            <td>Kiểu xe</td>
                                                             <c:forEach var="cc" items="${carCate}">
                                                                 <c:if test="${cc.id == carDT.category_id}" >
                                                                     <td>${cc.name}</td>
@@ -395,27 +375,27 @@
                                                             </c:forEach>
                                                         </tr>
                                                         <tr>
-                                                            <td>Cylinders</td>
+                                                            <td>Xy lanh</td>
                                                             <td>${carDT.horsepower}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Horsepower</td>
+                                                            <td>Mã lực</td>
                                                             <td>${carDT.horsepower}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Weight</td>
+                                                            <td>Cân nặng</td>
                                                             <td>${carDT.weight}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Acceleration</td>
+                                                            <td>Gia tốc</td>
                                                             <td>${carDT.acceleration}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Model Year</td>
+                                                            <td>Năm sản xuất</td>
                                                             <td>${carDT.model_year}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Origin</td>
+                                                            <td>Nguồn gốc</td>
                                                             <td>${carDT.origin}</td>
                                                         </tr>
 
@@ -436,7 +416,7 @@
                                                 <div class="row g-4">
                                                     <div class=${sessionScope.user != null ? "col-xl-6" : "col-xl-12"}>
                                                         <div class="review-title">
-                                                            <h4 class="fw-500">Customer reviews</h4>
+                                                            <h4 class="fw-500">Bình luận của Khách hàng</h4>
                                                         </div>
 
                                                         <div class="d-flex">
@@ -459,14 +439,14 @@
                                                                     </li>
                                                                 </ul>
                                                             </div>
-                                                            <h6 class="ms-3">4.2 Out Of 5</h6>
+                                                            <h6 class="ms-3">4.2 / 5</h6>
                                                         </div>
 
                                                         <div class="rating-box">
                                                             <ul>
                                                                 <li>
                                                                     <div class="rating-list">
-                                                                        <h5>5 Star</h5>
+                                                                        <h5>5 Sao</h5>
                                                                         <div class="progress">
                                                                             <div class="progress-bar" role="progressbar"
                                                                                  style="width: 68%" aria-valuenow="100"
@@ -534,7 +514,7 @@
                                                     <c:if test="${sessionScope.user != null}">
                                                         <div class="col-xl-6">
                                                             <div class="review-title">
-                                                                <h4 class="fw-500">Add a review</h4>
+                                                                <h4 class="fw-500">Thêm bình luận</h4>
                                                             </div>
 
                                                             <div class="row g-4">
@@ -664,7 +644,7 @@
 
                                     <div class="vendor-name">
                                         <h5>
-                                            <a href="#">
+                                            <a href="home?state=tradeDetail&idTr=${tradeMark.trademard_id}" >
                                                 ${tradeMark.name}
                                             </a>
 
@@ -694,22 +674,24 @@
                                     </div>
                                 </div>
 
-                                <p class="vendor-detail">Noodles & Company is an American fast-casual
-                                    restaurant that offers international and American noodle dishes and pasta.</p>
-
+                                <p class="vendor-detail" style="text-overflow: ellipsis;
+                                   overflow: hidden;
+                                   width: 160px;
+                                   height: 1.2em;
+                                   white-space: nowrap;">${tradeMark.describe}</p>
                                 <div class="vendor-list">
                                     <ul>
                                         <li>
                                             <div class="address-contact">
                                                 <i data-feather="map-pin"></i>
-                                                <h5>Privacy: <span class="text-content">${tradeMark.privacy}</span></h5>
+                                                <h5>Chính sách bảo mật: <span class="text-content">${tradeMark.privacy}</span></h5>
                                             </div>
                                         </li>
 
                                         <li>
                                             <div class="address-contact">
                                                 <i data-feather="headphones"></i>
-                                                <h5>Terms: <span class="text-content">${tradeMark.terms}</span></h5>
+                                                <h5>Điều khoản và dịch vụ: <span class="text-content">${tradeMark.terms}</span></h5>
                                             </div>
                                         </li>
                                     </ul>
@@ -719,7 +701,7 @@
                             <!-- Trending Product -->
                             <div class="pt-25">
                                 <div class="category-menu">
-                                    <h3>Trending Products</h3>
+                                    <h3>Xe thịnh hành</h3>
 
                                     <ul class="product-list product-right-sidebar border-0 p-0">
                                         <c:forEach items="${carList}" begin="0" end="4"  var="ct">
@@ -759,16 +741,16 @@
                             <!-- Banner Section -->
                             <div class="ratio_156 pt-25">
                                 <div class="home-contain">
-                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
+                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/inner-page/1.jpg" class="bg-img blur-up lazyload"
                                          alt="">
                                     <div class="home-detail p-top-left home-p-medium">
                                         <div>
                                             <h6 class="text-yellow home-banner">Seafood</h6>
                                             <h3 class="text-uppercase fw-normal"><span
-                                                    class="theme-color fw-bold">Freshes</span> Products</h3>
-                                            <h3 class="fw-light">every hour</h3>
-                                            <button onclick="location.href = 'shop-left-sidebar.html';"
-                                                    class="button-86 btn-md fw-bold mend-auto">Shop Now  <i
+                                                    class="theme-color fw-bold">Sản phẩm </span> mới</h3>
+                                            <h3 class="fw-light">tháng này</h3>
+                                            <button onclick="location.href = 'home';"
+                                                    class="button-86 btn-md fw-bold mend-auto">Xem ngay<i
                                                     class="fa-solid fa-arrow-right icon"></i></button>
                                         </div>
                                     </div>
@@ -785,7 +767,7 @@
         <section class="product-list-section section-b-space">
             <div class="container-fluid-lg">
                 <div class="title">
-                    <h2>Related Products</h2>
+                    <h2>Sản phẩm khác</h2>
                     <span class="title-leaf">
                         <svg class="icon-width">
                         <use xlink:href="${pageContext.request.contextPath}/front-end/assets/svg/leaf.svg#leaf"></use>
@@ -1121,44 +1103,6 @@
         </div>
         <!-- Tap to top end -->
 
-        <!-- Sticky Cart Box Start -->
-        <div class="sticky-bottom-cart">
-            <div class="container-fluid-lg">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="cart-content">
-                            <div class="product-image" style="
-                                 width: 12%;
-                                 ">
-                                <c:set var="firstImagePrinted" value="false" />
-                                <c:forEach items="${carImage}" var="ci">
-                                    <c:if test="${ci.car_id == carDT.car_id}">
-                                        <c:forEach items="${ci.image_url}" var="obj">
-                                            <c:if test="${not firstImagePrinted}">
-                                                <img src="${obj}"  alt="Car Image" class="img-fluid rounded"  style="object-fit: fill;width:100%; max-height: 100%;">
-                                                <c:set var="firstImagePrinted" value="true" />
-                                            </c:if>
-                                        </c:forEach>
-                                    </c:if> 
-                                </c:forEach>
-                                <div class="content">
-                                    <h5>${carDT.name}</h5>
-                                    <h6>${carDT.price}<del class="text-danger">$90.00</del></h6>
-                                </div>
-                            </div>
-
-                            <div class="add-btn">
-                                <a class="btn theme-bg-color text-white wishlist-btn" href="wishlist.html"><i
-                                        class="fa fa-bookmark"></i> Wishlist</a>
-                                <a class="button-86 text-white" onclick="addToCart(${carDT.car_id})"><i
-                                        class="fas fa-shopping-cart"></i> Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sticky Cart Box End -->
 
         <!-- Bg overlay Start -->
         <div class="bg-overlay"></div>
@@ -1204,8 +1148,6 @@
         <!-- Timer Js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/timer1.js"></script>
 
-        <!-- Sticky-bar js -->
-        <script src="${pageContext.request.contextPath}/front-end/assets/js/sticky-cart-bottom.js"></script>
 
         <!-- WOW js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/wow.min.js"></script>
@@ -1215,59 +1157,75 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
         <script>
-                                    async function fetchData(url, options) {
-                                        const response = await fetch(url, options);
-                                        const data = await response.json();
-                                        return data;
-                                    }
-
-                                    async function fetchYouTubeData() {
-                                        const ytResults = document.querySelector('.video-sg');
-                                        if (!ytResults) {
-                                            console.error('Target element .video-sg not found');
-                                            return;
-                                        }
-
-                                        const options = {
-                                            method: 'GET',
-                                            headers: {
-                                                'x-rapidapi-key': '23f6c4678fmsh60a151904aa61e4p1df63bjsn03ca2aad09db',
-                                                'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com'
+                                            async function fetchData(url, options) {
+                                                const response = await fetch(url, options);
+                                                const data = await response.json();
+                                                return data;
                                             }
-                                        };
-                                        try {
-                                            const ytData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${model_year}-${name}-${brand}-${cate}-review`, options);
-                                            ytData.contents.slice(0, 4).forEach((data) => {
-                                                console.log(data.video)
-                                                const cardHTML = "<div class=\"col\">" +
-                                                        "<div class=\"card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg\" style=\"cursor:pointer;background-repeat: no-repeat;background-clip: border-box ;background-size: cover;background-image: url('" + data.video.thumbnails[0].url + "');\"  onClick=\"location.href='https://www.youtube.com/watch?v=" + data.video.videoId + "';\">" +
-                                                        "<div class=\"d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1\">" +
-                                                        "<h3 class=\"pt-5 mt-5 mb-4 display-6 lh-1 fw-bold\">" + data.video.title + "</h3>" +
-                                                        "<ul class=\"d-flex list-unstyled mt-auto\">" +
-                                                        "<li class=\"me-auto\">" +
-                                                        "<img src=\'" + data.video.thumbnails[0].url + "' alt=\"Bootstrap\" width=\"32\" height=\"32\" class=\"rounded-circle border border-white\">" +
-                                                        "</li>" +
-                                                        "<li class=\"d-flex align-items-center me-3\">" +
-                                                        "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#geo-fill\"></use></svg>" +
-                                                        "<h5>" + data.video.channelName + "</h5>" +
-                                                        "</li>" +
-                                                        "<li class=\"d-flex align-items-center\">" +
-                                                        "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>" +
-                                                        "<small>" + data.video.publishedTimeText + "</small>" +
-                                                        "</li>" +
-                                                        "</ul>" +
-                                                        "</div>" +
-                                                        "</div>" +
-                                                        "</div>";
-                                                ;
-                                                ytResults.insertAdjacentHTML('beforeend', cardHTML);
-                                            });
-                                        } catch (error) {
-                                            console.error('Error fetching YouTube data:', error);
-                                        }
-                                    }
 
-                                    window.onload = fetchYouTubeData;
+                                            async function fetchYouTubeData() {
+                                                const ytResults = document.querySelector('.video-sg');
+                                                if (!ytResults) {
+                                                    console.error('Target element .video-sg not found');
+                                                    return;
+                                                }
+
+                                                const options = {
+                                                    method: 'GET',
+                                                    headers: {
+                                                        'x-rapidapi-key': '23f6c4678fmsh60a151904aa61e4p1df63bjsn03ca2aad09db',
+                                                        'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com'
+                                                    }
+                                                };
+                                                try {
+                                                    const ytData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${model_year}-${name}-${brand}-${cate}-review`, options);
+                                                    ytData.contents.slice(0, 4).forEach((data) => {
+                                                        console.log(data.video)
+                                                        const cardHTML = "<div class=\"col\">" +
+                                                                "<div class=\"card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg\" style=\"cursor:pointer;background-repeat: no-repeat;background-clip: border-box ;background-size: cover;background-image: url('" + data.video.thumbnails[0].url + "');\"  onClick=\"location.href='https://www.youtube.com/watch?v=" + data.video.videoId + "';\">" +
+                                                                "<div class=\"d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1\">" +
+                                                                "<h3 class=\"pt-5 mt-5 mb-4 display-6 lh-1 fw-bold\">" + data.video.title + "</h3>" +
+                                                                "<ul class=\"d-flex list-unstyled mt-auto\">" +
+                                                                "<li class=\"me-auto\">" +
+                                                                "<img src=\'" + data.video.thumbnails[0].url + "' alt=\"Bootstrap\" width=\"32\" height=\"32\" class=\"rounded-circle border border-white\">" +
+                                                                "</li>" +
+                                                                "<li class=\"d-flex align-items-center me-3\">" +
+                                                                "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#geo-fill\"></use></svg>" +
+                                                                "<h5>" + data.video.channelName + "</h5>" +
+                                                                "</li>" +
+                                                                "<li class=\"d-flex align-items-center\">" +
+                                                                "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>" +
+                                                                "<small>" + data.video.publishedTimeText + "</small>" +
+                                                                "</li>" +
+                                                                "</ul>" +
+                                                                "</div>" +
+                                                                "</div>" +
+                                                                "</div>";
+                                                        ;
+                                                        ytResults.insertAdjacentHTML('beforeend', cardHTML);
+                                                    });
+                                                } catch (error) {
+                                                    console.error('Error fetching YouTube data:', error);
+                                                }
+                                            }
+
+                                            window.onload = fetchYouTubeData;
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.compare-link').forEach(function (element) {
+                    element.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        var carId = event.currentTarget.getAttribute('data-car-id');
+                        document.getElementById('compare-form-' + carId).submit();
+                    });
+                });
+            });
+            function submitCompareForm(carId) {
+                var form = document.getElementById('compare-form-' + carId);
+                form.action = 'home?state=compare&action=add';
+                form.submit();
+            }
         </script>
         <script>
             var simplemde = new SimpleMDE({
