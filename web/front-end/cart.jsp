@@ -188,12 +188,12 @@
                                                                         <li>
                                                                             <h5 class="text-content d-inline-block">Giá tiền :
                                                                             </h5>
-                                                                            <span>$${ci.car.price}</span>
-                                                                            <span class="text-content">$${ci.car.price  + 10000}</span>
+                                                                            <span>${ci.car.price} vnđ</span>
+                                                                            <span class="text-content">${ci.car.price  + 1000} vnđ</span>
                                                                         </li>
 
                                                                         <li>
-                                                                            <h5 class="saving theme-color">Tiết kiệm : $10000
+                                                                            <h5 class="saving theme-color">Tiết kiệm : 1000 vnđ
                                                                             </h5>
                                                                         </li>
 
@@ -230,8 +230,8 @@
 
                                                         <td class="price">
                                                             <h4 class="table-title text-content">Đơn giá</h4>
-                                                            <h5>${ci.car.price}<del class="text-content">${ci.car.price}</del></h5>
-                                                            <h6 class="theme-color">Tiết kiệm : $10000</h6>
+                                                            <h5>${ci.car.price} vnđ<del class="text-content">${ci.car.price} vnđ</del></h5>
+                                                            <h6 class="theme-color">Tiết kiệm : 1000 vnđ</h6>
                                                         </td>
 
                                                         <td class="quantity">
@@ -461,21 +461,7 @@
 
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
-        <script>
-                                            window.onload = updateSubTotal();
-
-                                            function updateSubTotal() {
-                                                let totalPriceOfEachProduct = document.querySelectorAll('h5.pricee');
-                                                let totalCart = 0;
-                                                totalPriceOfEachProduct.forEach(e => {
-                                                    let totalPrice = parseFloat(e.textContent.trim());
-                                                    totalCart += totalPrice;
-                                                });
-                                                document.querySelector('#subTotal').innerHTML = totalCart;
-                                                document.querySelector('#totalprice').innerHTML = totalCart;
-
-                                            }
-        </script>
+      
     </body>
 
 </html>

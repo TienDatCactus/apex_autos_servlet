@@ -368,22 +368,22 @@ public class HomeControl extends HttpServlet {
 
         } else if ("compare".equals(state)) {
             String carId = request.getParameter("carId");
-            Compare c = dao.findCompareByUserId(ua.getUser_id());
+            Compare c;
 
             try {
+                c = dao.findCompareByUserId(ua.getUser_id());
+                int carIdInt = Integer.parseInt(carId);
                 if ("add".equals(action)) {
-                    int carIdInt = Integer.parseInt(carId);
-                    // Assume dao.checkCompareItemExists is a method to check if the item exists in the compare list
-                    if (dao.checkCompareItems(c.getCompare_id(), carIdInt)) {
-                        jsonResponse.put("error", false);
-                        jsonResponse.put("message", "Xe đã có trong mẫu so sánh !");
-                    } else {
+                    if (c == null || c != null) {
                         dao.AddtoCompare(ua.getUser_id(), carIdInt);
                         jsonResponse.put("success", true);
                         jsonResponse.put("message", "Đã thêm xe vào mẫu so sánh !");
+                    } else if (dao.checkCompareItems(c.getCompare_id(), carIdInt)) {
+                        jsonResponse.put("error", false);
+                        jsonResponse.put("message", "Xe đã có trong mẫu so sánh !");
+
                     }
                 } else if ("delete".equals(action)) {
-                    int carIdInt = Integer.parseInt(carId);
                     if (dao.deleteCompareItems(c.getCompare_id(), carIdInt)) {
                         jsonResponse.put("success", true);
                         jsonResponse.put("message", "Xe đã được xóa khỏi mẫu so sánh !");

@@ -137,112 +137,149 @@
                     <div class="col-12">
                         <div class="table-responsive">
                             <table class="table compare-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Tên xe</th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td>
-                                                <a class="text-title">${ci.name}</a>
-                                            </td>
-                                        </c:forEach>
+                                <c:choose>
+                                    <c:when test="${empty compareItems}">
+                                        <tbody>
+                                            <tr>
+                                                <th>Tên xe</th>
+                                                <td>Chưa có sản phẩm</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Ảnh</th>
+                                                <td>Chưa có sản phẩm</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Xi lanh</th>
+                                                <td>Chưa có sản phẩm</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mã lực</th>
+                                                <td>Chưa có sản phẩm</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Nguồn gốc</th>
+                                                <td>Chưa có sản phẩm</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mô tả</th>
+                                                <td>Chưa có sản phẩm</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Giá</th>
+                                                <td>Chưa có sản phẩm</td>
+                                            </tr>
+                                        </tbody>
+                                    </c:when>
+                                    <c:otherwise>
 
-                                    </tr>
+                                        <tbody>
+                                            <tr>
+                                                <th>Tên xe</th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td>
+                                                        <a class="text-title">${ci.name}</a>
+                                                    </td>
+                                                </c:forEach>
 
-                                    <tr>
-                                        <th>Ảnh</th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td>
-                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}" class="compare-image w-100">
-                                                    <c:set var="firstImagePrinted" value="false" />
-                                                    <c:forEach items="${carImage}" var="ci">
-                                                        <c:if test="${ci.car_id == cl.car_id}">
-                                                            <c:forEach items="${ci.image_url}" var="obj">
-                                                                <c:if test="${not firstImagePrinted}">
-                                                                    <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
-                                                                    <c:set var="firstImagePrinted" value="true" />
-                                                                </c:if>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Ảnh</th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td>
+                                                        <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}" class="compare-image w-100">
+                                                            <c:set var="firstImagePrinted" value="false" />
+                                                            <c:forEach items="${carImage}" var="ci">
+                                                                <c:if test="${ci.car_id == cl.car_id}">
+                                                                    <c:forEach items="${ci.image_url}" var="obj">
+                                                                        <c:if test="${not firstImagePrinted}">
+                                                                            <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                            <c:set var="firstImagePrinted" value="true" />
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </c:if> 
                                                             </c:forEach>
-                                                        </c:if> 
-                                                    </c:forEach>
 
-                                                </a>
-                                            </td>
-                                        </c:forEach>
+                                                        </a>
+                                                    </td>
+                                                </c:forEach>
 
-                                    </tr>
+                                            </tr>
 
-                                    <tr>
-                                    <tr>
-                                        <th >Xi lanh</th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td style="color: rgb(223, 157, 25);font-size:20px ">${ci.cylinders}</td>
-                                        </c:forEach>
-                                    </tr>
-                                    </tr>
+                                            <tr>
+                                            <tr>
+                                                <th >Xi lanh</th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td style="color: rgb(223, 157, 25);font-size:20px ">${ci.cylinders}</td>
+                                                </c:forEach>
+                                            </tr>
+                                            </tr>
 
 
-                                    <tr>
-                                        <th >Mã lực</th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td style="color: rgb(223, 157, 25) ;font-size:20px">${ci.horsepower}</td>
-                                        </c:forEach>
-                                    </tr>
+                                            <tr>
+                                                <th >Mã lực</th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td style="color: rgb(223, 157, 25) ;font-size:20px">${ci.horsepower}</td>
+                                                </c:forEach>
+                                            </tr>
 
 
-                                    <tr>
-                                        <th>Nguồn gốc</th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td style="color: rgb(223, 157, 25) ;font-size:20px">${ci.origin}</td>
-                                        </c:forEach>
+                                            <tr>
+                                                <th>Nguồn gốc</th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td style="color: rgb(223, 157, 25) ;font-size:20px">${ci.origin}</td>
+                                                </c:forEach>
 
-                                    </tr>
-                                    <tr>
-                                        <th>Mô tả</th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                                <c:set var="shortDesc" value="${fn:substring(ci.description, 0, 200)}" />
-                                                <c:set var="shortDesc" value="${shortDesc} ..."/>
-                                            <td >${shortDesc}</td></c:forEach>
+                                            </tr>
+                                            <tr>
+                                                <th>Mô tả</th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                        <c:set var="shortDesc" value="${fn:substring(ci.description, 0, 200)}" />
+                                                        <c:set var="shortDesc" value="${shortDesc} ..."/>
+                                                    <td >${shortDesc}</td></c:forEach>
 
-                                        </tr>
-                                        <tr >
-                                            <th >Giá</th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td  style="color: rgb(223, 157, 25) ;font-size:20px">${ci.price} USD</td></c:forEach>
+                                                </tr>
+                                                <tr >
+                                                    <th >Giá</th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td  style="color: rgb(223, 157, 25) ;font-size:20px">${ci.price} USD</td></c:forEach>
 
-                                        </tr>
+                                                </tr>
 
 
 
-                                        <tr>
-                                            <th></th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td class="p-2">
+                                                <tr>
+                                                    <th></th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td class="p-2">
 
 <!--                                                <form id="form-cart-${ci.car_id}"
                                                       action="home?state=cart&action=add&id_car=${ci.car_id}"
                                                       method="post">-->
-                                                <button type="submit" class="button-39 btn-sm w-100"  onclick="addToCart(${ci.car_id})">Thêm vào giỏ hàng</button>
+                                                        <button type="submit" class="button-39 btn-sm w-100"  onclick="addToCart(${ci.car_id})">Thêm vào giỏ hàng</button>
 
-                                                <!--                                                </form>-->
-                                                <!--                                                    <button type="button" onclick="location.href='cart?user=';" class="btn btn-animation btn-sm w-100">Add To Cart</button>-->
+                                                        <!--                                                </form>-->
+                                                        <!--                                                    <button type="button" onclick="location.href='cart?user=';" class="btn btn-animation btn-sm w-100">Add To Cart</button>-->
 
-                                            </td>
-                                        </c:forEach>
-                                    </tr>
+                                                    </td>
+                                                </c:forEach>
+                                            </tr>
 
-                                    <tr>
-                                        <th></th>
-                                            <c:forEach var="ci" items="${compareItems}">
-                                            <td>
-                                                <input type="hidden" value="${ci.car_id}" name="carId"/>
-                                                <a class="delete-link button-38" data-car-id="${ci.car_id}"  style="cursor: pointer" onclick="deleteFromCompare(${ci.car_id})">
-                                                    <i class="fa-solid fa-trash-can me-2"></i> Xóa
-                                                </a>
+                                            <tr>
+                                                <th></th>
+                                                    <c:forEach var="ci" items="${compareItems}">
+                                                    <td>
+                                                        <input type="hidden" value="${ci.car_id}" name="carId"/>
+                                                        <a class="delete-link button-38" data-car-id="${ci.car_id}"  style="cursor: pointer" onclick="deleteFromCompare(${ci.car_id})">
+                                                            <i class="fa-solid fa-trash-can me-2"></i> Xóa
+                                                        </a>
 
-                                            </td>
-                                        </c:forEach>
-                                    </tr>
-                                </tbody>
+                                                    </td>
+                                                </c:forEach>
+                                            </tr>
+                                        </tbody>
+                                    </c:otherwise>
+                                </c:choose>
                             </table>
                         </div>
                     </div>

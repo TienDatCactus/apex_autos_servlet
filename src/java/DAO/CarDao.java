@@ -83,17 +83,19 @@ public class CarDao {
         return car; // Trả về đối tượng Car hoặc null nếu không tìm thấy
     }
 
-    public void clearCart(int user_id) {
+    public boolean clearCart(int user_id) {
         String query = "Delete from cart where user_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
             // Setting the parameters for the query
             ps.setInt(1, user_id);
 
-            ps.executeUpdate();
+            return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
+
     }
 
     public boolean checkExistedItems(int carId, int userId) {
@@ -234,6 +236,94 @@ public class CarDao {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public int  saveOrder(Orders order) {
+        String sql = "INSERT INTO orders (user_id, order_date, status, total) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            pstmt.setInt(1, order.getUser_id());
+            pstmt.setString(2, order.getOrder_date());
+            pstmt.setString(3, order.getStatus());
+            pstmt.setFloat(4, order.getTotal());
+
+            pstmt.executeUpdate() ;
+
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1) ;
+                } else {
+                    throw new SQLException("Creating order failed, no ID obtained.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public boolean saveOrderItem(OrderItems item) {
+        String sql = "INSERT INTO order_items (order_id, car_id) VALUES (?, ?)";
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, item.getOrder_id());
+            pstmt.setInt(2, item.getCar().getCar_id());
+            return pstmt.executeUpdate() > 0 ;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+   public List<OrderItems> orderItems(int user_id) {
+        List<OrderItems> orderItemsList = new ArrayList<>();
+
+        String selectCartQuery = "SELECT order_id FROM orders WHERE user_id = ?";
+        String selectCartItemsQuery
+                = "SELECT ci.order_item_id, ci.order_id, c.* FROM order_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.order_id = ?";
+
+        try (PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psSelectCartItems = con.prepareStatement(selectCartItemsQuery)) {
+
+            // Check if the user has a cart
+            psSelectCart.setInt(1, user_id);
+            ResultSet rsCart = psSelectCart.executeQuery();
+
+            if (rsCart.next()) {
+                int order_id = rsCart.getInt("order_id");
+
+                // Retrieve cart items
+                psSelectCartItems.setInt(1, order_id);
+                ResultSet rsCartItems = psSelectCartItems.executeQuery();
+
+                while (rsCartItems.next()) {
+                    int item_id = rsCartItems.getInt("order_id");
+                    Car car
+                            = new Car(
+                                    rsCartItems.getInt("car_id"),
+                                    rsCartItems.getString("name"),
+                                    rsCartItems.getInt("cylinders"),
+                                    rsCartItems.getFloat("horsepower"),
+                                    rsCartItems.getFloat("weight"),
+                                    rsCartItems.getFloat("acceleration"),
+                                    rsCartItems.getString("model_year"),
+                                    rsCartItems.getString("origin"),
+                                    rsCartItems.getInt("price"),
+                                    rsCartItems.getString("description"),
+                                    rsCartItems.getInt("brand_id"),
+                                    rsCartItems.getInt("category_id"));
+                    OrderItems orderItems = new OrderItems(item_id, car);
+                    orderItemsList.add(orderItems);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orderItemsList; // This will be an empty list if there's no cart or no cart items
+    }
+    public static void main(String[] args) {
+        CarDao dao = new CarDao();
+        Orders order = new Orders(1020, "2004", "Success", 20000);
+        Car c = new Car(201, 0, 0, 0, 0, "dat");
+        OrderItems oi = new OrderItems(2, c);
+        System.out.println(dao.orderItems(1020));
     }
 
     public List<CarCategory> viewCarCategory() {
@@ -892,27 +982,27 @@ public class CarDao {
     }
 
     public Compare findCompareByUserId(int userId) {
-        Compare c = null;
-        String sql = "select distinct * from compare c join compare_item ci on c.compare_id = ci.compare_id where user_id = ?";
+        Compare compare = null;
+        String sql = "SELECT c.compare_id, ci.item_id, ci.car_id FROM compare c JOIN compare_item ci ON c.compare_id = ci.compare_id WHERE c.user_id = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
-            List<CompareItem> cis = new ArrayList<>();
-            int i = 0;
+            List<CompareItem> compareItems = new ArrayList<>();
+
             while (rs.next()) {
-                cis.add(new CompareItem(rs.getInt("item_id"), rs.getInt("compare_id"), rs.getInt("car_id")));
+                compareItems.add(new CompareItem(rs.getInt("item_id"), rs.getInt("compare_id"), rs.getInt("car_id")));
             }
 
-            if (!cis.isEmpty()) {
-                c = new Compare(cis.get(0).getCompareId(), cis.get(0).getCarId());
-                c.setItems(cis);
+            if (!compareItems.isEmpty()) {
+                compare = new Compare(compareItems.get(0).getCompareId());
+                compare.setItems(compareItems);
             }
-            return c;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return c;
+
+        return compare;
     }
 
     public boolean deleteCompareItems(int compareId, int car_id) {
@@ -949,60 +1039,56 @@ public class CarDao {
     }
 
     public boolean AddtoCompare(int user_id, int car_id) {
-    String selectCompareQuery = "SELECT compare_id FROM compare WHERE user_id = ?";
-    String insertCompareQuery = "INSERT INTO compare (user_id) VALUES (?)";
-    String insertCompareItemQuery = "INSERT INTO compare_item (compare_id, car_id) VALUES (?, ?)";
+        String selectCompareQuery = "SELECT compare_id FROM compare WHERE user_id = ?";
+        String insertCompareQuery = "INSERT INTO compare (user_id) VALUES (?)";
+        String insertCompareItemQuery = "INSERT INTO compare_item (compare_id, car_id) VALUES (?, ?)";
 
-    try (PreparedStatement psSelectCompare = con.prepareStatement(selectCompareQuery);
-         PreparedStatement psInsertCompare = con.prepareStatement(insertCompareQuery, Statement.RETURN_GENERATED_KEYS);
-         PreparedStatement psInsertCompareItem = con.prepareStatement(insertCompareItemQuery)) {
+        try (PreparedStatement psSelectCompare = con.prepareStatement(selectCompareQuery); PreparedStatement psInsertCompare = con.prepareStatement(insertCompareQuery); PreparedStatement psInsertCompareItem = con.prepareStatement(insertCompareItemQuery)) {
 
-        // Check if the user already has a compare list
-        psSelectCompare.setInt(1, user_id);
-        ResultSet rsCompare = psSelectCompare.executeQuery();
+            // Check if the user already has a compare list
+            psSelectCompare.setInt(1, user_id);
+            ResultSet rsCompare = psSelectCompare.executeQuery();
 
-        int compare_id;
-        if (rsCompare.next()) {
-            // If the user already has a compare list, get its ID
-            compare_id = rsCompare.getInt("compare_id");
-        } else {
-            // If the user doesn't have a compare list, create one and get its ID
-            psInsertCompare.setInt(1, user_id);
-            int affectedRows = psInsertCompare.executeUpdate();
-            if (affectedRows == 0) {
-                throw new SQLException("Creating compare list failed, no rows affected.");
-            }
+            int compare_id;
+            if (rsCompare.next()) {
+                // If the user already has a compare list, get its ID
+                compare_id = rsCompare.getInt("compare_id");
+            } else {
+                // If the user doesn't have a compare list, create one and get its ID
+                psInsertCompare.setInt(1, user_id);
+                int affectedRows = psInsertCompare.executeUpdate();
+                if (affectedRows == 0) {
+                    return false;
+                }
 
-            try (ResultSet rsGeneratedKeys = psInsertCompare.getGeneratedKeys()) {
-                if (rsGeneratedKeys.next()) {
-                    compare_id = rsGeneratedKeys.getInt(1);
-                } else {
-                    throw new SQLException("Creating compare list failed, no ID obtained.");
+                try (ResultSet rsGeneratedKeys = psInsertCompare.getGeneratedKeys()) {
+                    if (rsGeneratedKeys.next()) {
+                        compare_id = rsGeneratedKeys.getInt(1);
+                    } else {
+                        return false;
+                    }
                 }
             }
-        }
 
-        // Check if the compare list already contains 4 items
-        String countCompareItemsQuery = "SELECT COUNT(*) AS itemCount FROM compare_item WHERE compare_id = ?";
-        try (PreparedStatement psCountCompareItems = con.prepareStatement(countCompareItemsQuery)) {
-            psCountCompareItems.setInt(1, compare_id);
-            ResultSet rsItemCount = psCountCompareItems.executeQuery();
-            if (rsItemCount.next() && rsItemCount.getInt("itemCount") >= 4) {
-                throw new SQLException("Compare list has reached its maximum size of 4 items.");
+            // Check if the compare list already contains 4 items
+            String countCompareItemsQuery = "SELECT COUNT(*) AS itemCount FROM compare_item WHERE compare_id = ?";
+            try (PreparedStatement psCountCompareItems = con.prepareStatement(countCompareItemsQuery)) {
+                psCountCompareItems.setInt(1, compare_id);
+                ResultSet rsItemCount = psCountCompareItems.executeQuery();
+                if (rsItemCount.next() && rsItemCount.getInt("itemCount") > 4) {
+                    return false;
+                }
             }
+
+            // Add the car to the compare list
+            psInsertCompareItem.setInt(1, compare_id);
+            psInsertCompareItem.setInt(2, car_id);
+            return psInsertCompareItem.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        // Add the car to the compare list
-        psInsertCompareItem.setInt(1, compare_id);
-        psInsertCompareItem.setInt(2, car_id);
-        psInsertCompareItem.executeUpdate();
-        return true;
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return false;
     }
-    return false;
-}
-
 
     public List<Car> compareCars(List<Integer> carIds) {
         List<Car> carsToCompare = new ArrayList<>();
@@ -1040,10 +1126,4 @@ public class CarDao {
         return carsToCompare;
     }
 
-    public static void main(String[] args) {
-        CarDao dao = new CarDao();
-        Compare dat = dao.findCompareByUserId(1020);
-        System.out.println(dat.getCompare_id());
-        System.out.println(dao.AddtoCompare(1020,204));
-    }
 }

@@ -274,7 +274,7 @@
                                                         </c:forEach>
                                                     </c:if> 
                                                 </c:forEach>
-                                                s                                                <h4>${ci.car.name}</h4>
+                                                <h4>${ci.car.name}</h4>
                                                 <h4 id="pricee" class="price">${ci.car.price}</h4>
                                             </li>
                                         </c:forEach>
@@ -372,7 +372,7 @@
                 const depo = totalCart / 10;
                 document.querySelector('#priceTotal').innerHTML = depo;
                 document.querySelector('#Subtotal').innerHTML = totalCart;
-                document.querySelector('#totalAmount').value =depo ;
+                document.querySelector('#totalAmount').value = depo;
             }
 
 
