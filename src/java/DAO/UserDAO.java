@@ -40,8 +40,6 @@ public class UserDAO {
         }
     }
 
-    
-
     public List<CommentCar> viewAllCommentFor1Car() {
         List<CommentCar> comment = new ArrayList<>();
         String query
@@ -55,7 +53,7 @@ public class UserDAO {
                 c.setComment_content(rs.getString("comment_content"));
                 c.setCar_id(rs.getInt("car_id"));
                 c.setUser_id(rs.getInt("user_id"));
-                c.setCreated_at("created_at");
+                c.setCreated_at(rs.getTimestamp("created_at"));
                 comment.add(c);
             }
         } catch (SQLException e) {
@@ -208,7 +206,7 @@ public class UserDAO {
                     userAccount.setFamily_name(rs.getString("family_name"));
 
                     userAccount.setPhone(rs.getString("phone"));
-                    userAccount.setCreated_at(rs.getString("created_at"));
+                    userAccount.setCreated_at(rs.getTimestamp("created_at"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
                     return null;
@@ -280,7 +278,7 @@ public class UserDAO {
                     userAccount.setDob(rs.getString("dob"));
                     userAccount.setPhone(rs.getString("phone"));
                     userAccount.setPermission_id(rs.getInt("permission_id"));
-                    userAccount.setCreated_at(rs.getString("created_at"));
+                    userAccount.setCreated_at(rs.getTimestamp("created_at"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
                     return null;
@@ -478,7 +476,6 @@ public class UserDAO {
         }
     }
 
-
     public void deleteStatus(int status_del) {
         String query = "Delete from status where status_id = ?";
         try (PreparedStatement ps = con.prepareStatement(query)) {
@@ -535,6 +532,9 @@ public class UserDAO {
             return false;
         }
     }
+
+    
+    
 
     public static void main(String[] args) {
 

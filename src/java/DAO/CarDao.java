@@ -238,7 +238,7 @@ public class CarDao {
         return false;
     }
 
-    public int  saveOrder(Orders order) {
+    public int saveOrder(Orders order) {
         String sql = "INSERT INTO orders (user_id, order_date, status, total) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setInt(1, order.getUser_id());
@@ -246,11 +246,11 @@ public class CarDao {
             pstmt.setString(3, order.getStatus());
             pstmt.setFloat(4, order.getTotal());
 
-            pstmt.executeUpdate() ;
+            pstmt.executeUpdate();
 
             try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    return generatedKeys.getInt(1) ;
+                    return generatedKeys.getInt(1);
                 } else {
                     throw new SQLException("Creating order failed, no ID obtained.");
                 }
@@ -266,48 +266,50 @@ public class CarDao {
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, item.getOrder_id());
             pstmt.setInt(2, item.getCar().getCar_id());
-            return pstmt.executeUpdate() > 0 ;
-        }catch(Exception e){
+            return pstmt.executeUpdate() > 0;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-   public List<OrderItems> orderItems(int user_id) {
+
+    public List<OrderItems> orderItems(int user_id) {
         List<OrderItems> orderItemsList = new ArrayList<>();
 
-        String selectCartQuery = "SELECT order_id FROM orders WHERE user_id = ?";
-        String selectCartItemsQuery
-                = "SELECT ci.order_item_id, ci.order_id, c.* FROM order_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.order_id = ?";
+        String selectOrdersQuery = "SELECT order_id FROM orders WHERE user_id = ?";
+        String selectOrderItemsQuery = "SELECT ci.order_item_id, ci.order_id, c.* FROM order_items ci INNER JOIN car c ON ci.car_id = c.car_id WHERE ci.order_id = ?";
 
-        try (PreparedStatement psSelectCart = con.prepareStatement(selectCartQuery); PreparedStatement psSelectCartItems = con.prepareStatement(selectCartItemsQuery)) {
+        try (PreparedStatement psSelectOrders = con.prepareStatement(selectOrdersQuery); PreparedStatement psSelectOrderItems = con.prepareStatement(selectOrderItemsQuery)) {
 
-            // Check if the user has a cart
-            psSelectCart.setInt(1, user_id);
-            ResultSet rsCart = psSelectCart.executeQuery();
+            // Get all orders for the user
+            psSelectOrders.setInt(1, user_id);
+            ResultSet rsOrders = psSelectOrders.executeQuery();
 
-            if (rsCart.next()) {
-                int order_id = rsCart.getInt("order_id");
+            // Iterate through each order
+            while (rsOrders.next()) {
+                int order_id = rsOrders.getInt("order_id");
 
-                // Retrieve cart items
-                psSelectCartItems.setInt(1, order_id);
-                ResultSet rsCartItems = psSelectCartItems.executeQuery();
+                // Get all items for the current order
+                psSelectOrderItems.setInt(1, order_id);
+                ResultSet rsOrderItems = psSelectOrderItems.executeQuery();
 
-                while (rsCartItems.next()) {
-                    int item_id = rsCartItems.getInt("order_id");
-                    Car car
-                            = new Car(
-                                    rsCartItems.getInt("car_id"),
-                                    rsCartItems.getString("name"),
-                                    rsCartItems.getInt("cylinders"),
-                                    rsCartItems.getFloat("horsepower"),
-                                    rsCartItems.getFloat("weight"),
-                                    rsCartItems.getFloat("acceleration"),
-                                    rsCartItems.getString("model_year"),
-                                    rsCartItems.getString("origin"),
-                                    rsCartItems.getInt("price"),
-                                    rsCartItems.getString("description"),
-                                    rsCartItems.getInt("brand_id"),
-                                    rsCartItems.getInt("category_id"));
+                while (rsOrderItems.next()) {
+                    int item_id = rsOrderItems.getInt("order_item_id");
+                    Car car = new Car(
+                            rsOrderItems.getInt("car_id"),
+                            rsOrderItems.getString("name"),
+                            rsOrderItems.getInt("cylinders"),
+                            rsOrderItems.getFloat("horsepower"),
+                            rsOrderItems.getFloat("weight"),
+                            rsOrderItems.getFloat("acceleration"),
+                            rsOrderItems.getString("model_year"),
+                            rsOrderItems.getString("origin"),
+                            rsOrderItems.getInt("price"),
+                            rsOrderItems.getString("description"),
+                            rsOrderItems.getInt("brand_id"),
+                            rsOrderItems.getInt("category_id")
+                    );
+
                     OrderItems orderItems = new OrderItems(item_id, car);
                     orderItemsList.add(orderItems);
                 }
@@ -316,14 +318,52 @@ public class CarDao {
             e.printStackTrace();
         }
 
-        return orderItemsList; // This will be an empty list if there's no cart or no cart items
+        return orderItemsList; // This will contain all order items for all orders of the user
     }
+
+    public List<OrderItems> AllOrderItems(int selller_id) {
+        List<OrderItems> orderItemsList = new ArrayList<>();
+
+        String selectOrderItemsQuery = "select * from orders o join order_items oi on o.order_id = oi.order_id join car c on oi.car_id = c.car_id where seller_id = ?";
+
+        try (PreparedStatement psSelectOrderItems = con.prepareStatement(selectOrderItemsQuery)) {
+
+            // Get all orders for the user
+            psSelectOrderItems.setInt(1, selller_id);
+            ResultSet rsOrders = psSelectOrderItems.executeQuery();
+
+            while (rsOrders.next()) {
+                int item_id = rsOrders.getInt("order_item_id");
+                Car car = new Car(
+                        rsOrders.getInt("car_id"),
+                        rsOrders.getString("name"),
+                        rsOrders.getInt("cylinders"),
+                        rsOrders.getFloat("horsepower"),
+                        rsOrders.getFloat("weight"),
+                        rsOrders.getFloat("acceleration"),
+                        rsOrders.getString("model_year"),
+                        rsOrders.getString("origin"),
+                        rsOrders.getInt("price"),
+                        rsOrders.getString("description"),
+                        rsOrders.getInt("brand_id"),
+                        rsOrders.getInt("category_id")
+                );
+
+                OrderItems orderItems = new OrderItems(item_id,rsOrders.getInt("order_id"), car,rsOrders.getFloat("total"),rsOrders.getString("status"));
+                orderItemsList.add(orderItems);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orderItemsList; // This will contain all order items for all orders of the user
+    }
+
     public static void main(String[] args) {
         CarDao dao = new CarDao();
-        Orders order = new Orders(1020, "2004", "Success", 20000);
-        Car c = new Car(201, 0, 0, 0, 0, "dat");
-        OrderItems oi = new OrderItems(2, c);
-        System.out.println(dao.orderItems(1020));
+       
+        System.out.println(dao.AllOrderItems(1020));
     }
 
     public List<CarCategory> viewCarCategory() {

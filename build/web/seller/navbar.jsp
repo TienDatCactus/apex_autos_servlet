@@ -190,7 +190,7 @@
                             >
                         </nav>
                     </div>
-                    <a class="nav-link" href="orders.html">
+                    <a class="nav-link" href="dashboard?state=orders">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-chart-area"></i>
                         </div>

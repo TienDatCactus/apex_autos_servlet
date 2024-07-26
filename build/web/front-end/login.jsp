@@ -155,7 +155,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="breadscrumb-contain py-3">
-                                <h2 class="mb-2">Log In</h2>
+                                <h2 class="mb-2">Đăng nhập</h2>
                                 <nav>
                                     <ol class="breadcrumb mb-0">
                                         <li class="breadcrumb-item">

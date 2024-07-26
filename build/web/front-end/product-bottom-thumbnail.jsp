@@ -247,9 +247,17 @@
                                     </div>
 
                                     <div class="note-box product-packege">
-
-                                        <button onClick='addToCart(${carDT.car_id})'
+                                        <c:choose>
+                                            <c:when test="${sessionScope.user != null}">
+                                                <button onClick='addToCart(${carDT.car_id})'
+                                                        class = "button-86 text-white w-75 ">Thêm vào giỏ hàng</button>
+                                            </c:when>
+                                            <c:otherwise> 
+                                                <button onClick="location.href='${pageContext.request.contextPath}/login'"
                                                 class = "button-86 text-white w-75 ">Thêm vào giỏ hàng</button>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                     </div>
                                     <div class="buy-box">
 
@@ -528,7 +536,7 @@
                                                                                       placeholder="Leave a comment here"
                                                                                       id="simplemde" name="comment"
                                                                                       ></textarea>
-                                                                            <button type="submit" class="button-83">Comment</button>
+                                                                            <button type="submit" class="button-83">Bình luận</button>
                                                                         </form>
                                                                     </div>
 
@@ -539,7 +547,7 @@
 
                                                     <div class="col-12">
                                                         <div class="review-title">
-                                                            <h4 class="fw-500">Customer questions & answers</h4>
+                                                            <h4 class="fw-500">Bình luận của khách hàng</h4>
                                                         </div>
 
                                                         <div class="review-people">
@@ -562,7 +570,7 @@
                                                                                         <a class="name"
                                                                                            href="javascript:void(0)">${username}</a>
                                                                                         <div class="date-time">
-                                                                                            <h6 class="text-content">${ac.created_at != null ? ac.created_at : ""}</h6>
+                                                                                            <h6 class="text-content">${ac.created_at}</h6>
 
                                                                                             <div class="product-rating">
                                                                                                 <ul class="rating">

@@ -479,10 +479,19 @@
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                                <input type="hidden" value="${cl.car_id}" name="carId"/>
-                                                                <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="addToCompare(${cl.car_id})">
-                                                                    <i data-feather="refresh-cw" ></i>
-                                                                </a>
+                                                                <c:choose>
+                                                                    <c:when test="${sessionScope.user != null}">
+                                                                        <input type="hidden" value="${cl.car_id}" name="carId"/>
+                                                                        <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="addToCompare(${cl.car_id})">
+                                                                            <i data-feather="refresh-cw" ></i>
+                                                                        </a>
+                                                                    </c:when>
+                                                                    <c:otherwise> 
+                                                                        <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="location.href='${pageContext.request.contextPath}/login'">
+                                                                            <i data-feather="refresh-cw" ></i>
+                                                                        </a>
+                                                                    </c:otherwise>
+                                                                </c:choose>
                                                             </li>
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
@@ -526,7 +535,7 @@
                                                             <span>(4.0)</span>
                                                         </div>
                                                         <h6 class="unit">${cl.model_year}</h6>
-                                                        <h5 class="price"><span class="theme-color">${cl.price}00 vnd</span> <del>${cl.price + 100000} vnd</del>
+                                                        <h5 class="price"><span class="theme-color">${cl.price} vnd</span> <del>${cl.price + 100000} vnd</del>
                                                         </h5>
                                                         <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
                                                             <div class="add-to-cart-box">

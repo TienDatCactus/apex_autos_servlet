@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -204,7 +205,7 @@
                                         </div>
                                         <div class="col-12" style="margin-top: 2px;">
                                             <input class="button-38 w-100 justify-content-center"
-                                                   value="Request Passcode" type="submit">
+                                                   value="Gửi yêu cầu" type="submit">
                                         </div>
                                         <div class="other-log-in">
                                             <h6></h6>

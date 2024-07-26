@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Models;
-
+import  java.sql.Timestamp;
 /**
  *
  * @author Admin
@@ -13,12 +13,12 @@ public class CommentCar {
     public String comment_content;
     public int car_id;
     public int user_id;
-    public String created_at;
+    public Timestamp created_at;
 
     public CommentCar() {
     }
 
-    public CommentCar(int comment_id, String comment_content, int car_id, int user_id,String created_at) {
+    public CommentCar(int comment_id, String comment_content, int car_id, int user_id,Timestamp created_at) {
         this.comment_id = comment_id;
         this.comment_content = comment_content;
         this.car_id = car_id;
@@ -33,11 +33,11 @@ public class CommentCar {
         this.user_id = user_id;
     }
 
-    public String getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 

@@ -4,6 +4,10 @@
  */
 package Models;
 
+import java.util.Date;
+import java.sql.Timestamp;
+
+
 /**
  *
  * @author Tiến_Đạt
@@ -21,9 +25,25 @@ public class UserAccount {
     String phone;
     String dob;
     int permission_id;
-    String created_at;
+    Timestamp created_at;
+    String status;
+    Date approved_date;
+    Date application_date;
 
     public UserAccount() {
+    }
+
+    public UserAccount(int user_id, String email, String status, Date approved_date, Date application_date) {
+        this.user_id = user_id;
+        this.email = email;
+        this.status = status;
+        this.approved_date = approved_date;
+        this.application_date = application_date;
+    }
+
+    public UserAccount(int user_id, String status) {
+        this.user_id = user_id;
+        this.status = status;
     }
 
     public UserAccount(String email, String password) {
@@ -39,7 +59,7 @@ public class UserAccount {
         this.dob = dob;
     }
 
-    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob,String created_at) {
+    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob, Timestamp created_at) {
         this.email = email;
         this.password = password;
         this.given_name = given_name;
@@ -58,8 +78,6 @@ public class UserAccount {
         this.dob = dob;
     }
 
-    
-    
     public UserAccount(String email, String password, int permission_id) {
         this.email = email;
         this.password = password;
@@ -83,14 +101,13 @@ public class UserAccount {
         this.dob = dob;
     }
 
-    public String getCreated_at() {
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
-    
 
     public String getDob() {
         return dob;
@@ -98,6 +115,30 @@ public class UserAccount {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getApplication_date() {
+        return application_date;
+    }
+
+    public void setApplication_date(Date application_date) {
+        this.application_date = application_date;
+    }
+
+    public Date getApproved_date() {
+        return approved_date;
+    }
+
+    public void setApproved_date(Date approved_date) {
+        this.approved_date = approved_date;
     }
 
     public String getGiven_name() {
@@ -160,7 +201,5 @@ public class UserAccount {
     public String toString() {
         return "UserAccount{" + "user_id=" + user_id + ", email=" + email + ", password=" + password + ", given_name=" + given_name + ", family_name=" + family_name + ", phone=" + phone + ", dob=" + dob + ", permission_id=" + permission_id + '}';
     }
-
-    
 
 }

@@ -156,12 +156,15 @@ public class SellerDashboard extends HttpServlet {
                 request.setAttribute("carList", carL);
                 request.setAttribute("imageCar", imageCar);
                 request.getRequestDispatcher("/seller/carimages.jsp").forward(request, response);
+            } else if ("orders".equals(state)) {
+                request.getRequestDispatcher("/seller/orders.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/seller/index.jsp").forward(request, response);
             }
         } else {
-            response.sendRedirect(request.getContextPath() + "/home");
+            response.sendRedirect(request.getContextPath() + "/login");
         }
+
     }
 
     @Override
@@ -524,7 +527,8 @@ public class SellerDashboard extends HttpServlet {
             request.setAttribute("imageCar", imageCar);
             doGet(request, response);
         } else {
-            doGet(request, response);
+            response.sendRedirect(request.getContextPath() + "/login");
+
         }
     }
 }

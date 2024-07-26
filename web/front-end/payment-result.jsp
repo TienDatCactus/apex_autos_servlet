@@ -128,6 +128,8 @@
 
                   dao.clearCart(ua.getUser_id());
                   transactionStatus = "Thành công";
+                          request.setAttribute("orderList", ois);
+
               } else {
                   transactionStatus = "Thất bại";
               }
@@ -135,7 +137,6 @@
               transactionStatus = "Chữ kí không khả dụng";
           }
   List<CarImage> carImage = dao.viewImageForCar();
-   List<OrderItems> orderList = dao.orderItems(ua.getUser_id());
     List<CarCategory> carCate = dao.viewCarCategory();
             List<CarBrand> carBrand = dao.viewCarBrand();
             request.setAttribute("carCate", carCate);
@@ -146,9 +147,8 @@
           pageContext.setAttribute("ResponseCode", request.getParameter("vnp_ResponseCode"));
           pageContext.setAttribute("TransactionNo", request.getParameter("vnp_TransactionNo"));
           pageContext.setAttribute("BankCode", request.getParameter("vnp_BankCode"));
-          
           pageContext.setAttribute("transactionStatus", transactionStatus);
-
+ request.setAttribute("carImage", carImage);
           String vnpPayDate = request.getParameter("vnp_PayDate");
           if (vnpPayDate != null && !vnpPayDate.isEmpty()) {
               DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
@@ -158,8 +158,7 @@
               pageContext.setAttribute("PayDate", "Not available");
           }  
           
-          request.setAttribute("carImage", carImage);
-        request.setAttribute("orderList", orderList);
+         
         
         %>
 
@@ -361,7 +360,7 @@
                                                     <h4 class="table-title text-content">Kiểu xe</h4>
                                                     <c:forEach var="cc" items="${carCate}">
                                                         <c:if test="${cc.id == ol.car.category_id}">
-                                                            <h6 class="theme-color">${cc.name} vnđ</h6>
+                                                            <h6 class="theme-color">${cc.name}</h6>
 
                                                         </c:if>
                                                     </c:forEach>
