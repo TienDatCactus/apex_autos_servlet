@@ -53,7 +53,7 @@ public class UserDAO {
                 c.setComment_content(rs.getString("comment_content"));
                 c.setCar_id(rs.getInt("car_id"));
                 c.setUser_id(rs.getInt("user_id"));
-                c.setCreated_at(rs.getTimestamp("created_at"));
+                c.setCreated_at(rs.getString("created_at"));
                 comment.add(c);
             }
         } catch (SQLException e) {
@@ -206,7 +206,7 @@ public class UserDAO {
                     userAccount.setFamily_name(rs.getString("family_name"));
 
                     userAccount.setPhone(rs.getString("phone"));
-                    userAccount.setCreated_at(rs.getTimestamp("created_at"));
+                    userAccount.setCreated_at(rs.getString("created_at"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
                     return null;
@@ -278,7 +278,7 @@ public class UserDAO {
                     userAccount.setDob(rs.getString("dob"));
                     userAccount.setPhone(rs.getString("phone"));
                     userAccount.setPermission_id(rs.getInt("permission_id"));
-                    userAccount.setCreated_at(rs.getTimestamp("created_at"));
+                    userAccount.setCreated_at(rs.getString("created_at"));
                 } else {
                     // If no result is found, return null or handle as per your requirements
                     return null;
@@ -488,50 +488,50 @@ public class UserDAO {
         }
     }
 
-    public List<Comment> viewAllComment() {
-        List<Comment> comment = new ArrayList<>();
-        String query
-                = "SELECT * from comment";
-
-        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-
-                Comment c = new Comment();
-                c.setComment_id(rs.getInt("comment_id"));
-                c.setComment_content(rs.getString("comment_content"));
-                c.setStatus_id(rs.getInt("status_id"));
-                c.setUser_id(rs.getInt("user_id"));
-
-                comment.add(c);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return comment;
-    }
-
-    public boolean addNewComment(Comment c) {
-        try {
-            String query
-                    = "INSERT INTO comment (comment_content,status_id,user_id) VALUES (?,?,?)";
-            PreparedStatement ps = con.prepareStatement(query);
-
-            // Loop through each image_url and insert into database separately
-            ps.setString(1, c.getComment_content());
-            ps.setInt(2, c.getStatus_id());
-            ps.setInt(3, c.getUser_id());
-
-            int rowAffected = ps.executeUpdate();
-            if (rowAffected <= 0) {
-                return false; // If any row is not affected, return false
-            }
-
-            return true; // All rows inserted successfully
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+//    public List<Comment> viewAllComment() {
+//        List<Comment> comment = new ArrayList<>();
+//        String query
+//                = "SELECT * from comment";
+//
+//        try (PreparedStatement ps = con.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+//            while (rs.next()) {
+//
+//                Comment c = new Comment();
+//                c.setComment_id(rs.getInt("comment_id"));
+//                c.setComment_content(rs.getString("comment_content"));
+//                c.setStatus_id(rs.getInt("status_id"));
+//                c.setUser_id(rs.getInt("user_id"));
+//
+//                comment.add(c);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return comment;
+//    }
+//
+//    public boolean addNewComment(Comment c) {
+//        try {
+//            String query
+//                    = "INSERT INTO comment (comment_content,status_id,user_id) VALUES (?,?,?)";
+//            PreparedStatement ps = con.prepareStatement(query);
+//
+//            // Loop through each image_url and insert into database separately
+//            ps.setString(1, c.getComment_content());
+//            ps.setInt(2, c.getStatus_id());
+//            ps.setInt(3, c.getUser_id());
+//
+//            int rowAffected = ps.executeUpdate();
+//            if (rowAffected <= 0) {
+//                return false; // If any row is not affected, return false
+//            }
+//
+//            return true; // All rows inserted successfully
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
 
     
     

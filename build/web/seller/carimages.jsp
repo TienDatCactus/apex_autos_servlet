@@ -150,10 +150,10 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="album py-2 bg-body-tertiary">
-                            <div class="container">
+                            <div class="container-fluid">
 
                                 <div class="input-group mb-3">
-                                    <input type="text" id="searchBox" class="form-control" placeholder="Search for a car by name...">
+                                    <input type="text" id="searchBox" class="form-control" placeholder="Tìm kiếm xe theo tên...">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                                     </div>
@@ -168,12 +168,12 @@
                                 <c:choose>
                                     <c:when test="${empty carList}">
                                         <div class="alert alert-danger " style="font-size:32px; text-align: center" role="alert">
-                                            Sorry there's currently no product available !
+                                            Xin lỗi , không có sản phẩm nào hợp lệ !
                                         </div>
                                     </c:when>
                                     <c:otherwise>
                                         <c:forEach var="cl" items="${carList}" varStatus="loop">
-                                            <div class="col-md-4 car-card mb-3" data-name="${cl.name}" >
+                                            <div class="col-6 col-sm-4 col-md-3 col-lg-3 car-card mb-3" data-name="${cl.name}" >
                                                 <div class="card" >
                                                     <c:set var="hasImages" value="false"/>
                                                     <c:set var="mainImage" value=""/>
@@ -210,9 +210,9 @@
                                                         <div class="d-flex justify-content-between align-items-center">
                                                             <div class="btn-group">
                                                                 <button type="button" class="btn btn-sm btn-outline-secondary edit-btn" name="idToUpdate"
-                                                                        data-id="${cl.car_id}" onclick="editProductModal('${cl.car_id}')">Edit</button>
+                                                                        data-id="${cl.car_id}" onclick="editProductModal('${cl.car_id}')">Chỉnh sửa</button>
                                                                 <button type="button" class="btn btn-sm btn-outline-danger delete-btn" name="idToDel"
-                                                                        onclick="location.href = 'dashboard?state=image&type=delete&id=${cl.car_id}'">Delete</button>
+                                                                        onclick="location.href = 'dashboard?state=image&type=delete&id=${cl.car_id}'">Xóa</button>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -189,8 +189,10 @@
                                                                         <li>
                                                                             <h5 class="text-content d-inline-block">Giá tiền :
                                                                             </h5>
-                                                                            <span>${ci.car.price} vnđ</span>
-                                                                            <span class="text-content">${ci.car.price  + 1000} vnđ</span>
+                                                                            <span><fmt:formatNumber currencySymbol="VND " value = "${ci.car.price}" 
+                                                                                              type = "currency"/></span>
+                                                                            <span class="text-content"><fmt:formatNumber currencySymbol="VND " value = "${ci.car.price + 10000}" 
+                                                                                              type = "currency"/></span>
                                                                         </li>
 
                                                                         <li>
@@ -222,7 +224,8 @@
                                                                         </li>
 
                                                                         <li>
-                                                                            <h5>Tổng : ${ci.car.price}</h5>
+                                                                            <h5>Tổng : <fmt:formatNumber currencySymbol="VND " value = "${ci.car.price}" 
+                                                                                              type = "currency"/> </h5>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -257,9 +260,7 @@
 
                                                         <td class="save-remove">
                                                             <h4 class="table-title text-content">Hành động</h4>
-                                                            <form action="home?state=cart&action=delete&item=${ci.car.car_id}&index=cart" id="form-del-${ci.item_id}" method="post">
-                                                                <input type="submit" value="Xóa khỏi Cart" class="button-83 p-2" style="font-size: 14px;" onclick="document.getElementById('form-del-${ci.item_id}').submit()">
-                                                            </form>
+                                                            <input value="Xóa khỏi Cart" class="button-83 p-2" style="font-size: 14px;" onclick="deleteCartItem(${ci.item_id}); return false;">
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -466,6 +467,7 @@
 
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
+        <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
 
     </body>
 

@@ -4,6 +4,7 @@
  */
 package Models;
 
+import  java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -14,12 +15,12 @@ public class Orders {
 
     int order_id;
     int user_id;
-    String order_date;
+    Timestamp order_date;
     String status;
     float total;
     List<OrderItems> items;
 
-    public Orders(int order_id, int user_id, String order_date, String status, float total, List<OrderItems> items) {
+    public Orders(int order_id, int user_id, Timestamp order_date, String status, float total, List<OrderItems> items) {
         this.order_id = order_id;
         this.user_id = user_id;
         this.order_date = order_date;
@@ -28,7 +29,7 @@ public class Orders {
         this.items = items;
     }
 
-    public Orders(int user_id, String order_date, String status, float total, List<OrderItems> items) {
+    public Orders(int user_id, Timestamp order_date, String status, float total, List<OrderItems> items) {
         this.user_id = user_id;
         this.order_date = order_date;
         this.status = status;
@@ -36,7 +37,7 @@ public class Orders {
         this.items = items;
     }
 
-    public Orders(int user_id, String order_date, String status, float total) {
+    public Orders(int user_id, Timestamp order_date, String status, float total) {
         this.user_id = user_id;
         this.order_date = order_date;
         this.status = status;
@@ -62,11 +63,11 @@ public class Orders {
         this.user_id = user_id;
     }
 
-    public String getOrder_date() {
+    public Timestamp getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(String order_date) {
+    public void setOrder_date(Timestamp order_date) {
         this.order_date = order_date;
     }
 

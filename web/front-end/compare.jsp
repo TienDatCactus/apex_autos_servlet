@@ -49,7 +49,26 @@
 
         <!-- Template css -->
         <link id="color-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
+        <style>
+            #carDescription {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+                display: block;
+                width: 350px;
+                margin: 0 auto;
+            }
 
+            #carDescription:hover {
+                overflow: visible;
+                white-space: normal;
+                background-color: #FFF;
+                padding: 10px;
+                z-index: 1;
+                position: relative;
+            }
+        </style>
     </head>
 
     <body>
@@ -234,9 +253,7 @@
                                             <tr>
                                                 <th>Mô tả</th>
                                                     <c:forEach var="ci" items="${compareItems}">
-                                                        <c:set var="shortDesc" value="${fn:substring(ci.description, 0, 200)}" />
-                                                        <c:set var="shortDesc" value="${shortDesc} ..."/>
-                                                    <td >${shortDesc}</td></c:forEach>
+                                                    <td ><p  id="carDescription">${ci.description}</p></td></c:forEach>
 
                                                 </tr>
                                                 <tr >

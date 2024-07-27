@@ -25,7 +25,7 @@ public class UserAccount {
     String phone;
     String dob;
     int permission_id;
-    Timestamp created_at;
+    String created_at;
     String status;
     Date approved_date;
     Date application_date;
@@ -64,7 +64,7 @@ public class UserAccount {
         this.dob = dob;
     }
 
-    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob, Timestamp created_at) {
+    public UserAccount(String email, String password, String given_name, String family_name, String phone, String dob, String created_at) {
         this.email = email;
         this.password = password;
         this.given_name = given_name;
@@ -106,11 +106,11 @@ public class UserAccount {
         this.dob = dob;
     }
 
-    public Timestamp getCreated_at() {
+    public String getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Timestamp created_at) {
+    public void setCreated_at(String created_at) {
         this.created_at = created_at;
     }
 

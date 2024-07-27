@@ -1,4 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,106 +72,78 @@
     </head>
 
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                    class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                           aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                            class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <jsp:include page="navbar.jsp"></jsp:include>
-                <div id="layoutSidenav_content">
-                    <main class="container-fluid px-4">
-                        <h1 class="mt-4 display-4 text-primary">Seller Management</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Manage Sellers</li>
-                        </ol>
 
-                        <div class="card card-custom mb-4 shadow-sm">
-                            <div class="card-header card-header-custom">
-                                <h5 class="card-title">Seller Approvals</h5>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-striped table-custom">
-                                    <thead>
-                                        <tr>
-                                            <!--<th>Seller Name</th>-->
-                                            <th>Email</th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${lstSeller}" var="s">
-                                        <tr>
-                                            <c:forEach items="${allUserAccount}" var="a">
-                                                <c:if test="${s.user_id == a.user_id}">
-                                                    <td>${a.email}</td>                                       
-                                                    <td>${a.given_name} ${a.family_name}</td> choi dii
-                                                </c:if>  
-                                            </c:forEach>
-                                            <td>${s.description}</td>
+        <jsp:include page="navbar.jsp"></jsp:include>
+            <div id="layoutSidenav_content">
+                <main class="container-fluid px-4">
+                    <h1 class="mt-4 display-4 text-primary">Quản lý yêu cầu</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Yêu cầu từ phía khách hàng</li>
+                    </ol>
 
-                                            <td>
+                    <div class="card card-custom mb-4 shadow-sm">
+                        <div class="card-header card-header-custom">
+                            <h5 class="card-title">Trở thành người bán</h5>
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <!--<th>Seller Name</th>-->
+                                        <th>Email</th>
+                                        <th>Tên</th>
+                                        <th>Mô tả</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${lstSeller}" var="s">
+                                    <tr>
+                                        <c:forEach items="${allUserAccount}" var="a">
+                                            <c:if test="${s.user_id == a.user_id}">
+                                                <td>${a.email}</td>                                       
+                                                <td>${a.given_name} ${a.family_name}</td> choi dii
+                                            </c:if>  
+                                        </c:forEach>
+                                        <td>${s.description}</td>
 
+                                        <td class="d-flex">
+                                            <div>
                                                 <form action="dashboard?state=seller&do=acc" method="post">
                                                     <input type="hidden" value="${s.user_id}" name="id"/>
-                                                    
-                                                    <button class="btn btn-success btn-sm" type="submit">Approve</button>
+
+                                                    <button class="btn btn-success btn-sm" type="submit">Chấp nhận</button>
                                                 </form>
+                                            </div>
+                                            <div>
                                                 <form action="dashboard?state=seller&do=deny" method="post">
                                                     <input type="hidden" value="${s.user_id}" name="id"/>
-                                                    
-                                                    <button class="btn btn-danger btn-sm" type="submit">Reject</button>
+
+                                                    <button class="btn btn-danger btn-sm" type="submit">Từ chối</button>
                                                 </form>
+                                            </div>
 
-                                            </td>
+                                        </td>
 
-                                        </tr> 
-                                    </c:forEach>
+                                    </tr> 
+                                </c:forEach>
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-                </main>
-            </div>
+                </div>
+            </main>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-        <script src="assets/js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-        <script src="assets/js/datatables-simple-demo.js"></script>
-    </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
+    <script src="assets/js/datatables-simple-demo.js"></script>
+</body>
 
 </html>

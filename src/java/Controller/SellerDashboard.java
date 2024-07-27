@@ -9,6 +9,8 @@ import Models.Car;
 import Models.CarBrand;
 import Models.CarCategory;
 import Models.CarImage;
+import Models.OrderItems;
+import Models.Orders;
 import Models.TradeMark;
 import Models.UserAccount;
 import java.io.IOException;
@@ -157,6 +159,8 @@ public class SellerDashboard extends HttpServlet {
                 request.setAttribute("imageCar", imageCar);
                 request.getRequestDispatcher("/seller/carimages.jsp").forward(request, response);
             } else if ("orders".equals(state)) {
+                List<Orders> orders = daoc.AllOrderItems(seller.getUser_id());
+                 request.setAttribute("orderList", orders);
                 request.getRequestDispatcher("/seller/orders.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/seller/index.jsp").forward(request, response);

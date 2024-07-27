@@ -9,58 +9,28 @@
         <meta name="description" content="ApexAutos" />
         <meta name="keywords" content="ApexAutos" />
         <meta name="author" content="ApexAutos" />
-        <link rel="apple-touch-icon" sizes="180x180" href=" assets/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href=" assets/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href=" assets/favicon/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="${pageContext.request.contextPath}/admin/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="${pageContext.request.contextPath}/admin/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/admin/assets/favicon/favicon-16x16.png">
         <link rel="manifest" href=" assets/favicon/site.webmanifest">
         <title>Admin - Dashboard</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="assets/css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/admin/assets/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
 
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                    class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                           aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                            class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+        
         <div id="layoutSidenav">
-            <jsp:include page="navbar.jsp"></jsp:include>
+            <jsp:include page="navbar.jsp"></jsp:include>   
 
                 <div id="layoutSidenav_content">
                     <main >
-                        <div class="container-lg col-xxl-8 px-4 py-3">
+                        <div class="container-fluid px-4 py-3">
                             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                                 <div class="col-10 col-sm-8 col-lg-6">
                                     <img
-                                        src="assets/img/bootstrap-themes.png"
+                                        src="${pageContext.request.contextPath}/admin/assets/img/bootstrap-themes.png"
                                         class="d-block mx-lg-auto img-fluid"
                                         alt="Bootstrap Themes"
                                         width="700"
@@ -103,13 +73,13 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-        <script src="assets/js/scripts.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/demo/chart-area-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
-        <script src="assets/js/datatables-simple-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/admin/assets/js/datatables-simple-demo.js"></script>
     </body>
 
 </html>

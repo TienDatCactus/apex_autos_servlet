@@ -27,7 +27,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Car Specifications</h1>
+                        <h1 class="mt-4">Thông số kĩ thuật</h1>
                     <c:if test="${not empty errorMsg}">
                         <div class="form-msg mt-2 alert alert-danger w-75" role="alert">
                             ${errorMsg}</div>
@@ -39,50 +39,42 @@
                         </div>
                     </c:if>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Car Specifications</li>
+                        <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+                        <li class="breadcrumb-item active">Thông số kĩ thuật</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            DataTables is a third-party plugin used to generate the demo table below. For
-                            more
-                            information about DataTables, please visit the
-                            <a target="_blank" href="https://datatables.net/">official DataTables
-                                documentation</a>.
-                        </div>
-                    </div>
+                   
 
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Car's Specifications
+                                   Thông số kĩ thuật
                                 </div>
                                 <div class="card-body">
                                     <table id="datatablesSimple" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Cylinders</th>
-                                                <th>Horsepower</th>
-                                                <th>Weight</th>
-                                                <th>Acceleration</th>
-                                                <th>Origin</th>
-                                                <th>Action</th>
+                                                <th>Mã phân loại</th>
+                                                <th>Tên xe</th>
+                                                <th>Xi-lanh</th>
+                                                <th>Mã lực</th>
+                                                <th>Trọng lượng</th>
+                                                <th>Gia tốc</th>
+                                                <th>Nguồn gốc</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Cylinders</th>
-                                                <th>Horsepower</th>
-                                                <th>Weight</th>
-                                                <th>Acceleration</th>
-                                                <th>Origin</th>
-                                                <th>Action</th>
+                                                <th>Mã phân loại</th>
+                                                <th>Tên xe</th>
+                                                <th>Xi-lanh</th>
+                                                <th>Mã lực</th>
+                                                <th>Trọng lượng</th>
+                                                <th>Gia tốc</th>
+                                                <th>Nguồn gốc</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -93,18 +85,18 @@
                                                 <tr>
                                                     <td>${cl.car_id }</td>
                                                     <td>${cl.name}</td>
-                                                    <td>${cl.cylinders == 0 ? "Not updated !" :
+                                                    <td>${cl.cylinders == 0 ? "Chưa được cập nhật !" :
                                                           cl.cylinders}</td>
-                                                    <td>${cl.horsepower == 0 ? "Not updated !" :
+                                                    <td>${cl.horsepower == 0 ? "Chưa được cập nhật !" :
                                                           cl.horsepower}</td>
-                                                    <td>${cl.weight == 0 ? "Not updated !" : cl.weight}</td>
-                                                    <td>${cl.acceleration == 0 ? "Not updated !" :
+                                                    <td>${cl.weight == 0 ? "Chưa được cập nhật !" : cl.weight}</td>
+                                                    <td>${cl.acceleration == 0 ? "Chưa được cập nhật !" :
                                                           cl.acceleration}</td>
-                                                    <td>${cl.origin== null ? "Not updated !" : cl.origin}
+                                                    <td>${cl.origin== null ? "Chưa được cập nhật !" : cl.origin}
                                                     </td>
                                                     <td>
                                                         <a href="dashboard?state=specs&type=update&id=${cl.car_id}"
-                                                           class="btn btn-success m-1">Update</a>
+                                                           class="btn btn-success m-1">Cập nhật</a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -120,62 +112,59 @@
                                 <div class="card-header">
                                     <c:set var="prefix" value="${nl.car_id != null ? '#' : ''}" />
                                     <c:set var="id" value="${prefix}${nl.car_id}" />
-                                    <h5 class="card-title">Modify Car: ${id}</h5>
+                                    <h5 class="card-title">Cập nhật Xe : ${id}</h5>
                                 </div>
                                 <div class="card-body">
                                     <form action="dashboard?state=specs&do=update" autocomplete="off"
                                           method="post">
 
                                         <div class="mb-3 ">
-                                            <label for="cylinders" class="form-label">Cylinders</label>
+                                            <label for="cylinders" class="form-label">Số xi-lanh </label>
                                             <input type="number" class="form-control" id="cylinders"
-                                                   name="cylinders" placeholder="Enter number of cylinders"
+                                                   name="cylinders" placeholder="Nhập vào số lượng xi-lanh"
                                                    value="${nl.cylinders}">
                                         </div>
 
                                         <div class="row">
                                             <div class="mb-3 col-6">
                                                 <label for="horsepower"
-                                                       class="form-label">Horsepower</label>
+                                                       class="form-label">Mã lực</label>
                                                 <input type="number" class="form-control" id="horsepower"
                                                        name="horsepower" step="0.01"
-                                                       placeholder="Enter horsepower" value="${nl.horsepower}">
+                                                       placeholder="Nhập vào mã lực " value="${nl.horsepower}">
                                             </div>
                                             <div class="mb-3 col-6">
-                                                <label for="weight" class="form-label">Weight</label>
+                                                <label for="weight" class="form-label">Trọng lượng</label>
                                                 <input type="number" step="0.01" class="form-control"
-                                                       id="weight" name="weight" placeholder="Enter weight"
+                                                       id="weight" name="weight" placeholder="Nhập vào khối lượng xe"
                                                        value="${nl.weight}">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-6">
                                                 <label for="acceleration"
-                                                       class="form-label">Acceleration</label>
+                                                       class="form-label">Gia tốc</label>
                                                 <input type="number" class="form-control" id="acceleration"
                                                        name="acceleration" step="0.01"
-                                                       placeholder="Enter acceleration"
+                                                       placeholder="Nhập vào gia tốc xe"
                                                        value="${nl.acceleration}">
                                             </div>
                                             <div class="mb-3 col-6 position-relative">
-                                                <label for="origin" class="form-label">Origin</label>
+                                                <label for="origin" class="form-label">Xuất xứ</label>
                                                 <input type="text" class="form-control" id="origin"
-                                                       name="origin" placeholder="Enter origin country"
+                                                       name="origin" placeholder="Nhập vào xuất xứ của xe"
                                                        value="${nl.origin}">
                                                 <ul class="dropdown-menu" id="originDropdown"></ul>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <button type="submit" class="btn btn-warning" name="carId" value="${nl.car_id}">Update</button>
+                                                <button type="submit" class="btn btn-warning" name="carId" value="${nl.car_id}">Cập nhật</button>
                                             </div>
 
                                             <div>
-                                                <input type="button"
-                                                       onclick="(() => {
-                                                                   location.href = 'dashboard?state=specs';
-                                                               })()"
-                                                       class="btn btn-primary" id="cancel" value="Cancel"
+                                                <input type="reset"
+                                                       class="btn btn-primary" id="cancel" value="Hủy"
                                                        name="cancel">
                                             </div>
                                         </div>

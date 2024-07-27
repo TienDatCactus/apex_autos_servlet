@@ -47,10 +47,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Cars' Brands & Categories </h1>
-                    <c:if test="${not empty errorMsg and not empty successMsg}">
-                        <h1>We are both here my friend</h1>
-                    </c:if>
+                        <h1 class="mt-4">Thông số kiểu & hãng xe</h1>
                     <c:if test="${not empty errorMsg}">
                         <div class="form-msg mt-2 alert alert-danger w-75" role="alert">
                             ${errorMsg}</div>
@@ -63,8 +60,8 @@
                     </c:if>
 
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active"> Brands & Categories</li>
+                        <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+                        <li class="breadcrumb-item active"> Kiểu & Hãng xe</li>
                     </ol>
 
 
@@ -73,15 +70,15 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Car's Brands
+                                    Hãng xe
                                 </div>
                                 <div class="card-body">
                                     <table id="brandTable">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Action</th>
+                                                <th>Mã phân loại</th>
+                                                <th>Tên</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -93,7 +90,7 @@
                                                     <td>${cb.id}</td>
                                                     <td>${cb.name}</td>
                                                     <td><a href="dashboard?state=attributes&role=brand&type=update&id=${cb.id}"
-                                                           class="btn btn-outline-success m-1">Update</a>
+                                                           class="btn btn-outline-success m-1">Cập nhật</a>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -105,15 +102,15 @@
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Car's Categories
+                                    Kiểu loại xe
                                 </div>
                                 <div class="card-body">
                                     <table id="cateTable">
                                         <thead>
                                             <tr>
-                                                <th>Id </th>
-                                                <th>Name</th>
-                                                <th>Action</th>
+                                                <th>Mã phân loại</th>
+                                                <th>Tên</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -125,7 +122,7 @@
                                                     <td>${cc.id}</td>
                                                     <td>${cc.name}</td>
                                                     <td><a href="dashboard?state=attributes&role=cate&type=update&id=${cc.id}"
-                                                           class="btn btn-outline-success m-1">Update</a>
+                                                           class="btn btn-outline-success m-1">Cập nhật</a>
                                                 </tr>
                                             </c:forEach>
 
@@ -139,21 +136,21 @@
                         <div class="col-xl-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">Modify Brands</h5>
+                                    <h5 class="card-title">Thay đổi hãng xe</h5>
                                 </div>
                                 <div class="card-body">
                                     <form id="addRoleForm" autocomplete="off" method="post"
                                           action="dashboard?state=attributes&role=brand">
                                         <div class="mb-3 position-relative">
-                                            <label for="brand" class="form-label">Enter Brand's name</label>
+                                            <label for="brand" class="form-label">Nhập vào hãng xe</label>
                                             <input type="text" class="form-control" id="brand" name="brand"
                                                    placeholder="Chevrolet, Honda..." value="${nb.name}">
                                             <ul class="dropdown-menu" id="brandDropdown"></ul>
                                         </div>
                                         <button type="submit" class="btn btn-success" name="brandId"
                                                 value="${nb == null ? "add" : nb.id}">Save changes</button>
-                                        <input type="button" class="btn btn-danger" value="Cancel"
-                                               onclick="location.href = 'dashboard?state=attributes'">
+                                        <input type="reset" class="btn btn-danger" value="Hủy"
+                                               >
                                     </form>
 
                                 </div>
@@ -162,22 +159,21 @@
                         <div class="col-xl-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">Modify Categories</h5>
+                                    <h5 class="card-title">Thay đổi kiểu xe</h5>
                                 </div>
                                 <div class="card-body">
                                     <form id="addRoleForm" autocomplete="off" method="post"
                                           action="dashboard?state=attributes&role=cate">
                                         <div class="mb-3 position-relative">
-                                            <label for="cate" class="form-label">Enter Category's
-                                                name</label>
+                                            <label for="cate" class="form-label">Nhập tên kiểu xe</label>
                                             <input type="text" class="form-control" id="cate" name="cate"
                                                    placeholder="Sports , Sedans ..." value="${nc.name}">
                                             <ul class="dropdown-menu" id="cateDropdown"></ul>
                                         </div>
                                         <button type="submit" class="btn btn-success" name="cateId"
-                                                value="${nc == null ? "add" : nc.id}">Save changes</button>
-                                        <input type="button" class="btn btn-danger" value="Cancel"
-                                               onclick="location.href = 'dashboard?state=attributes'">
+                                                value="${nc == null ? "add" : nc.id}">Lưu</button>
+                                        <input type="reset" class="btn btn-danger" value="Hủy"
+                                               >
                                     </form>
 
                                 </div>
@@ -236,5 +232,6 @@ crossorigin="anonymous"></script>
     ];
     autocomplete(document.getElementById("brand"), carBrands);
     autocomplete(document.getElementById("cate"), carCategories);
+    
 </script>
 </html>

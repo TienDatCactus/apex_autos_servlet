@@ -242,7 +242,7 @@ public class CarDao {
         String sql = "INSERT INTO orders (user_id, order_date, status, total) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setInt(1, order.getUser_id());
-            pstmt.setString(2, order.getOrder_date());
+            pstmt.setTimestamp(2, order.getOrder_date());
             pstmt.setString(3, order.getStatus());
             pstmt.setFloat(4, order.getTotal());
 
@@ -321,10 +321,10 @@ public class CarDao {
         return orderItemsList; // This will contain all order items for all orders of the user
     }
 
-    public List<OrderItems> AllOrderItems(int selller_id) {
+    public List<Orders> AllOrderItems(int selller_id) {
         List<OrderItems> orderItemsList = new ArrayList<>();
-
-        String selectOrderItemsQuery = "select * from orders o join order_items oi on o.order_id = oi.order_id join car c on oi.car_id = c.car_id where seller_id = ?";
+        List<Orders> orderList = new ArrayList<>();
+        String selectOrderItemsQuery = "select * from orders o join order_items oi on o.order_id = oi.order_id join car c on c.car_id = oi.car_id where c.seller_id = ?";
 
         try (PreparedStatement psSelectOrderItems = con.prepareStatement(selectOrderItemsQuery)) {
 
@@ -349,21 +349,23 @@ public class CarDao {
                         rsOrders.getInt("category_id")
                 );
 
-                OrderItems orderItems = new OrderItems(item_id,rsOrders.getInt("order_id"), car,rsOrders.getFloat("total"),rsOrders.getString("status"));
+                OrderItems orderItems = new OrderItems(item_id, rsOrders.getInt("order_id"), car);
                 orderItemsList.add(orderItems);
+                Orders order = new Orders(rsOrders.getInt("order_id"),rsOrders.getInt("user_id"),rsOrders.getTimestamp("order_date"),rsOrders.getString("status"), rsOrders.getFloat("total"),orderItemsList);
+                orderList.add(order);
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return orderItemsList; // This will contain all order items for all orders of the user
+        return orderList; // This will contain all order items for all orders of the user
     }
 
     public static void main(String[] args) {
         CarDao dao = new CarDao();
-       
-        System.out.println(dao.AllOrderItems(1020));
+
+        System.out.println(dao.getTradeMark(1));
     }
 
     public List<CarCategory> viewCarCategory() {

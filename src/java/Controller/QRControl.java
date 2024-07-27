@@ -37,7 +37,7 @@ public class QRControl extends HttpServlet {
             return;
         }
 
-        String qrContent = "Car ID: " + carId + "\nDescription: " + description;
+        String qrContent = carId + "-" + description;
         int width = 300;
         int height = 300;
 

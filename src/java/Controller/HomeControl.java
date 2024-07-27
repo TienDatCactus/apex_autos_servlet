@@ -77,7 +77,7 @@ public class HomeControl extends HttpServlet {
         } else if ("detail".equals(state)) {
             List<Car> carList = dao.viewProducts();
             String carId = request.getParameter("id");
-            
+            String sellerId = request.getParameter("idSeller");
             int id = 0;
             
             try {
@@ -90,7 +90,7 @@ public class HomeControl extends HttpServlet {
             List<CommentCar> allComment = daou.viewAllCommentFor1Car();
             List<CarImage> carImage = dao.viewImageForCar();
             List<UserAccount> allAccounts = daoa.viewUsers();
-            
+            TradeMark tradeMarks = dao.getTradeMark(Integer.parseInt(sellerId));
             request.setAttribute("carImage", carImage);
             request.setAttribute("allAccounts", allAccounts);
             request.setAttribute("carComment", allComment);
@@ -98,6 +98,7 @@ public class HomeControl extends HttpServlet {
             request.setAttribute("carDT", carDT);
             request.setAttribute("error", error);
             request.setAttribute("success", success);
+            request.setAttribute("tradeMark", tradeMarks);
             
             request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
                     .forward(request, response);
@@ -147,9 +148,9 @@ public class HomeControl extends HttpServlet {
                 List<CarImage> carImage = dao.viewImageForCar();
                 List<Status> allStatus = daou.viewAllStatus();
                 List<UserAccount> allAccounts = daoa.viewUsers();
-                List<Comment> allComment = daou.viewAllComment();
-                
-                request.setAttribute("allComment", allComment);
+//                List<Comment> allComment = daou.viewAllComment();
+
+//                request.setAttribute("allComment", allComment);
                 request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("allStatus", allStatus);
                 request.setAttribute("carCate", carCate);
@@ -314,8 +315,8 @@ public class HomeControl extends HttpServlet {
                         int status_id_check = Integer.parseInt(request.getParameter("status_id"));
                         int user_id_check = Integer.parseInt(request.getParameter("user_id"));
                         String comment = request.getParameter("comment");
-                        Comment c = new Comment(0, comment, status_id_check, user_id_check);
-                        daou.addNewComment(c);
+//                        Comment c = new Comment(0, comment, status_id_check, user_id_check);
+//                        daou.addNewComment(c);
                         break;
                     case "adCmt":
                         int carIdCheck = Integer.parseInt(request.getParameter("car_id"));
@@ -331,14 +332,14 @@ public class HomeControl extends HttpServlet {
                         throw new AssertionError();
                 }
                 List<Status> allStatus = daou.viewAllStatus();
-                List<Comment> allComment = daou.viewAllComment();
+//                List<Comment> allComment = daou.viewAllComment();
                 List<UserAccount> allAccounts = daoa.viewUsers();
-                List<Comment> allComment1Car = daou.viewAllComment();
+//                List<Comment> allComment1Car = daou.viewAllComment();
                 
                 request.setAttribute("allStatus", allStatus);
-                request.setAttribute("allComment", allComment);
+//                request.setAttribute("allComment", allComment);
                 request.setAttribute("allAccounts", allAccounts);
-                request.setAttribute("allComment1Car", allComment1Car);
+//                request.setAttribute("allComment1Car", allComment1Car);
                 doGet(request, response);
             } else if ("become".equals(state)) {
                 int id = Integer.parseInt(request.getParameter("id"));
@@ -372,13 +373,13 @@ public class HomeControl extends HttpServlet {
                 }
                 
                 List<Status> allStatus = daou.viewAllStatus();
-                List<Comment> allComment = daou.viewAllComment();
+//                List<Comment> allComment = daou.viewAllComment();
                 List<UserAccount> allAccounts = daoa.viewUsers();
-                List<Comment> allComment1Car = daou.viewAllComment();
+//                List<Comment> allComment1Car = daou.viewAllComment();
                 request.setAttribute("allStatus", allStatus);
-                request.setAttribute("allComment", allComment);
+//                request.setAttribute("allComment", allComment);
                 request.setAttribute("allAccounts", allAccounts);
-                request.setAttribute("allComment1Car", allComment1Car);
+//                request.setAttribute("allComment1Car", allComment1Car);
                 doGet(request, response);
                 
             } else if ("compare".equals(state)) {

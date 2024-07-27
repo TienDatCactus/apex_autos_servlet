@@ -23,11 +23,11 @@
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="${pageContext.request.contextPath}/seller/ assets/favicon/favicon-16x16.png"
+            href="${pageContext.request.contextPath}/seller/assets/favicon/favicon-16x16.png"
             />
         <link
             rel="manifest"
-            href="${pageContext.request.contextPath}/seller/ assets/favicon/site.webmanifest"
+            href="${pageContext.request.contextPath}/seller/assets/favicon/site.webmanifest"
             />
         <title>Admin - Dashboard</title>
         <link
@@ -63,7 +63,7 @@
 
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-lg col-xxl-8 px-4 py-3">
+                    <div class="container-fluid px-4 py-3">
                         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                             <div class="col-10 col-sm-8 col-lg-6">
                                 <img

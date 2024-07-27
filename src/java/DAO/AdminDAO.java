@@ -40,7 +40,7 @@ public class AdminDAO {
                 ua.setDob(rs.getString("dob"));
                 ua.setPhone(rs.getString("phone"));
                 ua.setPermission_id(rs.getInt("permission_id"));
-                ua.setCreated_at(rs.getTimestamp("created_at"));
+                ua.setCreated_at(rs.getString("created_at"));
                 users.add(ua);
             }
             return users;
@@ -212,7 +212,7 @@ public class AdminDAO {
                     ua.setDob(rs.getString("dob"));
                     ua.setPhone(rs.getString("phone"));
                     ua.setPermission_id(rs.getInt("permission_id"));
-                    ua.setCreated_at(rs.getTimestamp("created_at"));
+                    ua.setCreated_at(rs.getString("created_at"));
                     lst.add(ua);
                 }
                 return lst;

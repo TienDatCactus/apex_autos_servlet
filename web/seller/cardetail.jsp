@@ -38,6 +38,27 @@
             src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
             crossorigin="anonymous"
         ></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+        <style>
+            #carDescription {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+                display: block;
+                width: 400px
+            }
+
+            #carDescription:hover {
+                overflow: visible;
+                white-space: normal;
+                background-color: #FFF;
+                padding: 10px;
+                z-index: 1;
+                position: relative;
+            }
+        </style>
     </head>
 
     <body class="sb-nav-fixed">
@@ -45,7 +66,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
+                        <h1 class="mt-4">Danh sách xe</h1>
                     <c:if test="${not empty errorMsg}">
                         <div class="form-msg mt-2 alert alert-danger w-75" role="alert">
                             ${errorMsg}
@@ -58,53 +79,43 @@
                     </c:if>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                            <a href="index.html">Bảng điều khiển</a>
                         </li>
-                        <li class="breadcrumb-item active">Tables</li>
+                        <li class="breadcrumb-item active">Danh sách xe</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            DataTables is a third party plugin that is used to generate the
-                            demo table below. For more information about DataTables, please
-                            visit the
-                            <a target="_blank" href="https://datatables.net/"
-                               >official DataTables documentation</a
-                            >
-                            .
-                        </div>
-                    </div>
+
 
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-table me-1"></i>
-                                    Car's info
+                                    Chi tiết xe
                                 </div>
                                 <div class="card-body">
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Model Year</th>
-                                                <th>Price</th>
-                                                <th>Description</th>
-                                                <th>Brand</th>
-                                                <th>Category</th>
-                                                <th>Action</th>
+                                                <th>Mã phân loại</th>
+                                                <th>Tên</th>
+                                                <th>Năm sản xuất</th>
+                                                <th>Giá</th>
+                                                <th>Mô tả</th>
+                                                <th>Hãng</th>
+                                                <th>Kiểu loại</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Model Year</th>
-                                                <th>Price</th>
-                                                <th>Description</th>
-                                                <th>Brand</th>
-                                                <th>Category</th>
-                                                <th>Action</th>
+                                                <th>Mã phân loại</th>
+                                                <th>Tên</th>
+                                                <th>Năm sản xuất</th>
+                                                <th>Giá</th>
+                                                <th>Mô tả</th>
+                                                <th>Hãng</th>
+                                                <th>Kiểu loại</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -117,12 +128,7 @@
                                                     <td>${cl.name}</td>
                                                     <td>${cl.model_year}</td>
                                                     <td>${cl.price}</td>
-                                                    <td ><p style="
-                                                            line-height: 1.5;
-                                                            -webkit-line-clamp: 2;
-                                                            -webkit-box-orient: vertical;
-                                                            display: -webkit-box;
-                                                            overflow: hidden;">${cl.description}</p></td>
+                                                    <td ><p id="carDescription">${cl.description}</p></td>
                                                     <td>
                                                         <c:forEach items="${carBrand}" var="cb">
                                                             <c:if test="${cb.id == cl.brand_id}">
@@ -167,7 +173,7 @@
                                         value="${nl.car_id != null ? '#' : ''}"
                                         />
                                     <c:set var="id" value="${prefix}${nl.car_id}" />
-                                    <h5 class="card-title">Modify car : ${id}</h5>
+                                    <h5 class="card-title">Cập nhật xe : ${id}</h5>
                                 </div>
                                 <div class="card-body">
                                     <form
@@ -178,20 +184,20 @@
                                         <div class="row">
                                             <div class="mb-3 col-6 position-relative">
                                                 <label for="car_name" class="form-label"
-                                                       >Car's Name</label
+                                                       >Tên xe</label
                                                 >
                                                 <input
                                                     type="text"
                                                     class="form-control"
                                                     id="car_name"
                                                     name="car_name"
-                                                    placeholder="Enter car's name"
+                                                    placeholder="Nhập vào tên xe"
                                                     value="${nl.name}"
                                                     />
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <label for="model_year" class="form-label"
-                                                       >Model_year</label
+                                                       >Năm sản xuất</label
                                                 >
                                                 <input
                                                     type="date"
@@ -203,28 +209,29 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="price" class="form-label">Price</label>
+                                            <label for="price" class="form-label">Giá tiền</label>
                                             <input
                                                 type="text"
                                                 class="form-control"
                                                 id="price"
                                                 name="price"
-                                                placeholder="Enter price amount"
+                                                placeholder="Nhập vào giá trị xe"
                                                 value="${nl.price}"
                                                 />
                                         </div>
                                         <div class="mb-3">
-                                            <label for="desc" class="form-label">Description</label>
+                                            <label for="desc" class="form-label">Mô tả</label>
                                             <textarea
                                                 class="form-control"
                                                 id="desc"
                                                 name="desc"
-                                                placeholder="Enter car's description"
+                                                placeholder="Nhập vào mô tả xe"
                                                 >${nl.description}</textarea>
+
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-6">
-                                                <label for="brand" class="form-label">Brand</label>
+                                                <label for="brand" class="form-label">Nhãn hiệu</label>
                                                 <select class="form-select" id="brand" name="brand">
                                                     <c:forEach items="${carBrand}" var="cb">
                                                         <option
@@ -238,7 +245,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <label for="category" class="form-label"
-                                                       >Category</label
+                                                       >Kiểu loại</label
                                                 >
                                                 <select
                                                     class="form-select"
@@ -264,17 +271,14 @@
                                                     name="carId"
                                                     value="${nl.car_id}"
                                                     >
-                                                    Update
+                                                    Cập nhật
                                                 </button>
                                             </div>
                                             <input
-                                                type="button"
-                                                onclick="(() => {
-                                                            location.href = 'dashboard?state=detail';
-                                                        })()"
+                                                type="reset"
                                                 class="btn btn-primary"
                                                 id="cancel"
-                                                value="Cancel"
+                                                value="Hủy"
                                                 name="cancel"
                                                 />
                                         </div>
@@ -285,7 +289,7 @@
                         <div class="col-lg-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <h5 class="card-title">Add new Car :</h5>
+                                    <h5 class="card-title">Thêm xe mới :</h5>
                                 </div>
                                 <div class="card-body">
                                     <form
@@ -296,7 +300,7 @@
                                         <!-- form fields -->
                                         <div class="row">
                                             <div class="mb-3 col-6">
-                                                <label for="name1" class="form-label">Name</label>
+                                                <label for="name1" class="form-label">Tên xe</label>
                                                 <input
                                                     type="text"
                                                     class="form-control"
@@ -308,7 +312,7 @@
                                             </div>
                                             <div class="mb-3 col-6">
                                                 <label for="model_year1" class="form-label"
-                                                       >Model Year</label
+                                                       >Năm sản xuất</label
                                                 >
                                                 <input
                                                     type="date"
@@ -320,30 +324,30 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="price" class="form-label">Price</label>
+                                            <label for="price" class="form-label">Giá tiền</label>
                                             <input
                                                 type="number"
                                                 min="1"
                                                 class="form-control"
                                                 id="priceEditInput"
-                                                placeholder="Enter price"
+                                                placeholder="Nhập vào giá trị của xe"
                                                 name="price1"
                                                 />
                                         </div>
                                         <div class="mb-3">
                                             <label for="desc1" class="form-label"
-                                                   >Description</label
+                                                   >Mô tả</label
                                             >
                                             <textarea
                                                 class="form-control"
                                                 id="desc1"
                                                 name="desc1"
-                                                placeholder="Enter car's description"
+                                                placeholder="Nhập vào mô tả xe"
                                                 ></textarea>
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-6">
-                                                <label for="brand" class="form-label">Brand</label>
+                                                <label for="brand" class="form-label">Nhãn hiệu</label>
                                                 <select class="form-select" id="brand" name="brand1">
                                                     <c:forEach items="${carBrand}" var="cb">
                                                         <option value="${cb.id}">${cb.name}</option>
@@ -353,7 +357,7 @@
 
                                             <div class="mb-3 col-6">
                                                 <label for="category" class="form-label"
-                                                       >Category</label
+                                                       >Kiểu loại</label
                                                 >
                                                 <select
                                                     class="form-select"
@@ -371,18 +375,15 @@
                                                 <input
                                                     type="submit"
                                                     class="btn btn-success"
-                                                    value="Add"
+                                                    value="Thêm mới"
                                                     name="add"
                                                     />
                                             </div>
                                             <input
-                                                type="button"
-                                                onclick="(() => {
-                                                            location.href = 'dashboard?state=detail';
-                                                        })()"
+                                                type="reset"
                                                 class="btn btn-primary"
                                                 id="cancel1"
-                                                value="Cancel"
+                                                value="Hủy"
                                                 />
                                         </div>
                                     </form>
@@ -413,5 +414,12 @@
 ></script>
 <script src="assets/js/datatables-simple-demo.js"></script>
 <script src="assets/js/scripts.js"></script>
-
+<script>
+                                                    var simplemde = new SimpleMDE({
+                                                        element: document.getElementById("simplemde")
+                                                    });
+                                                    if (window.history.replaceState) {
+                                                        window.history.replaceState(null, null, window.location.href);
+                                                    }
+</script>
 </html>

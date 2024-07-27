@@ -51,6 +51,25 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
         <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <link id="color-link" rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
+        <style>
+
+            .text-content{
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+                display: block;
+                width: 250px
+            }
+
+            .text-content:hover {
+                overflow: visible;
+                white-space: normal;
+                padding: 10px;
+                z-index: 1;
+                position: relative;
+            }
+        </style>
     </head>
 
     <body>
@@ -110,15 +129,15 @@
                 </ul>
             </div>
             <!-- mobile fix menu end -->
+            <input type="hidden" name="sellerId" value="${carDT.seller_id}">
+        <!-- Breadcrumb Section Start -->
+        <section class="breadscrumb-section pt-0">
+            <div class="container-fluid-lg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadscrumb-contain">
 
-            <!-- Breadcrumb Section Start -->
-            <section class="breadscrumb-section pt-0">
-                <div class="container-fluid-lg">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="breadscrumb-contain">
-
-                                <h2>${carDT.name}</h2>
+                            <h2>${carDT.name}</h2>
                             <nav>
                                 <ol class="breadcrumb mb-0">
                                     <li class="breadcrumb-item">
@@ -209,7 +228,7 @@
                                     <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                          data-hours="1" data-minutes="2" data-seconds="3">
                                         <div class="product-title">
-                                            <h4>Hurry up! Sales Ends In</h4>
+                                            <h4>Nhanh chân lên ! Ưu đãi có hạn !</h4>
                                         </div>
                                         <ul>
                                             <li>
@@ -217,7 +236,7 @@
                                                     <div class="days d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Days</h6>
+                                                    <h6>Ngày</h6>
                                                 </div>
                                             </li>
                                             <li>
@@ -225,7 +244,7 @@
                                                     <div class="hours d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Hours</h6>
+                                                    <h6>Tiếng</h6>
                                                 </div>
                                             </li>
                                             <li>
@@ -233,7 +252,7 @@
                                                     <div class="minutes d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Min</h6>
+                                                    <h6>Phút</h6>
                                                 </div>
                                             </li>
                                             <li>
@@ -241,7 +260,7 @@
                                                     <div class="seconds d-block">
                                                         <h5></h5>
                                                     </div>
-                                                    <h6>Sec</h6>
+                                                    <h6>Giây</h6>
                                                 </div>
                                             </li>
                                         </ul>
@@ -254,8 +273,8 @@
                                                         class = "button-86 text-white w-75 ">Thêm vào giỏ hàng</button>
                                             </c:when>
                                             <c:otherwise> 
-                                                <button onClick="location.href='${pageContext.request.contextPath}/login'"
-                                                class = "button-86 text-white w-75 ">Thêm vào giỏ hàng</button>
+                                                <button onClick="location.href = '${pageContext.request.contextPath}/login'"
+                                                        class = "button-86 text-white w-75 ">Thêm vào giỏ hàng</button>
                                             </c:otherwise>
                                         </c:choose>
 
@@ -352,7 +371,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="nav-desh">
-                                                    <p>${carDT.description}</p>
+                                                    <p style="font-size: 22px">${carDT.description}</p>
                                                 </div>
 
 
@@ -371,6 +390,7 @@
                                                             <td>Nhãn hiệu</td>
                                                             <c:forEach var="cb" items="${carBrand}">
                                                                 <c:if test="${cb.id == carDT.brand_id}" >
+                                                                    <c:set var="brandName" value="${cb.name}" ></c:set>
                                                                     <td>${cb.name}</td>
                                                                 </c:if>
                                                             </c:forEach>
@@ -379,6 +399,7 @@
                                                             <td>Kiểu xe</td>
                                                             <c:forEach var="cc" items="${carCate}">
                                                                 <c:if test="${cc.id == carDT.category_id}" >
+                                                                    <c:set var="cateName" value="${cc.name}" ></c:set>
                                                                     <td>${cc.name}</td>
                                                                 </c:if>
                                                             </c:forEach>
@@ -530,11 +551,11 @@
 
                                                                 <div class="col-12">
                                                                     <div class="form-floating theme-form-floating">
-                                                                        <form action="home?state=detail&action=adCmt" method="post" >
+                                                                        <form action="home?state=detail&id=${carDT.car_id}&idSeller=${carDT.seller_id}&action=adCmt" method="post" >
                                                                             <input type="hidden" name="id" value="${carDT.car_id}">
                                                                             <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
                                                                             <textarea class="form-control"
-                                                                                      placeholder="Leave a comment here"
+                                                                                      placeholder="Bình luận của bạn"
                                                                                       id="simplemde" name="comment"
                                                                                       ></textarea>
                                                                             <button type="submit" class="button-83">Bình luận</button>
@@ -683,11 +704,7 @@
                                     </div>
                                 </div>
 
-                                <p class="vendor-detail" style="text-overflow: ellipsis;
-                                   overflow: hidden;
-                                   width: 160px;
-                                   height: 1.2em;
-                                   white-space: nowrap;">${tradeMark.describe}</p>
+                                <p class="vendor-detail">${tradeMark.describe}</p>
                                 <div class="vendor-list">
                                     <ul>
                                         <li>
@@ -748,23 +765,7 @@
                             </div>
 
                             <!-- Banner Section -->
-                            <div class="ratio_156 pt-25">
-                                <div class="home-contain">
-                                    <img src="${pageContext.request.contextPath}/front-end/assets/images/inner-page/1.jpg" class="bg-img blur-up lazyload"
-                                         alt="">
-                                    <div class="home-detail p-top-left home-p-medium">
-                                        <div>
-                                            <h6 class="text-yellow home-banner">Seafood</h6>
-                                            <h3 class="text-uppercase fw-normal"><span
-                                                    class="theme-color fw-bold">Sản phẩm </span> mới</h3>
-                                            <h3 class="fw-light">tháng này</h3>
-                                            <button onclick="location.href = 'home';"
-                                                    class="button-86 btn-md fw-bold mend-auto">Xem ngay<i
-                                                    class="fa-solid fa-arrow-right icon"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -787,41 +788,56 @@
                     <div class="col-12">
                         <div class="slider-6_1 product-wrapper">
                             <c:forEach var="cl" items="${carList}" begin="1" end="20">
-                                <div>
+                                <div data-name="${cl.name}" data-brand="${brandName}" data-cate="${cateName}" data-year="${cl.model_year}" data-price="${cl.price}" data-origin="${cl.origin}">
                                     <div class="product-box-3 wow fadeInUp">
                                         <div class="product-header">
                                             <div class="product-image">
-                                                <a href="detail?id=${cl.car_id}">
+                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}" class='copy-ele-${cl.car_id}'>
                                                     <c:set var="firstImagePrinted" value="false" />
                                                     <c:forEach items="${carImage}" var="ci">
                                                         <c:if test="${ci.car_id == cl.car_id}">
                                                             <c:forEach items="${ci.image_url}" var="obj">
                                                                 <c:if test="${not firstImagePrinted}">
-                                                                    <img src="${obj}"  alt="Car Image" class="card-img-top "  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                    <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
                                                                     <c:set var="firstImagePrinted" value="true" />
                                                                 </c:if>
                                                             </c:forEach>
                                                         </c:if> 
                                                     </c:forEach>
+
                                                 </a>
 
                                                 <ul class="product-option">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                        <a href="detail?id=${cl.car_id}" data-bs-toggle="modal"
-                                                           data-bs-target="#view">
+                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                           data-bs-target="#view-${cl.car_id}">
                                                             <i data-feather="eye"></i>
                                                         </a>
                                                     </li>
 
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                                        <a href="compare.html">
-                                                            <i data-feather="refresh-cw"></i>
-                                                        </a>
+                                                        <c:choose>
+                                                            <c:when test="${sessionScope.user != null}">
+                                                                <input type="hidden" value="${cl.car_id}" name="carId"/>
+                                                                <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="addToCompare(${cl.car_id})">
+                                                                    <i data-feather="refresh-cw" ></i>
+                                                                </a>
+                                                            </c:when>
+                                                            <c:otherwise> 
+                                                                <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="location.href = '${pageContext.request.contextPath}/login'">
+                                                                    <i data-feather="refresh-cw" ></i>
+                                                                </a>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                     </li>
-
-                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Cart">
-                                                        <a href="wishlist.html" class="notifi-wishlist">
-                                                            <i data-feather="shopping-cart"></i>
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
+                                                        <a style="cursor: pointer" class="notifi-wishlist" onclick="(() => {
+                                                                    let element = document.querySelector('.copy-ele-${cl.car_id}');
+                                                                    if (element) {
+                                                                        navigator.clipboard.writeText(element.href);
+                                                                    }
+                                                                })()">
+                                                            <i data-feather="clipboard"></i>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -830,22 +846,11 @@
 
                                         <div class="product-footer">
                                             <div class="product-detail">
-                                                <c:forEach var="cc" items="${carCate}">
-                                                    <c:if test="${carDT.category_id == cc.id}">
-                                                        <c:set value="${cc.name}" var="cate"></c:set>
-                                                    </c:if> 
-                                                </c:forEach>
-                                                <c:forEach var="cb" items="${carBrand}">
-                                                    <c:if test="${carDT.brand_id == cb.id}">
-                                                        <c:set value="${cb.name}" var="brand"></c:set>
-                                                    </c:if>
-                                                    <c:if test="${cl.brand_id == cb.id}">
-                                                        <span class="span-name">${cb.name}</span>
-                                                    </c:if>
-                                                </c:forEach>
-                                                <a href="product-left-thumbnail.html">
+                                                <span class="span-name">${brandName}</span>
+                                                <a href="${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}">
                                                     <h5 class="name">${cl.name}</h5>
                                                 </a>
+                                                <p class="text-content mt-1 mb-2 product-content">${cl.description}</p>
                                                 <div class="product-rating mt-2">
                                                     <ul class="rating">
                                                         <li>
@@ -861,26 +866,133 @@
                                                             <i data-feather="star" class="fill"></i>
                                                         </li>
                                                         <li>
-                                                            <i data-feather="star" class="fill"></i>
+                                                            <i data-feather="star"></i>
                                                         </li>
                                                     </ul>
-                                                    <span>(5.0)</span>
+                                                    <span>(4.0)</span>
                                                 </div>
-                                                <h6 class="unit">${cl.weight} Kg</h6>
-                                                <h5 class="price"><span class="theme-color">$ ${cl.price}</span>
+                                                <h6 class="unit">${cl.model_year}</h6>
+                                                <h5 class="price"><span class="theme-color">${cl.price} vnd</span> <del>${cl.price + 100000} vnd</del>
                                                 </h5>
-                                                <c:if test="${not empty sessionScope.user}">
+                                                <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
                                                     <div class="add-to-cart-box">
-                                                        <button class="button-13 py-1 btn-add-cart addcart-button"  onClick='addToCart(${carDT.car_id})'>Add
+                                                        <!--<form method="post" id="form-cart-${cl.car_id}" action="home?state=cart&action=add&item=${cl.car_id}">-->
+                                                        <button class="button-13 py-1 btn-add-cart addcart-button"  onclick="addToCart(${cl.car_id})">Thêm vào giỏ hàng
                                                         </button>
+                                                        <!--</form>-->
                                                     </div>
                                                 </c:if>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </c:forEach>
+<!--                                <div class="modal fade theme-modal view-modal" id="view-${cl.car_id}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
+                                        <div class="modal-content">
+                                            <div class="modal-header p-0">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <i class="fa-solid fa-xmark"></i>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row g-sm-4 g-2">
+                                                    <div class="col-lg-6">
+                                                        <div class="slider-image">
+                                <c:set var="firstImagePrinted" value="false" />
+                                <c:forEach items="${carImage}" var="ci">
+                                    <c:if test="${ci.car_id == cl.car_id}">
+                                        <c:forEach items="${ci.image_url}" var="obj">
+                                            <c:if test="${not firstImagePrinted}">
+                                                <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                <c:set var="firstImagePrinted" value="true" />
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if> 
+                                </c:forEach>
+                            </div>
+                        </div>
 
+                        <div class="col-lg-6">
+                            <div class="right-sidebar-modal">
+                                <h4 class="title-name">${cl.name}</h4>
+                                <h4 class="price"><fmt:formatNumber currencySymbol="VND " value = "${cl.price}" 
+                                                  type = "currency"/></h4>
+                                <div class="product-rating">
+                                    <ul class="rating">
+                                        <li>
+                                            <i data-feather="star" class="fill"></i>
+                                        </li>
+                                        <li>
+                                            <i data-feather="star" class="fill"></i>
+                                        </li>
+                                        <li>
+                                            <i data-feather="star" class="fill"></i>
+                                        </li>
+                                        <li>
+                                            <i data-feather="star" class="fill"></i>
+                                        </li>
+                                        <li>
+                                            <i data-feather="star"></i>
+                                        </li>
+                                    </ul>
+                                    <span class="ms-2">8 Lượt đánh giá</span>
+                                    <span class="ms-2 text-danger">Đã bán 6 chiếc trong 16 tiếng qua</span>
+                                </div>
+
+                                <div class="product-detail">
+                                    <h4>Chi tiết sản phẩm :</h4>
+                                    <p id="carDescription">${cl.description}</p>
+                                </div>
+
+                                <ul class="brand-list">
+                                    <li>
+                                        <div class="brand-box">
+                                            <h5>Hãng xe:</h5>
+                                <c:forEach var="cb" items="${carBrand}">
+                                    <c:if test="${cb.id == cl.brand_id}">
+                                        <h6>${cb.name}</h6>
+                                    </c:if>
+                                </c:forEach>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="brand-box">
+                                <h5>Mã xe:</h5>
+                                <h6>WDU-${cl.car_id}</h6>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="brand-box">
+                                <h5>Kiểu xe:</h5>
+                                <h6>${cateName}</h6>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="select-size">
+                        <h4>Trọng lượng xe:</h4>
+                        <input class="form-control input-number qty-input w-25"
+                               type="text" name="quantity" value="${cl.weight} kg" readonly style="height: 42.127778px;">
+                    </div>
+
+                    <div class="modal-button">
+                        <button onclick="addToCart(${cl.car_id})"
+                                class="button-86 icon">Thêm vào giỏ hàng</button>
+                        <button onclick="location.href = '${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}';"
+                                class="button-83  view-button icon fw-bold btn-md">
+                            Xem thêm chi tiết</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>-->
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -893,232 +1005,129 @@
         <jsp:include page="footer.jsp"></jsp:include>
             <!-- Footer Section End -->
 
-            <!-- Quick View Modal Box Start -->
-            <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
+
+
+            <!-- Location Modal Start -->
+            <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
                     <div class="modal-content">
-                        <div class="modal-header p-0">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                            <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="row g-sm-4 g-2">
-                                <div class="col-lg-6">
-                                    <div class="slider-image">
-                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
-                                         alt="">
+                            <div class="location-list">
+                                <div class="search-input">
+                                    <input type="search" class="form-control" placeholder="Search Your Area">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-6">
-                                <div class="right-sidebar-modal">
-                                    <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
-                                    <h4 class="price">$36.99</h4>
-                                    <div class="product-rating">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-                                        <span class="ms-2">8 Reviews</span>
-                                        <span class="ms-2 text-danger">6 sold in last 16 hours</span>
-                                    </div>
-
-                                    <div class="product-detail">
-                                        <h4>Product Details :</h4>
-                                        <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
-                                            Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
-                                            Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
-                                            muffin I love carrot cake sugar plum dessert bonbon.</p>
-                                    </div>
-
-                                    <ul class="brand-list">
-                                        <li>
-                                            <div class="brand-box">
-                                                <h5>Brand Name:</h5>
-                                                <h6>Black Forest</h6>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="brand-box">
-                                                <h5>Product Code:</h5>
-                                                <h6>W0690034</h6>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="brand-box">
-                                                <h5>Product Type:</h5>
-                                                <h6>White Cream Cake</h6>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                    <div class="select-size ">
-                                        <h4>Cake Size :</h4>
-                                        <select class="form-select select-form-size ">
-                                            <option selected>Select Size</option>
-                                            <option value="1.2">1/2 KG</option>
-                                            <option value="0">1 KG</option>
-                                            <option value="1.5">1/5 KG</option>
-                                            <option value="red">Red Roses</option>
-                                            <option value="pink">With Pink Roses</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="modal-button">
-                                        <button onclick="addToCart(${carDT.car_id})"
-                                                class="btn btn-md add-cart-button icon">Add
-                                            To Cart</button>
-                                        <button onclick="location.href = 'product-left.html';"
-                                                class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
-                                            View More Details</button>
-                                    </div>
+                                <div class="disabled-box">
+                                    <h6>Select a Location</h6>
                                 </div>
+
+                                <ul class="location-select custom-height">
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Alabama</h6>
+                                            <span>Min: $130</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Arizona</h6>
+                                            <span>Min: $150</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>California</h6>
+                                            <span>Min: $110</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Colorado</h6>
+                                            <span>Min: $140</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Florida</h6>
+                                            <span>Min: $160</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Georgia</h6>
+                                            <span>Min: $120</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Kansas</h6>
+                                            <span>Min: $170</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Minnesota</h6>
+                                            <span>Min: $120</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>New York</h6>
+                                            <span>Min: $110</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <h6>Washington</h6>
+                                            <span>Min: $130</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Quick View Modal Box End -->
+            <!-- Location Modal End -->
 
-        <!-- Location Modal Start -->
-        <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
-                        <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="location-list">
-                            <div class="search-input">
-                                <input type="search" class="form-control" placeholder="Search Your Area">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
 
-                            <div class="disabled-box">
-                                <h6>Select a Location</h6>
-                            </div>
 
-                            <ul class="location-select custom-height">
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Alabama</h6>
-                                        <span>Min: $130</span>
-                                    </a>
-                                </li>
 
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Arizona</h6>
-                                        <span>Min: $150</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>California</h6>
-                                        <span>Min: $110</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Colorado</h6>
-                                        <span>Min: $140</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Florida</h6>
-                                        <span>Min: $160</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Georgia</h6>
-                                        <span>Min: $120</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Kansas</h6>
-                                        <span>Min: $170</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Minnesota</h6>
-                                        <span>Min: $120</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>New York</h6>
-                                        <span>Min: $110</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <h6>Washington</h6>
-                                        <span>Min: $130</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            <!-- Tap to top start -->
+            <div class="theme-option">
+                <div class="back-to-top">
+                    <a id="back-to-top" href="#">
+                        <i class="fas fa-chevron-up"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-        <!-- Location Modal End -->
+            <!-- Tap to top end -->
 
 
+            <!-- Bg overlay Start -->
+            <div class="bg-overlay"></div>
+            <!-- Bg overlay End -->
 
-
-        <!-- Tap to top start -->
-        <div class="theme-option">
-            <div class="back-to-top">
-                <a id="back-to-top" href="#">
-                    <i class="fas fa-chevron-up"></i>
-                </a>
-            </div>
-        </div>
-        <!-- Tap to top end -->
-
-
-        <!-- Bg overlay Start -->
-        <div class="bg-overlay"></div>
-        <!-- Bg overlay End -->
-
-        <!-- latest jquery-->
-        <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
+            <!-- latest jquery-->
+            <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-3.6.0.min.js"></script>
 
         <!-- jquery ui-->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/jquery-ui.min.js"></script>
@@ -1166,59 +1175,59 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/valid.js"></script>
         <script>
-                                            async function fetchData(url, options) {
-                                                const response = await fetch(url, options);
-                                                const data = await response.json();
-                                                return data;
-                                            }
+                                                            async function fetchData(url, options) {
+                                                                const response = await fetch(url, options);
+                                                                const data = await response.json();
+                                                                return data;
+                                                            }
 
-                                            async function fetchYouTubeData() {
-                                                const ytResults = document.querySelector('.video-sg');
-                                                if (!ytResults) {
-                                                    console.error('Target element .video-sg not found');
-                                                    return;
-                                                }
+                                                            async function fetchYouTubeData() {
+                                                                const ytResults = document.querySelector('.video-sg');
+                                                                if (!ytResults) {
+                                                                    console.error('Target element .video-sg not found');
+                                                                    return;
+                                                                }
 
-                                                const options = {
-                                                    method: 'GET',
-                                                    headers: {
-                                                        'x-rapidapi-key': '23f6c4678fmsh60a151904aa61e4p1df63bjsn03ca2aad09db',
-                                                        'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com'
-                                                    }
-                                                };
-                                                try {
-                                                    const ytData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${model_year}-${name}-${brand}-${cate}-review`, options);
-                                                    ytData.contents.slice(0, 4).forEach((data) => {
-                                                        console.log(data.video)
-                                                        const cardHTML = "<div class=\"col\">" +
-                                                                "<div class=\"card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg\" style=\"cursor:pointer;background-repeat: no-repeat;background-clip: border-box ;background-size: cover;background-image: url('" + data.video.thumbnails[0].url + "');\"  onClick=\"location.href='https://www.youtube.com/watch?v=" + data.video.videoId + "';\">" +
-                                                                "<div class=\"d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1\">" +
-                                                                "<h3 class=\"pt-5 mt-5 mb-4 display-6 lh-1 fw-bold\">" + data.video.title + "</h3>" +
-                                                                "<ul class=\"d-flex list-unstyled mt-auto\">" +
-                                                                "<li class=\"me-auto\">" +
-                                                                "<img src=\'" + data.video.thumbnails[0].url + "' alt=\"Bootstrap\" width=\"32\" height=\"32\" class=\"rounded-circle border border-white\">" +
-                                                                "</li>" +
-                                                                "<li class=\"d-flex align-items-center me-3\">" +
-                                                                "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#geo-fill\"></use></svg>" +
-                                                                "<h5>" + data.video.channelName + "</h5>" +
-                                                                "</li>" +
-                                                                "<li class=\"d-flex align-items-center\">" +
-                                                                "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>" +
-                                                                "<small>" + data.video.publishedTimeText + "</small>" +
-                                                                "</li>" +
-                                                                "</ul>" +
-                                                                "</div>" +
-                                                                "</div>" +
-                                                                "</div>";
-                                                        ;
-                                                        ytResults.insertAdjacentHTML('beforeend', cardHTML);
-                                                    });
-                                                } catch (error) {
-                                                    console.error('Error fetching YouTube data:', error);
-                                                }
-                                            }
+                                                                const options = {
+                                                                    method: 'GET',
+                                                                    headers: {
+                                                                        'x-rapidapi-key': '23f6c4678fmsh60a151904aa61e4p1df63bjsn03ca2aad09db',
+                                                                        'x-rapidapi-host': 'youtube-search-and-download.p.rapidapi.com'
+                                                                    }
+                                                                };
+                                                                try {
+                                                                    const ytData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/search?query=${carDT.model_year}-${carDT.name}-${brandName}-${cateName}-review`, options);
+                                                                    ytData.contents.slice(0, 4).forEach((data) => {
+                                                                        console.log(data.video)
+                                                                        const cardHTML = "<div class=\"col\">" +
+                                                                                "<div class=\"card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg\" style=\"cursor:pointer;background-repeat: no-repeat;background-clip: border-box ;background-size: cover;background-image: url('" + data.video.thumbnails[0].url + "');\"  onClick=\"location.href='https://www.youtube.com/watch?v=" + data.video.videoId + "';\">" +
+                                                                                "<div class=\"d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1\">" +
+                                                                                "<h3 class=\"pt-5 mt-5 mb-4 display-6 lh-1 fw-bold\">" + data.video.title + "</h3>" +
+                                                                                "<ul class=\"d-flex list-unstyled mt-auto\">" +
+                                                                                "<li class=\"me-auto\">" +
+                                                                                "<img src=\'" + data.video.thumbnails[0].url + "' alt=\"Bootstrap\" width=\"32\" height=\"32\" class=\"rounded-circle border border-white\">" +
+                                                                                "</li>" +
+                                                                                "<li class=\"d-flex align-items-center me-3\">" +
+                                                                                "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#geo-fill\"></use></svg>" +
+                                                                                "<h5>" + data.video.channelName + "</h5>" +
+                                                                                "</li>" +
+                                                                                "<li class=\"d-flex align-items-center\">" +
+                                                                                "<svg class=\"bi me-2\" width=\"1em\" height=\"1em\"><use xlink:href=\"#calendar3\"></use></svg>" +
+                                                                                "<small>" + data.video.publishedTimeText + "</small>" +
+                                                                                "</li>" +
+                                                                                "</ul>" +
+                                                                                "</div>" +
+                                                                                "</div>" +
+                                                                                "</div>";
+                                                                        ;
+                                                                        ytResults.insertAdjacentHTML('beforeend', cardHTML);
+                                                                    });
+                                                                } catch (error) {
+                                                                    console.error('Error fetching YouTube data:', error);
+                                                                }
+                                                            }
 
-                                            window.onload = fetchYouTubeData;
+                                                            window.onload = fetchYouTubeData;
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {

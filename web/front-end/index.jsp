@@ -58,6 +58,23 @@
         <link id="color-link" rel="stylesheet" type="text/css"
               href="${pageContext.request.contextPath}/front-end/assets/css/style.css">
         <style>
+            #carDescription {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+                display: block;
+                width: 500px
+            }
+
+            #carDescription:hover {
+                overflow: visible;
+                white-space: normal;
+                background-color: #FFF;
+                padding: 10px;
+                z-index: 1;
+                position: relative;
+            }
             .hidden {
                 display: none;
             }
@@ -430,7 +447,7 @@
                             </div>
                             <div class="top-filter-menu">
                                 <div class="category-dropdown">
-                                    
+
                                 </div>
 
                                 <div class="grid-option d-none d-md-block">
@@ -524,11 +541,11 @@
 
                                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to Clipboard">
                                                                 <a style="cursor: pointer" class="notifi-wishlist" onclick="(() => {
-                                                                            let element = document.querySelector('.copy-ele-${cl.car_id}');
-                                                                            if (element) {
-                                                                                navigator.clipboard.writeText(element.href);
-                                                                            }
-                                                                        })()">
+                                                                        let element = document.querySelector('.copy-ele-${cl.car_id}');
+                                                                        if (element) {
+                                                                            navigator.clipboard.writeText(element.href);
+                                                                        }
+                                                                    })()">
                                                                     <i data-feather="clipboard"></i>
                                                                 </a>
                                                             </li>
@@ -612,7 +629,8 @@
                                                             <div class="col-lg-6">
                                                                 <div class="right-sidebar-modal">
                                                                     <h4 class="title-name">${cl.name}</h4>
-                                                                    <h4 class="price">${cl.price} vnd</h4>
+                                                                    <h4 class="price"><fmt:formatNumber currencySymbol="VND " value = "${cl.price}" 
+                                                                                              type = "currency"/></h4>
                                                                     <div class="product-rating">
                                                                         <ul class="rating">
                                                                             <li>
@@ -631,24 +649,19 @@
                                                                                 <i data-feather="star"></i>
                                                                             </li>
                                                                         </ul>
-                                                                        <span class="ms-2">8 Reviews</span>
-                                                                        <span class="ms-2 text-danger">6 sold in last 16 hours</span>
+                                                                        <span class="ms-2">8 Lượt đánh giá</span>
+                                                                        <span class="ms-2 text-danger">Đã bán 6 chiếc trong 16 tiếng qua</span>
                                                                     </div>
 
                                                                     <div class="product-detail">
-                                                                        <h4>Product Details :</h4>
-                                                                        <p style="
-                                                                           line-height: 1.5;
-                                                                           -webkit-line-clamp: 2;
-                                                                           -webkit-box-orient: vertical;
-                                                                           display: -webkit-box;
-                                                                           overflow: hidden;">${cl.description}</p>
+                                                                        <h4>Chi tiết sản phẩm :</h4>
+                                                                        <p id="carDescription">${cl.description}</p>
                                                                     </div>
 
                                                                     <ul class="brand-list">
                                                                         <li>
                                                                             <div class="brand-box">
-                                                                                <h5>Brand Name:</h5>
+                                                                                <h5>Hãng xe:</h5>
                                                                                 <c:forEach var="cb" items="${carBrand}">
                                                                                     <c:if test="${cb.id == cl.brand_id}">
                                                                                         <h6>${cb.name}</h6>
@@ -659,32 +672,31 @@
 
                                                                         <li>
                                                                             <div class="brand-box">
-                                                                                <h5>Product Code:</h5>
+                                                                                <h5>Mã xe:</h5>
                                                                                 <h6>WDU-${cl.car_id}</h6>
                                                                             </div>
                                                                         </li>
 
                                                                         <li>
                                                                             <div class="brand-box">
-                                                                                <h5>Category:</h5>
+                                                                                <h5>Kiểu xe:</h5>
                                                                                 <h6>${cateName}</h6>
                                                                             </div>
                                                                         </li>
                                                                     </ul>
 
                                                                     <div class="select-size">
-                                                                        <h4>Car Size :</h4>
+                                                                        <h4>Trọng lượng xe:</h4>
                                                                         <input class="form-control input-number qty-input w-25"
                                                                                type="text" name="quantity" value="${cl.weight} kg" readonly style="height: 42.127778px;">
                                                                     </div>
 
                                                                     <div class="modal-button">
                                                                         <button onclick="addToCart(${cl.car_id})"
-                                                                                class="button-86 icon">Add
-                                                                            To Cart</button>
+                                                                                class="button-86 icon">Thêm vào giỏ hàng</button>
                                                                         <button onclick="location.href = '${pageContext.request.contextPath}/home?state=detail&id=${cl.car_id}&idSeller=${cl.seller_id}';"
                                                                                 class="button-83  view-button icon fw-bold btn-md">
-                                                                            View More Details</button>
+                                                                            Xem thêm chi tiết</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
