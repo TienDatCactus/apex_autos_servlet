@@ -1212,29 +1212,14 @@
                         absolutely free. All you need is to register, list your catalogue and start selling your
                         products.</p>
                 </div>
-                <form action="seller?state=become" method="post">
+                <form action="home?state=become" method="post">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <div class="form-floating theme-form-floating-2 search-box">
-                                    <input type="email" class="form-control" id="mail" placeholder="Email Id" name="seller-mail">
-                                    <label for="mail">Email Id</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <div class="form-floating theme-form-floating-2 search-box">
-                                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="seller-pass">
-                                    <label for="pwd">Password</label>
-                                </div>
-                            </div>
-                        </div>
+                        <input type="hidden" name="id" value="${user.user_id}">
 
                         <div class="col-12">
-                            <textarea name="seller-desc" class="form-control mt-3"style="font-size: 20px; font-family: inherit" placeholder="Give us some reasonable reasons ..." rows="3"></textarea>
+                            <textarea name="sellerdesc" class="form-control mt-3"style="font-size: 20px; font-family: inherit" placeholder="Give us some reasonable reasons ..." rows="3"></textarea>
                         </div>
+                        <p>${notification}</p>
                         <div class="col-12">
                             <input type="submit" class="button-83 mt-3" value="Start Selling"></button>
                         </div>

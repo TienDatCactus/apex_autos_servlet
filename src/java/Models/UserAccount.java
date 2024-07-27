@@ -33,6 +33,11 @@ public class UserAccount {
     public UserAccount() {
     }
 
+    public UserAccount(int user_id, int permission_id) {
+        this.user_id = user_id;
+        this.permission_id = permission_id;
+    }
+    
     public UserAccount(int user_id, String email, String status, Date approved_date, Date application_date) {
         this.user_id = user_id;
         this.email = email;

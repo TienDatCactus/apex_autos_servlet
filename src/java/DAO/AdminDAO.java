@@ -223,11 +223,78 @@ public class AdminDAO {
         return lst;
     }
 
-   
-
     public static void main(String[] args) {
         AdminDAO dao = new AdminDAO();
-        System.out.println(dao.userDelete("1012"));
-        ;
+        Request re = new Request(0, "a", 2);
+        UserAccount ua = new UserAccount(6, 2);
+        System.out.println(dao.getAllRequest());
+
+    }
+
+    public boolean addNewRequest(Request re) {
+        String query
+                = "INSERT INTO [dbo].[request] ([description] ,[user_id]) VALUES (?,?)";
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            // Setting the parameters for the query
+            ps.setString(1, re.getDescription());
+            ps.setInt(2, re.getUser_id());
+
+            int rowAffected = ps.executeUpdate();
+            return rowAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public List<Request> getAllRequest() {
+        String query = "SELECT * FROM [dbo].[request]";
+        List<Request> lst = new ArrayList<>();
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Request ua = new Request();
+                    ua.setRequest_id(rs.getInt("request_id"));
+                    ua.setDescription(rs.getString("description"));
+                    ua.setUser_id(rs.getInt("user_id"));
+
+                    lst.add(ua);
+                }
+                return lst;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lst;
+    }
+
+    public boolean changeRole(UserAccount ua) {
+        String sql
+                = "UPDATE [dbo].[user_account] SET [permission_id] =  ? WHERE user_id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, ua.getPermission_id());
+            ps.setInt(2, ua.getUser_id());
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteRequest(int userId) {
+        String sql = "DELETE FROM [dbo].[request] WHERE user_id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

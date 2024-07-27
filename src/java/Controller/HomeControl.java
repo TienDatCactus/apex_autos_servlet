@@ -35,11 +35,11 @@ import java.util.List;
         urlPatterns = {"/home"})
 @MultipartConfig
 public class HomeControl extends HttpServlet {
-
+    
     CarDao dao = new CarDao();
     UserDAO daou = new UserDAO();
     AdminDAO daoa = new AdminDAO();
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -77,9 +77,9 @@ public class HomeControl extends HttpServlet {
         } else if ("detail".equals(state)) {
             List<Car> carList = dao.viewProducts();
             String carId = request.getParameter("id");
-
+            
             int id = 0;
-
+            
             try {
                 id = Integer.parseInt(carId);
             } catch (NumberFormatException e) {
@@ -90,7 +90,7 @@ public class HomeControl extends HttpServlet {
             List<CommentCar> allComment = daou.viewAllCommentFor1Car();
             List<CarImage> carImage = dao.viewImageForCar();
             List<UserAccount> allAccounts = daoa.viewUsers();
-
+            
             request.setAttribute("carImage", carImage);
             request.setAttribute("allAccounts", allAccounts);
             request.setAttribute("carComment", allComment);
@@ -98,7 +98,7 @@ public class HomeControl extends HttpServlet {
             request.setAttribute("carDT", carDT);
             request.setAttribute("error", error);
             request.setAttribute("success", success);
-
+            
             request.getRequestDispatcher("/front-end/product-bottom-thumbnail.jsp")
                     .forward(request, response);
         } else if (ua != null) {
@@ -117,7 +117,7 @@ public class HomeControl extends HttpServlet {
                         .forward(request, response);
             } else if ("allTrade".equals(state)) {
                 List<TradeMark> allTradeMarkss = dao.viewAllTradeMark();
-
+                
                 request.setAttribute("allTradeMarkss", allTradeMarkss);
                 request
                         .getRequestDispatcher("/front-end/seller-grid-2.jsp")
@@ -141,14 +141,14 @@ public class HomeControl extends HttpServlet {
                 session.setAttribute("listAddr", listAddr);
                 request.getRequestDispatcher("/front-end/checkout.jsp").forward(request, response);
             } else if ("blog".equals(state)) {
-
+                
                 List<CarCategory> carCate = dao.viewCarCategory();
                 List<CarBrand> carBrand = dao.viewCarBrand();
                 List<CarImage> carImage = dao.viewImageForCar();
                 List<Status> allStatus = daou.viewAllStatus();
                 List<UserAccount> allAccounts = daoa.viewUsers();
                 List<Comment> allComment = daou.viewAllComment();
-
+                
                 request.setAttribute("allComment", allComment);
                 request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("allStatus", allStatus);
@@ -158,10 +158,10 @@ public class HomeControl extends HttpServlet {
                 request.getRequestDispatcher("/front-end/blog-list.jsp").forward(request, response);
             } else if ("manage".equals(state)) {
                 int id = Integer.parseInt(request.getParameter("id"));
-
+                
                 List<Status> listStatusFor1User = daou.viewAllStatusFor1User(id);
                 List<CarImage> carImage = dao.viewImageForCar();
-
+                
                 request.setAttribute("listStatusFor1User", listStatusFor1User);
                 request.setAttribute("carImage", carImage);
                 request
@@ -172,9 +172,9 @@ public class HomeControl extends HttpServlet {
                         .getRequestDispatcher("/front-end/seller-become.jsp")
                         .forward(request, response);
             } else if ("compare".equals(state)) {
-
+                
                 Compare c = dao.findCompareByUserId(ua.getUser_id());
-
+                
                 List<CarImage> carImage = dao.viewImageForCar();
                 List<Integer> idList = new ArrayList<>();
                 if (c != null) {
@@ -192,15 +192,15 @@ public class HomeControl extends HttpServlet {
                 request.setAttribute("error", request.getAttribute("error"));
                 // Chuyển tiếp đến trang so sánh
                 request.getRequestDispatcher("/front-end/compare.jsp").forward(request, response);
-
+                
             }
         } else {
             response.sendRedirect(request.getContextPath() + "/login");
         }
     }
-
+    
     @Override
-
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -208,7 +208,7 @@ public class HomeControl extends HttpServlet {
         String action = request.getParameter("action");
         String item = request.getParameter("item");
         HttpSession session = request.getSession();
-
+        
         UserAccount ua = (UserAccount) session.getAttribute("user");
         PrintWriter out = response.getWriter();
         JSONObject jsonResponse = new JSONObject();
@@ -250,23 +250,23 @@ public class HomeControl extends HttpServlet {
                 // Write JSON response to output
                 out.print(jsonResponse.toString());
                 out.flush();
-
+                
             } else if ("blog".equals(state)) {
                 switch (action) {
                     case "add":
                         int user_id = Integer.parseInt(request.getParameter("idu"));
                         String title = request.getParameter("title");
                         String content = request.getParameter("content");
-
+                        
                         Collection<Part> parts = request.getParts();
                         String path = request.getServletContext().getRealPath("/images");
                         File dir = new File(path);
                         if (!dir.exists()) {
                             dir.mkdirs();
                         }
-
+                        
                         List<String> imagePaths = new ArrayList<>();
-
+                        
                         for (Part part : parts) {
                             String fileName = part.getSubmittedFileName();
                             if (fileName != null && !fileName.isEmpty()) {
@@ -274,7 +274,7 @@ public class HomeControl extends HttpServlet {
                                 part.write(image.getAbsolutePath());
                                 imagePaths.add(
                                         request.getContextPath() + "/images/" + fileName);
-
+                                
                             }
                         }
                         Status s = new Status(0, content, imagePaths, title, user_id);
@@ -284,16 +284,16 @@ public class HomeControl extends HttpServlet {
                         int status_id = Integer.parseInt(request.getParameter("statusIdEditInput"));
                         String titleEditInput = request.getParameter("titleEditInput");
                         String contentEditInput = request.getParameter("contentEditInput");
-
+                        
                         Collection<Part> partss = request.getParts();
                         String pathh = request.getServletContext().getRealPath("/images");
                         File dirr = new File(pathh);
                         if (!dirr.exists()) {
                             dirr.mkdirs();
                         }
-
+                        
                         List<String> imagePathss = new ArrayList<>();
-
+                        
                         for (Part part : partss) {
                             String fileName = part.getSubmittedFileName();
                             if (fileName != null && !fileName.isEmpty()) {
@@ -325,7 +325,7 @@ public class HomeControl extends HttpServlet {
                             CommentCar cc = new CommentCar(0, commentCheck, carIdCheck, userIdCheck);
                             daou.addNewCommentFor1Car(cc);
                         }
-
+                        
                         break;
                     default:
                         throw new AssertionError();
@@ -334,12 +334,21 @@ public class HomeControl extends HttpServlet {
                 List<Comment> allComment = daou.viewAllComment();
                 List<UserAccount> allAccounts = daoa.viewUsers();
                 List<Comment> allComment1Car = daou.viewAllComment();
-
+                
                 request.setAttribute("allStatus", allStatus);
                 request.setAttribute("allComment", allComment);
                 request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("allComment1Car", allComment1Car);
                 doGet(request, response);
+            } else if ("become".equals(state)) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                String des = request.getParameter("sellerdesc");
+                Request re = new Request(0, des, id);
+                daoa.addNewRequest(re);
+                request.setAttribute("notification", "Bạn đã gửi yêu cầu thành công");
+                request
+                        .getRequestDispatcher("/front-end/seller-become.jsp")
+                        .forward(request, response);
             } else if ("detail".equals(state)) {
                 switch (action) {
                     case "adCmt":
@@ -361,7 +370,7 @@ public class HomeControl extends HttpServlet {
                     default:
                         throw new AssertionError();
                 }
-
+                
                 List<Status> allStatus = daou.viewAllStatus();
                 List<Comment> allComment = daou.viewAllComment();
                 List<UserAccount> allAccounts = daoa.viewUsers();
@@ -371,11 +380,11 @@ public class HomeControl extends HttpServlet {
                 request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("allComment1Car", allComment1Car);
                 doGet(request, response);
-
+                
             } else if ("compare".equals(state)) {
                 String carId = request.getParameter("carId");
                 Compare c;
-
+                
                 try {
                     c = dao.findCompareByUserId(ua.getUser_id());
                     int carIdInt = Integer.parseInt(carId);
@@ -387,7 +396,7 @@ public class HomeControl extends HttpServlet {
                         } else if (dao.checkCompareItems(c.getCompare_id(), carIdInt)) {
                             jsonResponse.put("error", false);
                             jsonResponse.put("message", "Xe đã có trong mẫu so sánh !");
-
+                            
                         }
                     } else if ("delete".equals(action)) {
                         if (dao.deleteCompareItems(c.getCompare_id(), carIdInt)) {

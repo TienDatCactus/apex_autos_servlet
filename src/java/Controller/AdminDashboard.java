@@ -22,15 +22,15 @@ import java.util.List;
         name = "AdminDashboard",
         urlPatterns = {"/admin/dashboard"})
 public class AdminDashboard extends HttpServlet {
-
+    
     private static AdminDAO daoa;
     private static UserDAO daou;
-
+    
     public void init() {
         daoa = new AdminDAO();
         daou = new UserDAO();
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -63,22 +63,10 @@ public class AdminDashboard extends HttpServlet {
                 request.setAttribute("roleList", rl);
                 request.getRequestDispatcher("/admin/role.jsp").forward(request, response);
             } else if ("seller".equals(state)) {
-                try {
-                    String userId = request.getParameter("id");
-                    String status = request.getParameter("status");
-                    if (status.equals("Rejected")) {
-                        if (userId != null) {
-                            daoa.userDelete(userId + "");
-                        }
-                    } else {
-                        UserAccount userAccount = new UserAccount(userId, status);
-                        daoa.updateSeller(userAccount);
-                    }
-                    response.sendRedirect("/apex_autos_servlet/admin/dashboard?state=seller");
-                } catch (Exception e) {
-                }
-                List<UserAccount> lstSeller = daoa.getAllSeller();
+                List<UserAccount> users = daoa.viewUsers();                
+                List<Request> lstSeller = daoa.getAllRequest();
                 request.setAttribute("lstSeller", lstSeller);
+                request.setAttribute("allUserAccount", users);
                 request.getRequestDispatcher("/admin/seller.jsp").forward(request, response);
             } else if ("setting".equals(state)) {
                 request.getRequestDispatcher("/admin/settings.jsp").forward(request, response);
@@ -91,7 +79,7 @@ public class AdminDashboard extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/login");
         }
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -121,6 +109,17 @@ public class AdminDashboard extends HttpServlet {
                     UserAccount ua2
                             = new UserAccount(email2, password, given_name2, family_name2, phone2, dob2);
                     daoa.userAdd(ua2);
+                }
+                doGet(request, response);
+            } else if ("seller".equals(state)) {
+                if ("acc".equals(action)) {
+                    int userId = Integer.parseInt(request.getParameter("id"));
+                    UserAccount u = new UserAccount(userId,2);
+                    daoa.changeRole(u);
+                    daoa.deleteRequest(userId);
+                } else if ("deny".equals(action)) {
+                    int userId = Integer.parseInt(request.getParameter("id"));
+                    daoa.deleteRequest(userId);
                 }
                 doGet(request, response);
             } else if ("role".equals(state)) {
@@ -161,7 +160,7 @@ public class AdminDashboard extends HttpServlet {
                         String roleName = request.getParameter("roleName");
                         String roleDesc = request.getParameter("roleDesc");
                         String roleId = request.getParameter("role");
-
+                        
                         if (roleName == null || roleName.isEmpty()) {
                             throw new IllegalArgumentException("Role name is missing or empty");
                         }
@@ -171,14 +170,14 @@ public class AdminDashboard extends HttpServlet {
                         if (roleId == null || roleId.isEmpty()) {
                             throw new IllegalArgumentException("Role ID is missing or empty");
                         }
-
+                        
                         int parsedRoleId;
                         try {
                             parsedRoleId = Integer.parseInt(roleId);
                         } catch (NumberFormatException e) {
                             throw new IllegalArgumentException("Invalid role ID: " + roleId, e);
                         }
-
+                        
                         Roles rl = new Roles(parsedRoleId, roleName, roleDesc);
                         daoa.modifyRoles(rl);
                         request.setAttribute("updated", "Role updated successfully");

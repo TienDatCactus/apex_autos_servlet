@@ -17,6 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="assets/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
         <style>
             .card-custom {
                 border: 1px solid #ddd;
@@ -101,125 +102,74 @@
             </ul>
         </nav>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="dashboard">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Platform Management</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                               data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                User Management
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                                 data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="dashboard?state=user">Users List</a>
-                                    <a class="nav-link" href="dashboard?state=role">Roles</a>
-                                </nav>
+            <jsp:include page="navbar.jsp"></jsp:include>
+                <div id="layoutSidenav_content">
+                    <main class="container-fluid px-4">
+                        <h1 class="mt-4 display-4 text-primary">Seller Management</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Manage Sellers</li>
+                        </ol>
+
+                        <div class="card card-custom mb-4 shadow-sm">
+                            <div class="card-header card-header-custom">
+                                <h5 class="card-title">Seller Approvals</h5>
                             </div>
-                            <a class="nav-link" href="dashboard?state=seller">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Sellers
-                            </a>
-
-                            <div class="sb-sidenav-menu-heading">Others</div>
-                            <a class="nav-link" href="dashboard?state=chart">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Total Profits
-                            </a>
-                            <a class="nav-link" href="dashboard?state=setting">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Page Settings
-                            </a>
-                            <!-- <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a> -->
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        nigga Admin
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                <main class="container-fluid px-4">
-                    <h1 class="mt-4 display-4 text-primary">Seller Management</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Manage Sellers</li>
-                    </ol>
-
-                    <div class="card card-custom mb-4 shadow-sm">
-                        <div class="card-header card-header-custom">
-                            <h5 class="card-title">Seller Approvals</h5>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-striped table-custom">
-                                <thead>
-                                    <tr>
-                                        <!--<th>Seller Name</th>-->
-                                        <th>Email</th>
-                                        <th>Application Date</th>
-                                        <th>Approve/Reject Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <div class="card-body">
+                                <table class="table table-striped table-custom">
+                                    <thead>
+                                        <tr>
+                                            <!--<th>Seller Name</th>-->
+                                            <th>Email</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     <c:forEach items="${lstSeller}" var="s">
                                         <tr>
+                                            <c:forEach items="${allUserAccount}" var="a">
+                                                <c:if test="${s.user_id == a.user_id}">
+                                                    <td>${a.email}</td>                                       
+                                                    <td>${a.given_name} ${a.family_name}</td> choi dii
+                                                </c:if>  
+                                            </c:forEach>
+                                            <td>${s.description}</td>
 
-                                            <td>${s.email}</td>
-                                            <td>${s.application_date}</td>
-                                            <td>${s.approved_date}</td>
-                                            <td><span class="badge bg-warning">${s.status}</span></td>
-                                            <td  <c:if test="${s.status == 'Pending'}">style="display: flex"</c:if>>
-                                                <c:if test="${s.status == 'Pending'}">
-                                                    <form action="/apex_autos_servlet/admin/seller/confirm" method="post">
-                                                        <input type="hidden" value="${s.user_id}" name="id"/>
-                                                        <input type="hidden" value="Approved" name="status"/>
-                                                        <button class="btn btn-success btn-sm" type="submit">Approve</button>
-                                                    </form>
-                                                    <form action="/apex_autos_servlet/admin/seller/confirm" method="post">
-                                                        <input type="hidden" value="${s.user_id}" name="id"/>
-                                                        <input type="hidden" value="Rejected" name="status"/>
-                                                        <button class="btn btn-danger btn-sm" type="submit">Reject</button>
-                                                    </form>
-                                                </c:if>
+                                            <td>
+
+                                                <form action="dashboard?state=seller&do=acc" method="post">
+                                                    <input type="hidden" value="${s.user_id}" name="id"/>
+                                                    
+                                                    <button class="btn btn-success btn-sm" type="submit">Approve</button>
+                                                </form>
+                                                <form action="dashboard?state=seller&do=deny" method="post">
+                                                    <input type="hidden" value="${s.user_id}" name="id"/>
+                                                    
+                                                    <button class="btn btn-danger btn-sm" type="submit">Reject</button>
+                                                </form>
+
                                             </td>
 
-                                        </tr> </c:forEach>
-                                    <!--  
-                                        </tbody>
-                                    </table>
-                                                    </div>
-                                                </div>
-                                    
-                                    <!--            
-                                                
-                                    
-                                            </main>
-                                        </div>
-                                    
-                                       
-                                    </body>
-                                    
-                                    <script src="assets/js/scripts.js"></script>
-                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-                                    <script src="assets/demo/chart-area-demo.js"></script>
-                                    <script src="assets/demo/chart-bar-demo.js"></script>
-                                    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-                                        crossorigin="anonymous"></script>
-                                    <script src="assets/js/datatables-simple-demo.js"></script>
-                                     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
-                                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-                                        
-                                    </html>
+                                        </tr> 
+                                    </c:forEach>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+        <script src="assets/js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+        <script src="assets/js/datatables-simple-demo.js"></script>
+    </body>
+
+</html>
