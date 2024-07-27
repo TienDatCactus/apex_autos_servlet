@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -275,23 +276,28 @@
                                                     </c:if> 
                                                 </c:forEach>
                                                 <h4>${ci.car.name}</h4>
-                                                <h4 id="pricee" class="price">${ci.car.price}</h4>
+                                                <h4 id="pricee" class="price" data-value="${ci.car.price}"><fmt:formatNumber currencySymbol="VND " value = "${ci.car.price}" 
+                                                                                   type = "currency"/></h4>
                                             </li>
                                         </c:forEach>
 
                                     </ul>
 
                                     <ul class="summery-total">
-                                        <li>
+                                        <li class="pb-2">
                                             <h4>Tổng giá trị ước tính</h4>
-                                            <h4 id="Subtotal" class="price"></h4>
+                                            <h4 id="Subtotal" class="price"> <fmt:formatNumber currencySymbol="VND " value = "${total }" 
+                                                              type = "currency"/></h4>
                                         </li>
 
 
                                         <li class="list-total">
                                             <h4>Đặt cọc <p>(10% tổng giá trị hóa đơn)</p></h4>
 
-                                            <h4 id="priceTotal" class="price"></h4>
+                                            <h4 id="priceTotal" class="price">
+                                                <fmt:formatNumber currencySymbol="VND " value = "${(total * 10) /100}" 
+                                                                  type = "currency"/>
+                                            </h4>
                                         </li>
                                     </ul>
                                 </div>
@@ -361,19 +367,18 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
 
         <script>
-            window.onload = updateSubTotal();
+            window.onload = updateSubTotal;
             function updateSubTotal() {
                 let totalPriceOfEachProduct = document.querySelectorAll('h4#pricee');
-                let totalCart = 100000;
+                let totalCart = 0;
                 totalPriceOfEachProduct.forEach(e => {
-                    let totalPrice = parseFloat(e.textContent.trim());
+                    let totalPrice = parseFloat(e.getAttribute("data-value").trim());
                     totalCart += totalPrice;
                 });
                 const depo = totalCart / 10;
-                document.querySelector('#priceTotal').innerHTML = depo;
-                document.querySelector('#Subtotal').innerHTML = totalCart;
                 document.querySelector('#totalAmount').value = depo;
             }
+
 
 
         </script>

@@ -2,6 +2,7 @@
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.nio.charset.StandardCharsets" %>
 <%@ page import="com.vnpay.common.Config" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
@@ -13,7 +14,8 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.*,java.time.*,java.time.format.*,Models.*,DAO.*,com.vnpay.common.Config" %>
-
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -150,15 +152,26 @@
           pageContext.setAttribute("transactionStatus", transactionStatus);
  request.setAttribute("carImage", carImage);
           String vnpPayDate = request.getParameter("vnp_PayDate");
-          if (vnpPayDate != null && !vnpPayDate.isEmpty()) {
-              DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-              LocalDateTime paymentDate = LocalDateTime.parse(vnpPayDate, inputFormatter);
-              pageContext.setAttribute("PayDate", paymentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-          } else {
-              pageContext.setAttribute("PayDate", "Not available");
-          }  
-          
-         
+         if (vnpPayDate != null && !vnpPayDate.isEmpty()) {
+    // Parse the input date string
+    DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+    LocalDateTime paymentDate = LocalDateTime.parse(vnpPayDate, inputFormatter);
+
+    // Format the date to the desired pattern
+    String formattedPayDate = paymentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+    // Set the formatted date as a request attribute
+    pageContext.setAttribute("PayDate", formattedPayDate);
+
+    // Additionally, set a Date object for formatting in JSP if needed
+    Date specificDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formattedPayDate);
+    pageContext.setAttribute("specificDate", specificDate);
+} else {
+    pageContext.setAttribute("PayDate", "Not available");
+}
+
+           // Create a specific date object
+                                            
         
         %>
 
@@ -302,7 +315,7 @@
 
                                 <div class="order-contain">
                                     <h3 class="theme-color">Đặt cọc ${transactionStatus}</h3>
-                                    <h5 class="text-content">Thanh toán khoản cọc thành công</h5>
+                                    <h5 class="text-content">Thanh toán khoản cọc ${transactionStatus}</h5>
                                     <h6>Mã giao dịch: ${Ref}</h6>
                                 </div>
                             </div>
@@ -320,65 +333,73 @@
                             <div class="table-responsive">
                                 <table class="table mb-0">
                                     <tbody>
-                                        <c:forEach var="ol" items="${orderList}">
-                                            <tr>
-                                                <td class="product-detail">
-                                                    <div class="product border-0">
-                                                        <a href="product.left-sidebar.html" class="product-image">
-                                                            <c:set var="firstImagePrinted" value="false" />
-                                                            <c:forEach items="${carImage}" var="ci">
-                                                                <c:if test="${ci.car_id == ol.car.car_id}">
-                                                                    <c:forEach items="${ci.image_url}" var="obj">
-                                                                        <c:if test="${not firstImagePrinted}">
-                                                                            <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
-                                                                            <c:set var="firstImagePrinted" value="true" />
-                                                                        </c:if>
-                                                                    </c:forEach>
-                                                                </c:if> 
-                                                            </c:forEach>
-
-                                                        </a>
-                                                        <div class="product-detail">
-                                                            <ul>
-                                                                <li class="name">
-                                                                    <a href="product-left-thumbnail.html">${ol.car.name}</a>
-                                                                </li>
-                                                                <c:forEach var="cb" items="${carBrand}">
-                                                                    <c:if test="${cb.id == ol.car.brand_id}">
-                                                                        <li class="text-content">Mẫu xe: ${cb.name}</li>
-
-                                                                    </c:if>
+                                        <c:choose>
+                                            <c:when test="${empty orderList}">
+                                            <div class="alert alert-warning" style="font-size: 22px" role="alert">
+                                                Không có sản phẩm nào được đặt cọc
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach var="ol" items="${orderList}">
+                                                <tr>
+                                                    <td class="product-detail">
+                                                        <div class="product border-0">
+                                                            <a href="product.left-sidebar.html" class="product-image">
+                                                                <c:set var="firstImagePrinted" value="false" />
+                                                                <c:forEach items="${carImage}" var="ci">
+                                                                    <c:if test="${ci.car_id == ol.car.car_id}">
+                                                                        <c:forEach items="${ci.image_url}" var="obj">
+                                                                            <c:if test="${not firstImagePrinted}">
+                                                                                <img src="${obj}" alt="Car Image" class="img-fluid blur-up lazyload rounded"  style="object-fit: cover;max-width:100%; max-height: 100%;">
+                                                                                <c:set var="firstImagePrinted" value="true" />
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                    </c:if> 
                                                                 </c:forEach>
 
-                                                                <li class="text-content">Cân nặng : ${ol.car.weight} kg</li>
-                                                            </ul>
+                                                            </a>
+                                                            <div class="product-detail">
+                                                                <ul>
+                                                                    <li class="name">
+                                                                        <a href="product-left-thumbnail.html">${ol.car.name}</a>
+                                                                    </li>
+                                                                    <c:forEach var="cb" items="${carBrand}">
+                                                                        <c:if test="${cb.id == ol.car.brand_id}">
+                                                                            <li class="text-content">Mẫu xe: ${cb.name}</li>
+
+                                                                        </c:if>
+                                                                    </c:forEach>
+
+                                                                    <li class="text-content">Cân nặng : ${ol.car.weight} kg</li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
+                                                    </td>
 
-                                                <td class="price">
-                                                    <h4 class="table-title text-content">Kiểu xe</h4>
-                                                    <c:forEach var="cc" items="${carCate}">
-                                                        <c:if test="${cc.id == ol.car.category_id}">
-                                                            <h6 class="theme-color">${cc.name}</h6>
+                                                    <td class="price">
+                                                        <h4 class="table-title text-content">Kiểu xe</h4>
+                                                        <c:forEach var="cc" items="${carCate}">
+                                                            <c:if test="${cc.id == ol.car.category_id}">
+                                                                <h6 class="theme-color">${cc.name}</h6>
 
-                                                        </c:if>
-                                                    </c:forEach>
-                                                </td>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </td>
 
-                                                <td class="quantity">
-                                                    <h4 class="table-title text-content">Số lượng</h4>
-                                                    <h4 class="text-title">01</h4>
-                                                </td>
+                                                    <td class="quantity">
+                                                        <h4 class="table-title text-content">Số lượng</h4>
+                                                        <h4 class="text-title">01</h4>
+                                                    </td>
 
-                                                <td class="subtotal">
-                                                    <h4 class="table-title text-content">Tổng</h4>
-                                                    <h5>${ol.car.price} vnđ</h5>
-                                                </td>
-                                            </tr>
+                                                    <td class="subtotal">
+                                                        <h4 class="table-title text-content">Tổng</h4>
+                                                        <h5>${ol.car.price} vnđ</h5>
+                                                    </td>
+                                                </tr>
 
-                                        </c:forEach>
-
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
                                     </tbody>
                                 </table>
                             </div>
@@ -390,31 +411,29 @@
                             <div class="col-lg-12 col-sm-6">
                                 <div class="summery-box">
                                     <div class="summery-header">
-                                        <h3>Price Details</h3>
-                                        <h5 class="ms-auto theme-color">${ol.size()} sản phẩm</h5>
+                                        <h3>Chi tiết hóa đơn</h3>
+                                        <h5 class="ms-auto theme-color">${ol== null ? 0 : ol.size() } sản phẩm</h5>
                                     </div>
 
                                     <ul class="summery-contain">
                                         <li>
                                             <h4>Tổng giá trị</h4>
-                                            <h4 class="price">$32.34</h4>
+                                            <h4 class="price">
+                                                <fmt:formatNumber currencySymbol="VND " value = "${Amount}" 
+                                                                  type = "currency"/></h4>
                                         </li>
 
-                                        <li>
-                                            <h4>Khuyến mãi </h4>
-                                            <h4 class="price theme-color">$12.23</h4>
-                                        </li>
 
                                         <li>
                                             <h4>Thuế</h4>
-                                            <h4 class="price text-danger">$6.27</h4>
+                                            <h4 class="price text-danger">10%</h4>
                                         </li>
                                     </ul>
 
                                     <ul class="summery-total">
                                         <li class="list-total">
                                             <h4>Tổng (VND)</h4>
-                                            <h4 class="price">${Amount} vnđ</h4>
+                                            <h4 class="price"> <fmt:formatNumber currencySymbol="VND " value = "${(Amount / 100) * 10}"  type = "currency"/></h4>
                                         </li>
                                     </ul>
                                 </div>
@@ -428,40 +447,28 @@
 
                                     <ul class="summery-contain pb-0 border-bottom-0">
                                         <li class="d-block">
-                                            <h4>8424 James Lane South</h4>
-                                            <h4 class="mt-2">${transactionStatus}</h4>
+                                            <h4>Đại học FPT</h4>
+                                            <h4 class="mt-2">Tình trạng : ${transactionStatus}</h4>
                                         </li>
 
                                         <li class="pb-0">
-                                            <h4>Expected Date Of Delivery:</h4>
+                                            <h4>Thời gian giao dịch:</h4>
                                             <h4 class="price theme-color">
-                                                <a href="order-tracking.html" class="text-danger">Track Order</a>
+
+                                                <a href="#" class="text-danger"><del>Theo dõi đơn hàng</del></a>
                                             </h4>
                                         </li>
                                     </ul>
 
                                     <ul class="summery-total">
                                         <li class="list-total border-top-0 pt-2">
-                                            <h4 class="fw-bold">${PayDate}</h4>
+                                            <h4 class="fw-bold"><fmt:formatDate value="${specificDate}" pattern="dd MMMM - yyyy HH:mm:ss" /></h4>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <div class="summery-box">
-                                    <div class="summery-header d-block">
-                                        <h3>Payment Method</h3>
-                                    </div>
 
-                                    <ul class="summery-contain pb-0 border-bottom-0">
-                                        <li class="d-block pt-0">
-                                            <p class="text-content">Pay on Delivery (Cash/Card). Cash on delivery (COD)
-                                                available. Card/Net banking acceptance subject to device availability.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

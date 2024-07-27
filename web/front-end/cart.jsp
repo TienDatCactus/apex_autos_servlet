@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -230,8 +231,10 @@
 
                                                         <td class="price">
                                                             <h4 class="table-title text-content">Đơn giá</h4>
-                                                            <h5>${ci.car.price} vnđ<del class="text-content">${ci.car.price} vnđ</del></h5>
-                                                            <h6 class="theme-color">Tiết kiệm : 1000 vnđ</h6>
+                                                            <h5><fmt:formatNumber currencySymbol="VND " value = "${ci.car.price}" 
+                                                                              type = "currency"/> </h5>
+                                                            <h6 class="theme-color">Tiết kiệm : <fmt:formatNumber currencySymbol="VND " value = "1000" 
+                                                                              type = "currency"/> </h6>
                                                         </td>
 
                                                         <td class="quantity">
@@ -248,7 +251,8 @@
 
                                                         <td class="subtotal">
                                                             <h4 class="table-title text-content">Tổng</h4>
-                                                            <h5 class="pricee">$${ci.car.price}</h5>
+                                                            <h5 class="pricee"><fmt:formatNumber currencySymbol="VND " value = "${ci.car.price}" 
+                                                                              type = "currency"/> </h5>
                                                         </td>
 
                                                         <td class="save-remove">
@@ -279,7 +283,8 @@
                                 <ul>
                                     <li>
                                         <h4 >Giá trị ước tính</h4>
-                                        <h4 id="subTotal" class="price">${total} VND</h4>
+                                        <h4 id="subTotal" class="price"> <fmt:formatNumber currencySymbol="VND " value = "${total}" 
+                                                          type = "currency"/> </h4>
                                     </li>
 
 
@@ -461,7 +466,7 @@
 
         <!-- script js -->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/script.js"></script>
-      
+
     </body>
 
 </html>

@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -427,7 +428,34 @@
                                     <a style="cursor: pointer"><i class="fa-solid fa-filter"></i> Filter Menu</a>
                                 </div>
                             </div>
+                            <div class="top-filter-menu">
+                                <div class="category-dropdown">
+                                    
+                                </div>
 
+                                <div class="grid-option d-none d-md-block">
+                                    <ul>
+                                        <li class="three-grid">
+                                            <a href="javascript:void(0)">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-3.svg" class="blur-up lazyload" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="grid-btn d-xxl-inline-block d-none active">
+                                            <a href="javascript:void(0)">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid-4.svg"
+                                                     class="blur-up lazyload d-lg-inline-block d-none" alt="">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/grid.svg"
+                                                     class="blur-up lazyload img-fluid d-lg-none d-inline-block" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="list-btn">
+                                            <a href="javascript:void(0)">
+                                                <img src="${pageContext.request.contextPath}/front-end/assets/svg/list.svg" class="blur-up lazyload" alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
                         </div>
 
@@ -487,7 +515,7 @@
                                                                         </a>
                                                                     </c:when>
                                                                     <c:otherwise> 
-                                                                        <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="location.href='${pageContext.request.contextPath}/login'">
+                                                                        <a class="compare-link" data-car-id="${cl.car_id}" style="cursor: pointer" onclick="location.href = '${pageContext.request.contextPath}/login'">
                                                                             <i data-feather="refresh-cw" ></i>
                                                                         </a>
                                                                     </c:otherwise>

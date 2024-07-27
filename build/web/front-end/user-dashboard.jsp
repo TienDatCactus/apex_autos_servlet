@@ -303,7 +303,7 @@
 
                                         <div class="order-contain">
                                             <c:forEach var="ol" items="${orderList}">
-                                                <div class="order-box dashboard-bg-box">
+                                                <div class="order-box dashboard-bg-box" >
                                                     <div class="order-container">
                                                         <div class="order-icon">
                                                             <i data-feather="box"></i>
@@ -313,10 +313,14 @@
                                                             <h4>Trạng thái<span>Đã đặt cọc</span></h4>
                                                             <h6 class="text-content"></h6>
                                                         </div>
+                                                        <div>
+                                                            <a href="#" class="button-39"  data-bs-toggle="modal" 
+                                                               onclick="showQRCodeModal('${ol.car.car_id}', '${ol.car.name}')">Kiểm tra</a>
+                                                        </div>
                                                     </div>
 
                                                     <div class="product-order-detail mt-2">
-                                                        <a href="${pageContext.request.contextPath}/user/dashboard?state=track&carId=${ol.car.car_id}&title=${ol.car.name}" class="order-image">
+                                                        <a href="javascript:void(0)" class="order-image">
                                                             <c:set var="firstImagePrinted" value="false" />
                                                             <c:forEach items="${carImage}" var="ci">
                                                                 <c:if test="${ci.car_id == ol.car.car_id}">
@@ -331,7 +335,7 @@
                                                         </a>
 
                                                         <div class="order-wrap">
-                                                            <a href="${pageContext.request.contextPath}/user/dashboard?state=track&carId=${ol.car.car_id}&title=${ol.car.name}">
+                                                            <a href="javascript:void(0)" >
                                                                 <h3>${ol.car.name}</h3>
                                                             </a>
                                                             <p class="text-content" style="
@@ -395,6 +399,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+
                                             </c:forEach>
 
 
@@ -480,6 +486,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </c:forEach>
 
 
@@ -646,7 +653,22 @@
         <!-- Footer Section Start -->
         <jsp:include page="footer.jsp"></jsp:include>
             <!-- Footer Section End -->
-
+            <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="qrModalLabel">Mã đơn hàng</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img id="qrImage" src="" alt="QR Code" class="img-fluid w-100" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- Tap to top start -->
@@ -998,6 +1020,8 @@
         <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/bootstrap-notify.min.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/bootstrap/popper.min.js"></script>
 
+
+
         <!-- feather icon js-->
         <script src="${pageContext.request.contextPath}/front-end/assets/js/feather/feather.min.js"></script>
         <script src="${pageContext.request.contextPath}/front-end/assets/js/feather/feather-icon.js"></script>
@@ -1027,6 +1051,25 @@
                                                                        document.getElementById('address_id_input').value = addressId;
                                                                    }
 
+
+    </script>
+    <script>
+        function showQRCodeModal(carId, title) {
+            // Ensure the modal exists
+            var qrModal = document.getElementById('qrModal');
+            if (!qrModal) return;
+
+            // Construct the URL for the QR code
+            var qrUrl = 'http://localhost:9999/apex_autos_servlet/generateQRCode?carId=' + encodeURIComponent(carId) + '&title=' + encodeURIComponent(title);
+
+            // Set the source of the QR code image
+            var qrImage = document.getElementById('qrImage');
+            qrImage.src = qrUrl;
+
+            // Show the modal
+            var modal = new bootstrap.Modal(qrModal);
+            modal.show();
+        }
     </script>
 
 </html>

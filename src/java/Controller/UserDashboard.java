@@ -1,11 +1,5 @@
 package Controller;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
 
 import Models.*;
 import DAO.*;
@@ -34,79 +28,37 @@ public class UserDashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        UserAccount ua = (UserAccount) session.getAttribute("user");
-        String action = request.getParameter("action");
-        String state = request.getParameter("state");
-        if (ua != null) {
-            if ("track".equals(state)) {
-                String qrFilePath = generateQRCode(request);
-                request.setAttribute("qrFilePath", qrFilePath);
-                request.getRequestDispatcher("/front-end/order-tracking.jsp").forward(request, response);
-            } else {
+        try {
+            HttpSession session = request.getSession();
+            UserAccount ua = (UserAccount) session.getAttribute("user");
+            String action = request.getParameter("action");
+            String state = request.getParameter("state");
+
+            if (ua != null) {
+
                 if ("delete".equals(action)) {
                     int idv = Integer.parseInt(request.getParameter("idz"));
                     int id_delete = Integer.parseInt(request.getParameter("id_address"));
                     daou.deleteAddress(id_delete);
                     List<Address> listAddrrr = daou.viewAllAddressFor1User(idv);
                     session.setAttribute("listAddr", listAddrrr);
-                    List<CarImage> carImage = dao.viewImageForCar();
-                    List<OrderItems> orderList = dao.orderItems(ua.getUser_id());
-                    request.setAttribute("orderList", orderList);
-                    request.setAttribute("carImage", carImage);
-                    request.getRequestDispatcher("/front-end/user-dashboard.jsp").forward(request, response);
                 }
+
+                List<CarImage> carImage = dao.viewImageForCar();
+                List<OrderItems> orderList = dao.orderItems(ua.getUser_id());
+                request.setAttribute("orderList", orderList);
+                request.setAttribute("carImage", carImage);
+                request.getRequestDispatcher("/front-end/user-dashboard.jsp").forward(request, response);
+            } else {
+                response.sendRedirect(request.getContextPath() + "/login");
             }
-        } else {
-            response.sendRedirect(request.getContextPath() + "/login");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/home"); // Redirect to an error page
         }
     }
 
-    private String generateQRCode(HttpServletRequest request) throws ServletException, IOException {
-        String carId = request.getParameter("carId");
-        String description = request.getParameter("title");
-
-        if (carId == null || description == null) {
-            throw new ServletException("Missing car ID or description");
-        }
-
-        String qrContent = "Car ID: " + carId + "\nDescription: " + description;
-        int width = 300;
-        int height = 300;
-
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix;
-        try {
-            Map<EncodeHintType, Object> hints = new HashMap<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-
-            bitMatrix = qrCodeWriter.encode(qrContent, BarcodeFormat.QR_CODE, width, height, hints);
-        } catch (WriterException e) {
-            throw new ServletException("Error generating QR code", e);
-        }
-
-        // Define the directory to save the QR code image
-        String qrDir = getServletContext().getRealPath("/qr-codes");
-        File qrDirFile = new File(qrDir);
-        if (!qrDirFile.exists()) {
-            qrDirFile.mkdirs();
-        }
-
-        // Generate the QR code image file name
-        String qrFileName = "qr_" + carId + ".png";
-        Path qrFilePath = FileSystems.getDefault().getPath(qrDir, qrFileName);
-
-        // Save the QR code as a PNG image file
-        try {
-            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", qrFilePath);
-        } catch (IOException e) {
-            throw new ServletException("Error saving QR code", e);
-        }
-
-        // Return the relative path to the QR code image file
-        return request.getContextPath() + "/qr-codes/" + qrFileName;
-    }
-
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

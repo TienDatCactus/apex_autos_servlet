@@ -40,6 +40,7 @@
                                 <thead>
                                     <tr>
                                         <th>Order ID</th>
+                                        <th>Car Model</th>
                                         <th>Customer Name</th>
                                         <th>Total Amount</th>
                                         <th>Order Status</th>
