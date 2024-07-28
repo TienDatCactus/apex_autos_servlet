@@ -84,21 +84,25 @@
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/com/vnpay/common/Config.java</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/payment-result.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/user-dashboard.jsp</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/CarDao.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/com/vnpay/common/Config.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/payment-result.jsp</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/product-bottom-thumbnail.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/DAO/CarDao.java</file>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/com/vnpay/common/Config.java</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/index.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/payment-result.jsp</file>
-            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/front-end/product-bottom-thumbnail.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/role.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/navbar.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/user.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/settings.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/index.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/seller.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/com/vnpay/common/Config.java</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/role.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/navbar.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/user.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/settings.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/index.jsp</file>
+            <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/web/admin/seller.jsp</file>
         </group>
         <group>
             <file>file:/C:/Users/Unknown/Desktop/swp_template/apex_autos_servlet/src/java/com/vnpay/common/Config.java</file>

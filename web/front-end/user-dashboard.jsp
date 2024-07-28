@@ -233,18 +233,7 @@
 
                                         <div class="total-box">
                                             <div class="row g-sm-4 g-3">
-                                                <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
-                                                    <div class="totle-contain">
-                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/svg/order.svg"
-                                                             class="img-1 blur-up lazyload" alt="">
-                                                        <img src="${pageContext.request.contextPath}/front-end/assets/images/svg/order.svg"
-                                                             class="blur-up lazyload" alt="">
-                                                        <div class="totle-detail">
-                                                            <h5>Tổng đơn hàng</h5>
-                                                            <h3>3658</h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
 
 
 
@@ -256,7 +245,7 @@
                                                              class="blur-up lazyload" alt="">
                                                         <div class="totle-detail">
                                                             <h5>Tổng số đã thanh toán</h5>
-                                                            <h3>32158</h3>
+                                                            <h3>${ol ? ol.size() :0}</h3>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -379,7 +379,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="accordion-item">
+<!--                                    <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingThree">
                                             <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse" data-bs-target="#collapseThree"
@@ -395,7 +395,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>  
+                                    </div>  -->
 
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingThree">
@@ -580,7 +580,8 @@
                                                             <span>(4.0)</span>
                                                         </div>
                                                         <h6 class="unit">${cl.model_year}</h6>
-                                                        <h5 class="price"><span class="theme-color">${cl.price} vnd</span> <del>${cl.price + 100000} vnd</del>
+                                                        <h5 class="price"><span class="theme-color"><fmt:formatNumber currencySymbol="VND " value = "${cl.price}" 
+                                                                                              type = "currency"/></span> 
                                                         </h5>
                                                         <c:if test="${not empty sessionScope.user && user.permission_id == 3}">
                                                             <div class="add-to-cart-box">

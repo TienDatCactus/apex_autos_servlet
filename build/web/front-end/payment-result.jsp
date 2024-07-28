@@ -104,6 +104,7 @@
                   // Create and save the order
                   Orders order = new Orders();
                   order.setUser_id(ua.getUser_id());
+                   order.setOrder_date(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                   order.setStatus("Success");
                   String vnpAmount = request.getParameter("vnp_Amount");
                   if (vnpAmount != null) {

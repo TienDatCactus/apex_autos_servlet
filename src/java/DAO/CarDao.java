@@ -242,7 +242,7 @@ public class CarDao {
         String sql = "INSERT INTO orders (user_id, order_date, status, total) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setInt(1, order.getUser_id());
-            pstmt.setTimestamp(2, order.getOrder_date());
+            pstmt.setString(2, order.getOrder_date());
             pstmt.setString(3, order.getStatus());
             pstmt.setFloat(4, order.getTotal());
 
@@ -351,7 +351,7 @@ public class CarDao {
 
                 OrderItems orderItems = new OrderItems(item_id, rsOrders.getInt("order_id"), car);
                 orderItemsList.add(orderItems);
-                Orders order = new Orders(rsOrders.getInt("order_id"),rsOrders.getInt("user_id"),rsOrders.getTimestamp("order_date"),rsOrders.getString("status"), rsOrders.getFloat("total"),orderItemsList);
+                Orders order = new Orders(rsOrders.getInt("order_id"),rsOrders.getInt("user_id"),rsOrders.getString("order_date"),rsOrders.getString("status"), rsOrders.getFloat("total"),orderItemsList);
                 orderList.add(order);
 
             }

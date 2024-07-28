@@ -79,27 +79,7 @@
                                                 <li class="nav-item dropdown new-nav-item">
                                                     <label class="new-dropdown">Mới</label>
                                                     <a class="nav-link dropdown-toggle"
-                                                       href="javascript:void(0)"
-                                                       data-bs-toggle="dropdown">Xem thêm...</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                               href="home?state=compare">So sánh</a>
-                                                        </li>
-
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                              href="home?state=allTrade">Thông tin cửa hàng</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                               href="!">Review xe</a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                               href="!">Liên hệ</a>
-                                                        </li>
-                                                    </ul>
+                                                       href="home?state=compare">So sánh</a>
                                                 </li>
 
 
@@ -132,16 +112,7 @@
                         </div>
 
                         <div class="rightside-box">
-                            <div class="location-box button-83">
-                                <button class="btn location-button" data-bs-toggle="modal"
-                                        data-bs-target="#locationModal">
-                                    <span class="location-arrow">
-                                        <i data-feather="map-pin"></i>
-                                    </span>
-                                    <span class="locat-name">Địa điểm</span>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </button>
-                            </div>
+
                             <ul class="right-side-menu mx-2">
                                 <li class="right-side">
                                     <a href="!" class="delivery-login-box">

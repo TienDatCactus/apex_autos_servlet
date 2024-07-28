@@ -131,7 +131,7 @@
 
             <!-- Cart Section Start -->
             <section class="cart-section section-b-space">
-                <div class="container-fluid-lg">
+                <div class="container-fluid">
                     <div class="row g-sm-5 g-3">
                         <div class="col-xxl-9">
                         <c:choose>
@@ -142,7 +142,7 @@
                             </c:when>
                             <c:otherwise>
                                 <div class="cart-table" >
-                                    <div class="table-responsive-xl custom-height custom-width" style="height: 500px">
+                                    <div class="table-responsive-xl custom-height custom-width" style="height: 800px">
 
                                         <table >
                                             <tbody >

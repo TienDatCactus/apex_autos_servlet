@@ -457,7 +457,7 @@
                                                     <li>
                                                         <a
                                                             class="dropdown-item"
-                                                            href="!"
+                                                            
                                                             >${cb.name}</a
                                                         >
                                                     </li>
@@ -479,7 +479,7 @@
                                                 >
                                                 <c:forEach var="cc" items="${carCate}">
                                                     <li>
-                                                        <a class="dropdown-item" href=""
+                                                        <a class="dropdown-item" 
                                                            >${cc.name}</a
                                                         >
                                                     </li>
@@ -490,30 +490,8 @@
                                         <li class="nav-item dropdown button-39">
                                             <a
                                                 class="nav-link dropdown-toggle"
-                                                href="javascript:void(0)"
-                                                data-bs-toggle="dropdown"
-                                                >Thông tin thêm</a
-                                            >
-                                            <ul class="dropdown-menu my-2 show"
-                                                data-bs-popper="none">
-                                                <li>
-                                                    <a class="dropdown-item"
-                                                       href="home?state=compare">So sánh</a>
-                                                </li>
-
-                                                <li>
-                                                    <a class="dropdown-item"
-                                                       href="!">Hướng dẫn mua hàng</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item"
-                                                       href="!">Review</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item"
-                                                       href="!">Liên hệ</a>
-                                                </li>
-                                            </ul>
+                                               href="home?state=compare">So sánh</a>
+                                            
                                         </li>
 
                                     </ul>

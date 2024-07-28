@@ -68,10 +68,6 @@ public class AdminDashboard extends HttpServlet {
                 request.setAttribute("lstSeller", lstSeller);
                 request.setAttribute("allUserAccount", users);
                 request.getRequestDispatcher("/admin/seller.jsp").forward(request, response);
-            } else if ("setting".equals(state)) {
-                request.getRequestDispatcher("/admin/settings.jsp").forward(request, response);
-            } else if ("chart".equals(state)) {
-                request.getRequestDispatcher("/admin/charts.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
             }

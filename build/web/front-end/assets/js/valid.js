@@ -496,11 +496,11 @@ $(document).ready(function () {
                 const itemOrigin = item.data('origin');
                 const itemPrice = parseFloat(item.data('price'));
                 const itemYear = parseInt(item.data('year'));
-                console.log(itemOrigin)
-                console.log(itemCategory)
-                console.log(itemBrand)
+               
                 let isMatch = true;
                 if (selectedCategories.length && !selectedCategories.includes(itemCategory)) {
+                    console.log(selectedCategories)
+                    console.log(selectedCategories.includes(itemCategory))
                     isMatch = false;
                 }
                 if (selectedBrands.length && !selectedBrands.includes(itemBrand)) {
@@ -509,12 +509,12 @@ $(document).ready(function () {
                 if (origin && !itemOrigin.includes(origin)) {
                     isMatch = false;
                 }
-                if (priceRange) {
-                    const [minPrice, maxPrice] = priceRange.split(';').map(Number);
-                    if (itemPrice < minPrice || itemPrice > maxPrice) {
-                        isMatch = false;
-                    }
-                }
+//                if (priceRange) {
+//                    const [minPrice, maxPrice] = priceRange.split(';').map(Number);
+//                    if (itemPrice < minPrice || itemPrice > maxPrice) {
+//                        isMatch = false;
+//                    }
+//                }
                 if (yearStart && yearEnd) {
                     const yearStartInt = parseInt(yearStart);
                     const yearEndInt = parseInt(yearEnd);
